@@ -1,3 +1,4 @@
+import {renderPdf,preparePdfPrint} from './pdf-score.js';
 import {initLibrary} from './library.js';
 import {avoidTempoCollisions} from './score-layout.js';
 import {songs} from './songs.js';
@@ -6,11 +7,12 @@ const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dial
 let activeSong=songs[0],modeOverride,loading=false;
 let KEYS=[],original='',current=0,wanted=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
+const isPdf=()=>activeSong.scoreType==='pdf';
 let library;
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=!ready||wanted<=-6;$('up').disabled=!ready||wanted>=6;$('reset').disabled=!ready;$('key').disabled=!ready;$('print').disabled=!ready||busy;
+function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
 // Screen-only framing: keep every SVG node and an 8-unit safety margin above its ink.
@@ -24,7 +26,7 @@ function trimScreenMargin(){
 }
 function commit(entry,shift,w){score.innerHTML=entry.svg;trimScreenMargin();current=shift;renderWidth=w;lastXML=entry.xml;const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+k.mode;$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?signature(k):'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 async function pump(){
- if(busy||!original||width()<100)return;busy=true;setControls();
+ if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
  try{while(true){const target=wanted,w=width();if(w<100)break;const id=`${w}:${target}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,w);metrics.push({shift:target,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=transposeXML(original,target,modeOverride);stage.style.width=w+'px';await osmd.load(xml);if(target!==wanted||w!==width())continue;
@@ -35,7 +37,7 @@ async function pump(){
  }}catch(e){console.error(e);wanted=current;$('status').textContent='Could not change the score. Please reload to try again.';score.setAttribute('aria-busy','false');}
  finally{busy=false;ready=!!score.querySelector('svg');setControls();}
 }
-export function changeKey(n){if(!Number.isInteger(n)||n< -6||n>6)return;wanted=n;score.setAttribute('aria-busy','true');$('status').textContent='Changing to '+KEYS.find(k=>k.shift===n).name+' '+KEYS.find(k=>k.shift===n).mode+'…';setControls();clearTimeout(timer);timer=setTimeout(pump,20);}
+export function changeKey(n){if(isPdf())return;if(!Number.isInteger(n)||n< -6||n>6)return;wanted=n;score.setAttribute('aria-busy','true');$('status').textContent='Changing to '+KEYS.find(k=>k.shift===n).name+' '+KEYS.find(k=>k.shift===n).mode+'…';setControls();clearTimeout(timer);timer=setTimeout(pump,20);}
 function buildChooser(){
  for(const id of ['higher','original','lower'])$(id).replaceChildren();
  for(const key of KEYS){const b=document.createElement('button');b.className='key-choice';b.dataset.shift=key.shift;b.setAttribute('aria-label',`${key.name} ${key.mode}, ${Math.abs(key.fifths)} ${key.fifths<0?'flats':'sharps'}${key.shift===0?', original key':`, ${key.shift>0?'+':''}${key.shift} semitones from original`}`);b.innerHTML=`<span class="name">${key.name}</span><span class="signature" aria-hidden="true">${signature(key)}</span><span class="distance">${key.shift>0?'+':''}${key.shift}</span><span class="marker"></span>`;if(key.shift===0)b.querySelector('.distance').remove();b.onclick=()=>{dialog.close();changeKey(key.shift);};$(key.shift>0?'higher':key.shift<0?'lower':'original').append(b);}
@@ -45,6 +47,7 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 $('down').onclick=()=>changeKey(Math.max(-6,wanted-1));$('up').onclick=()=>changeKey(Math.min(6,wanted+1));$('reset').onclick=()=>changeKey(0);
 $('key').onclick=()=>{setControls();dialog.showModal();dialog.querySelector(`[data-shift="${current}"]`).focus();};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 async function preparePrint(){
+ if(isPdf())return preparePdfPrint(score,$('print-pages'));
  const printXML=lastXML,printKey=KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
  await engraver.load(printXML);engraver.Zoom=.8;engraver.render();avoidTempoCollisions(host,printXML);
@@ -66,6 +69,11 @@ async function loadSong(id){
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
  library?.showScore();loading=true;ready=false;setControls();clearTimeout(timer);
  try{
+  document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
+  if(song.scoreType==='pdf'){
+   activeSong=song;original='';lastXML='';current=0;wanted=0;cache.clear();document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;document.querySelector('.subtitle').textContent=song.collection;score.setAttribute('aria-label',song.title+' PDF score');score.setAttribute('aria-busy','true');$('source-credits').replaceChildren();$('pdf-original').href=song.asset;
+   await renderPdf(song.asset,score,song.title);ready=true;score.setAttribute('aria-busy','false');$('status').textContent='PDF score. Transposition unavailable.';library?.opened(song.id);window.scrollTo({top:0,behavior:'instant'});return;
+  }
   let xml=sourceCache.get(song.asset);if(!xml){const r=await fetch(song.asset);if(!r.ok)throw new Error('Local score unavailable');xml=unpackMXL(await r.arrayBuffer());sourceCache.set(song.asset,xml);}
   const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');
   activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;

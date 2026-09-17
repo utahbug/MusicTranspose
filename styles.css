@@ -140,3 +140,7 @@
 @media print{#library,#lists-dialog{display:none!important}}
 
 @media print{body.library-open>#playing-view{display:none!important}}
+
+.pdf-page{display:block;width:100%;height:auto;margin:0 auto 12px;background:white}#pdf-notice{font-size:13px;color:#536b7a;margin:10px 0}#pdf-notice a{color:inherit;text-decoration:underline}
+@media screen{.pdf-score-open .masthead .controls,.pdf-score-open #reset{display:none!important}.pdf-score-open .masthead .toolbar{display:flex;justify-content:flex-start}.pdf-score-open #score{margin-top:0!important}.pdf-score-open .footnote{display:none}}
+@media print{#pdf-notice{display:none!important}.pdf-print-page img{display:block;max-width:100%;max-height:270mm;margin:0 auto}.pdf-print-page:last-child{break-after:auto}}

@@ -1,0 +1,38 @@
+{
+  "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/client.js",
+  "bytes": 795999,
+  "findings": {
+    "pianoMarvelUrl": [
+      "useEffect)(()=>{let Te=Jc(t),Qe=Q3(t),$n=Z3(t),tr=wm(t),fs=K3(t);N({pdf:Te?.distributionUrl||null,lyrics:t?.verses||null,video:Qe||null,midi:$n||null,audio:tr||null,mxl:typeof fs?.pianoMarvelUrl==\"string\"?fs.pianoMarvelUrl:\"\"})},[t]),(0,mt.useEffect)(()=>{ne({pdf:!!U.pdf,lyrics:!!U.lyrics,video:!!U.video?.distributionUrl,interactive:!!U.midi?.fileName,audio:Array.isArray(U.audio)&&U.audio.length>0})},[U]),(0,mt.useEffect)(()=>{if(!G(a)&&!i)",
+      ",Qe=Q3(t),$n=Z3(t),tr=wm(t),fs=K3(t);N({pdf:Te?.distributionUrl||null,lyrics:t?.verses||null,video:Qe||null,midi:$n||null,audio:tr||null,mxl:typeof fs?.pianoMarvelUrl==\"string\"?fs.pianoMarvelUrl:\"\"})},[t]),(0,mt.useEffect)(()=>{ne({pdf:!!U.pdf,lyrics:!!U.lyrics,video:!!U.video?.distributionUrl,interactive:!!U.midi?.fileName,audio:Array.isArray(U.audio)&&U.audio.length>0})},[U]),(0,mt.useEffect)(()=>{if(!G(a)&&!i){ae(a?.songList||[]),me(a?.s"
+    ],
+    "proxyldscdn": [],
+    "MXL": [],
+    "MIDI": [],
+    "songData": [
+      "s.window?new URLSearchParams(globalThis.window.location.search).get(\"clang\")??e??\"\":e||\"\",k$=({audioRef:e,bookData:t,order:n,queryStringCrumbs:a,selectedOption:r,showPrintButton:i,songData:l,songLangOptions:o,songNumber:s})=>{let{strings:{collection:c,credits:u,description:d,email:f,related_music:m,scriptures:h,select_song_lang:b,show_less:S,show_more:p,skip_to_song_info_tabs:g,song_number:y,tune:x}={}}=(0,er.useContext)(oe),{envData:",
+      "one; // This makes the play icon not be tiny.\n      }\n    }\n  }\n\n  @media print {\n    display: none;\n  }\n`,aee=C.div`\n  padding-top: var(--unity-spacing64);\n`,ree=({data:e})=>{let{songData:t,songLangOptions:n,bookData:a,queryStringCrumbs:r,songListFilters:i,order:l,songNavigationList:o=[]}=e||{},{envData:{lang:s,SITE_ROOT:c}={}}=(0,mt.useContext)(ke)||{},[u]=Ff(\"(max-width: 840px)\"),{strings:{content_unavailable_message:d,info:f,inter",
+      "9,{midiAsset:U.midi,mxlAsset:U.mxl,passedRef:ue})}),u&&(0,Pe.jsx)(aee,{children:(0,Pe.jsx)(D3,{audioRef:W,bookData:a,order:l,queryStringCrumbs:r,selectedOption:$,showPrintButton:L,songData:t,songLangOptions:n,songNumber:Oe})})]})}),!u&&(0,Pe.jsx)(D3,{audioRef:W,bookData:a,order:l,queryStringCrumbs:r,selectedOption:$,showPrintButton:L,songData:t,songLangOptions:n,songNumber:Oe})]})]})})]})},G9=ree;var Y9=v(B());var Un=v(T()),iee=e=>e?.",
+      "ion:$,showPrintButton:L,songData:t,songLangOptions:n,songNumber:Oe})})]})}),!u&&(0,Pe.jsx)(D3,{audioRef:W,bookData:a,order:l,queryStringCrumbs:r,selectedOption:$,showPrintButton:L,songData:t,songLangOptions:n,songNumber:Oe})]})]})})]})},G9=ree;var Y9=v(B());var Un=v(T()),iee=e=>e?.type===\"html\",W9=e=>e?.type===\"section\"&&\"section\"in e&&!!e.section,lee=e=>(0,Un.jsx)(bt,{...e}),oee=e=>(0,Un.jsx)(Ql,{...e}),see=e=>(0,Un.jsx)(Ia,{...e}),u",
+      "`\n  a {\n    color: var(--unity-accent-color-link);\n  }\n`,ote=C(Ih)`\n  font-variant-caps: all-small-caps;\n`,ste=C.a`\n  color: var(--unity-accent-color-link);\n`,ute=({data:e})=>{let{songData:t,bookData:n,queryStringCrumbs:a}=e||{},{envData:{lang:r}={}}=(0,B3.useContext)(ke)||{},{strings:{collection:i,credits:l,description:o,email:s,loading:c,scriptures:u,tune:d}={}}=(0,B3.useContext)(oe),f=Ke(),m=!n||Object.keys(n||{}).length>0||!!a;ret"
+    ],
+    "songsFilteredList": [
+      "(a)}async getSongFilteredList(t,n){let a=Yc({filters:t,lang:n}),r=tm({filters:a}),i=this.songFilteredListCache.get(r);if(i)return i;let l=JSON.stringify(a),o=this.getCDAURL({type:\"songsFilteredList\",identifier:encodeURIComponent(l),lang:a.lang,batchSize:20}),c=(await da(o,!0)).data;return this.songFilteredListCache.set(r,c),c}async getSongNavigationList(t,n){let a=C1(t);if(!a)return;let r=Yc({filters:a,lang:n}),i=tm({filters:r}),l=this.songNav"
+    ]
+  },
+  "resourceSelectors": {
+    "K3=": [],
+    "Z3=": [],
+    "mxl": [
+      "y-spacing16);\n\n  .wrap-row canvas {\n    max-width: 100%;\n  }\n`,H$=({midiAsset:e,mxlAsset:t,passedRef:n})=>{let{strings:a}=(0,qf.useContext)(oe),r=a?.loading||\"\",i=Ke();return i&&typeof window<\"u\"&&!window.process&&(window.process={env:{}}),(0,jf.jsx)(B$,{children:i?(0,jf.jsx)(qf.Suspense,{fallback:(0,jf.jsx)(qt,{text:r}),children:(0,jf.jsx)(I$,{midiAsset:e,mxlAsset:t,passedRef:n})}):(0,jf.jsx)(qt,{text:r})})},H9=H$;var U9=(e,t",
+      ".Suspense,{fallback:(0,jf.jsx)(qt,{text:r}),children:(0,jf.jsx)(I$,{midiAsset:e,mxlAsset:t,passedRef:n})}):(0,jf.jsx)(qt,{text:r})})},H9=H$;var U9=(e,t,n={})=>{let a=typeof window<\"u\"&&window.digitalData||[],r={event:e,component:{info:{name:t},category:{primary:\"change view\"},attributes:n}};Array.isArray(a)&&typeof a.push==\"function\"&&a.push(r)};var Pe=v(T()),U$=e=>(0,Pe.jsx)(tn,{...e}),V$=e=>(0,Pe.jsx)(qC,{...e}),G$=e=>(0,Pe.",
+      "fo\",[U,N]=(0,mt.useState)({pdf:null,lyrics:null,video:null,midi:null,audio:null,mxl:\"\"}),[V,ne]=(0,mt.useState)({pdf:!1,lyrics:!1,video:!1,interactive:!1,audio:!1}),[$,ye]=(0,mt.useState)(null),[K,j]=(0,mt.useState)(!1),[q,se]=(0,mt.useState)(!1),[pe,Me]=(0,mt.useState)(null),[xe,me]=(0,mt.useState)(null),[D,ae]=(0,mt.useState)([]),[Z,k]=(0,mt.useState)([]),[L,te]=(0,mt.useState)(!1),[_e,Ee]=(0,mt.useState)(\"\"),W=(0,mt.useRef)"
+    ],
+    "midi": [
+      ": var(--unity-spacing16);\n\n  .wrap-row canvas {\n    max-width: 100%;\n  }\n`,H$=({midiAsset:e,mxlAsset:t,passedRef:n})=>{let{strings:a}=(0,qf.useContext)(oe),r=a?.loading||\"\",i=Ke();return i&&typeof window<\"u\"&&!window.process&&(window.process={env:{}}),(0,jf.jsx)(B$,{children:i?(0,jf.jsx)(qf.Suspense,{fallback:(0,jf.jsx)(qt,{text:r}),children:(0,jf.jsx)(I$,{midiAsset:e,mxlAsset:t,passedRef:n})}):(0,jf.jsx)(qt,{text:r})})},H9=H$",
+      "0,jf.jsx)(qf.Suspense,{fallback:(0,jf.jsx)(qt,{text:r}),children:(0,jf.jsx)(I$,{midiAsset:e,mxlAsset:t,passedRef:n})}):(0,jf.jsx)(qt,{text:r})})},H9=H$;var U9=(e,t,n={})=>{let a=typeof window<\"u\"&&window.digitalData||[],r={event:e,component:{info:{name:t},category:{primary:\"change view\"},attributes:n}};Array.isArray(a)&&typeof a.push==\"function\"&&a.push(r)};var Pe=v(T()),U$=e=>(0,Pe.jsx)(tn,{...e}),V$=e=>(0,Pe.jsx)(qC,{...e}),",
+      "Sheet Music\",H=f||\"Info\",[U,N]=(0,mt.useState)({pdf:null,lyrics:null,video:null,midi:null,audio:null,mxl:\"\"}),[V,ne]=(0,mt.useState)({pdf:!1,lyrics:!1,video:!1,interactive:!1,audio:!1}),[$,ye]=(0,mt.useState)(null),[K,j]=(0,mt.useState)(!1),[q,se]=(0,mt.useState)(!1),[pe,Me]=(0,mt.useState)(null),[xe,me]=(0,mt.useState)(null),[D,ae]=(0,mt.useState)([]),[Z,k]=(0,mt.useState)([]),[L,te]=(0,mt.useState)(!1),[_e,Ee]=(0,mt.useState"
+    ],
+    "proxyldscdn": []
+  }
+}

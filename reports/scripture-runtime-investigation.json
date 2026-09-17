@@ -1,0 +1,368 @@
+{
+  "requests": [
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng",
+      "status": 200,
+      "type": "text/html"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Serif:400/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Serif:Italic:400/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Serif:700/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Serif:Italic:700/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:Italic:400/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:300/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:400/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:Italic:300/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:600/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:Italic:600/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:700/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://foundry.churchofjesuschrist.org/Foundry/v1/Ensign:Sans:Italic:700/css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/QNuzM3wJ6viu/t8VuRW/ZDwJW1/zV/Qj0IMEI/U35/yb0ITGiJY",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/QNuzM3wJ6viu/t8VuRW/ZDwJW1/O7/Qj0IMEI/EQ5/LGgAwNhop",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/client.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/index.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/QNuzM3wJ6viu/t8VuRW/ZDwJW1/O7uaNzuuuJirDD/UFoWMEI/YCB/kKDdOMV4",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/chunk-VLK4QT7Q.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/chunk-S7D4XAUR.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/chunk-GFHN2ZYK.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/chunk-P7CM32UK.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/chunk-NKKAZ43I.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/_handleAll.9cb6e8a3.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/SearchBar.6a6f3509.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://op.churchofjesuschrist.org/index.html",
+      "status": 200,
+      "type": "text/html"
+    },
+    {
+      "url": "https://op.churchofjesuschrist.org/op.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/Header.cba7766d.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://config.ff.harness.io/api/1.0/client/auth",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://id.churchofjesuschrist.org/api/v1/sessions/me",
+      "status": 404,
+      "type": "application/json"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/buildFooter.75c89c1a.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/SubNav.06bdcf13.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/resources/data?lang=eng",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/launch-fe44d8adbb98.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/QNuzM3wJ6viu/t8VuRW/ZDwJW1/O7uaNzuuuJirDD/UFoWMEI/YCB/kKDdOMV4",
+      "status": 201,
+      "type": "application/json"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/EXa94cd5c573de43f2aebdf06ffaa541cb-libraryCode_source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RCc3c383a969bb4da0ba5eb06389b90faa-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://consent.trustarc.com/notice?domain=ldsv2.org&c=teconsent&text=true&gtm=true&js=bb&noticeType=bb",
+      "status": 200,
+      "type": "text/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC67070424b351494a9649080b274f2957-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://config.ff.harness.io/api/1.0/client/env/cec3a10d-d4ca-4785-89a1-58bb28d75697/target/reactclientsdk/evaluations?cluster=2",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://consent.trustarc.com/asset/notice.js/v/b8401cc",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/banner/v1/published/eng/data.json",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://consent.trustarc.com/analytics?action=0&domain=ldsv2.org&implied=1&session=340102550e4b48c3ab5c5b2aa205cda3&new=1&referer=https://www.churchofjesuschrist.org",
+      "status": 200,
+      "type": "image/gif"
+    },
+    {
+      "url": "https://config.ff.harness.io/api/1.0/stream?cluster=2",
+      "status": 200,
+      "type": "text/event-stream"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/build/lambda-react/6d2be3072f/chunks/PDFViewer-HDLT5CA7.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/_handleBuildHeader.0660e330.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/buildFooter.41ea3c28.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/BannerSingleLine.a5059d3d.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/country",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/statics/pdfworker/pdf.worker.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/QNuzM3wJ6viu/t8VuRW/ZDwJW1/O7uaNzuuuJirDD/UFoWMEI/YCB/kKDdOMV4",
+      "status": 201,
+      "type": "application/json"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/services/platform/v4/_handleMainMenu.30936bda.js",
+      "status": 200,
+      "type": "application/javascript;charset=UTF-8"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC2483bf81bdc246adb67ea483f218583c-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC93e59433d2444038a632288c398a8adf-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC3c520e03a78447d0af0838aced88a55c-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC00b20aef4a124e11ac02b073656e0bb5-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RCf992bcc2bb254060b10d9f89ed3aeeec-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC97cfd166ba9d4e078f76c9d03ec0c4d5-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://www.churchofjesuschrist.org/media/music/proxyldscdn/a3/f4/a3f4f83c01f211ecb3a9eeeeac1e6802ecf66799/scripture_power_1987_eng.pdf",
+      "status": 200,
+      "type": "application/pdf"
+    },
+    {
+      "url": "https://ldschurch.tt.omtrdc.net/rest/v1/delivery?client=ldschurch&sessionId=710969832c484af3886ad169cff3c218&version=2.11.4",
+      "status": 200,
+      "type": "application/json;charset=UTF-8"
+    },
+    {
+      "url": "https://dpm.demdex.net/id?d_visid_ver=5.5.0&d_fieldgroup=MC&d_rtbd=json&d_ver=2&d_orgid=66C5485451E56AAE0A490D45%40AdobeOrg&d_nsid=0&ts=1789622354548",
+      "status": 200,
+      "type": "application/json;charset=utf-8"
+    },
+    {
+      "url": "https://www.everestjs.net/static/le/last-event-tag-latest.min.js",
+      "status": 200,
+      "type": "text/javascript"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC1d543cd9d6754bf9a02f0350578232b2-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    },
+    {
+      "url": "https://lasteventf-tm.everesttech.net/?_les_imsOrgId=66C5485451E56AAE0A490D45@AdobeOrg&_les_sdid=5154F588B94DB6F7-3A9145376E85C4FA&_les_last_search_click=&_les_rsid=ldschurchofjesuschristprod&_les_mid=64745765543061360976918181837834990442&_les_rampid_env=&_les_id5=&_les_afx=&_les_url=https%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng",
+      "status": 200,
+      "type": "text/plain"
+    },
+    {
+      "url": "https://zn6rk6tr2d4thcrsb-lds.siteintercept.qualtrics.com/SIE/?Q_ZID=ZN_6RK6tR2D4THcrSB",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://siteintercept.qualtrics.com/dxjsmodule/626.848665a0a9c3ddf336b8.chunk.js?Q_CLIENTVERSION=2.57.0&Q_CLIENTTYPE=web&Q_BRANDID=www.churchofjesuschrist.org",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://siteintercept.qualtrics.com/dxjsmodule/881.d8599d262e6546821b06.chunk.js?Q_CLIENTVERSION=2.57.0&Q_CLIENTTYPE=web&Q_BRANDID=www.churchofjesuschrist.org",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://siteintercept.qualtrics.com/WRSiteInterceptEngine/Targeting.php?Q_ZoneID=ZN_6RK6tR2D4THcrSB&Q_CLIENTVERSION=2.57.0&Q_CLIENTTYPE=web",
+      "status": 200,
+      "type": "text/plain; charset=UTF-8"
+    },
+    {
+      "url": "https://om.churchofjesuschrist.org/b/ss/ldschurchofjesuschristprod/1/JS-2.27.0-LGU4/s58271317373922?AQB=1&ndh=1&pf=1&t=16%2F8%2F2026%2023%3A19%3A15%203%20360&mid=64745765543061360976918181837834990442&aamlh=9&ce=UTF-8&pageName=media%7Cmusic%7Csongs%7Cscripture%20power%201987&g=https%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng&c.&cm.&ssf=1&.cm&.c&cc=USD&events=event30&c1=D%3Dv1&v1=www.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987&v2=D%3Dg&v3=media%7Cmusic%7Csongs%7Cscripture%20power%201987&v8=Sacred%20Music%20Web&v30=PDF%20Sheet%20Music&v36=64745765543061360976918181837834990442&v73=scripture-power-1987&pe=lnk_o&pev2=change%20view&s=1280x720&c=24&j=1.6&v=N&k=Y&bw=1280&bh=720&mcorgid=66C5485451E56AAE0A490D45%40AdobeOrg&AQE=1",
+      "status": 200,
+      "type": "image/gif;charset=utf-8"
+    },
+    {
+      "url": "https://assets.adobedtm.com/05064fe6cab0/b9d37f296ace/1097d79c19c1/RC6814c68bd7bf4976b36cf0deffe03576-source.min.js",
+      "status": 200,
+      "type": "application/x-javascript"
+    }
+  ],
+  "data": {
+    "title": "Scripture Power",
+    "text": "Viewing PDF Sheet Music\nMusic Library\nScripture Power\nPDF Sheet Music\nLyrics Only\nSkip to Main Content\nScripture Power\nSkip to Song Information Tabs\nDownload\nPrint\nDescription\n“Scripture Power” from Music from the Friend (1971–2018) (English, 1987-10-01).\nTune\nScripture Power\nCredits\n\nWords and music by Clive Romney\n\nCopyright © 1987 by Clive Romney. All rights reserved. Making copies of this music for use within the Church is permitted. This notice must be included on each copy made.",
+    "links": [
+      "https://www.churchofjesuschrist.org/media/music?lang=eng",
+      "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng",
+      "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng#skipToMainContent",
+      "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng#skipToSongInfoTabs",
+      "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng",
+      "https://x.com/intent/tweet?text=Scripture%20Power&url=https%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng",
+      "https://wa.me/?text=Scripture%20Power%20-%20https%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng",
+      "mailto:?body=Scripture%20Power%20%0Ahttps%3A%2F%2Fwww.churchofjesuschrist.org%2Fmedia%2Fmusic%2Fsongs%2Fscripture-power-1987%3Flang%3Deng&subject=Scripture%20Power"
+    ]
+  }
+}

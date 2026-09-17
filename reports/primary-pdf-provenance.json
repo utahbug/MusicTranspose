@@ -1,0 +1,16 @@
+[
+  {
+    "source": "C:\\Users\\kenro\\Documents\\MUSIC APP\\music\\Just-for-fun\\scripture-power.pdf",
+    "filename": "scripture-power.pdf",
+    "destination": "assets\\pdfs\\scripture-power.pdf",
+    "bytes": 114903,
+    "sha256": "8ca5491aeaf8dd7780af9ecf925f7772d6b0b9877cb67e805fd9500e1ec7b7ad"
+  },
+  {
+    "source": "C:\\Users\\kenro\\Documents\\MUSIC APP\\music\\Primary-2026\\choose-to-serve-the-lord.pdf",
+    "filename": "choose-to-serve-the-lord.pdf",
+    "destination": "assets\\pdfs\\choose-to-serve-the-lord.pdf",
+    "bytes": 105599,
+    "sha256": "04bd15e6d8009b299a4ea4f14bf28ced81d632a7be5e0bb404a7f4405f3f9639"
+  }
+]

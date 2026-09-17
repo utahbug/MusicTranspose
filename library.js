@@ -28,7 +28,7 @@ export function initLibrary({loadSong,isBusy}){
   for(const s of found){
    const row=node('div',null,'library-row');row.dataset.song=s.id;
    const favorite=state.favorites.includes(s.id),star=button(favorite?'★':'☆',(favorite?'Remove favorite: ':'Favorite: ')+s.title,()=>{state.favorites=favorite?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();const replacement=$('library-results').querySelector(`[data-song="${s.id}"] .favorite`);(replacement||$('library-search')).focus({preventScroll:true});});star.classList.add('favorite');star.setAttribute('aria-pressed',String(favorite));
-   const entry=button('', 'Open '+s.title,()=>open(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span',`${s.collection} · ${s.page} · ${s.tonic} ${s.mode}`,'song-meta'));
+   const entry=button('', 'Open '+s.title,()=>open(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span',[s.collection,s.page,s.scoreType==='pdf'?'PDF score':`${s.tonic} ${s.mode}`].filter(Boolean).join(' · '),'song-meta'));
    if(s.id===current){row.classList.add('current-song');entry.append(node('span','Open · Return to score','current-label'));}
    const lists=button('＋','Lists for '+s.title,()=>openLists(s.id));lists.classList.add('song-lists');lists.title='Add to lists';
    row.append(star,entry,lists);fragment.append(row);

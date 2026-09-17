@@ -1,0 +1,250 @@
+{
+  "source": "https://www.churchofjesuschrist.org/media/music/songs/the-nativity-song?lang=eng",
+  "checked": "2026-09-16",
+  "songData": {
+    "assets": [
+      {
+        "assetType": "AUDIO_ACCOMPANIMENT",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/12/d5/12d5bc02eeba285c51b76ca74f6d1c9e3cdb3304/canto_de_navidadmusica_solo.mp3",
+        "title": "The Nativity Song",
+        "description": "“The Nativity Song” from Children’s Songbook (English).",
+        "mimeType": "",
+        "duration": 202000,
+        "publicAltText": "“The Nativity Song” from Children’s Songbook (English).",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "Cover art for the Children’s Songbook.",
+          "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/1280,/0/default",
+          "seoDescription": "Cover art for the Children's Songbook.",
+          "seoTitle": "No Title",
+          "shareableTitle": "No Title",
+          "title": "No Title",
+          "renditions": [
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!320%2C320/0/default",
+              "width": 320,
+              "height": 320
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!640%2C640/0/default",
+              "width": 640,
+              "height": 640
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!800%2C800/0/default",
+              "width": 800,
+              "height": 800
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!1280%2C1280/0/default",
+              "width": 1280,
+              "height": 1280
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!60%2C60/0/default",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!250%2C250/0/default",
+              "width": 250,
+              "height": 250
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!200%2C200/0/default",
+              "width": 200,
+              "height": 200
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!100%2C100/0/default",
+              "width": 100,
+              "height": 100
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!500%2C500/0/default",
+              "width": 500,
+              "height": 500
+            }
+          ]
+        }
+      },
+      {
+        "assetType": "AUDIO_VOCAL_CHILDREN",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/e3/58/e35847d98820b1d8443ccb77e4ef68bbe2f212b4/the_nativity_song_vocal_accompaniment_eng.mp3",
+        "title": "The Nativity Song",
+        "description": "“The Nativity Song” from Children’s Songbook (English).",
+        "mimeType": "",
+        "duration": 198000,
+        "publicAltText": "“The Nativity Song” from Children’s Songbook (English).",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "Cover art for the Children’s Songbook.",
+          "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/1280,/0/default",
+          "seoDescription": "Cover art for the Children's Songbook.",
+          "seoTitle": "No Title",
+          "shareableTitle": "No Title",
+          "title": "No Title",
+          "renditions": [
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!320%2C320/0/default",
+              "width": 320,
+              "height": 320
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!640%2C640/0/default",
+              "width": 640,
+              "height": 640
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!800%2C800/0/default",
+              "width": 800,
+              "height": 800
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!1280%2C1280/0/default",
+              "width": 1280,
+              "height": 1280
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!60%2C60/0/default",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!250%2C250/0/default",
+              "width": 250,
+              "height": 250
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!200%2C200/0/default",
+              "width": 200,
+              "height": 200
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!100%2C100/0/default",
+              "width": 100,
+              "height": 100
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/cec7d26a5f55ec87aeec196e50f71a4d91eb9698/full/!500%2C500/0/default",
+              "width": 500,
+              "height": 500
+            }
+          ]
+        }
+      },
+      {
+        "assetType": "MIDI",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/db/dc/dbdcb03dd18e6512b4ea74ab85a93a6eaec58e42/the_nativity_song.midi",
+        "title": "The Nativity Song",
+        "description": "“The Nativity Song” from Children’s Songbook (English).",
+        "mimeType": "",
+        "duration": 0,
+        "publicAltText": "“The Nativity Song” from Children’s Songbook (English).",
+        "performer": [],
+        "fileName": "2002-01-0510-the-nativity-song-eng.midi",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "",
+          "distributionUrl": "",
+          "seoDescription": "",
+          "seoTitle": "",
+          "shareableTitle": "",
+          "title": "",
+          "renditions": []
+        }
+      },
+      {
+        "assetType": "MXL",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/7d/78/7d7874cf7d8f35b639ca251a59a192c5c8718afb/the_nativity_song.mxl",
+        "title": "The Nativity Song",
+        "description": "“The Nativity Song” from Children’s Songbook (English).",
+        "mimeType": "",
+        "duration": 0,
+        "publicAltText": "“The Nativity Song” from Children’s Songbook (English).",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "https://assets.churchofjesuschrist.org/7d/78/7d7874cf7d8f35b639ca251a59a192c5c8718afb/the_nativity_song.json",
+        "thumbnail": {
+          "description": "",
+          "distributionUrl": "",
+          "seoDescription": "",
+          "seoTitle": "",
+          "shareableTitle": "",
+          "title": "",
+          "renditions": []
+        }
+      },
+      {
+        "assetType": "PDF",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/96/4e/964e0fb6be8512abdd6bc43f59d2e243f17afdf4/the_nativity_song_graham_eng.pdf",
+        "title": "The Nativity Song",
+        "description": "“The Nativity Song” from Children’s Songbook (English).",
+        "mimeType": "application/pdf",
+        "duration": 0,
+        "publicAltText": "“The Nativity Song” from Children’s Songbook (English).",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "",
+          "distributionUrl": "",
+          "seoDescription": "",
+          "seoTitle": "",
+          "shareableTitle": "",
+          "title": "",
+          "renditions": []
+        }
+      },
+      {
+        "assetType": "MOBILE_PDF",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/1a/31/1a3142c243fb11ecbb8deeeeac1e0d1007d45e83/the_nativity_song_graham_eng.pdf",
+        "title": "The Nativity Song",
+        "description": "Sheet music of the song “The Nativity Song” for Children’s Choir.",
+        "mimeType": "application/pdf",
+        "duration": 0,
+        "publicAltText": "",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "",
+          "distributionUrl": "",
+          "seoDescription": "",
+          "seoTitle": "",
+          "shareableTitle": "",
+          "title": "",
+          "renditions": []
+        }
+      }
+    ],
+    "scriptures": [
+      {
+        "linkText": "Luke 2:1–16",
+        "linkUrl": "/scriptures/nt/luke/2?id=p1-p16#p1",
+        "$id": "000001a0-8c5b-d8d2-adb8-ed5b9df30000"
+      },
+      {
+        "linkText": "Matthew 2:1–11",
+        "linkUrl": "/scriptures/nt/matt/2?id=p1-p11#p1",
+        "$id": "000001a0-8c5b-d8d2-adb8-ed5b9df30001"
+      }
+    ],
+    "title": "The Nativity Song",
+    "description": "“The Nativity Song” from Children’s Songbook (English).",
+    "url": "https://www.churchofjesuschrist.org/media/music/songs/the-nativity-song?lang=eng",
+    "tunes": [
+      {
+        "$id": "00000184-0c30-d3a5-ab95-1dfa2c670175",
+        "name": "The Nativity Song",
+        "alternateTitles": []
+      }
+    ],
+    "fullCreditsText": "<p data-aid=\"000001a0-8c0a-d8d2-adb8-ed1ad1bc0000\" data-pid=\"p_wC3Re\"><i>Words and music:</i> Patricia Kelsey Graham, b. 1940. © 1980 IRI. Adapted from the poem “The Nativity Story” by Avon Allen Compton.</p>",
+    "slug": "the-nativity-song"
+  }
+}

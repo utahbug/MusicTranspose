@@ -1,0 +1,119 @@
+{
+  "source": "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng",
+  "checked": "2026-09-16",
+  "songData": {
+    "assets": [
+      {
+        "assetType": "PDF",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/70/fb/70fb1e007d072accc27adcef4e50dec5273dae00/scripture_power_1987_eng.pdf",
+        "title": "Scripture Power",
+        "description": "“Scripture Power” from Music from the Friend (1971–2018) (English, 1987-10-01).",
+        "mimeType": "application/pdf",
+        "duration": 0,
+        "publicAltText": "“Scripture Power” from Music from the Friend (1971–2018) (English, 1987-10-01).",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "Sheet music of the song “Scripture Power” for Children’s Choir.",
+          "distributionUrl": "https://churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/1920,/0/default",
+          "seoDescription": "Sheet music of the song \"Scripture Power\" for Children's Choir.",
+          "seoTitle": "Scripture Power",
+          "shareableTitle": "Scripture Power",
+          "title": "Scripture Power",
+          "renditions": [
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!320%2C414/0/default",
+              "width": 320,
+              "height": 414
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!640%2C828/0/default",
+              "width": 640,
+              "height": 828
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!800%2C1035/0/default",
+              "width": 800,
+              "height": 1035
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!1280%2C1657/0/default",
+              "width": 1280,
+              "height": 1657
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!1600%2C2071/0/default",
+              "width": 1600,
+              "height": 2071
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!1920%2C2485/0/default",
+              "width": 1920,
+              "height": 2485
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!60%2C78/0/default",
+              "width": 60,
+              "height": 78
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!250%2C324/0/default",
+              "width": 250,
+              "height": 324
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!200%2C259/0/default",
+              "width": 200,
+              "height": 259
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!100%2C129/0/default",
+              "width": 100,
+              "height": 129
+            },
+            {
+              "distributionUrl": "https://www.churchofjesuschrist.org/imgs/16c4a996430111ec95e0eeeeac1ece4553718b9a/full/!500%2C647/0/default",
+              "width": 500,
+              "height": 647
+            }
+          ]
+        }
+      },
+      {
+        "assetType": "MOBILE_PDF",
+        "distributionUrl": "https://assets.churchofjesuschrist.org/a3/f4/a3f4f83c01f211ecb3a9eeeeac1e6802ecf66799/scripture_power_1987_eng.pdf",
+        "title": "Scripture Power",
+        "description": "Sheet music of the song “Scripture Power” for Children’s Choir.",
+        "mimeType": "application/pdf",
+        "duration": 0,
+        "publicAltText": "Sheet music of the song \"Scripture Power\" for Children's Choir.",
+        "performer": [],
+        "fileName": "",
+        "pianoMarvelUrl": "",
+        "thumbnail": {
+          "description": "",
+          "distributionUrl": "",
+          "seoDescription": "",
+          "seoTitle": "",
+          "shareableTitle": "",
+          "title": "",
+          "renditions": []
+        }
+      }
+    ],
+    "scriptures": [],
+    "title": "Scripture Power",
+    "description": "“Scripture Power” from Music from the Friend (1971–2018) (English, 1987-10-01).",
+    "url": "https://www.churchofjesuschrist.org/media/music/songs/scripture-power-1987?lang=eng",
+    "tunes": [
+      {
+        "$id": "00000184-0c30-d3a5-ab95-1dfa361b0013",
+        "name": "Scripture Power",
+        "alternateTitles": []
+      }
+    ],
+    "fullCreditsText": "<p data-aid=\"00000199-72c1-d973-a19d-f2df12780000\" data-pid=\"1\">Words and music by Clive Romney</p><br><br><p data-aid=\"00000199-72c1-d973-a19d-f2df12780001\" data-pid=\"2\">Copyright © 1987 by Clive Romney. All rights reserved. Making copies of this music for use within the Church is permitted. This notice must be included on each copy made.</p>",
+    "slug": "scripture-power-1987"
+  }
+}

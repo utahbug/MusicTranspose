@@ -5,6 +5,8 @@ export const songs = [
  {id:'shepherd',title:'The Shepherd’s Carol',collection:'Children’s Songbook',page:'40b',tags:['Christmas','Primary'],aliases:[],collectionMemberships:[],asset:'./assets/shepherd.mxl',tonic:'D',mode:'minor',fifths:-1,modeOverride:'minor',evidence:'Source mode says major, but D-minor tonic chords, A7 cadences, C-sharp leading tones and final D establish D minor.'},
  {id:'faithful',title:'Oh, Come, All Ye Faithful',collection:'Hymns (1985)',page:'202',tags:['Christmas'],aliases:[],collectionMemberships:[],asset:'./assets/faithful.mxl',tonic:'G',mode:'major',fifths:1},
  {id:'silent-night',title:'Silent Night',collection:'Hymns (1985)',page:'204',tags:['Christmas'],aliases:[],collectionMemberships:[],asset:'./assets/silent-night.mxl',tonic:'B♭',mode:'major',fifths:-2},
+ {id:'scripture-power',title:'Scripture Power',collection:'Music from the Friend',page:'',scoreType:'pdf',transpositionAvailable:false,asset:'./assets/pdfs/scripture-power.pdf',tags:['Primary'],aliases:[],collectionMemberships:[]},
+ {id:'choose-to-serve-the-lord',title:'Choose to Serve the Lord',collection:'Primary-use music',page:'',scoreType:'pdf',transpositionAvailable:false,asset:'./assets/pdfs/choose-to-serve-the-lord.pdf',tags:['Primary'],aliases:[],collectionMemberships:[]},
  ...importedSongs
 ];
 
