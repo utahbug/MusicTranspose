@@ -22,5 +22,17 @@
     "local": "assets/shepherd.mxl",
     "sha256": "605512c680a1fb5dc8d5f15ba54404ec7c04b751219fff70ec027245c272fc04",
     "mode_correction": "D minor: source declares major incorrectly; D minor / A7 cadences and C-sharp leading tones corroborate minor."
-  }
+  },
+  "hymnal_songs": [
+    {
+      "source": "Hymnal_1985/202 - Oh, Come, All Ye Faithful.mxl",
+      "local": "assets/faithful.mxl",
+      "sha256": "bece21bc4b144307460d0ace33fa436dfa79728eee0663e27dd4a0df23996222"
+    },
+    {
+      "source": "Hymnal_1985/204 - Silent Night.mxl",
+      "local": "assets/silent-night.mxl",
+      "sha256": "670fbd0da52a1965d96627f748e17b678b14b8bff91c20f1515392a223303c4e"
+    }
+  ]
 }
