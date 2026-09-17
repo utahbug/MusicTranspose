@@ -32,3 +32,16 @@
  @media(max-width:850px){.masthead{padding:5px 12px}.title-row{display:block}.subtitle{margin-top:2px}.score-paper{padding-top:6px}}
  @media(max-width:600px){.masthead{gap:8px;padding:4px 8px}.song-identity{gap:8px}h1{font-size:18px}.subtitle{font-size:10px}.quiet{padding:7px 9px}.score-paper{margin-top:4px}.toolbar{padding:4px 6px}}
 }
+
+/* Screen score frame; inset line occupies existing padding, never score content. */
+:root{
+ --score-frame-outer:#4b6e88;
+ --score-frame-inner:#7a3e46;
+ --score-frame-outer-width:2px;
+ --score-frame-inner-width:1px;
+ --score-frame-gap:3px;
+}
+@media screen{
+ .score-paper{position:relative;border:var(--score-frame-outer-width) solid var(--score-frame-outer);box-shadow:none}
+ .score-paper::after{content:"";position:absolute;inset:var(--score-frame-gap);border:var(--score-frame-inner-width) solid var(--score-frame-inner);border-radius:1px;pointer-events:none}
+}
