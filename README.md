@@ -258,3 +258,30 @@ uses 6px per edge on larger screens and 4px per edge on phones. Existing current
 row highlighting, transparent selects, touch targets and score-view styling remain.
 Library compact/theme/discovery and list ordering/touch tests pass, including
 responsive overflow, drag cancellation and offline order persistence.
+
+### Icon utilities and simplified list management
+
+Filter is a funnel SVG and Sort is stacked lines with a down arrow. Each is a
+44px native-select touch target with accessible label, keyboard focus, selected
+value tooltip and a small maroon dot when not using the context's default.
+Search, plain List selector and the compact utility strip share a row when they
+fit; phones wrap Search above the utility controls. The count stays at the right.
+
+List begins with Manage lists…, followed by the native Your lists option group
+containing All lists and saved lists. The management action restores the active
+selection before opening the dialog; it does not alter filter, sort or membership.
+No standalone Manage or plus remains in the main Library. Song membership uses
+a checklist icon. Creating a list occurs only in Manage; membership dialogs link
+to it without implicitly adding a song. Users explicitly check desired memberships.
+
+Create immediately finishes naming and shows plain-text Your lists rows.
+Rename alone reveals one input with Save/Cancel (Enter saves, Escape cancels).
+Stable IDs, membership arrays, Favorites and per-list ordering are unchanged.
+Delete retains its existing list-only behavior. Previously saved data is preserved.
+
+Measured first-row positions: 118px on iPad/desktop (22px recovered); 157px at
+375px phone width (24px recovered for All, 70px for Favorites). Long names may
+wrap the utilities. Background, palette and double side frame are preserved.
+Local tests: list-management, library-compact, library-discovery, list-ordering,
+list-touch, pdf-scores and octave-controls pass. Responsive checks simulate device
+sizes; physical Safari testing remains recommended.
