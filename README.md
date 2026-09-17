@@ -243,3 +243,18 @@ or 227px (Favorites) on 375px iPhone. Long labels can require a second utility
 row. Search/filters/order semantics, the octave feature and score assets are
 unchanged. Verified with library-compact, library-theme, library-discovery,
 list-ordering and octave-controls tests; responsive tests simulate device sizes.
+
+### Library header background and side frame
+
+The unified header wrapper uses #EEF2F4 behind the eyebrow, title, controls and
+result count. The existing 1px maroon horizontal divider remains. Results reuse
+the score frame variables: outer #4B6E88 at 2px, inner #7A3E46 at 1px, with a 3px
+gap (1px at <=600px). Only left/right double lines are added; no bottom frame or
+new per-row borders. Decorative pseudo-elements use pointer-events:none.
+
+Header height is unchanged: first song remains at 140px on the tested iPad and
+desktop sizes, 181px for phone All and 227px for phone Favorites. Side framing
+uses 6px per edge on larger screens and 4px per edge on phones. Existing current
+row highlighting, transparent selects, touch targets and score-view styling remain.
+Library compact/theme/discovery and list ordering/touch tests pass, including
+responsive overflow, drag cancellation and offline order persistence.

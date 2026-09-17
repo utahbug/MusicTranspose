@@ -183,3 +183,11 @@
 #library .current-song{background:var(--library-current);box-shadow:inset 3px 0 var(--library-accent)}
 #library-count{margin:5px 0 4px}
 @media(max-width:600px){#library{padding-top:10px}#library .library-controls{gap:2px 8px}#library .library-controls>.filter-label,#library .library-controls>.sort-label{flex:0 1 auto}#library .list-actions{flex:0 1 auto;max-width:100%}#library .list-actions label{min-width:0}#library .library-controls select{max-width:calc(100vw - 80px)}#library .list-actions select{max-width:175px}}
+
+/* A unified Library header and side-only score-family frame. */
+#library{padding-top:0}
+.library-header-panel{display:flow-root;background:#EEF2F4;padding:12px 6px 0}
+#library-results{--list-frame-gap:var(--score-frame-gap);position:relative;border-left:var(--score-frame-outer-width) solid var(--score-frame-outer);border-right:var(--score-frame-outer-width) solid var(--score-frame-outer);border-bottom:0;padding-inline:calc(var(--list-frame-gap) + var(--score-frame-inner-width))}
+#library-results::before,#library-results::after{content:"";position:absolute;top:0;bottom:0;width:var(--score-frame-inner-width);background:var(--score-frame-inner);pointer-events:none}
+#library-results::before{left:var(--list-frame-gap)}#library-results::after{right:var(--list-frame-gap)}
+@media(max-width:600px){.library-header-panel{padding-top:10px;padding-inline:4px}#library-results{--list-frame-gap:1px}}
