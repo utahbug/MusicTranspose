@@ -78,3 +78,18 @@ The live registry now includes The Nativity Song (Children’s Songbook 52, G ma
 Visual inspection found an existing engraving limitation exposed by these sources: the metronome number and expression word (“Majestically” / “Peacefully”) overlap at the top. Notes, lyrics and arrangements remain intact. No song-specific rendering/transposition workaround was added. Confirm practical readability, especially these initial directions, during physical iPad/piano testing. Desktop rapid-transposition checks passed; this is not a claim of musician or physical-iPad validation.
 
 Run `node tests/four-songs.mjs` against the local server, or set TEST_URL to the live Pages URL (with trailing slash). Test evidence remains excluded under test-results/. Earlier two-song descriptions record prior phases.
+
+
+## Navigation settings and mobile refinements
+
+Settings (gear next to Print) opens a centered touch-friendly panel with a mutually exclusive navigation selector and a Key Changes section. Continuous Scroll is the default. Page Turns is disabled: screen rendering produces one continuous SVG for each current song and does not preserve dependable published page breaks. A4 print pages belong to a separate print renderer and are not repurposed as screen pages.
+
+Auto-scroll has explicit Start/Pause controls and 1–60 px/s speed in 1 px/s steps, default 12. It uses animation-frame elapsed time, with capped frame deltas. Manual pointer/touch interaction, wheel/keyboard scrolling, dialogs, rendering changes, resize, loss of focus, visibility changes and printing pause movement. Nothing resumes automatically. A separate control row appears only in Auto-scroll or Hybrid modes. Manual scrolling remains available.
+
+Hybrid advances 85% of the viewport height remaining above the actual toolbar, preserving 15% overlap. Next screen, PageDown and ArrowRight provide the same action when a settings/selection dialog or text/range input is not active. This supports pedals that emit those keys without introducing a general pedal mapper. The mode and speed are stored via sessionStorage under a namespaced key; navigation preference storage is isolated from score data for future per-song extension. Storage failure falls back to in-memory behavior. Reload restores the selected mode/speed but never starts scrolling.
+
+Transition-chord suggestions are honestly disabled and marked forthcoming. No harmonic generation or fake suggestions were added.
+
+At widths of 600 CSS pixels or less the current-key label displays Maj/Min; full major/minor labels remain elsewhere and in accessible key labels. The score header uses a collision-safe two-column grid: title left, secondary source/page right, with wrapping for long text. Phone utilities/reset occupy one row and 76px pitch targets flank the key on a second row; tablet/desktop pitch targets remain 88px wide. The original key color and border colors are unchanged. Toolbar height is measured with ResizeObserver so safe-area and bottom score clearance remain correct for each row configuration.
+
+`tests/navigation-settings.mjs` checks all four scores across 820×1180, 1180×820, 375×812 and 1440×1000: header separation, compact labels, controls, print comparisons, real scroll movement at 20 and 60 px/s, start/pause/resume, manual pause, session reload, screenful distance and final-score clearance. Print output is compared to local pre-change print baselines; toolbar/settings/navigation controls are excluded. Measured 20 px/s movement passed a 1.2-second timing window. Physical iPad/Safari performance and foot-pedal hardware still need user testing. Include navigation.js in any portable/static deployment; the service worker caches it.
