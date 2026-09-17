@@ -1,3 +1,4 @@
+import {avoidTempoCollisions} from './score-layout.js';
 import {songs} from './songs.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,parseXML} from './music.js';
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
@@ -24,7 +25,7 @@ async function pump(){
  try{while(true){const target=wanted,w=width();if(w<100)break;const id=`${w}:${target}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,w);metrics.push({shift:target,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=transposeXML(original,target,modeOverride);stage.style.width=w+'px';await osmd.load(xml);if(target!==wanted||w!==width())continue;
-   osmd.Zoom=w<800?.78:.9;osmd.render();if(target!==wanted||w!==width())continue;
+   osmd.Zoom=w<800?.78:.9;osmd.render();avoidTempoCollisions(stage);if(target!==wanted||w!==width())continue;
    const entry={svg:stage.innerHTML,xml};cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,w);metrics.push({shift:target,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&w===width())break;
@@ -41,9 +42,9 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 $('down').onclick=()=>changeKey(Math.max(-6,wanted-1));$('up').onclick=()=>changeKey(Math.min(6,wanted+1));$('reset').onclick=()=>changeKey(0);
 $('key').onclick=()=>{setControls();dialog.showModal();dialog.querySelector(`[data-shift="${current}"]`).focus();};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 async function preparePrint(){
- const printXML=lastXML,printKey=KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.style.width='794px';
+ const printXML=lastXML,printKey=KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
- await engraver.load(printXML);engraver.Zoom=.8;engraver.render();
+ await engraver.load(printXML);engraver.Zoom=.8;engraver.render();avoidTempoCollisions(host);
  const pages=$('print-pages');pages.replaceChildren();
  for(const svg of host.querySelectorAll('svg')){const section=document.createElement('section');section.className='print-page';const label=document.createElement('p');label.className='print-key';label.textContent=printKey;section.append(label,svg.cloneNode(true));pages.append(section);}
  const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('svg').length;

@@ -2,7 +2,7 @@ import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import http from 'node:http';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE||import.meta.url);const {chromium}=require('playwright');
 const project=path.resolve('.'),temp=await fs.mkdtemp(path.join(os.tmpdir(),'music-transpose-portable-'));const root=path.join(temp,'music-transpose-prototype');await fs.mkdir(root);
-const items=['index.html','styles.css','app.js','navigation.js','music.js','songs.js','sw.js','manifest.webmanifest','robots.txt','assets','vendor','.nojekyll'];
+const items=['index.html','styles.css','app.js','score-layout.js','navigation.js','music.js','songs.js','sw.js','manifest.webmanifest','robots.txt','assets','vendor','.nojekyll'];
 for(const item of items)await fs.cp(path.join(project,item),path.join(root,item),{recursive:true,errorOnExist:true});
 const hash=b=>createHash('sha256').update(b).digest('hex');const hashes=[];
 async function walk(dir){let out=[];for(const e of await fs.readdir(dir,{withFileTypes:true})){const f=path.join(dir,e.name);if(e.isDirectory())out.push(...await walk(f));else out.push(f);}return out;}
