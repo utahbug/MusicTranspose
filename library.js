@@ -28,7 +28,7 @@ export function initLibrary({loadSong,isBusy}){
   if(key!==contextKey){editing=false;contextKey=key;$('library-sort').value=key?'list':globalSort;}
   const option=$('library-sort').querySelector('[value="list"]');option.hidden=!list;option.disabled=!list;
   $('reorder-list').hidden=!list;$('reorder-list').textContent=editing?'Done':'Reorder';$('reorder-list').setAttribute('aria-pressed',String(editing));
-  $('order-note').textContent=list?(editing?'Reordering '+list.name+'. Drag a grip or use Move up / down. Search-hidden songs keep their positions.':$('library-sort').value==='list'?'Saved order · '+list.name:'Temporary sort · saved list order is unchanged.') : '';
+  $('order-note').textContent=list?(editing?'Reordering '+list.name+'. Drag a grip or use Move up / down. Search-hidden songs keep their positions.':$('library-sort').value==='list'?'':'Temporary sort · saved list order is unchanged.') : '';
   return list;
  }
  function moveSong(id,to,before=true){

@@ -173,3 +173,22 @@ four viewport sizes, PDF/MXL opening, transposition, reload and offline persiste
 `tests/list-touch.mjs` checks browser-emulated touch dragging, insertion markers,
 auto-scroll, cancellation, filtered slots and reopening in another tab. Physical
 iPad/Safari testing is still recommended. The service worker precaches the new module.
+
+### Compact Library utility header
+
+Search, Filter, Sort, List, Reorder and Manage share a wrapping flex toolbar.
+Search flexes from a 220px basis to a 420px maximum on larger screens, with
+16px text; at 600px and below it occupies the first row, Filter/Sort the second,
+and List/Reorder/Manage the third. All controls retain at least 44px height.
+Borders are 1px with 4px corners, and keyboard focus uses a 2px blue-gray ring.
+The redundant saved-order caption is removed; editing and temporary-sort hints
+remain. Song rows, discovery, ordering, rendering and print logic are unchanged.
+
+Measured first-row positions (All / Favorites, before → after):
+- iPhone 375×812: 404 / 458 → 242 / 242px.
+- iPad portrait 820×1180: 264 / 318 → 199 / 199px.
+- iPad landscape 1180×820 and desktop 1440×1000: 264 / 318 → 149 / 149px.
+
+Validation: library-compact, library-discovery, list-ordering, list-touch and
+pdf-scores browser checks pass. Viewports are browser simulations, not physical
+Safari devices. Cache version advances to distribute the revised UI offline.
