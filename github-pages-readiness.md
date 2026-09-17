@@ -84,3 +84,8 @@ The live registry now includes The Nativity Song (Children’s Songbook 52, G ma
 Visual inspection found an existing engraving limitation exposed by these sources: the metronome number and expression word (“Majestically” / “Peacefully”) overlap at the top. Notes, lyrics and arrangements remain intact. No song-specific rendering/transposition workaround was added. Confirm practical readability, especially these initial directions, during physical iPad/piano testing. Desktop rapid-transposition checks passed; this is not a claim of musician or physical-iPad validation.
 
 Run `node tests/four-songs.mjs` against the local server, or set TEST_URL to the live Pages URL (with trailing slash). Test evidence remains excluded under test-results/. Earlier two-song descriptions record prior phases.
+
+
+## Permanent name
+
+The existing repository is now named MusicTranspose, preserving its history and codex/pages branch. Repository: https://github.com/utahbug/MusicTranspose. Permanent site: https://utahbug.github.io/MusicTranspose/. Use this URL for bookmarks and new home-screen installations. Manifest start_url and scope remain relative; short_name remains Transpose. Earlier prototype-named references in historical notes describe the prior publishing phase.

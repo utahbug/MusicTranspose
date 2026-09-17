@@ -64,7 +64,7 @@ async function loadSong(id){
  try{
   const r=await fetch(song.asset);if(!r.ok)throw new Error('Local score unavailable');const xml=unpackMXL(await r.arrayBuffer());
   const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');
-  activeSong=song;document.title=song.title+' · Transpose';document.querySelector('h1').textContent=song.title;
+  activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('h1').textContent=song.title;
   document.querySelector('.subtitle').textContent=song.collection+' · '+song.page;score.setAttribute('aria-label',song.title+' sheet music');
   $('source-credits').replaceChildren();
   const credits=[...parseXML(xml).querySelectorAll('credit')].map(c=>[...c.querySelectorAll('credit-words')].map(w=>w.textContent).join('')).filter(t=>t.trim()!==song.title);
