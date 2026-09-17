@@ -45,3 +45,14 @@
  .score-paper{position:relative;border:var(--score-frame-outer-width) solid var(--score-frame-outer);box-shadow:none}
  .score-paper::after{content:"";position:absolute;inset:var(--score-frame-gap);border:var(--score-frame-inner-width) solid var(--score-frame-inner);border-radius:1px;pointer-events:none}
 }
+
+/* Score identity belongs to the framed sheet; app controls stay in one row above it. */
+@media screen{
+ .masthead{display:block;max-width:none;min-height:0;margin:0;padding:0;position:sticky;top:0;z-index:5}
+ .masthead .toolbar{position:static;gap:12px}
+ .score-heading{display:flex;align-items:baseline;gap:12px;padding:3px 0 6px}
+ .score-heading h1{margin:0}
+ .score-heading .subtitle{margin:0}
+ @media(max-width:850px){.score-heading{display:block}.score-heading .subtitle{margin-top:2px}}
+ @media(max-width:600px){.masthead .toolbar{gap:5px}.masthead .quiet{padding:7px 8px}#key{min-width:135px;gap:7px}.controls{gap:5px}}
+}
