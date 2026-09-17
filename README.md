@@ -21,7 +21,7 @@ The Shepherd’s Carol archive declares `<mode>major</mode>` with one flat, but 
 
 ## Offline and hosting
 
-Runtime files are `index.html`, `styles.css`, `app.js`, `library.js`, `navigation.js`, `score-layout.js`, `music.js`, `songs.js`, `sw.js`, `assets/`, and `vendor/`. Paths are relative. OSMD 2.1.2 and fflate 0.8.3 are vendored, with licenses. No remote score/font/library requests occur.
+Runtime files are `index.html`, `styles.css`, `app.js`, `library.js`, `list-reorder.js`, `navigation.js`, `score-layout.js`, `music.js`, `songs.js`, `sw.js`, `assets/`, and `vendor/`. Paths are relative. OSMD 2.1.2 and fflate 0.8.3 are vendored, with licenses. No remote score/font/library requests occur.
 
 The service worker caches both scores after installation. Offline reload and switching/transposition of both songs passed. Cache eviction may require revisiting. HTTPS or localhost is required for service workers. No publishing was performed. Real iPad Safari, offline persistence and AirPrint remain to be tested before a broader trial.
 
@@ -148,3 +148,28 @@ Trim blank margins defaults on under Settings > PDF display and persists in sess
 Validation: all seven pages retain every detected non-white pixel; original page dimensions remain intact. Toggling trimming produces identical PDF print output from the same full canvases. Separate renderer runs can differ in canvas rasterization, so cross-run encoded image hashes are not treated as a print-content invariant. Structured SVG and print markup match the pre-change baseline for Nativity and Home and Church 1001 at four viewport sizes. First-content position improves 66/72px on phone, 92/104px on iPad portrait, and 108/125–126px on landscape/desktop (Scripture Power / Choose to Serve). Hybrid, auto-scroll/manual pause, final-page clearance, Original PDF access, offline opening and session-setting restoration pass. Physical Safari testing remains outstanding.
 
 Run tests/pdf-compact.mjs first with CAPTURE_BASELINE=1 to record the prior committed viewer via test-only request overrides, then without it for layout/pixel-bound/print comparisons. tests/pdf-scores.mjs exercises the mixed-score controls and offline behavior.
+
+
+### Manual Favorites and list order
+
+Favorites and each custom list use their existing song-ID arrays as independent
+saved sequences under `music-transpose-library-v1`. The one-time `orderingVersion: 1`
+migration sorts existing memberships by Title (the previous default visible order),
+retaining names, memberships and unknown IDs. New memberships append; removal leaves
+the remaining sequence intact. No song record carries a rank.
+
+Selecting Favorites or a custom list defaults to List Order. A selected custom list
+owns the order when combined with the Favorites filter. Other sorts are temporary;
+returning to List Order restores the saved sequence. Global Library sorting is unchanged.
+Reorder enables 44px touch grips plus keyboard-accessible Move up/down buttons.
+Pointer capture supports touch/mouse/pen, a marked insertion edge, gentle edge
+scrolling, and Escape/pointer-cancel cancellation. Song opening is disabled only
+while editing. Filtered reordering permutes visible songs within their existing
+slots; hidden songs stay in place. Done restores normal song opening.
+
+Validation: `tests/list-ordering.mjs` covers eight-song Favorites, independent
+custom lists, migration, append/remove, drag/buttons, temporary sorts, searches,
+four viewport sizes, PDF/MXL opening, transposition, reload and offline persistence.
+`tests/list-touch.mjs` checks browser-emulated touch dragging, insertion markers,
+auto-scroll, cancellation, filtered slots and reopening in another tab. Physical
+iPad/Safari testing is still recommended. The service worker precaches the new module.
