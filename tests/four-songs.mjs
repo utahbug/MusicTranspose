@@ -26,7 +26,7 @@ async function verify(shift,fifths,label){
 }
 
 const missing=[];page.on('response',r=>{if(r.status()>=400)missing.push({url:r.url(),status:r.status()});});
-assert.equal(await page.locator('.song-entry strong').count(),4);
+assert.equal(await page.locator('.song-entry strong').count(),119);
 async function select(id){await page.locator('#songs').click();await page.locator(`[data-song="${id}"] .song-entry`).click();await page.waitForFunction(id=>prototype.song===id&&prototype.ready&&!prototype.busy&&prototype.current===0,id);}
 for(const song of [{id:'faithful',key:'G',fifths:1,up:['A♭','A','B♭','B','C','D♭'],down:['G♭','F','E','E♭','D','D♭'],upF:[-4,3,-2,5,0,-5],downF:[-6,-1,4,-3,2,-5]}, {id:'silent-night',key:'B♭',fifths:-2,up:['B','C','D♭','D','E♭','E'],down:['A','A♭','G','G♭','F','E'],upF:[5,0,-5,2,-3,4],downF:[3,-4,1,-6,-1,4]}]){
  await select(song.id);originalCredits=await page.locator('#source-credits').textContent();const original=await page.evaluate(()=>prototype.original),svg=await page.locator('#score').innerHTML();await verify(0,song.fifths,song.id+' original');

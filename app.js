@@ -7,6 +7,7 @@ let activeSong=songs[0],modeOverride,loading=false;
 let KEYS=[],original='',current=0,wanted=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
 let library;
+const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='';
 function width(){return Math.round(score.clientWidth);}
 function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=!ready||wanted<=-6;$('up').disabled=!ready||wanted>=6;$('reset').disabled=!ready;$('key').disabled=!ready;$('print').disabled=!ready||busy;
@@ -65,7 +66,7 @@ async function loadSong(id){
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
  library?.showScore();loading=true;ready=false;setControls();clearTimeout(timer);
  try{
-  const r=await fetch(song.asset);if(!r.ok)throw new Error('Local score unavailable');const xml=unpackMXL(await r.arrayBuffer());
+  let xml=sourceCache.get(song.asset);if(!xml){const r=await fetch(song.asset);if(!r.ok)throw new Error('Local score unavailable');xml=unpackMXL(await r.arrayBuffer());sourceCache.set(song.asset,xml);}
   const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');
   activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;
   document.querySelector('.subtitle').textContent=song.collection+' · '+song.page;score.setAttribute('aria-label',song.title+' sheet music');
