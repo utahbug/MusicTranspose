@@ -74,7 +74,7 @@ async function loadScore(xml,override){
 async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
- library?.showScore();loading=true;ready=false;setControls();clearTimeout(timer);
+ library?.showScore();loading=true;ready=false;$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
@@ -90,7 +90,7 @@ async function loadSong(id){
   const verses=document.createElement('div');verses.className='extra-verses';$('source-credits').append(verses);
   for(const text of credits){const p=document.createElement('p');p.textContent=text.replaceAll('\\n','\n');if(/^\d+\./.test(text))verses.append(p);else{p.className='credit-note';$('source-credits').append(p);}}
   await loadScore(xml,song.modeOverride);window.scrollTo({top:0,behavior:'instant'});library?.opened(song.id);
- }catch(e){console.error(e);$('status').textContent='Unable to load this local score. Reload to try again.';library?.failed();}
+ }catch(e){console.error(e);$('status').textContent='Unable to open this score. Please try again.';library?.failed();}
  finally{loading=false;setControls();}
 }
 // Local acceptance-test hooks.
@@ -103,4 +103,4 @@ window.prototype={get current(){return current;},get wanted(){return wanted;},ge
  navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled){pendingUpdate=true;refreshLibrary();}controlled=true;});
  document.addEventListener('library-open',()=>setTimeout(refreshLibrary,0));
  await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
- }catch(e){console.error(e);$('status').textContent='Unable to load. Open this project through its local server.';}})();
+ }catch(e){console.error(e);$('status').textContent='Unable to start MusicTranspose. Please reload or try again online.';$('library-message').textContent=$('status').textContent;}})();

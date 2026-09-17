@@ -300,3 +300,36 @@ No former empty plus slot remains. Tested at 320/375/820/1180/1440px without
 horizontal overflow; keyboard Enter/Escape and focus return pass. Existing
 ordering, touch-drag, search, PDF/MXL and print regressions pass. No song assets,
 transposition or octave logic changed. The actions dialog is excluded from print.
+
+### Final conservative release polish
+
+Confirmed previous deployment 0e56127 complete and audited the actual live UI
+before editing. Header background is now #E2E8EC, ending at the results divider;
+rows and the 2px #4B6E88 / 1px #7A3E46 side frame (3px/1px gap) are unchanged.
+Blue-gray #536B7A header text has 4.53:1 contrast. No extra header height was added.
+
+App dialog headings use compact 20px system typography (song-actions retains its
+18px heading). Generic button focus now uses a 2px blue-gray ring instead of the
+old 3px orange ring. Engraved score fonts are untouched. Removed only obsolete
+.song-lists CSS. No new controls or renderer/storage rewrites.
+
+List deletion now confirms by name and states that songs, Favorites and other
+lists are unaffected. Cancel and accept are tested. Startup/asset failure wording
+is concise; startup failure is visible in Library. Successful retries clear stale
+failure text, and loading announces Loading score. Unsupported Page Turns copy
+was simplified without changing its unavailable state.
+
+Release verification covers four responsive layouts, Library/Favorites/custom
+ordered lists, Manage/rename/cancel/delete, native menu keyboard access, both PDFs,
+Nativity and HHC structured scores, Settings/key panels, transposition and octave
+combinations/reset, touch ordering, print, PDF hybrid/auto-scroll/Original PDF,
+metadata-only startup, no repeated score fetch on transformations, and no normal
+page errors. Error tests deliberately simulate asset/startup failures. Cache v23
+retains scoped cleanup/current-cache-only offline behavior; stale cache isolation
+and offline score reopening pass. No new cache mechanism was introduced.
+
+Intentionally unchanged: source assets, musical content, score layout, existing
+clefs/ledger-line limitations, unavailable page turns, forthcoming transition
+chords, storage keys and local-only preferences. Tests use responsive desktop
+browser viewports, not physical Safari hardware. tests/release-audit.mjs records
+before/after screenshots; tests/release-states.mjs covers failures/retry/contrast.

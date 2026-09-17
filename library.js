@@ -110,7 +110,7 @@ export function initLibrary({loadSong,isBusy}){
     row.append(input,rename,button('Cancel','Cancel rename',cancel));
    }else{
     const name=node('span',g.name,'personal-list-name'),rename=button('Rename','Rename '+g.name,()=>{renaming=g.id;renderGroups();const input=$('personal-lists').querySelector('input');input.focus();input.select();});rename.classList.add('rename-list');
-    const remove=button('Delete','Delete list '+g.name,()=>{state.groups=state.groups.filter(x=>x.id!==g.id);save();updateListSelect();render();renderGroups();$('list-message').textContent='List deleted. Songs remain in the Library.';});row.append(name,rename,remove);
+    const remove=button('Delete','Delete list '+g.name,()=>{if(!window.confirm('Delete “'+g.name+'”? Songs, Favorites and other lists will stay unchanged.'))return;state.groups=state.groups.filter(x=>x.id!==g.id);save();updateListSelect();render();renderGroups();$('list-message').textContent='List deleted. Songs remain in the Library.';});row.append(name,rename,remove);
    }
    row.dataset.listId=g.id;
    $('personal-lists').append(row);
@@ -121,5 +121,5 @@ export function initLibrary({loadSong,isBusy}){
  $('manage-membership-lists').onclick=()=>openLists();$('close-lists').onclick=()=>$('lists-dialog').close();
  $('library-search').oninput=render;$('library-sort').onchange=()=>{editing=false;if(!orderedList())globalSort=$('library-sort').value;render();};$('library-list').onchange=()=>{if($('library-list').value==='@manage-lists'){$('library-list').value=activeList;openLists();return;}activeList=$('library-list').value;render();};$('resume-score').onclick=resume;$('songs').onclick=showLibrary;
  updateListSelect();render();
- return {showScore,opened(id){current=id;state.recent=[id,...state.recent.filter(x=>x!==id)].slice(0,30);save();render();},failed(){document.body.classList.add('library-open');$('library').hidden=false;document.title='MusicTranspose · Library';render();$('library-message').textContent='Unable to open this score. Please try again when its bundled file is available.';}};
+ return {showScore,opened(id){$('library-message').textContent='';current=id;state.recent=[id,...state.recent.filter(x=>x!==id)].slice(0,30);save();render();},failed(){document.body.classList.add('library-open');$('library').hidden=false;document.title='MusicTranspose · Library';render();$('library-message').textContent='Unable to open this score. Try again online or choose another song.';}};
 }
