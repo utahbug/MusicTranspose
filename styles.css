@@ -79,3 +79,20 @@
   .masthead #key .chevron{display:none}
  }
 }
+
+/* Utilities left, generous playing targets centered, isolated reset at the right edge. */
+@media screen{
+ .masthead .toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:20px}
+ .utility-controls{display:flex;align-items:center;gap:6px;justify-self:start}
+ .masthead .controls{display:flex;gap:8px;justify-self:center;flex:none}
+ .masthead .step{width:88px;min-width:88px;flex:0 0 88px}
+ .masthead #reset{justify-self:end;width:44px;min-width:44px}
+ @media(max-width:600px){
+  .masthead .toolbar{grid-template-columns:auto minmax(0,1fr) 44px;column-gap:8px}
+  .utility-controls{gap:2px}
+  .masthead .utility-controls .quiet{padding:7px 5px}
+  .masthead .controls{width:100%;gap:3px}
+  .masthead .step{width:44px;min-width:44px;flex:0 0 44px}
+  .masthead .step svg{width:40px;height:30px}
+ }
+}
