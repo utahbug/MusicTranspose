@@ -56,3 +56,5 @@
  @media(max-width:850px){.score-heading{display:block}.score-heading .subtitle{margin-top:2px}}
  @media(max-width:600px){.masthead .toolbar{gap:5px}.masthead .quiet{padding:7px 8px}#key{min-width:135px;gap:7px}.controls{gap:5px}}
 }
+
+#print{width:44px;min-width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#173e3b}
