@@ -60,3 +60,22 @@
 #print{width:44px;min-width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#173e3b}
 
 .step{display:inline-flex;align-items:center;justify-content:center;padding:0}
+
+/* Persistent playing controls; reserve their exact height plus the iOS home indicator. */
+:root{--playing-bar-height:54px;--playing-safe-bottom:env(safe-area-inset-bottom,0px)}
+@media screen{
+ .masthead{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;z-index:5}
+ .masthead .toolbar{padding-bottom:calc(4px + var(--playing-safe-bottom));padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+ main{padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px)}
+ html{scroll-padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px)}
+ .state:has(.visible-error){top:auto;bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px)}
+ @media(max-width:600px){
+  .masthead .toolbar{gap:4px;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
+  .masthead .controls{flex:1;min-width:0;gap:3px}
+  .masthead .step,.masthead .reset{flex:0 0 44px}
+  .masthead #key{flex:1;min-width:0;padding:0 3px;flex-direction:column;gap:0}
+  .masthead #key-name{font-size:18px;line-height:22px;white-space:nowrap}
+  .masthead #key-signature{font-size:12px;line-height:14px}
+  .masthead #key .chevron{display:none}
+ }
+}
