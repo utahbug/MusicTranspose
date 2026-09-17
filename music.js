@@ -58,3 +58,17 @@ export function transposeXML(original,shift,modeOverride){
  return new XMLSerializer().serializeToString(doc);
 }
 export function unpackMXL(bytes){const zip=fflate.unzipSync(new Uint8Array(bytes));const container=zip['META-INF/container.xml'];if(!container)throw new Error('Missing MXL container.');const d=parseXML(fflate.strFromU8(container));const entry=[...d.getElementsByTagName('rootfile')].find(x=>x.getAttribute('media-type')==='application/vnd.recordare.musicxml+xml');if(!entry||!zip[entry.getAttribute('full-path')])throw new Error('Missing MusicXML score.');return fflate.strFromU8(zip[entry.getAttribute('full-path')]);}
+
+// Register is independent of key transposition. Limit changes to pitched notes;
+// harmony, rests, percussion, clefs and all attached notation remain untouched.
+export function shiftOctaveXML(xml,octaves){
+ if(!Number.isInteger(octaves)||Math.abs(octaves)>1)throw new Error('Octave offset must be -1, 0 or +1.');
+ if(octaves===0)return xml;
+ const doc=parseXML(xml);
+ for(const octave of doc.querySelectorAll('note > pitch > octave')){
+  const value=Number(octave.textContent)+octaves;
+  if(!Number.isInteger(value)||value<0||value>9)throw new Error('This score exceeds the supported pitch register.');
+  octave.textContent=String(value);
+ }
+ return new XMLSerializer().serializeToString(doc);
+}

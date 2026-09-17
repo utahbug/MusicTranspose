@@ -156,3 +156,14 @@
 
 /* List editing stays separate from score controls and normal song opening. */
 .library-row.reordering{grid-template-columns:44px minmax(0,1fr) 92px;position:relative}.reorder-grip{touch-action:none;cursor:grab;font-size:28px;padding:0;min-width:44px;min-height:48px;user-select:none}.reorder-actions{display:flex;gap:2px}.reorder-actions button{min-width:44px;min-height:44px;padding:0;font-size:21px}.library-row .song-entry:disabled{opacity:1;cursor:default}.library-row.dragging{opacity:.55}.library-row.drop-before{box-shadow:inset 0 3px #536b7a}.library-row.drop-after{box-shadow:inset 0 -3px #536b7a}.reorder-grip:active{cursor:grabbing}
+
+/* Register shifts share the playing group; the utility cluster and Reset stay separate. */
+@media screen{
+ .masthead #key-name{white-space:nowrap}
+ .masthead .octave-step{flex:0 0 44px;min-width:44px;height:44px;padding:0;border:1px solid #b5c3c5;border-radius:6px;background:#f6f7f3;color:#365867;font-size:14px}
+ .masthead .octave-step[aria-pressed=true]{background:#e0e8ec;border-color:#536b7a;box-shadow:inset 0 -3px #536b7a;font-weight:700;opacity:1}
+ @media(min-width:601px) and (max-width:1100px){.masthead .toolbar{grid-template-columns:auto minmax(0,1fr) 44px;column-gap:16px}.masthead .controls{gap:5px}.masthead #key{min-width:135px;gap:6px;padding:0 8px}.masthead #key-name{font-size:20px}}
+ @media(max-width:600px){.masthead .step{width:56px;min-width:56px;flex-basis:56px}.masthead .step svg{width:48px}.masthead #key-name{font-size:18px}.masthead #key-name::after{content:none}}
+ @media(min-width:601px) and (max-width:740px){.masthead .toolbar{grid-template-columns:1fr 44px;row-gap:4px}.masthead .utility-controls{grid-column:1;grid-row:1}.masthead #reset{grid-column:2;grid-row:1}.masthead .controls{grid-column:1/-1;grid-row:2;justify-self:center}}
+ @media(max-width:360px){.masthead .step{width:44px;min-width:44px;flex-basis:44px}.masthead .step svg{width:40px}}
+}

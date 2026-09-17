@@ -192,3 +192,33 @@ Measured first-row positions (All / Favorites, before → after):
 Validation: library-compact, library-discovery, list-ordering, list-touch and
 pdf-scores browser checks pass. Viewports are browser simulations, not physical
 Safari devices. Cache version advances to distribute the revised UI offline.
+
+### Octave register controls
+
+The playing group is Lower / Current key / Higher / 8vb / 8va. The two register
+buttons are 44×44px, secondary to the 88px iPad semitone controls. Active register
+has a filled/underlined button and aria-pressed state. Current-key labels use
+Maj/Min on every viewport; accessible labels and chooser retain full mode names.
+
+Register range is -1, 0, +1 octave for the entire structured score. Separate
+current/wanted octave state is memory-only, resets on a different song, and is
+included in the existing render-cache key. shiftOctaveXML runs after normal key
+transposition and changes only note/pitch/octave values. Chords, key signatures,
+clefs, rests, lyrics, voices and other notation remain unchanged. The source assets
+are never rewritten or refetched for shifts. Reset restores original key/register
+and the exact original XML. Print uses the existing current-score pipeline.
+PDF-only scores hide the entire pitch/register group as before.
+
+The toolbar remains 54px tall at tested iPad/desktop widths and 102px on phones;
+601–740px narrow windows also use two rows to preserve Reset separation. Phone
+semitone targets are 56px (44px at <=360px). Safe-area and bottom clearance handling
+are unchanged. Preserving clefs means shifted passages can have several ledger
+lines, particularly bass notes shifted down or treble notes shifted up. This is
+why the first version limits shifts to one octave in either direction.
+
+Validation: tests/octave-controls.mjs checks Nativity, Shepherd's Carol, HHC 1001,
+B major/G-flat major/C-sharp minor destinations, all-note octave deltas and exact
+preservation of the rest of the XML, key/register operation equivalence, exact
+reset, no repeated asset fetch, PDF exclusion, print and seven responsive widths.
+PDF/navigation/Library regression suites also pass. Tests use responsive desktop
+browser viewports; physical iPad/Safari testing remains recommended.
