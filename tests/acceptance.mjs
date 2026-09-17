@@ -7,7 +7,7 @@ const browser=await chromium.launch({channel:'msedge',headless:true});const cont
 page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:'))remote.push(r.url());});
 const done=shift=>page.waitForFunction(s=>window.prototype?.ready&&!prototype.busy&&prototype.current===s&&document.getElementById('score').getAttribute('aria-busy')==='false',shift,{timeout:30000});
 await page.goto(base);await done(0);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);
-assert.equal(await page.locator('#down').textContent(),'↓');assert.equal(await page.locator('#up').textContent(),'↑');assert.equal(await page.locator('#close-dialog').textContent(),'×');assert.equal(await page.locator('.subtitle').textContent(),'Children’s Songbook · 52');
+assert.equal(await page.locator('#down').getAttribute('aria-label'),'Lower pitch one semitone');assert.equal(await page.locator('#up').getAttribute('aria-label'),'Raise pitch one semitone');assert.equal(await page.locator('#close-dialog').textContent(),'×');assert.equal(await page.locator('.subtitle').textContent(),'Children’s Songbook · 52');
 assert.equal(await page.locator('#reset').textContent(),'↺');assert.equal(await page.locator('#reset').getAttribute('aria-label'),'Reset to original key');
 const originalSVG=await page.locator('#score').innerHTML();const originalCredits=await page.locator('#source-credits').textContent();
 assert(originalCredits.includes('4.')&&originalCredits.includes('5.'));assert(!originalCredits.includes('\\n'));
