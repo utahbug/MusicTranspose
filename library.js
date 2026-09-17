@@ -66,7 +66,7 @@ export function initLibrary({loadSong,isBusy}){
    const favorite=state.favorites.includes(s.id),star=button(favorite?'★':'☆',(favorite?'Remove favorite: ':'Favorite: ')+s.title,()=>{state.favorites=favorite?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();const replacement=$('library-results').querySelector(`[data-song="${s.id}"] .favorite`);(replacement||$('library-search')).focus({preventScroll:true});});star.classList.add('favorite');star.setAttribute('aria-pressed',String(favorite));
    const entry=button('', 'Open '+s.title,()=>open(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span',[s.collection,s.page,s.scoreType==='pdf'?'PDF score':`${s.tonic} ${s.mode}`].filter(Boolean).join(' · '),'song-meta'));
    if(s.id===current){row.classList.add('current-song');entry.append(node('span','Open · Return to score','current-label'));}
-   const lists=button('','Lists for '+s.title,()=>openLists(s.id));lists.innerHTML='<svg width=22 height=22 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 6 2 2 3-4M11 6h10M3 13h4M11 13h10M3 19h4M11 19h10"/></svg>';lists.classList.add('song-lists');lists.title='Add to lists';
+   const lists=button('⋯','Actions for '+s.title,()=>openSongActions(s.id));lists.classList.add('song-actions');lists.title='Song actions';lists.setAttribute('aria-haspopup','dialog');lists.setAttribute('aria-controls','song-actions');
    if(editing&&ordered){
     row.classList.add('reordering');entry.disabled=true;
     const grip=button('⠿','Drag to reorder '+s.title,()=>{});grip.classList.add('reorder-grip');grip.title='Drag to reorder';
@@ -89,6 +89,14 @@ export function initLibrary({loadSong,isBusy}){
   $('library-filter').append(new Option(label,value));
  }
  $('library-filter').onchange=()=>{filter=$('library-filter').value;render();};
+ function openSongActions(id){
+  const song=songs.find(s=>s.id===id),group=state.groups.find(g=>g.id===activeList);
+  $('song-actions-title').textContent=song.title;$('song-remove-list').hidden=!group;
+  $('song-add-list').onclick=()=>{$('song-actions').close();openLists(id);};
+  $('song-remove-list').onclick=()=>{if(!group)return;group.songs=group.songs.filter(songId=>songId!==id);save();$('song-actions').close();render();$('reorder-status').textContent='Removed '+song.title+' from '+group.name+'.';$('library-list').focus({preventScroll:true});};
+  $('song-actions').showModal();$('song-add-list').focus();
+ }
+ $('close-song-actions').onclick=()=>$('song-actions').close();
  function openLists(id=null){target=id;renaming=null;$('lists-title').textContent=id?'Lists for '+songs.find(s=>s.id===id).title:'My lists';$('lists-hint').textContent=id?'Choose any number of personal lists. Source collections stay unchanged.':'Create a list, or rename and delete existing lists.';$('create-list').hidden=!!id;$('manage-membership-lists').hidden=!id;$('list-message').textContent='';renderGroups();if(!$('lists-dialog').open)$('lists-dialog').showModal();(id?$('close-lists'):$('new-list-name')).focus();}
  function renderGroups(){
   $('personal-lists').replaceChildren();

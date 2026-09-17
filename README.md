@@ -285,3 +285,18 @@ wrap the utilities. Background, palette and double side frame are preserved.
 Local tests: list-management, library-compact, library-discovery, list-ordering,
 list-touch, pdf-scores and octave-controls pass. Responsive checks simulate device
 sizes; physical Safari testing remains recommended.
+
+### Song-row secondary actions
+
+The former plus/checklist control opened custom-list membership directly. It is
+now a compact ellipsis opening a concise, keyboard-accessible actions dialog:
+Add to list… opens the unchanged membership checkboxes; Remove from this list
+appears only when viewing a custom list and removes only that list membership.
+The Favorite star remains visible. Reorder handles/buttons are unchanged.
+
+The secondary action's layout footprint shrinks from 46px to 32px, giving the
+title/metadata area 14px more width. Its actual touch target remains 44×44px.
+No former empty plus slot remains. Tested at 320/375/820/1180/1440px without
+horizontal overflow; keyboard Enter/Escape and focus return pass. Existing
+ordering, touch-drag, search, PDF/MXL and print regressions pass. No song assets,
+transposition or octave logic changed. The actions dialog is excluded from print.

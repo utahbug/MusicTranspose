@@ -201,3 +201,9 @@
 #library .library-results-tools #library-count{margin:0 0 0 auto;padding-left:10px;white-space:nowrap}
 #library .library-controls{padding-bottom:3px}#library .song-lists svg{vertical-align:middle}.personal-list-name{flex:1;min-width:0;overflow-wrap:anywhere}
 @media(max-width:600px){#library .library-controls{gap:0 5px}#library .library-results-tools{flex:1 0 auto;min-width:0}#library .library-results-tools #library-count{padding-left:5px}#library .list-actions{flex:0 1 auto}#library .list-actions select{max-width:145px}}
+
+/* A small overflow affordance replaces the full-width membership column. */
+#library .library-row:not(.reordering){grid-template-columns:46px minmax(0,1fr) 32px}
+#library .library-row .song-actions{width:44px;min-height:44px;margin-inline:-6px;padding:0;border:0;background:transparent;color:#536B7A;font-size:22px;line-height:1;border-radius:3px}
+#song-actions{width:380px}#song-actions h2{font:600 18px system-ui,sans-serif;line-height:1.4}#song-actions>.quiet{display:block;width:100%;text-align:left;margin-top:10px;min-height:44px}#song-actions>.quiet[hidden]{display:none}
+@media print{#song-actions{display:none!important}}
