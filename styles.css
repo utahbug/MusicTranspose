@@ -157,17 +157,6 @@
 /* List editing stays separate from score controls and normal song opening. */
 .library-row.reordering{grid-template-columns:44px minmax(0,1fr) 92px;position:relative}.reorder-grip{touch-action:none;cursor:grab;font-size:28px;padding:0;min-width:44px;min-height:48px;user-select:none}.reorder-actions{display:flex;gap:2px}.reorder-actions button{min-width:44px;min-height:44px;padding:0;font-size:21px}.library-row .song-entry:disabled{opacity:1;cursor:default}.library-row.dragging{opacity:.55}.library-row.drop-before{box-shadow:inset 0 3px #536b7a}.library-row.drop-after{box-shadow:inset 0 -3px #536b7a}.reorder-grip:active{cursor:grabbing}
 
-/* Register shifts share the playing group; the utility cluster and Reset stay separate. */
-@media screen{
- .masthead #key-name{white-space:nowrap}
- .masthead .octave-step{flex:0 0 44px;min-width:44px;height:44px;padding:0;border:1px solid #b5c3c5;border-radius:6px;background:#f6f7f3;color:#365867;font-size:14px}
- .masthead .octave-step[aria-pressed=true]{background:#e0e8ec;border-color:#536b7a;box-shadow:inset 0 -3px #536b7a;font-weight:700;opacity:1}
- @media(min-width:601px) and (max-width:1100px){.masthead .toolbar{grid-template-columns:auto minmax(0,1fr) 44px;column-gap:16px}.masthead .controls{gap:5px}.masthead #key{min-width:135px;gap:6px;padding:0 8px}.masthead #key-name{font-size:20px}}
- @media(max-width:600px){.masthead .step{width:56px;min-width:56px;flex-basis:56px}.masthead .step svg{width:48px}.masthead #key-name{font-size:18px}.masthead #key-name::after{content:none}}
- @media(min-width:601px) and (max-width:740px){.masthead .toolbar{grid-template-columns:1fr 44px;row-gap:4px}.masthead .utility-controls{grid-column:1;grid-row:1}.masthead #reset{grid-column:2;grid-row:1}.masthead .controls{grid-column:1/-1;grid-row:2;justify-self:center}}
- @media(max-width:360px){.masthead .step{width:44px;min-width:44px;flex-basis:44px}.masthead .step svg{width:40px}}
-}
-
 /* Library-only utility treatment: native menus, no boxed dropdowns. */
 #library{--library-accent:#536B7A;--library-maroon:#7A3E46;--library-gold:#8A6419;--library-current:#EEF3F6;padding-top:12px}
 #library .library-heading{margin-bottom:6px}#library .eyebrow{color:var(--library-accent)}
@@ -210,3 +199,32 @@
 
 /* App dialogs use compact interface typography, separate from engraved score text. */
 dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
+
+/* Compact key labels and single-row playing controls. */
+@media screen{
+ .masthead #key-name{white-space:nowrap}
+ @media(min-width:601px) and (max-width:1100px){.masthead .toolbar{grid-template-columns:auto minmax(0,1fr) 44px;column-gap:16px}}
+ @media(max-width:600px){
+  .masthead .toolbar{grid-template-columns:132px minmax(168px,1fr) 44px;column-gap:4px;row-gap:0;overflow-x:auto}
+  .masthead .utility-controls{grid-column:1;grid-row:1;gap:0}.masthead .utility-controls .quiet{width:44px;min-width:44px;padding:0;font-size:11px}
+  .masthead .controls{grid-column:2;grid-row:1;gap:2px;width:100%}.masthead #reset{grid-column:3;grid-row:1}
+  .masthead .step{width:44px;min-width:44px;flex:0 0 44px}.masthead .step svg{width:40px}
+  .masthead #key{min-width:76px;flex:1;gap:0;padding:0 2px}.masthead #key-name{font-size:16px;line-height:21px}.masthead #key-name::after{content:none}.masthead #key-signature{font-size:11px;line-height:13px}
+ }
+}
+
+/* One register control beside Reset; never occupies a second toolbar row. */
+@media screen{
+ .masthead .toolbar{grid-template-columns:auto minmax(0,1fr) 44px 44px;column-gap:8px}
+ .masthead #octave-toggle{grid-column:3;grid-row:1;width:44px;height:44px;min-width:44px;padding:0;display:flex;align-items:center;justify-content:center}
+ .masthead #octave-toggle[hidden]{display:none}
+ .masthead #octave-toggle:not([data-state="0"]){background:#e0e8ec;box-shadow:inset 0 -3px #536B7A}
+ .masthead #reset{grid-column:4;grid-row:1}
+ @media(max-width:600px){
+  .masthead .toolbar{grid-template-columns:120px minmax(148px,1fr) 40px 40px;column-gap:2px;overflow-x:visible}
+  .masthead #songs,.masthead #print,.masthead #settings,.masthead .step,.masthead #octave-toggle,.masthead #reset{width:40px;min-width:40px;min-height:44px;flex-basis:40px}
+  .masthead .controls{gap:0}.masthead #key{min-width:68px}.masthead .step svg{width:36px}
+ }
+}
+
+@media screen and (min-width:601px) and (max-width:740px){.masthead .step{width:72px;min-width:72px;flex-basis:72px}}

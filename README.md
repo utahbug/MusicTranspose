@@ -195,33 +195,30 @@ Safari devices. Cache version advances to distribute the revised UI offline.
 
 ### Octave register controls
 
-The playing group is Lower / Current key / Higher / 8vb / 8va. The two register
-buttons are 44×44px, secondary to the 88px iPad semitone controls. Active register
-has a filled/underlined button and aria-pressed state. Current-key labels use
-Maj/Min on every viewport; accessible labels and chooser retain full mode names.
+One note-based Octave button sits immediately left of Reset. It cycles Original
+(8) -> Up (8-up arrow) -> Down (8-down arrow) -> Original. Accessible labels and
+tooltips report the current state. It is visible on structured scores and hidden
+on PDF scores. There are no separate octave buttons or register controls in Settings.
 
-Register range is -1, 0, +1 octave for the entire structured score. Separate
-current/wanted octave state is memory-only, resets on a different song, and is
-included in the existing render-cache key. shiftOctaveXML runs after normal key
-transposition and changes only note/pitch/octave values. Chords, key signatures,
-clefs, rests, lyrics, voices and other notation remain unchanged. The source assets
-are never rewritten or refetched for shifts. Reset restores original key/register
-and the exact original XML. Print uses the existing current-score pipeline.
-PDF-only scores hide the entire pitch/register group as before.
+The existing note-only octave transformation is unchanged: lyrics, chord names,
+key signatures and other MusicXML content remain intact. The state is temporary.
+Reset restores both original key and register. Returning to Library clears the
+key/register and rendered-score state; reopening the same or a different song
+starts at the top with original key/register. Parsed source assets stay cached.
+Library preferences and global navigation preferences remain unchanged.
 
-The toolbar remains 54px tall at tested iPad/desktop widths and 102px on phones;
-601–740px narrow windows also use two rows to preserve Reset separation. Phone
-semitone targets are 56px (44px at <=360px). Safe-area and bottom clearance handling
-are unchanged. Preserving clefs means shifted passages can have several ledger
-lines, particularly bass notes shifted down or treble notes shifted up. This is
-why the first version limits shifts to one octave in either direction.
+The toolbar is one 54px-high row at tested widths 375, 390, 650, 768, 820, 1180
+and 1440px, excluding safe-area insets and the optional navigation strip. Phone
+utility, pitch, octave and Reset buttons are 40px wide and 44px high; iPad pitch
+buttons remain 88px wide (72px in intermediate 601-740px windows). Score-frame,
+print behavior and safe-area/bottom clearance remain unchanged.
 
-Validation: tests/octave-controls.mjs checks Nativity, Shepherd's Carol, HHC 1001,
-B major/G-flat major/C-sharp minor destinations, all-note octave deltas and exact
-preservation of the rest of the XML, key/register operation equivalence, exact
-reset, no repeated asset fetch, PDF exclusion, print and seven responsive widths.
-PDF/navigation/Library regression suites also pass. Tests use responsive desktop
-browser viewports; physical iPad/Safari testing remains recommended.
+Validation: tests/octave-controls.mjs checks the four original songs, dense key
+signatures, note-only register changes, combined key/register operations, exact
+Reset, print, no refetch and responsive geometry. tests/song-session.mjs checks
+the exact cycle/labels, song exit/reopening, retained preferences and PDF exclusion.
+These use desktop Chromium with device-sized viewports; physical Safari testing
+remains recommended.
 
 ### Plain-text Library dropdowns and restrained color
 

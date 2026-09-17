@@ -13,8 +13,8 @@ const sourceCache=new Map(); // Unpack a bundled score only on its first selecti
 const cache=new Map(),metrics=[];let lastXML='';
 function width(){return Math.round(score.clientWidth);}
 function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
- $('octave-down').disabled=isPdf()||!ready||wantedOctave<=-1;$('octave-up').disabled=isPdf()||!ready||wantedOctave>=1;
- $('octave-down').setAttribute('aria-pressed',String(currentOctave<0));$('octave-up').setAttribute('aria-pressed',String(currentOctave>0));
+ const octaveButton=$('octave-toggle'),label='Octave: '+(currentOctave===1?'one octave up':currentOctave===-1?'one octave down':'original');
+ octaveButton.hidden=isPdf();octaveButton.disabled=isPdf()||!ready;octaveButton.setAttribute('aria-label',label);octaveButton.title=label;octaveButton.dataset.state=String(currentOctave);$('octave-symbol').textContent=currentOctave===1?'8↑':currentOctave===-1?'8↓':'8';
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
 // Screen-only framing: keep every SVG node and an 8-unit safety margin above its ink.
@@ -51,7 +51,7 @@ function buildChooser(){
 $('lower').replaceChildren(...[...$('lower').children].reverse());
 }
 $('down').onclick=()=>changeKey(Math.max(-6,wanted-1));$('up').onclick=()=>changeKey(Math.min(6,wanted+1));$('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
-$('octave-down').onclick=()=>changeOctave(wantedOctave-1);$('octave-up').onclick=()=>changeOctave(wantedOctave+1);
+$('octave-toggle').onclick=()=>changeOctave(wantedOctave===0?1:wantedOctave===1?-1:0);
 $('key').onclick=()=>{setControls();dialog.showModal();dialog.querySelector(`[data-shift="${current}"]`).focus();};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 async function preparePrint(){
  if(isPdf())return preparePdfPrint(score,$('print-pages'));
@@ -93,10 +93,18 @@ async function loadSong(id){
  }catch(e){console.error(e);$('status').textContent='Unable to open this score. Please try again.';library?.failed();}
  finally{loading=false;setControls();}
 }
+// Exiting ends a temporary playing session, including reopening the same song.
+// Parsed source assets stay cached; Library data and navigation preferences are independent.
+function leaveScore(){
+ clearTimeout(timer);current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;
+ original='';lastXML='';renderWidth=0;cache.clear();score.replaceChildren();score.setAttribute('aria-busy','false');
+ document.body.classList.remove('prepared-print');$('print-pages').replaceChildren();
+ dialog.close();$('settings-dialog').close();setControls();
+}
 // Local acceptance-test hooks.
 window.prototype={get current(){return current;},get wanted(){return wanted;},get octave(){return currentOctave;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,changeOctave,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
- library=initLibrary({loadSong,isBusy:()=>busy||loading});
+ library=initLibrary({loadSong,isBusy:()=>busy||loading,leaveScore});
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
  let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false;
  const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};
