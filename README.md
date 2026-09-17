@@ -222,3 +222,24 @@ preservation of the rest of the XML, key/register operation equivalence, exact
 reset, no repeated asset fetch, PDF exclusion, print and seven responsive widths.
 PDF/navigation/Library regression suites also pass. Tests use responsive desktop
 browser viewports; physical iPad/Safari testing remains recommended.
+
+### Plain-text Library dropdowns and restrained color
+
+Native Filter/Sort/List selects keep their options, keyboard and touch behavior,
+but have transparent backgrounds, no borders, and a small SVG chevron. A
+presentation-only canvas measurement sizes each select to its current text;
+CSS caps long names and wraps the utility row. Manage/Reorder are text actions.
+Search is the only boxed header input and keeps its 420px maximum and 16px text.
+All controls retain 44px height; keyboard focus remains a compact 2px ring.
+
+Library-only palette: blue-gray #536B7A, thin maroon divider #7A3E46, active
+Favorite star #8A6419, current-song background #EEF3F6, inactive star #61716F.
+The warm #EEEEE8 page background and dark #233331 title/song text remain.
+Current-song text and Favorite aria-pressed state supplement the colors.
+
+Relative to the preceding compact header, first rows move from 199 to 140px
+on iPad portrait, 149 to 140px on landscape/desktop, and 242 to 181px (All)
+or 227px (Favorites) on 375px iPhone. Long labels can require a second utility
+row. Search/filters/order semantics, the octave feature and score assets are
+unchanged. Verified with library-compact, library-theme, library-discovery,
+list-ordering and octave-controls tests; responsive tests simulate device sizes.

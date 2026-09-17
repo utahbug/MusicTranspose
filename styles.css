@@ -167,3 +167,19 @@
  @media(min-width:601px) and (max-width:740px){.masthead .toolbar{grid-template-columns:1fr 44px;row-gap:4px}.masthead .utility-controls{grid-column:1;grid-row:1}.masthead #reset{grid-column:2;grid-row:1}.masthead .controls{grid-column:1/-1;grid-row:2;justify-self:center}}
  @media(max-width:360px){.masthead .step{width:44px;min-width:44px;flex-basis:44px}.masthead .step svg{width:40px}}
 }
+
+/* Library-only utility treatment: native menus, no boxed dropdowns. */
+#library{--library-accent:#536B7A;--library-maroon:#7A3E46;--library-gold:#8A6419;--library-current:#EEF3F6;padding-top:12px}
+#library .library-heading{margin-bottom:6px}#library .eyebrow{color:var(--library-accent)}
+#library .library-controls{gap:2px 10px}
+#library .library-controls select{appearance:none;border:0;border-radius:2px;background-color:transparent;color:var(--library-accent);padding:6px 20px 6px 0;font-weight:500;flex:0 1 auto;max-width:250px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23536B7A' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 3px center;background-size:10px 7px}
+#library .library-controls select option{color:#233331;background:#fff}
+#library .list-actions{gap:6px}#library .list-actions label{flex:0 1 auto}
+#library .library-controls .quiet{border:0;background:transparent;color:var(--library-accent);padding:6px;min-height:44px;border-radius:2px}
+@media(hover:hover){#library .library-controls .quiet:hover{text-decoration:underline;text-underline-offset:3px}#library .library-controls select:hover{color:#233331}}
+#library .library-controls .quiet[aria-pressed=true]{text-decoration:underline;text-underline-offset:3px}
+#library-results{border-top-color:var(--library-maroon)}
+#library .library-row .favorite{color:#61716F}#library .library-row .favorite[aria-pressed=true]{color:var(--library-gold)}
+#library .current-song{background:var(--library-current);box-shadow:inset 3px 0 var(--library-accent)}
+#library-count{margin:5px 0 4px}
+@media(max-width:600px){#library{padding-top:10px}#library .library-controls{gap:2px 8px}#library .library-controls>.filter-label,#library .library-controls>.sort-label{flex:0 1 auto}#library .list-actions{flex:0 1 auto;max-width:100%}#library .list-actions label{min-width:0}#library .library-controls select{max-width:calc(100vw - 80px)}#library .list-actions select{max-width:175px}}
