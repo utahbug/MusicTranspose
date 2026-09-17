@@ -1,0 +1,12 @@
+import {createRequire} from 'node:module';
+const require=createRequire(process.env.PLAYWRIGHT_PACKAGE || import.meta.url);
+const {chromium}=require('playwright');
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1180,height:820}});
+page.on('pageerror',e=>console.log('PAGEERROR',e.message));
+page.on('console',m=>{if(m.type()==='error')console.log('CONSOLE',m.text())});
+await page.goto('http://127.0.0.1:8767');
+await page.waitForFunction(()=>window.prototype?.ready,{timeout:60000});
+console.log(await page.evaluate(()=>({ready:prototype.ready,svg:document.querySelectorAll('#score svg').length,text:document.getElementById('score').textContent.slice(0,1200),size:document.getElementById('score').getBoundingClientRect().toJSON(),metrics:prototype.metrics})));
+await page.screenshot({path:'test-results/initial-landscape.png',fullPage:true});
+await browser.close();

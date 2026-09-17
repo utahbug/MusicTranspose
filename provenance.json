@@ -1,0 +1,26 @@
+{
+  "source": "Childrens_Songbook/052 - The Nativity Song.mxl",
+  "source_sha256": "0896e9689da6bf3aba2cea00f666606f8a6691226ee97c814b2762e2429085d1",
+  "libraries": [
+    {
+      "package": "opensheetmusicdisplay",
+      "version": "2.1.2",
+      "license": "BSD-3-Clause",
+      "tarball": "https://registry.npmjs.org/opensheetmusicdisplay/-/opensheetmusicdisplay-2.1.2.tgz",
+      "sha256": "888b744196665ab10dba7ee311784deea9e1c545cf60b6089d455afec6b50a3f"
+    },
+    {
+      "package": "fflate",
+      "version": "0.8.3",
+      "license": "MIT",
+      "tarball": "https://registry.npmjs.org/fflate/-/fflate-0.8.3.tgz",
+      "sha256": "462ef8041fc970e3615a20a9dd2b2e3047a073b2da729ef4f02b634bba8b7b83"
+    }
+  ],
+  "shepherd": {
+    "source": "Childrens_Songbook/040b - The Shepherd’s Carol.mxl",
+    "local": "assets/shepherd.mxl",
+    "sha256": "605512c680a1fb5dc8d5f15ba54404ec7c04b751219fff70ec027245c272fc04",
+    "mode_correction": "D minor: source declares major incorrectly; D minor / A7 cadences and C-sharp leading tones corroborate minor."
+  }
+}
