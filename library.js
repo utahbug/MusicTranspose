@@ -1,4 +1,4 @@
-import {songs,collectionNames,songSearchText} from './songs.js';
+import {songs,collectionNames,songSearchText,normalizeSearch} from './songs.js';
 const storageKey='music-transpose-library-v1';
 const $=id=>document.getElementById(id);
 const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();
@@ -20,10 +20,10 @@ export function initLibrary({loadSong,isBusy}){
  function open(id){if(isBusy())return;libraryScroll=scrollY;if(id===current){resume();return;}loadSong(id);}
  function updateListSelect(){const selected=$('library-list').value;$('library-list').replaceChildren(new Option('All lists',''));for(const g of state.groups)$('library-list').append(new Option(g.name,g.id));$('library-list').value=state.groups.some(g=>g.id===selected)?selected:'';}
  function render(){
-  const query=normalize($('library-search').value.trim()),group=state.groups.find(g=>g.id===$('library-list').value),sort=$('library-sort').value;
-  let found=songs.filter(s=>(!query||query.split(/\s+/).every(word=>searchIndex.get(s.id).includes(word)))&&(!group||group.songs.includes(s.id))&&(filter==='all'||filter==='favorites'&&state.favorites.includes(s.id)||filter==='recent'&&state.recent.includes(s.id)||s.tags.includes(filter)||s.collection===filter||s.collectionMemberships.some(m=>m.collection===filter)));
+  const query=normalizeSearch($('library-search').value),group=state.groups.find(g=>g.id===$('library-list').value),sort=$('library-sort').value;
+  let found=songs.filter(s=>(!query||query.split(/\s+/).every(word=>searchIndex.get(s.id).includes(word)))&&(!group||group.songs.includes(s.id))&&(filter==='all'||filter==='favorites'&&state.favorites.includes(s.id)||filter==='recent'&&state.recent.includes(s.id)||(s.tags||[]).includes(filter)||s.collection===filter||(s.collectionMemberships||[]).some(m=>m.collection===filter)));
   const title=(a,b)=>collator.compare(a.title,b.title),recent=s=>{const i=state.recent.indexOf(s.id);return i<0?Infinity:i;};
-  found.sort((a,b)=>(sort==='number'?collator.compare(a.page,b.page):sort==='collection'?collator.compare(a.collection,b.collection):sort==='recent'?recent(a)-recent(b):0)||title(a,b));
+  found.sort((a,b)=>(sort==='number'?collator.compare(a.page||'',b.page||''):sort==='collection'?collator.compare(a.collection||'',b.collection||''):sort==='recent'?recent(a)-recent(b):0)||title(a,b));
   const fragment=document.createDocumentFragment();
   for(const s of found){
    const row=node('div',null,'library-row');row.dataset.song=s.id;
@@ -36,11 +36,12 @@ export function initLibrary({loadSong,isBusy}){
   if(!found.length)fragment.append(node('p','No songs match. Try another search, filter, or list.','empty-library'));
   $('library-results').replaceChildren(fragment);$('library-count').textContent=`${found.length} ${found.length===1?'song':'songs'}`;
   $('resume-score').hidden=!current;if(current)$('resume-score').textContent='Return to '+songs.find(s=>s.id===current).title;
-  for(const b of $('library-filters').children)b.setAttribute('aria-pressed',String(b.dataset.filter===filter));
+
  }
  for(const [value,label] of [['all','All'],['favorites','Favorites'],['recent','Recently Played'],['Primary','Primary'],['Christmas','Christmas'],...collectionNames.map(c=>[c,c])]){
-  const b=button(label,null,()=>{filter=value;render();});b.dataset.filter=value;$('library-filters').append(b);
+  $('library-filter').append(new Option(label,value));
  }
+ $('library-filter').onchange=()=>{filter=$('library-filter').value;render();};
  function openLists(id=null){target=id;$('lists-title').textContent=id?'Lists for '+songs.find(s=>s.id===id).title:'My lists';$('lists-hint').textContent=id?'Choose any number of personal lists. Source collections stay unchanged.':'Create lists for occasions, practice, arranging, or anything you need.';$('list-message').textContent='';renderGroups();$('lists-dialog').showModal();$('new-list-name').focus();}
  function renderGroups(){
   $('personal-lists').replaceChildren();

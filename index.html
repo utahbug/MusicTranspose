@@ -3,9 +3,9 @@
 <body class="library-open">
 <section id="library" aria-label="Music library">
  <header class="library-heading"><div><p class="eyebrow">LIBRARY</p><h1>MusicTranspose</h1></div><button id="resume-score" class="quiet" hidden>Return to score</button></header>
- <div class="library-tools"><label class="search-box"><span class="sr-only">Search songs</span><input id="library-search" type="search" placeholder="Search songs…" autocomplete="off"></label><label class="sort-label">Sort <select id="library-sort"><option value="title">Title</option><option value="number">Number / Page</option><option value="collection">Collection</option><option value="recent">Recently Played</option></select></label></div>
- <nav id="library-filters" aria-label="Library filters"></nav>
- <div class="list-tools"><label>My lists <select id="library-list"><option value="">All lists</option></select></label><button id="manage-lists" class="quiet">Manage lists</button></div>
+ <div class="library-tools"><label class="search-box"><span class="sr-only">Search songs</span><input id="library-search" type="search" placeholder="Search songs…" autocomplete="off"></label></div>
+ <div class="library-controls"><label>Filter <select id="library-filter"></select></label><label class="sort-label">Sort <select id="library-sort"><option value="title">Title</option><option value="number">Number / Page</option><option value="collection">Collection</option><option value="recent">Recently Played</option></select></label>
+ <label>My lists <select id="library-list"><option value="">All lists</option></select></label><button id="manage-lists" class="quiet">Manage lists</button></div>
  <p id="library-count" role="status" aria-live="polite"></p><p id="library-message" role="status"></p><div id="library-results"></div>
 </section>
 <dialog id="lists-dialog" aria-labelledby="lists-title"><div class="dialog-heading"><h2 id="lists-title">My lists</h2><button id="close-lists" class="close" aria-label="Close lists">×</button></div><p id="lists-hint"></p><form id="create-list"><label for="new-list-name">New list name</label><div class="create-list-row"><input id="new-list-name" maxlength="80" required placeholder="e.g. Personal Practice"><button class="quiet">Create</button></div></form><p id="list-message" role="status"></p><div id="personal-lists"></div></dialog>

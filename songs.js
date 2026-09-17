@@ -13,4 +13,6 @@ export const songs = [
 // Collection membership is factual metadata, separate from personal lists.
 // Additional memberships can later record {collection, page} from authoritative sources.
 export const collectionNames=['Hymns for Home and Church','Hymns (1985)','Children’s Songbook'];
-export function songSearchText(song){return [song.title,song.collection,song.page,...song.tags,...song.aliases,...song.collectionMemberships.flatMap(m=>[m.collection,m.page]),song.firstLine,song.composer,song.lyricist].filter(Boolean).join(' ').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();}
+// The same normalization is used for queries and every score type.
+export function normalizeSearch(value){return String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[’‘'`]/g,'').replace(/[^\p{L}\p{N}]+/gu,' ').trim();}
+export function songSearchText(song){return normalizeSearch([song.title,song.collection,song.page,...(song.tags||[]),...(song.aliases||[]),...(song.collectionMemberships||[]).flatMap(m=>[m.collection,m.page]),song.firstLine,song.composer,song.lyricist].filter(v=>v!=null).join(' '));}

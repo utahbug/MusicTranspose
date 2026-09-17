@@ -90,5 +90,10 @@ async function loadSong(id){
 window.prototype={get current(){return current;},get wanted(){return wanted;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
  library=initLibrary({loadSong,isBusy:()=>busy||loading});
- if('serviceWorker' in navigator){try{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
+ if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
+ let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false;
+ const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled){pendingUpdate=true;refreshLibrary();}controlled=true;});
+ document.addEventListener('library-open',()=>setTimeout(refreshLibrary,0));
+ await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
  }catch(e){console.error(e);$('status').textContent='Unable to load. Open this project through its local server.';}})();

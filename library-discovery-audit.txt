@@ -1,0 +1,27 @@
+Library discovery audit — September 16, 2026
+
+The existing 121-entry songs.js catalog already included both PDF records.
+app.js and library.js consume that same catalog; PDF records are not injected
+later or excluded by score type. Fresh pre-change live testing returned both
+PDFs correctly. The reported device-specific failure could not be reproduced,
+so its exact cause remains unconfirmed.
+
+Verified weaknesses: queries/index duplicated normalization and treated curly
+apostrophes/punctuation inconsistently; optional arrays were required; service
+worker offline fallback searched all caches and obsolete caches accumulated.
+
+Changes: shared normalizeSearch for queries and catalog fields, optional metadata
+fallbacks, compact native Filter select, cache v15 with scope-specific old-cache
+cleanup and current-cache-only fallback. Installation bypasses HTTP cache;
+network responses revalidate; worker updates bypass HTTP cache. Already-controlled
+clients reload on update while in Library, or defer until returning from score.
+Favorites/list storage keys and semantics remain unchanged.
+
+Validation: tests/library-discovery.mjs passes all eight requested searches,
+eight filters, four sorts, combined filters, custom list and Favorite persistence,
+PDF/MXL opening, four viewports and offline reload. tests/catalog-cache.mjs proves
+scope-specific cleanup, unrelated cache preservation, current-cache-only offline
+catalog and saved Favorite preservation. tests/pdf-scores.mjs passes PDF/MXL
+rendering, transpose/reset, navigation, printing, final-system clearance and offline
+PDF reopening. Browser checks use desktop Edge with responsive viewports, not
+physical iOS Safari devices. Catalog count remains 121. Assets are unchanged.
