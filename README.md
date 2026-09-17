@@ -8,7 +8,7 @@ Run `Start-Prototype.ps1`, then open http://127.0.0.1:8767. Alternatively run `p
 
 ## Use
 
-- Tap **Songs** beside the title for the centered two-song chooser. Each entry shows its original tonic, mode and signature. Switching starts in the new song’s original key and scrolls to the top.
+- The app opens at **Library**. Search or filter compact rows, then open a score. **Library** in the playing toolbar returns here; returning to the current score preserves its key and scroll position, while another song opens in its original key.
 - Arrows move one semitone, bounded at −6 and +6. Tap the current key for thirteen choices. The larger tonic and repeated accidentals are paired with small signed distances; the hint identifies the mode.
 - Minor songs stay minor. Both signed tritones share a pitch class but differ by an octave. Zero preserves the original spelling.
 - **↺** restores the exact original MusicXML and original key. **Print score** prepares A4 notation pages and score credits. Actual AirPrint needs testing.
@@ -21,7 +21,7 @@ The Shepherd’s Carol archive declares `<mode>major</mode>` with one flat, but 
 
 ## Offline and hosting
 
-Runtime files are `index.html`, `styles.css`, `app.js`, `music.js`, `songs.js`, `sw.js`, `assets/`, and `vendor/`. Paths are relative. OSMD 2.1.2 and fflate 0.8.3 are vendored, with licenses. No remote score/font/library requests occur.
+Runtime files are `index.html`, `styles.css`, `app.js`, `library.js`, `navigation.js`, `score-layout.js`, `music.js`, `songs.js`, `sw.js`, `assets/`, and `vendor/`. Paths are relative. OSMD 2.1.2 and fflate 0.8.3 are vendored, with licenses. No remote score/font/library requests occur.
 
 The service worker caches both scores after installation. Offline reload and switching/transposition of both songs passed. Cache eviction may require revisiting. HTTPS or localhost is required for service workers. No publishing was performed. Real iPad Safari, offline persistence and AirPrint remain to be tested before a broader trial.
 
@@ -107,3 +107,16 @@ Transition-chord suggestions are honestly disabled and marked forthcoming. No ha
 At widths of 600 CSS pixels or less the current-key label displays Maj/Min; full major/minor labels remain elsewhere and in accessible key labels. The score header uses a collision-safe two-column grid: title left, secondary source/page right, with wrapping for long text. Phone utilities/reset occupy one row and 76px pitch targets flank the key on a second row; tablet/desktop pitch targets remain 88px wide. The original key color and border colors are unchanged. Toolbar height is measured with ResizeObserver so safe-area and bottom score clearance remain correct for each row configuration.
 
 `tests/navigation-settings.mjs` checks all four scores across 820×1180, 1180×820, 375×812 and 1440×1000: header separation, compact labels, controls, print comparisons, real scroll movement at 20 and 60 px/s, start/pause/resume, manual pause, session reload, screenful distance and final-score clearance. Print output is compared to local pre-change print baselines; toolbar/settings/navigation controls are excluded. Measured 20 px/s movement passed a 1.2-second timing window. Physical iPad/Safari performance and foot-pedal hardware still need user testing. Include navigation.js in any portable/static deployment; the service worker caches it.
+
+
+## Library home
+
+The default screen is MusicTranspose Library, with no automatic score opening. A compact searchable list shows title, source collection/page, original key and favorite state. All, Favorites, Recently Played, Primary, Christmas and the three source-collection filters combine with search, personal-list selection and Title / Number-Page / Collection / Recently Played sorting. Phone filters scroll horizontally; tablet filters wrap. The playing toolbar's Songs control is now Library. Returning to the open score preserves key and scroll; selecting a different score resets to its published key. Search/filter/sort choices remain in memory while switching views.
+
+`songs.js` owns stable IDs, title, factual source collection/page, tonic/mode/fifths, bundled asset, built-in tags, aliases and optional additional collection memberships. First-line/composer/lyricist fields can join the precomputed case/accent-insensitive search index later. No future hymnal membership is predicted. Personal lists are entirely separate from catalog metadata.
+
+`library.js` stores versioned data in localStorage under `music-transpose-library-v1`: favorite song IDs, user groups `{id,name,songs}` and an ordered recent-ID list capped at 30. A song can belong to multiple groups. The plus button edits membership; Manage lists creates, renames and deletes lists without deleting songs. Browser storage is local to this origin/profile, with no account or synchronization. Clearing browser data removes preferences. Storage failure falls back to memory and displays a notice. All UI text is inserted through DOM textContent, not user-provided HTML.
+
+The Library and list dialog are excluded from print. Score rendering, score assets, transposition and print generation are unchanged. Navigation settings retain their behavior in the playing view; score-only keyboard shortcuts and auto-scroll do not run in Library. The service worker includes library.js.
+
+Validation: `tests/library.mjs` covers four viewports, all four scores, search/filter/sort, favorite and multiple-list persistence, rename/delete, recents, transpose/key/reset/settings/print and offline reload. `tests/library-scale.mjs` injects 500 synthetic metadata rows only in the browser (504 total); search measured 27ms including automation overhead. No new score assets were imported. Four-song, 48-case tempo/print and copied-directory portability regression suites passed. Physical iPad/Safari testing remains separate from desktop browser viewport emulation. Older historical UI tests that assume the removed Songs modal are superseded by the Library test.

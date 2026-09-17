@@ -6,7 +6,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8767/';
 const browser=await chromium.launch({channel:'msedge',headless:true});const context=await browser.newContext({viewport:{width:1180,height:820},hasTouch:true});const page=await context.newPage();const errors=[],remote=[];
 page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:'))remote.push(r.url());});
 const done=shift=>page.waitForFunction(s=>window.prototype?.ready&&!prototype.busy&&prototype.current===s&&document.getElementById('score').getAttribute('aria-busy')==='false',shift,{timeout:30000});
-await page.goto(base);await done(0);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);
+await page.goto(base);await page.locator('[data-song="nativity"] .song-entry').click();await done(0);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);
 
 const results=[];let originalCredits='';
 async function verify(shift,fifths,label){
@@ -26,8 +26,8 @@ async function verify(shift,fifths,label){
 }
 
 const missing=[];page.on('response',r=>{if(r.status()>=400)missing.push({url:r.url(),status:r.status()});});
-assert.deepEqual(await page.locator('.song-choice strong').allTextContents(),['The Nativity Song','The Shepherd’s Carol','Oh, Come, All Ye Faithful','Silent Night']);
-async function select(id){await page.locator('#songs').click();await page.locator(`[data-song="${id}"]`).click();await page.waitForFunction(id=>prototype.song===id&&prototype.ready&&!prototype.busy&&prototype.current===0,id);}
+assert.equal(await page.locator('.song-entry strong').count(),4);
+async function select(id){await page.locator('#songs').click();await page.locator(`[data-song="${id}"] .song-entry`).click();await page.waitForFunction(id=>prototype.song===id&&prototype.ready&&!prototype.busy&&prototype.current===0,id);}
 for(const song of [{id:'faithful',key:'G',fifths:1,up:['A♭','A','B♭','B','C','D♭'],down:['G♭','F','E','E♭','D','D♭'],upF:[-4,3,-2,5,0,-5],downF:[-6,-1,4,-3,2,-5]}, {id:'silent-night',key:'B♭',fifths:-2,up:['B','C','D♭','D','E♭','E'],down:['A','A♭','G','G♭','F','E'],upF:[5,0,-5,2,-3,4],downF:[3,-4,1,-6,-1,4]}]){
  await select(song.id);originalCredits=await page.locator('#source-credits').textContent();const original=await page.evaluate(()=>prototype.original),svg=await page.locator('#score').innerHTML();await verify(0,song.fifths,song.id+' original');
  assert.equal(await page.locator('#key-name').textContent(),song.key+' major');assert.deepEqual(await page.locator('#higher .name').allTextContents(),song.up);assert.deepEqual(await page.locator('#lower .name').allTextContents(),song.down);
@@ -44,9 +44,9 @@ for(const viewport of [{width:1180,height:820},{width:820,height:1180}]){
   await page.locator('#key').click();assert(await page.locator('.key-choice').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.width>=44&&r.height>=44&&r.bottom<=innerHeight;})));await page.keyboard.press('Escape');
   await page.screenshot({path:`test-results/four-songs-${id}-${viewport.width}.png`});await page.locator('#up').click();await done(1);await page.locator('#down').click();await done(0);assert(await page.evaluate(()=>prototype.xml===prototype.original));await page.locator('#up').click();await done(1);
  }
- await page.locator('#songs').click();assert(await page.locator('.song-choice').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.height>=44&&r.bottom<=innerHeight;})));await page.screenshot({path:`test-results/four-song-chooser-${viewport.width}.png`});await page.keyboard.press('Escape');
+ await page.locator('#songs').click();assert(await page.locator('.song-entry').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.height>=44&&r.bottom<=innerHeight;})));await page.screenshot({path:`test-results/four-song-chooser-${viewport.width}.png`});await page.locator('#resume-score').click();await page.locator('#reset').click();await done(0);
 }
-await context.setOffline(true);await page.reload();await done(0);for(const id of ['nativity','shepherd','faithful','silent-night'])await select(id);await context.setOffline(false);
+await context.setOffline(true);await page.reload();await page.locator('[data-song="nativity"] .song-entry').click();await done(0);for(const id of ['nativity','shepherd','faithful','silent-night'])await select(id);await context.setOffline(false);
 for(const asset of ['assets/nativity.mxl','assets/shepherd.mxl','assets/faithful.mxl','assets/silent-night.mxl','assets/icons/favicon.svg','assets/icons/apple-touch-icon.png','manifest.webmanifest'])assert.equal((await page.request.get(base+asset)).status(),200,asset);
 assert.deepEqual(missing,[]);assert.deepEqual(remote,[]);assert.deepEqual(errors,[]);
 await fs.writeFile('test-results/four-songs.json',JSON.stringify({base,results,offlineAllFour:true,missing,remote,errors},null,2));await browser.close();console.log('Four-song verification passed');

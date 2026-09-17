@@ -1,3 +1,4 @@
+import {initLibrary} from './library.js';
 import {avoidTempoCollisions} from './score-layout.js';
 import {songs} from './songs.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,parseXML} from './music.js';
@@ -5,6 +6,7 @@ const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dial
 let activeSong=songs[0],modeOverride,loading=false;
 let KEYS=[],original='',current=0,wanted=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
+let library;
 const cache=new Map(),metrics=[];let lastXML='';
 function width(){return Math.round(score.clientWidth);}
 function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=!ready||wanted<=-6;$('up').disabled=!ready||wanted>=6;$('reset').disabled=!ready;$('key').disabled=!ready;$('print').disabled=!ready||busy;
@@ -61,28 +63,23 @@ async function loadScore(xml,override){
 async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
- loading=true;ready=false;setControls();clearTimeout(timer);
+ library?.showScore();loading=true;ready=false;setControls();clearTimeout(timer);
  try{
   const r=await fetch(song.asset);if(!r.ok)throw new Error('Local score unavailable');const xml=unpackMXL(await r.arrayBuffer());
   const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');
-  activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('h1').textContent=song.title;
+  activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;
   document.querySelector('.subtitle').textContent=song.collection+' · '+song.page;score.setAttribute('aria-label',song.title+' sheet music');
   $('source-credits').replaceChildren();
   const credits=[...parseXML(xml).querySelectorAll('credit')].map(c=>[...c.querySelectorAll('credit-words')].map(w=>w.textContent).join('')).filter(t=>t.trim()!==song.title);
   const verses=document.createElement('div');verses.className='extra-verses';$('source-credits').append(verses);
   for(const text of credits){const p=document.createElement('p');p.textContent=text.replaceAll('\\n','\n');if(/^\d+\./.test(text))verses.append(p);else{p.className='credit-note';$('source-credits').append(p);}}
-  await loadScore(xml,song.modeOverride);window.scrollTo({top:0,behavior:'instant'});
- }catch(e){console.error(e);$('status').textContent='Unable to load this local score. Reload to try again.';}
+  await loadScore(xml,song.modeOverride);window.scrollTo({top:0,behavior:'instant'});library?.opened(song.id);
+ }catch(e){console.error(e);$('status').textContent='Unable to load this local score. Reload to try again.';library?.failed();}
  finally{loading=false;setControls();}
 }
-const songDialog=$('song-dialog');
-for(const song of songs){const b=document.createElement('button');b.className='song-choice';b.dataset.song=song.id;
- const title=document.createElement('strong');title.textContent=song.title;const key=document.createElement('span');key.textContent=song.tonic+' '+song.mode+' · '+signature(song);b.append(title,key);b.onclick=()=>{songDialog.close();loadSong(song.id);};$('song-list').append(b);}
-$('songs').onclick=()=>{$('offline-detail').textContent=$('offline').textContent||'Scores stored locally';songDialog.showModal();songDialog.querySelector(`[data-song="${activeSong.id}"]`).focus();};
-$('close-songs').onclick=()=>songDialog.close();
 // Local acceptance-test hooks.
 window.prototype={get current(){return current;},get wanted(){return wanted;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
- await loadSong(songs[0].id);
+ library=initLibrary({loadSong,isBusy:()=>busy||loading});
  if('serviceWorker' in navigator){try{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
  }catch(e){console.error(e);$('status').textContent='Unable to load. Open this project through its local server.';}})();

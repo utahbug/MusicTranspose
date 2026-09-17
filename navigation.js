@@ -30,7 +30,7 @@ document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle,#
 document.addEventListener('touchstart',e=>{if(e.target.closest('main'))pause();},{passive:true});
 window.addEventListener('scroll',()=>{if(running&&Math.abs(scrollY-expected)>2)pause();},{passive:true});
 document.addEventListener('keydown',e=>{
- if(document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
+ if(document.body.classList.contains('library-open')||document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
  if(mode==='hybrid'&&['PageDown','ArrowRight'].includes(e.key)){e.preventDefault();advance();return;}
  if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))pause();
 });
@@ -40,3 +40,5 @@ new MutationObserver(()=>pause()).observe($('score'),{childList:true});
 // Clearance tracks one/two-row phone toolbars and the optional navigation strip.
 new ResizeObserver(()=>{const height=document.querySelector('.masthead').getBoundingClientRect().height;const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--playing-safe-bottom'))||0;document.documentElement.style.setProperty('--playing-bar-height',Math.max(54,height-safe)+'px');}).observe(document.querySelector('.masthead'));
 sync();
+
+document.addEventListener('library-open',()=>pause());

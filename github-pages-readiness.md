@@ -11,7 +11,7 @@ MXL decompression, rendering and major/minor transposition run in the browser. O
 ## Exact proposed commit set
 
 - `.gitignore`, `.nojekyll`
-- `index.html`, `styles.css`, `app.js`, `music.js`, `songs.js`, `sw.js`
+- `index.html`, `styles.css`, `app.js`, `library.js`, `navigation.js`, `score-layout.js`, `music.js`, `songs.js`, `sw.js`
 - `assets/nativity.mxl`, `assets/shepherd.mxl`
 - `vendor/fflate.min.js`, `vendor/fflate-LICENSE.txt`
 - `vendor/opensheetmusicdisplay.min.js`, `vendor/opensheetmusicdisplay-LICENSE.txt`, `vendor/osmd-package-metadata.json`

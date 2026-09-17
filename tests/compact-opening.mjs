@@ -8,7 +8,7 @@ const browser=await chromium.launch({channel:'msedge',headless:true}),page=await
 const results=[];
 try{
  for(const width of [375,820,1180,1440]){
-  await page.setViewportSize({width,height:1000});await page.goto(process.env.TEST_URL||'http://127.0.0.1:8767/');
+  await page.setViewportSize({width,height:1000});await page.goto(process.env.TEST_URL||'http://127.0.0.1:8767/');await page.locator('[data-song="nativity"] .song-entry').click();
   await page.waitForFunction(()=>window.prototype?.ready&&!prototype.busy);
   for(const song of ['nativity','shepherd','faithful','silent-night']){
    await page.evaluate(id=>prototype.loadSong(id),song);
