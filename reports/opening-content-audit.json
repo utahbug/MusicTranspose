@@ -1,0 +1,4048 @@
+[
+  {
+    "id": "nativity",
+    "title": "The Nativity Song",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. This",
+    "verse": "1",
+    "firstHarmony": "A minor",
+    "source": {
+      "notes": 131,
+      "firstMeasureNotes": 3,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 126,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 131,
+      "firstMeasureNotes": 3,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "shepherd",
+    "title": "The Shepherd’s Carol",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Mar",
+    "verse": "1",
+    "firstHarmony": "D minor",
+    "source": {
+      "notes": 70,
+      "firstMeasureNotes": 4,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 70,
+      "firstMeasureNotes": 4,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 70,
+      "firstMeasureNotes": 4,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "faithful",
+    "title": "Oh, Come, All Ye Faithful",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Oh,",
+    "verse": "1",
+    "firstHarmony": null,
+    "source": {
+      "notes": 157,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 156,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 157,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "silent-night",
+    "title": "Silent Night",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Si",
+    "verse": "1",
+    "firstHarmony": null,
+    "source": {
+      "notes": 102,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 98,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 102,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1001",
+    "title": "Come, Thou Fount of Every Blessing",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Come,",
+    "verse": "1",
+    "firstHarmony": "A dominant",
+    "source": {
+      "notes": 146,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 144,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 146,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1002",
+    "title": "When the Savior Comes Again",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 344,
+      "firstMeasureNotes": 9,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 335,
+      "firstMeasureNotes": 0,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 344,
+      "firstMeasureNotes": 9,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1003",
+    "title": "It Is Well with My Soul",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 145,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 145,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 145,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1004",
+    "title": "I Will Walk with Jesus",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Je",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 266,
+      "firstMeasureNotes": 9,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 257,
+      "firstMeasureNotes": 0,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 266,
+      "firstMeasureNotes": 9,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1005",
+    "title": "His Eye Is on the Sparrow",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. Why",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 255,
+      "firstMeasureNotes": 6,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 255,
+      "firstMeasureNotes": 6,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 255,
+      "firstMeasureNotes": 6,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1006",
+    "title": "Think a Sacred Song",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. Think",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 110,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 110,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 110,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1007",
+    "title": "As Bread Is Broken",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. As",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 96,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 90,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 96,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1008",
+    "title": "Bread of Life, Living Water",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. In",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 157,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 153,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 157,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1009",
+    "title": "Gethsemane",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "Je",
+    "verse": "1",
+    "firstHarmony": "D minor",
+    "source": {
+      "notes": 374,
+      "firstMeasureNotes": 5,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 374,
+      "firstMeasureNotes": 5,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 374,
+      "firstMeasureNotes": 5,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1010",
+    "title": "Amazing Grace",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. A",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 103,
+      "firstMeasureNotes": 2,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 101,
+      "firstMeasureNotes": 0,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 103,
+      "firstMeasureNotes": 2,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1011",
+    "title": "Holding Hands Around the World",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. We",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 291,
+      "firstMeasureNotes": 2,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 289,
+      "firstMeasureNotes": 0,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 291,
+      "firstMeasureNotes": 2,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1012",
+    "title": "Anytime, Anywhere",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 71,
+      "firstMeasureNotes": 2,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 69,
+      "firstMeasureNotes": 0,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 71,
+      "firstMeasureNotes": 2,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1013",
+    "title": "God’s Gracious Love",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "1. Day",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 158,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 156,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 158,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1014",
+    "title": "My Shepherd Will Supply My Need",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. My",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 189,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 186,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 189,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1015",
+    "title": "Oh, the Deep, Deep Love of Jesus",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B octave:3",
+    "firstLyric": "1. Oh,",
+    "verse": "1",
+    "firstHarmony": "A suspended-fourth",
+    "source": {
+      "notes": 166,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 164,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 166,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1016",
+    "title": "Behold the Wounds in Jesus’ Hands",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "1. Be",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 122,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 121,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 122,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1018",
+    "title": "Come, Lord Jesus",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Come,",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 221,
+      "firstMeasureNotes": 6,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 215,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 221,
+      "firstMeasureNotes": 6,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1019",
+    "title": "To Love like Thee",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Fa",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 90,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 87,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 90,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1020",
+    "title": "Softly and Tenderly Jesus Is Calling",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Soft",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 198,
+      "firstMeasureNotes": 9,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 198,
+      "firstMeasureNotes": 9,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 198,
+      "firstMeasureNotes": 9,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1021",
+    "title": "I Know That My Savior Loves Me",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. A",
+    "verse": "1",
+    "firstHarmony": "C dominant",
+    "source": {
+      "notes": 333,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 333,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 333,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1022",
+    "title": "Faith in Every Footstep",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. A",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 240,
+      "firstMeasureNotes": 2,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 238,
+      "firstMeasureNotes": 0,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 240,
+      "firstMeasureNotes": 2,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1023",
+    "title": "Standing on the Promises",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Stand",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 165,
+      "firstMeasureNotes": 8,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 157,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 165,
+      "firstMeasureNotes": 8,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1024",
+    "title": "I Have Faith in the Lord Jesus Christ",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 187,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 185,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 187,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1025",
+    "title": "Take My Heart and Let It Be Consecrated",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Take",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 98,
+      "firstMeasureNotes": 8,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 90,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 98,
+      "firstMeasureNotes": 8,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1026",
+    "title": "Holy Places",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 142,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1027",
+    "title": "Welcome Home",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "1. An",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 160,
+      "firstMeasureNotes": 5,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 155,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 160,
+      "firstMeasureNotes": 5,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1028",
+    "title": "This Little Light of Mine",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. This",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 108,
+      "firstMeasureNotes": 7,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 108,
+      "firstMeasureNotes": 7,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 108,
+      "firstMeasureNotes": 7,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1029",
+    "title": "I Can’t Count Them All",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 132,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 131,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 132,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1030",
+    "title": "Close as a Quiet Prayer",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. Mo",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 278,
+      "firstMeasureNotes": 5,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 278,
+      "firstMeasureNotes": 5,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 278,
+      "firstMeasureNotes": 5,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1031",
+    "title": "Come, Hear the Word the Lord Has Spoken",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "1. Come,",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 106,
+      "firstMeasureNotes": 2,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 104,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 106,
+      "firstMeasureNotes": 2,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1032",
+    "title": "Look unto Christ",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 119,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 114,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 119,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1033",
+    "title": "Oh, How Great Is Our Joy",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Oh,",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 172,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 170,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 172,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1034",
+    "title": "I’m a Pioneer Too",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "1. Some",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 122,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 121,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 122,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1035",
+    "title": "As I Keep the Sabbath Day",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Gen",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 148,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 146,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 148,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1036",
+    "title": "Read the Book of Mormon and Pray",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 157,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 156,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 157,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1037",
+    "title": "I’m Gonna Live So God Can Use Me",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I’m",
+    "verse": "1",
+    "firstHarmony": "C dominant",
+    "source": {
+      "notes": 140,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 140,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 140,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1038",
+    "title": "The Lord’s My Shepherd",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 111,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 111,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 111,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1039",
+    "title": "Because",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:G octave:5",
+    "firstLyric": "1. Be",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 273,
+      "firstMeasureNotes": 2,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 271,
+      "firstMeasureNotes": 0,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 273,
+      "firstMeasureNotes": 2,
+      "systems": 11,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1040",
+    "title": "His Voice as the Sound",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B octave:3",
+    "firstLyric": "1. His",
+    "verse": "1",
+    "firstHarmony": "E minor",
+    "source": {
+      "notes": 185,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 183,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 185,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1041",
+    "title": "O Lord, Who Gave Thy Life for Me",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:4",
+    "firstLyric": "1. O",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 139,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 137,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 139,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1042",
+    "title": "Thou Gracious God, Whose Mercy Lends",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Thou",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 86,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 86,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 86,
+      "firstMeasureNotes": 4,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1043",
+    "title": "Help Us Remember",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "1. Help",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 105,
+      "firstMeasureNotes": 5,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 105,
+      "firstMeasureNotes": 5,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 105,
+      "firstMeasureNotes": 5,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1044",
+    "title": "How Did the Savior Minister?",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "1. How",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 124,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 118,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 124,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1045",
+    "title": "Jesus Is the Way",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E alter:-1 octave:4",
+    "firstLyric": "1. Our",
+    "verse": "1",
+    "firstHarmony": "E -1 major",
+    "source": {
+      "notes": 145,
+      "firstMeasureNotes": 3,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 142,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 145,
+      "firstMeasureNotes": 3,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1046",
+    "title": "Can You Count the Stars in Heaven?",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Can",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 123,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 121,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 123,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1047",
+    "title": "He Cares for Me",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B alter:-1 octave:3",
+    "firstLyric": "1. He",
+    "verse": "1",
+    "firstHarmony": "B -1 dominant",
+    "source": {
+      "notes": 145,
+      "firstMeasureNotes": 2,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 143,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 145,
+      "firstMeasureNotes": 2,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1048",
+    "title": "Our Prayer to Thee",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. We",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 157,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 155,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 157,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1049",
+    "title": "Joseph Prayed in Faith",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:5",
+    "firstLyric": "1. Jo",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 240,
+      "firstMeasureNotes": 7,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 233,
+      "firstMeasureNotes": 0,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 240,
+      "firstMeasureNotes": 7,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1050",
+    "title": "Stand by Me",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E alter:-1 octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "E -1 major",
+    "source": {
+      "notes": 132,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 128,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 132,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1051",
+    "title": "This Day Is a Good Day, Lord",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. This",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 117,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 112,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 117,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1052",
+    "title": "Joyfully Bound",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Come",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 366,
+      "firstMeasureNotes": 2,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 366,
+      "firstMeasureNotes": 2,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 366,
+      "firstMeasureNotes": 2,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1053",
+    "title": "My Covenants",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 321,
+      "firstMeasureNotes": 9,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 312,
+      "firstMeasureNotes": 0,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 321,
+      "firstMeasureNotes": 9,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1054",
+    "title": "When I Am Baptized",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 115,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 114,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 115,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1055",
+    "title": "The Power of the Holy Ghost",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 156,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 154,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 156,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1056",
+    "title": "Elijah and the Still, Small Voice",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Long",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 133,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 133,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 133,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1057",
+    "title": "Jesus Is My Shepherd",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. Je",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 198,
+      "firstMeasureNotes": 7,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 186,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 198,
+      "firstMeasureNotes": 7,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1058",
+    "title": "My Song in the Night",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B alter:-1 octave:3",
+    "firstLyric": "1. O",
+    "verse": "1",
+    "firstHarmony": "G minor",
+    "source": {
+      "notes": 133,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 133,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 133,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1059",
+    "title": "This Is My Father’s World",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. This",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 155,
+      "firstMeasureNotes": 3,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 152,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 155,
+      "firstMeasureNotes": 3,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1060",
+    "title": "Build an Ark",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. No",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 271,
+      "firstMeasureNotes": 2,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 269,
+      "firstMeasureNotes": 0,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 271,
+      "firstMeasureNotes": 2,
+      "systems": 14,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1061",
+    "title": "Love Will Bless Our Home",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 167,
+      "firstMeasureNotes": 4,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 163,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 167,
+      "firstMeasureNotes": 4,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1062",
+    "title": "Lord, Accept Our Humble Fast",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Lord,",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 59,
+      "firstMeasureNotes": 7,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 52,
+      "firstMeasureNotes": 0,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 59,
+      "firstMeasureNotes": 7,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1063",
+    "title": "Peace, Peace, Be Still",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "D minor",
+    "source": {
+      "notes": 133,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 133,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 133,
+      "firstMeasureNotes": 6,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1064",
+    "title": "Great Is Thy Faithfulness",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Great",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 204,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 201,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 204,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1065",
+    "title": "Isaiah Said",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 154,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 150,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 154,
+      "firstMeasureNotes": 4,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1066",
+    "title": "Fight the Good Fight",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Fight",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 95,
+      "firstMeasureNotes": 5,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 95,
+      "firstMeasureNotes": 5,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 95,
+      "firstMeasureNotes": 5,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1067",
+    "title": "It’s Joyful to Live the Gospel",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "1. It’s",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 195,
+      "firstMeasureNotes": 5,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 190,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 195,
+      "firstMeasureNotes": 5,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1068",
+    "title": "To God Be the Glory",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B octave:3",
+    "firstLyric": "1. To",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 225,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 224,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 225,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1069",
+    "title": "Speak to Us, Lord",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "1. Speak",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 176,
+      "firstMeasureNotes": 8,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 168,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 176,
+      "firstMeasureNotes": 8,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1070",
+    "title": "The Miracle",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:E octave:5",
+    "firstLyric": "1. Je",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 286,
+      "firstMeasureNotes": 6,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 280,
+      "firstMeasureNotes": 0,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 286,
+      "firstMeasureNotes": 6,
+      "systems": 13,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1071",
+    "title": "What God Calls Us To",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "1. To",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 137,
+      "firstMeasureNotes": 8,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 129,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 137,
+      "firstMeasureNotes": 8,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1072",
+    "title": "When I Survey the Wondrous Cross",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 95,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 92,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 95,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1201",
+    "title": "Hail the Day That Sees Him Rise",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Hail",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 162,
+      "firstMeasureNotes": 5,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 157,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 162,
+      "firstMeasureNotes": 5,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1202",
+    "title": "He Is Born, the Divine Christ Child",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "He",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 176,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 176,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 176,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1203",
+    "title": "What Child Is This?",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B octave:3",
+    "firstLyric": "1. What",
+    "verse": "1",
+    "firstHarmony": "E minor",
+    "source": {
+      "notes": 180,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 180,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 180,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1204",
+    "title": "Star Bright",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 205,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 205,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 205,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1205",
+    "title": "Let Easter Anthems Ring",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "1. Rise",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 123,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 118,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 123,
+      "firstMeasureNotes": 5,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1206",
+    "title": "Were You There?",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:B alter:-1 octave:3",
+    "firstLyric": "1. Were",
+    "verse": "1",
+    "firstHarmony": "E -1 major",
+    "source": {
+      "notes": 185,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 185,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 185,
+      "firstMeasureNotes": 3,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1207",
+    "title": "Still, Still, Still",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "1. Still,",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 114,
+      "firstMeasureNotes": 6,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 108,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 114,
+      "firstMeasureNotes": 6,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1208",
+    "title": "Go Tell It on the Mountain",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "Go",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 129,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 129,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 129,
+      "firstMeasureNotes": 6,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1209",
+    "title": "Little Baby in a Manger",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "rest",
+    "firstLyric": "1. Lit",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 291,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 286,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 291,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "hhc-1210",
+    "title": "Long Ago, Within a Garden",
+    "measureIndex": 0,
+    "measureNumber": "1",
+    "implicit": false,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. Long",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 172,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 168,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 172,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-12",
+    "title": "A Child’s Prayer",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "1. Heav",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 308,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 308,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 308,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "cs-174",
+    "title": "Called to Serve",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Called",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 188,
+      "firstMeasureNotes": 4,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 184,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 188,
+      "firstMeasureNotes": 4,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-74",
+    "title": "I Feel My Savior’s Love",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 154,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 153,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 154,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-164",
+    "title": "I Will Follow God’s Plan",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "My",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 242,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 240,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 242,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-34",
+    "title": "He Sent His Son",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:A octave:3",
+    "firstLyric": "How",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 335,
+      "firstMeasureNotes": 2,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 333,
+      "firstMeasureNotes": 0,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 335,
+      "firstMeasureNotes": 2,
+      "systems": 12,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-70",
+    "title": "Jesus Has Risen",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "Je",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 106,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 103,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 106,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-60",
+    "title": "Jesus Wants Me for a Sunbeam",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. Je",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 157,
+      "firstMeasureNotes": 8,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 149,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 157,
+      "firstMeasureNotes": 8,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-18",
+    "title": "I Need My Heavenly Father",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 83,
+      "firstMeasureNotes": 1,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 82,
+      "firstMeasureNotes": 0,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 83,
+      "firstMeasureNotes": 1,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-77",
+    "title": "The Church of Jesus Christ",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "I",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 114,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 112,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 114,
+      "firstMeasureNotes": 2,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-168",
+    "title": "I Want to Be a Missionary Now",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 87,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 86,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 87,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-169",
+    "title": "I Hope They Call Me on a Mission",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 129,
+      "firstMeasureNotes": 1,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 128,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 129,
+      "firstMeasureNotes": 1,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-95",
+    "title": "I Love to See the Temple",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 124,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 123,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 124,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-7",
+    "title": "I Thank Thee, Dear Father",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:B octave:3",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 73,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 72,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 73,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-78",
+    "title": "I’m Trying to Be like Jesus",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:5",
+    "firstLyric": "I’m",
+    "verse": "1",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 271,
+      "firstMeasureNotes": 8,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 260,
+      "firstMeasureNotes": 0,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 271,
+      "firstMeasureNotes": 8,
+      "systems": 9,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-228",
+    "title": "My Heavenly Father Loves Me",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:B alter:-1 octave:4",
+    "firstLyric": "1. When",
+    "verse": "1",
+    "firstHarmony": "E -1 major",
+    "source": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 150,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-109",
+    "title": "Search, Ponder, and Pray",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 148,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 147,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 148,
+      "firstMeasureNotes": 1,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-82",
+    "title": "When He Comes Again",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "1. I",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 172,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 171,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 172,
+      "firstMeasureNotes": 1,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-138",
+    "title": "Where Love Is",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "Where",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 354,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 353,
+      "firstMeasureNotes": 0,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 354,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-232",
+    "title": "Beauty Everywhere",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:A octave:4",
+    "firstLyric": "1. Skies",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 159,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 155,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 159,
+      "firstMeasureNotes": 4,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-16",
+    "title": "Children All Over the World",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:F alter:1 octave:4",
+    "firstLyric": "All",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 246,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 246,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 246,
+      "firstMeasureNotes": 1,
+      "systems": 10,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "cs-110",
+    "title": "Follow the Prophet",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "1. Ad",
+    "verse": "1",
+    "firstHarmony": "C minor",
+    "source": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 142,
+      "firstMeasureNotes": 0,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 8,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-2",
+    "title": "I Am a Child of God",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "I",
+    "verse": "4",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 150,
+      "firstMeasureNotes": 0,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-244",
+    "title": "Little Purple Pansies",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:E octave:4",
+    "firstLyric": "1. Lit",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 80,
+      "firstMeasureNotes": 8,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 72,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 80,
+      "firstMeasureNotes": 8,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-276",
+    "title": "Do as I’m Doing",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:F alter:1 octave:4",
+    "firstLyric": "Do",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 136,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 133,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 136,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-236",
+    "title": "“Give,” Said the Little Stream",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:F alter:1 octave:4",
+    "firstLyric": "1. “Give,”",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 136,
+      "firstMeasureNotes": 3,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 133,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 136,
+      "firstMeasureNotes": 3,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-275a",
+    "title": "Head, Shoulders, Knees, and Toes",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "Head,",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 43,
+      "firstMeasureNotes": 3,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 40,
+      "firstMeasureNotes": 0,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 43,
+      "firstMeasureNotes": 3,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-260",
+    "title": "Hello Song",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "Hel",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 111,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 110,
+      "firstMeasureNotes": 0,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 111,
+      "firstMeasureNotes": 1,
+      "systems": 7,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-266",
+    "title": "If You’re Happy",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:C octave:4",
+    "firstLyric": "If",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 115,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 112,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 115,
+      "firstMeasureNotes": 3,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-249",
+    "title": "Once There Was a Snowman",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:F octave:4",
+    "firstLyric": "Once",
+    "verse": "1",
+    "firstHarmony": "F major",
+    "source": {
+      "notes": 69,
+      "firstMeasureNotes": 6,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 63,
+      "firstMeasureNotes": 0,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 69,
+      "firstMeasureNotes": 6,
+      "systems": 3,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-242",
+    "title": "Popcorn Popping",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "I",
+    "verse": "1",
+    "firstHarmony": "C major",
+    "source": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 142,
+      "firstMeasureNotes": 0,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 144,
+      "firstMeasureNotes": 2,
+      "systems": 6,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-220",
+    "title": "The Handcart Song",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "rest",
+    "firstLyric": "Push",
+    "verse": "3",
+    "firstHarmony": "B -1 major",
+    "source": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "fixed": {
+      "notes": 151,
+      "firstMeasureNotes": 1,
+      "systems": 5,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": false,
+    "suspicious": false
+  },
+  {
+    "id": "cs-281",
+    "title": "The Wise Man and the Foolish Man",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. The",
+    "verse": "1",
+    "firstHarmony": "G major",
+    "source": {
+      "notes": 86,
+      "firstMeasureNotes": 1,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 85,
+      "firstMeasureNotes": 0,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 86,
+      "firstMeasureNotes": 1,
+      "systems": 4,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-267a",
+    "title": "Smiles",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:D octave:4",
+    "firstLyric": "1. If",
+    "verse": "1",
+    "firstHarmony": "D major",
+    "source": {
+      "notes": 40,
+      "firstMeasureNotes": 7,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 33,
+      "firstMeasureNotes": 0,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 40,
+      "firstMeasureNotes": 7,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  },
+  {
+    "id": "cs-61",
+    "title": "Jesus Said Love Everyone",
+    "measureIndex": 0,
+    "measureNumber": "0",
+    "implicit": true,
+    "firstEvent": "step:G octave:4",
+    "firstLyric": "Je",
+    "verse": "1",
+    "firstHarmony": "E -1 major",
+    "source": {
+      "notes": 41,
+      "firstMeasureNotes": 4,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "broken": {
+      "notes": 37,
+      "firstMeasureNotes": 0,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": false
+    },
+    "fixed": {
+      "notes": 41,
+      "firstMeasureNotes": 4,
+      "systems": 2,
+      "firstMeasureInFirstSystem": true,
+      "firstLyricVisible": true
+    },
+    "regressed": true,
+    "suspicious": false
+  }
+]

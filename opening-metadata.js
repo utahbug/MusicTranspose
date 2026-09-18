@@ -38,8 +38,16 @@ export function openingMetadata(xml){
   const texts=[...new Set(items.flat().filter(x=>x.kind===kind).map(x=>x.text))];
   if(texts.length===1)selected.push({kind,text:texts[0]});
  }
+ const changedDirections=new Set();
  for(const item of items.flat())if(selected.some(x=>x.kind===item.kind&&x.text===item.text)){
-  const type=item.node.parentElement;item.node.remove();if(!type.children.length)type.remove();
+  const type=item.node.parentElement;changedDirections.add(type.parentElement);item.node.remove();if(!type.children.length)type.remove();
+ }
+ // A direction must contain a direction-type. OSMD aborts reading subsequent
+ // opening events when it encounters an emptied direction. Keep sound as a
+ // legal measure-level element and remove only wrappers emptied by promotion.
+ for(const direction of changedDirections)if(!direction.querySelector(':scope > direction-type')){
+  for(const sound of [...direction.querySelectorAll(':scope > sound')])direction.before(sound);
+  direction.remove();
  }
  // Preserve sound, staff, dynamics and all non-promoted directions in this display copy.
  return {text:selected.map(x=>x.text).join(' · '),items:selected,displayXML:selected.length?new XMLSerializer().serializeToString(doc):xml};

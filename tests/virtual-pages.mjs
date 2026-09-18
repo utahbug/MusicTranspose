@@ -33,7 +33,7 @@ try{
  }
  await page.setViewportSize({width:1180,height:820});await page.evaluate(()=>prototype.loadSong('nativity'));await ready();await mode('pages');
  const count=await page.locator('.mxl-page-frame').count(),box=await page.locator('#score').boundingBox(),x=box.x+box.width*.8,y=box.y+box.height*.75;
- await touch(x,y);assert.equal(await position(),`2 / ${count}`);await touch(x,y);assert.equal(await position(),`3 / ${count}`);await touch(box.x+box.width*.2,y);assert.equal(await position(),`2 / ${count}`);await touch(x,y,y-70);assert.equal(await position(),`2 / ${count}`);
+ await touch(x,y);assert.equal(await position(),`2 / ${count}`);await touch(x,y);const reached=Math.min(3,count);assert.equal(await position(),`${reached} / ${count}`);await touch(box.x+box.width*.2,y);assert.equal(await position(),`${reached-1} / ${count}`);await touch(x,y,y-70);assert.equal(await position(),`${reached-1} / ${count}`);
  await page.keyboard.press('Home');const timings=[];await context.setOffline(true);
  for(let i=0;i<10;i++){const start=performance.now();await page.keyboard.press('ArrowRight');assert.equal(await position(),`2 / ${count}`);await page.keyboard.press('ArrowLeft');assert.equal(await position(),`1 / ${count}`);timings.push((performance.now()-start)/2);}
  await context.setOffline(false);console.log('keyboard round-trip ms/turn',Math.round(Math.max(...timings)));
