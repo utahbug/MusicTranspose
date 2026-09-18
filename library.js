@@ -79,7 +79,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore}){
     const up=button('↑','Move up: '+s.title,()=>moveSong(s.id,found[index-1].id,true));up.disabled=index===0;
     const down=button('↓','Move down: '+s.title,()=>moveSong(s.id,found[index+1].id,false));down.disabled=index===found.length-1;
     actions.append(up,down);row.append(grip,entry,actions);
-   }else{const views=node('div',null,'song-view-actions');const scoreButton=button('♫','Open score: '+s.title,()=>open(s.id));scoreButton.title='Open score';views.append(scoreButton);if(lyricIds.has(s.id)){const lyricsButton=button('','Open lyrics',()=>{if(!isBusy())openLyrics(s.id);});lyricsButton.innerHTML='<svg class="lyrics-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16M4 10h12M4 15h16M4 20h10"/></svg>';lyricsButton.setAttribute('aria-label','Lyrics');lyricsButton.title='Lyrics';views.append(lyricsButton);}row.append(star,entry,views,lists);}
+   }else{const views=node('div',null,'song-view-actions');const scoreButton=button('♫','Open score: '+s.title,()=>open(s.id));scoreButton.title='Open score';views.append(scoreButton);if(lyricIds.has(s.id)){const lyricsButton=button('','Open lyrics',()=>{if(!isBusy())openLyrics(s.id);});lyricsButton.innerHTML='<svg class="lyrics-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6v12h5M12 6h9M12 10h7M12 14h9M12 18h6"/></svg>';lyricsButton.setAttribute('aria-label','Lyrics');lyricsButton.title='Lyrics';views.append(lyricsButton);}row.append(star,entry,views,lists);}
    fragment.append(row);
   }
   if(!found.length)fragment.append(node('p','No songs match. Try another search, filter, or list.','empty-library'));
