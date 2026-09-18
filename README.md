@@ -331,20 +331,24 @@ chords, storage keys and local-only preferences. Tests use responsive desktop
 browser viewports, not physical Safari hardware. tests/release-audit.mjs records
 before/after screenshots; tests/release-states.mjs covers failures/retry/contrast.
 
-### Phone score fit control
+### Phone score pinch zoom
 
-At screen widths <=600px, structured scores show a 44x44px page/fit icon below
-right-aligned source metadata. Default Fit Width retains existing engraving.
-Fit Page proportionally scales the existing score to 72% for about 39% more
-vertical context; it does not invent page boundaries or shrink a whole long
-continuous score onto one screen. Scrolling and aspect ratios are preserved.
-The button describes its next action. No extra rendering or asset fetch is needed.
+At screen widths <=600px, structured scores accept continuous two-touch pinch
+zoom from 0.75x to 3x. Touch handling is scoped to the score viewport; browser
+accessibility zoom elsewhere remains available. Gesture midpoints anchor the
+musical location. Native horizontal overflow panning and document vertical
+scrolling remain enabled. Safari gesture events are prevented only in this
+viewport to avoid competing whole-page zoom.
 
-Fit state is memory-only and resets on leaving/opening a song. Musical Reset
-preserves it. Larger viewports always use the original presentation; PDFs are
-unchanged and hide the control. The screen wrapper reserves scaled height while
-print resets wrapper/transform styles and uses the unchanged print engraver.
+The top-right 44x44px fit-width icon now only resets zoom to 1x and horizontal
+position to zero, preserving the top visible musical position where possible.
+There is no Fit Page state. Zoom is memory-only, resets on exit/open and when
+leaving the phone breakpoint, and is independent of musical Reset. PDF viewing
+is unchanged and does not use these gestures. Frame and toolbar do not scale.
+The print pipeline is unchanged and print CSS removes the visual transform.
 
-Tests: tests/score-fit.mjs covers five requested scores, both fit states, exact
-print path geometry/text equality, key/reset/reopening, six viewport sizes and
-PDF exclusion. Physical iPhone Safari testing remains recommended.
+Tests: tests/score-fit.mjs injects browser touch gestures on the five requested
+songs; checks outward/inward scaling, min/max clamps, native horizontal/vertical
+panning, no browser zoom, source invariance, exact print path geometry, Reset,
+exit/reopening, six viewport sizes and PDF exclusion. Automated touch checks
+use Chromium mobile emulation; physical iPhone Safari remains a device check.
