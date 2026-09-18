@@ -38,8 +38,7 @@ const sourceCache=new Map(); // Unpack a bundled score only on its first selecti
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
 function setControls(){ playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
- const octaveButton=$('octave-toggle'),label='Octave: '+(currentOctave===1?'one octave up':currentOctave===-1?'one octave down':'original');
- octaveButton.hidden=isPdf();octaveButton.disabled=isPdf()||!ready;octaveButton.setAttribute('aria-label',label);octaveButton.title=label;octaveButton.dataset.state=String(currentOctave);$('octave-symbol').textContent=currentOctave===1?'8↑':currentOctave===-1?'8↓':'8';
+ $('octave-settings').hidden=isPdf();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
 // Screen-only framing: keep every SVG node and an 8-unit safety margin above its ink.
@@ -82,7 +81,7 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 }
 $('down').onclick=()=>changeKey(Math.max(-6,wanted-1));$('up').onclick=()=>changeKey(Math.min(6,wanted+1));$('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 $('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;scoreSize={normal:'compact',compact:'large',large:'normal'}[scoreSize];score.setAttribute('aria-busy','true');pump();};
-$('octave-toggle').onclick=()=>changeOctave(wantedOctave===0?1:wantedOctave===1?-1:0);
+for(const input of document.querySelectorAll('input[name=octave]'))input.onchange=()=>changeOctave(Number(input.value));
 $('key').onclick=()=>{setControls();dialog.showModal();dialog.querySelector(`[data-shift="${current}"]`).focus();};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 async function preparePrint(){
  if(isPdf())return preparePdfPrint(score,$('print-pages'));

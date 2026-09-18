@@ -499,3 +499,15 @@ listening-quality assessment remain device checks, not claimed by browser tests.
 Implementation references: [MusicXML durations](https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/duration/),
 [MusicXML sound tempo](https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/sound/),
 and the [Web Audio specification](https://www.w3.org/TR/webaudio-1.0/).
+
+## Current UI/navigation refinement
+
+The header now stacks collection/page below the title, with score-size/Lyrics
+controls at upper right. Lyrics uses a text-and-note SVG; Settings uses a cog.
+Octave is in Settings (Original / 8va / 8vb); compact chevrons join the key control.
+Return to Start appears after scrolling 100px in Continuous mode. Actual PDF
+Page Turns supports left/right taps, buttons and keyboard/pedal keys with no wrap;
+MXL retains continuous/hybrid navigation because its engraving has no real pages.
+Fun settings now offer 1–4 targets, 2–4 second arrivals and one travelling shot at
+a time. Free shots exit the opposite edge. These supersede earlier UI/Fun behavior
+notes above. See reports/ui-navigation-refinement.md for measurements and tests.

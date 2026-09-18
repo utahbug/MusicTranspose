@@ -109,3 +109,15 @@ The presentation rule reads zero-offset directions before the first timed note i
 All four songs pair successfully. At 375px, Shepherd wraps its conducting instruction below the tempo/Simply line; other songs and larger viewports stay on one line. Compared with 6cdccb9, original-key screen space recovered is approximately 22-25px for Faithful, 24-27px for Silent Night, 21-53px for Shepherd, and 23-27px for Nativity at phone/landscape widths. Already-clear Nativity at 820/1440px needs 3-4px more clearance from chord text. Screen margin trimming brings the first staff upward where space is recovered; notation coordinates are preserved.
 
 The shared rule also applies to print without changing page settings. All 48 screen/print combinations of song, original/+1/-1 key and four viewport sizes passed collision, clipping and direction-preservation checks. The compact-opening test verifies group text separation, fit, wrapping and spacing against the previous commit. Physical Safari testing remains unverified.
+
+## September 2026 accompaniment refinement
+
+Existing b66c741 playback/catalog functionality is retained. The compact header
+recovers 18px on iPad/desktop and 5–12px on tested phones; toolbar stays 54px.
+Real PDF frames support page turns, bounded left/right touch zones and keyboard
+navigation. OSMD continuous engraving has no reliable screen-page boundaries,
+so no fake page system was introduced. A separate immediate Return to Start
+solves the next-verse workflow in Continuous mode. Octave choices moved into
+Settings; key/quick transpose/reset remain compact in the toolbar. Lyrics Fun
+now supports 1–4 targets and one travelling shot. Full details and limitations:
+reports/ui-navigation-refinement.md. Physical iPad and pedal checks remain open.
