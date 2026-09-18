@@ -423,7 +423,7 @@ A Child's Prayer is withheld because its combined-part reprise is fragmentary;
 I Am a Child of God has conflicting verse-4 streams. Original text remains in the
 derived dataset for review, not silently discarded or advertised as verified.
 
-Theme uses Primary's half-disc two-state interaction and dark surface #0B0F12 /
+Theme uses Primary's half-disc two-state interaction and dark surface #0B0D0E /
 light text #F7FAFB (source app read-only). Lyrics use system font, 19/24/30px body
 sizes, Medium default, and a 780px maximum reading column. Theme/font controls
 are independent of score controls. Exact numeric page matches are ranked first;
@@ -437,8 +437,8 @@ Rebuild derived lyrics from the current catalog with `node tools/build-lyrics.mj
 Set the PYTHON environment variable to a Python executable if needed. The build
 uses only local assets; it is not a runtime or deployment prerequisite.
 
-Lyrics now defaults to black (#000000). Medium body text is 22px on phones
+Lyrics now defaults to near-black (#0B0D0E). Medium body text is 22px on phones
 (<=600px), retaining 24px on larger screens. The simple double frame uses 2px
-blue and 1px rose lines on black (#7799B0 / #A8737C), and the score palette on
+muted blue-gray and 1px warm gold lines (#6F8A9C / #A58A55), and the score palette on
 white (#4B6E88 / #7A3E46), separated by a 3px inset. Lyrics controls stay outside
 the frame; score styling and print remain unchanged.
