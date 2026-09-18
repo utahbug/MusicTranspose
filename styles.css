@@ -396,3 +396,18 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .mxl-page-frame svg{margin:0 auto!important;max-width:100%;display:block}
 }
 @media print{.mxl-page-frame{display:none!important}}
+/* Shared primary identity, restricted to the three requested screen surfaces. */
+:root{--primary-blue:#365F7D;--primary-blue-text:#FFFFFF;--primary-blue-hover:color-mix(in srgb,var(--primary-blue),black 8%);--primary-blue-pressed:color-mix(in srgb,var(--primary-blue),black 15%);--primary-blue-disabled:color-mix(in srgb,var(--primary-blue),#687780 20%)}
+@media screen{
+ .masthead #key,.masthead #songs{background:var(--primary-blue);color:var(--primary-blue-text);border-color:var(--primary-blue)}
+ .masthead #key :is(#key-name,#key-signature,.chevron){color:var(--primary-blue-text)}
+ @media(hover:hover){.masthead :is(#key,#songs):not(:disabled):hover{background:var(--primary-blue-hover)}}
+ .masthead :is(#key,#songs):not(:disabled):active{background:var(--primary-blue-pressed)}
+ .masthead :is(#key,#songs):focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
+ .masthead :is(#key,#songs):disabled{opacity:1;background:var(--primary-blue-disabled);border-color:var(--primary-blue-disabled)}
+ #library .library-heading{background:var(--primary-blue);color:var(--primary-blue-text);padding:8px 10px;margin:-12px -6px 8px}
+ #library .library-heading :is(h1,.eyebrow){color:var(--primary-blue-text)}
+ #library .library-heading #resume-score{color:var(--primary-blue-text);border-color:var(--primary-blue-text)}
+ #library .library-heading #resume-score:focus-visible{outline-color:var(--primary-blue-text);outline-offset:2px}
+ @media(max-width:600px){#library .library-heading{margin-top:-10px;margin-inline:-4px}}
+}
