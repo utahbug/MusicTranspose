@@ -1,0 +1,16 @@
+// Source views use factual collection memberships and explicit status, never IDs/titles/pages.
+export const sourceChoices=[['all','All Sources'],['hymnal','Hymnal'],['children','Children’s Songbook'],['home-church','Hymns for Home and Church'],['legacy','Legacy'],['other','Other']];
+export const activeHymnalCollections=['Hymns (1985)']; // Update only when authoritative edition metadata is available.
+const memberships=s=>[{collection:s.collection},...(s.collectionMemberships||[])];
+export function matchesSource(song,source){
+ const records=memberships(song),has=name=>records.some(m=>m.collection===name);
+ const legacy=song.status==='legacy';
+ const hymnal=records.some(m=>m.role==='hymnal'&&m.status==='active'||activeHymnalCollections.includes(m.collection));
+ switch(source){case 'hymnal':return hymnal&&!legacy;case 'children':return has('Children’s Songbook');case 'home-church':return has('Hymns for Home and Church');case 'legacy':return legacy;case 'other':return !hymnal&&!has('Children’s Songbook')&&!has('Hymns for Home and Church');default:return true;}
+}
+const collator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
+export const compareTitles=(a,b)=>collator.compare(a.title,b.title)||collator.compare(a.id,b.id);
+export function compareNumbers(a,b){
+ const value=s=>String(s.songNumber??s.page??'').trim(),number=s=>{const m=value(s).match(/^(\d+)(?:[a-z])?$/i);return m?Number(m[1]):Infinity;};
+ const x=number(a),y=number(b);return (x===y?0:x<y?-1:1)||(Number.isFinite(x)?collator.compare(value(a),value(b)):0)||compareTitles(a,b);
+}

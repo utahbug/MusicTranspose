@@ -5,11 +5,11 @@
  <div class="library-header-panel">
  <header class="library-heading"><div><p class="eyebrow">LIBRARY</p><h1>MusicTranspose</h1></div><button id="resume-score" class="quiet" hidden>Return to score</button></header>
  <div class="library-controls"><label class="search-box"><span class="sr-only">Search songs</span><input id="library-search" type="search" placeholder="Search songs..." autocomplete="off"></label>
- <div class="list-actions"><label>List: <select id="library-list" aria-label="List"><option value="">All lists</option></select></label></div>
  <div class="library-results-tools" aria-label="Song list controls">
- <label class="library-icon-menu" id="filter-menu" title="Filter songs"><svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8Z"/></svg><select id="library-filter" aria-label="Filter songs"></select></label>
- <label class="library-icon-menu" id="sort-menu" title="Sort songs"><svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12M4 10h9M4 15h6M19 9v12m-3-3 3 3 3-3"/></svg><select id="library-sort" aria-label="Sort songs"><option value="list" hidden disabled>List Order</option><option value="title">Title</option><option value="number">Number / Page</option><option value="collection">Collection</option><option value="recent">Recently Played</option></select></label>
- <button id="reorder-list" class="quiet" hidden aria-pressed="false">Reorder</button><span id="library-count" role="status" aria-live="polite"></span></div><span id="order-note"></span></div>
+ <div class="library-order" role="group" aria-label="Song order"><button type="button" class="quiet" id="order-title" aria-pressed="true" aria-label="Sort by title">A–Z</button><span aria-hidden="true">·</span><button type="button" class="quiet" id="order-number" aria-pressed="false" aria-label="Sort by song or page number">123</button></div>
+ <label class="source-choice"><span class="sr-only">Source</span><select id="library-source" aria-label="Source"></select></label>
+ <button type="button" class="quiet" id="view-favorites" aria-pressed="false">Favorites</button><button type="button" class="quiet" id="view-recent" aria-pressed="false">Recent</button>
+ <button id="reorder-list" class="quiet" hidden aria-pressed="false">Reorder</button><span id="library-count" role="status" aria-live="polite"></span></div><div class="list-actions"><label>List: <select id="library-list" aria-label="List"><option value="">All lists</option></select></label></div><span id="order-note"></span></div>
  <span id="reorder-status" class="sr-only" role="status" aria-live="polite"></span>
  <p id="library-message" role="status"></p></div><div id="library-results"></div>
 </section>

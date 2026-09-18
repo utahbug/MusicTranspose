@@ -1,3 +1,4 @@
+import {setView,getView,setOrder,getOrder} from './library-controls-helper.mjs';
 import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';import assert from 'node:assert/strict';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE),{chromium}=require('playwright');
@@ -14,12 +15,12 @@ try{
  // Change metadata before app modules initialize, then reload persisted user data.
  await p.route('**/songs.js',async route=>{const response=await route.fetch();const body=await response.text();await route.fulfill({response,body:body+`\nfor(const s of songs)if(['cs-236','nativity'].includes(s.id)){s.page='987';s.title='Updated '+s.title;s.collection='Revised Book';s.edition='Future';s.collectionMemberships.push({collection:'Original Book',page:'236',edition:'Earlier'});}songs.reverse();`});});
  await p.reload();await p.locator('.library-row').first().waitFor();
- await p.locator('#library-filter').selectOption('favorites');
+ await setView(p,'favorites');
  assert.equal(await p.locator('.library-row').count(),2);
  for(const id of ids)assert.equal(await p.locator(`[data-song="${id}"] .favorite`).getAttribute('aria-pressed'),'true');
  for(const [group,order] of [['practice',ids],['sunday',[...ids].reverse()]]){await p.locator('#library-list').selectOption(group);assert.deepEqual(await p.locator('.library-row').evaluateAll(rows=>rows.map(r=>r.dataset.song)),order);}
  assert.deepEqual(await p.evaluate(key=>JSON.parse(localStorage.getItem(key)),key),saved);
- await p.locator('#library-list').selectOption('');await p.locator('#library-filter').selectOption('all');
+ await p.locator('#library-list').selectOption('');await setView(p,'all');
  await p.locator('#library-search').fill('987');assert.equal(await p.locator('.library-row').count(),2);
  for(const id of ids){
   await p.locator(`[data-song="${id}"] .song-entry`).click();await ready();assert.equal(await p.evaluate(()=>prototype.song),id);
