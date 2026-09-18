@@ -15,6 +15,7 @@ export function resetVirtualSource(){source=null;frames=[];geometry='';anchor=0;
 export function virtualAvailable(){return !!source?.systems?.length;}
 export function virtualFrames(){return frames;}
 export function virtualAnchor(){return anchor;}
+export function seekVirtualMeasure(measure){anchor=measure;active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));}
 export function prepareVirtualPages(force=false){
  if(!source)return 0;const score=document.getElementById('score');
  if(!score.clientWidth)return active;
@@ -27,15 +28,6 @@ export function prepareVirtualPages(force=false){
  // One prepared SVG per source page shared across virtual frames: no per-turn engraving.
  const copies=originals.map(svg=>{const copy=svg.cloneNode(true);copy.classList.remove('screen-first-page');copy.removeAttribute('id');copy.style.margin='0';return copy;});
  frames=groups.map((g,i)=>{const frame=document.createElement('div');frame.className='mxl-page-frame';frame.dataset.start=g.start;frame.dataset.end=g.end;frame.dataset.systems=g.systems;frame._view={...g,svg:copies[g.svgIndex],width:originals[g.svgIndex].viewBox.baseVal.width};frame.style.height=available+'px';score.append(frame);return frame;});
- // Preserve supplementary verses/credits as separate final text pages, not lost below the toolbar.
- let textFrame;
- for(const paragraph of document.querySelectorAll('#source-credits p')){if(!paragraph.textContent.trim())continue;
-  const create=()=>{const f=document.createElement('div');f.className='mxl-page-frame mxl-credit-page';f.dataset.start=Number.MAX_SAFE_INTEGER;f.dataset.end=Number.MAX_SAFE_INTEGER;f.style.height=available+'px';f.style.display='block';score.append(f);frames.push(f);return f;};
-  if(!textFrame)textFrame=create();const copy=paragraph.cloneNode(true);textFrame.append(copy);
-  if(textFrame.scrollHeight>Math.ceil(available)+1&&textFrame.children.length>1){copy.remove();textFrame.style.removeProperty('display');textFrame=create();textFrame.append(copy);}
-  if(copy.getBoundingClientRect().height>available-12)copy.style.fontSize=Math.max(8,parseFloat(getComputedStyle(copy).fontSize)*(available-12)/copy.getBoundingClientRect().height)+'px';
- }
- textFrame?.style.removeProperty('display');
  active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));return active;
 }
 export function displayVirtual(index){active=index;const frame=frames[index];if(!frame)return;anchor=Number(frame.dataset.start);if(!frame._view)return;const {svg,top,bottom,width}=frame._view,height=bottom-top,available=parseFloat(frame.style.height),scale=Math.min(document.getElementById('score').clientWidth/width,available/height);svg.setAttribute('viewBox',`0 ${top} ${width} ${height}`);svg.setAttribute('width',width*scale);svg.setAttribute('height',height*scale);svg.style.width=width*scale+'px';svg.style.height=height*scale+'px';frame.append(svg);}

@@ -530,3 +530,14 @@ logical page width before automatic system layout. Density persists across key,
 octave and viewport changes, and new system bounds rebuild virtual pages. Print
 and PDFs are unchanged. See `reports/score-density-reflow.md` for actual system,
 first-measure and virtual-page counts, including the Little Stream acceptance case.
+
+## Live-accompaniment navigation defaults and tap zones
+
+“Tap to flip pages” replaces the Page Turns label. Four invisible score zones
+provide First (upper left), Last (upper right), Previous (lower left), Next
+(lower right); Settings explains them. MXL pages now contain musical systems only;
+separate source/credit text remains in Continuous Scroll and print. PDF pages are
+unchanged. Fresh tablet-touch layouts default to tap navigation; phone/desktop
+layouts default to Continuous. Explicit choices persist locally and override the
+device default. See `reports/performance-navigation.md` for detection, migration,
+mode-entry position handling and verification details.

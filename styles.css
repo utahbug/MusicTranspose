@@ -394,7 +394,5 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  body.mxl-page-navigation #playing-view{padding-bottom:0}
  body.mxl-page-navigation .score-paper{padding-bottom:8px}
  .mxl-page-frame svg{margin:0 auto!important;max-width:100%;display:block}
- .mxl-credit-page{white-space:pre-line;font:15px/1.6 Georgia,serif;padding:6px 12px}
- .mxl-credit-page p{margin:0}
 }
 @media print{.mxl-page-frame{display:none!important}}

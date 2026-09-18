@@ -21,7 +21,7 @@ try{
    // Canonical IDs are used, never page-number identity guessing.
    const exists=await page.evaluate(id=>!!document.querySelector(`[data-song="${id}"]`),id);if(!exists)throw Error('Missing test song '+id);
    await page.evaluate(id=>prototype.loadSong(id),id);await ready();await mode('pages');
-   const result=await inspect();assert.equal(result.systems,result.expected);assert(!result.overflow);assert(result.bottom<=result.bar-8);assert.equal(result.scroll,0);assert.equal(result.credits,result.copies);assert(result.groups.every(g=>Number.isFinite(g.start)&&g.end>=g.start&&g.bottom>g.top));
+   const result=await inspect();assert.equal(result.systems,result.expected);assert(!result.overflow);assert(result.bottom<=result.bar-8);assert.equal(result.scroll,0);assert.equal(result.copies,'');assert.equal(result.pages,result.groups.length);assert(result.groups.every(g=>Number.isFinite(g.start)&&g.end>=g.start&&g.bottom>g.top));
    for(let i=1;i<result.groups.length;i++){const a=result.groups[i-1],b=result.groups[i];assert(b.start>a.end);if(a.svg===b.svg)assert(a.bottom<b.top,'Ink must not cross a page cut');}
    const before=await page.evaluate(()=>({renders:prototype.metrics.length,requests:performance.getEntriesByType('resource').length}));
    for(let i=1;i<result.pages;i++){await page.locator('#page-next').click();assert.equal(await position(),`${i+1} / ${result.pages}`);assert.equal(await page.evaluate(()=>scrollY),0);const bounds=await page.locator('.mxl-page-frame.current-page').evaluate(e=>{const svg=e.querySelector('svg');return {overflow:e.scrollHeight>Math.ceil(e.clientHeight)+2,inside:!svg||svg.getBoundingClientRect().bottom<=e.getBoundingClientRect().bottom+1};});assert(!bounds.overflow);assert(bounds.inside);}
@@ -32,7 +32,7 @@ try{
   }
  }
  await page.setViewportSize({width:1180,height:820});await page.evaluate(()=>prototype.loadSong('nativity'));await ready();await mode('pages');
- const count=await page.locator('.mxl-page-frame').count(),box=await page.locator('#score').boundingBox(),x=box.x+box.width*.8,y=box.y+box.height*.4;
+ const count=await page.locator('.mxl-page-frame').count(),box=await page.locator('#score').boundingBox(),x=box.x+box.width*.8,y=box.y+box.height*.75;
  await touch(x,y);assert.equal(await position(),`2 / ${count}`);await touch(x,y);assert.equal(await position(),`3 / ${count}`);await touch(box.x+box.width*.2,y);assert.equal(await position(),`2 / ${count}`);await touch(x,y,y-70);assert.equal(await position(),`2 / ${count}`);
  await page.keyboard.press('Home');const timings=[];await context.setOffline(true);
  for(let i=0;i<10;i++){const start=performance.now();await page.keyboard.press('ArrowRight');assert.equal(await position(),`2 / ${count}`);await page.keyboard.press('ArrowLeft');assert.equal(await position(),`1 / ${count}`);timings.push((performance.now()-start)/2);}
