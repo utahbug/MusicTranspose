@@ -453,3 +453,11 @@ Fun off. Theme/font changes preserve the target and respawn schedule. No audio,
 score data changes, storage or print effects. Offline cache includes the module.
 
 Floating targets inherit the active lyric text color; bursts stay colorful. The Lyrics action uses a custom stroked script-L SVG with the accessible name Open lyrics and tooltip Lyrics. Score icons and interaction behavior are unchanged.
+
+Fun targets now size their SVG box to 1.4 times the active lyric font size; the
+visible artwork occupies about 1.05–1.15 times that font size (roughly 24px with
+the 22px phone default). Every valid tap fires: targetless shots choose a random
+left/right origin and safe visible-content destination, last 280ms, and never
+change the target spawn timer. Hits retain the 400ms burst and 5–10 second wait.
+At most six short-lived effects coexist; older effects are removed on rapid taps.
+All effect timers are explicitly cleared when Fun mode stops.

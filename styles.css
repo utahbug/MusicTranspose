@@ -266,7 +266,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 .lyrics-dark .lyrics-fun-layer{--fun-beam:#8DD8FF}
 .lyrics-fun-note{position:absolute;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
 .lyrics-fun-effect{position:absolute;inset:0;overflow:hidden}
-.lyrics-fun-beam{animation:fun-beam .18s ease-out forwards}
+.lyrics-fun-beam{animation:fun-beam .28s ease-out forwards}
 .lyrics-fun-spark{animation:fun-spark .4s ease-out forwards}
 @keyframes fun-beam{to{opacity:0}}
 @keyframes fun-spark{to{transform:translate(var(--dx),var(--dy));opacity:0}}

@@ -2,7 +2,9 @@
 export function createLyricsFun(host,paper){
  const abort=new AbortController(),signal=abort.signal,reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const layer=document.createElement('div');layer.className='lyrics-fun-layer';layer.setAttribute('aria-hidden','true');host.append(layer);
- let frame=0,timer=0,effectTimer=0,note=null,gesture=null,stopped=false,phase=0,last=0,point={x:0,y:0},bounds=null;
+ let frame=0,timer=0,note=null,gesture=null,stopped=false,phase=0,last=0,point={x:0,y:0},bounds=null;
+ const effects=new Map();
+ const clearEffect=e=>{clearTimeout(effects.get(e));effects.delete(e);e.remove();};
  const svgNS='http://www.w3.org/2000/svg';
  const svg=(tag,attrs)=>{const e=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);return e;};
  function spawn(){
@@ -30,17 +32,19 @@ export function createLyricsFun(host,paper){
   if(last&&!reduced.matches&&!document.hidden)phase+=Math.min(now-last,50)*0.00022;
   last=now;
   point={x:24+(Math.sin(phase)+1)/2*Math.max(0,bounds.width-48),y:30+(Math.sin(phase*.7)+1)/2*Math.max(0,Math.min(height*.45,230)-60)};
-  if(note)Object.assign(note.style,{left:point.x-22+'px',top:point.y-28+'px'});
+  if(note){const h=parseFloat(getComputedStyle(paper.querySelector('.lyrics-body')).fontSize)*1.4,w=h*44/56;Object.assign(note.style,{width:w+'px',height:h+'px',left:point.x-w/2+'px',top:point.y-h/2+'px'});}
   frame=requestAnimationFrame(tick);
  }
  function fire(){
-  if(!note||layer.hidden||!bounds)return;
-  note.remove();note=null;
-  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'}),side=Math.random()<.5?'left':'right';effect.dataset.origin=side;
-  effect.append(svg('line',{x1:side==='left'?0:bounds.width,y1:point.y+25,x2:point.x,y2:point.y,stroke:'var(--fun-beam)','stroke-width':3,'stroke-linecap':'round',class:'lyrics-fun-beam'}));
-  for(let i=0;i<8;i++){const angle=i*Math.PI/4,spark=svg('circle',{cx:point.x,cy:point.y,r:4,fill:['#E078A2','#48B8C3','#D2A536','#9876DD'][i%4]});spark.style.setProperty('--dx',Math.cos(angle)*25+'px');spark.style.setProperty('--dy',Math.sin(angle)*25+'px');spark.classList.add('lyrics-fun-spark');effect.append(spark);}
-  layer.append(effect);effectTimer=setTimeout(()=>effect.remove(),400);
-  timer=setTimeout(spawn,5000+Math.random()*5000);
+  if(layer.hidden||!bounds)return;
+  const hit=Boolean(note),destination=hit?{...point}:{x:12+Math.random()*Math.max(0,bounds.width-24),y:12+Math.random()*Math.max(0,bounds.height-24)};
+  if(hit){note.remove();note=null;timer=setTimeout(spawn,5000+Math.random()*5000);}
+  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'}),side=Math.random()<.5?'left':'right';effect.dataset.origin=side;effect.dataset.shot=hit?'hit':'free';
+  effect.append(svg('line',{x1:side==='left'?0:bounds.width,y1:hit?Math.min(bounds.height-4,point.y+25):12+Math.random()*Math.max(0,bounds.height-24),x2:destination.x,y2:destination.y,stroke:'var(--fun-beam)','stroke-width':3,'stroke-linecap':'round',class:'lyrics-fun-beam'}));
+  if(hit)for(let i=0;i<8;i++){const angle=i*Math.PI/4,spark=svg('circle',{cx:destination.x,cy:destination.y,r:4,fill:['#E078A2','#48B8C3','#D2A536','#9876DD'][i%4]});spark.style.setProperty('--dx',Math.cos(angle)*25+'px');spark.style.setProperty('--dy',Math.sin(angle)*25+'px');spark.classList.add('lyrics-fun-spark');effect.append(spark);}
+  // Bound rapid-tap effects without delaying any valid shot or changing spawn timing.
+  if(effects.size>=6)clearEffect(effects.keys().next().value);
+  layer.append(effect);effects.set(effect,setTimeout(()=>clearEffect(effect),hit?400:280));
  }
  const safe=e=>e.target instanceof Element&&paper.contains(e.target)&&!e.target.closest('button,a,input,select,textarea,[role=button]');
  host.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0){gesture=null;return;}gesture=safe(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),scroll:scrollY}:null;},{signal,passive:true});
@@ -50,5 +54,5 @@ export function createLyricsFun(host,paper){
  window.addEventListener('scroll',()=>{gesture=null;},{signal,passive:true,capture:true});
  document.addEventListener('visibilitychange',()=>{gesture=null;cancelAnimationFrame(frame);last=0;if(!document.hidden)frame=requestAnimationFrame(tick);},{signal});
  spawn();frame=requestAnimationFrame(tick);
- return ()=>{stopped=true;abort.abort();cancelAnimationFrame(frame);clearTimeout(timer);clearTimeout(effectTimer);layer.remove();};
+ return ()=>{stopped=true;abort.abort();cancelAnimationFrame(frame);clearTimeout(timer);for(const e of effects.keys())clearEffect(e);layer.remove();};
 }
