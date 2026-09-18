@@ -1,4 +1,4 @@
-import {captureSystems} from './virtual-pages.js';
+import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
 import {createPlayback} from './playback.js';
@@ -10,7 +10,9 @@ import {songs} from './songs.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,parseXML} from './music.js';
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
 let activeSong=songs[0],modeOverride,loading=false,scoreSize='normal';
-const scoreSizes={normal:.78,compact:.62,large:.94};
+// OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
+const scoreSizes={normal:1,compact:.62/.78,large:.94/.78};
+let readingPosition=null;
 let KEYS=[],original='',current=0,wanted=0,currentOctave=0,wantedOctave=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
 const isPdf=()=>activeSong.scoreType==='pdf';
@@ -53,17 +55,17 @@ function trimScreenMargin(){
  const trim=view.width>0?Math.max(0,box.y-view.y-8)*svg.getBoundingClientRect().width/view.width:0;
  score.style.setProperty('--score-trim',trim+'px');
 }
-function commit(entry,shift,octave,w){score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout}}));score.dataset.systems=entry.systems;trimScreenMargin();current=shift;currentOctave=octave;renderWidth=w;lastXML=entry.xml;const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?signature(k):'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''}${octave?' · '+(octave>0?'Up':'Down')+' one octave':''}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
+function commit(entry,shift,octave,w){score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;lastXML=entry.xml;const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?signature(k):'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''}${octave?' · '+(octave>0?'Up':'Down')+' one octave':''}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 async function pump(){
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
- try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=matchMedia('(max-width:600px)').matches?scoreSize:'normal';const id=`${w}:${target}:${octave}:${density}`;const start=performance.now();const cached=cache.get(id);
+ try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${target}:${octave}:${density}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=shiftOctaveXML(transposeXML(original,target,modeOverride),octave);stage.style.width=w+'px';if(engravedXML!==xml){await osmd.load(xml);engravedXML=xml;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
-   // Preserve notation size; reclaim unused page width only on phone screens.
+   // Normal retains the existing responsive baseline; density changes logical width.
    const phone=matchMedia('(max-width:600px)').matches;
    osmd.EngravingRules.PageLeftMargin=phone?.8:5;osmd.EngravingRules.PageRightMargin=phone?.8:5;
-   osmd.Zoom=phone?scoreSizes[density]:(w<800?.78:.9);osmd.render();avoidTempoCollisions(stage,xml);if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   osmd.Zoom=(phone||w<800?.78:.9)*scoreSizes[density];osmd.render();avoidTempoCollisions(stage,xml);if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    const entry={systemLayout:captureSystems(osmd,stage),svg:stage.innerHTML,xml,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&octave===wantedOctave&&w===width())break;
@@ -88,7 +90,7 @@ $('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
 $('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=Math.min(rect.bottom+6,innerHeight-sizeOptions.offsetHeight-8)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
-for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{scoreSize=option.dataset.size;closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
+for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{readingPosition=rememberReadingPosition();scoreSize=option.dataset.size;closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});

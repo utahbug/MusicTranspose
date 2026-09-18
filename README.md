@@ -521,3 +521,12 @@ Page changes do not re-render or fetch. Supplementary verses remain on final
 text pages. Continuous Scroll and Auto-scroll remain; Hybrid is no longer a
 visible choice. This supersedes earlier notes saying MXL page turns are unavailable.
 See `reports/virtual-page-turns.md` for implementation, tests and device caveats.
+
+## Score density on iPad and desktop
+
+The existing Small / Normal / Large popover now controls real OSMD reflow on all
+MXL screen sizes. Normal retains the previous baseline; Small/Large change the
+logical page width before automatic system layout. Density persists across key,
+octave and viewport changes, and new system bounds rebuild virtual pages. Print
+and PDFs are unchanged. See `reports/score-density-reflow.md` for actual system,
+first-measure and virtual-page counts, including the Little Stream acceptance case.

@@ -39,3 +39,15 @@ export function prepareVirtualPages(force=false){
  active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));return active;
 }
 export function displayVirtual(index){active=index;const frame=frames[index];if(!frame)return;anchor=Number(frame.dataset.start);if(!frame._view)return;const {svg,top,bottom,width}=frame._view,height=bottom-top,available=parseFloat(frame.style.height),scale=Math.min(document.getElementById('score').clientWidth/width,available/height);svg.setAttribute('viewBox',`0 ${top} ${width} ${height}`);svg.setAttribute('width',width*scale);svg.setAttribute('height',height*scale);svg.style.width=width*scale+'px';svg.style.height=height*scale+'px';frame.append(svg);}
+
+// Keep the first visible complete-system location during Continuous/Auto density changes.
+function screenSystemRect(system){const svg=document.querySelectorAll('#score > div:not(.mxl-page-frame) svg, #score > svg')[system.svgIndex];if(!svg)return null;const r=svg.getBoundingClientRect(),v=svg.viewBox.baseVal,scale=r.width/v.width;return {top:r.top+(system.top-v.y)*scale,bottom:r.top+(system.bottom-v.y)*scale};}
+export function rememberReadingPosition(){
+ if(!source||scrollY<100||document.body.classList.contains('page-navigation'))return null;
+ for(const system of source.systems){const rect=screenSystemRect(system);if(rect?.bottom>0)return {measure:system.start,offset:rect.top};}return null;
+}
+export function restoreReadingPosition(position){
+ if(!position||!source||document.body.classList.contains('page-navigation'))return;
+ const system=source.systems.find(s=>s.start<=position.measure&&s.end>=position.measure),rect=system&&screenSystemRect(system);
+ if(rect)window.scrollBy({top:rect.top-position.offset,behavior:'instant'});
+}

@@ -218,10 +218,12 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 
 @media screen and (min-width:601px) and (max-width:740px){}
 
-/* Phone size control triggers OSMD layout; no SVG scaling. */
+/* MXL size control triggers OSMD layout at every screen width. */
 #score-size{display:none}
-@media screen and (max-width:600px){
+@media screen{
  body:not(.pdf-score-open) #score-size{display:flex;align-items:center;justify-content:center;grid-column:2;grid-row:2;justify-self:end;width:44px;height:44px;padding:0;margin-top:2px;color:#536B7A}
+}
+@media screen and (max-width:600px){
  body:not(.pdf-score-open) .score-heading{row-gap:0}
  body:not(.pdf-score-open) .score-heading h1{grid-row:1 / span 2}
 }
