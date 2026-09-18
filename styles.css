@@ -262,14 +262,16 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  #lyrics-view[data-size=medium] .lyrics-body{font-size:22px}
 }
 /* Optional Lyrics ambience stays outside text flow and never intercepts input. */
-.lyrics-fun-layer{position:fixed;z-index:6;overflow:hidden;pointer-events:none;--fun-note:#805524;--fun-beam:#386F9B}
-.lyrics-dark .lyrics-fun-layer{--fun-note:#E4C584;--fun-beam:#8DD8FF}
-.lyrics-fun-note{position:absolute;width:44px;height:56px;color:var(--fun-note);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
+.lyrics-fun-layer{position:fixed;z-index:6;overflow:hidden;pointer-events:none;--fun-beam:#386F9B}
+.lyrics-dark .lyrics-fun-layer{--fun-beam:#8DD8FF}
+.lyrics-fun-note{position:absolute;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
 .lyrics-fun-effect{position:absolute;inset:0;overflow:hidden}
 .lyrics-fun-beam{animation:fun-beam .18s ease-out forwards}
 .lyrics-fun-spark{animation:fun-spark .4s ease-out forwards}
 @keyframes fun-beam{to{opacity:0}}
 @keyframes fun-spark{to{transform:translate(var(--dx),var(--dy));opacity:0}}
 .lyrics-tools button[aria-label="Toggle lyrics fun mode"][aria-pressed=true]{background:var(--lyrics-frame-outer);color:#fff;box-shadow:inset 0 0 0 1px currentColor}
-@media(prefers-reduced-motion:reduce){.lyrics-fun-spark{animation-name:fun-beam}.lyrics-fun-note{opacity:.75}}
+@media(prefers-reduced-motion:reduce){.lyrics-fun-spark{animation-name:fun-beam}}
 @media print{.lyrics-fun-layer{display:none!important}}
+
+.lyrics-icon{width:26px;height:28px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

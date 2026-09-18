@@ -76,7 +76,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore}){
     const up=button('↑','Move up: '+s.title,()=>moveSong(s.id,found[index-1].id,true));up.disabled=index===0;
     const down=button('↓','Move down: '+s.title,()=>moveSong(s.id,found[index+1].id,false));down.disabled=index===found.length-1;
     actions.append(up,down);row.append(grip,entry,actions);
-   }else{const views=node('div',null,'song-view-actions');const scoreButton=button('♫','Open score: '+s.title,()=>open(s.id));scoreButton.title='Open score';views.append(scoreButton);if(lyricIds.has(s.id)){const lyricsButton=button('≡','Open lyrics: '+s.title,()=>{if(!isBusy())openLyrics(s.id);});lyricsButton.title='Open lyrics';views.append(lyricsButton);}row.append(star,entry,views,lists);}
+   }else{const views=node('div',null,'song-view-actions');const scoreButton=button('♫','Open score: '+s.title,()=>open(s.id));scoreButton.title='Open score';views.append(scoreButton);if(lyricIds.has(s.id)){const lyricsButton=button('','Open lyrics',()=>{if(!isBusy())openLyrics(s.id);});lyricsButton.innerHTML='<svg class="lyrics-icon" viewBox="0 0 28 30" aria-hidden="true" focusable="false"><path d="M7 20C12 17 20 9 18 5C16 1 11 5 11 11C11 17 10 23 5 25C2 27 3 22 7 22C12 22 17 29 24 23"/></svg>';lyricsButton.title='Lyrics';views.append(lyricsButton);}row.append(star,entry,views,lists);}
    fragment.append(row);
   }
   if(!found.length)fragment.append(node('p','No songs match. Try another search, filter, or list.','empty-library'));
