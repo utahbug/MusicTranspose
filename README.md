@@ -442,3 +442,12 @@ Lyrics now defaults to near-black (#0B0D0E). Medium body text is 22px on phones
 muted blue-gray and 1px warm gold lines (#6F8A9C / #A58A55), and the score palette on
 white (#4B6E88 / #7A3E46), separated by a 3px inset. Lyrics controls stay outside
 the frame; score styling and print remain unchanged.
+
+Optional Lyrics Fun mode uses the sparkle button (off by default). A view-scoped,
+aria-hidden overlay draws one half/quarter/eighth/sixteenth SVG note, with slow
+upper-area drift. Taps under 450ms and within 8px fire an always-hit edge beam and
+400ms burst; scrolling, dragging, multi-touch and controls do not fire. The next
+note waits 5–10 seconds after a hit. Reduced motion keeps the note stationary
+and uses fading sparks. Leaving Lyrics cancels timers/frames/listeners and resets
+Fun off. Theme/font changes preserve the target and respawn schedule. No audio,
+score data changes, storage or print effects. Offline cache includes the module.
