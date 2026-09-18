@@ -1,3 +1,4 @@
+import {showInstrumentKeys} from './instrument-keys.js';
 import {createPlayback} from './playback.js';
 import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
 import {renderPdf,preparePdfPrint} from './pdf-score.js';
@@ -37,7 +38,7 @@ $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
+function setControls(){ const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf())showInstrumentKeys(concert); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  $('octave-settings').hidden=isPdf();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
@@ -73,7 +74,9 @@ function changeOctave(n){
  if(isPdf()||!ready||!Number.isInteger(n)||Math.abs(n)>1)return;
  wantedOctave=n;score.setAttribute('aria-busy','true');$('status').textContent='Changing score register…';setControls();clearTimeout(timer);timer=setTimeout(pump,20);
 }
+$('instrument-toggle').onclick=()=>{const button=$('instrument-toggle'),expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));$('instrument-panel').hidden=expanded;};
 function buildChooser(){
+ $('instrument-toggle').setAttribute('aria-expanded','false');$('instrument-panel').hidden=true;
  for(const id of ['higher','original','lower'])$(id).replaceChildren();
  for(const key of KEYS){const b=document.createElement('button');b.className='key-choice';b.dataset.shift=key.shift;b.setAttribute('aria-label',`${key.name} ${key.mode}, ${Math.abs(key.fifths)} ${key.fifths<0?'flats':'sharps'}${key.shift===0?', original key':`, ${key.shift>0?'+':''}${key.shift} semitones from original`}`);b.innerHTML=`<span class="name">${key.name}</span><span class="signature" aria-hidden="true">${signature(key)}</span><span class="distance">${key.shift>0?'+':''}${key.shift}</span><span class="marker"></span>`;if(key.shift===0)b.querySelector('.distance').remove();b.onclick=()=>{dialog.close();changeKey(key.shift);};$(key.shift>0?'higher':key.shift<0?'lower':'original').append(b);}
 // Lower keys are ordered outward from the original, not by numeric pitch.

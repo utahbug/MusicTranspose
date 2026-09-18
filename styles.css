@@ -319,3 +319,14 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 @media(prefers-reduced-motion:reduce){.lyrics-fun-projectile{stroke-dasharray:none;animation:fun-beam .3s ease-out forwards}}
 
 @media screen{.score-title-block h1{display:flex;align-items:center;gap:6px}.score-title-block .song-playback{flex:0 0 44px;margin-left:0}}
+
+/* Optional written-key reference; scoped to the existing key dialog. */
+.instrument-guidance{margin-top:14px;border-top:1px solid #cbd4d9;padding-top:6px}
+#instrument-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;min-height:44px}
+#instrument-toggle[aria-expanded=true] span{transform:rotate(90deg)}
+#instrument-concert{font-weight:650;margin:10px 0}
+.instrument-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:9px 0;border-bottom:1px solid #e1e6e9}
+.instrument-row small{display:block;color:#52616a;font-size:.8rem;line-height:1.45;margin-top:3px}
+.instrument-written{text-align:right;white-space:nowrap;font-size:1rem}
+.instrument-written .signature{display:block;font-size:.85rem;margin-top:3px}
+.instrument-note{font-size:.78rem;color:#52616a;line-height:1.4;margin:10px 0 2px}
