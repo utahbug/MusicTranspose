@@ -228,15 +228,3 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 }
 
 @media screen and (min-width:601px) and (max-width:740px){.masthead .step{width:72px;min-width:72px;flex-basis:72px}}
-
-/* Phone-only score gestures: native panning, scoped pinch handling. */
-#score-fit{display:none}
-@media screen and (max-width:600px){
- body:not(.pdf-score-open) #score-fit{display:flex;align-items:center;justify-content:center;grid-column:2;grid-row:2;justify-self:end;width:44px;height:44px;padding:0;color:#536B7A;margin-top:2px}
- .score-heading:has(#score-fit){row-gap:0}
- body:not(.pdf-score-open) .score-heading h1{grid-row:1 / span 2}
- #score-fit .fit-page-icon{display:none}
- #score-fit-viewport.pinch-enabled{overflow-x:auto;overflow-y:hidden;touch-action:pan-x pan-y;overscroll-behavior-x:contain}
- #score-fit-viewport.pinch-enabled #score{transform:scale(var(--score-fit-scale));transform-origin:top left}
-}
-@media print{#score-fit{display:none!important}#score-fit-viewport{height:auto!important;overflow:visible!important}#score{transform:none!important}}

@@ -331,24 +331,39 @@ chords, storage keys and local-only preferences. Tests use responsive desktop
 browser viewports, not physical Safari hardware. tests/release-audit.mjs records
 before/after screenshots; tests/release-states.mjs covers failures/retry/contrast.
 
-### Phone score pinch zoom
+### Phone responsive engraving
 
-At screen widths <=600px, structured scores accept continuous two-touch pinch
-zoom from 0.75x to 3x. Touch handling is scoped to the score viewport; browser
-accessibility zoom elsewhere remains available. Gesture midpoints anchor the
-musical location. Native horizontal overflow panning and document vertical
-scrolling remain enabled. Safari gesture events are prevented only in this
-viewport to avoid competing whole-page zoom.
+At viewport widths <=600px the existing OSMD 2.1.2 engraver uses the actual
+score clientWidth for its staging container, keeps Zoom at 0.78 and sets
+EngravingRules.PageLeftMargin/PageRightMargin to 0.8 instead of 5 units.
+OSMD derives sheet.pageWidth = container.offsetWidth / Zoom / 10 and calls
+GraphicSheet.reCalculate() during render(), so the added usable system width
+changes measure packing rather than scaling finished SVGs. At 360px content
+width the system budget grows from about 282px to 348px. Amazing Grace changed
+from 12 systems to 8 in the same notation size; actual trimmed score height
+fell from 3115px to 2165px. Other scores improve according to measure density.
 
-The top-right 44x44px fit-width icon now only resets zoom to 1x and horizontal
-position to zero, preserving the top visible musical position where possible.
-There is no Fit Page state. Zoom is memory-only, resets on exit/open and when
-leaving the phone breakpoint, and is independent of musical Reset. PDF viewing
-is unchanged and does not use these gestures. Frame and toolbar do not scale.
-The print pipeline is unchanged and print CSS removes the visual transform.
+Screen format remains OSMD's undefined/endless page format. Existing automatic
+system breaking remains enabled: NewSystemAtXMLNewSystemAttribute,
+NewSystemAtXMLNewPageAttribute and NewPageAtXMLNewPageAttribute are false;
+RenderXMeasuresPerLineAkaSystem is zero. Printed layout hints do not force
+screen systems. Musical measure order, repeats and notation are unchanged, and
+original source assets are never edited. Print uses its separate A4 engraver.
 
-Tests: tests/score-fit.mjs injects browser touch gestures on the five requested
-songs; checks outward/inward scaling, min/max clamps, native horizontal/vertical
-panning, no browser zoom, source invariance, exact print path geometry, Reset,
-exit/reopening, six viewport sizes and PDF exclusion. Automated touch checks
-use Chromium mobile emulation; physical iPhone Safari remains a device check.
+The existing 140ms ResizeObserver debounce re-engraves at the new content width.
+The already-loaded OSMD model is reused if transformed XML has not changed;
+parsed assets and width/key/register render caches remain in use. Width changes
+do not refetch scores. Above 600px the original 5-unit engraving margins and
+existing notation-size rules are restored. PDFs are unchanged.
+
+The prior pinch transform, gesture interception and fit icon are removed.
+Normal scrolling and browser accessibility gestures are available. Navigation
+continues to pause auto-scroll when rendering changes. No extra score controls.
+
+Validation: tests/phone-reflow.mjs compares against b25d67d for seven scores,
+exact source XML and print path geometry, phone and larger widths, key/octave/
+Reset, orientation with no refetch, hybrid, auto-scroll and PDFs. At 390px,
+height reductions were 30% Amazing Grace, 28% Give Said the Little Stream,
+19% Nativity, 2% Shepherd, 28% Faithful, approximately 0% Silent Night and 11%
+Come Thou Fount (HHC 1001). Larger-screen dimensions matched the prior release.
+Tests emulate viewports in Chromium; physical Safari testing is still advised.
