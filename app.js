@@ -1,3 +1,4 @@
+import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
@@ -60,12 +61,12 @@ async function pump(){
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
  try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${target}:${octave}:${density}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
-  else{const xml=shiftOctaveXML(transposeXML(original,target,modeOverride),octave);stage.style.width=w+'px';if(engravedXML!==xml){await osmd.load(xml);engravedXML=xml;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+  else{const xml=shiftOctaveXML(transposeXML(original,target,modeOverride),octave);const displayXML=openingMetadata(xml).displayXML;stage.style.width=w+'px';if(engravedXML!==displayXML){await osmd.load(displayXML);engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
    // Normal retains the existing responsive baseline; density changes logical width.
    const phone=matchMedia('(max-width:600px)').matches;
    osmd.EngravingRules.PageLeftMargin=phone?.8:5;osmd.EngravingRules.PageRightMargin=phone?.8:5;
-   osmd.Zoom=(phone||w<800?.78:.9)*scoreSizes[density];osmd.render();avoidTempoCollisions(stage,xml);if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   osmd.Zoom=(phone||w<800?.78:.9)*scoreSizes[density];osmd.render();avoidTempoCollisions(stage,displayXML);if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    const entry={systemLayout:captureSystems(osmd,stage),svg:stage.innerHTML,xml,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&octave===wantedOctave&&w===width())break;
@@ -113,6 +114,7 @@ async function loadScore(xml,override){
  if(busy)throw new Error('Wait for the current rendering before loading a score.');
  const source=originalKey(xml,override),keys=buildKeys(source);modeOverride=override;
  clearTimeout(timer);original=xml;KEYS=keys;current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;cache.clear();
+ showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+' · '+activeSong.page,xml);
  buildChooser();document.querySelector('.dialog-hint').textContent='All destinations remain '+source.mode+'.';document.querySelector('.footnote').textContent='Original key: '+source.name+' '+source.mode+' · Tap the key to choose another.';
  score.setAttribute('aria-busy','true');await pump();
 }

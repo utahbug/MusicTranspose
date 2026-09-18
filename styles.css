@@ -411,3 +411,5 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  #library .library-heading #resume-score:focus-visible{outline-color:var(--primary-blue-text);outline-offset:2px}
  @media(max-width:600px){#library .library-heading{margin-top:-10px;margin-inline:-4px}}
 }
+
+@media screen{.score-heading .opening-metadata{display:inline-block;margin-inline-start:1em;font:inherit;color:inherit;font-weight:inherit;max-width:calc(100% - 1em);overflow-wrap:anywhere}}
