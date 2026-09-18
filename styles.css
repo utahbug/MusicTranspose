@@ -275,3 +275,8 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 @media print{.lyrics-fun-layer{display:none!important}}
 
 .lyrics-icon{width:26px;height:28px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.song-playback{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-left:6px;border:1px solid #9CAFB9;border-radius:7px;background:transparent;color:#536B7A;touch-action:manipulation}
+#lyrics-view .song-playback{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}
+#playback-message:empty{display:none}#playback-message{position:fixed;top:8px;left:10%;width:80%;z-index:20;background:#fff;color:#733;padding:12px;border:1px solid #733}
+@media print{.song-playback,#playback-message{display:none!important}}

@@ -1,0 +1,1194 @@
+[
+  {
+    "id": "nativity",
+    "title": "The Nativity Song",
+    "notes": 123,
+    "seconds": 33.333333333333336,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "shepherd",
+    "title": "The Shepherd’s Carol",
+    "notes": 71,
+    "seconds": 16.551724137931036,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "faithful",
+    "title": "Oh, Come, All Ye Faithful",
+    "notes": 231,
+    "seconds": 46.15384615384615,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "silent-night",
+    "title": "Silent Night",
+    "notes": 171,
+    "seconds": 43.2,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1001",
+    "title": "Come, Thou Fount of Every Blessing",
+    "notes": 246,
+    "seconds": 37.89473684210526,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1002",
+    "title": "When the Savior Comes Again",
+    "notes": 368,
+    "seconds": 72.63157894736842,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1003",
+    "title": "It Is Well with My Soul",
+    "notes": 230,
+    "seconds": 44,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1004",
+    "title": "I Will Walk with Jesus",
+    "notes": 284,
+    "seconds": 63,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1005",
+    "title": "His Eye Is on the Sparrow",
+    "notes": 330,
+    "seconds": 64.61538461538461,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1006",
+    "title": "Think a Sacred Song",
+    "notes": 116,
+    "seconds": 29.09090909090909,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1007",
+    "title": "As Bread Is Broken",
+    "notes": 142,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1008",
+    "title": "Bread of Life, Living Water",
+    "notes": 265,
+    "seconds": 51.81818181818182,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1009",
+    "title": "Gethsemane",
+    "notes": 454,
+    "seconds": 117.5,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1010",
+    "title": "Amazing Grace",
+    "notes": 133,
+    "seconds": 31.304347826086957,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1011",
+    "title": "Holding Hands Around the World",
+    "notes": 353,
+    "seconds": 57.6,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1012",
+    "title": "Anytime, Anywhere",
+    "notes": 74,
+    "seconds": 21.818181818181817,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1013",
+    "title": "God’s Gracious Love",
+    "notes": 300,
+    "seconds": 50.526315789473685,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1014",
+    "title": "My Shepherd Will Supply My Need",
+    "notes": 261,
+    "seconds": 57.6,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1015",
+    "title": "Oh, the Deep, Deep Love of Jesus",
+    "notes": 247,
+    "seconds": 43.63636363636363,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1016",
+    "title": "Behold the Wounds in Jesus’ Hands",
+    "notes": 226,
+    "seconds": 43.63636363636363,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1018",
+    "title": "Come, Lord Jesus",
+    "notes": 283,
+    "seconds": 41.73913043478261,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 3
+  },
+  {
+    "id": "hhc-1019",
+    "title": "To Love like Thee",
+    "notes": 138,
+    "seconds": 30,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1020",
+    "title": "Softly and Tenderly Jesus Is Calling",
+    "notes": 277,
+    "seconds": 43.63636363636363,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1021",
+    "title": "I Know That My Savior Loves Me",
+    "notes": 373,
+    "seconds": 66.25,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [
+      "Grace notes omitted"
+    ],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1022",
+    "title": "Faith in Every Footstep",
+    "notes": 405,
+    "seconds": 60,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1023",
+    "title": "Standing on the Promises",
+    "notes": 290,
+    "seconds": 34.285714285714285,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1024",
+    "title": "I Have Faith in the Lord Jesus Christ",
+    "notes": 197,
+    "seconds": 47.36842105263158,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1025",
+    "title": "Take My Heart and Let It Be Consecrated",
+    "notes": 156,
+    "seconds": 27.272727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1026",
+    "title": "Holy Places",
+    "notes": 144,
+    "seconds": 36.42857142857143,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1027",
+    "title": "Welcome Home",
+    "notes": 265,
+    "seconds": 43.63636363636363,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1028",
+    "title": "This Little Light of Mine",
+    "notes": 125,
+    "seconds": 25.263157894736842,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1029",
+    "title": "I Can’t Count Them All",
+    "notes": 204,
+    "seconds": 32.72727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1030",
+    "title": "Close as a Quiet Prayer",
+    "notes": 304,
+    "seconds": 56.53846153846154,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1031",
+    "title": "Come, Hear the Word the Lord Has Spoken",
+    "notes": 153,
+    "seconds": 26.666666666666668,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1032",
+    "title": "Look unto Christ",
+    "notes": 192,
+    "seconds": 30.789473684210527,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1033",
+    "title": "Oh, How Great Is Our Joy",
+    "notes": 288,
+    "seconds": 40,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1034",
+    "title": "I’m a Pioneer Too",
+    "notes": 142,
+    "seconds": 25.263157894736842,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1035",
+    "title": "As I Keep the Sabbath Day",
+    "notes": 163,
+    "seconds": 36,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1036",
+    "title": "Read the Book of Mormon and Pray",
+    "notes": 174,
+    "seconds": 38.095238095238095,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1037",
+    "title": "I’m Gonna Live So God Can Use Me",
+    "notes": 190,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1038",
+    "title": "The Lord’s My Shepherd",
+    "notes": 176,
+    "seconds": 32.72727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1039",
+    "title": "Because",
+    "notes": 287,
+    "seconds": 71.84210526315789,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1040",
+    "title": "His Voice as the Sound",
+    "notes": 312,
+    "seconds": 50.526315789473685,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1041",
+    "title": "O Lord, Who Gave Thy Life for Me",
+    "notes": 203,
+    "seconds": 35,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1042",
+    "title": "Thou Gracious God, Whose Mercy Lends",
+    "notes": 135,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1043",
+    "title": "Help Us Remember",
+    "notes": 158,
+    "seconds": 30.476190476190474,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1044",
+    "title": "How Did the Savior Minister?",
+    "notes": 130,
+    "seconds": 34.285714285714285,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1045",
+    "title": "Jesus Is the Way",
+    "notes": 235,
+    "seconds": 41.73913043478261,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1046",
+    "title": "Can You Count the Stars in Heaven?",
+    "notes": 143,
+    "seconds": 32.72727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1047",
+    "title": "He Cares for Me",
+    "notes": 160,
+    "seconds": 38.4,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1048",
+    "title": "Our Prayer to Thee",
+    "notes": 277,
+    "seconds": 48,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1049",
+    "title": "Joseph Prayed in Faith",
+    "notes": 259,
+    "seconds": 60,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1050",
+    "title": "Stand by Me",
+    "notes": 205,
+    "seconds": 27.82608695652174,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1051",
+    "title": "This Day Is a Good Day, Lord",
+    "notes": 195,
+    "seconds": 28.8,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1052",
+    "title": "Joyfully Bound",
+    "notes": 506,
+    "seconds": 64,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1053",
+    "title": "My Covenants",
+    "notes": 286,
+    "seconds": 69,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1054",
+    "title": "When I Am Baptized",
+    "notes": 124,
+    "seconds": 29.09090909090909,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1055",
+    "title": "The Power of the Holy Ghost",
+    "notes": 270,
+    "seconds": 35.55555555555556,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1056",
+    "title": "Elijah and the Still, Small Voice",
+    "notes": 144,
+    "seconds": 37.5,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1057",
+    "title": "Jesus Is My Shepherd",
+    "notes": 229,
+    "seconds": 57.5,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1058",
+    "title": "My Song in the Night",
+    "notes": 191,
+    "seconds": 35.55555555555556,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1059",
+    "title": "This Is My Father’s World",
+    "notes": 235,
+    "seconds": 38.4,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1060",
+    "title": "Build an Ark",
+    "notes": 274,
+    "seconds": 49.891304347826086,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1061",
+    "title": "Love Will Bless Our Home",
+    "notes": 260,
+    "seconds": 43.04347826086956,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1062",
+    "title": "Lord, Accept Our Humble Fast",
+    "notes": 98,
+    "seconds": 20,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1063",
+    "title": "Peace, Peace, Be Still",
+    "notes": 215,
+    "seconds": 34,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1064",
+    "title": "Great Is Thy Faithfulness",
+    "notes": 343,
+    "seconds": 60,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1065",
+    "title": "Isaiah Said",
+    "notes": 146,
+    "seconds": 36.52173913043478,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1066",
+    "title": "Fight the Good Fight",
+    "notes": 137,
+    "seconds": 17.77777777777778,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1067",
+    "title": "It’s Joyful to Live the Gospel",
+    "notes": 209,
+    "seconds": 51.42857142857143,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1068",
+    "title": "To God Be the Glory",
+    "notes": 368,
+    "seconds": 51.42857142857143,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1069",
+    "title": "Speak to Us, Lord",
+    "notes": 276,
+    "seconds": 51,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1070",
+    "title": "The Miracle",
+    "notes": 301,
+    "seconds": 75.71428571428571,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1071",
+    "title": "What God Calls Us To",
+    "notes": 203,
+    "seconds": 33.1578947368421,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1072",
+    "title": "When I Survey the Wondrous Cross",
+    "notes": 150,
+    "seconds": 36.92307692307692,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1201",
+    "title": "Hail the Day That Sees Him Rise",
+    "notes": 241,
+    "seconds": 34.285714285714285,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1202",
+    "title": "He Is Born, the Divine Christ Child",
+    "notes": 274,
+    "seconds": 27.82608695652174,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1203",
+    "title": "What Child Is This?",
+    "notes": 248,
+    "seconds": 41.73913043478261,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1204",
+    "title": "Star Bright",
+    "notes": 251,
+    "seconds": 55.65217391304348,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1205",
+    "title": "Let Easter Anthems Ring",
+    "notes": 210,
+    "seconds": 40,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1206",
+    "title": "Were You There?",
+    "notes": 285,
+    "seconds": 47.61904761904762,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1207",
+    "title": "Still, Still, Still",
+    "notes": 160,
+    "seconds": 32.72727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1208",
+    "title": "Go Tell It on the Mountain",
+    "notes": 196,
+    "seconds": 32,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "hhc-1209",
+    "title": "Little Baby in a Manger",
+    "notes": 274,
+    "seconds": 52.857142857142854,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 3
+  },
+  {
+    "id": "hhc-1210",
+    "title": "Long Ago, Within a Garden",
+    "notes": 257,
+    "seconds": 40,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-12",
+    "title": "A Child’s Prayer",
+    "notes": 325,
+    "seconds": 54.78260869565217,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 4
+  },
+  {
+    "id": "cs-174",
+    "title": "Called to Serve",
+    "notes": 240,
+    "seconds": 51.724137931034484,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-74",
+    "title": "I Feel My Savior’s Love",
+    "notes": 173,
+    "seconds": 45.714285714285715,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-164",
+    "title": "I Will Follow God’s Plan",
+    "notes": 279,
+    "seconds": 55.55555555555556,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-34",
+    "title": "He Sent His Son",
+    "notes": 362,
+    "seconds": 94.5,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-70",
+    "title": "Jesus Has Risen",
+    "notes": 140,
+    "seconds": 38.57142857142857,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-60",
+    "title": "Jesus Wants Me for a Sunbeam",
+    "notes": 196,
+    "seconds": 35.55555555555556,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-18",
+    "title": "I Need My Heavenly Father",
+    "notes": 101,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-77",
+    "title": "The Church of Jesus Christ",
+    "notes": 152,
+    "seconds": 32,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-168",
+    "title": "I Want to Be a Missionary Now",
+    "notes": 98,
+    "seconds": 22,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-169",
+    "title": "I Hope They Call Me on a Mission",
+    "notes": 127,
+    "seconds": 30,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-95",
+    "title": "I Love to See the Temple",
+    "notes": 144,
+    "seconds": 32.72727272727273,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-7",
+    "title": "I Thank Thee, Dear Father",
+    "notes": 116,
+    "seconds": 33.10344827586207,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-78",
+    "title": "I’m Trying to Be like Jesus",
+    "notes": 276,
+    "seconds": 77.58620689655173,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-228",
+    "title": "My Heavenly Father Loves Me",
+    "notes": 148,
+    "seconds": 34.285714285714285,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-109",
+    "title": "Search, Ponder, and Pray",
+    "notes": 190,
+    "seconds": 36.92307692307692,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-82",
+    "title": "When He Comes Again",
+    "notes": 243,
+    "seconds": 53.333333333333336,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-138",
+    "title": "Where Love Is",
+    "notes": 382,
+    "seconds": 104.5,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-232",
+    "title": "Beauty Everywhere",
+    "notes": 187,
+    "seconds": 42.857142857142854,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-16",
+    "title": "Children All Over the World",
+    "notes": 289,
+    "seconds": 66.92307692307692,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-110",
+    "title": "Follow the Prophet",
+    "notes": 173,
+    "seconds": 34.285714285714285,
+    "fallback": null,
+    "repeat": true,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-2",
+    "title": "I Am a Child of God",
+    "notes": 189,
+    "seconds": 40,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 3
+  },
+  {
+    "id": "cs-244",
+    "title": "Little Purple Pansies",
+    "notes": 134,
+    "seconds": 18.46153846153846,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-276",
+    "title": "Do as I’m Doing",
+    "notes": 140,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-236",
+    "title": "“Give,” Said the Little Stream",
+    "notes": 176,
+    "seconds": 28.571428571428573,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-275a",
+    "title": "Head, Shoulders, Knees, and Toes",
+    "notes": 50,
+    "seconds": 8.571428571428571,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-260",
+    "title": "Hello Song",
+    "notes": 141,
+    "seconds": 24,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-266",
+    "title": "If You’re Happy",
+    "notes": 91,
+    "seconds": 15.238095238095237,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-249",
+    "title": "Once There Was a Snowman",
+    "notes": 90,
+    "seconds": 15.238095238095237,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-242",
+    "title": "Popcorn Popping",
+    "notes": 173,
+    "seconds": 29.09090909090909,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-220",
+    "title": "The Handcart Song",
+    "notes": 162,
+    "seconds": 22.045454545454547,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 3
+  },
+  {
+    "id": "cs-281",
+    "title": "The Wise Man and the Foolish Man",
+    "notes": 87,
+    "seconds": 16,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-267a",
+    "title": "Smiles",
+    "notes": 43,
+    "seconds": 10,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  },
+  {
+    "id": "cs-61",
+    "title": "Jesus Said Love Everyone",
+    "notes": 67,
+    "seconds": 18.46153846153846,
+    "fallback": null,
+    "repeat": false,
+    "warnings": [],
+    "staves": 2
+  }
+]

@@ -461,3 +461,41 @@ left/right origin and safe visible-content destination, last 280ms, and never
 change the target spawn timer. Hits retain the 400ms burst and 5–10 second wait.
 At most six short-lived effects coexist; older effects are removed on rapid taps.
 All effect timers are explicitly cleared when Fun mode stops.
+
+## Local score playback
+
+Structured-score titles now include a 44px speaker control in Score and Lyrics.
+Tap cycles Play / Pause / Resume. Hold for 600ms (or right-click / Shift+F10) to
+stop and rewind; the next Play starts at the beginning. Escape on the control
+also stops. Returning to Library or changing song stops immediately. Changing
+key or octave stops audio; the next Play parses the displayed MusicXML, ensuring
+sound follows the current notation. Score/Lyrics switching preserves playback.
+
+The local playback.js module builds a quarter-note timeline across all pitched
+parts, staves and voices, including chords, backup/forward, rests, ties and tempo
+changes. Durations encode dotted/tuplet timing directly. Every measure is played
+once in written order: repeats, endings, D.C./D.S., additional lyric verses,
+ornaments, grace notes and expressive fermata/rubato are not performed. Harmony
+symbols are not synthesized as extra notes beyond the written accompaniment.
+This is a practice reference, not a performance recording.
+
+One lazily-created Web Audio AudioContext uses triangle oscillators with a soft
+attack/decay envelope and output compressor. A 25ms scheduler queues 200ms ahead
+on the audio clock. Pause stops nodes and retains position; resume includes any
+sustained notes at that position. The first user tap creates/resumes audio before
+awaiting a score fetch. Backgrounding pauses rather than attempting lock-screen
+playback. Source MXL and timelines are reused; no MP3, soundfont or external audio
+request is made. playback.js is in the offline cache.
+
+All 119 structured scores parsed successfully (playback-audit.json). All contain
+an initial tempo; none currently use the 90-quarter-notes/minute fallback. PDF
+songs have no playback control. Browser tests cover the eight requested songs,
+major/minor, multi-staff notes, a chord/tie/tempo fixture, actual oscillator
+frequencies after key shifts, octave/reset, pause/resume/stop/natural ending,
+paired views, offline playback, and 390/820/1180/1440px layouts. Print hides the
+control and keeps the existing print renderer. Physical iOS audio output and
+listening-quality assessment remain device checks, not claimed by browser tests.
+
+Implementation references: [MusicXML durations](https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/duration/),
+[MusicXML sound tempo](https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/sound/),
+and the [Web Audio specification](https://www.w3.org/TR/webaudio-1.0/).
