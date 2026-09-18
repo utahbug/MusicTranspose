@@ -17,8 +17,8 @@ function persist(){try{sessionStorage.setItem(storageKey,JSON.stringify({...(has
 function sync(){
  document.querySelectorAll('input[name="navigation"]').forEach(e=>e.checked=e.value===mode);
  $('auto-options').hidden=mode!=='auto';$('hybrid-help').hidden=mode!=='hybrid';
- $('navigation-strip').hidden=mode==='continuous';$('page-controls').hidden=mode!=='pages';$('auto-toggle').hidden=mode!=='auto';$('speed-summary').hidden=mode!=='auto';$('screenful-next').hidden=mode!=='hybrid';
- // Measure pagination after the navigation strip has its final height.
+ $('navigation-strip').hidden=mode!=='auto'&&mode!=='hybrid';$('auto-toggle').hidden=mode!=='auto';$('speed-summary').hidden=mode!=='auto';$('screenful-next').hidden=mode!=='hybrid';
+ // Measure pagination after any Auto-scroll strip has its final height.
  syncPages();
  $('scroll-speed').value=speed;$('speed-value').textContent=speed+' px/s';$('speed-summary').textContent=speed+' px/s';
  $('auto-toggle').textContent=running?'Pause scrolling':'Start scrolling';$('auto-toggle').setAttribute('aria-pressed',String(running));$('settings-auto-start').textContent=running?'Pause scrolling':'Start scrolling';
@@ -67,14 +67,14 @@ function syncStart(){$('return-start').hidden=mode!=='continuous'||!playing()||s
 function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  const input=panel.querySelector('input[value=pages]');input.disabled=!available;$('page-mode-choice').classList.toggle('unavailable',!available);
- $('page-mode-note').textContent=available?'Tap to flip pages: upper left — First; upper right — Last '+(pdf?'PDF':'musical')+' page; lower left — Previous; lower right — Next. Page buttons and arrow keys turn one page.':'Load a score to prepare performance pages.';
+ $('page-mode-note').textContent=available?'Tap to flip pages: upper left — First; upper right — Last '+(pdf?'PDF':'musical')+' page; lower left — Previous; lower right — Next. Page Up / Left: previous page; Page Down / Right: next page. Home / End: first / last. Compatible keyboard pedals use the same commands.':'Load a score to prepare performance pages.';
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
  frames.forEach((f,i)=>{f.classList.toggle('current-page',i===pageIndex);if(mode==='pages')f.setAttribute('aria-hidden',String(i!==pageIndex));else f.removeAttribute('aria-hidden');});
- $('page-position').textContent=frames.length?`${pageIndex+1} / ${frames.length}`:'';$('page-position').setAttribute('aria-label',`${pdf?'Page':'Virtual page'} ${pageIndex+1} of ${frames.length}`);$('page-previous').disabled=pageIndex===0;$('page-next').disabled=pageIndex>=frames.length-1;
+ $('page-position').textContent=frames.length?`${pageIndex+1} / ${frames.length}`:'';$('page-position').setAttribute('aria-label',`${pdf?'Page':'Virtual page'} ${pageIndex+1} of ${frames.length}`);$('page-position').hidden=mode!=='pages'||!available||frames.length<=1||!playing();
  fitPage();syncStart();
 }
 function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex);sync();window.scrollTo({top:0,behavior:'instant'});}
-$('page-previous').onclick=()=>turn(-1);$('page-next').onclick=()=>turn(1);
+// Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
 $('return-start').onclick=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
 let pageGesture=null;
 const safePage=e=>!document.querySelector('dialog[open],#score-size-options:not([hidden])')&&e.target instanceof Element&&!e.target.closest('button,a,input,select,textarea,dialog,[role=button],[contenteditable],[tabindex]');
