@@ -30,7 +30,7 @@ document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle,#
 document.addEventListener('touchstart',e=>{if(e.target.closest('main'))pause();},{passive:true});
 window.addEventListener('scroll',()=>{if(running&&Math.abs(scrollY-expected)>2)pause();},{passive:true});
 document.addEventListener('keydown',e=>{
- if(document.body.classList.contains('library-open')||document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
+ if(document.body.classList.contains('library-open')||document.body.classList.contains('lyrics-open')||document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
  if(mode==='hybrid'&&['PageDown','ArrowRight'].includes(e.key)){e.preventDefault();advance();return;}
  if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))pause();
 });

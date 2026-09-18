@@ -1,3 +1,4 @@
+import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
 import {renderPdf,preparePdfPrint} from './pdf-score.js';
 import {initLibrary} from './library.js';
 import {avoidTempoCollisions} from './score-layout.js';
@@ -9,11 +10,25 @@ const scoreSizes={normal:.78,compact:.62,large:.94};
 let KEYS=[],original='',current=0,wanted=0,currentOctave=0,wantedOctave=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
 const isPdf=()=>activeSong.scoreType==='pdf';
-let library;
+let library,lyricsSong=null,scoreScroll=0;
+const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>{
+ document.body.classList.remove('lyrics-open');lyricsView.hide();document.title=(lyricsSong?.title||activeSong.title)+' · Music Transpose';
+ if(ready&&activeSong.id===lyricsSong?.id){window.scrollTo({top:scoreScroll,behavior:'instant'});$('show-lyrics').focus({preventScroll:true});}else if(lyricsSong)loadSong(lyricsSong.id);
+}});
+async function openLyrics(id){
+ const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id)||busy||loading)return;
+ loading=true;setControls();
+ try{const data=await getLyrics(id);if(!data)return;
+ const fresh=lyricsSong?.id!==id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
+ document.dispatchEvent(new Event('library-open'));library.showScore();document.body.classList.add('lyrics-open');
+ lyricsView.show(data,{fresh});library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});
+ }catch(e){$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
+}
+$('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
+function setControls(){ $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  const octaveButton=$('octave-toggle'),label='Octave: '+(currentOctave===1?'one octave up':currentOctave===-1?'one octave down':'original');
  octaveButton.hidden=isPdf();octaveButton.disabled=isPdf()||!ready;octaveButton.setAttribute('aria-label',label);octaveButton.title=label;octaveButton.dataset.state=String(currentOctave);$('octave-symbol').textContent=currentOctave===1?'8↑':currentOctave===-1?'8↓':'8';
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
@@ -80,7 +95,7 @@ async function loadScore(xml,override){
 async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
- scoreSize='normal';library?.showScore();loading=true;ready=false;$('status').textContent='Loading score…';setControls();clearTimeout(timer);
+ document.body.classList.remove('lyrics-open');lyricsView.hide();scoreSize='normal';library?.showScore();loading=true;ready=false;$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
@@ -102,6 +117,7 @@ async function loadSong(id){
 // Exiting ends a temporary playing session, including reopening the same song.
 // Parsed source assets stay cached; Library data and navigation preferences are independent.
 function leaveScore(){
+ lyricsView.reset();lyricsSong=null;document.body.classList.remove('lyrics-open');
  scoreSize='normal';
 
  clearTimeout(timer);current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;
@@ -112,7 +128,7 @@ function leaveScore(){
 // Local acceptance-test hooks.
 window.prototype={get current(){return current;},get wanted(){return wanted;},get octave(){return currentOctave;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,changeOctave,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
- library=initLibrary({loadSong,isBusy:()=>busy||loading,leaveScore});
+ library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore});
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
  let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false;
  const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};

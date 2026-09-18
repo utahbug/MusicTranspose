@@ -237,3 +237,17 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  body:not(.pdf-score-open) .score-heading h1{grid-row:1 / span 2}
 }
 @media print{#score-size{display:none!important}}
+
+/* Integrated song views; management and source metadata stay separate. */
+#library .library-row:not(.reordering){grid-template-columns:44px minmax(0,1fr) 88px 32px}
+.song-view-actions{display:flex}.song-view-actions button{width:44px;min-width:44px;padding:0;font-size:23px;color:#536B7A;border:0}
+.score-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:4px}.score-actions .quiet{width:44px;height:44px;padding:0;margin-top:2px}
+#show-lyrics{font-size:25px;color:#536B7A}.score-heading h1{grid-row:1 / span 2}
+#lyrics-view{--lyrics-bg:#F7FAFB;--lyrics-ink:#1F2A2E;--lyrics-muted:#5C6B70;background:var(--lyrics-bg);color:var(--lyrics-ink);min-height:100dvh;padding:16px max(16px,calc((100% - 780px)/2)) 48px;font-family:system-ui,sans-serif}
+#lyrics-view.lyrics-dark{--lyrics-bg:#0B0F12;--lyrics-ink:#F7FAFB;--lyrics-muted:#B8C8CE;color-scheme:dark}
+.lyrics-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:22px}.lyrics-tools{display:flex;gap:6px}.lyrics-tools button{width:44px;padding:0;font-size:19px}
+#lyrics-view button{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}#lyrics-view h1{font:600 26px/1.25 system-ui;margin:0}.lyrics-source{color:var(--lyrics-muted);font-size:14px;line-height:1.5}
+.lyrics-body{font-size:24px;line-height:1.65}.lyrics-body section{margin-top:28px}.lyrics-body h2{font:600 14px system-ui;color:var(--lyrics-muted);margin:0 0 8px}.lyrics-body p{white-space:pre-line;margin:0;overflow-wrap:break-word}
+#lyrics-view[data-size=small] .lyrics-body{font-size:19px}#lyrics-view[data-size=large] .lyrics-body{font-size:30px}.lyrics-refrain{border-left:3px solid #536B7A;padding-left:16px}.lyrics-notice{font-size:13px;color:var(--lyrics-muted);line-height:1.5}
+@media screen{body.lyrics-open .masthead,body.lyrics-open #playing-view{display:none!important}}
+@media print{#lyrics-view,.score-actions{display:none!important}}

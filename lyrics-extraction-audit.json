@@ -1,0 +1,322 @@
+{
+  "published": 104,
+  "explicitRefrain": 11,
+  "total": 121,
+  "structured": 119,
+  "extracted": 78,
+  "needsReview": 41,
+  "multipleVerses": 105,
+  "refrainDetected": 41,
+  "noLyrics": [
+    "scripture-power",
+    "choose-to-serve-the-lord"
+  ],
+  "review": [
+    {
+      "id": "faithful",
+      "title": "Oh, Come, All Ye Faithful",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1002",
+      "title": "When the Savior Comes Again",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1003",
+      "title": "It Is Well with My Soul",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Alternate vocal streams for verse 1 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1004",
+      "title": "I Will Walk with Jesus",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1005",
+      "title": "His Eye Is on the Sparrow",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1008",
+      "title": "Bread of Life, Living Water",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1011",
+      "title": "Holding Hands Around the World",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1020",
+      "title": "Softly and Tenderly Jesus Is Calling",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1021",
+      "title": "I Know That My Savior Loves Me",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1022",
+      "title": "Faith in Every Footstep",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    },
+    {
+      "id": "hhc-1023",
+      "title": "Standing on the Promises",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1026",
+      "title": "Holy Places",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1027",
+      "title": "Welcome Home",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1033",
+      "title": "Oh, How Great Is Our Joy",
+      "notes": [
+        "Alternate vocal streams for verse 1 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 3 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1034",
+      "title": "I’m a Pioneer Too",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1035",
+      "title": "As I Keep the Sabbath Day",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1036",
+      "title": "Read the Book of Mormon and Pray",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1037",
+      "title": "I’m Gonna Live So God Can Use Me",
+      "notes": [
+        "Alternate vocal streams for verse 1 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 3 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 4 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1044",
+      "title": "How Did the Savior Minister?",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1045",
+      "title": "Jesus Is the Way",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    },
+    {
+      "id": "hhc-1050",
+      "title": "Stand by Me",
+      "notes": [
+        "Alternate vocal streams for verse 1 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 3 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1052",
+      "title": "Joyfully Bound",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1053",
+      "title": "My Covenants",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1054",
+      "title": "When I Am Baptized",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1055",
+      "title": "The Power of the Holy Ghost",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1064",
+      "title": "Great Is Thy Faithfulness",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1068",
+      "title": "To God Be the Glory",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1069",
+      "title": "Speak to Us, Lord",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1070",
+      "title": "The Miracle",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1202",
+      "title": "He Is Born, the Divine Christ Child",
+      "notes": [
+        "Multiple refrain streams; consult the score for vocal order."
+      ]
+    },
+    {
+      "id": "hhc-1204",
+      "title": "Star Bright",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1206",
+      "title": "Were You There?",
+      "notes": [
+        "Alternate vocal streams for verse 1 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 3 are retained separately; consult the score.",
+        "Alternate vocal streams for verse 4 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "hhc-1208",
+      "title": "Go Tell It on the Mountain",
+      "notes": [
+        "Multiple refrain streams; consult the score for vocal order."
+      ]
+    },
+    {
+      "id": "hhc-1209",
+      "title": "Little Baby in a Manger",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "hhc-1210",
+      "title": "Long Ago, Within a Garden",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "cs-12",
+      "title": "A Child’s Prayer",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order.",
+        "Part/round performance directions are retained in the score; no performance-order expansion."
+      ]
+    },
+    {
+      "id": "cs-78",
+      "title": "I’m Trying to Be like Jesus",
+      "notes": [
+        "Multiple refrain streams; consult the score for vocal order."
+      ]
+    },
+    {
+      "id": "cs-16",
+      "title": "Children All Over the World",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "cs-2",
+      "title": "I Am a Child of God",
+      "notes": [
+        "Numbered text block conflicts with note lyrics for verse 4.",
+        "Alternate vocal streams for verse 4 are retained separately; consult the score.",
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    },
+    {
+      "id": "cs-266",
+      "title": "If You’re Happy",
+      "notes": [
+        "Alternate vocal streams for verse 1 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "cs-220",
+      "title": "The Handcart Song",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    }
+  ]
+}
