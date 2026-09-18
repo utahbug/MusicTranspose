@@ -39,7 +39,7 @@ $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf())showInstrumentKeys(concert); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===scoreSize)); $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
+function setControls(){ requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf())showInstrumentKeys(concert); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===scoreSize)); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  $('octave-settings').hidden=isPdf();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
@@ -83,7 +83,7 @@ function buildChooser(){
 // Lower keys are ordered outward from the original, not by numeric pitch.
 $('lower').replaceChildren(...[...$('lower').children].reverse());
 }
-$('down').onclick=()=>changeKey(Math.max(-6,wanted-1));$('up').onclick=()=>changeKey(Math.min(6,wanted+1));$('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
+$('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
 $('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=Math.min(rect.bottom+6,innerHeight-sizeOptions.offsetHeight-8)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};

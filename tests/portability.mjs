@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import http from 'node:http';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE||import.meta.url);const {chromium}=require('playwright');
@@ -23,12 +24,12 @@ for(const viewport of [{width:1180,height:820},{width:820,height:1180}]){
   assert(await page.locator('#score svg').count()>0);await page.locator('#key').click();await page.locator('[data-shift="2"]').click();await done(2);assert.equal(await page.locator('#key-name').textContent(),target);
   const music=await page.evaluate(fifths=>{const parse=s=>new DOMParser().parseFromString(s,'application/xml');const a=parse(prototype.original),b=parse(prototype.xml),nat={C:0,D:2,E:4,F:5,G:7,A:9,B:11};const pitches=d=>[...d.querySelectorAll('note > pitch')].map(n=>(+n.querySelector('octave').textContent+1)*12+nat[n.querySelector('step').textContent]+Number(n.querySelector('alter')?.textContent||0));const ap=pitches(a),bp=pitches(b);return ap.every((x,i)=>bp[i]===x+2)&&[...b.querySelectorAll('key > fifths')].every(x=>+x.textContent===fifths);},fifths);assert(music);
   await page.locator('#reset').click();await done(0);assert.equal(await page.evaluate(()=>prototype.xml),original);
-  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));const sizes=await page.locator('#songs,#print,#down,#key,#up,#reset').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height,right:r.right};}));assert(sizes.every(r=>r.w>=44&&r.h>=44&&r.right<=viewport.width));
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));const sizes=await page.locator('#songs,#print,#key,#reset').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height,right:r.right};}));assert(sizes.every(r=>r.w>=44&&r.h>=44&&r.right<=viewport.width));
   await page.screenshot({path:`test-results/portable-${song}-${viewport.width}.png`});checks.push({song,viewport,render:true,transpose:true,resetExact:true,dialogs:true,noOverflow:true});
  }
 }
 const scope=await page.evaluate(async()=>(await navigator.serviceWorker.ready).scope);assert.equal(scope,base);
-await context.setOffline(true);await page.reload();await page.locator('[data-song="nativity"] .song-entry').click();await done(0);await select('shepherd');await page.locator('#up').click();await done(1);assert.equal(await page.locator('#key-name').textContent(),'E♭ minor');await select('nativity');assert.equal(await page.locator('#key-name').textContent(),'G major');
+await context.setOffline(true);await page.reload();await page.locator('[data-song="nativity"] .song-entry').click();await done(0);await select('shepherd');await chooseRelativeKey(page,1);await done(1);assert.equal(await page.locator('#key-name').textContent(),'E♭ minor');await select('nativity');assert.equal(await page.locator('#key-name').textContent(),'G major');
 assert.deepEqual(missing,[]);assert.deepEqual(external,[]);assert.deepEqual(errors,[]);
 await fs.writeFile('test-results/portability.json',JSON.stringify({temporaryCopy:root,base,scope,hashes,checks,offlineReloadAndSwitching:true,missing,external,errors,requestedPaths:[...new Set(requests.map(u=>u.replace(base,'./')))]},null,2));console.log('PASS: copied static subdirectory, both songs, major/minor, exact reset, both viewports, offline reload/switching; no missing assets or external requests.');console.log('Temporary copy: '+root);
 }finally{await browser.close();await new Promise(r=>server.close(r));}

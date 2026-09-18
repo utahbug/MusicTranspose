@@ -9,7 +9,7 @@ Run `Start-Prototype.ps1`, then open http://127.0.0.1:8767. Alternatively run `p
 ## Use
 
 - The app opens at **Library**. Search or filter compact rows, then open a score. **Library** in the playing toolbar returns here; returning to the current score preserves its key and scroll position, while another song opens in its original key.
-- Arrows move one semitone, bounded at −6 and +6. Tap the current key for thirteen choices. The larger tonic and repeated accidentals are paired with small signed distances; the hint identifies the mode.
+- Tap the compact current-key button to deliberately select from thirteen destinations, bounded at −6 and +6. Quick semitone controls have been removed. The larger tonic and repeated accidentals are paired with small signed distances; the hint identifies the mode.
 - Minor songs stay minor. Both signed tritones share a pitch class but differ by an octave. Zero preserves the original spelling.
 - **↺** restores the exact original MusicXML and original key. **Print score** prepares A4 notation pages and score credits. Actual AirPrint needs testing.
 
@@ -70,7 +70,7 @@ Published test URL: https://utahbug.github.io/MusicTranspose/
 1. Open the URL in Safari.
 2. Test portrait and landscape.
 3. Test both The Nativity Song and The Shepherd’s Carol.
-4. Change keys with ↑ / ↓, then open the full key selector.
+4. Tap the current key and choose a destination in Select a key.
 5. Use ↺ to reset to the original key.
 6. Switch songs; each should start at its own original key.
 7. Optionally use Safari Share > Add to Home Screen. The new 180×180 apple-touch icon should appear.
@@ -82,7 +82,7 @@ The manifest uses relative start/scope URLs and standalone display. First allow 
 
 The live registry now includes The Nativity Song (Children’s Songbook 52, G major), The Shepherd’s Carol (40b, D minor), Oh, Come, All Ye Faithful (Hymns 1985, 202, G major), and Silent Night (204, B-flat major). The official embedded title of hymn 202 includes “Oh,”. Bundled additions: `assets/faithful.mxl` and `assets/silent-night.mxl`; source archive bytes were read only and hashes are in provenance.json. Both use the unchanged shared transposition pipeline. The service-worker asset cache includes all four.
 
-`tests/four-songs.mjs` covers both new hymns at all thirteen signed positions, quick arrows, rapid input, exact XML/SVG reset, song switching, offline loading of all four, and 1180×820 / 820×1180 layouts. All 237 pitches in Faithful and 179 in Silent Night transpose exactly; key signatures and conventional destination names are checked. Neither MXL contains harmony/chord-symbol events, so no chord labels are invented. All XML outside the permitted pitch/signature/accidental/harmony fields remains unchanged, including lyrics, rhythm, voices/staves, ties/slurs, directions and other notation.
+`tests/four-songs.mjs` covers both new hymns at all thirteen signed positions, chooser selections, rapid internal transposition requests, exact XML/SVG reset, song switching, offline loading of all four, and 1180×820 / 820×1180 layouts. All 237 pitches in Faithful and 179 in Silent Night transpose exactly; key signatures and conventional destination names are checked. Neither MXL contains harmony/chord-symbol events, so no chord labels are invented. All XML outside the permitted pitch/signature/accidental/harmony fields remains unchanged, including lyrics, rhythm, voices/staves, ties/slurs, directions and other notation.
 
 Visual inspection found an existing engraving limitation exposed by these sources: the metronome number and expression word (“Majestically” / “Peacefully”) overlap at the top. Notes, lyrics and arrangements remain intact. No song-specific rendering/transposition workaround was added. Confirm practical readability, especially these initial directions, during physical iPad/piano testing. Desktop rapid-transposition checks passed; this is not a claim of musician or physical-iPad validation.
 

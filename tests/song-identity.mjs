@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';import assert from 'node:assert/strict';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE),{chromium}=require('playwright');
 const browser=await chromium.launch({channel:'msedge',headless:true});
@@ -23,7 +24,7 @@ try{
  for(const id of ids){
   await p.locator(`[data-song="${id}"] .song-entry`).click();await ready();assert.equal(await p.evaluate(()=>prototype.song),id);
   const after=await snapshot(id);assert.deepEqual(after,before[id]);
-  await p.locator('#up').click();await ready();await p.locator('.score-heading .song-playback').click();await p.waitForFunction(()=>prototype.playback.state==='playing');assert.deepEqual(await p.evaluate(()=>prototype.playback.timeline.notes.map(n=>n.midi)),before[id].pitches.map(n=>n+1));
+  await chooseRelativeKey(p,1);await ready();await p.locator('.score-heading .song-playback').click();await p.waitForFunction(()=>prototype.playback.state==='playing');assert.deepEqual(await p.evaluate(()=>prototype.playback.timeline.notes.map(n=>n.midi)),before[id].pitches.map(n=>n+1));
   await p.locator('#reset').click();await ready();assert.equal(await p.evaluate(()=>prototype.xml),before[id].xml);
   await p.locator('#songs').click();
  }

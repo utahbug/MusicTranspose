@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -8,7 +9,7 @@ page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(!r.ur
 const done=shift=>page.waitForFunction(s=>window.prototype?.ready&&!prototype.busy&&prototype.current===s&&document.getElementById('score').getAttribute('aria-busy')==='false',shift,{timeout:30000});
 await page.goto(base);await done(0);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);
 
-await page.locator('#up').click();await done(1);
+await chooseRelativeKey(page,1);await done(1);
 async function switchSong(id){await page.locator('#songs').click();await page.locator(`[data-song="${id}"]`).click();await page.waitForFunction(id=>prototype.song===id&&prototype.ready&&!prototype.busy&&prototype.current===0,id);}
 await switchSong('shepherd');
 assert.equal(await page.locator('#key-name').textContent(),'D minor');
@@ -53,9 +54,9 @@ for(const viewport of [{width:1180,height:820},{width:820,height:1180}]){
  await page.locator('#songs').click();await page.screenshot({path:`test-results/songs-${viewport.width}.png`});
  assert(await page.locator('.song-choice').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.width>=44&&r.height>=44;})));await page.keyboard.press('Escape');
 }
-await page.locator('#up').click();await done(1);await page.evaluate(()=>scrollTo(0,400));await switchSong('nativity');assert.equal(await page.locator('#key-name').textContent(),'G major');assert.equal(await page.evaluate(()=>scrollY),0);
-await page.locator('#down').click();await done(-1);await switchSong('shepherd');assert.equal(await page.locator('#key-name').textContent(),'D minor');assert(await page.evaluate(()=>prototype.xml===prototype.original));
-await context.setOffline(true);await switchSong('nativity');await switchSong('shepherd');await page.locator('#up').click();await verify(1,-6,'Offline E-flat minor');await page.locator('#reset').click();await done(0);
+await chooseRelativeKey(page,1);await done(1);await page.evaluate(()=>scrollTo(0,400));await switchSong('nativity');assert.equal(await page.locator('#key-name').textContent(),'G major');assert.equal(await page.evaluate(()=>scrollY),0);
+await chooseRelativeKey(page,-1);await done(-1);await switchSong('shepherd');assert.equal(await page.locator('#key-name').textContent(),'D minor');assert(await page.evaluate(()=>prototype.xml===prototype.original));
+await context.setOffline(true);await switchSong('nativity');await switchSong('shepherd');await chooseRelativeKey(page,1);await verify(1,-6,'Offline E-flat minor');await page.locator('#reset').click();await done(0);
 const printPages=await page.evaluate(()=>prototype.preparePrint());assert(printPages>=1);await context.setOffline(false);
 assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
 await fs.writeFile('test-results/minor-navigation.json',JSON.stringify({results,exactReset:true,switchingBothWays:true,offlineBothSongs:true,printPages,errors,remote},null,2));await browser.close();console.log('Minor and navigation acceptance passed');

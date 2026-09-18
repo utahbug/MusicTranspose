@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -7,7 +8,7 @@ const browser=await chromium.launch({channel:'msedge',headless:true});const cont
 page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:'))remote.push(r.url());});
 const done=shift=>page.waitForFunction(s=>window.prototype?.ready&&!prototype.busy&&prototype.current===s&&document.getElementById('score').getAttribute('aria-busy')==='false',shift,{timeout:30000});
 await page.goto(base);await done(0);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);
-assert.equal(await page.locator('#down').getAttribute('aria-label'),'Lower pitch one semitone');assert.equal(await page.locator('#up').getAttribute('aria-label'),'Raise pitch one semitone');assert.equal(await page.locator('#close-dialog').textContent(),'×');assert.equal(await page.locator('.subtitle').textContent(),'Children’s Songbook · 52');
+assert.equal(await page.locator('#down,#up').count(),0);assert.equal(await page.locator('#close-dialog').textContent(),'×');assert.equal(await page.locator('.subtitle').textContent(),'Children’s Songbook · 52');
 assert.equal(await page.locator('#reset').textContent(),'↺');assert.equal(await page.locator('#reset').getAttribute('aria-label'),'Reset to original key');
 const originalSVG=await page.locator('#score').innerHTML();const originalCredits=await page.locator('#source-credits').textContent();
 assert(originalCredits.includes('4.')&&originalCredits.includes('5.'));assert(!originalCredits.includes('\\n'));
@@ -50,16 +51,16 @@ await page.locator('#reset').click();await verify(0,1,'Reset G');assert.equal(aw
 for(const [n,f] of [[-5,2],[-3,4],[-1,-6],[3,-2],[4,5],[5,0],[6,-5]]){await page.evaluate(n=>prototype.changeKey(n),n);await verify(n,f,'Additional key '+n);}
 // Dispatch same-frame rapid arrow input; ensure the latest request wins.
 await page.locator('#reset').click();await done(0);
-await page.evaluate(()=>{for(let i=0;i<40;i++){document.getElementById('up').click();document.getElementById('down').click();}document.getElementById('up').click();document.getElementById('up').click();});await verify(2,3,'Rapid 82 arrow clicks');
-await page.evaluate(()=>{for(let i=0;i<30;i++)document.getElementById('down').click();});await verify(-6,-5,'Lower bound');assert(await page.locator('#down').isDisabled());
-await page.evaluate(()=>{for(let i=0;i<30;i++)document.getElementById('up').click();});await verify(6,-5,'Upper bound');assert(await page.locator('#up').isDisabled());
+await page.evaluate(()=>{for(let i=0;i<40;i++){prototype.changeKey(Math.min(6,prototype.wanted+1));prototype.changeKey(Math.max(-6,prototype.wanted-1));}prototype.changeKey(Math.min(6,prototype.wanted+1));prototype.changeKey(Math.min(6,prototype.wanted+1));});await verify(2,3,'Rapid internal transposition requests');
+await page.evaluate(()=>{for(let i=0;i<30;i++)prototype.changeKey(Math.max(-6,prototype.wanted-1));});await verify(-6,-5,'Lower bound');assert.equal(await page.evaluate(()=>prototype.current),-6);
+await page.evaluate(()=>{for(let i=0;i<30;i++)prototype.changeKey(Math.min(6,prototype.wanted+1));});await verify(6,-5,'Upper bound');assert.equal(await page.evaluate(()=>prototype.current),6);
 await page.locator('#reset').click();await done(0);
 await page.setViewportSize({width:820,height:1180});await page.waitForTimeout(450);await verify(0,1,'Portrait G');await page.screenshot({path:'test-results/portrait-original.png',fullPage:true});
 await page.locator('#key').click();await page.screenshot({path:'test-results/portrait-key-panel.png'});
 const targetSizes=await page.locator('.key-choice').evaluateAll(els=>els.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})));assert(targetSizes.every(x=>x.w>=44&&x.h>=44));
 await page.keyboard.press('Escape');assert(!await page.locator('#key-dialog').isVisible());assert(await page.locator('#key').evaluate(e=>e===document.activeElement));
-await page.evaluate(async()=>{for(let i=0;i<12;i++){document.getElementById('up').click();await new Promise(r=>setTimeout(r,9));document.getElementById('down').click();await new Promise(r=>setTimeout(r,9));}document.getElementById('reset').click();});await verify(0,1,'Rapid input across renders then Reset');
-await context.setOffline(true);await page.reload();await done(0);await page.locator('#up').click();await verify(1,-4,'Offline A-flat');await context.setOffline(false);
+await page.evaluate(async()=>{for(let i=0;i<12;i++){prototype.changeKey(Math.min(6,prototype.wanted+1));await new Promise(r=>setTimeout(r,9));prototype.changeKey(Math.max(-6,prototype.wanted-1));await new Promise(r=>setTimeout(r,9));}document.getElementById('reset').click();});await verify(0,1,'Rapid input across renders then Reset');
+await context.setOffline(true);await page.reload();await done(0);await chooseRelativeKey(page,1);await verify(1,-4,'Offline A-flat');await context.setOffline(false);
 await page.locator('#reset').click();await done(0);const printPages=await page.evaluate(()=>prototype.preparePrint());assert(printPages>=1);await page.emulateMedia({media:'print'});await page.screenshot({path:'test-results/print-layout.png',fullPage:true});await page.emulateMedia({media:'screen'});
 
 // Change the original key using in-memory versions of the same score; no extra songs/files.

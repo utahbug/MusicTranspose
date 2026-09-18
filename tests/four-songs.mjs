@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -32,17 +33,17 @@ for(const song of [{id:'faithful',key:'G',fifths:1,up:['A♭','A','B♭','B','C'
  await select(song.id);originalCredits=await page.locator('#source-credits').textContent();const original=await page.evaluate(()=>prototype.original),svg=await page.locator('#score').innerHTML();await verify(0,song.fifths,song.id+' original');
  assert.equal(await page.locator('#key-name').textContent(),song.key+' major');assert.deepEqual(await page.locator('#higher .name').allTextContents(),song.up);assert.deepEqual(await page.locator('#lower .name').allTextContents(),song.down);
  assert.deepEqual(await page.locator('#higher .distance').allTextContents(),['+1','+2','+3','+4','+5','+6']);assert.deepEqual(await page.locator('#lower .distance').allTextContents(),['-1','-2','-3','-4','-5','-6']);
- await page.locator('#up').click();await verify(1,song.upF[0],song.id+' quick up');await page.locator('#reset').click();await done(0);await page.locator('#down').click();await verify(-1,song.downF[0],song.id+' quick down');
+ await chooseRelativeKey(page,1);await verify(1,song.upF[0],song.id+' selected higher key');await page.locator('#reset').click();await done(0);await chooseRelativeKey(page,-1);await verify(-1,song.downF[0],song.id+' selected lower key');
  for(const dir of [1,-1])for(let n=1;n<=6;n++){await page.locator('#key').click();await page.locator(`[data-shift="${dir*n}"]`).click();await verify(dir*n,(dir>0?song.upF:song.downF)[n-1],song.id+' '+dir*n);if(n===2)await page.screenshot({path:`test-results/hymn-${song.id}-${dir*n}.png`,fullPage:true});}
  await page.locator('#reset').click();await done(0);assert.equal(await page.evaluate(()=>prototype.xml),original);assert.equal(await page.locator('#score').innerHTML(),svg);
- await page.evaluate(async()=>{for(let i=0;i<10;i++){document.getElementById('up').click();await new Promise(r=>setTimeout(r,9));document.getElementById('down').click();await new Promise(r=>setTimeout(r,9));}document.getElementById('up').click();document.getElementById('up').click();});await verify(2,song.upF[1],song.id+' rapid +2');await page.locator('#reset').click();await done(0);assert.equal(await page.evaluate(()=>prototype.xml),original);
+ await page.evaluate(async()=>{for(let i=0;i<10;i++){prototype.changeKey(Math.min(6,prototype.wanted+1));await new Promise(r=>setTimeout(r,9));prototype.changeKey(Math.max(-6,prototype.wanted-1));await new Promise(r=>setTimeout(r,9));}prototype.changeKey(Math.min(6,prototype.wanted+1));prototype.changeKey(Math.min(6,prototype.wanted+1));});await verify(2,song.upF[1],song.id+' rapid +2');await page.locator('#reset').click();await done(0);assert.equal(await page.evaluate(()=>prototype.xml),original);
 }
 for(const viewport of [{width:1180,height:820},{width:820,height:1180}]){
  await page.setViewportSize(viewport);await page.waitForTimeout(450);
  for(const [id,key] of [['nativity','G major'],['shepherd','D minor'],['faithful','G major'],['silent-night','B♭ major']]){
   await select(id);assert.equal(await page.locator('#key-name').textContent(),key);assert(await page.locator('#score svg').count()>0);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.locator('#key').click();assert(await page.locator('.key-choice').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.width>=44&&r.height>=44&&r.bottom<=innerHeight;})));await page.keyboard.press('Escape');
-  await page.screenshot({path:`test-results/four-songs-${id}-${viewport.width}.png`});await page.locator('#up').click();await done(1);await page.locator('#down').click();await done(0);assert(await page.evaluate(()=>prototype.xml===prototype.original));await page.locator('#up').click();await done(1);
+  await page.screenshot({path:`test-results/four-songs-${id}-${viewport.width}.png`});await chooseRelativeKey(page,1);await done(1);await chooseRelativeKey(page,-1);await done(0);assert(await page.evaluate(()=>prototype.xml===prototype.original));await chooseRelativeKey(page,1);await done(1);
  }
  await page.locator('#songs').click();assert(await page.locator('.song-entry').evaluateAll(es=>es.every(e=>{const r=e.getBoundingClientRect();return r.height>=44&&r.bottom<=innerHeight;})));await page.screenshot({path:`test-results/four-song-chooser-${viewport.width}.png`});await page.locator('#resume-score').click();await page.locator('#reset').click();await done(0);
 }

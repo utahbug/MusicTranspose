@@ -1,3 +1,4 @@
+import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE||import.meta.url),{chromium}=require('playwright');
 const browser=await chromium.launch({channel:'msedge',headless:true});const context=await browser.newContext(),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
@@ -20,8 +21,8 @@ try{
   await p.setViewportSize(size);await home();await filter('all');await p.screenshot({path:`test-results/library-${size.width}.png`});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   for(const id of ['nativity','shepherd','faithful','silent-night']){
    await entry(id).click();await ready();assert(await p.locator('#library').isHidden());assert(await p.locator('#score svg').count());
-   await p.locator('#up').click();await ready(1);await p.locator('#songs').click();assert(await p.locator(`[data-song="${id}"] .current-label`).isVisible());await p.locator('#resume-score').click();await ready(1);
-   await p.locator('#down').click();await ready();await p.locator('#down').click();await ready(-1);await p.locator('#reset').click();await ready();assert(await p.evaluate(()=>prototype.xml===prototype.original));
+   await chooseRelativeKey(p,1);await ready(1);await p.locator('#songs').click();assert(await p.locator(`[data-song="${id}"] .current-label`).isVisible());await p.locator('#resume-score').click();await ready(1);
+   await chooseRelativeKey(p,-1);await ready();await chooseRelativeKey(p,-1);await ready(-1);await p.locator('#reset').click();await ready();assert(await p.evaluate(()=>prototype.xml===prototype.original));
    await p.locator('#key').click();assert(await p.locator('#key-dialog').isVisible());await p.locator('#close-dialog').click();await p.locator('#settings').click();await p.locator('input[value="hybrid"]').check();await p.locator('#close-settings').click();await p.locator('#screenful-next').click();
    await p.evaluate(()=>{window.print=()=>window.printInvoked=true;});await p.locator('#print').click();await p.waitForFunction(()=>window.printInvoked);await p.emulateMedia({media:'print'});assert(await p.locator('#library').isHidden());assert(await p.locator('.masthead').isHidden());assert(await p.locator('#print-pages svg').count());await p.emulateMedia({media:'screen'});
    await p.locator('#songs').click();
