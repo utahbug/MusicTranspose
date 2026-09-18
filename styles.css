@@ -353,3 +353,32 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
   .masthead #key-name{font-size:18px;line-height:23px}
  }
 }
+
+/* Ensemble guidance stays above the compact manual chooser; details overlay it. */
+#key-dialog{width:680px;max-width:calc(100vw - 28px);padding:18px;position:relative}
+#key-dialog .dialog-heading{align-items:center}
+#ensemble-context{font-size:14px;margin:6px 0}
+#key-dialog .dialog-hint{margin:0 0 8px}
+.ensemble-tools{display:flex;gap:8px;align-items:stretch}
+#ensemble-toggle{flex:1;min-width:0;text-align:left}
+#ensemble-summary{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+#key-dialog #instrument-toggle{width:auto;flex:none;display:block}
+#key-dialog h3{margin:8px 0 5px}
+#ensemble-choices{display:flex;gap:6px}
+#ensemble-choices button{flex:1;padding:8px 5px}
+#ensemble-choices button[aria-pressed=true]{border-color:#536B7A;background:#e5edf2}
+#key-dialog .key-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+#key-dialog .key-choice{min-height:66px}
+#key-dialog .key-choice .name{font-size:22px}
+#key-dialog .key-choice .signature{font-size:14px;min-height:17px;letter-spacing:0}
+#key-dialog .original-row{margin:8px 0}
+#key-dialog .original-row .key-choice{min-height:44px}
+.ensemble-overlay{position:absolute;z-index:2;inset:70px 12px auto;padding:14px;background:white;border:1px solid #aebfc8;border-radius:10px;box-shadow:0 4px 20px #172e3b35;max-height:calc(100% - 82px);overflow:auto}
+.overlay-heading{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:6px}
+#ensemble-instruments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+#ensemble-instruments label,.all-instrument-groups{display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px}
+#ensemble-instruments input,.all-instrument-groups input{width:18px;height:18px;accent-color:#536B7A}
+#key-dialog .instrument-row{padding:6px 0}
+#key-dialog .instrument-written .signature{display:inline;margin-left:8px}
+@media(max-width:600px){#key-dialog{padding:14px}#key-dialog .key-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ensemble-tools{gap:4px}.ensemble-tools .quiet{padding:6px 8px}#ensemble-instruments{grid-template-columns:repeat(2,minmax(0,1fr))}#ensemble-choices button{font-size:12px}.ensemble-overlay{inset-inline:6px;padding:10px}#key-dialog .instrument-written .signature{display:block}}
+@media print{.ensemble-overlay{display:none!important}}
