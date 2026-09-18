@@ -211,7 +211,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead #reset{grid-column:4;grid-row:1}
  @media(max-width:600px){
   .masthead .toolbar{grid-template-columns:120px minmax(148px,1fr) 40px 40px;column-gap:2px;overflow-x:visible}
-  .masthead #songs,.masthead #print,.masthead #settings,.masthead #octave-toggle,.masthead #reset{width:40px;min-width:40px;min-height:44px;flex-basis:40px}
+  .masthead #print,.masthead #settings,.masthead #octave-toggle,.masthead #reset{width:40px;min-width:40px;min-height:44px;flex-basis:40px}
   .masthead .controls{gap:0}.masthead #key{min-width:68px}
  }
 }
@@ -398,12 +398,12 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 /* Shared primary identity, restricted to the three requested screen surfaces. */
 :root{--primary-blue:#365F7D;--primary-blue-text:#FFFFFF;--primary-blue-hover:color-mix(in srgb,var(--primary-blue),black 8%);--primary-blue-pressed:color-mix(in srgb,var(--primary-blue),black 15%);--primary-blue-disabled:color-mix(in srgb,var(--primary-blue),#687780 20%)}
 @media screen{
- .masthead #key,.masthead #songs{background:var(--primary-blue);color:var(--primary-blue-text);border-color:var(--primary-blue)}
+ .masthead #key,#songs{background:var(--primary-blue);color:var(--primary-blue-text);border-color:var(--primary-blue)}
  .masthead #key :is(#key-name,#key-signature,.chevron){color:var(--primary-blue-text)}
- @media(hover:hover){.masthead :is(#key,#songs):not(:disabled):hover{background:var(--primary-blue-hover)}}
- .masthead :is(#key,#songs):not(:disabled):active{background:var(--primary-blue-pressed)}
- .masthead :is(#key,#songs):focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
- .masthead :is(#key,#songs):disabled{opacity:1;background:var(--primary-blue-disabled);border-color:var(--primary-blue-disabled)}
+ @media(hover:hover){.masthead #key:not(:disabled):hover,#songs:not(:disabled):hover{background:var(--primary-blue-hover)}}
+ .masthead #key:not(:disabled):active,#songs:not(:disabled):active{background:var(--primary-blue-pressed)}
+ .masthead #key:focus-visible,#songs:focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
+ .masthead #key:disabled,#songs:disabled{opacity:1;background:var(--primary-blue-disabled);border-color:var(--primary-blue-disabled)}
  #library .library-heading{background:var(--primary-blue);color:var(--primary-blue-text);padding:8px 10px;margin:-12px -6px 8px}
  #library .library-heading :is(h1,.eyebrow){color:var(--primary-blue-text)}
  #library .library-heading #resume-score{color:var(--primary-blue-text);border-color:var(--primary-blue-text)}
@@ -429,4 +429,15 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
   .masthead .toolbar-position{gap:2px}
   #page-position{font-size:10px}
  }
+}
+
+/* One existing Library action, now in the score header with matching touch size. */
+@media screen{
+ .score-actions #songs{display:flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0}
+ .score-actions{flex-wrap:nowrap}
+ .pdf-score-open .score-heading{display:contents}
+ .pdf-score-open .score-title-block{display:none}
+ .pdf-score-open .score-actions{float:right;margin:0 0 4px 8px}
+ .pdf-score-open #pdf-notice{min-height:44px;display:flex;align-items:center;flex-wrap:wrap;gap:3px}
+ .pdf-score-open #score{clear:both}
 }
