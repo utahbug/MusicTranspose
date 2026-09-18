@@ -1,4 +1,6 @@
 import {importedSongs} from './imported-songs.js';
+// IDs are immutable opaque keys, including legacy title/number-shaped IDs.
+// Never regenerate an ID when title, page, collection, edition or order changes.
 // Assets are self-contained. Provenance paths are documentation, never runtime inputs.
 export const songs = [
  {id:'nativity',title:'The Nativity Song',collection:'Children’s Songbook',page:'52',tags:['Christmas','Primary'],aliases:[],collectionMemberships:[],asset:'./assets/nativity.mxl',tonic:'G',mode:'major',fifths:1},
@@ -11,7 +13,8 @@ export const songs = [
 ];
 
 // Collection membership is factual metadata, separate from personal lists.
-// Additional memberships can later record {collection, page} from authoritative sources.
+// Additional memberships support {collection, edition, songNumber, page, title}.
+// Top-level collection/page remain display metadata; page also holds hymn numbers.
 export const collectionNames=['Hymns for Home and Church','Hymns (1985)','Children’s Songbook'];
 // The same normalization is used for queries and every score type.
 export function normalizeSearch(value){return String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[’‘'`]/g,'').replace(/[^\p{L}\p{N}]+/gu,' ').trim();}

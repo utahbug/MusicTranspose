@@ -1,8 +1,10 @@
 import csv,json,re,unicodedata,zipfile,hashlib,shutil
 from pathlib import Path
 import xml.etree.ElementTree as E
+from song_identity import existing_score_ids, resolve_song_id
 ROOT=Path(__file__).resolve().parents[1]
 ARCHIVE=Path('D:/LDS_Music_MXL/2026-09-16')
+known_ids=existing_score_ids(ROOT)
 requested='''A Child’s Prayer
 Called to Serve
 Choose to Serve the Lord
@@ -77,7 +79,7 @@ for r in selected:
   if len(set(keys))!=1:raise ValueError('Multiple key declarations/modulation unsupported by existing transposer: '+str(sorted(set(keys))))
   fifths=int(keys[0][0]);mode=keys[0][1]
   if mode not in ['major','minor'] or not -7<=fifths<=7:raise ValueError('Unsupported key declaration')
-  id=('hhc-' if collection=='Hymns for Home and Church' else 'cs-')+page
+  id=resolve_song_id(sha, known_ids)
   destination=ROOT/'assets/scores'/f'{id}.mxl'
   if destination.exists():assert destination.read_bytes()==raw
   else:shutil.copyfile(path,destination)
