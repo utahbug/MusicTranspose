@@ -436,3 +436,9 @@ in isolated browser profiles without touching the user's saved lists.
 Rebuild derived lyrics from the current catalog with `node tools/build-lyrics.mjs`.
 Set the PYTHON environment variable to a Python executable if needed. The build
 uses only local assets; it is not a runtime or deployment prerequisite.
+
+Lyrics now defaults to black (#000000). Medium body text is 22px on phones
+(<=600px), retaining 24px on larger screens. The simple double frame uses 2px
+blue and 1px rose lines on black (#7799B0 / #A8737C), and the score palette on
+white (#4B6E88 / #7A3E46), separated by a 3px inset. Lyrics controls stay outside
+the frame; score styling and print remain unchanged.
