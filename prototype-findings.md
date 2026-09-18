@@ -121,3 +121,11 @@ solves the next-verse workflow in Continuous mode. Octave choices moved into
 Settings; key/quick transpose/reset remain compact in the toolbar. Lyrics Fun
 now supports 1–4 targets and one travelling shot. Full details and limitations:
 reports/ui-navigation-refinement.md. Physical iPad and pedal checks remain open.
+
+## Complete-system MXL performance pages
+
+Virtual pages now group complete systems from the existing OSMD graphical model
+and rendered ink bounds. This replaces the earlier PDF-only limitation without
+changing source engraving or A4 print output. See `reports/virtual-page-turns.md`
+for viewport calculations, conservative clipping protection, input reuse,
+measure-location preservation and regression evidence.

@@ -511,3 +511,13 @@ MXL retains continuous/hybrid navigation because its engraving has no real pages
 Fun settings now offer 1–4 targets, 2–4 second arrivals and one travelling shot at
 a time. Free shots exit the opposite edge. These supersede earlier UI/Fun behavior
 notes above. See reports/ui-navigation-refinement.md for measurements and tests.
+
+## Virtual performance page turns
+
+MXL now supports Page Turns using complete OSMD systems, with the same tap zones,
+buttons and keyboard/pedal commands as PDFs. Page grouping adapts to viewport,
+notation size, key and octave; it preserves the current measure where possible.
+Page changes do not re-render or fetch. Supplementary verses remain on final
+text pages. Continuous Scroll and Auto-scroll remain; Hybrid is no longer a
+visible choice. This supersedes earlier notes saying MXL page turns are unavailable.
+See `reports/virtual-page-turns.md` for implementation, tests and device caveats.

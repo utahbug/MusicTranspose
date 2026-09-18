@@ -382,3 +382,17 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #key-dialog .instrument-written .signature{display:inline;margin-left:8px}
 @media(max-width:600px){#key-dialog{padding:14px}#key-dialog .key-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ensemble-tools{gap:4px}.ensemble-tools .quiet{padding:6px 8px}#ensemble-instruments{grid-template-columns:repeat(2,minmax(0,1fr))}#ensemble-choices button{font-size:12px}.ensemble-overlay{inset-inline:6px;padding:10px}#key-dialog .instrument-written .signature{display:block}}
 @media print{.ensemble-overlay{display:none!important}}
+
+.mxl-page-frame{display:none}
+@media screen{
+ body.mxl-page-navigation #score>:not(.mxl-page-frame){display:none!important}
+ body.mxl-page-navigation #score>.mxl-page-frame.current-page{display:block}
+ body.mxl-page-navigation #score{min-height:0}
+ body.mxl-page-navigation #source-credits,body.mxl-page-navigation .footnote{display:none}
+ body.mxl-page-navigation #playing-view{padding-bottom:0}
+ body.mxl-page-navigation .score-paper{padding-bottom:8px}
+ .mxl-page-frame svg{margin:0 auto!important;max-width:100%;display:block}
+ .mxl-credit-page{white-space:pre-line;font:15px/1.6 Georgia,serif;padding:6px 12px}
+ .mxl-credit-page p{margin:0}
+}
+@media print{.mxl-page-frame{display:none!important}}
