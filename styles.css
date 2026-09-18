@@ -343,4 +343,13 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #lyrics-view h1{display:flex;align-items:center;gap:6px}
 #lyrics-view h1 .song-playback{flex:0 0 44px;margin-left:0}
 
-@media screen{.score-heading .subtitle,#lyrics-view .lyrics-source{padding-inline-start:var(--title-text-inset,0px)}}
+@media screen{.score-heading .subtitle,#lyrics-view .lyrics-source{margin-inline-start:var(--title-text-inset,0px)}}
+
+#score-size-options{position:fixed;z-index:30;display:flex;align-items:center;gap:6px;padding:8px;background:#fff;border:1px solid #aebfc8;border-radius:9px;box-shadow:0 3px 12px #172e3b24}
+#score-size-options[hidden]{display:none}
+#score-size-options button{width:52px;height:52px;padding:0;display:flex;align-items:center;justify-content:center;color:#536B7A;background:transparent;border:1px solid transparent;border-radius:6px}
+#score-size-options button[aria-pressed=true]{background:#e5edf2;border-color:#536B7A;box-shadow:inset 0 0 0 1px #536B7A}
+#score-size-options [data-size=compact] svg{width:16px;height:19px}
+#score-size-options [data-size=normal] svg{width:23px;height:27px}
+#score-size-options [data-size=large] svg{width:30px;height:35px}
+@media print{#score-size-options{display:none!important}}
