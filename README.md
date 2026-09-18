@@ -330,3 +330,21 @@ clefs/ledger-line limitations, unavailable page turns, forthcoming transition
 chords, storage keys and local-only preferences. Tests use responsive desktop
 browser viewports, not physical Safari hardware. tests/release-audit.mjs records
 before/after screenshots; tests/release-states.mjs covers failures/retry/contrast.
+
+### Phone score fit control
+
+At screen widths <=600px, structured scores show a 44x44px page/fit icon below
+right-aligned source metadata. Default Fit Width retains existing engraving.
+Fit Page proportionally scales the existing score to 72% for about 39% more
+vertical context; it does not invent page boundaries or shrink a whole long
+continuous score onto one screen. Scrolling and aspect ratios are preserved.
+The button describes its next action. No extra rendering or asset fetch is needed.
+
+Fit state is memory-only and resets on leaving/opening a song. Musical Reset
+preserves it. Larger viewports always use the original presentation; PDFs are
+unchanged and hide the control. The screen wrapper reserves scaled height while
+print resets wrapper/transform styles and uses the unchanged print engraver.
+
+Tests: tests/score-fit.mjs covers five requested scores, both fit states, exact
+print path geometry/text equality, key/reset/reopening, six viewport sizes and
+PDF exclusion. Physical iPhone Safari testing remains recommended.

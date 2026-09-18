@@ -1,3 +1,4 @@
+import {resetScoreFit} from './score-fit.js';
 import {renderPdf,preparePdfPrint} from './pdf-score.js';
 import {initLibrary} from './library.js';
 import {avoidTempoCollisions} from './score-layout.js';
@@ -12,7 +13,7 @@ let library;
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
+function setControls(){ $('score-fit').disabled=isPdf()||!ready||busy||loading; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  const octaveButton=$('octave-toggle'),label='Octave: '+(currentOctave===1?'one octave up':currentOctave===-1?'one octave down':'original');
  octaveButton.hidden=isPdf();octaveButton.disabled=isPdf()||!ready;octaveButton.setAttribute('aria-label',label);octaveButton.title=label;octaveButton.dataset.state=String(currentOctave);$('octave-symbol').textContent=currentOctave===1?'8↑':currentOctave===-1?'8↓':'8';
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
@@ -74,7 +75,7 @@ async function loadScore(xml,override){
 async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
- library?.showScore();loading=true;ready=false;$('status').textContent='Loading score…';setControls();clearTimeout(timer);
+ resetScoreFit();library?.showScore();loading=true;ready=false;$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
@@ -96,6 +97,7 @@ async function loadSong(id){
 // Exiting ends a temporary playing session, including reopening the same song.
 // Parsed source assets stay cached; Library data and navigation preferences are independent.
 function leaveScore(){
+ resetScoreFit();
  clearTimeout(timer);current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;
  original='';lastXML='';renderWidth=0;cache.clear();score.replaceChildren();score.setAttribute('aria-busy','false');
  document.body.classList.remove('prepared-print');$('print-pages').replaceChildren();
