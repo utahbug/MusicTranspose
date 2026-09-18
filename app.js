@@ -1,3 +1,4 @@
+import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys} from './instrument-keys.js';
 import {createPlayback} from './playback.js';
 import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
@@ -38,7 +39,7 @@ $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf())showInstrumentKeys(concert); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
+function setControls(){ requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf())showInstrumentKeys(concert); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').setAttribute('aria-label','Score size: '+scoreSize);$('score-size').title='Score size: '+scoreSize+' — tap for '+({normal:'Compact',compact:'Large',large:'Normal'}[scoreSize]);$('size-indicator').textContent={normal:'N',compact:'C',large:'L'}[scoreSize]; $('songs').disabled=busy||loading;$('down').disabled=isPdf()||!ready||wanted<=-6;$('up').disabled=isPdf()||!ready||wanted>=6;$('reset').disabled=isPdf()||!ready;$('key').disabled=isPdf()||!ready;$('print').disabled=!ready||busy;
  $('octave-settings').hidden=isPdf();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
@@ -149,3 +150,6 @@ window.prototype={playback,get current(){return current;},get wanted(){return wa
  document.addEventListener('library-open',()=>setTimeout(refreshLibrary,0));
  await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
  }catch(e){console.error(e);$('status').textContent='Unable to start MusicTranspose. Please reload or try again online.';$('library-message').textContent=$('status').textContent;}})();
+
+window.addEventListener('resize',()=>requestAnimationFrame(alignTitleSubtitles));
+document.fonts.ready.then(alignTitleSubtitles);

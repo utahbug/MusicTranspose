@@ -276,7 +276,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 
 .lyrics-icon{width:26px;height:28px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-.song-playback{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-left:6px;border:1px solid #9CAFB9;border-radius:7px;background:transparent;color:#536B7A;touch-action:manipulation}
+.song-playback{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-left:6px;border:0;border-radius:7px;background:transparent;color:#536B7A;touch-action:manipulation}
 #lyrics-view .song-playback{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}
 #playback-message:empty{display:none}#playback-message{position:fixed;top:8px;left:10%;width:80%;z-index:20;background:#fff;color:#733;padding:12px;border:1px solid #733}
 @media print{.song-playback,#playback-message{display:none!important}}
@@ -330,3 +330,17 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 .instrument-written{text-align:right;white-space:nowrap;font-size:1rem}
 .instrument-written .signature{display:block;font-size:.85rem;margin-top:3px}
 .instrument-note{font-size:.78rem;color:#52616a;line-height:1.4;margin:10px 0 2px}
+
+/* Shared unboxed audio control: retain its full hit area and keyboard ring. */
+.song-playback:hover,#lyrics-view .song-playback:hover{background:color-mix(in srgb,currentColor 8%,transparent)}
+.song-playback:active,#lyrics-view .song-playback:active{background:color-mix(in srgb,currentColor 15%,transparent)}
+.song-playback:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.song-playback[aria-label="Pause song"]{color:#365B72}
+#lyrics-view .song-playback[aria-label="Pause song"]{color:var(--lyrics-ink)}
+#lyrics-view .lyrics-source{margin:6px 0 0}
+#lyrics-view .lyrics-body section:first-child{margin-top:16px}
+#lyrics-view .lyrics-notice{margin:16px 0 0}
+#lyrics-view h1{display:flex;align-items:center;gap:6px}
+#lyrics-view h1 .song-playback{flex:0 0 44px;margin-left:0}
+
+@media screen{.score-heading .subtitle,#lyrics-view .lyrics-source{padding-inline-start:var(--title-text-inset,0px)}}
