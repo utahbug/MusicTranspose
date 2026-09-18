@@ -464,3 +464,12 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #library #library-source{height:44px;max-width:100%;font-size:13px}
 #library .library-results-tools #library-count{font-size:12px;margin-inline-start:auto;padding-left:0}
 @media(max-width:600px){#library .library-results-tools{gap:0 6px}#library .library-results-tools #library-count{padding-left:0}}
+
+/* Current key and its optional signature share one content-sized line. */
+@media screen{
+ .masthead #key{flex-direction:row;align-items:center;gap:4px;white-space:nowrap}
+ .masthead #key-name{white-space:nowrap}
+ .masthead #key-signature{font-size:16px;line-height:24px;letter-spacing:0;white-space:nowrap}
+ .masthead #key-signature:empty{display:none}
+ @media(max-width:360px){.masthead #key-name{font-size:16px}.masthead #key-signature{font-size:15px}.masthead #key{padding-inline:6px}}
+}
