@@ -256,6 +256,8 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 .lyrics-fun-layer{position:fixed;z-index:6;overflow:hidden;pointer-events:none;--fun-beam:#386F9B}
 .lyrics-dark .lyrics-fun-layer{--fun-beam:#8DD8FF}
 .lyrics-fun-note{position:absolute;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
+.lyrics-fun-worm{position:absolute;inset:0;color:var(--lyrics-ink)}
+.lyrics-fun-segment{position:absolute;left:0;top:0;background:currentColor;border-radius:50%;pointer-events:none}
 .lyrics-fun-effect{position:absolute;inset:0;overflow:hidden}
 .lyrics-fun-beam{animation:fun-beam .28s ease-out forwards}
 .lyrics-fun-spark{animation:fun-spark .4s ease-out forwards}
