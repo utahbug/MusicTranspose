@@ -619,3 +619,5 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  }
 }
 @media print{#original-key-reference{display:none!important}}
+
+#score-size-options button{width:auto;min-width:60px;padding:0 10px;font-size:13px;white-space:nowrap}

@@ -1,3 +1,4 @@
+import {readScoreSize,saveScoreSize,candidateZooms,assessLayout,chooseLayout} from './auto-layout.js';
 import {lyricsIcon} from './icons.js';
 import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
@@ -13,9 +14,10 @@ import {initMyMusic} from './my-music.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,parseXML} from './music.js';
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
 $('show-lyrics').innerHTML=lyricsIcon;
-let activeSong=songs[0],modeOverride,loading=false,scoreSize='normal';
+let activeSong=songs[0],modeOverride,loading=false,scoreSize=readScoreSize();
 // OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
-const scoreSizes={normal:1,compact:.62/.78,large:.94/.78};
+let autoChoice=null,renderHeight=0;
+const scoreSizes={normal:1,large:.94/.78};
 let readingPosition=null;
 let KEYS=[],original='',current=0,wanted=0,currentOctave=0,wantedOctave=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
@@ -65,18 +67,28 @@ function trimScreenMargin(){
  const trim=view.width>0?Math.max(0,box.y-view.y-8)*svg.getBoundingClientRect().width/view.width:0;
  score.style.setProperty('--score-trim',trim+'px');
 }
-function commit(entry,shift,octave,w){score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;lastXML=entry.xml;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''}${octave?' · '+(octave>0?'Up':'Down')+' one octave':''}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
+function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;lastXML=entry.xml;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''}${octave?' · '+(octave>0?'Up':'Down')+' one octave':''}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 async function pump(){
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
- try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${target}:${octave}:${density}`;const start=performance.now();const cached=cache.get(id);
+ try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${octave}:${density}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftOctaveXML(transposeXML(original,target,modeOverride),octave);const displayXML=openingMetadata(xml).displayXML;stage.style.width=w+'px';if(engravedXML!==displayXML){await osmd.load(displayXML);engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
    // Normal retains the existing responsive baseline; density changes logical width.
    const phone=matchMedia('(max-width:600px)').matches;
-   osmd.EngravingRules.PageLeftMargin=phone?.8:5;osmd.EngravingRules.PageRightMargin=phone?.8:5;
-   osmd.Zoom=(phone||w<800?.78:.9)*scoreSizes[density];osmd.render();avoidTempoCollisions(stage,displayXML);if(target!==wanted||octave!==wantedOctave||w!==width())continue;
-   const entry={systemLayout:captureSystems(osmd,stage),svg:stage.innerHTML,xml,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
+   osmd.EngravingRules.PageLeftMargin=phone?(density==='auto'?2.4:.8):5;osmd.EngravingRules.PageRightMargin=phone?.8:5;
+   const base=phone||w<800?.78:.9,available=Math.max(80,innerHeight-(score.getBoundingClientRect().top+scrollY)-document.querySelector('.masthead').getBoundingClientRect().height-18),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
+   const render=zoom=>{osmd.Zoom=zoom;osmd.render();avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   let entry;
+   if(density==='auto'){
+    const candidates=[];
+    // Keep a valid density across nearby key/register changes, avoiding visual jumps.
+    if(autoChoice?.geometry===geometry){const retained=render(autoChoice.zoom);retained.autoReport=assessLayout(stage,retained.systemLayout,w,available,retained.zoom);if(retained.autoReport.readable&&retained.autoReport.collisions===0){entry=retained;entry.autoReport.retained=true;}else candidates.push(retained);}
+    if(!entry){for(const zoom of candidateZooms(base,phone)){let candidate=candidates.find(e=>e.zoom===zoom);if(!candidate){candidate=render(zoom);candidate.autoReport=assessLayout(stage,candidate.systemLayout,w,available,zoom);candidates.push(candidate);}candidate.autoReport.baseline=zoom===base;}entry=chooseLayout(candidates);entry.autoReport.candidates=candidates.map(e=>({...e.autoReport,candidates:undefined}));}
+    autoChoice={geometry,zoom:entry.zoom};
+   }else entry=render(base*scoreSizes[density]);
+   if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&octave===wantedOctave&&w===width())break;
  }}catch(e){console.error(e);wanted=current;wantedOctave=currentOctave;$('status').textContent='Could not change the score. Please reload to try again.';score.setAttribute('aria-busy','false');}
@@ -100,7 +112,7 @@ $('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
 $('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
-for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{readingPosition=rememberReadingPosition();scoreSize=option.dataset.size;closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
+for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{readingPosition=rememberReadingPosition();scoreSize=option.dataset.size;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
@@ -125,11 +137,14 @@ async function preparePrint(){
  const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('svg').length;
 }
 $('print').onclick=async()=>{if(busy)return;$('print').disabled=true;try{await preparePrint();window.print();}catch(e){console.error(e);$('status').textContent='Unable to prepare printing. Please try again.';}finally{setControls();}};
-let resizeTimer;new ResizeObserver(()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(original&&width()>100&&width()!==renderWidth)pump();},140);}).observe(score);
+let resizeTimer;
+function scheduleScoreResize(){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(original&&width()>100&&(width()!==renderWidth||(scoreSize==='auto'&&innerHeight!==renderHeight)))pump();},140);}
+new ResizeObserver(scheduleScoreResize).observe(score);
+window.addEventListener('resize',scheduleScoreResize);
 async function loadScore(xml,override){
  if(busy)throw new Error('Wait for the current rendering before loading a score.');
  const source=viewOnly()?null:originalKey(xml,override),keys=source?buildKeys(source):[];modeOverride=override;
- clearTimeout(timer);original=xml;KEYS=keys;current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;cache.clear();
+ clearTimeout(timer);autoChoice=null;original=xml;KEYS=keys;current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;cache.clear();
  showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+' · '+activeSong.page,xml);
  if(!source){showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+(activeSong.page?' · '+activeSong.page:'')+' · View only',xml);document.querySelector('.footnote').textContent='Transposition unavailable for this imported score.';score.setAttribute('aria-busy','true');await pump();return;}
  buildChooser();document.querySelector('.dialog-hint').textContent='All destinations remain '+source.mode+'.';document.querySelector('.footnote').textContent='Original key: '+source.name+' '+source.mode+' · Tap the key to choose another.';
@@ -139,7 +154,7 @@ async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
  library?.navigating('score',id);
- if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();scoreSize='normal';library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
+ if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
   document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
@@ -164,7 +179,6 @@ async function loadSong(id){
 function leaveScore(){
  playback.stop();$('playback-message').textContent='';
  lyricsView.reset();lyricsSong=null;document.body.classList.remove('lyrics-open');
- scoreSize='normal';
 
  clearTimeout(timer);current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;document.dispatchEvent(new Event('score-session-reset'));
  original='';lastXML='';renderWidth=0;cache.clear();score.replaceChildren();score.setAttribute('aria-busy','false');
