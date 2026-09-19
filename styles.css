@@ -255,10 +255,12 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 /* Optional Lyrics ambience stays outside text flow and never intercepts input. */
 .lyrics-fun-layer{position:fixed;z-index:6;overflow:hidden;pointer-events:none;--fun-beam:#386F9B}
 .lyrics-dark .lyrics-fun-layer{--fun-beam:#8DD8FF}
-.lyrics-fun-note{position:absolute;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
-.lyrics-fun-worm{position:absolute;inset:0;color:var(--lyrics-ink)}
-.lyrics-fun-segment{position:absolute;left:0;top:0;background:currentColor;border-radius:50%;pointer-events:none}
-.lyrics-fun-effect{position:absolute;inset:0;overflow:hidden}
+.lyrics-fun-note{position:absolute;z-index:1;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
+.lyrics-fun-worm{position:absolute;inset:0;z-index:1;color:var(--lyrics-ink)}
+.lyrics-fun-segment{position:absolute;left:0;top:0;background:transparent;border:1px solid currentColor;opacity:.65;border-radius:50%;pointer-events:none}
+.lyrics-fun-segment[data-part=head]{background:currentColor;border:0;opacity:1}
+.lyrics-fun-effect{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
+#lyrics-view .song-playback,.lyrics-top{position:relative;z-index:7}
 .lyrics-fun-beam{animation:fun-beam .28s ease-out forwards}
 .lyrics-fun-spark{animation:fun-spark .4s ease-out forwards}
 @keyframes fun-beam{to{opacity:0}}
@@ -303,8 +305,8 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 .fun-settings select{min-height:44px;min-width:64px;font:inherit;background:var(--lyrics-bg);color:var(--lyrics-ink)}
 .fun-settings input{width:22px;height:22px}.fun-settings .quiet{min-width:44px}.fun-settings h2{font:600 18px system-ui}
 
-.lyrics-fun-projectile{stroke-dasharray:var(--shot-dash) calc(var(--shot-length) + 40);stroke-dashoffset:var(--shot-dash);animation:fun-projectile .3s linear forwards}
-@keyframes fun-projectile{to{stroke-dashoffset:calc(-1 * var(--shot-length))}}
+.lyrics-fun-projectile{stroke-dasharray:var(--shot-length);stroke-dashoffset:var(--shot-length);animation:fun-projectile .3s linear forwards}
+@keyframes fun-projectile{30%{stroke-dashoffset:0;opacity:1}80%{stroke-dashoffset:0;opacity:1}to{stroke-dashoffset:0;opacity:0}}
 @media(prefers-reduced-motion:reduce){.lyrics-fun-projectile{stroke-dasharray:none;animation:fun-beam .3s ease-out forwards}}
 
 @media screen{.score-title-block h1{display:flex;align-items:center;gap:6px}.score-title-block .song-playback{flex:0 0 44px;margin-left:0}}

@@ -4,7 +4,8 @@ export const phaseDuration=index=>index===0?22000+Math.random()*6000:32000+Math.
 export const laserPalette={light:['#526F92','#377F80','#79658E','#A65F66','#997338','#557D60'],dark:['#91AEC9','#80B6B3','#B09BC4','#D2989E','#C9AE78','#96B89D']};
 const range=(a,b)=>a+Math.random()*(b-a),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 export function createWorm(width,height,font){
- const size=font*.3,spacing=font*.55,margin=Math.max(12,size*1.5),count=clamp(Math.round(width*.8/spacing)+1,4,96);
+ // Half-sized dots and spacing; preserve the former segment count and motion speed.
+ const size=font*.15,spacing=font*.275,margin=Math.max(12,size*1.5),count=clamp(Math.round(width*.8/(font*.55))+1,4,96);
  const w={width,height,size,spacing,count,x:range(margin,width-margin),y:range(margin,height-margin),angle:range(-Math.PI,Math.PI),speed:font*range(1.1,1.8),font,fullCount:count,age:0,turnIn:0,exitAfter:range(16,24),trail:[],margin,escaped:false};
  // A short randomized prehistory makes the initial chain coherent, not piled up.
  let x=w.x,y=w.y,a=w.angle+Math.PI;
@@ -50,6 +51,6 @@ export function resizeWorm(w,width,height,font){
  const sx=width/w.width,sy=height/w.height,scale=p=>{p.x*=sx;p.y*=sy;};
  scale(w);for(const p of w.trail)scale(p);if(w.target)scale(w.target);if(w.exit)scale(w.exit);
  const headOnly=w.count===1,fraction=w.count/w.fullCount;
- w.width=width;w.height=height;w.font=font;w.size=font*.3;w.spacing=font*.55;w.margin=Math.max(12,w.size*1.5);
- w.fullCount=clamp(Math.round(width*.8/w.spacing)+1,4,96);w.count=headOnly?1:Math.max(1,Math.round(w.fullCount*fraction));
+ w.width=width;w.height=height;w.font=font;w.size=font*.15;w.spacing=font*.275;w.margin=Math.max(12,w.size*1.5);
+ w.fullCount=clamp(Math.round(width*.8/(font*.55))+1,4,96);w.count=headOnly?1:Math.max(1,Math.round(w.fullCount*fraction));
 }

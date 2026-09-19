@@ -113,11 +113,12 @@ export function createLyricsFun(host,paper,initialLimit=4){
   const destination=contact?{...contact.point}:target?{...target.point}:tap;
   if(target)target.shot=true;
   if(contact){if(contact.index===0){removeWorm();wormGap=4000;}else{shortenWorm(worm);drawWorm();}}
-  const side=Math.random()<.5?'left':'right',origin={x:side==='left'?0:bounds.width,y:30+Math.random()*Math.max(0,bounds.height*.42-60)};
+  // Shared visible-playfield coordinates for hits and empty-space shots on every device.
+  const origin={x:bounds.width*(.2+Math.random()*.6),y:bounds.height*(.55+Math.random()*.2)};
   const palette=laserPalette[host.classList.contains('lyrics-dark')?'dark':'light'];
   let color=Math.floor(Math.random()*(palette.length-(lastColor<0?0:1)));if(lastColor>=0&&color>=lastColor)color++;lastColor=color;
-  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'});effect.dataset.origin=side;effect.dataset.shot=kind;
-  const line=svg('line',{x1:origin.x,y1:origin.y,x2:destination.x,y2:destination.y,stroke:palette[color],'stroke-width':3,'stroke-linecap':'round',class:'lyrics-fun-projectile'}),length=Math.hypot(destination.x-origin.x,destination.y-origin.y);line.style.setProperty('--shot-length',length);line.style.setProperty('--shot-dash',Math.min(38,length*.3));effect.append(line);layer.append(effect);
+  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'});effect.dataset.origin='lower-middle';effect.dataset.shot=kind;
+  const line=svg('line',{x1:origin.x,y1:origin.y,x2:destination.x,y2:destination.y,stroke:palette[color],'stroke-width':2,'stroke-linecap':'round',class:'lyrics-fun-projectile'}),length=Math.hypot(destination.x-origin.x,destination.y-origin.y);line.style.setProperty('--shot-length',length+'px');effect.append(line);layer.append(effect);
   effects.set(effect,setTimeout(()=>{
    line.remove();
    if(target){const i=targets.indexOf(target);if(i>=0){targets.splice(i,1);target.note.remove();}
