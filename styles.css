@@ -601,7 +601,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media screen{
  #original-key-reference{font:400 11px/1.3 system-ui,sans-serif;color:#677570;white-space:normal;overflow-wrap:anywhere;min-width:0;align-self:center}
  /* One intrinsic group reserves real space for metadata and nonshrinking controls. */
- .score-heading .score-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:4px 10px;min-width:0;max-width:100%}
+ .score-heading .score-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:4px 24px;min-width:0;max-width:100%}
  .score-actions > .quiet{flex:0 0 44px;min-width:44px;min-height:44px}
  .score-actions > #original-key-reference{flex:0 1 auto}
  .masthead #songs{display:flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;padding:0;color:var(--primary-blue-text);margin-inline-end:8px}
