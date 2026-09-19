@@ -1,4 +1,4 @@
-import {phaseNames,phaseDuration,laserPalette,createWorm,stepWorm,wormPoints,wormHit,shortenWorm,resizeWorm} from './lyrics-fun-ambient.js';
+import {phaseNames,phaseDuration,laserPalette,createWorm,stepWorm,wormPoints,shortenWorm,resizeWorm} from './lyrics-fun-ambient.js';
 // Independent, finite flights. Coordinates are fractions of independently sampled visible content regions.
 export function planFlight(existing=[]){
  let flight;
@@ -20,7 +20,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
  const abort=new AbortController(),signal=abort.signal,reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const layer=document.createElement('div');layer.className='lyrics-fun-layer';layer.setAttribute('aria-hidden','true');host.append(layer);
  let frame=0,gesture=null,stopped=false,last=0,bounds=null,shotBusy=false,dirty=true,noteHeight=0;let limit=Math.max(1,Math.min(4,initialLimit));const targets=[],flights=[];
- let phase=0,phaseTime=0,phaseLength=phaseDuration(0),worm=null,wormNode=null,wormGap=0,lastColor=-1;
+ let phase=0,phaseTime=0,phaseLength=phaseDuration(0),worm=null,wormNode=null,wormGap=0,lastColor=-1,heldWorm=null;
  const effects=new Map();
  const clearEffect=e=>{clearTimeout(effects.get(e));effects.delete(e);e.remove();};
  const svgNS='http://www.w3.org/2000/svg';
@@ -40,7 +40,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
   }
   note.hidden=true;note.style.display='none';targets.push({note,flight,elapsed:0,point:{x:0,y:0},active:false});layer.append(note);
  }
- function addFlights(count){for(let i=0;i<count;i++){const flight=planFlight(flights);flight.duration=Math.min(flight.duration,Math.max(6000,phaseLength-phaseTime-flight.delay-50));if(phase===2)flight.curve=(Math.random()-.5)*.36;flights.push(flight);if(flights.length>4)flights.shift();spawn(flight);}}
+ function addFlights(count,replacement=false){for(let i=0;i<count;i++){const flight=planFlight(flights);if(replacement)flight.delay=1000+Math.random()*1000;flight.duration=Math.min(flight.duration,Math.max(6000,phaseLength-phaseTime-flight.delay-50));if(phase===2)flight.curve=(Math.random()-.5)*.36;flights.push(flight);if(flights.length>4)flights.shift();spawn(flight);}}
  function measure(){
   if(!dirty)return;dirty=false;
   const r=paper.getBoundingClientRect(),body=paper.querySelector('.lyrics-body'),bodyRect=body.getBoundingClientRect();
@@ -74,7 +74,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
  function enterPhase(index){
   phase=index;phaseTime=0;phaseLength=phaseDuration(index);layer.dataset.phase=phaseNames[index];
   for(const t of targets)t.note.remove();targets.length=0;flights.length=0;removeWorm();wormGap=0;
-  for(const e of effects.keys())clearEffect(e);shotBusy=false;
+  for(const e of effects.keys())clearEffect(e);shotBusy=false;heldWorm=null;
   if(phase===1){if(!layer.hidden)spawnWorm();}else addFlights(limit);
  }
  function tick(now){
@@ -84,7 +84,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
   if(!layer.hidden){
    phaseTime+=dt;if(phaseTime>=phaseLength)enterPhase((phase+1)%4);
    if(phase===1){
-    if(worm){stepWorm(worm,dt/1000,reduced.matches);if(worm.escaped){removeWorm();wormGap=4000;}else drawWorm();}
+    if(worm){if(worm!==heldWorm)stepWorm(worm,dt/1000,reduced.matches);if(worm.escaped){removeWorm();wormGap=4000;}else drawWorm();}
     else{wormGap=Math.max(0,wormGap-dt);if(wormGap===0)spawnWorm();}
    }
   }
@@ -93,7 +93,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
    if(!layer.hidden&&!t.shot)t.elapsed+=dt;
    const f=t.flight,elapsed=t.elapsed-f.delay;
    if(elapsed<0)continue;
-   if(elapsed>=f.duration&&!t.shot){targets.splice(targets.indexOf(t),1);t.note.remove();continue;}
+   if(elapsed>=f.duration&&!t.shot){targets.splice(targets.indexOf(t),1);t.note.remove();addFlights(1,true);continue;}
    t.active=true;t.note.hidden=false;t.note.style.display='';
    const progress=reduced.matches?.25:Math.min(1,elapsed/f.duration);
    const [low,high]=bounds.regions[f.region],startX=w/2+f.startX*Math.max(0,bounds.width-w);
@@ -103,16 +103,27 @@ export function createLyricsFun(host,paper,initialLimit=4){
   }
   frame=requestAnimationFrame(tick);
  }
- function fire(event){
+ // Read painted target rectangles in client CSS pixels; never infer transformed centers.
+ function pickTarget(event){
+  const entries=wormNode?[...wormNode.children].filter(e=>!e.hidden).map((node,index)=>({node,index,worm})):targets.filter(t=>t.active&&!t.shot).map(target=>({node:target.note,target}));
+  let best=null,distance=Infinity;
+  for(const item of entries){const r=item.node.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,dx=event.clientX-x,dy=event.clientY-y;
+   const rx=r.width*.75,ry=r.height*.75,d=(dx*dx)/(rx*rx)+(dy*dy)/(ry*ry);
+   if(r.width&&r.height&&d<=1&&d<distance){best=item;distance=d;}
+  }return best;
+ }
+ function fire(event,pressed){
   measure();if(layer.hidden||!bounds||shotBusy)return;shotBusy=true;
-  const tap={x:Math.max(0,Math.min(bounds.width,event.clientX-bounds.left)),y:Math.max(0,Math.min(bounds.height,event.clientY-bounds.top))};
-  const visible=targets.filter(t=>t.active&&t.point.x>=0&&t.point.x<=bounds.width);
-  const target=visible.length?visible[Math.floor(Math.random()*visible.length)]:null;
-  const contact=worm?wormHit(worm,tap):null;
+  const frameRect=layer.getBoundingClientRect(),sx=bounds.width/frameRect.width,sy=bounds.height/frameRect.height;
+  const local=(x,y)=>({x:(x-frameRect.left)*sx,y:(y-frameRect.top)*sy});
+  const tap=local(event.clientX,event.clientY);
+  const hit=pressed?.node.isConnected&&(pressed.worm?pressed.worm===worm:targets.includes(pressed.target))?pressed:pickTarget(event);
+  const rect=hit?.node.getBoundingClientRect(),center=rect?local(rect.x+rect.width/2,rect.y+rect.height/2):null;
+  const target=hit?.target||null,contact=hit?.worm?{index:hit.index,point:center}:null;
   const kind=contact?(contact.index===0?'head':'body'):target?'hit':'free';
-  const destination=contact?{...contact.point}:target?{...target.point}:tap;
+  const destination=contact?{...contact.point}:target?center:tap;
   if(target)target.shot=true;
-  if(contact){if(contact.index===0){removeWorm();wormGap=4000;}else{shortenWorm(worm);drawWorm();}}
+  const shotWorm=worm;if(contact)heldWorm=worm;
   // Shared visible-playfield coordinates for hits and empty-space shots on every device.
   const origin={x:bounds.width*(.2+Math.random()*.6),y:bounds.height*(.55+Math.random()*.2)};
   const palette=laserPalette[host.classList.contains('lyrics-dark')?'dark':'light'];
@@ -120,17 +131,18 @@ export function createLyricsFun(host,paper,initialLimit=4){
   const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'});effect.dataset.origin='lower-middle';effect.dataset.shot=kind;
   const line=svg('line',{x1:origin.x,y1:origin.y,x2:destination.x,y2:destination.y,stroke:palette[color],'stroke-width':2,'stroke-linecap':'round',class:'lyrics-fun-projectile'}),length=Math.hypot(destination.x-origin.x,destination.y-origin.y);line.style.setProperty('--shot-length',length+'px');effect.append(line);layer.append(effect);
   effects.set(effect,setTimeout(()=>{
-   line.remove();
-   if(target){const i=targets.indexOf(target);if(i>=0){targets.splice(i,1);target.note.remove();}
+   line.remove();shotBusy=false;heldWorm=null;
+   if(contact&&worm===shotWorm){if(contact.index===0){removeWorm();wormGap=4000;}else{shortenWorm(worm);drawWorm();}}
+   if(target){const i=targets.indexOf(target);if(i>=0){targets.splice(i,1);target.note.remove();if(phase!==1)addFlights(1,true);}
     for(let i=0;i<8;i++){const angle=i*Math.PI/4,spark=svg('circle',{cx:destination.x,cy:destination.y,r:4,fill:['#E078A2','#48B8C3','#D2A536','#9876DD'][i%4]});spark.style.setProperty('--dx',Math.cos(angle)*25+'px');spark.style.setProperty('--dy',Math.sin(angle)*25+'px');spark.classList.add('lyrics-fun-spark');effect.append(spark);}
-    effects.set(effect,setTimeout(()=>{clearEffect(effect);shotBusy=false;},400));
+    effects.set(effect,setTimeout(()=>{clearEffect(effect);},400));
    }else{clearEffect(effect);shotBusy=false;}
   },300));
  }
  const safe=e=>e.target instanceof Element&&paper.contains(e.target)&&!e.target.closest('button,a,input,select,textarea,[role=button]');
- host.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0){gesture=null;return;}gesture=safe(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),scroll:scrollY}:null;},{signal,passive:true});
+ host.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0){gesture=null;return;}gesture=safe(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),scroll:scrollY,hit:pickTarget(e)}:null;},{signal,passive:true});
  host.addEventListener('pointermove',e=>{if(gesture&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8)gesture=null;},{signal,passive:true});
- host.addEventListener('pointerup',e=>{const g=gesture;gesture=null;if(g&&g.id===e.pointerId&&safe(e)&&Math.hypot(e.clientX-g.x,e.clientY-g.y)<=8&&performance.now()-g.time<450&&Math.abs(scrollY-g.scroll)<2)fire(e);},{signal,passive:true});
+ host.addEventListener('pointerup',e=>{const g=gesture;gesture=null;if(g&&g.id===e.pointerId&&safe(e)&&Math.hypot(e.clientX-g.x,e.clientY-g.y)<=8&&performance.now()-g.time<450&&Math.abs(scrollY-g.scroll)<2)fire(e,g.hit);},{signal,passive:true});
  host.addEventListener('pointercancel',()=>{gesture=null;},{signal,passive:true});
  window.addEventListener('scroll',()=>{gesture=null;dirty=true;},{signal,passive:true,capture:true});
  document.addEventListener('visibilitychange',()=>{gesture=null;dirty=true;cancelAnimationFrame(frame);last=0;if(!document.hidden)frame=requestAnimationFrame(tick);},{signal});
