@@ -1,3 +1,4 @@
+import {lyricsIcon} from './icons.js';
 import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
@@ -11,6 +12,7 @@ import {songs,refreshLocalMusic,localXML,localAsset} from './catalog.js';
 import {initMyMusic} from './my-music.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,parseXML} from './music.js';
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
+$('show-lyrics').innerHTML=lyricsIcon;
 let activeSong=songs[0],modeOverride,loading=false,scoreSize='normal';
 // OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
 const scoreSizes={normal:1,compact:.62/.78,large:.94/.78};

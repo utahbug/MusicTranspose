@@ -1,3 +1,4 @@
+import {lyricsIcon} from './icons.js';
 import {songs} from './catalog.js';
 import {songSearchText,normalizeSearch} from './songs.js';
 import {sourceChoices,matchesSource} from './library-query.js';
@@ -68,7 +69,7 @@ export function createListsView({getState,save,onLibrary,onSong,onNavigate}){
     const up=button('↑','Move up: '+title,()=>move(id,g.songs[index-1],true));up.disabled=index===0;
     const down=button('↓','Move down: '+title,()=>move(id,g.songs[index+1],false));down.disabled=index===g.songs.length-1;actions.append(up,down);
    }else{
-    if(lyricIds.has(id)){const lyrics=button('','Open lyrics: '+title,()=>openSong(id,true));lyrics.title='Lyrics';lyrics.innerHTML='<svg class="lyrics-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12h5M12 6h9M12 10h7M12 14h9M12 18h6"/></svg>';actions.append(lyrics);}else{const slot=el('span',null,'list-lyrics-slot');slot.setAttribute('aria-hidden','true');actions.append(slot);}
+    if(lyricIds.has(id)){const lyrics=button('','Open lyrics: '+title,()=>openSong(id,true));lyrics.title='Lyrics';lyrics.innerHTML=lyricsIcon;actions.append(lyrics);}else{const slot=el('span',null,'list-lyrics-slot');slot.setAttribute('aria-hidden','true');actions.append(slot);}
     const edit=iconButton('edit','Edit list item: '+title,()=>editItem(id,title,index,edit));actions.append(edit);
    }
    row.append(entry,actions);content.append(row);
