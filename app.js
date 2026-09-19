@@ -127,13 +127,9 @@ for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=(
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
-const phoneControls=matchMedia('(max-width:600px)');
-function placePerformanceControls(){
- closeSizeOptions();const header=document.querySelector('.score-actions');
- if(phoneControls.matches){header.insertBefore($('songs'),$('original-key-reference'));header.append($('score-size'));}
- else{document.querySelector('.playing-controls').prepend($('songs'));document.querySelector('.utility-controls').prepend($('score-size'));}
-}
-phoneControls.addEventListener('change',placePerformanceControls);placePerformanceControls();
+// One control map at every viewport; move existing buttons, preserving handlers/focus.
+document.querySelector('.playing-controls').prepend($('songs'));
+document.querySelector('.utility-controls').prepend($('score-size'));
 window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
 for(const input of document.querySelectorAll('input[name=octave]'))input.onchange=()=>changeOctave(Number(input.value));

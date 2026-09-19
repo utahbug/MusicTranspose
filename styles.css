@@ -613,11 +613,25 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  .pdf-score-open .masthead #score-size{display:none}
  @media(min-width:601px){.masthead .toolbar{grid-template-columns:1fr auto 1fr}.score-actions #songs{margin:0}}
  @media(max-width:600px){
-  #original-key-reference{font-size:10px;grid-column:1 / -1;grid-row:2;justify-self:end}
-  .score-heading .score-actions{display:grid;grid-template-columns:repeat(3,max-content);gap:4px 2px}
-  .score-actions #songs{grid-column:1;grid-row:1}
-  .score-actions #show-lyrics{grid-column:2;grid-row:1}
-  body:not(.pdf-score-open) .score-actions #score-size{grid-column:3;grid-row:1;margin:0}
+  #original-key-reference{font-size:10px;white-space:nowrap}
+  .score-heading .score-actions{display:flex;gap:6px;flex-wrap:nowrap}
+  .score-heading{grid-template-columns:minmax(0,1fr) auto}
+  .masthead .toolbar,.pdf-score-open .masthead .toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:4px;row-gap:0;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
+  .masthead .playing-controls{grid-column:1;grid-row:2;gap:2px;min-width:0}
+  .masthead .utility-controls{grid-column:2;grid-row:2;gap:2px}
+  .masthead #songs{margin-inline-end:4px}
+  .masthead #key{min-width:0;padding-inline:4px;gap:2px}
+  .masthead #key-name{font-size:16px;line-height:22px}
+  .masthead #key-name::after{content:none}
+  .masthead #key-signature{font-size:14px;line-height:22px}
+  .masthead .toolbar-position{display:none;grid-column:1 / -1;grid-row:1;justify-self:center;font-size:12px;line-height:16px}
+  .masthead .toolbar-position:has(#page-position:not([hidden])){display:flex}
+  .masthead :is(#songs,#reset,#print,#settings),body:not(.pdf-score-open) .masthead #score-size{width:44px;min-width:44px;height:44px;min-height:44px;flex-basis:44px}
+ }
+ @media(max-width:360px){
+  .masthead :is(#songs,#reset,#print,#settings),body:not(.pdf-score-open) .masthead #score-size{width:40px;min-width:40px;flex-basis:40px}
+  .masthead #key-name{font-size:14px}.masthead #key-signature{font-size:12px}
+  .masthead #key{padding-inline:2px}
  }
 }
 @media print{#original-key-reference{display:none!important}}
