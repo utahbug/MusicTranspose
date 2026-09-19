@@ -1,12 +1,12 @@
-// Independent, finite flights. Coordinates are fractions of the visible lyric body.
+// Independent, finite flights. Coordinates are fractions of independently sampled visible content regions.
 export function planFlight(existing=[]){
  let flight;
  for(let attempt=0;attempt<40;attempt++){
-  const upper=Math.random()<.8,direction=Math.random()<.5?-1:1;
+  const choice=Math.random(),region=choice<.4?'header':choice<.8?'upper':'lower',upper=region!=='lower',direction=Math.random()<.5?-1:1;
   const startX=Math.random()<.35?(direction===1?.03:.97):.12+Math.random()*.76;
-  flight={delay:350+Math.random()*5150,startX,endX:direction===1?1.1:-.1,direction,upper,
-   startY:upper?.05+Math.random()*.34:.48+Math.random()*.32,
-   endY:upper?.05+Math.random()*.34:.48+Math.random()*.32,
+  flight={delay:350+Math.random()*5150,startX,endX:direction===1?1.1:-.1,direction,upper,region,
+   startY:.1+Math.random()*.8,
+   endY:.1+Math.random()*.8,
    duration:18000+Math.random()*16000,curve:(Math.random()-.5)*.08};
   const speed=f=>Math.abs(f.endX-f.startX)/f.duration;
   if(!existing.some(f=>Math.abs(f.delay-flight.delay)<450||
@@ -18,7 +18,7 @@ export function planFlight(existing=[]){
 export function createLyricsFun(host,paper,initialLimit=4){
  const abort=new AbortController(),signal=abort.signal,reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const layer=document.createElement('div');layer.className='lyrics-fun-layer';layer.setAttribute('aria-hidden','true');host.append(layer);
- let frame=0,gesture=null,stopped=false,last=0,bounds=null,shotBusy=false;let limit=Math.max(1,Math.min(4,initialLimit));const targets=[],flights=[];
+ let frame=0,gesture=null,stopped=false,last=0,bounds=null,shotBusy=false,dirty=true,noteHeight=0;let limit=Math.max(1,Math.min(4,initialLimit));const targets=[],flights=[];
  const effects=new Map();
  const clearEffect=e=>{clearTimeout(effects.get(e));effects.delete(e);e.remove();};
  const svgNS='http://www.w3.org/2000/svg';
@@ -26,7 +26,7 @@ export function createLyricsFun(host,paper,initialLimit=4){
  function spawn(flight){
   if(stopped||targets.length>=limit)return;
   const type=['half','quarter','eighth','sixteenth','beamed-eighth','beamed-sixteenth'][Math.floor(Math.random()*6)];
-  const note=svg('svg',{viewBox:'0 0 44 56',class:'lyrics-fun-note','data-note-type':type});
+  const note=svg('svg',{viewBox:'0 0 44 56',class:'lyrics-fun-note','data-note-type':type,'data-region':flight.region});
   if(type.startsWith('beamed-')){
    for(const [x,y] of [[10,43],[33,38]])note.append(svg('ellipse',{cx:x,cy:y,rx:7,ry:5,transform:`rotate(-20 ${x} ${y})`,fill:'currentColor'}));
    note.append(svg('path',{d:'M16 42V10L39 5V37',fill:'none',stroke:'currentColor','stroke-width':2.5}),svg('path',{d:'M16 10L39 5V10L16 15Z',fill:'currentColor'}));
@@ -40,17 +40,28 @@ export function createLyricsFun(host,paper,initialLimit=4){
  }
  function addFlights(count){for(let i=0;i<count;i++){const flight=planFlight(flights);flights.push(flight);if(flights.length>4)flights.shift();spawn(flight);}}
  function measure(){
-  const r=paper.getBoundingClientRect(),body=paper.querySelector('.lyrics-body').getBoundingClientRect();
-  const top=Math.max(0,body.top),bottom=Math.min(innerHeight,r.bottom-8),height=Math.max(0,bottom-top);
-  bounds={left:r.left+8,top,width:Math.max(0,r.width-16),height};
+  if(!dirty)return;dirty=false;
+  const r=paper.getBoundingClientRect(),body=paper.querySelector('.lyrics-body'),bodyRect=body.getBoundingClientRect();
+  const top=Math.max(8,r.top+8),bottom=Math.min(innerHeight-8,r.bottom-8),height=Math.max(0,bottom-top);
+  noteHeight=parseFloat(getComputedStyle(body).fontSize)*1.4;
+  const usable=Math.max(0,height-noteHeight),middle=Math.min(usable*.5,Math.max(0,innerHeight/2-top-noteHeight/2));
+  // Text is eligible, including wrapped titles and the notice before the first verse.
+  // Once the header scrolls away, header-weighted flights use the visible upper area.
+  const headerEnd=Math.max(0,Math.min(middle,bodyRect.top-top-noteHeight/2));
+  const split=headerEnd>noteHeight/2?headerEnd:middle*.45;
+  bounds={left:r.left+8,top,width:Math.max(0,r.width-16),height,
+   regions:{header:[0,split],upper:[split,middle],lower:[middle,usable]}};
   Object.assign(layer.style,{left:bounds.left+'px',top:top+'px',width:bounds.width+'px',height:height+'px'});
   layer.hidden=height<64||document.hidden;
  }
+ const invalidate=()=>{dirty=true;};
+ const observer=new ResizeObserver(invalidate);observer.observe(paper);observer.observe(paper.querySelector('.lyrics-body'));
+ window.addEventListener('resize',invalidate,{signal,passive:true});
  function tick(now){
   if(stopped)return;
   measure();
   const dt=last?Math.min(now-last,50):0;last=now;
-  const h=parseFloat(getComputedStyle(paper.querySelector('.lyrics-body')).fontSize)*1.4,w=h*44/56;
+  const h=noteHeight,w=h*44/56;
   for(const t of [...targets]){
    if(!layer.hidden&&!t.shot)t.elapsed+=dt;
    const f=t.flight,elapsed=t.elapsed-f.delay;
@@ -58,8 +69,9 @@ export function createLyricsFun(host,paper,initialLimit=4){
    if(elapsed>=f.duration&&!t.shot){targets.splice(targets.indexOf(t),1);t.note.remove();continue;}
    t.active=true;t.note.hidden=false;t.note.style.display='';
    const progress=reduced.matches?.25:Math.min(1,elapsed/f.duration);
-   if(!t.shot)t.point={x:(f.startX+(f.endX-f.startX)*progress)*bounds.width,
-    y:h/2+(f.startY+(f.endY-f.startY)*progress+Math.sin(progress*Math.PI)*f.curve)*Math.max(0,bounds.height-h)};
+   const [low,high]=bounds.regions[f.region],startX=w/2+f.startX*Math.max(0,bounds.width-w);
+   if(!t.shot)t.point={x:startX+(f.endX*bounds.width-startX)*progress,
+    y:h/2+low+(f.startY+(f.endY-f.startY)*progress+Math.sin(progress*Math.PI)*f.curve)*(high-low)};
    Object.assign(t.note.style,{width:w+'px',height:h+'px',left:t.point.x-w/2+'px',top:t.point.y-h/2+'px'});
   }
   frame=targets.length?requestAnimationFrame(tick):0;
@@ -87,10 +99,10 @@ export function createLyricsFun(host,paper,initialLimit=4){
  host.addEventListener('pointermove',e=>{if(gesture&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8)gesture=null;},{signal,passive:true});
  host.addEventListener('pointerup',e=>{const g=gesture;gesture=null;if(g&&g.id===e.pointerId&&safe(e)&&Math.hypot(e.clientX-g.x,e.clientY-g.y)<=8&&performance.now()-g.time<450&&Math.abs(scrollY-g.scroll)<2)fire();},{signal,passive:true});
  host.addEventListener('pointercancel',()=>{gesture=null;},{signal,passive:true});
- window.addEventListener('scroll',()=>{gesture=null;},{signal,passive:true,capture:true});
- document.addEventListener('visibilitychange',()=>{gesture=null;cancelAnimationFrame(frame);last=0;if(!document.hidden)frame=requestAnimationFrame(tick);},{signal});
+ window.addEventListener('scroll',()=>{gesture=null;dirty=true;},{signal,passive:true,capture:true});
+ document.addEventListener('visibilitychange',()=>{gesture=null;dirty=true;cancelAnimationFrame(frame);last=0;if(!document.hidden)frame=requestAnimationFrame(tick);},{signal});
  addFlights(limit);frame=requestAnimationFrame(tick);
- const cleanup=()=>{stopped=true;abort.abort();cancelAnimationFrame(frame);for(const e of effects.keys())clearEffect(e);layer.remove();};
+ const cleanup=()=>{stopped=true;abort.abort();observer.disconnect();cancelAnimationFrame(frame);for(const e of effects.keys())clearEffect(e);layer.remove();};
  cleanup.setLimit=value=>{const next=Math.max(1,Math.min(4,Number(value)||4));const previous=limit;limit=next;if(next>previous)addFlights(next-previous);else while(targets.length>next)targets.pop().note.remove();if(!frame&&targets.length){last=0;frame=requestAnimationFrame(tick);}};
  return cleanup;
 }
