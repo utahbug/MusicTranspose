@@ -475,3 +475,14 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead #key-signature:empty{display:none}
  @media(max-width:360px){.masthead #key-name{font-size:16px}.masthead #key-signature{font-size:15px}.masthead #key{padding-inline:6px}}
 }
+
+/* Balanced outer tracks center page status; intrinsic minima avoid phone collisions. */
+@media screen{
+ .masthead .toolbar,.pdf-score-open .masthead .toolbar{display:grid;grid-template-columns:minmax(max-content,1fr) auto minmax(max-content,1fr);column-gap:12px;align-items:center}
+ .masthead .playing-controls{grid-column:1;grid-row:1;display:flex;align-items:center;gap:6px;justify-self:start}
+ .masthead .toolbar-position{grid-column:2;grid-row:1;justify-self:center;margin:0;min-width:0}
+ .masthead .utility-controls{grid-column:3;grid-row:1;justify-self:end}
+ #page-position{text-align:center}
+ @media(max-width:600px){.masthead .toolbar{column-gap:6px}.masthead .playing-controls{gap:4px}}
+ @media(max-width:360px){.masthead .toolbar{column-gap:4px}.masthead .playing-controls{gap:2px}}
+}
