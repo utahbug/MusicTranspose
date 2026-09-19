@@ -534,14 +534,14 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #lists-view button:focus-visible,#lists-view input:focus-visible,#lists-view select:focus-visible,#lists-view summary:focus-visible,#list-name-dialog :focus-visible{outline:2px solid #536b7a;outline-offset:2px}
 #lists-actions{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}#lists-status{font-size:13px}#lists-status:empty{display:none}
 #lists-view .list-overview-row{display:flex;width:100%;justify-content:space-between;align-items:center;gap:16px;text-align:left;min-height:64px;border-bottom:1px solid #c4cfd3;background:#fafbf8;padding:12px}.list-overview-row strong{overflow-wrap:anywhere}.list-overview-row span{white-space:nowrap;font-size:13px}
-#list-songs{padding:0;margin:8px 0;list-style:none}.list-song-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;border-bottom:1px solid #c4cfd3;background:#fafbf8}
-#lists-view .list-song-title{text-align:left;display:flex;flex-direction:column;gap:5px;min-width:0;min-height:64px;color:#233331}.list-song-title strong{font-size:16px;overflow-wrap:anywhere}
+#list-songs{padding:0;margin:8px 0;list-style:none}.list-song-row{display:grid;grid-template-columns:minmax(0,1fr) 88px;align-items:center;border-bottom:1px solid #c4cfd3;background:#fafbf8}
+#lists-view .list-song-title{text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0;min-height:56px;color:#233331}.list-song-title strong{font-size:16px;overflow-wrap:anywhere}
 .list-song-actions{display:flex;align-items:center}.list-song-actions button{width:44px}.list-song-row.dragging{opacity:.55}.list-song-row.drop-before{box-shadow:inset 0 3px #536b7a}.list-song-row.drop-after{box-shadow:inset 0 -3px #536b7a}
-.list-manage summary{font-size:14px!important}.list-manage button{font-size:14px!important}.list-empty{padding:16px 8px}
+.list-empty{padding:16px 8px}
 .list-picker-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;background:#eef3f5;padding:8px;z-index:2}.list-picker-controls input[type=search]{flex:1 1 200px;width:100%}.list-picker-controls select{max-width:100%}.list-picker-controls label{display:flex;align-items:center;gap:6px;min-height:44px}.list-picker-controls #list-picker-done{margin-left:auto;font-weight:600}
 .list-picker-row{display:flex;gap:12px;align-items:center;min-height:64px;padding:8px;border-bottom:1px solid #c4cfd3}.list-picker-row>span{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}.list-picker-row input,#list-picker-favorites{width:22px;height:22px;flex:none;accent-color:#536b7a}.list-picker-row:has(input:disabled){color:#62706f}
 #list-name-dialog{width:380px}#list-name-form label{display:block;margin-bottom:6px}#list-name-input{width:100%;box-sizing:border-box}#list-name-error{color:#7a3e46}
-@media(max-width:600px){#lists-view{padding:10px 14px 40px}.lists-heading h1{font-size:23px}.list-song-row{grid-template-columns:44px minmax(0,1fr)}.list-song-actions{grid-column:2;justify-content:flex-end}.list-picker-controls{gap:4px}}
+@media(max-width:600px){#lists-view{padding:10px 14px 40px}.lists-heading h1{font-size:23px}.list-picker-controls{gap:4px}}
 @media print{#lists-view,#list-name-dialog{display:none!important}}
 
 #lists-view{font-family:system-ui,sans-serif}
@@ -555,3 +555,21 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 /* Match radio width, native inline margins and label gap through a shared grid. */
 #navigation-settings .setting-choice{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:10px}
 #navigation-settings .tap-help-line{margin-inline-start:38px}
+
+/* Normal list rows prioritize opening music; ordering tools appear only on request. */
+.list-song-row.is-reordering{grid-template-columns:44px minmax(0,1fr) 88px}
+.list-song-actions{display:grid;grid-template-columns:44px 44px;align-self:start;padding-top:6px}
+.list-lyrics-slot{width:44px;height:44px}
+.list-control-icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+.list-level-tools{display:flex;gap:4px}
+#lists-view .list-level-tools button{width:44px}
+#lists-view .list-level-tools [aria-pressed=true]{background:#dce7ed;box-shadow:inset 0 0 0 1px #536b7a}
+#lists-view button:disabled{cursor:default}
+#lists-view .list-song-actions button:disabled{opacity:.35}
+.list-action-dialog{width:340px;font-family:system-ui,sans-serif}
+.list-action-dialog h2{font-size:20px;overflow-wrap:anywhere;margin:0 0 12px}
+.list-panel-actions{display:flex;flex-direction:column;gap:4px}
+.list-action-dialog button{min-height:44px;padding:8px 12px;text-align:left;font:inherit;border:0;border-radius:4px;background:#eef3f5;color:#365f7d}
+.list-action-dialog button[aria-label="Delete list"]{color:#7a3e46;background:transparent}
+.list-action-dialog button:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+@media print{.list-action-dialog{display:none!important}}
