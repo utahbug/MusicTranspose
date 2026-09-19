@@ -10,6 +10,9 @@ export function matchesSource(song,source){
  switch(source){case 'my-music':return false;case 'hymnal':return hymnal&&!legacy;case 'children':return has('Children’s Songbook');case 'home-church':return has('Hymns for Home and Church');case 'legacy':return legacy;case 'other':return !hymnal&&!has('Children’s Songbook')&&!has('Hymns for Home and Church');default:return true;}
 }
 const collator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
+// A–Z presentation only: preserve internal punctuation and original catalog order on ties.
+export const titleSortKey=title=>String(title??'').replace(/^[\p{P}\s]+/u,'');
+export const compareAlphabeticalTitles=(a,b)=>collator.compare(titleSortKey(a.title),titleSortKey(b.title));
 export const compareTitles=(a,b)=>collator.compare(a.title,b.title)||collator.compare(a.id,b.id);
 export function compareNumbers(a,b){
  const value=s=>String(s.songNumber??s.page??'').trim(),number=s=>{const m=value(s).match(/^(\d+)(?:[a-z])?$/i);return m?Number(m[1]):Infinity;};

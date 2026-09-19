@@ -1,6 +1,6 @@
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
-import {compareNumbers,matchesSource} from '../library-query.js';
+import {compareNumbers,matchesSource,compareAlphabeticalTitles} from '../library-query.js';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE),{chromium}=require('playwright');
 const b=await chromium.launch({channel:'msedge',headless:true}),p=await b.newPage(),errors=[];
 p.on('pageerror',e=>errors.push(e.message));
@@ -18,7 +18,7 @@ try{
   for(const order of ['title','number']){
    if(await p.locator('#order-toggle').textContent()!==(order==='title'?'A–Z':'123'))await p.locator('#order-toggle').click();
    const actual=await ids();assert.deepEqual(new Set(actual),new Set(expected.map(s=>s.id)));
-   const collator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});expected.sort(order==='number'?compareNumbers:(a,b)=>collator.compare(a.title,b.title));assert.deepEqual(actual,expected.map(s=>s.id));
+   const collator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});expected.sort(order==='number'?compareNumbers:compareAlphabeticalTitles);assert.deepEqual(actual,expected.map(s=>s.id));
    assert.equal(await p.locator('#library-count').textContent(),`${expected.length} ${expected.length===1?'song':'songs'}`);
   }
   if(source==='legacy')assert.equal(await p.locator('.empty-library').textContent(),'No Legacy songs.');
