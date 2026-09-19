@@ -1,4 +1,19 @@
 import {phaseNames,phaseDuration,laserPalette,createWorm,stepWorm,wormPoints,shortenWorm,resizeWorm} from './lyrics-fun-ambient.js';
+// Fair automatic target choice; use only the current, connected target list.
+export function chooseFunTarget(entries,wormMode,random=Math.random){
+ if(!entries.length)return null;
+ if(!wormMode)return entries[Math.floor(random()*entries.length)];
+ const head=entries.find(e=>e.index===0),body=entries.filter(e=>e.index!==0);
+ if(!body.length)return head||null;
+ if(head&&random()<.3)return head;
+ return body[Math.floor(random()*body.length)];
+}
+export function laserOrigin(width,height,random=Math.random){
+ const edge=random();
+ if(edge<.45)return {x:-6,y:height*(.45+random()*.4),edge:'left'};
+ if(edge<.9)return {x:width+6,y:height*(.45+random()*.4),edge:'right'};
+ return {x:width*(.2+random()*.6),y:height+6,edge:'bottom'};
+}
 // Independent, finite flights. Coordinates are fractions of independently sampled visible content regions.
 export function planFlight(existing=[]){
  let flight;
@@ -103,32 +118,30 @@ export function createLyricsFun(host,paper,initialLimit=4){
   }
   frame=requestAnimationFrame(tick);
  }
- // Read painted target rectangles in client CSS pixels; never infer transformed centers.
- function pickTarget(event){
+ // Selection is independent of the tap location; geometry still comes from painted targets.
+ function pickTarget(){
   const entries=wormNode?[...wormNode.children].filter(e=>!e.hidden).map((node,index)=>({node,index,worm})):targets.filter(t=>t.active&&!t.shot).map(target=>({node:target.note,target}));
-  let best=null,distance=Infinity;
-  for(const item of entries){const r=item.node.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,dx=event.clientX-x,dy=event.clientY-y;
-   const rx=r.width*.75,ry=r.height*.75,d=(dx*dx)/(rx*rx)+(dy*dy)/(ry*ry);
-   if(r.width&&r.height&&d<=1&&d<distance){best=item;distance=d;}
-  }return best;
+  const r=layer.getBoundingClientRect();
+  const visible=entries.filter(item=>{const b=item.node.getBoundingClientRect();return b.width&&b.height&&b.right>r.left&&b.left<r.right&&b.bottom>r.top&&b.top<r.bottom;});
+  return chooseFunTarget(visible.length?visible:wormNode?entries:[],!!wormNode);
  }
- function fire(event,pressed){
+ function fire(event){
   measure();if(layer.hidden||!bounds||shotBusy)return;shotBusy=true;
   const frameRect=layer.getBoundingClientRect(),sx=bounds.width/frameRect.width,sy=bounds.height/frameRect.height;
   const local=(x,y)=>({x:(x-frameRect.left)*sx,y:(y-frameRect.top)*sy});
   const tap=local(event.clientX,event.clientY);
-  const hit=pressed?.node.isConnected&&(pressed.worm?pressed.worm===worm:targets.includes(pressed.target))?pressed:pickTarget(event);
+  const hit=pickTarget();
   const rect=hit?.node.getBoundingClientRect(),center=rect?local(rect.x+rect.width/2,rect.y+rect.height/2):null;
   const target=hit?.target||null,contact=hit?.worm?{index:hit.index,point:center}:null;
   const kind=contact?(contact.index===0?'head':'body'):target?'hit':'free';
   const destination=contact?{...contact.point}:target?center:tap;
   if(target)target.shot=true;
   const shotWorm=worm;if(contact)heldWorm=worm;
-  // Shared visible-playfield coordinates for hits and empty-space shots on every device.
-  const origin={x:bounds.width*(.2+Math.random()*.6),y:bounds.height*(.55+Math.random()*.2)};
+  // Enter just outside the clipped playfield; never originate in the middle of the text.
+  const origin=laserOrigin(bounds.width,bounds.height);
   const palette=laserPalette[host.classList.contains('lyrics-dark')?'dark':'light'];
   let color=Math.floor(Math.random()*(palette.length-(lastColor<0?0:1)));if(lastColor>=0&&color>=lastColor)color++;lastColor=color;
-  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'});effect.dataset.origin='lower-middle';effect.dataset.shot=kind;
+  const effect=svg('svg',{class:'lyrics-fun-effect',width:'100%',height:'100%'});effect.dataset.origin=origin.edge;effect.dataset.shot=kind;
   const line=svg('line',{x1:origin.x,y1:origin.y,x2:destination.x,y2:destination.y,stroke:palette[color],'stroke-width':2,'stroke-linecap':'round',class:'lyrics-fun-projectile'}),length=Math.hypot(destination.x-origin.x,destination.y-origin.y);line.style.setProperty('--shot-length',length+'px');effect.append(line);layer.append(effect);
   effects.set(effect,setTimeout(()=>{
    line.remove();shotBusy=false;heldWorm=null;
@@ -140,9 +153,9 @@ export function createLyricsFun(host,paper,initialLimit=4){
   },300));
  }
  const safe=e=>e.target instanceof Element&&paper.contains(e.target)&&!e.target.closest('button,a,input,select,textarea,[role=button]');
- host.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0){gesture=null;return;}gesture=safe(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),scroll:scrollY,hit:pickTarget(e)}:null;},{signal,passive:true});
+ host.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0){gesture=null;return;}gesture=safe(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),scroll:scrollY}:null;},{signal,passive:true});
  host.addEventListener('pointermove',e=>{if(gesture&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8)gesture=null;},{signal,passive:true});
- host.addEventListener('pointerup',e=>{const g=gesture;gesture=null;if(g&&g.id===e.pointerId&&safe(e)&&Math.hypot(e.clientX-g.x,e.clientY-g.y)<=8&&performance.now()-g.time<450&&Math.abs(scrollY-g.scroll)<2)fire(e,g.hit);},{signal,passive:true});
+ host.addEventListener('pointerup',e=>{const g=gesture;gesture=null;if(g&&g.id===e.pointerId&&safe(e)&&Math.hypot(e.clientX-g.x,e.clientY-g.y)<=8&&performance.now()-g.time<450&&Math.abs(scrollY-g.scroll)<2)fire(e);},{signal,passive:true});
  host.addEventListener('pointercancel',()=>{gesture=null;},{signal,passive:true});
  window.addEventListener('scroll',()=>{gesture=null;dirty=true;},{signal,passive:true,capture:true});
  document.addEventListener('visibilitychange',()=>{gesture=null;dirty=true;cancelAnimationFrame(frame);last=0;if(!document.hidden)frame=requestAnimationFrame(tick);},{signal});
