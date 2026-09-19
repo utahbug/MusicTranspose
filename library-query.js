@@ -18,3 +18,10 @@ export function compareNumbers(a,b){
  const value=s=>String(s.songNumber??s.page??'').trim(),number=s=>{const m=value(s).match(/^(\d+)(?:[a-z])?$/i);return m?Number(m[1]):Infinity;};
  const x=number(a),y=number(b);return (x===y?0:x<y?-1:1)||(Number.isFinite(x)?collator.compare(value(a),value(b)):0)||compareTitles(a,b);
 }
+
+// A source-specific Library presentation of an existing identity, never a new song.
+export function songForSource(song,source){
+ const collection={children:'Children’s Songbook',hymnal:'Hymns (1985)','home-church':'Hymns for Home and Church'}[source];
+ const member=collection&&song.collection!==collection&&(song.collectionMemberships||[]).find(m=>m.collection===collection);
+ return member?{...song,collection:member.collection,page:member.page??member.songNumber??song.page,songNumber:member.songNumber??member.page??song.songNumber,title:member.title||song.title}:song;
+}

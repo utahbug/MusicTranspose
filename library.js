@@ -1,4 +1,4 @@
-import {sourceChoices,matchesSource,compareNumbers,compareAlphabeticalTitles} from './library-query.js';
+import {sourceChoices,matchesSource,compareNumbers,compareAlphabeticalTitles,songForSource} from './library-query.js';
 import {lyricIds} from './lyrics-index.js';
 import {createFilesView} from './files-view.js';
 import {createListsView} from './lists-view.js';
@@ -40,7 +40,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore}){
  function open(id){if(isBusy())return;fromList=false;libraryScroll=scrollY;loadSong(id);}
  function render(){
   const query=normalizeSearch($('library-search').value);
-  let found=songs.filter(s=>(!query||query.split(/\s+/).every(word=>searchText(s).includes(word)))&&matchesSource(s,source)&&(filter==='all'||filter==='favorites'&&state.favorites.includes(s.id)||filter==='recent'&&state.recent.includes(s.id)));
+  let found=songs.filter(s=>(!query||query.split(/\s+/).every(word=>searchText(s).includes(word)))&&matchesSource(s,source)&&(filter==='all'||filter==='favorites'&&state.favorites.includes(s.id)||filter==='recent'&&state.recent.includes(s.id))).map(s=>songForSource(s,source));
   const title=(a,b)=>collator.compare(a.title,b.title);
   found.sort((a,b)=>(/^\d+[ab]?$/.test(query)?Number(String(b.page).toLowerCase()===query)-Number(String(a.page).toLowerCase()===query):0)||(sort==='number'?(compareNumbers(a,b)||title(a,b)):compareAlphabeticalTitles(a,b)));
   const fragment=document.createDocumentFragment();

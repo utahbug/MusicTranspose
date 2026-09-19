@@ -11593,5 +11593,6815 @@ export const importedSongs=[
     "tonic": "F",
     "mode": "major",
     "fifths": -1
+  },
+  {
+    "id": "song-1ec131f7-3c1a-466b-9a99-10de99c7598d",
+    "title": "I Lived in Heaven",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "4",
+    "songNumber": "4",
+    "asset": "./assets/scores/song-1ec131f7-3c1a-466b-9a99-10de99c7598d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "4",
+        "page": "4",
+        "title": "I Lived in Heaven"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4ea35e647e701cf5fda1ab464faa1f18b36e6776630ceb9a4a0cf079ef71093a",
+      "archiveFilename": "004 - I Lived in Heaven.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-2a184969-eb57-4901-9829-48c3952bfda3",
+    "title": "I Know My Father Lives",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "5",
+    "songNumber": "5",
+    "asset": "./assets/scores/song-2a184969-eb57-4901-9829-48c3952bfda3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "5",
+        "page": "5",
+        "title": "I Know My Father Lives"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "11833a72aef64cdb53b3d150a9a085efac36753b42c7dac33e29d2d7893fe3bb",
+      "archiveFilename": "005 - I Know My Father Lives.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-906752ee-4c52-4870-b28d-90b004bc15d0",
+    "title": "Thanks to Thee",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "6",
+    "songNumber": "6",
+    "asset": "./assets/scores/song-906752ee-4c52-4870-b28d-90b004bc15d0.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "6",
+        "page": "6",
+        "title": "Thanks to Thee"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e562b2b990433b5292efa797fa6dba2ce89b392d6f32dfe4aff4669003916cf7",
+      "archiveFilename": "006 - Thanks to Thee.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-8a31c5a6-c32d-4a4f-86c7-47641022054f",
+    "title": "Father, We Thank Thee for the Night",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "8",
+    "songNumber": "8",
+    "asset": "./assets/scores/song-8a31c5a6-c32d-4a4f-86c7-47641022054f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "8",
+        "page": "8",
+        "title": "Father, We Thank Thee for the Night"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b0db24283485660bbfd7ed8e9d93d9c13aa69104052fe8de055f6e55a4cb9a84",
+      "archiveFilename": "008 - Father, We Thank Thee for the Night.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-ffd5b22c-dacd-462e-9e86-5a887fc3970d",
+    "title": "Can a Little Child like Me?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "9",
+    "songNumber": "9",
+    "asset": "./assets/scores/song-ffd5b22c-dacd-462e-9e86-5a887fc3970d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "9",
+        "page": "9",
+        "title": "Can a Little Child like Me?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "08651e977682b4d31c8073f8e1859dabdca680bc13d660a4973bf6a5322cacff",
+      "archiveFilename": "009 - Can a Little Child like Me-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-7bf67458-385a-4c37-9d36-88f2d80509c9",
+    "title": "Thank Thee for Everything",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "10",
+    "songNumber": "10",
+    "asset": "./assets/scores/song-7bf67458-385a-4c37-9d36-88f2d80509c9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "10",
+        "page": "10",
+        "title": "Thank Thee for Everything"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "688ff8d0d87f03f4d60f36fa8ddb8beb8c21d58b072c4c25c82f2ce945e7a79b",
+      "archiveFilename": "010 - Thank Thee for Everything.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-5a8fcb13-3fe8-4ac2-a5ea-521bd975b9c3",
+    "title": "I’m Thankful to Be Me",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "11",
+    "songNumber": "11",
+    "asset": "./assets/scores/song-5a8fcb13-3fe8-4ac2-a5ea-521bd975b9c3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "11",
+        "page": "11",
+        "title": "I’m Thankful to Be Me"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "03a6c5999abea005afd70b45f5cf0849b7a35126b061d20fa6a9eb71efff5ed7",
+      "archiveFilename": "011 - I’m Thankful to Be Me.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-5b34793d-c858-4e54-9961-7bc8610ed54e",
+    "title": "I Pray in Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "14",
+    "songNumber": "14",
+    "asset": "./assets/scores/song-5b34793d-c858-4e54-9961-7bc8610ed54e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "14",
+        "page": "14",
+        "title": "I Pray in Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "758ccbc8d8c2691c53ab28997a48ec9cbd6f5bd7ac5d3192657929eead6af9d8",
+      "archiveFilename": "014 - I Pray in Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-ab5cd302-a3c2-4eea-ad6b-8d5ba3d958b2",
+    "title": "If with All Your Hearts",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "15",
+    "songNumber": "15",
+    "asset": "./assets/scores/song-ab5cd302-a3c2-4eea-ad6b-8d5ba3d958b2.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "15",
+        "page": "15",
+        "title": "If with All Your Hearts"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eebc8b5499a8595547d553c34a9c70331aba377d78fbc1d56ef0670456cdbf70",
+      "archiveFilename": "015 - If with All Your Hearts.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-2ac056d5-3b0f-459e-afbb-129fe8dee462",
+    "title": "Heavenly Father, Now I Pray",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "19",
+    "songNumber": "19",
+    "asset": "./assets/scores/song-2ac056d5-3b0f-459e-afbb-129fe8dee462.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "19",
+        "page": "19",
+        "title": "Heavenly Father, Now I Pray"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "02780d2dffbc3611645ec88c580912ea823efdf8eb1344d4093bfc6324147107",
+      "archiveFilename": "019 - Heavenly Father, Now I Pray.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-d72078a4-b499-4276-aafb-df6908fdb1a4",
+    "title": "A Song of Thanks",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "20a",
+    "songNumber": "20a",
+    "asset": "./assets/scores/song-d72078a4-b499-4276-aafb-df6908fdb1a4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "20a",
+        "page": "20a",
+        "title": "A Song of Thanks"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5fb06d35938b42a4650d148f331fe4a103af181434aa43c1e361f25b88e1eb8e",
+      "archiveFilename": "020a - A Song of Thanks.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-fa7942d7-bf4c-4b89-ad43-f3fcdec88975",
+    "title": "Thanks to Our Father",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "20b",
+    "songNumber": "20b",
+    "asset": "./assets/scores/song-fa7942d7-bf4c-4b89-ad43-f3fcdec88975.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "20b",
+        "page": "20b",
+        "title": "Thanks to Our Father"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fea72d0a8c2fd55800201a1a5d8014449cb249f5911562c80dc3cee82a5e581d",
+      "archiveFilename": "020b - Thanks to Our Father.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-dbaccba2-8421-4522-ade3-674a06596609",
+    "title": "For Health and Strength",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "21a",
+    "songNumber": "21a",
+    "asset": "./assets/scores/song-dbaccba2-8421-4522-ade3-674a06596609.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "21a",
+        "page": "21a",
+        "title": "For Health and Strength"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "aa6370e91971257bfa7d27c06d95ba74ebd403e277afe7a34844c4723f758e5f",
+      "archiveFilename": "021a - For Health and Strength.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d6a8f031-9c64-4114-9b07-fbd95b57a8b4",
+    "title": "For Thy Bounteous Blessings",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "21b",
+    "songNumber": "21b",
+    "asset": "./assets/scores/song-d6a8f031-9c64-4114-9b07-fbd95b57a8b4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "21b",
+        "page": "21b",
+        "title": "For Thy Bounteous Blessings"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c523596943fd50b2b813e2bb0f188bcf783e636e37c34e093e79bdcfedd8004a",
+      "archiveFilename": "021b - For Thy Bounteous Blessings.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "A♭",
+    "mode": "major",
+    "fifths": -4
+  },
+  {
+    "id": "song-1e627aa0-a226-420d-958d-9f61033cbedc",
+    "title": "A Prayer Song",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "22a",
+    "songNumber": "22a",
+    "asset": "./assets/scores/song-1e627aa0-a226-420d-958d-9f61033cbedc.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "22a",
+        "page": "22a",
+        "title": "A Prayer Song"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3312a4f94a6fd6c1a8185687bba543f481fa85980d06ccf48ee655cc071b3b75",
+      "archiveFilename": "022a - A Prayer Song.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-69e349e6-435f-4b21-84fa-4f88014deb61",
+    "title": "A Prayer",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "22b",
+    "songNumber": "22b",
+    "asset": "./assets/scores/song-69e349e6-435f-4b21-84fa-4f88014deb61.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "22b",
+        "page": "22b",
+        "title": "A Prayer"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "aca89c627684c2a923f3fbf3f602b1a70e2c17716b1d4fe6137ec5ec6d40ca8d",
+      "archiveFilename": "022b - A Prayer.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-9ada659b-c811-4994-b8c8-fe8aa02a5908",
+    "title": "Father Up Above",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "23a",
+    "songNumber": "23a",
+    "asset": "./assets/scores/song-9ada659b-c811-4994-b8c8-fe8aa02a5908.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "23a",
+        "page": "23a",
+        "title": "Father Up Above"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4f16cdcab9f2657af464778c1ff8b90201aeef14fc652e0c018a02d76fb237fa",
+      "archiveFilename": "023a - Father Up Above.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-e5d9eb1c-191d-4c73-bf59-c83788da9be2",
+    "title": "Heavenly Father, While I Pray",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "23b",
+    "songNumber": "23b",
+    "asset": "./assets/scores/song-e5d9eb1c-191d-4c73-bf59-c83788da9be2.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "23b",
+        "page": "23b",
+        "title": "Heavenly Father, While I Pray"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "270d9f8537bc3bcdeae065bcc453ce0f8350cdb07ca94424f3c8a6e828532fec",
+      "archiveFilename": "023b - Heavenly Father, While I Pray.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-216082f4-1c9c-4858-b253-d02fed838682",
+    "title": "Thank Thee, Father",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "24",
+    "songNumber": "24",
+    "asset": "./assets/scores/song-216082f4-1c9c-4858-b253-d02fed838682.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "24",
+        "page": "24",
+        "title": "Thank Thee, Father"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f010f41046717406a631928a9cb9260bc9ab34a6959b01e5bbd169494abeb9ca",
+      "archiveFilename": "024 - Thank Thee, Father.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-3990a4a4-fc02-43c2-afb4-9af9b1f7d775",
+    "title": "We Bow Our Heads",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "25a",
+    "songNumber": "25a",
+    "asset": "./assets/scores/song-3990a4a4-fc02-43c2-afb4-9af9b1f7d775.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "25a",
+        "page": "25a",
+        "title": "We Bow Our Heads"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "38001ebafab89af3f873d3f4263329a361d497f07954e935a8d776107aa911b9",
+      "archiveFilename": "025a - We Bow Our Heads.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-bf385996-f473-400c-a52f-efb252881974",
+    "title": "I Love to Pray",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "25b",
+    "songNumber": "25b",
+    "asset": "./assets/scores/song-bf385996-f473-400c-a52f-efb252881974.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "25b",
+        "page": "25b",
+        "title": "I Love to Pray"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a4d65bca618a442938c286673b6e1d2dc2a7b639b50ae318bee8179da26d654a",
+      "archiveFilename": "025b - I Love to Pray.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-0576c12f-b3a3-49f0-b582-cd14caf7adcf",
+    "title": "Reverently, Quietly",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "26",
+    "songNumber": "26",
+    "asset": "./assets/scores/song-0576c12f-b3a3-49f0-b582-cd14caf7adcf.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "26",
+        "page": "26",
+        "title": "Reverently, Quietly"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "43b8fdc9e9924e99deaeee5e98e70df9453c6eef3ce9d5d3209b5390bbd416e1",
+      "archiveFilename": "026 - Reverently, Quietly.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-08f8b17f-62fe-4058-b6de-2f433955299a",
+    "title": "Reverence",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "27a",
+    "songNumber": "27a",
+    "asset": "./assets/scores/song-08f8b17f-62fe-4058-b6de-2f433955299a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "27a",
+        "page": "27a",
+        "title": "Reverence"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "2a214d10fdc43e3f5da578a0294f6a0f78e4aef808a5a736f94291d13bca53f7",
+      "archiveFilename": "027a - Reverence.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-c3e22271-7d1b-4b7a-afd1-33f7bc80c999",
+    "title": "We Are Reverent",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "27b",
+    "songNumber": "27b",
+    "asset": "./assets/scores/song-c3e22271-7d1b-4b7a-afd1-33f7bc80c999.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "27b",
+        "page": "27b",
+        "title": "We Are Reverent"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1a0a0efada361f82dde08d28ca096b8925cdefa0d705d32f0742498de2e38e0b",
+      "archiveFilename": "027b - We Are Reverent.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-2a3eddaa-d2b8-447a-961d-f4ca33d66c98",
+    "title": "I Want to Be Reverent",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "28a",
+    "songNumber": "28a",
+    "asset": "./assets/scores/song-2a3eddaa-d2b8-447a-961d-f4ca33d66c98.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "28a",
+        "page": "28a",
+        "title": "I Want to Be Reverent"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "610269f63092d414d3a32c0b47183be976e86a9ecf15a3a6998691ffd5a3c4e4",
+      "archiveFilename": "028a - I Want to Be Reverent.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-fdafb490-1df8-4ee2-b2a7-643473c11afe",
+    "title": "I Will Try to Be Reverent",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "28b",
+    "songNumber": "28b",
+    "asset": "./assets/scores/song-fdafb490-1df8-4ee2-b2a7-643473c11afe.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "28b",
+        "page": "28b",
+        "title": "I Will Try to Be Reverent"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "175b69fd320a1f2be24e8f0b5697cead6fed34bcbd2ff20b82decf48a5bfcc1a",
+      "archiveFilename": "028b - I Will Try to Be Reverent.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-ebb44527-7b49-431a-a0a3-a11445b19fe3",
+    "title": "Father, I Will Reverent Be",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "29",
+    "songNumber": "29",
+    "asset": "./assets/scores/song-ebb44527-7b49-431a-a0a3-a11445b19fe3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "29",
+        "page": "29",
+        "title": "Father, I Will Reverent Be"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b729816a181b1f11d2ab34adcc2c2ff304782226a4f217bb917fb0e2a534b72d",
+      "archiveFilename": "029 - Father, I Will Reverent Be.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-29d0a718-6e84-4e9d-a64b-8290076140d3",
+    "title": "This Is God’s House",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "30a",
+    "songNumber": "30a",
+    "asset": "./assets/scores/song-29d0a718-6e84-4e9d-a64b-8290076140d3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "30a",
+        "page": "30a",
+        "title": "This Is God’s House"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "89562b1cdaa41c841b4f8d25a45698052debb762db8ef8165dc4727c1a658c00",
+      "archiveFilename": "030a - This Is God’s House.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-a3f5a0c9-0ee4-4754-a0b8-6a1b397ff05d",
+    "title": "Our Chapel Is a Sacred Place",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "30b",
+    "songNumber": "30b",
+    "asset": "./assets/scores/song-a3f5a0c9-0ee4-4754-a0b8-6a1b397ff05d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "30b",
+        "page": "30b",
+        "title": "Our Chapel Is a Sacred Place"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d2fdfdc851431d3013ba1d72cd2474a6d9af18c04978740453b18423bbdfbc5c",
+      "archiveFilename": "030b - Our Chapel Is a Sacred Place.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d8ed02a9-c3b4-4dda-9c43-c556d1f0202e",
+    "title": "Reverence Is Love",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "31",
+    "songNumber": "31",
+    "asset": "./assets/scores/song-d8ed02a9-c3b4-4dda-9c43-c556d1f0202e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "31",
+        "page": "31",
+        "title": "Reverence Is Love"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "03235a8b986e97bced2474d6a3cd1e833f7e5604beae3b511200f2bd42846963",
+      "archiveFilename": "031 - Reverence Is Love.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-919dd2f4-e0c1-4c21-8d35-360b18579884",
+    "title": "Samuel Tells of the Baby Jesus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "36",
+    "songNumber": "36",
+    "asset": "./assets/scores/song-919dd2f4-e0c1-4c21-8d35-360b18579884.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "36",
+        "page": "36",
+        "title": "Samuel Tells of the Baby Jesus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "aa4c8071b7b6a7b5a3d281104504b6fcd921a660addb8806a65ccaf98a019dd8",
+      "archiveFilename": "036 - Samuel Tells of the Baby Jesus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-313e2ba6-0a2b-4cd8-b09f-85b1f15e2146",
+    "title": "Stars Were Gleaming",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "37",
+    "songNumber": "37",
+    "asset": "./assets/scores/song-313e2ba6-0a2b-4cd8-b09f-85b1f15e2146.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "37",
+        "page": "37",
+        "title": "Stars Were Gleaming"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6a67b36110e65d9cee13967f3ae95c2dae06363d85fd6d8ae3b7e3c16990f47b",
+      "archiveFilename": "037 - Stars Were Gleaming.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98",
+    "title": "When Joseph Went to Bethlehem",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "38",
+    "songNumber": "38",
+    "asset": "./assets/scores/song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "38",
+        "page": "38",
+        "title": "When Joseph Went to Bethlehem"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "79ea17a1ae81fbf6bb65b2949ec2c2fb5540e268eb340210430ff2d6a25cb08b",
+      "archiveFilename": "038 - When Joseph Went to Bethlehem.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d8931689-386e-442a-9cb2-8d8e11c62490",
+    "title": "Little Jesus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "39",
+    "songNumber": "39",
+    "asset": "./assets/scores/song-d8931689-386e-442a-9cb2-8d8e11c62490.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "39",
+        "page": "39",
+        "title": "Little Jesus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c57be4c1f26cb0fa63a9955a8708157a19fd99028304171f84f51fc2f2cf004a",
+      "archiveFilename": "039 - Little Jesus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-d56adcc9-4417-4825-b0da-78330d22d382",
+    "title": "There Was Starlight on the Hillside",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "40a",
+    "songNumber": "40a",
+    "asset": "./assets/scores/song-d56adcc9-4417-4825-b0da-78330d22d382.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "40a",
+        "page": "40a",
+        "title": "There Was Starlight on the Hillside"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f417dc85e3c2e86de2e2de5124d098abe1be04d4b0b719ba8cadbef82dfe6129",
+      "archiveFilename": "040a - There Was Starlight on the Hillside.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-2c5d7de5-e01e-4b8f-8671-496d9a55b86f",
+    "title": "Once within a Lowly Stable",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "41",
+    "songNumber": "41",
+    "asset": "./assets/scores/song-2c5d7de5-e01e-4b8f-8671-496d9a55b86f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "41",
+        "page": "41",
+        "title": "Once within a Lowly Stable"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e9e7830c979846f73e1ab00ca13f4653c8ef3fd539a873ece31ccda9d1db52c6",
+      "archiveFilename": "041 - Once within a Lowly Stable.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-d165ef87-2efa-4a0c-a4b1-e07a742ea654",
+    "title": "Away in a Manger",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "42",
+    "songNumber": "42",
+    "asset": "./assets/scores/song-d165ef87-2efa-4a0c-a4b1-e07a742ea654.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "42",
+        "page": "42",
+        "title": "Away in a Manger"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b1012bee827cb45d6c001a1c89fa8007fdb917e985765e617c3ac05d771d8d12",
+      "archiveFilename": "042 - Away in a Manger.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-b867cc29-d8d3-4f09-9a8e-6eac312fade7",
+    "title": "Mary’s Lullaby",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "44",
+    "songNumber": "44",
+    "asset": "./assets/scores/song-b867cc29-d8d3-4f09-9a8e-6eac312fade7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "44",
+        "page": "44",
+        "title": "Mary’s Lullaby"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "7096ca871185a084745772a6553a333169bb681bc6d802883340083d3c7c28db",
+      "archiveFilename": "044 - Mary’s Lullaby.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-909fd495-7997-4820-af57-ac80a06ff83b",
+    "title": "Who Is the Child?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "46",
+    "songNumber": "46",
+    "asset": "./assets/scores/song-909fd495-7997-4820-af57-ac80a06ff83b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "46",
+        "page": "46",
+        "title": "Who Is the Child?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ec817e5c4d9306c85ed233459dcc8617593c33a29040b2978b19aad12c0f0b7b",
+      "archiveFilename": "046 - Who Is the Child-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-25ef9a7e-d288-4b92-b986-bc63cc20000c",
+    "title": "Sleep, Little Jesus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "47",
+    "songNumber": "47",
+    "asset": "./assets/scores/song-25ef9a7e-d288-4b92-b986-bc63cc20000c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "47",
+        "page": "47",
+        "title": "Sleep, Little Jesus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1d07df488ab23a631ae0ddb83a00c33dd438b5d9eef0060f3371f48796bd475c",
+      "archiveFilename": "047 - Sleep, Little Jesus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-36c8ae80-21be-418a-9fe2-776ee404badc",
+    "title": "Oh, Hush Thee, My Baby",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "48",
+    "songNumber": "48",
+    "asset": "./assets/scores/song-36c8ae80-21be-418a-9fe2-776ee404badc.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "48",
+        "page": "48",
+        "title": "Oh, Hush Thee, My Baby"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "dbdb5ffe350e9840c7477a5dba733eb8120f59aa399a34acd075850c1927075d",
+      "archiveFilename": "048 - Oh, Hush Thee, My Baby.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-7ffd9d24-2695-4332-b04b-9878065815fd",
+    "title": "Picture a Christmas",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "50",
+    "songNumber": "50",
+    "asset": "./assets/scores/song-7ffd9d24-2695-4332-b04b-9878065815fd.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "50",
+        "page": "50",
+        "title": "Picture a Christmas"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "28cdf97f4515f16ad3f5d6840bc74e75b5d4210ba9825dbf78c296c961d50700",
+      "archiveFilename": "050 - Picture a Christmas.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-8ea11b12-adc5-4c90-852c-4ba372185b86",
+    "title": "Have a Very Merry Christmas!",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "51",
+    "songNumber": "51",
+    "asset": "./assets/scores/song-8ea11b12-adc5-4c90-852c-4ba372185b86.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "51",
+        "page": "51",
+        "title": "Have a Very Merry Christmas!"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "df16b5b89bb5b6432adc8f27a9274e90dfae1c8899e873485f6e88425e0345de",
+      "archiveFilename": "051 - Have a Very Merry Christmas!.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-b1ceddfd-861b-4791-97b0-fbb6ee28deed",
+    "title": "Christmas Bells",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "54",
+    "songNumber": "54",
+    "asset": "./assets/scores/song-b1ceddfd-861b-4791-97b0-fbb6ee28deed.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "54",
+        "page": "54",
+        "title": "Christmas Bells"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b1a0bd00cf948dc7b918b2594d74da5e806849be184f36f057f6a628fd68af2d",
+      "archiveFilename": "054 - Christmas Bells.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-85d24805-3347-4d78-8388-bdea635f8f46",
+    "title": "Jesus Once Was a Little Child",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "55",
+    "songNumber": "55",
+    "asset": "./assets/scores/song-85d24805-3347-4d78-8388-bdea635f8f46.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "55",
+        "page": "55",
+        "title": "Jesus Once Was a Little Child"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "013176ffef243a0d1e03d2c6de5e06183672b196ee56bf07eddbb2cc8009dd82",
+      "archiveFilename": "055 - Jesus Once Was a Little Child.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-2084d796-66fa-4d37-a8d4-dd7d3905fb59",
+    "title": "I Think When I Read That Sweet Story",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "56",
+    "songNumber": "56",
+    "asset": "./assets/scores/song-2084d796-66fa-4d37-a8d4-dd7d3905fb59.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "56",
+        "page": "56",
+        "title": "I Think When I Read That Sweet Story"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fb12aac1da111cc15e31b173fedcd288b771942be630f357f615e04b70d7d659",
+      "archiveFilename": "056 - I Think When I Read That Sweet Story.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-2bff7122-3620-4041-9b68-3ce3dbdf5688",
+    "title": "Tell Me the Stories of Jesus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "57",
+    "songNumber": "57",
+    "asset": "./assets/scores/song-2bff7122-3620-4041-9b68-3ce3dbdf5688.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "57",
+        "page": "57",
+        "title": "Tell Me the Stories of Jesus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "737d6317b053ef23139d537bf3ebe3518d56e88bc11448003a18dc9cd739dc3e",
+      "archiveFilename": "057 - Tell Me the Stories of Jesus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-b913ecc7-b6c3-48a3-97d8-c66e66796231",
+    "title": "Little Lambs So White and Fair",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "58a",
+    "songNumber": "58a",
+    "asset": "./assets/scores/song-b913ecc7-b6c3-48a3-97d8-c66e66796231.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "58a",
+        "page": "58a",
+        "title": "Little Lambs So White and Fair"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ae545cb476d1fbbd736d7de1a6ac6e715a637087c0ae05d6f8a121a4da66af85",
+      "archiveFilename": "058a - Little Lambs So White and Fair.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-f693e0ea-c5bc-4b18-a656-4e39f42e44d1",
+    "title": "Jesus Is Our Loving Friend",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "58b",
+    "songNumber": "58b",
+    "asset": "./assets/scores/song-f693e0ea-c5bc-4b18-a656-4e39f42e44d1.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "58b",
+        "page": "58b",
+        "title": "Jesus Is Our Loving Friend"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "47230419988dde056a4a7ae5ecbf4e65bf457af2c814e3897288238e8a89600f",
+      "archiveFilename": "058b - Jesus Is Our Loving Friend.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-63fc5a4f-2368-424f-b846-e68f297ce802",
+    "title": "Jesus Loved the Little Children",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "59",
+    "songNumber": "59",
+    "asset": "./assets/scores/song-63fc5a4f-2368-424f-b846-e68f297ce802.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "59",
+        "page": "59",
+        "title": "Jesus Loved the Little Children"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "082e9ce808ac2ef6dbc54db1dfc184ec3adf1eeb1495ab50988233df23544bdc",
+      "archiveFilename": "059 - Jesus Loved the Little Children.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-bafeae46-294b-4583-9a7c-059aaaeee5f7",
+    "title": "Beautiful Savior",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "62",
+    "songNumber": "62",
+    "asset": "./assets/scores/song-bafeae46-294b-4583-9a7c-059aaaeee5f7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "62",
+        "page": "62",
+        "title": "Beautiful Savior"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d10424f6880a67a0eb5881dd803276c07fde9350e266ce826ab7f6487752d822",
+      "archiveFilename": "062 - Beautiful Savior.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-e2a77063-2a61-44ed-ac39-03bed480a189",
+    "title": "Did Jesus Really Live Again?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "64",
+    "songNumber": "64",
+    "asset": "./assets/scores/song-e2a77063-2a61-44ed-ac39-03bed480a189.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "64",
+        "page": "64",
+        "title": "Did Jesus Really Live Again?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "42c9bba15d82d7e7c8086c0af1a115f6e4f8ee318007786d3070a5ddffb80b98",
+      "archiveFilename": "064 - Did Jesus Really Live Again-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-a277af0a-105c-496a-aa78-e42a46064645",
+    "title": "He Died That We Might Live Again",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "65",
+    "songNumber": "65",
+    "asset": "./assets/scores/song-a277af0a-105c-496a-aa78-e42a46064645.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "65",
+        "page": "65",
+        "title": "He Died That We Might Live Again"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "236954d6cd824719fdd1555b2fb4471c49d4a94013e7f3eba464f64a66ac4158",
+      "archiveFilename": "065 - He Died That We Might Live Again.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-74995e8d-96f7-4f1f-9063-c1d285a9b635",
+    "title": "Hosanna",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "66",
+    "songNumber": "66",
+    "asset": "./assets/scores/song-74995e8d-96f7-4f1f-9063-c1d285a9b635.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "66",
+        "page": "66",
+        "title": "Hosanna"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "48def042dd5e607bbf5717e82855a4fe43b5bf74313bf7b6cf90ee452ed664bf",
+      "archiveFilename": "066 - Hosanna.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-71f46c6a-b141-4ae8-9d6a-2f3ce69d2cef",
+    "title": "Easter Hosanna",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "68",
+    "songNumber": "68",
+    "asset": "./assets/scores/song-71f46c6a-b141-4ae8-9d6a-2f3ce69d2cef.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "68",
+        "page": "68",
+        "title": "Easter Hosanna"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "707f2a7269c3e3f2d6ce16c603c9b7c106e9aa158afea5496b398f817616e32c",
+      "archiveFilename": "068 - Easter Hosanna.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-30f5c349-41c5-429c-8f01-8a25481ecd56",
+    "title": "To Think about Jesus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "71",
+    "songNumber": "71",
+    "asset": "./assets/scores/song-30f5c349-41c5-429c-8f01-8a25481ecd56.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "71",
+        "page": "71",
+        "title": "To Think about Jesus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3160d3bbc177c9fe22087f11714f8120699c3c360df205bf4c578ae18063f747",
+      "archiveFilename": "071 - To Think about Jesus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-389d1142-fc6d-4aac-9d70-3abc8845825d",
+    "title": "The Sacrament",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "72",
+    "songNumber": "72",
+    "asset": "./assets/scores/song-389d1142-fc6d-4aac-9d70-3abc8845825d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "72",
+        "page": "72",
+        "title": "The Sacrament"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9440f05bec8a51c4a0ee9f9d8861ba1c785e3fc4fa00b17764fd552c1ede865e",
+      "archiveFilename": "072 - The Sacrament.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-38760333-082f-4570-91eb-f2c804b88c02",
+    "title": "Before I Take the Sacrament",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "73a",
+    "songNumber": "73a",
+    "asset": "./assets/scores/song-38760333-082f-4570-91eb-f2c804b88c02.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "73a",
+        "page": "73a",
+        "title": "Before I Take the Sacrament"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6f287388715be1f963ed6358a654f9f2bb67eebaaca766ff50c64cefa1728a6f",
+      "archiveFilename": "073a - Before I Take the Sacrament.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-64399569-cc45-43ce-9634-7f0731adbbc0",
+    "title": "Help Us, O God, to Understand",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "73b",
+    "songNumber": "73b",
+    "asset": "./assets/scores/song-64399569-cc45-43ce-9634-7f0731adbbc0.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "73b",
+        "page": "73b",
+        "title": "Help Us, O God, to Understand"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "394d1fdfb218a3beb1dde6e8cf40948a1b8a8dfbf0505ceaea968f3ded024428",
+      "archiveFilename": "073b - Help Us, O God, to Understand.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2",
+    "title": "This Is My Beloved Son",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "76",
+    "songNumber": "76",
+    "asset": "./assets/scores/song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "76",
+        "page": "76",
+        "title": "This Is My Beloved Son"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "deec73f858c23b4f0950136acada5104d3a634f6cc4a77fde2678054bf49b843",
+      "archiveFilename": "076 - This Is My Beloved Son.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-c2eb12c3-71db-4634-bb05-f915e6a1b42d",
+    "title": "Had I Been a Child",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "80",
+    "songNumber": "80",
+    "asset": "./assets/scores/song-c2eb12c3-71db-4634-bb05-f915e6a1b42d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "80",
+        "page": "80",
+        "title": "Had I Been a Child"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "325e95087c4f9a229fc252a8cf61fbc217c70505014bc5283388e53163f263f5",
+      "archiveFilename": "080 - Had I Been a Child.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-1b66e403-557f-4be0-a39f-c049f35d4517",
+    "title": "An Angel Came to Joseph Smith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "86a",
+    "songNumber": "86a",
+    "asset": "./assets/scores/song-1b66e403-557f-4be0-a39f-c049f35d4517.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "86a",
+        "page": "86a",
+        "title": "An Angel Came to Joseph Smith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "84f82e80df3a941641761d49b4edd77d6fa1d76fd59bb80f8d1d44b5a1d20aa5",
+      "archiveFilename": "086a - An Angel Came to Joseph Smith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-40820017-3eea-4c58-bf14-9ac2a5a709ce",
+    "title": "The Golden Plates",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "86b",
+    "songNumber": "86b",
+    "asset": "./assets/scores/song-40820017-3eea-4c58-bf14-9ac2a5a709ce.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "86b",
+        "page": "86b",
+        "title": "The Golden Plates"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "2dd631f7ad453daae3c178458ebdc13a2dbb5e259de7b28dd73527998949ad9d",
+      "archiveFilename": "086b - The Golden Plates.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-d6b88fae-5fc8-4287-b81b-fda387feae71",
+    "title": "The Sacred Grove",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "87",
+    "songNumber": "87",
+    "asset": "./assets/scores/song-d6b88fae-5fc8-4287-b81b-fda387feae71.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "87",
+        "page": "87",
+        "title": "The Sacred Grove"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d208e02c393fa94d4f7718434d9d7c0ed3a7030dd0f6ad52170bfdf4450c74b0",
+      "archiveFilename": "087 - The Sacred Grove.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-540fe1ec-07da-47d3-a3e4-0cd5f71b5641",
+    "title": "On a Golden Springtime",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "88",
+    "songNumber": "88",
+    "asset": "./assets/scores/song-540fe1ec-07da-47d3-a3e4-0cd5f71b5641.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "88",
+        "page": "88",
+        "title": "On a Golden Springtime"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "01b0c5bda86506cdc78401df0fcc2334e77fdb8d401a40f786aabea66bc2da15",
+      "archiveFilename": "088 - On a Golden Springtime.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-971fd988-d7e9-4e39-8c02-47840e323bf6",
+    "title": "The Priesthood Is Restored",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "89",
+    "songNumber": "89",
+    "asset": "./assets/scores/song-971fd988-d7e9-4e39-8c02-47840e323bf6.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "89",
+        "page": "89",
+        "title": "The Priesthood Is Restored"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4b29c588487fdd2f5769b2f9c017bc38a1449039abb1e13a8f1db03ef8171e3d",
+      "archiveFilename": "089 - The Priesthood Is Restored.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-b2b8b304-743e-4dfe-9568-35c05cbd4f6d",
+    "title": "Truth from Elijah",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "90",
+    "songNumber": "90",
+    "asset": "./assets/scores/song-b2b8b304-743e-4dfe-9568-35c05cbd4f6d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "90",
+        "page": "90",
+        "title": "Truth from Elijah"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e18e385e1b6267a300912f389db2b31497d801e8a8ec7e8c64b0ef510e666e3c",
+      "archiveFilename": "090 - Truth from Elijah.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-7549b091-cb78-4873-8d6f-315a7c81882f",
+    "title": "The Hearts of the Children",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "92",
+    "songNumber": "92",
+    "asset": "./assets/scores/song-7549b091-cb78-4873-8d6f-315a7c81882f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "92",
+        "page": "92",
+        "title": "The Hearts of the Children"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "96e2111352580b5c58657b60073f765a351726b542c9ea0ff2aa27172f81842e",
+      "archiveFilename": "092 - The Hearts of the Children.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-480ba302-e450-4fd0-9109-6a4ea74d8777",
+    "title": "Family History—I Am Doing It",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "94",
+    "songNumber": "94",
+    "asset": "./assets/scores/song-480ba302-e450-4fd0-9109-6a4ea74d8777.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "94",
+        "page": "94",
+        "title": "Family History—I Am Doing It"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b51462f3504321d8d542e995bae1be2dbdd02168563dd573c355abc34e66cb2f",
+      "archiveFilename": "094 - Family History—I Am Doing It.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-9a5e2466-f9a8-4028-9a74-02b5c274ad76",
+    "title": "Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "96",
+    "songNumber": "96",
+    "asset": "./assets/scores/song-9a5e2466-f9a8-4028-9a74-02b5c274ad76.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "96",
+        "page": "96",
+        "title": "Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fcd92a2c489de815907b88601ad78c6f2bbda29b8c0207d09034f2e186ba5b5f",
+      "archiveFilename": "096 - Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-6c2138e8-4bb4-4f5e-9468-6e0aee95f355",
+    "title": "God’s Love",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "97",
+    "songNumber": "97",
+    "asset": "./assets/scores/song-6c2138e8-4bb4-4f5e-9468-6e0aee95f355.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "97",
+        "page": "97",
+        "title": "God’s Love"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c08ab14bd2be57a940a7f17bc509bdffc7ec01c37d5d6246d62c21d866a05c38",
+      "archiveFilename": "097 - God’s Love.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-3b08fbb3-d894-48c6-8cca-4dbab5bd6054",
+    "title": "Repentance",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "98",
+    "songNumber": "98",
+    "asset": "./assets/scores/song-3b08fbb3-d894-48c6-8cca-4dbab5bd6054.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "98",
+        "page": "98",
+        "title": "Repentance"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fd8e12a3ca14b1775c65339b5c110585cb575c8da5ce873eb3492781428123db",
+      "archiveFilename": "098 - Repentance.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-6441dc03-86a2-4d36-98b3-e51f7e0a266b",
+    "title": "Help Me, Dear Father",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "99",
+    "songNumber": "99",
+    "asset": "./assets/scores/song-6441dc03-86a2-4d36-98b3-e51f7e0a266b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "99",
+        "page": "99",
+        "title": "Help Me, Dear Father"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "018055278efb5eb219582f38d0dd9cb42d220df8e58dcd8fdd22f1186740f399",
+      "archiveFilename": "099 - Help Me, Dear Father.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-97b13640-d426-4523-b60f-2e1ce99daea9",
+    "title": "Baptism",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "100",
+    "songNumber": "100",
+    "asset": "./assets/scores/song-97b13640-d426-4523-b60f-2e1ce99daea9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "100",
+        "page": "100",
+        "title": "Baptism"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4b297db25e07c4d18de69e384b62c061e349f527ea495568ea976446e3eb21b2",
+      "archiveFilename": "100 - Baptism.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-4a8fa141-3515-439d-9f72-a0b81ee5fce5",
+    "title": "When Jesus Christ Was Baptized",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "102",
+    "songNumber": "102",
+    "asset": "./assets/scores/song-4a8fa141-3515-439d-9f72-a0b81ee5fce5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "102",
+        "page": "102",
+        "title": "When Jesus Christ Was Baptized"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "506c2255bf88b0087fd897d6b8e42a9b4aad122c3e188f15514dbd00431e1b5f",
+      "archiveFilename": "102 - When Jesus Christ Was Baptized.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-d84817dd-d881-494f-9b7b-a4a57c281331",
+    "title": "I Like My Birthdays",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "104",
+    "songNumber": "104",
+    "asset": "./assets/scores/song-d84817dd-d881-494f-9b7b-a4a57c281331.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "104",
+        "page": "104",
+        "title": "I Like My Birthdays"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "7510679cd21c6056eb37a7c297b1c466e43c6fa5c8e1e55c6d3094f607eacb90",
+      "archiveFilename": "104 - I Like My Birthdays.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-b02f9e7a-e579-432d-9e29-b6b850a7f653",
+    "title": "The Holy Ghost",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "105",
+    "songNumber": "105",
+    "asset": "./assets/scores/song-b02f9e7a-e579-432d-9e29-b6b850a7f653.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "105",
+        "page": "105",
+        "title": "The Holy Ghost"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "580ddc646609ccd8edceb45ef0d8f49a31e7c11836b254c7ada4d42b51a1a4f7",
+      "archiveFilename": "105 - The Holy Ghost.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-18cf2769-5a8d-47f4-8835-c486085bcec3",
+    "title": "The Still, Small Voice",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "106",
+    "songNumber": "106",
+    "asset": "./assets/scores/song-18cf2769-5a8d-47f4-8835-c486085bcec3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "106",
+        "page": "106",
+        "title": "The Still, Small Voice"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1b9371a28944903206070ff857fb8765961d221b9de81095e5b74b272e093c0d",
+      "archiveFilename": "106 - The Still, Small Voice.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-50f7881b-3215-419a-904e-6021da6f98c5",
+    "title": "Listen, Listen",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "107",
+    "songNumber": "107",
+    "asset": "./assets/scores/song-50f7881b-3215-419a-904e-6021da6f98c5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "107",
+        "page": "107",
+        "title": "Listen, Listen"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e69e64df2247c977b0a40a77891c9db8b3cd493754d5d8e2db4a686632b5c0a8",
+      "archiveFilename": "107 - Listen, Listen.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-877cddf3-216f-464d-a68a-b823b27a27c1",
+    "title": "Seek the Lord Early",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "108",
+    "songNumber": "108",
+    "asset": "./assets/scores/song-877cddf3-216f-464d-a68a-b823b27a27c1.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "108",
+        "page": "108",
+        "title": "Seek the Lord Early"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fc687aa92446107a0cc5d5bcb72c47490373a2f0fe7ff6faebc992b1f68c59ed",
+      "archiveFilename": "108 - Seek the Lord Early.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-3722a769-9d64-41dd-bf76-a66bebf4717f",
+    "title": "The Commandments",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "112",
+    "songNumber": "112",
+    "asset": "./assets/scores/song-3722a769-9d64-41dd-bf76-a66bebf4717f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "112",
+        "page": "112",
+        "title": "The Commandments"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eca3eece4a3be1bcf265a4a38029003b9491d1b319080a85f716a43f2c079365",
+      "archiveFilename": "112 - The Commandments.mxl"
+    },
+    "transpositionAvailable": false,
+    "playbackAvailable": true,
+    "capability": "View only",
+    "tonic": "",
+    "mode": "",
+    "evidence": "Multiple source key signatures; preserve notation as view-only. Playback remains available."
+  },
+  {
+    "id": "song-21003f5f-b4a4-4d02-812f-b6a86af8750a",
+    "title": "The Books in the Old Testament",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "114",
+    "songNumber": "114",
+    "asset": "./assets/scores/song-21003f5f-b4a4-4d02-812f-b6a86af8750a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "114",
+        "page": "114",
+        "title": "The Books in the Old Testament"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "870477a267695dd01ce80831edcbcc3a1658449ecc0e60e3a7cc47b8bb39cd24",
+      "archiveFilename": "114 - The Books in the Old Testament.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-708c0414-b2e0-4f70-b178-88aca2228fa7",
+    "title": "The Books in the New Testament",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "116",
+    "songNumber": "116",
+    "asset": "./assets/scores/song-708c0414-b2e0-4f70-b178-88aca2228fa7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "116",
+        "page": "116",
+        "title": "The Books in the New Testament"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ae4dfef7ac36e3ed2d16596bf3cf812523b0745748ca316dbfae4d432cecebf1",
+      "archiveFilename": "116 - The Books in the New Testament.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-49d20c95-c42e-41ec-ba20-231edef1ee30",
+    "title": "Book of Mormon Stories",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "118",
+    "songNumber": "118",
+    "asset": "./assets/scores/song-49d20c95-c42e-41ec-ba20-231edef1ee30.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "118",
+        "page": "118",
+        "title": "Book of Mormon Stories"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "53db0155036dc298de5cbdcfa55bdd034202ad7fa3bf059c902c004f3c57d999",
+      "archiveFilename": "118 - Book of Mormon Stories.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-d0ffd2c0-df66-45b1-b4cb-8415ba433d92",
+    "title": "The Books in the Book of Mormon",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "119",
+    "songNumber": "119",
+    "asset": "./assets/scores/song-d0ffd2c0-df66-45b1-b4cb-8415ba433d92.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "119",
+        "page": "119",
+        "title": "The Books in the Book of Mormon"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "81904a0fc80aeec2f53454c71297527deb263e79c4a9f3fcd4545a2329645088",
+      "archiveFilename": "119 - The Books in the Book of Mormon.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-649da531-3c42-46b5-a9eb-6a60304ac881",
+    "title": "Nephi’s Courage",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "120",
+    "songNumber": "120",
+    "asset": "./assets/scores/song-649da531-3c42-46b5-a9eb-6a60304ac881.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "120",
+        "page": "120",
+        "title": "Nephi’s Courage"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "23e93381351156857e4d7b7ba52465b0ef765c7e77ef9d4b9aef40eb5f584a6b",
+      "archiveFilename": "120 - Nephi’s Courage.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-c235bd78-599a-43b0-ae22-72bea4d3448c",
+    "title": "The First Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "122a",
+    "songNumber": "122a",
+    "asset": "./assets/scores/song-c235bd78-599a-43b0-ae22-72bea4d3448c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "122a",
+        "page": "122a",
+        "title": "The First Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "8d25f66f01be6012e1c6f75a9efb2edda0181bdcce135663fb04bd757147383f",
+      "archiveFilename": "122a - The First Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-58d91ca2-63b4-491e-a416-e9dcce46610b",
+    "title": "The Second Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "122b",
+    "songNumber": "122b",
+    "asset": "./assets/scores/song-58d91ca2-63b4-491e-a416-e9dcce46610b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "122b",
+        "page": "122b",
+        "title": "The Second Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "71caee5ec2295c1ef4555c48f551232e8881b1c47313226281e3aacfb8cf04f9",
+      "archiveFilename": "122b - The Second Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-ba964747-ab12-4966-8c3a-e707caabc0bd",
+    "title": "The Third Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "123",
+    "songNumber": "123",
+    "asset": "./assets/scores/song-ba964747-ab12-4966-8c3a-e707caabc0bd.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "123",
+        "page": "123",
+        "title": "The Third Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f09a7da1560f5dbdd92e0db156e3504ee8254fe3bcf2b2a3ca209ba700437130",
+      "archiveFilename": "123 - The Third Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-145463f7-f4fe-45ca-b41f-b26beaa44207",
+    "title": "The Fourth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "124",
+    "songNumber": "124",
+    "asset": "./assets/scores/song-145463f7-f4fe-45ca-b41f-b26beaa44207.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "124",
+        "page": "124",
+        "title": "The Fourth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0e3a588d2c25b3ad78c3fc3e8f597a6be1d4473d91337fd9828c80a5b2372335",
+      "archiveFilename": "124 - The Fourth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-cee63567-be4c-4e1a-9788-fe11204c78a6",
+    "title": "The Fifth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "125",
+    "songNumber": "125",
+    "asset": "./assets/scores/song-cee63567-be4c-4e1a-9788-fe11204c78a6.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "125",
+        "page": "125",
+        "title": "The Fifth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1416123bfe69209e603b7a17082f27f1b2cf5563afe172fbfcea2190e3913166",
+      "archiveFilename": "125 - The Fifth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-ea23aabd-6eee-4750-890b-ae8683868177",
+    "title": "The Sixth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "126a",
+    "songNumber": "126a",
+    "asset": "./assets/scores/song-ea23aabd-6eee-4750-890b-ae8683868177.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "126a",
+        "page": "126a",
+        "title": "The Sixth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "cea1c7e74d46e5f2dce84bf634745886b9917c24a4233c5c607d0512c8a43b69",
+      "archiveFilename": "126a - The Sixth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-90ebbdb1-1611-48f5-8fbd-91eb584abec4",
+    "title": "The Seventh Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "126b",
+    "songNumber": "126b",
+    "asset": "./assets/scores/song-90ebbdb1-1611-48f5-8fbd-91eb584abec4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "126b",
+        "page": "126b",
+        "title": "The Seventh Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6cb63ccb561b83a2528236d5a2c0e7fcca304efa09fe9b69dd7231b2d97ff543",
+      "archiveFilename": "126b - The Seventh Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-46fe34be-943a-4343-befe-707c1306e017",
+    "title": "The Eighth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "127",
+    "songNumber": "127",
+    "asset": "./assets/scores/song-46fe34be-943a-4343-befe-707c1306e017.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "127",
+        "page": "127",
+        "title": "The Eighth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d06b3833d984e789967b1cb75b79bbcf3f90579d55df5bb012e421ce2497e0e3",
+      "archiveFilename": "127 - The Eighth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-3f01c320-c73a-47db-95d3-ba284da6c523",
+    "title": "The Ninth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "128a",
+    "songNumber": "128a",
+    "asset": "./assets/scores/song-3f01c320-c73a-47db-95d3-ba284da6c523.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "128a",
+        "page": "128a",
+        "title": "The Ninth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a19b8c2690bb10a1a89eea3e8907bdd82eeba590e966954ac71511379e487067",
+      "archiveFilename": "128a - The Ninth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-7aa6c4d8-5f33-4bde-a292-d1087e70cf17",
+    "title": "The Tenth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "128b",
+    "songNumber": "128b",
+    "asset": "./assets/scores/song-7aa6c4d8-5f33-4bde-a292-d1087e70cf17.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "128b",
+        "page": "128b",
+        "title": "The Tenth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d572dc7497aa621cf5cdcf1b7fc87cea6803a39a59e62d71237f588594bb1649",
+      "archiveFilename": "128b - The Tenth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-4c3e1b7e-c395-409c-b254-fc7cb78a05fd",
+    "title": "The Eleventh Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "130",
+    "songNumber": "130",
+    "asset": "./assets/scores/song-4c3e1b7e-c395-409c-b254-fc7cb78a05fd.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "130",
+        "page": "130",
+        "title": "The Eleventh Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b2c3966081c4d281aeef333d06640f04da25a9382f0ad4a4bb6761d97633e85d",
+      "archiveFilename": "130 - The Eleventh Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-d4fac03a-a5c9-4b8b-9ecd-7b2119f7d9af",
+    "title": "The Twelfth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "131",
+    "songNumber": "131",
+    "asset": "./assets/scores/song-d4fac03a-a5c9-4b8b-9ecd-7b2119f7d9af.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "131",
+        "page": "131",
+        "title": "The Twelfth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "270578136116e1a1660ede69e72518923167a55cf447173c90acdfcc80a5ba8c",
+      "archiveFilename": "131 - The Twelfth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-3beead66-a2f8-4121-b3f6-9245a21af2cc",
+    "title": "The Thirteenth Article of Faith",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "132",
+    "songNumber": "132",
+    "asset": "./assets/scores/song-3beead66-a2f8-4121-b3f6-9245a21af2cc.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "132",
+        "page": "132",
+        "title": "The Thirteenth Article of Faith"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1e21672aa5f7e8a0e561bb395e0b37e349800ff30ccd5a1f0631a9a79aca445e",
+      "archiveFilename": "132 - The Thirteenth Article of Faith.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-a1d93d40-4f38-48a4-8693-6a591d097cd4",
+    "title": "Latter-day Prophets",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "134",
+    "songNumber": "134",
+    "asset": "./assets/scores/song-a1d93d40-4f38-48a4-8693-6a591d097cd4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "134",
+        "page": "134",
+        "title": "Latter-day Prophets"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "84ae07183eeaf02f57547e00bfd8d72f2dac5c7689104e75a09f03462cc133d7",
+      "archiveFilename": "134 - Latter-day Prophets.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-e10a048e-144a-4258-9fc2-b58484035a63",
+    "title": "Our Bishop",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "135",
+    "songNumber": "135",
+    "asset": "./assets/scores/song-e10a048e-144a-4258-9fc2-b58484035a63.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "135",
+        "page": "135",
+        "title": "Our Bishop"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5f5db66d71f204b75d24bc0abeebee913f91bd880a100802fda13f0657ea6f37",
+      "archiveFilename": "135 - Our Bishop.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-eb7ac6fd-41a9-4ebb-8575-6d955bb32224",
+    "title": "Love One Another",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "136",
+    "songNumber": "136",
+    "asset": "./assets/scores/song-eb7ac6fd-41a9-4ebb-8575-6d955bb32224.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "136",
+        "page": "136",
+        "title": "Love One Another"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "7265640fc420dcc691275d1d1f6b59356bc66d9eb090f3ed78c87557b605ca41",
+      "archiveFilename": "136 - Love One Another.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-b974e287-1b1d-41a4-a5eb-cdedbf6aa62b",
+    "title": "I’ll Walk with You",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "140",
+    "songNumber": "140",
+    "asset": "./assets/scores/song-b974e287-1b1d-41a4-a5eb-cdedbf6aa62b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "140",
+        "page": "140",
+        "title": "I’ll Walk with You"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "55ced260cfaa01d11de38ed87c973146ae4d167a6f0bd94aef53e46e8762b988",
+      "archiveFilename": "140 - I’ll Walk with You.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-ead8a227-1190-48a5-b89e-b555fd641025",
+    "title": "Every Star Is Different",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "142",
+    "songNumber": "142",
+    "asset": "./assets/scores/song-ead8a227-1190-48a5-b89e-b555fd641025.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "142",
+        "page": "142",
+        "title": "Every Star Is Different"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "be1105f9e591349fe48a4ee2d8d72a4363bee494bf4632a6a861c8ddb26f9297",
+      "archiveFilename": "142 - Every Star Is Different.mxl"
+    },
+    "transpositionAvailable": false,
+    "playbackAvailable": true,
+    "capability": "View only",
+    "tonic": "",
+    "mode": "",
+    "evidence": "Multiple source key signatures; preserve notation as view-only. Playback remains available."
+  },
+  {
+    "id": "song-789a7af7-a66f-4685-a0d1-47bd9aa149b3",
+    "title": "Shine On",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "144",
+    "songNumber": "144",
+    "asset": "./assets/scores/song-789a7af7-a66f-4685-a0d1-47bd9aa149b3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "144",
+        "page": "144",
+        "title": "Shine On"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "131881b76c802ec45e447b86efdcdf1de5d7257f0a4f05027363cb0d029448a2",
+      "archiveFilename": "144 - Shine On.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-b3d23386-19f3-44ed-abc4-1e0ccdd20345",
+    "title": "A Special Gift Is Kindness",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "145a",
+    "songNumber": "145a",
+    "asset": "./assets/scores/song-b3d23386-19f3-44ed-abc4-1e0ccdd20345.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "145a",
+        "page": "145a",
+        "title": "A Special Gift Is Kindness"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "106a2a0994befde1496eec5a233f2828de12502176324396ed4b447f67208829",
+      "archiveFilename": "145a - A Special Gift Is Kindness.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-75ca55cd-fa64-4641-85d3-00ea9ab7e352",
+    "title": "Kindness Begins with Me",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "145b",
+    "songNumber": "145b",
+    "asset": "./assets/scores/song-75ca55cd-fa64-4641-85d3-00ea9ab7e352.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "145b",
+        "page": "145b",
+        "title": "Kindness Begins with Me"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b22cef7f6dd188062a7115551ccbab27e1990c3660f407bde3bbc9c35d3e246f",
+      "archiveFilename": "145b - Kindness Begins with Me.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-02cc18ac-a169-4b3e-8e1e-16948a18f768",
+    "title": "Keep the Commandments",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "146",
+    "songNumber": "146",
+    "asset": "./assets/scores/song-02cc18ac-a169-4b3e-8e1e-16948a18f768.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "146",
+        "page": "146",
+        "title": "Keep the Commandments"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5f614f79c02cb964272c9cabefe0d8b41bced579f889b9991c49ef412759d3d7",
+      "archiveFilename": "146 - Keep the Commandments.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-f93b8fcc-0611-42f8-b5b1-11c728178efc",
+    "title": "I Want to Live the Gospel",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "148",
+    "songNumber": "148",
+    "asset": "./assets/scores/song-f93b8fcc-0611-42f8-b5b1-11c728178efc.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "148",
+        "page": "148",
+        "title": "I Want to Live the Gospel"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a578d6829fcae8e357332e9588506e0b047e4cb36bee233885b16df4973cdb66",
+      "archiveFilename": "148 - I Want to Live the Gospel.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-86ae5eb3-d278-4465-9dde-193fce477ea6",
+    "title": "I Believe in Being Honest",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "149",
+    "songNumber": "149",
+    "asset": "./assets/scores/song-86ae5eb3-d278-4465-9dde-193fce477ea6.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "149",
+        "page": "149",
+        "title": "I Believe in Being Honest"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5af39fb9150fe733b7e305216ee865a5a7f69b7c6029f6d63c07d0ca317ae7b7",
+      "archiveFilename": "149 - I Believe in Being Honest.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-3d926c67-a572-4c38-b028-feedd4c65e7e",
+    "title": "I’m Glad to Pay a Tithing",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "150a",
+    "songNumber": "150a",
+    "asset": "./assets/scores/song-3d926c67-a572-4c38-b028-feedd4c65e7e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "150a",
+        "page": "150a",
+        "title": "I’m Glad to Pay a Tithing"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b90c53bb3bf8e5d9a0d1f975cea0266d15fca9da9a131b9189cfb5bb64f2fc8d",
+      "archiveFilename": "150a - I’m Glad to Pay a Tithing.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-f66d2921-c20b-4ad1-887a-d3d5a20619f1",
+    "title": "I Want to Give the Lord My Tenth",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "150b",
+    "songNumber": "150b",
+    "asset": "./assets/scores/song-f66d2921-c20b-4ad1-887a-d3d5a20619f1.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "150b",
+        "page": "150b",
+        "title": "I Want to Give the Lord My Tenth"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d7ce853ee693d41d2129e3e5c645dbf487ff7f90d7b4af9e8cb3eb772222e0b8",
+      "archiveFilename": "150b - I Want to Give the Lord My Tenth.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-6d7f962c-2ae3-4628-bbee-a0db1dd6cd88",
+    "title": "I Am Glad for Many Things",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "151",
+    "songNumber": "151",
+    "asset": "./assets/scores/song-6d7f962c-2ae3-4628-bbee-a0db1dd6cd88.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "151",
+        "page": "151",
+        "title": "I Am Glad for Many Things"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e2fe3f7c2045c96882acc0d927d888e6e6fd26ec4a81f15d8a8ed0946a37f486",
+      "archiveFilename": "151 - I Am Glad for Many Things.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b",
+    "title": "Hum Your Favorite Hymn",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "152",
+    "songNumber": "152",
+    "asset": "./assets/scores/song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "152",
+        "page": "152",
+        "title": "Hum Your Favorite Hymn"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f1ac04eefd1506ad3e718cf83160bc8a34d1ab2f4c6f87a135985ba46fcb80a8",
+      "archiveFilename": "152 - Hum Your Favorite Hymn.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-aeebeee0-8e31-4b89-bd15-6bfcfcd23227",
+    "title": "The Lord Gave Me a Temple",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "153",
+    "songNumber": "153",
+    "asset": "./assets/scores/song-aeebeee0-8e31-4b89-bd15-6bfcfcd23227.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "153",
+        "page": "153",
+        "title": "The Lord Gave Me a Temple"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "77c8f86eb45c46575d89253e5dc856ae01285245d15e79f3745e192709d3b10b",
+      "archiveFilename": "153 - The Lord Gave Me a Temple.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-0e05929e-254b-41fc-9e4e-9b810b1fc37e",
+    "title": "The Word of Wisdom",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "154",
+    "songNumber": "154",
+    "asset": "./assets/scores/song-0e05929e-254b-41fc-9e4e-9b810b1fc37e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "154",
+        "page": "154",
+        "title": "The Word of Wisdom"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5e3cab2e8127a49c8f54baaa0c99e1c9195c556657968a200c7c8a91fb7190ec",
+      "archiveFilename": "154 - The Word of Wisdom.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-b5037aa1-dca4-4518-a1a3-f444dff63d14",
+    "title": "Remember the Sabbath Day",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "155",
+    "songNumber": "155",
+    "asset": "./assets/scores/song-b5037aa1-dca4-4518-a1a3-f444dff63d14.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "155",
+        "page": "155",
+        "title": "Remember the Sabbath Day"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "bf4cd522e8c200d9c2b3fec01a11fe2ef3c0f80fc17d4be3b3fde7b3d5e72003",
+      "archiveFilename": "155 - Remember the Sabbath Day.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-69c31108-4e9d-4e7d-99b7-0eb88648b601",
+    "title": "The Chapel Doors",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "156",
+    "songNumber": "156",
+    "asset": "./assets/scores/song-69c31108-4e9d-4e7d-99b7-0eb88648b601.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "156",
+        "page": "156",
+        "title": "The Chapel Doors"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c0e41525f2066d8d39573e6df4827ebd58bb51d40278b4f867d4e5d35a1f74dc",
+      "archiveFilename": "156 - The Chapel Doors.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-ac5608d8-fb15-4273-9797-860334501401",
+    "title": "When I Go to Church",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "157",
+    "songNumber": "157",
+    "asset": "./assets/scores/song-ac5608d8-fb15-4273-9797-860334501401.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "157",
+        "page": "157",
+        "title": "When I Go to Church"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "45fcbbbdca529338b4c366f5b1b383c94c86087987ed74e910146e2b41638c01",
+      "archiveFilename": "157 - When I Go to Church.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-2b8984f9-0654-4bd2-a439-5f990b2de781",
+    "title": "Dare to Do Right",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "158",
+    "songNumber": "158",
+    "asset": "./assets/scores/song-2b8984f9-0654-4bd2-a439-5f990b2de781.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "158",
+        "page": "158",
+        "title": "Dare to Do Right"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3242d19e53fd94c5dd9028d7600ef256697a296d743d6355db458fa102fcfbc0",
+      "archiveFilename": "158 - Dare to Do Right.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-98091677-00a4-4326-bad7-46eacb14fc29",
+    "title": "Stand for the Right",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "159",
+    "songNumber": "159",
+    "asset": "./assets/scores/song-98091677-00a4-4326-bad7-46eacb14fc29.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "159",
+        "page": "159",
+        "title": "Stand for the Right"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ab88952f6761d14a33ee120b5984a0aecfa7f08606f6d941974ccbf246f108ac",
+      "archiveFilename": "159 - Stand for the Right.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-799ad9aa-caed-4e48-a882-dab23cd9686a",
+    "title": "Choose the Right Way",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "160",
+    "songNumber": "160",
+    "asset": "./assets/scores/song-799ad9aa-caed-4e48-a882-dab23cd9686a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "160",
+        "page": "160",
+        "title": "Choose the Right Way"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "743d8d7dc6cc5cf271ee68a12739c1024df1b199370937b0e6d302e3484c5484",
+      "archiveFilename": "160 - Choose the Right Way.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-8e3cbb5c-9e8c-479d-a26e-3d73726a1e62",
+    "title": "I Pledge Myself to Love the Right",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "161",
+    "songNumber": "161",
+    "asset": "./assets/scores/song-8e3cbb5c-9e8c-479d-a26e-3d73726a1e62.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "161",
+        "page": "161",
+        "title": "I Pledge Myself to Love the Right"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4fd579001f097acff215cb68b262c3b4689bc8b354352e6b67623f10b704b9af",
+      "archiveFilename": "161 - I Pledge Myself to Love the Right.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-775dde37-8058-43fb-b80e-d47464c16b8f",
+    "title": "I Will Be Valiant",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "162",
+    "songNumber": "162",
+    "asset": "./assets/scores/song-775dde37-8058-43fb-b80e-d47464c16b8f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "162",
+        "page": "162",
+        "title": "I Will Be Valiant"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eceb39763d810481c34ef2372dba6c6d9b8b53ab86ad15a7f856f303b5373986",
+      "archiveFilename": "162 - I Will Be Valiant.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-3a822800-2892-41af-92c3-34a7c7582866",
+    "title": "I Am like a Star",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "163",
+    "songNumber": "163",
+    "asset": "./assets/scores/song-3a822800-2892-41af-92c3-34a7c7582866.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "163",
+        "page": "163",
+        "title": "I Am like a Star"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d5bd100d11cfc6328578afd1191b316712b28a2a632ec738ef61f6af7629eece",
+      "archiveFilename": "163 - I Am like a Star.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-48d392a5-b087-45bf-bfa0-3bcd9b90070b",
+    "title": "A Young Man Prepared",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "166",
+    "songNumber": "166",
+    "asset": "./assets/scores/song-48d392a5-b087-45bf-bfa0-3bcd9b90070b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "166",
+        "page": "166",
+        "title": "A Young Man Prepared"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "238e2a0b0c9def42f1c842a5a09dc634edaa0196115b627a8ec7b03a943c2c3a",
+      "archiveFilename": "166 - A Young Man Prepared.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-8b5532e8-7cdb-4b3e-b79f-89f2b59d3738",
+    "title": "Go the Second Mile",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "167",
+    "songNumber": "167",
+    "asset": "./assets/scores/song-8b5532e8-7cdb-4b3e-b79f-89f2b59d3738.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "167",
+        "page": "167",
+        "title": "Go the Second Mile"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "403f8d4f381da96319f31c5fd261d83093c7def223ebe96e0955af5caa3fb233",
+      "archiveFilename": "167 - Go the Second Mile.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-6f4876b3-4c33-4b87-865b-b5e115ff4123",
+    "title": "The Things I Do",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "170",
+    "songNumber": "170",
+    "asset": "./assets/scores/song-6f4876b3-4c33-4b87-865b-b5e115ff4123.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "170",
+        "page": "170",
+        "title": "The Things I Do"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "41d9631355abdc340b12578ea58a0a5a1c393d9576127952d54944a6a76394fa",
+      "archiveFilename": "170 - The Things I Do.mxl"
+    },
+    "transpositionAvailable": false,
+    "playbackAvailable": true,
+    "capability": "View only",
+    "tonic": "",
+    "mode": "",
+    "evidence": "Multiple source key signatures; preserve notation as view-only. Playback remains available."
+  },
+  {
+    "id": "song-d8061722-8f6e-42d0-b4d5-72e79d490f5c",
+    "title": "We’ll Bring the World His Truth",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "172",
+    "songNumber": "172",
+    "asset": "./assets/scores/song-d8061722-8f6e-42d0-b4d5-72e79d490f5c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "172",
+        "page": "172",
+        "title": "We’ll Bring the World His Truth"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eb8c3c94c17e536d3d8bec132e8619d2d0c71b9730b9e31ee398248d5e8d4607",
+      "archiveFilename": "172 - We’ll Bring the World His Truth.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-9c0291a1-b6cd-4d00-84ea-f1b54f32ce54",
+    "title": "Tell Me, Dear Lord",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "176",
+    "songNumber": "176",
+    "asset": "./assets/scores/song-9c0291a1-b6cd-4d00-84ea-f1b54f32ce54.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "176",
+        "page": "176",
+        "title": "Tell Me, Dear Lord"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a0795be4cdcf5eeac5cc1b8dc459ca91111ce185b54e19ff0208febea08627f6",
+      "archiveFilename": "176 - Tell Me, Dear Lord.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-edd901fb-1740-4471-a43d-99e02f5e4eb0",
+    "title": "Teach Me to Walk in the Light",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "177",
+    "songNumber": "177",
+    "asset": "./assets/scores/song-edd901fb-1740-4471-a43d-99e02f5e4eb0.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "177",
+        "page": "177",
+        "title": "Teach Me to Walk in the Light"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "db93858905238a2cfa4f92aa8d553f706c54f48b6cc34471b04a4ee4ef6db2ee",
+      "archiveFilename": "177 - Teach Me to Walk in the Light.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-97b815d1-3074-402d-87dc-054a26201437",
+    "title": "Teacher, Do You Love Me?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "178",
+    "songNumber": "178",
+    "asset": "./assets/scores/song-97b815d1-3074-402d-87dc-054a26201437.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "178",
+        "page": "178",
+        "title": "Teacher, Do You Love Me?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9569e0a12a47b21ef87bdfdb5efb1e8e9b34d079fc2e1d4c37c67371dab9c00e",
+      "archiveFilename": "178 - Teacher, Do You Love Me-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-fd033466-3e4a-40fa-8ad3-e630b114714d",
+    "title": "How Dear to God Are Little Children",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "180",
+    "songNumber": "180",
+    "asset": "./assets/scores/song-fd033466-3e4a-40fa-8ad3-e630b114714d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "180",
+        "page": "180",
+        "title": "How Dear to God Are Little Children"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1f634de0f12d289686cc63d6b21e51e5de1a8a93a348fc38d84346d361536a4d",
+      "archiveFilename": "180 - How Dear to God Are Little Children.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-be95cf4e-2b13-4a09-a71b-52ef90125517",
+    "title": "How Will They Know?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "182",
+    "songNumber": "182",
+    "asset": "./assets/scores/song-be95cf4e-2b13-4a09-a71b-52ef90125517.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "182",
+        "page": "182",
+        "title": "How Will They Know?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d3f90601a733aeab4131e2906544857fad0017ee15ce659b5be21235187c0adb",
+      "archiveFilename": "182 - How Will They Know-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-d381df73-f2ff-4ba8-ae94-23aa65c62164",
+    "title": "Families Can Be Together Forever",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "188",
+    "songNumber": "188",
+    "asset": "./assets/scores/song-d381df73-f2ff-4ba8-ae94-23aa65c62164.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "188",
+        "page": "188",
+        "title": "Families Can Be Together Forever"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d5d1efdc3d8933c9be94f1ad40a940b166ea02199567e9a1dc9aee3b42e2a040",
+      "archiveFilename": "188 - Families Can Be Together Forever.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d1247d99-85d2-4ad2-9821-989e80d0cb04",
+    "title": "Family Prayer",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "189",
+    "songNumber": "189",
+    "asset": "./assets/scores/song-d1247d99-85d2-4ad2-9821-989e80d0cb04.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "189",
+        "page": "189",
+        "title": "Family Prayer"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eba9e348bfb5b181b8b2523090343c3fcd2795995ae514325c6f7f800f42bc15",
+      "archiveFilename": "189 - Family Prayer.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7",
+    "title": "Love Is Spoken Here",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "190",
+    "songNumber": "190",
+    "asset": "./assets/scores/song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "190",
+        "page": "190",
+        "title": "Love Is Spoken Here"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6b40b39373966e6cf24c54a46e9d5acaaccf147bdff03afbc3ee36e93fca82d9",
+      "archiveFilename": "190 - Love Is Spoken Here.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-732f9096-6912-457b-849a-d8ea748c38fb",
+    "title": "Home",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "192",
+    "songNumber": "192",
+    "asset": "./assets/scores/song-732f9096-6912-457b-849a-d8ea748c38fb.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "192",
+        "page": "192",
+        "title": "Home"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b2adb05fba3fff4d92c030908352871f2c8a2accbcf320d24321d6b9f151818c",
+      "archiveFilename": "192 - Home.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-7847de3e-dc3e-4791-b9fb-fd234009d40b",
+    "title": "Sing Your Way Home",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "193",
+    "songNumber": "193",
+    "asset": "./assets/scores/song-7847de3e-dc3e-4791-b9fb-fd234009d40b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "193",
+        "page": "193",
+        "title": "Sing Your Way Home"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b7177a75d3550edb9ff011b0281584054587ab89dc3c7524344652173176b6e8",
+      "archiveFilename": "193 - Sing Your Way Home.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-2193c446-f7a2-4c36-966f-f9f8b06ae55d",
+    "title": "The Family",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "194",
+    "songNumber": "194",
+    "asset": "./assets/scores/song-2193c446-f7a2-4c36-966f-f9f8b06ae55d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "194",
+        "page": "194",
+        "title": "The Family"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f007a499591b9c56d26ecccaf5916ccf62f1443e7238a5e3299a0fc675f7fea8",
+      "archiveFilename": "194 - The Family.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-1bf72638-45ac-443a-9778-022a252ca49b",
+    "title": "Family Night",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "195",
+    "songNumber": "195",
+    "asset": "./assets/scores/song-1bf72638-45ac-443a-9778-022a252ca49b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "195",
+        "page": "195",
+        "title": "Family Night"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "27244fffd6d4aabd16c6637633439650258cc669d10d12e10e39d3ed0662d0d5",
+      "archiveFilename": "195 - Family Night.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-89eaff33-993a-4d44-a7f8-818d7c006fee",
+    "title": "Saturday",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "196",
+    "songNumber": "196",
+    "asset": "./assets/scores/song-89eaff33-993a-4d44-a7f8-818d7c006fee.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "196",
+        "page": "196",
+        "title": "Saturday"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1417be9d21ee0ac673dd26c5d427a9be8bccf5e38c901ba558be69dbc76aea41",
+      "archiveFilename": "196 - Saturday.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-37965461-f9a7-4aff-8dce-63bafbfb5b88",
+    "title": "A Happy Helper",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "197a",
+    "songNumber": "197a",
+    "asset": "./assets/scores/song-37965461-f9a7-4aff-8dce-63bafbfb5b88.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "197a",
+        "page": "197a",
+        "title": "A Happy Helper"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3de827af8161adeb5ae22f636bc969eff80702c1d4ccff661f9a1977fab4470c",
+      "archiveFilename": "197a - A Happy Helper.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-ba4dfb99-73f4-451d-b17d-3ce7e7137a7b",
+    "title": "Quickly I’ll Obey",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "197b",
+    "songNumber": "197b",
+    "asset": "./assets/scores/song-ba4dfb99-73f4-451d-b17d-3ce7e7137a7b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "197b",
+        "page": "197b",
+        "title": "Quickly I’ll Obey"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fa87e2b0daed1bb2e912c85e22fe5bfe16a2b35bf70e7be550d8512064d9bac0",
+      "archiveFilename": "197b - Quickly I’ll Obey.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-5d8107ea-6b17-4154-b34f-7ed18c214506",
+    "title": "A Happy Family",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "198a",
+    "songNumber": "198a",
+    "asset": "./assets/scores/song-5d8107ea-6b17-4154-b34f-7ed18c214506.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "198a",
+        "page": "198a",
+        "title": "A Happy Family"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6a226850e35210072f5a4d2b86d02911d9173097f92f429db20b2e34d2608aaa",
+      "archiveFilename": "198a - A Happy Family.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-77a0567d-64f3-45d1-a886-859d90d7463a",
+    "title": "When We’re Helping",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "198b",
+    "songNumber": "198b",
+    "asset": "./assets/scores/song-77a0567d-64f3-45d1-a886-859d90d7463a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "198b",
+        "page": "198b",
+        "title": "When We’re Helping"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "8fb219ec23d19075e64a98521c5079e8b8e8e0e37df6ef0d9d563c54cdf6dc20",
+      "archiveFilename": "198b - When We’re Helping.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-a2c12ca0-7604-403a-a014-05340ab04196",
+    "title": "I Have a Family Tree",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "199",
+    "songNumber": "199",
+    "asset": "./assets/scores/song-a2c12ca0-7604-403a-a014-05340ab04196.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "199",
+        "page": "199",
+        "title": "I Have a Family Tree"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c1dfbf779a47eca97e75e1924cf9a0db1d65c0c34314f91543f37aa44ecf7aaa",
+      "archiveFilename": "199 - I Have a Family Tree.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-dc1fc2be-c779-4f40-92a2-62255d2db15c",
+    "title": "Grandmother",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "200",
+    "songNumber": "200",
+    "asset": "./assets/scores/song-dc1fc2be-c779-4f40-92a2-62255d2db15c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "200",
+        "page": "200",
+        "title": "Grandmother"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "d3e536af75fb1363c5ad4c8fd55947765243e656c28753255cac4592af3dc775",
+      "archiveFilename": "200 - Grandmother.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-76cd6774-a387-4585-90d5-e3d2e65c7957",
+    "title": "I Often Go Walking",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "202",
+    "songNumber": "202",
+    "asset": "./assets/scores/song-76cd6774-a387-4585-90d5-e3d2e65c7957.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "202",
+        "page": "202",
+        "title": "I Often Go Walking"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e38622252ff4f48dbe11348d035633344718694ba0338cd1e2fd0c2fa70677d8",
+      "archiveFilename": "202 - I Often Go Walking.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-2a7b1393-50f3-43e7-a6bc-5c733c12954a",
+    "title": "My Mother Dear",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "203",
+    "songNumber": "203",
+    "asset": "./assets/scores/song-2a7b1393-50f3-43e7-a6bc-5c733c12954a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "203",
+        "page": "203",
+        "title": "My Mother Dear"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9617651301162d81056e0ff6bfe19b638bf497bb911bedf65c3044563779c937",
+      "archiveFilename": "203 - My Mother Dear.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-01f2b576-9982-42c9-85ce-1930bd32bb27",
+    "title": "Mother, Tell Me the Story",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "204",
+    "songNumber": "204",
+    "asset": "./assets/scores/song-01f2b576-9982-42c9-85ce-1930bd32bb27.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "204",
+        "page": "204",
+        "title": "Mother, Tell Me the Story"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a73b1a23d098432656c62b382255964bafa189e9504ead1a104426cc133bebcd",
+      "archiveFilename": "204 - Mother, Tell Me the Story.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-fc635284-b22e-4e6f-a4cb-15d9fa962efe",
+    "title": "Mother Dear",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "206a",
+    "songNumber": "206a",
+    "asset": "./assets/scores/song-fc635284-b22e-4e6f-a4cb-15d9fa962efe.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "206a",
+        "page": "206a",
+        "title": "Mother Dear"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "8d378b7d6d054eb8df578005144d639d49c21f2fe3b49f40bb0950268bfff8bf",
+      "archiveFilename": "206a - Mother Dear.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-dca2f221-e83f-4965-b543-6c757954015e",
+    "title": "Dearest Mother, I Love You",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "206b",
+    "songNumber": "206b",
+    "asset": "./assets/scores/song-dca2f221-e83f-4965-b543-6c757954015e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "206b",
+        "page": "206b",
+        "title": "Dearest Mother, I Love You"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "7184024772563c36ea63121c79eec8d89c08b26f1b886ebaa41b51b046e2fa9a",
+      "archiveFilename": "206b - Dearest Mother, I Love You.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-ba3bd842-6829-450a-96f4-0a4db000efc3",
+    "title": "Mother, I Love You",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "207",
+    "songNumber": "207",
+    "asset": "./assets/scores/song-ba3bd842-6829-450a-96f4-0a4db000efc3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "207",
+        "page": "207",
+        "title": "Mother, I Love You"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9f4c215080b07d217f4cb8782e83ea1b8095d96124054627cbd28dd129843119",
+      "archiveFilename": "207 - Mother, I Love You.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-58e79346-c3c6-425b-9d46-7a240374c0b9",
+    "title": "The Dearest Names",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "208",
+    "songNumber": "208",
+    "asset": "./assets/scores/song-58e79346-c3c6-425b-9d46-7a240374c0b9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "208",
+        "page": "208",
+        "title": "The Dearest Names"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5359605a4a97b2f7113a7a761890980c8f454af753d58a2373618a8c92c6c132",
+      "archiveFilename": "208 - The Dearest Names.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-83dc556e-d1cd-4288-8b89-42dfb7419f2f",
+    "title": "Fathers",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "209",
+    "songNumber": "209",
+    "asset": "./assets/scores/song-83dc556e-d1cd-4288-8b89-42dfb7419f2f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "209",
+        "page": "209",
+        "title": "Fathers"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b4fd3ea7bece22aeb50359c74a64c3144be1524d434fc9ec2a7d78332660f618",
+      "archiveFilename": "209 - Fathers.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-8d986977-4e00-4b10-8dc4-5bb80dc12beb",
+    "title": "Daddy’s Homecoming",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "210",
+    "songNumber": "210",
+    "asset": "./assets/scores/song-8d986977-4e00-4b10-8dc4-5bb80dc12beb.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "210",
+        "page": "210",
+        "title": "Daddy’s Homecoming"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "681d1dbe5f556301da5433ce9ca07115c4e83dd2b655bd45abfc6d1b29f0d96c",
+      "archiveFilename": "210 - Daddy’s Homecoming.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-5e874136-5650-42b1-9e80-fa8c02fefd33",
+    "title": "My Dad",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "211",
+    "songNumber": "211",
+    "asset": "./assets/scores/song-5e874136-5650-42b1-9e80-fa8c02fefd33.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "211",
+        "page": "211",
+        "title": "My Dad"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ebd88f06ace1555b40f77e109bc2025957fd6347efe287da5f263f71574b93d0",
+      "archiveFilename": "211 - My Dad.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-20e2678f-8636-4f6c-80c0-9545a6eba581",
+    "title": "Pioneer Children Sang As They Walked",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "214",
+    "songNumber": "214",
+    "asset": "./assets/scores/song-20e2678f-8636-4f6c-80c0-9545a6eba581.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "214",
+        "page": "214",
+        "title": "Pioneer Children Sang As They Walked"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "fe42cbe8255bcac9e8a7bdebedad51060fbbc80c76d27207d32fa30744363ec3",
+      "archiveFilename": "214 - Pioneer Children Sang As They Walked.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-6b1f3c16-3116-420c-a76c-37f47b94ead9",
+    "title": "Pioneer Children Were Quick to Obey",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "215",
+    "songNumber": "215",
+    "asset": "./assets/scores/song-6b1f3c16-3116-420c-a76c-37f47b94ead9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "215",
+        "page": "215",
+        "title": "Pioneer Children Were Quick to Obey"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0ba2843f262eed363d0e4d222d25f24b0e47586320efefc1770edf951731546e",
+      "archiveFilename": "215 - Pioneer Children Were Quick to Obey.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-82c7b8de-059a-4932-b759-e6245a71a2bd",
+    "title": "Little Pioneer Children",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "216",
+    "songNumber": "216",
+    "asset": "./assets/scores/song-82c7b8de-059a-4932-b759-e6245a71a2bd.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "216",
+        "page": "216",
+        "title": "Little Pioneer Children"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "42a4673e0afaf89585c5d873b91ae9b934449e104c0b4b9a55724a995dc0568d",
+      "archiveFilename": "216 - Little Pioneer Children.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-35b2fde6-f9b4-4ebe-b877-e8e9dfe6a6a9",
+    "title": "Westward Ho!",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "217",
+    "songNumber": "217",
+    "asset": "./assets/scores/song-35b2fde6-f9b4-4ebe-b877-e8e9dfe6a6a9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "217",
+        "page": "217",
+        "title": "Westward Ho!"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ad06cd941e6dd52c103d29e6341ae62f847a0075a1b529e9320b0fc09c17b3a6",
+      "archiveFilename": "217 - Westward Ho!.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-55fb1ba6-d232-4a29-8d2e-fea05137432e",
+    "title": "To Be a Pioneer",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "218",
+    "songNumber": "218",
+    "asset": "./assets/scores/song-55fb1ba6-d232-4a29-8d2e-fea05137432e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "218",
+        "page": "218",
+        "title": "To Be a Pioneer"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f366a9ecfe5d7460fa5634776637148918662f3ec541abe4c6d3071701e8656c",
+      "archiveFilename": "218 - To Be a Pioneer.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-4dbe604b-e1d0-433e-b379-9e1891f19716",
+    "title": "The Oxcart",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "219",
+    "songNumber": "219",
+    "asset": "./assets/scores/song-4dbe604b-e1d0-433e-b379-9e1891f19716.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "219",
+        "page": "219",
+        "title": "The Oxcart"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6cce9eab232babdb36e3053127847eb83b8cddb52a84012b7fa15cd072338f1d",
+      "archiveFilename": "219 - The Oxcart.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-b1a44239-0115-4a2c-bfe4-3dc85fca5680",
+    "title": "Covered Wagons",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "221",
+    "songNumber": "221",
+    "asset": "./assets/scores/song-b1a44239-0115-4a2c-bfe4-3dc85fca5680.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "221",
+        "page": "221",
+        "title": "Covered Wagons"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "056b3fa302d0b4f2234704afbb8326fec3d57748640aa6e2322c01239e8c2ec6",
+      "archiveFilename": "221 - Covered Wagons.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-1a3be618-07ec-424b-b005-13e5ccf9f4ff",
+    "title": "Whenever I Think about Pioneers",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "222",
+    "songNumber": "222",
+    "asset": "./assets/scores/song-1a3be618-07ec-424b-b005-13e5ccf9f4ff.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "222",
+        "page": "222",
+        "title": "Whenever I Think about Pioneers"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0e0bed32f17b275f2153da779b824b7c685c7a91cf8d3337c081706a3673c75c",
+      "archiveFilename": "222 - Whenever I Think about Pioneers.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-d670435c-404c-4877-ba6d-fec676160a7d",
+    "title": "My Country",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "224",
+    "songNumber": "224",
+    "asset": "./assets/scores/song-d670435c-404c-4877-ba6d-fec676160a7d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "224",
+        "page": "224",
+        "title": "My Country"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "818e0d7fa35060a56c673105d4d314b0781be028af3f91f00f3f4f5eb0532944",
+      "archiveFilename": "224 - My Country.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-175995b9-d7bf-4b45-84a1-1044cb3a3909",
+    "title": "My Flag, My Flag",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "225",
+    "songNumber": "225",
+    "asset": "./assets/scores/song-175995b9-d7bf-4b45-84a1-1044cb3a3909.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "225",
+        "page": "225",
+        "title": "My Flag, My Flag"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9b3897b47198900db31e5bcfe53d699587b53d57ecb45fea7ffc1b0f921bed14",
+      "archiveFilename": "225 - My Flag, My Flag.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-50e7b8e0-30e9-49b7-82ad-30d1ea4258f0",
+    "title": "I Think the World Is Glorious",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "230",
+    "songNumber": "230",
+    "asset": "./assets/scores/song-50e7b8e0-30e9-49b7-82ad-30d1ea4258f0.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "230",
+        "page": "230",
+        "title": "I Think the World Is Glorious"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "93bf05ff3b62aac69c4f3a0a86fc862cb17c4042cbdbe56c72e23197a9a4053d",
+      "archiveFilename": "230 - I Think the World Is Glorious.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-fbaadf2f-bab9-4f46-a80b-2d087297a766",
+    "title": "All Things Bright and Beautiful",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "231",
+    "songNumber": "231",
+    "asset": "./assets/scores/song-fbaadf2f-bab9-4f46-a80b-2d087297a766.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "231",
+        "page": "231",
+        "title": "All Things Bright and Beautiful"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "8eb7d619364b10a7bd74a7c501b73cc3fcbb472e67e481a8e0dea9e2145e53ae",
+      "archiveFilename": "231 - All Things Bright and Beautiful.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-10454faa-4770-477b-abb5-11819f2aacc7",
+    "title": "The World Is So Lovely",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "233",
+    "songNumber": "233",
+    "asset": "./assets/scores/song-10454faa-4770-477b-abb5-11819f2aacc7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "233",
+        "page": "233",
+        "title": "The World Is So Lovely"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f76ce322051ee434d63426621639da9ec31abde48253d445e9521acd161b7a27",
+      "archiveFilename": "233 - The World Is So Lovely.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-89f8539d-b6fe-4943-b7d2-da31ca098948",
+    "title": "Because God Loves Me",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "234",
+    "songNumber": "234",
+    "asset": "./assets/scores/song-89f8539d-b6fe-4943-b7d2-da31ca098948.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "234",
+        "page": "234",
+        "title": "Because God Loves Me"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "335b89547b96dad05c539749044cb105797ea4f7112cc36ef2ec438179c50e76",
+      "archiveFilename": "234 - Because God Loves Me.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-ce7e1e85-f958-4dd4-9eb2-e06cda479f91",
+    "title": "The World Is So Big",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "235",
+    "songNumber": "235",
+    "asset": "./assets/scores/song-ce7e1e85-f958-4dd4-9eb2-e06cda479f91.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "235",
+        "page": "235",
+        "title": "The World Is So Big"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "be3b892a9527e83b5e082596524932863de3a7ac0d79f9010cb41cb6d23eae8c",
+      "archiveFilename": "235 - The World Is So Big.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-2303c719-10ab-4931-80b6-f01122c95fd4",
+    "title": "The Prophet Said to Plant a Garden",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "237",
+    "songNumber": "237",
+    "asset": "./assets/scores/song-2303c719-10ab-4931-80b6-f01122c95fd4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "237",
+        "page": "237",
+        "title": "The Prophet Said to Plant a Garden"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9ab4bcec9e50a37e983e70b7476decde9946362468e82d9aeb1072a06447b437",
+      "archiveFilename": "237 - The Prophet Said to Plant a Garden.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-e8bab4bf-ff4d-4335-b349-5b6cfdd214d5",
+    "title": "Because It’s Spring",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "239",
+    "songNumber": "239",
+    "asset": "./assets/scores/song-e8bab4bf-ff4d-4335-b349-5b6cfdd214d5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "239",
+        "page": "239",
+        "title": "Because It’s Spring"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3b6f5ccbdb4b659590189d7969b995d39c92234ee023cede84aeb31a749cc68b",
+      "archiveFilename": "239 - Because It’s Spring.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-e4c6571d-75e9-451d-bc66-06bfc7bfba6c",
+    "title": "In the Leafy Treetops",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "240",
+    "songNumber": "240",
+    "asset": "./assets/scores/song-e4c6571d-75e9-451d-bc66-06bfc7bfba6c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "240",
+        "page": "240",
+        "title": "In the Leafy Treetops"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "e8cd5097e14a1032847d0d10bf0c36a6a1af7f77084d7142e5ed77af7b0b1928",
+      "archiveFilename": "240 - In the Leafy Treetops.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-d4c96ae5-3a7b-4cea-95b8-5123970e43bf",
+    "title": "Birds in the Tree",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "241a",
+    "songNumber": "241a",
+    "asset": "./assets/scores/song-d4c96ae5-3a7b-4cea-95b8-5123970e43bf.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "241a",
+        "page": "241a",
+        "title": "Birds in the Tree"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "03f0f3006634fb82239708e78396723b8abc9e74b721e6695499c214efbc6152",
+      "archiveFilename": "241a - Birds in the Tree.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-837fac47-1f80-4e50-beef-a38f8622d634",
+    "title": "Rain Is Falling All Around",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "241b",
+    "songNumber": "241b",
+    "asset": "./assets/scores/song-837fac47-1f80-4e50-beef-a38f8622d634.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "241b",
+        "page": "241b",
+        "title": "Rain Is Falling All Around"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "7de2692051e525a14768e5e9b1cf1508102fc7cbf7e76f352805006f317b99de",
+      "archiveFilename": "241b - Rain Is Falling All Around.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-dd1cd744-4360-4b8b-921c-292c6ac8a976",
+    "title": "Little Seeds Lie Fast Asleep",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "243",
+    "songNumber": "243",
+    "asset": "./assets/scores/song-dd1cd744-4360-4b8b-921c-292c6ac8a976.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "243",
+        "page": "243",
+        "title": "Little Seeds Lie Fast Asleep"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5cbd3ed72ea30b80570a0f6de78bcb106c1c1bce73a8949d173d0dc454f5a6c9",
+      "archiveFilename": "243 - Little Seeds Lie Fast Asleep.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-208e7518-9e3f-4137-9d0c-b9a977c3ee1d",
+    "title": "Oh, What Do You Do in the Summertime?",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "245",
+    "songNumber": "245",
+    "asset": "./assets/scores/song-208e7518-9e3f-4137-9d0c-b9a977c3ee1d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "245",
+        "page": "245",
+        "title": "Oh, What Do You Do in the Summertime?"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "69b3c0d1a1b4976a1432ee221f01865ab0d4fb6fa83f27aee14536bbd28bba12",
+      "archiveFilename": "245 - Oh, What Do You Do in the Summertime-.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-e6f24336-8bbd-4e0e-945b-f4510f86d609",
+    "title": "It’s Autumntime",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "246",
+    "songNumber": "246",
+    "asset": "./assets/scores/song-e6f24336-8bbd-4e0e-945b-f4510f86d609.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "246",
+        "page": "246",
+        "title": "It’s Autumntime"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5412454e05b4a8f8ec84005bc9442e42aeddf3a26cb542147db28c60945ab98e",
+      "archiveFilename": "246 - It’s Autumntime.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-78321528-a416-4673-b63b-925a1dd6ba68",
+    "title": "Autumn Day",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "247",
+    "songNumber": "247",
+    "asset": "./assets/scores/song-78321528-a416-4673-b63b-925a1dd6ba68.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "247",
+        "page": "247",
+        "title": "Autumn Day"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "5f24c3eb04ecb509ff2bb87efffa19bc280ed1ec4b8944586baedec5c997a9e9",
+      "archiveFilename": "247 - Autumn Day.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-a80a9022-a10b-4f06-ae16-da076f4e5c7d",
+    "title": "Falling Snow",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "248",
+    "songNumber": "248",
+    "asset": "./assets/scores/song-a80a9022-a10b-4f06-ae16-da076f4e5c7d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "248",
+        "page": "248",
+        "title": "Falling Snow"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a75824c6d8bcfb7bb2d1022adde0b440bc6ea2c1262d1370f796aad2dc0e791e",
+      "archiveFilename": "248 - Falling Snow.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-4b9318cb-10e7-4ee3-910d-78bc45626627",
+    "title": "Lift Up Your Voice and Sing",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "252",
+    "songNumber": "252",
+    "asset": "./assets/scores/song-4b9318cb-10e7-4ee3-910d-78bc45626627.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "252",
+        "page": "252",
+        "title": "Lift Up Your Voice and Sing"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3f97b7a5a4db67fa59a09ef0feecb069f5a5567086be37c67badc6aa808778cb",
+      "archiveFilename": "252 - Lift Up Your Voice and Sing.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-6d8c4d3a-8350-48fe-be13-cb08b84ff6ba",
+    "title": "Sing a Song",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "253a",
+    "songNumber": "253a",
+    "asset": "./assets/scores/song-6d8c4d3a-8350-48fe-be13-cb08b84ff6ba.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "253a",
+        "page": "253a",
+        "title": "Sing a Song"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3b5cd03d3eb72c1fa25487296b841a369f7e4fc082b0617a2f03d98c07f29325",
+      "archiveFilename": "253a - Sing a Song.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-5e1c49fd-d630-4930-b96c-e73aa15c4c7a",
+    "title": "Fun to Do",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "253b",
+    "songNumber": "253b",
+    "asset": "./assets/scores/song-5e1c49fd-d630-4930-b96c-e73aa15c4c7a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "253b",
+        "page": "253b",
+        "title": "Fun to Do"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "dd64a79e25ca5ba29b183b60c9b8a77b295ea011da3b3ea8a16a8c09b16bdced",
+      "archiveFilename": "253b - Fun to Do.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-93308474-67d5-40fd-a272-e9e1685252d8",
+    "title": "Hello, Friends!",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "254a",
+    "songNumber": "254a",
+    "asset": "./assets/scores/song-93308474-67d5-40fd-a272-e9e1685252d8.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "254a",
+        "page": "254a",
+        "title": "Hello, Friends!"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "69a604ee6c37d70584e1e2e246d037e19f4b0647e4d63c73153fddbed4b8a351",
+      "archiveFilename": "254a - Hello, Friends!.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d25bcb07-cdd9-4cc9-a257-4036f71cc774",
+    "title": "Our Door Is Always Open",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "254b",
+    "songNumber": "254b",
+    "asset": "./assets/scores/song-d25bcb07-cdd9-4cc9-a257-4036f71cc774.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "254b",
+        "page": "254b",
+        "title": "Our Door Is Always Open"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "860123c96e3d49411067f8663708733a3efe8df48a4849d3b595a9b13077d098",
+      "archiveFilename": "254b - Our Door Is Always Open.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-7b6546f5-152e-4fde-a2fc-5ef6a75aa9d3",
+    "title": "Come with Me to Primary",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "255",
+    "songNumber": "255",
+    "asset": "./assets/scores/song-7b6546f5-152e-4fde-a2fc-5ef6a75aa9d3.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "255",
+        "page": "255",
+        "title": "Come with Me to Primary"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "19131a163c3bd5bb95665870527e1cc02484068269d9c6f837cb8ff7cb974805",
+      "archiveFilename": "255 - Come with Me to Primary.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "D",
+    "mode": "major",
+    "fifths": 2
+  },
+  {
+    "id": "song-50a783c6-eed6-4248-859f-c53cd02badb8",
+    "title": "We Welcome You",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "256",
+    "songNumber": "256",
+    "asset": "./assets/scores/song-50a783c6-eed6-4248-859f-c53cd02badb8.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "256",
+        "page": "256",
+        "title": "We Welcome You"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "2da0c70de903cf615da2b90a600148f99d6213fd8ac96e4e536a832a993d2a46",
+      "archiveFilename": "256 - We Welcome You.mxl"
+    },
+    "transpositionAvailable": false,
+    "playbackAvailable": true,
+    "capability": "View only",
+    "tonic": "",
+    "mode": "",
+    "evidence": "Multiple source key signatures; preserve notation as view-only. Playback remains available."
+  },
+  {
+    "id": "song-3da362a5-d583-4bb9-92e6-c3938fa1a0b8",
+    "title": "Our Primary Colors",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "258",
+    "songNumber": "258",
+    "asset": "./assets/scores/song-3da362a5-d583-4bb9-92e6-c3938fa1a0b8.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "258",
+        "page": "258",
+        "title": "Our Primary Colors"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0d85764db1b15ac3463195b651832dd729506fa2a1bfa4875d6decb586fb4ab4",
+      "archiveFilename": "258 - Our Primary Colors.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-059f2ffa-5f01-48b1-99e0-25360a7d527b",
+    "title": "We’re All Together Again",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "259",
+    "songNumber": "259",
+    "asset": "./assets/scores/song-059f2ffa-5f01-48b1-99e0-25360a7d527b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "259",
+        "page": "259",
+        "title": "We’re All Together Again"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c44fe5340ef06b081271fdf013093a68bc30c5d100055390e4949778b9e94cc5",
+      "archiveFilename": "259 - We’re All Together Again.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-c888ad9b-01fb-4a34-9ebf-f5477a2d8b4a",
+    "title": "Here We Are Together",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "261",
+    "songNumber": "261",
+    "asset": "./assets/scores/song-c888ad9b-01fb-4a34-9ebf-f5477a2d8b4a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "261",
+        "page": "261",
+        "title": "Here We Are Together"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "b162d1a0af14cd7473ecf491fdc8afed05c748c9bc756c65aa36ff46316e627a",
+      "archiveFilename": "261 - Here We Are Together.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-cdf5be68-d090-4995-bebb-c8ee3507f27f",
+    "title": "Friends Are Fun",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "262",
+    "songNumber": "262",
+    "asset": "./assets/scores/song-cdf5be68-d090-4995-bebb-c8ee3507f27f.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "262",
+        "page": "262",
+        "title": "Friends Are Fun"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9efcb2d96af5f574f204309fc5fd4f146d5d3eb1fd9ac6efdb0c7cd690762687",
+      "archiveFilename": "262 - Friends Are Fun.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-dcb0645f-f0b0-4137-a0e4-1bb309078370",
+    "title": "We Are Different",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "263",
+    "songNumber": "263",
+    "asset": "./assets/scores/song-dcb0645f-f0b0-4137-a0e4-1bb309078370.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "263",
+        "page": "263",
+        "title": "We Are Different"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ececdcc0160616c70dc00399e32be865d8db89fbe1ca9c344f23096df35b1601",
+      "archiveFilename": "263 - We Are Different.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-892d44e7-56fc-4852-88e2-4c3a33ff5371",
+    "title": "Happy Song",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "264",
+    "songNumber": "264",
+    "asset": "./assets/scores/song-892d44e7-56fc-4852-88e2-4c3a33ff5371.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "264",
+        "page": "264",
+        "title": "Happy Song"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "53a615def3093859b192e9ebad72280b7f8e1afb09675b4edccf3d25e91034a3",
+      "archiveFilename": "264 - Happy Song.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-fa8abdc0-e863-476f-9180-9a77241a18e9",
+    "title": "A Smile Is like the Sunshine",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "267b",
+    "songNumber": "267b",
+    "asset": "./assets/scores/song-fa8abdc0-e863-476f-9180-9a77241a18e9.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "267b",
+        "page": "267b",
+        "title": "A Smile Is like the Sunshine"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9997e1d2f7b7c5a9211d9803abbcae9e86da410d99a7ac84ce075f5af40229a2",
+      "archiveFilename": "267b - A Smile Is like the Sunshine.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d",
+    "title": "Two Little Eyes",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "268",
+    "songNumber": "268",
+    "asset": "./assets/scores/song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "268",
+        "page": "268",
+        "title": "Two Little Eyes"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "ed18ac9ea1869f3ec53c61c7e14c639aa9820077178880a030cc32d60dc41cdc",
+      "archiveFilename": "268 - Two Little Eyes.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "E♭",
+    "mode": "major",
+    "fifths": -3
+  },
+  {
+    "id": "song-cc896df7-dd78-4a05-a772-b5d46aea004d",
+    "title": "I Have Two Ears",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "269",
+    "songNumber": "269",
+    "asset": "./assets/scores/song-cc896df7-dd78-4a05-a772-b5d46aea004d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "269",
+        "page": "269",
+        "title": "I Have Two Ears"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3dd04cc13ad2134154cbc259d59e254ee953ec1f9dc9742221de411db90465e5",
+      "archiveFilename": "269 - I Have Two Ears.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-bf35d758-9f87-433c-ba5b-39c381ef4e65",
+    "title": "Two Happy Feet",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "270",
+    "songNumber": "270",
+    "asset": "./assets/scores/song-bf35d758-9f87-433c-ba5b-39c381ef4e65.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "270",
+        "page": "270",
+        "title": "Two Happy Feet"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "4a20278b64649b3b26ca2749b715bea49990d479cbf16b743e33c0fb64001909",
+      "archiveFilename": "270 - Two Happy Feet.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-0a175f0f-81a6-4eff-96a9-13e5193f3bec",
+    "title": "I Wiggle",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "271",
+    "songNumber": "271",
+    "asset": "./assets/scores/song-0a175f0f-81a6-4eff-96a9-13e5193f3bec.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "271",
+        "page": "271",
+        "title": "I Wiggle"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "6446038c6a61f00ab8198ea0ee90a8ea259a6d655fda675d7eb3a54623b858b4",
+      "archiveFilename": "271 - I Wiggle.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-ca220060-f5ca-4fc3-aa6d-a377bc104895",
+    "title": "I Have Two Little Hands",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "272",
+    "songNumber": "272",
+    "asset": "./assets/scores/song-ca220060-f5ca-4fc3-aa6d-a377bc104895.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "272",
+        "page": "272",
+        "title": "I Have Two Little Hands"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0bdf291e787720f06af98c9092aaae7485a9a22928c1adc7b42fd8ea30203901",
+      "archiveFilename": "272 - I Have Two Little Hands.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-ae5d09f6-3447-4683-a85c-6d3ac323539c",
+    "title": "My Hands",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "273",
+    "songNumber": "273",
+    "asset": "./assets/scores/song-ae5d09f6-3447-4683-a85c-6d3ac323539c.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "273",
+        "page": "273",
+        "title": "My Hands"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0d35a74cba8563367d98488d088ba459f817f9b93beefbdecc14f6f65b2e9a02",
+      "archiveFilename": "273 - My Hands.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-595ccf2b-140a-4d18-846c-c2ad7643e17d",
+    "title": "Roll Your Hands",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "274",
+    "songNumber": "274",
+    "asset": "./assets/scores/song-595ccf2b-140a-4d18-846c-c2ad7643e17d.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "274",
+        "page": "274",
+        "title": "Roll Your Hands"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1b22594a9f1c1fd51909bbf4a77b73e4a34cbde680284798ae1ac1dcbfc9a92c",
+      "archiveFilename": "274 - Roll Your Hands.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-00210f16-d132-4a34-a019-90e9251d190b",
+    "title": "To Get Quiet",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "275b",
+    "songNumber": "275b",
+    "asset": "./assets/scores/song-00210f16-d132-4a34-a019-90e9251d190b.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "275b",
+        "page": "275b",
+        "title": "To Get Quiet"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "dd0e80c68cbc58097d11610ca0a1b5bbde8a49672ccb0ed6132651a8156fa50f",
+      "archiveFilename": "275b - To Get Quiet.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-288a6d46-d324-4b9e-9b22-62a3858be0c7",
+    "title": "Hinges",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "277",
+    "songNumber": "277",
+    "asset": "./assets/scores/song-288a6d46-d324-4b9e-9b22-62a3858be0c7.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "277",
+        "page": "277",
+        "title": "Hinges"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eb426eac17a6d554d6fccb966f6e18d4e48575490bf048cd68b66693e3e7b761",
+      "archiveFilename": "277 - Hinges.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-53d08a1c-e9be-45d6-a52a-963bb423a5f6",
+    "title": "Stand Up",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "278",
+    "songNumber": "278",
+    "asset": "./assets/scores/song-53d08a1c-e9be-45d6-a52a-963bb423a5f6.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "278",
+        "page": "278",
+        "title": "Stand Up"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "159868f20a9bc17cb8b5bbdbd7fc6e7c8557662c72e19c1d31d9f06eb2ad1d63",
+      "archiveFilename": "278 - Stand Up.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-fc6b438d-5264-4405-945e-1e3a615690d4",
+    "title": "Oh, How We Love to Stand",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "279",
+    "songNumber": "279",
+    "asset": "./assets/scores/song-fc6b438d-5264-4405-945e-1e3a615690d4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "279",
+        "page": "279",
+        "title": "Oh, How We Love to Stand"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "a938aa3f1ad5286cd23b680d07608bd0b52ad3b35063c399be1bf2826440edc7",
+      "archiveFilename": "279 - Oh, How We Love to Stand.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-aec87112-47f1-4b3b-83f6-464d0e9930aa",
+    "title": "Healthy, Wealthy, and Wise",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "280",
+    "songNumber": "280",
+    "asset": "./assets/scores/song-aec87112-47f1-4b3b-83f6-464d0e9930aa.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "280",
+        "page": "280",
+        "title": "Healthy, Wealthy, and Wise"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "bff47bc2cb8522e7858f12d158855d23991deea6e185290a84ed3de58d89982a",
+      "archiveFilename": "280 - Healthy, Wealthy, and Wise.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-1d3b3497-8bae-4d35-a551-845a43efdd8a",
+    "title": "Feliz Cumpleaños",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "282",
+    "songNumber": "282",
+    "asset": "./assets/scores/song-1d3b3497-8bae-4d35-a551-845a43efdd8a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "282",
+        "page": "282",
+        "title": "Feliz Cumpleaños"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "2e504df3ee750c2a099c84dfaee8a5709b4591d9cef0751d3e5486ef7eaf7e1f",
+      "archiveFilename": "282 - Feliz Cumpleaños.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2",
+    "title": "Your Happy Birthday",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "283",
+    "songNumber": "283",
+    "asset": "./assets/scores/song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "283",
+        "page": "283",
+        "title": "Your Happy Birthday"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f72c3cd8f94e78bed6114361cf33e2bf929608b194b4463ede42f1d0aa314aca",
+      "archiveFilename": "283 - Your Happy Birthday.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-082c508f-fb6c-428f-9e6f-52fb9d71a7ea",
+    "title": "Happy, Happy Birthday",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "284a",
+    "songNumber": "284a",
+    "asset": "./assets/scores/song-082c508f-fb6c-428f-9e6f-52fb9d71a7ea.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "284a",
+        "page": "284a",
+        "title": "Happy, Happy Birthday"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "298bed3fc013b67987768ec58c8cf3f8ddfe7b2051f1540cff4f6e5bd28fe5c0",
+      "archiveFilename": "284a - Happy, Happy Birthday.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-29c9d8ed-2e25-4865-9867-2477f2fa81e4",
+    "title": "Have a Very Happy Birthday!",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "284b",
+    "songNumber": "284b",
+    "asset": "./assets/scores/song-29c9d8ed-2e25-4865-9867-2477f2fa81e4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "284b",
+        "page": "284b",
+        "title": "Have a Very Happy Birthday!"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "aa8b19da177e99379155a40780a530936a451d679116707f4f4a17ea3bc47092",
+      "archiveFilename": "284b - Have a Very Happy Birthday!.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "B♭",
+    "mode": "major",
+    "fifths": -2
+  },
+  {
+    "id": "song-527daed2-ac88-4587-bc7a-09b28bf6cd3a",
+    "title": "You’ve Had a Birthday",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "285",
+    "songNumber": "285",
+    "asset": "./assets/scores/song-527daed2-ac88-4587-bc7a-09b28bf6cd3a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "285",
+        "page": "285",
+        "title": "You’ve Had a Birthday"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "622c403432f490eca852f5e0542ec8e746d583a7383934ef173151a54218dc6f",
+      "archiveFilename": "285 - You’ve Had a Birthday.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-8fa768c2-7402-4551-800a-2bdf30049be5",
+    "title": "Impromptu",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "288",
+    "songNumber": "288",
+    "asset": "./assets/scores/song-8fa768c2-7402-4551-800a-2bdf30049be5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "288",
+        "page": "288",
+        "title": "Impromptu"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "1ef5027f4d53e37539bf75faadc2951b7dba410de2ababa1b3fb4375e0cf805f",
+      "archiveFilename": "288 - Impromptu.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-3c854990-9860-47b6-88f2-c395d45ebae5",
+    "title": "To a Wild Rose",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "289",
+    "songNumber": "289",
+    "asset": "./assets/scores/song-3c854990-9860-47b6-88f2-c395d45ebae5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "289",
+        "page": "289",
+        "title": "To a Wild Rose"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "0339bdb1d3c27778088722712f862d49f6acc1a6357109c13c43097b2f1a4080",
+      "archiveFilename": "289 - To a Wild Rose.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-f6248e54-3bfb-4c7a-9f65-0f27075a943e",
+    "title": "Each Sunday Morning",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "290",
+    "songNumber": "290",
+    "asset": "./assets/scores/song-f6248e54-3bfb-4c7a-9f65-0f27075a943e.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "290",
+        "page": "290",
+        "title": "Each Sunday Morning"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "bb32f0b63be9b6f079bf44bc81677da92f8c9b56857a2534a9de0e366e60e5e8",
+      "archiveFilename": "290 - Each Sunday Morning.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-b428e858-0133-4d4a-8a95-911b868aef60",
+    "title": "In Quietude",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "291",
+    "songNumber": "291",
+    "asset": "./assets/scores/song-b428e858-0133-4d4a-8a95-911b868aef60.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "291",
+        "page": "291",
+        "title": "In Quietude"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "36d11c51caad49202a85b398b2e12962d331b690dfaacacaea30fb1908895903",
+      "archiveFilename": "291 - In Quietude.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-82b08bde-2e30-461f-88be-c410be00d868",
+    "title": "Loving Shepherd",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "292a",
+    "songNumber": "292a",
+    "asset": "./assets/scores/song-82b08bde-2e30-461f-88be-c410be00d868.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "292a",
+        "page": "292a",
+        "title": "Loving Shepherd"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "3a42c3166353edb91f5d2102a21803f32e34ba549ebc69d8d359328f0941eed1",
+      "archiveFilename": "292a - Loving Shepherd.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-b01244cb-7bb7-424c-9f78-c2f39b6e112a",
+    "title": "Morning Prayer",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "292b",
+    "songNumber": "292b",
+    "asset": "./assets/scores/song-b01244cb-7bb7-424c-9f78-c2f39b6e112a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "292b",
+        "page": "292b",
+        "title": "Morning Prayer"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "493e1fe7e7d1237a99015fc452eb06ce6e80090a517d3ca9e14fa597df58b848",
+      "archiveFilename": "292b - Morning Prayer.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "G",
+    "mode": "major",
+    "fifths": 1
+  },
+  {
+    "id": "song-0929ad3e-a434-4c6a-856e-0eb036eddee5",
+    "title": "My Heart Ever Faithful",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "293",
+    "songNumber": "293",
+    "asset": "./assets/scores/song-0929ad3e-a434-4c6a-856e-0eb036eddee5.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "293",
+        "page": "293",
+        "title": "My Heart Ever Faithful"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "417d75c4a169190a5d92d7cf6ec68c8aecf8f592f96139ebca284cbfe841075c",
+      "archiveFilename": "293 - My Heart Ever Faithful.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-8047e6c9-bc52-49c5-abe8-89b924e6f00a",
+    "title": "Andante",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "294",
+    "songNumber": "294",
+    "asset": "./assets/scores/song-8047e6c9-bc52-49c5-abe8-89b924e6f00a.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "294",
+        "page": "294",
+        "title": "Andante"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "97f4fc3aa5b2db08cdd61bbc0b5843a50bab4a7633fb1f571396f67a9e9c52b3",
+      "archiveFilename": "294 - Andante.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-6964e731-38cd-482a-992a-944a7d14c5f8",
+    "title": "O Rest in the Lord",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "295",
+    "songNumber": "295",
+    "asset": "./assets/scores/song-6964e731-38cd-482a-992a-944a7d14c5f8.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "295",
+        "page": "295",
+        "title": "O Rest in the Lord"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "53f85634033fe6c19aabd09cf8be47cc8315b5d2988bc79ec3b201045ba9f83d",
+      "archiveFilename": "295 - O Rest in the Lord.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0
+  },
+  {
+    "id": "song-41eb4c94-5450-444d-acbb-8cb434ffe645",
+    "title": "Air from Orpheus",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "296",
+    "songNumber": "296",
+    "asset": "./assets/scores/song-41eb4c94-5450-444d-acbb-8cb434ffe645.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "296",
+        "page": "296",
+        "title": "Air from Orpheus"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "f11f6880a65f5242390404e43527c6b5146ab835e5b7e664cc1328f4712ec0f6",
+      "archiveFilename": "296 - Air from Orpheus.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf",
+    "title": "Supplication",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "297",
+    "songNumber": "297",
+    "asset": "./assets/scores/song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "297",
+        "page": "297",
+        "title": "Supplication"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "9e2f553b27929b935cb678e62da7a66611de74bc9573fcdcd9858c5727afcde5",
+      "archiveFilename": "297 - Supplication.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-55a94a2f-1049-41e7-bc34-4c9be1e585f4",
+    "title": "Prelude in F",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "298",
+    "songNumber": "298",
+    "asset": "./assets/scores/song-55a94a2f-1049-41e7-bc34-4c9be1e585f4.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "298",
+        "page": "298",
+        "title": "Prelude in F"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "eb763a4dc6fd2473e440d7143cb33d9f89e8581b49c9b5c207c466403f65ca7c",
+      "archiveFilename": "298 - Prelude in F.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
+  },
+  {
+    "id": "song-352e183f-b5d1-4b0e-9244-990fb0bdd165",
+    "title": "Distant Bells",
+    "collection": "Children’s Songbook",
+    "edition": "English archive 2026-09-16",
+    "page": "299",
+    "songNumber": "299",
+    "asset": "./assets/scores/song-352e183f-b5d1-4b0e-9244-990fb0bdd165.mxl",
+    "tags": [],
+    "aliases": [],
+    "collectionMemberships": [
+      {
+        "collection": "Children’s Songbook",
+        "edition": "English archive 2026-09-16",
+        "songNumber": "299",
+        "page": "299",
+        "title": "Distant Bells"
+      }
+    ],
+    "sourceIdentity": {
+      "sha256": "c5e79beb8bc21ec6371029ce0ad75fbc46df4e9d3677fb6d95a642d49eb2fab1",
+      "archiveFilename": "299 - Distant Bells.mxl"
+    },
+    "transpositionAvailable": true,
+    "playbackAvailable": true,
+    "capability": "Transposable",
+    "tonic": "F",
+    "mode": "major",
+    "fifths": -1
   }
 ];

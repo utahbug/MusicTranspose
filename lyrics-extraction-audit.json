@@ -1,15 +1,28 @@
 {
-  "published": 416,
-  "explicitRefrain": 11,
-  "total": 454,
-  "structured": 452,
-  "extracted": 343,
-  "needsReview": 109,
-  "multipleVerses": 429,
-  "refrainDetected": 98,
+  "published": 622,
+  "explicitRefrain": 30,
+  "total": 681,
+  "structured": 679,
+  "extracted": 543,
+  "needsReview": 123,
+  "multipleVerses": 545,
+  "refrainDetected": 123,
   "noLyrics": [
     "scripture-power",
-    "choose-to-serve-the-lord"
+    "choose-to-serve-the-lord",
+    "song-8fa768c2-7402-4551-800a-2bdf30049be5",
+    "song-3c854990-9860-47b6-88f2-c395d45ebae5",
+    "song-f6248e54-3bfb-4c7a-9f65-0f27075a943e",
+    "song-b428e858-0133-4d4a-8a95-911b868aef60",
+    "song-82b08bde-2e30-461f-88be-c410be00d868",
+    "song-b01244cb-7bb7-424c-9f78-c2f39b6e112a",
+    "song-0929ad3e-a434-4c6a-856e-0eb036eddee5",
+    "song-8047e6c9-bc52-49c5-abe8-89b924e6f00a",
+    "song-6964e731-38cd-482a-992a-944a7d14c5f8",
+    "song-41eb4c94-5450-444d-acbb-8cb434ffe645",
+    "song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf",
+    "song-55a94a2f-1049-41e7-bc34-4c9be1e585f4",
+    "song-352e183f-b5d1-4b0e-9244-990fb0bdd165"
   ],
   "review": [
     {
@@ -827,6 +840,109 @@
     {
       "id": "song-c30e5c84-a1bb-431d-b093-a2761eba0f82",
       "title": "School Thy Feelings",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "song-ffd5b22c-dacd-462e-9e86-5a887fc3970d",
+      "title": "Can a Little Child like Me?",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "song-5b34793d-c858-4e54-9961-7bc8610ed54e",
+      "title": "I Pray in Faith",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order.",
+        "Part/round performance directions are retained in the score; no performance-order expansion."
+      ]
+    },
+    {
+      "id": "song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98",
+      "title": "When Joseph Went to Bethlehem",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "song-d165ef87-2efa-4a0c-a4b1-e07a742ea654",
+      "title": "Away in a Manger",
+      "notes": [
+        "Alternate vocal streams for verse 2 are retained separately; consult the score."
+      ]
+    },
+    {
+      "id": "song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2",
+      "title": "This Is My Beloved Son",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "song-708c0414-b2e0-4f70-b178-88aca2228fa7",
+      "title": "The Books in the New Testament",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      ]
+    },
+    {
+      "id": "song-0e05929e-254b-41fc-9e4e-9b810b1fc37e",
+      "title": "The Word of Wisdom",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    },
+    {
+      "id": "song-97b815d1-3074-402d-87dc-054a26201437",
+      "title": "Teacher, Do You Love Me?",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Multiple refrain streams; consult the score for vocal order."
+      ]
+    },
+    {
+      "id": "song-be95cf4e-2b13-4a09-a71b-52ef90125517",
+      "title": "How Will They Know?",
+      "notes": [
+        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      ]
+    },
+    {
+      "id": "song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7",
+      "title": "Love Is Spoken Here",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order.",
+        "Part/round performance directions are retained in the score; no performance-order expansion."
+      ]
+    },
+    {
+      "id": "song-01f2b576-9982-42c9-85ce-1930bd32bb27",
+      "title": "Mother, Tell Me the Story",
+      "notes": [
+        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order.",
+        "Part/round performance directions are retained in the score; no performance-order expansion."
+      ]
+    },
+    {
+      "id": "song-82c7b8de-059a-4932-b759-e6245a71a2bd",
+      "title": "Little Pioneer Children",
+      "notes": [
+        "Part/round performance directions are retained in the score; no performance-order expansion."
+      ]
+    },
+    {
+      "id": "song-fbaadf2f-bab9-4f46-a80b-2d087297a766",
+      "title": "All Things Bright and Beautiful",
+      "notes": [
+        "Multiple refrain streams; consult the score for vocal order."
+      ]
+    },
+    {
+      "id": "song-dcb0645f-f0b0-4137-a0e4-1bb309078370",
+      "title": "We Are Different",
       "notes": [
         "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
       ]

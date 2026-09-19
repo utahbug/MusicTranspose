@@ -1,6 +1,6 @@
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
-import {compareNumbers,matchesSource,compareAlphabeticalTitles} from '../library-query.js';
+import {compareNumbers,matchesSource,compareAlphabeticalTitles,songForSource} from '../library-query.js';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE),{chromium}=require('playwright');
 const b=await chromium.launch({channel:'msedge',headless:true}),p=await b.newPage(),errors=[];
 p.on('pageerror',e=>errors.push(e.message));
@@ -14,7 +14,7 @@ try{
  assert.equal(await p.locator('#library-list,#view-recent,#order-title,#order-number,#library-filter,#library-sort,.library-row .song-actions').count(),0);
  assert.equal(await p.locator('#order-toggle').textContent(),'A–Z');
  for(const source of ['all','hymnal','children','home-church','legacy','other']){
-  await p.locator('#library-source').selectOption(source);let expected=catalog.filter(s=>matchesSource(s,source));counts[source]=expected.length;
+  await p.locator('#library-source').selectOption(source);let expected=catalog.filter(s=>matchesSource(s,source)).map(s=>songForSource(s,source));counts[source]=expected.length;
   for(const order of ['title','number']){
    if(await p.locator('#order-toggle').textContent()!==(order==='title'?'A–Z':'123'))await p.locator('#order-toggle').click();
    const actual=await ids();assert.deepEqual(new Set(actual),new Set(expected.map(s=>s.id)));
