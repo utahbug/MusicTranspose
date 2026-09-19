@@ -486,3 +486,16 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  @media(max-width:600px){.masthead .toolbar{column-gap:6px}.masthead .playing-controls{gap:4px}}
  @media(max-width:360px){.masthead .toolbar{column-gap:4px}.masthead .playing-controls{gap:2px}}
 }
+
+/* Compact Settings with optional visual navigation help. */
+#settings-dialog fieldset{margin-top:12px}
+.tap-help-line{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:#53675d;flex-wrap:wrap}
+#show-tap-zones{border:0;background:transparent;color:#365F7D;min-height:44px;padding:4px 6px;font:inherit;text-decoration:underline;text-underline-offset:3px}
+#tap-zones-help{width:360px;padding:20px}
+#tap-zones-help .dialog-heading{align-items:center}
+.tap-zone-diagram{display:grid;grid-template-columns:1fr 1fr;border:1px solid #8b9eaa;border-radius:4px;overflow:hidden;margin:12px 0}
+.tap-zone-diagram>div{display:flex;align-items:center;justify-content:center;min-height:76px;font-size:16px;color:#233331;background:#f1f4f5}
+.tap-zone-diagram>div:nth-child(odd){border-right:1px solid #8b9eaa}
+.tap-zone-diagram>div:nth-child(-n+2){border-bottom:1px solid #8b9eaa}
+.tap-zone-keys{font-size:12px;line-height:1.6;color:#53675d}
+@media print{#tap-zones-help{display:none!important}}
