@@ -46,8 +46,8 @@ $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){ requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===scoreSize)); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
- $('octave-settings').hidden=isPdf()||viewOnly();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||viewOnly()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
+function setControls(){const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original key: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===scoreSize)); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
+ $('key-octave').hidden=isPdf()||viewOnly();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||viewOnly()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
 // Screen-only framing: keep every SVG node and an 8-unit safety margin above its ink.
@@ -93,11 +93,18 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 $('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
-$('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=Math.min(rect.bottom+6,innerHeight-sizeOptions.offsetHeight-8)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
+$('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
 for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{readingPosition=rememberReadingPosition();scoreSize=option.dataset.size;closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
+const phoneControls=matchMedia('(max-width:600px)');
+function placePerformanceControls(){
+ closeSizeOptions();const header=document.querySelector('.score-actions');
+ if(phoneControls.matches){header.insertBefore($('songs'),$('original-key-reference'));header.append($('score-size'));}
+ else{document.querySelector('.playing-controls').prepend($('songs'));document.querySelector('.utility-controls').prepend($('score-size'));}
+}
+phoneControls.addEventListener('change',placePerformanceControls);placePerformanceControls();
 window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
 for(const input of document.querySelectorAll('input[name=octave]'))input.onchange=()=>changeOctave(Number(input.value));
