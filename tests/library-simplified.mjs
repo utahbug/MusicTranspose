@@ -28,7 +28,7 @@ try{
  await p.locator('#library-search').fill('Nativity');assert.deepEqual(await ids(),['nativity']);await p.locator('#library-search').fill('zzz');assert.equal((await ids()).length,0);await p.locator('#library-search').fill('');assert.deepEqual(await ids(),['nativity']);
  await p.locator('#view-favorites').click();await p.reload();await p.locator('.library-row').first().waitFor();assert.equal(await p.locator('#order-toggle').textContent(),'123');assert.equal(await p.locator('#library-source').inputValue(),'children');
  assert.deepEqual(await p.evaluate(()=>JSON.parse(localStorage.getItem('music-transpose-library-v1'))),saved);
- await p.locator('#manage-lists').click();assert(await p.locator('#lists-dialog').isVisible());assert.equal(await p.locator('.personal-list-name').textContent(),'Practice');await p.locator('#close-lists').click();
+ await p.locator('#manage-lists').click();assert(await p.locator('#lists-view').isVisible());assert.match(await p.locator('[data-list="practice"]').textContent(),/Practice/);await p.locator('#lists-library').click();
  await p.locator('#library-source').selectOption('all');
  for(const [width,height] of [[320,812],[390,844],[820,1180],[1180,820],[1440,1000]]){
   await p.setViewportSize({width,height});const layout=await p.evaluate(()=>{const r=s=>{const x=document.querySelector(s).getBoundingClientRect();return {x:x.x,y:x.y,w:x.width,h:x.height}};return {search:r('#library-search'),source:r('#library-source'),tools:r('.library-results-tools'),overflow:document.documentElement.scrollWidth>innerWidth,columns:getComputedStyle(document.querySelector('.library-row')).gridTemplateColumns.split(' ').length}});

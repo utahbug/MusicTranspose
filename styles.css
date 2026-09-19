@@ -125,12 +125,12 @@
 /* Library styles are scoped; the playing toolbar and score stay unchanged. */
 #library{max-width:1080px;margin:auto;padding:16px 24px 60px}
 .library-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}.library-heading h1{font:600 26px system-ui,sans-serif;letter-spacing:-.04em}.library-heading .eyebrow{margin-bottom:3px}
-#library input,#library select,#lists-dialog input{font:inherit;border:1px solid #b5c3c5;border-radius:4px;padding:6px 8px;background:white;color:#233331;min-height:44px}
+#library input,#library select{font:inherit;border:1px solid #b5c3c5;border-radius:4px;padding:6px 8px;background:white;color:#233331;min-height:44px}
 .library-controls{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}.library-controls label{display:flex;align-items:center;gap:5px;font-size:12px;min-width:0}.library-controls .search-box{flex:1 1 220px;max-width:420px}#library #library-search{width:100%;font-size:16px}#library select{min-width:0;max-width:100%;font-size:13px}#library-list{width:125px}.list-actions{display:flex;align-items:center;gap:6px;min-width:0}.list-actions label{flex:1;min-width:0}#library .library-controls .quiet{padding:6px 8px;border-radius:4px;font-size:12px;min-height:44px;white-space:nowrap}#order-note{font-size:11px;color:#526560;line-height:1.4}#order-note:empty{display:none}#library-count{font-size:12px;color:#586b67;margin:7px 0 5px}
-#library-message:empty{display:none}#library-results{border-top:1px solid #c7d1cf}.library-row{display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;border-bottom:1px solid #d1d9d7;background:#fafbf8}.library-row .favorite{border:0;background:transparent;font-size:25px;padding:0;min-width:44px;min-height:48px;color:#365867}.library-row .song-entry{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border:0;background:transparent;text-align:left;padding:13px 8px;color:#233331;min-height:64px;min-width:0}.song-entry strong{font-size:16px;font-weight:600;overflow-wrap:anywhere}.song-meta{font-size:12px;color:#526560;line-height:1.4}.current-label{font-size:11px;color:#365867}.current-song{box-shadow:inset 3px 0 #536b7a;background:#eff3f4}.empty-library{padding:20px 4px;color:#526560}#library input:focus-visible,#library select:focus-visible,#library button:focus-visible,#lists-dialog input:focus-visible{outline:2px solid #536b7a;outline-offset:1px}#lists-dialog{width:540px}#lists-hint{font-size:13px;line-height:1.5}#create-list label{display:block;font-size:13px;margin:12px 0 7px}.create-list-row{display:flex;gap:8px}.create-list-row input{min-width:0;flex:1}.personal-list{display:flex;align-items:center;gap:8px;margin-top:12px}.personal-list>input{width:100%;min-width:0}.personal-list label{display:flex;align-items:center;gap:12px;min-height:44px;overflow-wrap:anywhere}.personal-list input[type=checkbox]{width:22px;height:22px;min-height:22px;accent-color:#536b7a}#list-message{font-size:13px}
+#library-message:empty{display:none}#library-results{border-top:1px solid #c7d1cf}.library-row{display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;border-bottom:1px solid #d1d9d7;background:#fafbf8}.library-row .favorite{border:0;background:transparent;font-size:25px;padding:0;min-width:44px;min-height:48px;color:#365867}.library-row .song-entry{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border:0;background:transparent;text-align:left;padding:13px 8px;color:#233331;min-height:64px;min-width:0}.song-entry strong{font-size:16px;font-weight:600;overflow-wrap:anywhere}.song-meta{font-size:12px;color:#526560;line-height:1.4}.current-label{font-size:11px;color:#365867}.current-song{box-shadow:inset 3px 0 #536b7a;background:#eff3f4}.empty-library{padding:20px 4px;color:#526560}#library input:focus-visible,#library select:focus-visible,#library button:focus-visible{outline:2px solid #536b7a;outline-offset:1px}
 @media screen{body.library-open>.masthead,body.library-open>#playing-view{display:none!important}body.library-open{padding-bottom:0}}
-@media(max-width:600px){#library{padding:12px 14px 40px}.library-heading{align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:8px}.library-heading h1{font-size:24px}.library-controls{gap:6px 8px}.library-controls .search-box{flex-basis:100%;max-width:none}.list-actions{flex:1 1 100%}.list-actions label{flex:1}#library-list{width:0;flex:1}.personal-list{flex-wrap:wrap}.personal-list>input{flex-basis:100%}}
-@media print{#library,#lists-dialog{display:none!important}}
+@media(max-width:600px){#library{padding:12px 14px 40px}.library-heading{align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:8px}.library-heading h1{font-size:24px}.library-controls{gap:6px 8px}.library-controls .search-box{flex-basis:100%;max-width:none}.list-actions{flex:1 1 100%}.list-actions label{flex:1}#library-list{width:0;flex:1}}
+@media print{#library{display:none!important}}
 
 @media print{body.library-open>#playing-view{display:none!important}}
 
@@ -178,14 +178,14 @@
 
 
 #library .library-results-tools #library-count{margin:0 0 0 auto;padding-left:10px;white-space:nowrap}
-#library .library-controls{padding-bottom:3px}.personal-list-name{flex:1;min-width:0;overflow-wrap:anywhere}
+#library .library-controls{padding-bottom:3px}
 @media(max-width:600px){#library .library-controls{gap:0 5px}#library .library-results-tools{flex:1 0 auto;min-width:0}#library .library-results-tools #library-count{padding-left:5px}#library .list-actions{flex:0 1 auto}#library .list-actions select{max-width:145px}}
 
 /* A small overflow affordance replaces the full-width membership column. */
 #library .library-row:not(.reordering){grid-template-columns:46px minmax(0,1fr) 32px}
 #library .library-row .song-actions{width:44px;min-height:44px;margin-inline:-6px;padding:0;border:0;background:transparent;color:#536B7A;font-size:22px;line-height:1;border-radius:3px}
-#song-actions{width:380px}#song-actions h2{font:600 18px system-ui,sans-serif;line-height:1.4}#song-actions>.quiet{display:block;width:100%;text-align:left;margin-top:10px;min-height:44px}#song-actions>.quiet[hidden]{display:none}
-@media print{#song-actions{display:none!important}}
+
+@media print{}
 
 /* App dialogs use compact interface typography, separate from engraved score text. */
 dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
@@ -524,3 +524,26 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #music-import input:not([type=checkbox]){min-height:44px;font:16px system-ui,sans-serif;border:1px solid #b8c6cc;border-radius:4px;padding:7px;background:#fff;color:#233331}
 #music-import .import-actions button{min-height:44px;padding:8px 12px;border:1px solid #b8c6cc;border-radius:4px;background:#edf2f4;color:#233331;font:14px system-ui,sans-serif}
 #music-import button:focus-visible,#music-import input:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+/* Lists is a full local section; song and Library presentation stay independent. */
+#lists-view{max-width:1080px;margin:auto;padding:12px 24px 60px;color:#233331}
+.lists-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#365f7d;color:#fff;padding:14px 16px}
+.lists-heading h1{font:600 27px system-ui,sans-serif;margin:0;overflow-wrap:anywhere}.lists-heading .eyebrow{font-size:11px;letter-spacing:.12em;margin:0 0 5px}.lists-heading p:last-child{font-size:13px;margin:5px 0 0;color:#e1e9ed}
+#lists-view button,#lists-view summary,#list-name-dialog button{min-height:44px;min-width:44px;font:inherit;padding:8px;border:0;background:transparent;color:#365f7d;border-radius:4px;cursor:pointer}
+#lists-view .lists-heading button{color:#fff}
+#lists-view input:not([type=checkbox]),#lists-view select,#list-name-input{min-height:44px;padding:7px;font:16px system-ui,sans-serif;min-width:0;border:1px solid #b5c3c5;border-radius:4px;background:white;color:#233331}
+#lists-view button:focus-visible,#lists-view input:focus-visible,#lists-view select:focus-visible,#lists-view summary:focus-visible,#list-name-dialog :focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+#lists-actions{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}#lists-status{font-size:13px}#lists-status:empty{display:none}
+#lists-view .list-overview-row{display:flex;width:100%;justify-content:space-between;align-items:center;gap:16px;text-align:left;min-height:64px;border-bottom:1px solid #c4cfd3;background:#fafbf8;padding:12px}.list-overview-row strong{overflow-wrap:anywhere}.list-overview-row span{white-space:nowrap;font-size:13px}
+#list-songs{padding:0;margin:8px 0;list-style:none}.list-song-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;border-bottom:1px solid #c4cfd3;background:#fafbf8}
+#lists-view .list-song-title{text-align:left;display:flex;flex-direction:column;gap:5px;min-width:0;min-height:64px;color:#233331}.list-song-title strong{font-size:16px;overflow-wrap:anywhere}
+.list-song-actions{display:flex;align-items:center}.list-song-actions button{width:44px}.list-song-row.dragging{opacity:.55}.list-song-row.drop-before{box-shadow:inset 0 3px #536b7a}.list-song-row.drop-after{box-shadow:inset 0 -3px #536b7a}
+.list-manage summary{font-size:14px!important}.list-manage button{font-size:14px!important}.list-empty{padding:16px 8px}
+.list-picker-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;background:#eef3f5;padding:8px;z-index:2}.list-picker-controls input[type=search]{flex:1 1 200px;width:100%}.list-picker-controls select{max-width:100%}.list-picker-controls label{display:flex;align-items:center;gap:6px;min-height:44px}.list-picker-controls #list-picker-done{margin-left:auto;font-weight:600}
+.list-picker-row{display:flex;gap:12px;align-items:center;min-height:64px;padding:8px;border-bottom:1px solid #c4cfd3}.list-picker-row>span{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}.list-picker-row input,#list-picker-favorites{width:22px;height:22px;flex:none;accent-color:#536b7a}.list-picker-row:has(input:disabled){color:#62706f}
+#list-name-dialog{width:380px}#list-name-form label{display:block;margin-bottom:6px}#list-name-input{width:100%;box-sizing:border-box}#list-name-error{color:#7a3e46}
+@media(max-width:600px){#lists-view{padding:10px 14px 40px}.lists-heading h1{font-size:23px}.list-song-row{grid-template-columns:44px minmax(0,1fr)}.list-song-actions{grid-column:2;justify-content:flex-end}.list-picker-controls{gap:4px}}
+@media print{#lists-view,#list-name-dialog{display:none!important}}
+
+#lists-view{font-family:system-ui,sans-serif}
+.lists-heading .eyebrow{color:#e1e9ed}
+#lists-view .list-song-title:disabled{opacity:1;color:#62706f}
