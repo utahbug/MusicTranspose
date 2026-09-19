@@ -621,3 +621,9 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media print{#original-key-reference{display:none!important}}
 
 #score-size-options button{width:auto;min-width:60px;padding:0 10px;font-size:13px;white-space:nowrap}
+
+/* Same physical action slot as Score, independent of the narrower lyric column. */
+#lyrics-view{position:relative}
+.lyrics-score-toggle{position:absolute;min-width:44px;min-height:44px;padding:0;font-size:25px;z-index:7}
+.lyrics-top{flex-wrap:wrap;align-items:flex-start}
+.lyrics-tools{margin-inline-start:auto}

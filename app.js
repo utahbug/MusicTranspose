@@ -34,20 +34,31 @@ const playback=createPlayback(async()=>{
 });
 function playbackControls(){const h=document.querySelector('.score-heading h1');if(!isPdf()&&ready&&activeSong.playbackAvailable!==false)playback.attach(h);else h.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>showScoreView(lyricsSong?.id)});
+// Read the established Score action slot without changing its layout. When Score is
+// hidden (direct Lyrics opening/resize), measure it invisibly and restore synchronously.
+function scoreToggleBounds(scrollOffset=0){
+ const control=$('show-lyrics'),main=$('playing-view');let r=control.getBoundingClientRect();
+ if(r.width&&r.height)return {x:r.x,y:r.y,width:r.width,height:r.height};
+ const style=main.getAttribute('style'),hidden=control.hidden,pdf=document.body.classList.contains('pdf-score-open');
+ try{document.body.classList.remove('pdf-score-open');control.hidden=false;main.style.setProperty('display','block','important');Object.assign(main.style,{visibility:'hidden',position:'absolute',top:'0',left:'0',width:'100%'});r=control.getBoundingClientRect();return {x:r.x,y:r.y+scrollY-scrollOffset,width:r.width,height:r.height};}
+ finally{if(style===null)main.removeAttribute('style');else main.setAttribute('style',style);control.hidden=hidden;document.body.classList.toggle('pdf-score-open',pdf);}
+}
+window.addEventListener('resize',()=>{if(document.body.classList.contains('lyrics-open'))requestAnimationFrame(()=>lyricsView.alignToggle(scoreToggleBounds(scoreScroll)));});
 async function showScoreView(id){
  if(!id)return;
  library?.navigating('score',id);
  document.body.classList.remove('lyrics-open');lyricsView.hide();
  if(ready&&activeSong.id===id){document.title=activeSong.title+' · Music Transpose';window.scrollTo({top:scoreScroll,behavior:'instant'});$('show-lyrics').focus({preventScroll:true});}
- else await loadSong(id);
+ else{await loadSong(id);if(ready)$('show-lyrics').focus({preventScroll:true});}
 }
 async function openLyrics(id){
  const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id)||busy||loading)return;
+ const fromScore=!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')&&ready&&activeSong.id===id;const toggleBounds=scoreToggleBounds();
  library?.navigating('lyrics',id);loading=true;setControls();
  try{const data=await getLyrics(id);if(!data)throw Error('Lyrics unavailable');
  const fresh=lyricsSong?.id!==id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
  document.dispatchEvent(new Event('library-open'));library.showScore();document.body.classList.add('lyrics-open');
- lyricsView.show(data,{fresh});playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});
+ lyricsView.show(data,{fresh});playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);

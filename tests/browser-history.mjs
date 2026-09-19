@@ -18,7 +18,7 @@ try{
   await p.goForward();await ready(p);await view(p,'score');
   const songLength=await p.evaluate(()=>history.length);await p.locator('#key').click();await p.locator('[data-shift="1"]').click();await ready(p);await p.locator('#reset').click();await ready(p);assert.equal(await p.evaluate(()=>history.length),songLength);
   await p.reload();await ready(p);await view(p,'score');assert.equal(await p.evaluate(()=>prototype.song),'nativity');
-  await p.locator('#show-lyrics').click();await view(p,'lyrics');await p.goBack();await view(p,'score');await p.goForward();await view(p,'lyrics');await p.getByRole('button',{name:'Open score',exact:true}).click();await view(p,'score');await p.goBack();await view(p,'lyrics');
+  await p.locator('#show-lyrics').click();await view(p,'lyrics');await p.goBack();await view(p,'score');await p.goForward();await view(p,'lyrics');await p.getByRole('button',{name:'View Score',exact:true}).click();await view(p,'score');await p.goBack();await view(p,'lyrics');
   await p.getByRole('button',{name:'Return to Library',exact:true}).click();await view(p,'library');
   await p.locator('[data-song="nativity"] .favorite').click();await p.locator('#view-favorites').click();await open(p);await p.goBack();await view(p,'library');assert.equal(await p.locator('#view-favorites').getAttribute('aria-pressed'),'true');assert.equal(await p.locator('.library-row').count(),1);
   await p.locator('#manage-lists').click();await view(p,'lists');await p.getByRole('button',{name:'New list',exact:true}).click();await p.locator('#list-name-input').fill('Prelude');await p.locator('#list-name-form button[type=submit]').click();const list=await p.evaluate(()=>history.state.musicTransposeNavigation.route.list);assert(list);
