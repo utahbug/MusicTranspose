@@ -508,3 +508,19 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #library .library-results-tools{gap:0 12px;justify-content:flex-start}
 #library .library-row:not(.reordering){grid-template-columns:40px minmax(0,1fr) auto}
 @media(max-width:600px){#library .library-search-row .search-box{flex-basis:170px}#library .library-results-tools{gap:0 6px}}
+
+#music-import{width:660px;max-height:calc(100dvh - 32px);overflow:auto}
+#music-import label{display:block;margin:10px 0 5px;font-size:14px}
+#music-import input:not([type=checkbox]){display:block;width:100%;min-width:0;box-sizing:border-box}
+#import-preview{overflow:auto;max-height:38vh;margin-top:12px;background:white;color:#233331}
+#import-preview canvas{max-width:100%;height:auto}
+#import-preview svg{max-width:100%}
+#import-summary{font-size:14px;font-weight:600}
+#import-memberships label{display:flex;gap:8px;align-items:center;min-height:44px}
+.import-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+body.view-only-score #key,body.view-only-score #reset{display:none}
+#import-message:empty{display:none}
+@media print{#music-import{display:none!important}}
+#music-import input:not([type=checkbox]){min-height:44px;font:16px system-ui,sans-serif;border:1px solid #b8c6cc;border-radius:4px;padding:7px;background:#fff;color:#233331}
+#music-import .import-actions button{min-height:44px;padding:8px 12px;border:1px solid #b8c6cc;border-radius:4px;background:#edf2f4;color:#233331;font:14px system-ui,sans-serif}
+#music-import button:focus-visible,#music-import input:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
