@@ -499,3 +499,12 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 .tap-zone-diagram>div:nth-child(-n+2){border-bottom:1px solid #8b9eaa}
 .tap-zone-keys{font-size:12px;line-height:1.6;color:#53675d}
 @media print{#tap-zones-help{display:none!important}}
+
+/* Compact Library: source beside search, one textual control row, no More column. */
+#library .library-controls{display:block}
+#library .library-search-row{display:flex;flex-wrap:wrap;align-items:center;gap:0 12px}
+#library .library-search-row .search-box{flex:1 1 200px;max-width:540px}
+#library .library-search-row .source-choice{flex:0 1 auto;min-height:44px}
+#library .library-results-tools{gap:0 12px;justify-content:flex-start}
+#library .library-row:not(.reordering){grid-template-columns:40px minmax(0,1fr) auto}
+@media(max-width:600px){#library .library-search-row .search-box{flex-basis:170px}#library .library-results-tools{gap:0 6px}}

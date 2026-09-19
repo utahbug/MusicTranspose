@@ -4,12 +4,10 @@
 <section id="library" aria-label="Music library">
  <div class="library-header-panel">
  <header class="library-heading"><div><p class="eyebrow">LIBRARY</p><h1>MusicTranspose</h1></div></header>
- <div class="library-controls"><label class="search-box"><span class="sr-only">Search songs</span><input id="library-search" type="search" placeholder="Search songs..." autocomplete="off"></label>
- <div class="library-results-tools" aria-label="Song list controls">
- <div class="library-order" role="group" aria-label="Song order"><button type="button" class="quiet" id="order-title" aria-pressed="true" aria-label="Sort by title">A–Z</button><span aria-hidden="true">·</span><button type="button" class="quiet" id="order-number" aria-pressed="false" aria-label="Sort by song or page number">123</button></div>
- <label class="source-choice"><span class="sr-only">Source</span><select id="library-source" aria-label="Source"></select></label>
- <button type="button" class="quiet" id="view-favorites" aria-pressed="false">Favorites</button><button type="button" class="quiet" id="view-recent" aria-pressed="false">Recent</button>
- <button id="reorder-list" class="quiet" hidden aria-pressed="false">Reorder</button><span id="library-count" role="status" aria-live="polite"></span></div><div class="list-actions"><label>List: <select id="library-list" aria-label="List"><option value="">All lists</option></select></label></div><span id="order-note"></span></div>
+ <div class="library-controls">
+ <div class="library-search-row"><label class="search-box"><span class="sr-only">Search songs</span><input id="library-search" type="search" placeholder="Search songs..." autocomplete="off"></label><label class="source-choice"><span class="sr-only">Source</span><select id="library-source" aria-label="Source"></select></label></div>
+ <div class="library-results-tools" aria-label="Song list controls"><button type="button" class="quiet" id="order-toggle" aria-label="Sort alphabetically. Switch to numeric order.">A–Z</button><button type="button" class="quiet" id="manage-lists" aria-haspopup="dialog" aria-controls="lists-dialog">Lists</button><button type="button" class="quiet" id="view-favorites" aria-pressed="false">Favorites</button><span id="library-count" role="status" aria-live="polite"></span></div>
+ <button id="reorder-list" hidden aria-pressed="false">Reorder</button><span id="order-note" hidden></span></div>
  <span id="reorder-status" class="sr-only" role="status" aria-live="polite"></span>
  <p id="library-message" role="status"></p></div><div id="library-results"></div>
 </section>
