@@ -18,7 +18,7 @@ let readingPosition=null;
 let KEYS=[],original='',current=0,wanted=0,currentOctave=0,wantedOctave=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
 const isPdf=()=>activeSong.scoreType==='pdf';
-const viewOnly=()=>activeSong.local&&activeSong.transpositionAvailable===false;
+const viewOnly=()=>activeSong.transpositionAvailable===false;
 async function scoreSource(song){if(song.local)return localXML(song);const r=await fetch(song.asset);if(!r.ok)throw Error('Score unavailable');return unpackMXL(await r.arrayBuffer());}
 let library,lyricsSong=null,scoreScroll=0;
 const playback=createPlayback(async()=>{
@@ -134,14 +134,14 @@ async function loadSong(id){
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
  if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();scoreSize='normal';library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
-  document.body.classList.toggle('view-only-score',!!song.local&&!song.transpositionAvailable);
+  document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
    activeSong=song;original='';lastXML='';current=0;wanted=0;currentOctave=0;wantedOctave=0;cache.clear();document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;document.querySelector('.subtitle').textContent=song.collection;score.setAttribute('aria-label',song.title+' PDF score');score.setAttribute('aria-busy','true');$('source-credits').replaceChildren();$('pdf-original').href=song.local?await localAsset(song):song.asset;
    await renderPdf(song.local?await localAsset(song):song.asset,score,song.title);ready=true;score.setAttribute('aria-busy','false');$('status').textContent='PDF score. Transposition unavailable.';library?.opened(song.id);window.scrollTo({top:0,behavior:'instant'});return;
   }
   let xml=sourceCache.get(song.asset);if(!xml){xml=await scoreSource(song);sourceCache.set(song.asset,xml);}
-  if(!song.local||song.transpositionAvailable){const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');}
+  if(song.transpositionAvailable!==false){const key=originalKey(xml,song.modeOverride);if(key.name!==song.tonic||key.mode!==song.mode||key.fifths!==song.fifths)throw new Error('Score and registry disagree');}
   activeSong=song;document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;
   document.querySelector('.subtitle').textContent=song.collection+' · '+song.page;score.setAttribute('aria-label',song.title+' sheet music');
   $('source-credits').replaceChildren();
@@ -174,7 +174,8 @@ window.prototype={playback,get current(){return current;},get wanted(){return wa
  const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};
  navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled){pendingUpdate=true;refreshLibrary();}controlled=true;});
  document.addEventListener('library-open',()=>setTimeout(refreshLibrary,0));
- await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;$('offline').textContent='Available offline';}catch(e){$('offline').textContent='Local score';}}
+ navigator.serviceWorker.addEventListener('message',e=>{if(e.data?.type==='score-cache-progress')$('offline').textContent=e.data.done===e.data.total?'Bundled scores available offline':`Offline scores: ${e.data.done}/${e.data.total}${e.data.finished?' · Retry when online':''}`;});
+ await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});const registration=await navigator.serviceWorker.ready;$('offline').textContent='Preparing offline scores…';registration.active?.postMessage({type:'cache-scores'});}catch(e){$('offline').textContent='Local score';}}
  }catch(e){console.error(e);$('status').textContent='Unable to start MusicTranspose. Please reload or try again online.';$('library-message').textContent=$('status').textContent;}})();
 
 window.addEventListener('resize',()=>requestAnimationFrame(alignTitleSubtitles));
