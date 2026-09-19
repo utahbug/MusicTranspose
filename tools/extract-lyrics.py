@@ -27,6 +27,8 @@ for song in catalog:
  if song.get('scoreType')=='pdf':r['notes']=['PDF: no structured lyrics extraction.'];records.append(r);continue
  path=Path(song['asset']);z=zipfile.ZipFile(path);xml=z.read(ET.fromstring(z.read('META-INF/container.xml')).find('.//{*}rootfile').get('full-path'));root=ET.fromstring(xml)
  streams=defaultdict(list);directions=[]
+ descants={p.get('id') for p in root.findall('part-list/score-part') if re.search(r'\bdescant\b',p.findtext('part-name',''),re.I)}
+ r['alternateLyrics']=[];r['extractionDecisions']=[]
  for part in root.findall('part'):
   section='verse';note_index=0
   for measure in part.findall('measure'):
@@ -58,9 +60,12 @@ for song in catalog:
  for (section,number,part,voice),nodes in streams.items():
   text=stitch(nodes)
   if not text or (section,number,text) in seen:continue
+  if part in descants:
+   r['alternateLyrics'].append({'part':part,'voice':voice,'number':number,'label':'Descant','text':text});continue
   seen.add((section,number,text));item={'number':number,'text':text,'sourcePart':part,'sourceVoice':voice,'kind':'note-lyrics'}
   item['label']='Shared ending' if section=='shared-ending' else 'Refrain' if section=='refrain' else 'Verse '+number
   r['refrains' if section!='verse' else 'verses'].append(item)
+ if r['alternateLyrics']:r['extractionDecisions'].append('Explicitly named Descant part retained separately from main verses; lyric row numbers in that part are not additional verses.')
  r['sourceTextBlocks']=[clean(''.join(c.itertext())) for c in root.findall('credit')]
  for credit in root.findall('.//credit-words'):
   text=(credit.text or '').replace('\\n','\n')

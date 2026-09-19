@@ -1,10 +1,10 @@
 {
-  "published": 104,
+  "published": 106,
   "explicitRefrain": 11,
   "total": 121,
   "structured": 119,
-  "extracted": 78,
-  "needsReview": 41,
+  "extracted": 80,
+  "needsReview": 39,
   "multipleVerses": 105,
   "refrainDetected": 41,
   "noLyrics": [
@@ -296,26 +296,10 @@
       ]
     },
     {
-      "id": "cs-2",
-      "title": "I Am a Child of God",
-      "notes": [
-        "Numbered text block conflicts with note lyrics for verse 4.",
-        "Alternate vocal streams for verse 4 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
-      ]
-    },
-    {
       "id": "cs-266",
       "title": "If You’re Happy",
       "notes": [
         "Alternate vocal streams for verse 1 are retained separately; consult the score."
-      ]
-    },
-    {
-      "id": "cs-220",
-      "title": "The Handcart Song",
-      "notes": [
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
       ]
     }
   ]

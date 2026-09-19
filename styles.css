@@ -547,3 +547,11 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #lists-view{font-family:system-ui,sans-serif}
 .lists-heading .eyebrow{color:#e1e9ed}
 #lists-view .list-song-title:disabled{opacity:1;color:#62706f}
+
+/* Stable Score/Lyrics slots; local editing gets a second row, never displaces Score. */
+.song-view-actions{display:grid;grid-template-columns:44px 44px;align-items:center}
+.song-view-actions .lyrics-slot{width:44px;height:44px}
+.song-view-actions button[aria-label^="Edit local music:"]{grid-column:2}
+/* Match radio width, native inline margins and label gap through a shared grid. */
+#navigation-settings .setting-choice{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:10px}
+#navigation-settings .tap-help-line{margin-inline-start:38px}
