@@ -33,7 +33,7 @@ try{
  for(const [width,height] of [[320,812],[390,844],[820,1180],[1180,820],[1440,1000]]){
   await p.setViewportSize({width,height});const layout=await p.evaluate(()=>{const r=s=>{const x=document.querySelector(s).getBoundingClientRect();return {x:x.x,y:x.y,w:x.width,h:x.height}};return {search:r('#library-search'),source:r('#library-source'),tools:r('.library-results-tools'),overflow:document.documentElement.scrollWidth>innerWidth,columns:getComputedStyle(document.querySelector('.library-row')).gridTemplateColumns.split(' ').length}});
   assert(!layout.overflow);assert.equal(layout.columns,3);for(const source of ['children','home-church','all']){await p.locator('#library-source').selectOption(source);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}if(width>=820)assert(Math.abs(layout.search.y-layout.source.y)<15);
-  assert.equal(await p.locator('.library-results-tools button:visible').count(),3);await p.keyboard.press('Tab');await p.locator('#order-toggle').focus();assert.equal(await p.locator('#order-toggle').evaluate(e=>getComputedStyle(e).outlineStyle),'solid');await p.keyboard.press('Enter');
+  assert.equal(await p.locator('.library-results-tools button:visible').count(),4);await p.keyboard.press('Tab');await p.locator('#order-toggle').focus();assert.equal(await p.locator('#order-toggle').evaluate(e=>getComputedStyle(e).outlineStyle),'solid');await p.keyboard.press('Enter');
   await p.screenshot({path:`test-results/library-simplified-${width}.png`});console.log('layout',width,layout);
  }
  await p.locator('[data-song="nativity"] .favorite').click();await p.locator('[data-song="nativity"] .favorite').click();

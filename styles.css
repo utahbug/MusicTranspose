@@ -573,3 +573,21 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 .list-action-dialog button[aria-label="Delete list"]{color:#7a3e46;background:transparent}
 .list-action-dialog button:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
 @media print{.list-action-dialog{display:none!important}}
+
+/* Files manages private imports separately from Library browsing and Lists. */
+#files-view{max-width:1080px;margin:auto;padding:12px 24px 60px;color:#233331;font-family:system-ui,sans-serif}
+.files-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#365f7d;color:white;padding:14px 16px}
+.files-heading h1{font:600 27px system-ui,sans-serif;margin:0}
+.files-heading .eyebrow{font-size:11px;letter-spacing:.12em;margin:0 0 5px;color:#e1e9ed}
+#files-count{font-size:13px;margin:5px 0 0;color:#e1e9ed}
+#files-view button{min-width:44px;min-height:44px;padding:8px;border:0;border-radius:4px;background:transparent;color:#365f7d;font:inherit;cursor:pointer}
+#files-view .files-heading button{color:white}
+#files-view button:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+#files-view #add-music{margin-top:8px}
+.files-note,#files-status,.files-empty{font-size:13px}.files-note{color:#53675d;margin:0 0 10px}#files-status:empty{display:none}
+.file-row{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;border-bottom:1px solid #c4cfd3;background:#fafbf8}
+#files-view .file-entry{display:flex;flex-direction:column;gap:2px;text-align:left;color:#233331;min-width:0}
+.file-entry strong{font-size:16px;font-weight:500}.file-entry>*{overflow-wrap:anywhere}.file-name{font-size:12px;color:#53675d}
+.file-edit svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+@media(max-width:600px){#files-view{padding:10px 14px 40px}.files-heading h1{font-size:23px}}
+@media print{#files-view{display:none!important}}
