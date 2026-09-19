@@ -6,7 +6,7 @@ import {attachReorderHandle} from './list-reorder.js';
 const $=id=>document.getElementById(id);
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
 const button=(text,label,action)=>{const e=el('button',text,'quiet');e.type='button';e.setAttribute('aria-label',label);e.onclick=action;return e;};
-export function createListsView({getState,save,onLibrary,onSong}){
+export function createListsView({getState,save,onLibrary,onSong,onNavigate}){
  let reordering=false,active=null,picking=false,selected=new Set(),naming=null,position=0,saveFailed=false;
  const icons={
   edit:'<path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14Z"/>',
@@ -30,7 +30,7 @@ export function createListsView({getState,save,onLibrary,onSong}){
  function focusHeading(){$('lists-heading').focus({preventScroll:true});}
  function open(){document.body.classList.add('library-open');$('library').hidden=true;$('lists-view').hidden=false;render();window.scrollTo({top:position,behavior:'instant'});focusHeading();}
  function hide(){if(!$('lists-view').hidden)position=scrollY;$('lists-view').hidden=true;}
- function enter(id){reordering=false;active=id;picking=false;position=0;announce('');render();window.scrollTo(0,0);focusHeading();}
+ function enter(id){onNavigate?.(id);reordering=false;active=id;picking=false;position=0;announce('');render();window.scrollTo(0,0);focusHeading();}
  function nameDialog(id=null){naming=id;$('list-name-heading').textContent=id?'Rename list':'New list';$('list-name-input').value=id?group().name:'';$('list-name-error').textContent='';$('list-name-dialog').showModal();$('list-name-input').focus();}
  $('list-name-cancel').onclick=()=>$('list-name-dialog').close();
  $('list-name-form').onsubmit=e=>{e.preventDefault();const name=$('list-name-input').value.trim();if(!name)return;const state=getState();if(state.groups.some(g=>g.id!==naming&&normalizeSearch(g.name)===normalizeSearch(name))){$('list-name-error').textContent='That list name already exists.';return;}
@@ -78,5 +78,5 @@ export function createListsView({getState,save,onLibrary,onSong}){
  for(const id of ['list-picker-search','list-picker-source','list-picker-favorites'])$(id).addEventListener(id==='list-picker-search'?'input':'change',renderPicker);
  for(const [value,label] of sourceChoices)$('list-picker-source').append(new Option(label,value));
  $('list-picker-done').onclick=()=>{const g=group();if(!g)return;const valid=new Set(songs.map(s=>s.id)),added=[...selected].filter(id=>valid.has(id)&&!g.songs.includes(id));g.songs.push(...added);persist();picking=false;render();focusHeading();announce(added.length+' songs added.');};
- return {open,hide,render,get active(){return active;}};
+ return {open,hide,render,restore(id,scroll=0,visible=true){active=getState().groups.some(g=>g.id===id)?id:null;reordering=false;picking=false;position=scroll;if(visible)open();},get active(){return active;}};
 }

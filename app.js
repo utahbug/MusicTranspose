@@ -29,18 +29,22 @@ const playback=createPlayback(async()=>{
  return {key:song.id+':'+xml,xml};
 });
 function playbackControls(){const h=document.querySelector('.score-heading h1');if(!isPdf()&&ready&&activeSong.playbackAvailable!==false)playback.attach(h);else h.querySelector('.song-playback')?.remove();}
-const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>{
- document.body.classList.remove('lyrics-open');lyricsView.hide();document.title=(lyricsSong?.title||activeSong.title)+' · Music Transpose';
- if(ready&&activeSong.id===lyricsSong?.id){window.scrollTo({top:scoreScroll,behavior:'instant'});$('show-lyrics').focus({preventScroll:true});}else if(lyricsSong)loadSong(lyricsSong.id);
-}});
+const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>showScoreView(lyricsSong?.id)});
+async function showScoreView(id){
+ if(!id)return;
+ library?.navigating('score',id);
+ document.body.classList.remove('lyrics-open');lyricsView.hide();
+ if(ready&&activeSong.id===id){document.title=activeSong.title+' · Music Transpose';window.scrollTo({top:scoreScroll,behavior:'instant'});$('show-lyrics').focus({preventScroll:true});}
+ else await loadSong(id);
+}
 async function openLyrics(id){
  const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id)||busy||loading)return;
- loading=true;setControls();
- try{const data=await getLyrics(id);if(!data)return;
+ library?.navigating('lyrics',id);loading=true;setControls();
+ try{const data=await getLyrics(id);if(!data)throw Error('Lyrics unavailable');
  const fresh=lyricsSong?.id!==id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
  document.dispatchEvent(new Event('library-open'));library.showScore();document.body.classList.add('lyrics-open');
  lyricsView.show(data,{fresh});playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});
- }catch(e){$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
+ }catch(e){library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
@@ -132,6 +136,7 @@ async function loadScore(xml,override){
 async function loadSong(id){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
+ library?.navigating('score',id);
  if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();scoreSize='normal';library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
   document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
@@ -168,7 +173,7 @@ function leaveScore(){
 window.prototype={playback,get current(){return current;},get wanted(){return wanted;},get octave(){return currentOctave;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,changeOctave,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
  try{await refreshLocalMusic();}catch{$('library-message').textContent='Local music storage is unavailable. Bundled songs remain available.';}
- initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore});
+ initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore,stopPlayback:()=>playback.stop(),showScoreView});library.startHistory();
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
  let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false;
  const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};

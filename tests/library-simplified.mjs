@@ -40,6 +40,6 @@ try{
  assert.deepEqual(await p.evaluate(()=>JSON.parse(localStorage.getItem('music-transpose-library-v1')).groups),saved.groups);
  await p.locator('[data-song="nativity"] .song-view-actions button').first().click();await ready();await p.locator('#songs').click();
  await p.locator('[data-song="nativity"] .song-view-actions button').last().click();await p.locator('#lyrics-view').waitFor({state:'visible'});
- await p.evaluate(()=>navigator.serviceWorker.ready);await p.waitForFunction(()=>navigator.serviceWorker.controller);await p.context().setOffline(true);await p.reload();await p.locator('.library-row').first().waitFor();assert.equal(await p.locator('#order-toggle').count(),1);await p.locator('[data-song="nativity"] .song-entry').click();await ready();await p.context().setOffline(false);
+ await p.evaluate(()=>navigator.serviceWorker.ready);await p.waitForFunction(()=>navigator.serviceWorker.controller);await p.context().setOffline(true);await p.reload();await p.locator('#lyrics-view').waitFor({state:'visible'});await p.getByRole('button',{name:'Return to Library',exact:true}).click();await p.locator('.library-row').first().waitFor();assert.equal(await p.locator('#order-toggle').count(),1);await p.locator('[data-song="nativity"] .song-entry').click();await ready();await p.context().setOffline(false);
  assert.deepEqual(errors,[]);console.log('PASS compact controls, source counts',counts,'combined search/Favorites, ordering, preferences, saved lists, MXL/Lyrics opening, keyboard and responsive layout');
 }finally{await b.close();}
