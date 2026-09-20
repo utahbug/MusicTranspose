@@ -4,6 +4,7 @@ import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
+import {initPlaybackSettings} from './playback-settings.js';
 import {createPlayback} from './playback.js';
 import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
 import {renderPdf,preparePdfPrint} from './pdf-score.js';
@@ -14,14 +15,14 @@ import {initMyMusic} from './my-music.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,parseXML} from './music.js';
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
 $('show-lyrics').innerHTML=lyricsIcon;
-let activeSong=songs[0],modeOverride,loading=false,scoreSize=readScoreSize();
+let activeSong=songs[0],modeOverride,loading=false,pdfFallback=false,scoreSize=readScoreSize();
 // OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
 let autoChoice=null,renderHeight=0;
 const scoreSizes={normal:1,large:.94/.78};
 let readingPosition=null;
 let KEYS=[],original='',current=0,wanted=0,currentOctave=0,wantedOctave=0,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
-const isPdf=()=>activeSong.scoreType==='pdf';
+const isPdf=()=>activeSong.scoreType==='pdf'||pdfFallback;
 const viewOnly=()=>activeSong.transpositionAvailable===false;
 async function scoreSource(song){if(song.local)return localXML(song);const r=await fetch(song.asset);if(!r.ok)throw Error('Score unavailable');return unpackMXL(await r.arrayBuffer());}
 let library,lyricsSong=null,scoreScroll=0;
@@ -30,8 +31,9 @@ const playback=createPlayback(async()=>{
  if(!song||song.scoreType==='pdf'||song.playbackAvailable===false)throw Error('No structured score');
  let xml=ready&&activeSong.id===song.id?lastXML:sourceCache.get(song.asset);
  if(!xml){xml=await scoreSource(song);sourceCache.set(song.asset,xml);}
- return {key:song.id+':'+xml,xml};
+ return {id:song.id,key:song.id+':'+xml,xml};
 });
+initPlaybackSettings(playback,()=>ready&&!busy&&!loading&&!isPdf()&&activeSong.playbackAvailable!==false);
 function playbackControls(){const h=document.querySelector('.score-heading h1');if(!isPdf()&&ready&&activeSong.playbackAvailable!==false)playback.attach(h);else h.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>showScoreView(lyricsSong?.id)});
 // Read the established Score action slot without changing its layout. When Score is
@@ -58,14 +60,14 @@ async function openLyrics(id){
  try{const data=await getLyrics(id);if(!data)throw Error('Lyrics unavailable');
  const fresh=lyricsSong?.id!==id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
  document.dispatchEvent(new Event('library-open'));library.showScore();document.body.classList.add('lyrics-open');
- lyricsView.show(data,{fresh});playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data,{fresh});if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original key: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=isPdf()||!ready||busy||loading;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===scoreSize)); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
+function setControls(){const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original key: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(pdfFallback||busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=(isPdf()&&!activeSong.pdfAsset)||!ready||busy||loading;$('score-pdf-option').hidden=!activeSong.pdfAsset;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===(pdfFallback?'pdf':scoreSize))); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
  $('key-octave').hidden=isPdf()||viewOnly();for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=isPdf()||viewOnly()||!ready||busy||loading;input.checked=Number(input.value)===wantedOctave;}
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
@@ -122,8 +124,25 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 $('reset').onclick=()=>{wantedOctave=0;changeKey(0);};
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
-$('score-size').onclick=()=>{if(isPdf()||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
-for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=()=>{readingPosition=rememberReadingPosition();scoreSize=option.dataset.size;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}closeSizeOptions(true);score.setAttribute('aria-busy','true');pump();};
+$('score-size').onclick=()=>{if((isPdf()&&!activeSong.pdfAsset)||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
+for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=async()=>{
+ const next=option.dataset.size;closeSizeOptions(true);
+ if(next==='pdf'){await showPdfFallback();return;}
+ if(pdfFallback){pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open');$('pdf-notice').hidden=true;document.dispatchEvent(new Event('score-session-reset'));readingPosition=null;}
+ else readingPosition=rememberReadingPosition();
+ scoreSize=next;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}
+ score.setAttribute('aria-label',activeSong.title+' sheet music');score.setAttribute('aria-busy','true');await pump();
+};
+async function showPdfFallback(){
+ if(!activeSong.pdfAsset||loading||busy)return;
+ playback.stop();loading=true;ready=false;pdfFallback=true;clearTimeout(timer);
+ document.dispatchEvent(new Event('score-session-reset'));document.body.classList.add('pdf-score-open','pdf-fallback-open');
+ $('pdf-notice').hidden=false;$('pdf-original').href=activeSong.pdfAsset;score.style.removeProperty('--score-trim');
+ score.setAttribute('aria-label',activeSong.title+' PDF score');score.setAttribute('aria-busy','true');setControls();
+ try{await renderPdf(activeSong.pdfAsset,score,activeSong.title);ready=true;score.setAttribute('aria-busy','false');$('status').textContent='PDF score';window.scrollTo({top:0,behavior:'instant'});}
+ catch(error){console.error(error);pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open');$('pdf-notice').hidden=true;await pump();$('status').textContent='Unable to open PDF. Open it online once to use it offline.';}
+ finally{loading=false;setControls();}
+}
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
@@ -163,7 +182,7 @@ async function loadSong(id){
  library?.navigating('score',id);
  if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{
-  document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
+  pdfFallback=false;document.body.classList.remove('pdf-fallback-open');document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
    activeSong=song;original='';lastXML='';current=0;wanted=0;currentOctave=0;wantedOctave=0;cache.clear();document.title=song.title+' · Music Transpose';document.querySelector('.score-heading h1').textContent=song.title;document.querySelector('.subtitle').textContent=song.collection;score.setAttribute('aria-label',song.title+' PDF score');score.setAttribute('aria-busy','true');$('source-credits').replaceChildren();$('pdf-original').href=song.local?await localAsset(song):song.asset;
@@ -184,7 +203,7 @@ async function loadSong(id){
 // Exiting ends a temporary playing session, including reopening the same song.
 // Parsed source assets stay cached; Library data and navigation preferences are independent.
 function leaveScore(){
- playback.stop();$('playback-message').textContent='';
+ playback.stop();pdfFallback=false;document.body.classList.remove('pdf-fallback-open');$('playback-message').textContent='';
  lyricsView.reset();lyricsSong=null;document.body.classList.remove('lyrics-open');
 
  clearTimeout(timer);current=0;wanted=0;currentOctave=0;wantedOctave=0;ready=false;document.dispatchEvent(new Event('score-session-reset'));
@@ -193,7 +212,7 @@ function leaveScore(){
  dialog.close();$('settings-dialog').close();setControls();
 }
 // Local acceptance-test hooks.
-window.prototype={playback,get current(){return current;},get wanted(){return wanted;},get octave(){return currentOctave;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,changeOctave,preparePrint,loadScore,loadSong};
+window.prototype={playback,get pdfFallback(){return pdfFallback;},get current(){return current;},get wanted(){return wanted;},get octave(){return currentOctave;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},changeKey,changeOctave,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
  try{await refreshLocalMusic();}catch{$('library-message').textContent='Local music storage is unavailable. Bundled songs remain available.';}
  initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore,stopPlayback:()=>playback.stop(),showScoreView});library.startHistory();

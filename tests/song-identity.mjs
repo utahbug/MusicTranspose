@@ -1,4 +1,3 @@
-import {setView,getView,setOrder,getOrder} from './library-controls-helper.mjs';
 import {chooseRelativeKey} from './key-selection-helper.mjs';
 import {createRequire} from 'node:module';import assert from 'node:assert/strict';
 const require=createRequire(process.env.PLAYWRIGHT_PACKAGE),{chromium}=require('playwright');
@@ -9,18 +8,18 @@ const saved={orderingVersion:1,favorites:ids,groups:[{id:'practice',name:'Practi
 const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');
 async function snapshot(id){await p.evaluate(id=>prototype.loadSong(id),id);await ready();await p.locator('.score-heading .song-playback').click();await p.waitForFunction(()=>prototype.playback.state==='playing');const result=await p.evaluate(()=>({id:prototype.song,xml:prototype.xml,pitches:prototype.playback.timeline.notes.map(n=>n.midi)}));await p.evaluate(()=>prototype.playback.stop());return result;}
 try{
- await p.goto('http://127.0.0.1:8767/');await p.locator('.library-row').first().waitFor();
- const before={};for(const id of ids)before[id]=await snapshot(id);
+ await p.goto(process.env.TEST_URL||'http://127.0.0.1:8768/');await p.locator('.library-row').first().waitFor();
+ const pdfs=await p.evaluate(async ids=>{const {songs}=await import('./songs.js');return ids.map(id=>songs.find(s=>s.id===id).pdfAsset);},ids);const before={};for(const id of ids)before[id]=await snapshot(id);await p.locator('#songs').click();
  await p.evaluate(({key,saved})=>localStorage.setItem(key,JSON.stringify(saved)),{key,saved});
  // Change metadata before app modules initialize, then reload persisted user data.
  await p.route('**/songs.js',async route=>{const response=await route.fetch();const body=await response.text();await route.fulfill({response,body:body+`\nfor(const s of songs)if(['cs-236','nativity'].includes(s.id)){s.page='987';s.title='Updated '+s.title;s.collection='Revised Book';s.edition='Future';s.collectionMemberships.push({collection:'Original Book',page:'236',edition:'Earlier'});}songs.reverse();`});});
- await p.reload();await p.locator('.library-row').first().waitFor();
- await setView(p,'favorites');
+ await p.reload();await p.locator('.library-row').first().waitFor();assert.deepEqual(await p.evaluate(async ids=>{const {songs}=await import('./songs.js');return ids.map(id=>songs.find(s=>s.id===id).pdfAsset);},ids),pdfs);
+ await p.locator('#view-favorites').click();
  assert.equal(await p.locator('.library-row').count(),2);
  for(const id of ids)assert.equal(await p.locator(`[data-song="${id}"] .favorite`).getAttribute('aria-pressed'),'true');
- for(const [group,order] of [['practice',ids],['sunday',[...ids].reverse()]]){await p.locator('#library-list').selectOption(group);assert.deepEqual(await p.locator('.library-row').evaluateAll(rows=>rows.map(r=>r.dataset.song)),order);}
+ await p.locator('#manage-lists').click();for(const [group,order] of [['practice',ids],['sunday',[...ids].reverse()]]){await p.locator(`[data-list="${group}"]`).click();assert.deepEqual(await p.locator('#list-songs [data-song]').evaluateAll(rows=>rows.map(r=>r.dataset.song)),order);await p.locator('#lists-back').click();}await p.locator('#lists-library').click();
  assert.deepEqual(await p.evaluate(key=>JSON.parse(localStorage.getItem(key)),key),saved);
- await p.locator('#library-list').selectOption('');await setView(p,'all');
+ await p.locator('#view-favorites').click();
  await p.locator('#library-search').fill('987');assert.equal(await p.locator('.library-row').count(),2);
  for(const id of ids){
   await p.locator(`[data-song="${id}"] .song-entry`).click();await ready();assert.equal(await p.evaluate(()=>prototype.song),id);

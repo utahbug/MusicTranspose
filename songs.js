@@ -1,3 +1,4 @@
+import {pdfFallbacks} from './pdf-fallbacks.js';
 import {importedSongs} from './imported-songs.js';
 // IDs are immutable opaque keys, including legacy title/number-shaped IDs.
 // Never regenerate an ID when title, page, collection, edition or order changes.
@@ -19,3 +20,6 @@ export const collectionNames=['Hymns for Home and Church','Hymns (1985)','Childr
 // The same normalization is used for queries and every score type.
 export function normalizeSearch(value){return String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[’‘'`]/g,'').replace(/[^\p{L}\p{N}]+/gu,' ').trim();}
 export function songSearchText(song){return normalizeSearch([song.title,song.collection,song.page,...(song.tags||[]),...(song.aliases||[]),...(song.collectionMemberships||[]).flatMap(m=>[m.collection,m.page]),song.firstLine,song.composer,song.lyricist].filter(v=>v!=null).join(' '));}
+
+// Alternate presentation of the same immutable catalog identity; never a second song.
+for(const song of songs)if(pdfFallbacks[song.id])song.pdfAsset=pdfFallbacks[song.id];

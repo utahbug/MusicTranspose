@@ -643,3 +643,17 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 .lyrics-score-toggle{position:absolute;min-width:44px;min-height:44px;padding:0;font-size:25px;z-index:7}
 .lyrics-top{flex-wrap:wrap;align-items:flex-start}
 .lyrics-tools{margin-inline-start:auto}
+
+/* Alternate local PDF remains a view of the structured song. */
+#score-pdf-option{border-top:1px solid #ccd2d6;margin-top:4px;padding-top:10px}
+@media screen{
+ body.pdf-fallback-open .masthead #score-size{display:flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;padding:0;margin:0;color:#536B7A}
+ body.pdf-fallback-open #source-credits{display:none}
+}
+.playback-tempo-row{display:flex;align-items:center;gap:6px}
+.playback-tempo-row>span{margin-right:auto}
+.playback-tempo-row button{width:44px;min-height:44px;padding:4px;font-size:22px}
+#tempo-value{min-width:78px;text-align:center;font-variant-numeric:tabular-nums}
+.playback-tempo-original{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#536B7A}
+#tempo-reset{background:none;border:0;color:var(--accent,#4B6E88);min-height:36px;padding:4px 8px;text-decoration:underline}
+@media(max-width:360px){body.pdf-fallback-open .masthead #score-size{width:40px;min-width:40px;flex-basis:40px}}
