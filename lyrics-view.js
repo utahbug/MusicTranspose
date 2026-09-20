@@ -9,7 +9,7 @@ export async function getLyrics(id){
 }
 // Only explicit Fun choices are stored; missing/invalid fields receive defaults.
 const funPreferenceKey='music-transpose-lyrics-fun-v1';
-function readFunPreference(){try{const p=JSON.parse(localStorage.getItem(funPreferenceKey))||{};return {enabled:typeof p.enabled==='boolean'?p.enabled:true,count:Number.isInteger(p.count)&&p.count>=1&&p.count<=4?p.count:4};}catch{return {enabled:true,count:4};}}
+function readFunPreference(){try{const p=JSON.parse(localStorage.getItem(funPreferenceKey))||{};return {enabled:typeof p.enabled==='boolean'?p.enabled:false,count:Number.isInteger(p.count)&&p.count>=1&&p.count<=4?p.count:4};}catch{return {enabled:false,count:4};}}
 // Reusable DOM component; independent of score rendering and catalog.
 export function createLyricsView(host,{onScore,onLibrary}){
  let size=1,dark=true,current=null,fun=readFunPreference().enabled,noteLimit=readFunPreference().count,stopFun=null;
