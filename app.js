@@ -1,3 +1,5 @@
+import {installLyricPlacement} from './lyric-placement.js';
+installLyricPlacement(opensheetmusicdisplay);
 import {readScoreSize,saveScoreSize,candidateZooms,assessLayout,chooseLayout} from './auto-layout.js';
 import {lyricsIcon} from './icons.js';
 import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
