@@ -1,3 +1,4 @@
+import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
 import {applyLeadLayout,balanceLeadTail,leadPrintXML} from './lead-layout.js';
 import {normalOctaves,pianoHands,octaveSummary,shiftStaffOctaves} from './octave.js';
 import {createMetronome} from './metronome.js';
@@ -8,7 +9,7 @@ installLeadHarmony(opensheetmusicdisplay);
 import {readScoreSize,saveScoreSize,candidateZooms,assessLayout,chooseLayout} from './auto-layout.js';
 import {lyricsIcon} from './icons.js';
 import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
-import {captureSystems,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
+import {captureSystems,availableScoreHeight,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
 import {initPlaybackSettings} from './playback-settings.js';
@@ -99,7 +100,7 @@ function trimScreenMargin(){
  const trim=view.width>0?Math.max(0,box.y-view.y-8)*svg.getBoundingClientRect().width/view.width:0;
  score.style.setProperty('--score-trim',trim+'px');
 }
-function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
+function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout,lead:!!entry.leadState?.ok}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 // Keep the shared OSMD instance serialized; obsolete owners cannot publish its output.
 function pump(){
  if(rendering)return rendering.then(()=>pump());
@@ -117,7 +118,7 @@ async function renderScore(){
    // Share compact header-aligned bounds; retain each mode's existing notation scale.
    const phone=matchMedia('(max-width:600px)').matches;
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
-   const base=phone||w<800?.78:.9,available=Math.max(80,innerHeight-(score.getBoundingClientRect().top+scrollY)-document.querySelector('.masthead').getBoundingClientRect().height-18),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
+   const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
    const render=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
    let entry;
    if(density==='auto'){
@@ -203,8 +204,11 @@ async function preparePrint(){
  applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true});
  await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;engraver.render();if(leadState?.ok&&scoreSize==='large')balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);
  const pages=$('print-pages');pages.replaceChildren();
- for(const svg of host.querySelectorAll('svg')){const section=document.createElement('section');section.className='print-page';const label=document.createElement('p');label.className='print-key';label.textContent=printKey;section.append(label,svg.cloneNode(true));pages.append(section);}
- const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('svg').length;
+ const originals=[...host.querySelectorAll('svg')],printWidth=794,keyInset=22,available=printWidth*270/190-keyInset;
+ const groups=planSystemPages(measuredSystems(captureSystems(engraver,host),originals,printWidth),available,{gapCap:leadState?.ok&&scoreSize==='large'?14:24});
+ for(const group of groups){const section=document.createElement('section');section.className='print-page';section.dataset.systems=group.count;section.dataset.used=group.used;section.dataset.available=available;const label=document.createElement('p');label.className='print-key';label.textContent=printKey;
+  const svg=showSystemPage(createSystemCanvas(originals),group,printWidth);svg.setAttribute('viewBox',`0 ${-keyInset} ${printWidth} ${group.used+keyInset}`);svg.setAttribute('height',group.used+keyInset);section.append(label,svg);pages.append(section);}
+ const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('.print-page').length;
 }
 $('print').onclick=async()=>{if(busy)return;$('print').disabled=true;try{await preparePrint();window.print();}catch(e){console.error(e);$('status').textContent='Unable to prepare printing. Please try again.';}finally{setControls();}};
 let resizeTimer;

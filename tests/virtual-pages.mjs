@@ -7,7 +7,7 @@ page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(30000);
 const ready=async()=>{await page.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');await page.waitForTimeout(100);};
 const mode=async value=>{await page.locator('#settings').click();await page.locator(`input[name=navigation][value=${value}]`).check();await page.locator('#close-settings').click();await page.waitForTimeout(100);};
 const position=()=>page.locator('#page-position').textContent();
-const printMarkup=()=>page.locator('#print-pages').evaluate(e=>{const copy=e.cloneNode(true);for(const n of copy.querySelectorAll('[id]'))n.removeAttribute('id');return copy.innerHTML;});
+const printMarkup=()=>page.locator('#print-pages').evaluate(e=>{const copy=e.cloneNode(true);const ids=new Map([...copy.querySelectorAll('[id]')].map((n,i)=>[n.id,'source-'+i]));for(const n of copy.querySelectorAll('[href]')){const ref=n.getAttribute('href');if(ref?.startsWith('#')&&ids.has(ref.slice(1)))n.setAttribute('href','#'+ids.get(ref.slice(1)));}for(const n of copy.querySelectorAll('[id]'))n.removeAttribute('id');return copy.innerHTML;});
 const location=()=>page.locator('.mxl-page-frame.current-page').evaluate(e=>({start:Number(e.dataset.start),end:Number(e.dataset.end)}));
 const contains=async anchor=>{const at=await location();assert(at.start<=anchor&&at.end>=anchor,JSON.stringify({anchor,at}));};
 const client=await context.newCDPSession(page);
@@ -41,10 +41,14 @@ try{
  await page.locator('#settings').click();await page.locator('#close-settings').focus();await page.keyboard.press('ArrowRight');assert.equal(await position(),held);await page.locator('#close-settings').click();
  let anchor=(await location()).start;await chooseRelativeKey(page,1);await ready();await contains(anchor);anchor=(await location()).start;await page.setViewportSize({width:820,height:1180});await page.waitForTimeout(500);await ready();await contains(anchor);
  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(500);await ready();
- for(const size of ['auto','large','normal']){anchor=(await location()).start;await page.locator('#score-size').click();await page.locator(`#score-size-options [data-size=${size}]`).click();await ready();await contains(anchor);}
+ for(const size of ['auto','normal']){anchor=(await location()).start;await page.locator('#score-size').click();await page.locator(`#score-size-options [data-size=${size}]`).click();await ready();await contains(anchor);}
  anchor=(await location()).start;await page.evaluate(()=>prototype.changeOctave(1));await ready();await contains(anchor);assert.equal(await page.evaluate(()=>prototype.octave),1);
  await page.locator('#reset').click();await ready();assert.equal(await page.evaluate(()=>prototype.xml===prototype.original),true);
- // Printing uses the independent unchanged A4 engraver, not virtual SVG viewports.
+ // Nativity is intentionally on Lead fallback; exercise Lead with a supported structured source.
+ await page.evaluate(()=>prototype.loadSong('cs-168'));await ready();
+ for(const size of ['large','normal']){await page.locator('#score-size').click();await page.locator(`#score-size-options [data-size=${size}]`).click();await ready();assert.equal((await inspect()).systems,(await inspect()).expected);}
+ await page.evaluate(()=>prototype.loadSong('nativity'));await ready();
+ // Printing uses independent A4 engraving and the shared planner, not screen viewports.
  await page.evaluate(()=>prototype.preparePrint());const print=await printMarkup();await mode('continuous');await page.evaluate(()=>prototype.preparePrint());assert((await printMarkup())===print,'Print content/geometry must be invariant (renderer-generated IDs ignored)');await mode('pages');await page.emulateMedia({media:'print'});assert(await page.locator('.masthead').isHidden());assert.equal(await page.locator('.mxl-page-frame:visible').count(),0);await page.emulateMedia({media:'screen'});
  await page.locator('.score-heading .song-playback').click();await page.waitForFunction(()=>prototype.playback.state==='playing');await page.keyboard.press('PageDown');assert.equal(await page.evaluate(()=>prototype.playback.state),'playing');await page.locator('#show-lyrics').click();await page.getByRole('button',{name:'View Score',exact:true}).click();await ready();assert.equal(await page.evaluate(()=>prototype.playback.state),'playing');
  await page.locator('#songs').click();await page.locator('[data-song="nativity"] .song-entry').click();await ready();assert((await position()).startsWith('1 /'));assert.equal(await page.evaluate(()=>prototype.playback.state),'stopped');

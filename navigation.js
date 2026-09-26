@@ -87,7 +87,7 @@ function syncPages(){
  $('page-position').textContent=frames.length?`${pageIndex+1} / ${frames.length}`:'';$('page-position').setAttribute('aria-label',`${pdf?'Page':'Virtual page'} ${pageIndex+1} of ${frames.length}`);$('page-position').hidden=mode!=='pages'||!available||frames.length<=1||!playing();
  fitPage();syncStart();
 }
-function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex);sync();window.scrollTo({top:0,behavior:'instant'});}
+function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex,false);sync();window.scrollTo({top:0,behavior:'instant'});}
 // Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
 const returnToStart=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
 for(const button of document.querySelectorAll('.return-start'))button.onclick=returnToStart;
