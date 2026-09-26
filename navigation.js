@@ -107,3 +107,5 @@ $('pdf-trim').addEventListener('change',fitPage);
 document.addEventListener('library-open',()=>{pause();cancelScoreTap();pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();
+
+document.addEventListener('metronome-layout',()=>{syncPages();syncStart();});

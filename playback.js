@@ -4,11 +4,11 @@ export function scoreTimeline(xml){
  if(doc.querySelector('parsererror')||doc.documentElement.localName!=='score-partwise')throw Error('Unsupported score');
  const text=(e,s)=>e.querySelector(s)?.textContent.trim(),num=(e,s,d=0)=>Number(text(e,s)??d),parts=[],lengths=[],tempos=[],warnings=new Set();
  for(const part of doc.querySelectorAll('score-partwise > part')){
-  let divisions=1,meter=4;const measures=[];
+  let divisions=1,meter=4,meterBeats=4,meterUnit=4;const measures=[];
   for(const [mi,measure] of [...part.children].filter(e=>e.localName==='measure').entries()){
    let cursor=0,lastStart=0,end=0;const notes=[],marks=[];
    for(const el of measure.children){
-    if(el.localName==='attributes'){divisions=num(el,'divisions',divisions);if(!(divisions>0))throw Error('Invalid divisions');const beats=text(el,'time > beats'),unit=num(el,'time > beat-type');if(beats&&unit)meter=beats.split('+').reduce((a,b)=>a+Number(b),0)*4/unit;}
+    if(el.localName==='attributes'){divisions=num(el,'divisions',divisions);if(!(divisions>0))throw Error('Invalid divisions');const beats=text(el,'time > beats'),unit=num(el,'time > beat-type');if(beats&&unit){meterBeats=beats.split('+').reduce((a,b)=>a+Number(b),0);meterUnit=unit;meter=meterBeats*4/unit;}}
     if(el.localName==='backup')cursor-=num(el,'duration')/divisions;
     if(el.localName==='forward'){cursor+=num(el,'duration')/divisions;end=Math.max(end,cursor);}
     if(el.localName==='direction'||el.localName==='sound'){
@@ -26,7 +26,7 @@ export function scoreTimeline(xml){
     if(!Number.isFinite(midi)||duration<=0)continue;
     notes.push({beat:start,duration,midi,part:part.id,voice:text(el,'voice')||'1',staff:text(el,'staff')||'1',ties:[...el.querySelectorAll(':scope > tie')].map(t=>t.getAttribute('type'))});
    }
-   const length=end||meter;lengths[mi]=Math.max(lengths[mi]||0,length);measures.push({notes,marks});
+   const length=end||meter;lengths[mi]=Math.max(lengths[mi]||0,length);measures.push({notes,marks,beats:meterBeats,unit:meterUnit});
   }parts.push(measures);
  }
  const starts=[];let total=0;for(const length of lengths){starts.push(total);total+=length;}
@@ -42,7 +42,8 @@ export function scoreTimeline(xml){
  }
  const notes=merged.map(n=>({...n,start:seconds(n.beat),duration:seconds(n.beat+n.duration)-seconds(n.beat)}));
  if(!notes.length)throw Error('No playable notes');
- return {notes,duration:seconds(total),fallbackTempo:fallback?90:null,tempos:changes,warnings:[...warnings],repeats:doc.querySelectorAll('repeat,ending,sound[dalsegno],sound[dacapo]').length>0,order:'linear'};
+ const measures=(parts[0]||[]).map((m,i)=>({beat:starts[i],start:seconds(starts[i]),length:lengths[i],beats:m.beats,unit:m.unit}));
+ return {notes,measures,duration:seconds(total),fallbackTempo:fallback?90:null,tempos:changes,warnings:[...warnings],repeats:doc.querySelectorAll('repeat,ending,sound[dalsegno],sound[dacapo]').length>0,order:'linear'};
 }
 export function createPlayback(getSource){
  let context,master,timeline,sourceKey='',state='stopped',position=0,epoch=0,timer=0,index=0,generation=0,pending=false,blocked=false;const voices=new Set(),holds=new Set(),songRates=new Map();let rate=1,songId='';

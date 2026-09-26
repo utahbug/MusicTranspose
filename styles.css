@@ -840,3 +840,20 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 #library .library-filter-row :is(#library-source,.sort-choice) *{text-decoration:none}
 #library .library-filter-row :is(#library-source,.sort-choice):focus-within{background:#dce7ed;border-radius:4px}
 @media(hover:hover){#library .library-filter-row :is(#library-source,.sort-choice):hover{background:#dce7ed;border-radius:4px}}
+
+/* Quiet, noninteractive viewport beat lanes; notation itself is unchanged. */
+:root{--beat-safe-top:env(safe-area-inset-top,0px)}
+.metronome-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;font:14px system-ui,sans-serif}
+.metronome-setting select{min-height:44px;font:inherit;color:#365867;background:#fff;border:1px solid #c2ced3;border-radius:5px;padding:4px 8px}
+.beat-rail{position:fixed;height:14px;z-index:9;display:flex;align-items:center;justify-content:center;gap:9px;background:#fff;pointer-events:none;user-select:none}
+.beat-rail[hidden]{display:none}
+.beat-dot{width:6px;height:6px;border-radius:50%;background:#536b7a;opacity:.16;flex:none}
+.beat-dot.active{opacity:.78}.beat-dot.beat-first.active{opacity:.95}
+@media screen{
+ body.metronome-visible #score{padding-top:14px}
+ body.metronome-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 26px)}
+ body.metronome-visible.continuous-return-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 26px + var(--return-clearance))}
+ body.metronome-visible :is(#score,#source-credits,#original-key-reference){clip-path:inset(var(--beat-clip-top,0px) 0 max(var(--return-clip,0px),var(--beat-clip-bottom,0px)) 0)}
+}
+@media(prefers-reduced-motion:reduce){.beat-dot{animation:none;transition:none}}
+@media print{.beat-rail{display:none!important}}
