@@ -20,7 +20,8 @@ export function prepareVirtualPages(force=false){
  if(!source)return 0;const score=document.getElementById('score');
  if(!score.clientWidth)return active;
  const top=score.getBoundingClientRect().top+scrollY,bar=document.querySelector('.masthead').getBoundingClientRect().height;
- const available=Math.max(80,innerHeight-top-bar-18),width=score.clientWidth,key=`${width}:${available}`;
+ // Existing 18px bottom allowance plus a 14px metadata inset; never crop system ink.
+ const available=Math.max(80,innerHeight-top-bar-32),width=score.clientWidth,key=`${width}:${available}`;
  if(!force&&geometry===key&&frames.length)return active;geometry=key;
  for(const f of score.querySelectorAll(':scope > .mxl-page-frame'))f.remove();
  const originals=[...score.querySelectorAll('svg')],groups=[];
