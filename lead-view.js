@@ -1,3 +1,5 @@
+import {hymnMelody} from './hymn-melody.js';
+import {songs as bundledSongs} from './songs.js';
 // Conservative lead-sheet projection. The source XML is immutable; ambiguity
 // returns it verbatim. Lyric ownership identifies a lane, never staff order.
 const children=(e,name)=>[...e.children].filter(n=>n.localName===name);
@@ -17,7 +19,18 @@ export const leadReasons={
  'unsupported':'This score needs a structural review before creating a Lead view.',
  'rendering':'The generated Lead score could not be engraved safely.'
 };
-export function createLeadXML(source){
+const hymnIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns (1985)').map(s=>s.id));
+// Eligibility comes from the bundled catalog, never a user-supplied title or
+// imported collection label. Other collections keep the original extractor.
+export function createLeadXML(source,context){
+ const hymn=!context?.local&&hymnIds.has(context?.id);
+ if(!hymn)return projectLeadXML(source);
+ const melody=hymnMelody(source);
+ if(!melody.ok)return {ok:false,xml:source,reason:melody.reason,detail:melody.detail,message:'This hymn needs a soprano review before creating Lead.'};
+ const result=projectLeadXML(melody.xml);
+ return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
+}
+function projectLeadXML(source){
  let selected=null;
  const fallback=(reason,detail='')=>({ok:false,xml:source,reason,message:leadReasons[reason],detail,selection:selected});
  try{

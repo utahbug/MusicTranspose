@@ -15,8 +15,10 @@ try{
    else if(['direction','harmony','sound','barline'].includes(e.localName)){const copy=e.cloneNode(true);for(const n of [copy,...copy.querySelectorAll('*')])for(const a of ['default-x','default-y','relative-x','relative-y'])n.removeAttribute(a);for(const n of copy.querySelectorAll(':scope>staff,:scope>voice,:scope>offset'))n.remove();out.push({kind:e.localName,mi,at:cursor+Number(t('offset')||0)/div,content:serialize(copy).replace(/>\s+</g,'><')});}
   }}}return out;}
   for(const s of songs.filter(s=>s.scoreType!=='pdf')){
-   const source=unpackMXL(await(await fetch(s.asset)).arrayBuffer()),lead=createLeadXML(source),row={id:s.id,title:s.title,collection:s.collection,page:s.page,ok:lead.ok,reason:lead.reason,message:lead.message,detail:lead.detail,selection:lead.selection};rows.push(row);
+   const source=unpackMXL(await(await fetch(s.asset)).arrayBuffer()),lead=createLeadXML(source,s),row={id:s.id,title:s.title,collection:s.collection,page:s.page,ok:lead.ok,reason:lead.reason,message:lead.message,detail:lead.detail,selection:lead.selection};rows.push(row);
    if(!lead.ok){must(lead.xml===source,s.id+' fallback must be exact source');continue;}
+   // Hymn chord-tone ownership has dedicated independent coverage in lead-hymns.mjs.
+   if(lead.melodyProof)continue;
    const selected=lead.selection;
    for(const shift of [0,-2,3]){
     const original=shift?transposeXML(source,shift,s.modeOverride):source,output=shift?transposeXML(lead.xml,shift,s.modeOverride):lead.xml;
