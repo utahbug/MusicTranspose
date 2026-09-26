@@ -1,3 +1,4 @@
+import {installScoreTaps} from './score-taps.js';
 import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
 const $=id=>document.getElementById(id),panel=$('settings-dialog');
@@ -76,17 +77,19 @@ function syncPages(){
 function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex);sync();window.scrollTo({top:0,behavior:'instant'});}
 // Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
 $('return-start').onclick=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
-let pageGesture=null;
-const safePage=e=>!document.querySelector('dialog[open],#score-size-options:not([hidden])')&&e.target instanceof Element&&!e.target.closest('button,a,input,select,textarea,dialog,[role=button],[contenteditable],[tabindex]');
-$('score').addEventListener('pointerdown',e=>{pageGesture=mode==='pages'&&playing()&&e.isPrimary&&e.button===0&&safePage(e)?{id:e.pointerId,x:e.clientX,y:e.clientY,scroll:scrollY,time:performance.now()}:null;},{passive:true});
-$('score').addEventListener('pointermove',e=>{if(pageGesture&&Math.hypot(e.clientX-pageGesture.x,e.clientY-pageGesture.y)>8)pageGesture=null;},{passive:true});
-$('score').addEventListener('pointercancel',()=>pageGesture=null,{passive:true});
-$('score').addEventListener('pointerup',e=>{const g=pageGesture;pageGesture=null;if(!g||g.id!==e.pointerId||!safePage(e)||Math.hypot(e.clientX-g.x,e.clientY-g.y)>8||performance.now()-g.time>450||Math.abs(scrollY-g.scroll)>2||!getSelection().isCollapsed)return;const r=$('score').getBoundingClientRect();const left=e.clientX<r.left+r.width/2,upper=e.clientY<r.top+r.height/2;turn(upper?(left?-Infinity:Infinity):(left?-1:1));},{passive:true});
-window.addEventListener('scroll',()=>{pageGesture=null;syncStart();},{passive:true});
+const cancelScoreTap=installScoreTaps({
+ enabled:()=>playing()&&window.prototype?.ready&&!prototype.busy&&$('score').getAttribute('aria-busy')==='false'&&(!document.body.classList.contains('pdf-score-open')||mode==='pages'),
+ navigate:delta=>{pause();if(mode==='pages'){turn(delta);return;}
+  // In scrolling views keep the selected mode; tap one screen with reading overlap.
+  const r=$('score').getBoundingClientRect(),bottom=document.querySelector('.masthead').getBoundingClientRect().top;
+  window.scrollTo({top:delta===-Infinity?0:delta===Infinity?document.documentElement.scrollHeight:scrollY+delta*Math.max(1,bottom-Math.max(0,r.top))*.85,behavior:'instant'});
+ }
+});
+window.addEventListener('scroll',syncStart,{passive:true});
 let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();},180);});
 document.addEventListener('score-session-reset',()=>{resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
 $('pdf-trim').addEventListener('change',fitPage);
-document.addEventListener('library-open',()=>{pause();pageGesture=null;pageIndex=0;$('return-start').hidden=true;});
+document.addEventListener('library-open',()=>{pause();cancelScoreTap();pageIndex=0;$('return-start').hidden=true;});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();

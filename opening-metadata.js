@@ -54,7 +54,8 @@ export function openingMetadata(xml){
  // Preserve sound, staff, dynamics and all non-promoted directions in this display copy.
  return {text:selected.map(x=>x.text).join(' · '),items:selected,displayXML:selected.length?new XMLSerializer().serializeToString(doc):xml};
 }
-export function showOpeningMetadata(subtitle,collection,xml){
- subtitle.replaceChildren(document.createTextNode(collection));
+export function showOpeningMetadata(subtitle,collection,xml,source){
+ if(source)source.textContent=collection;
+ subtitle.replaceChildren(...(source?[]:[document.createTextNode(collection)]));
  const {text}=openingMetadata(xml);if(text){const span=document.createElement('span');span.className='opening-metadata';span.textContent=text;subtitle.append(document.createTextNode(' '),span);}
 }
