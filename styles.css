@@ -875,3 +875,7 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 #key-octave #octave-reason{margin:4px 0;font-size:12px}
 
 #key-dialog{position:fixed;inset:0;margin:auto}
+
+/* Structured scores share the title/Lyrics bounds; PDF gutters are unchanged. */
+body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
+@media(max-width:600px){body:not(.pdf-score-open) .score-paper{padding-left:5px;padding-right:5px}}

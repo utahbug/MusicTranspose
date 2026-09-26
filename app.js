@@ -1,3 +1,4 @@
+import {applyLeadLayout,balanceLeadTail,leadPrintXML} from './lead-layout.js';
 import {normalOctaves,pianoHands,octaveSummary,shiftStaffOctaves} from './octave.js';
 import {createMetronome} from './metronome.js';
 import {createLeadXML,leadReasons,leadEngravingXML,installLeadHarmony} from './lead-view.js';
@@ -110,13 +111,14 @@ async function renderScore(){
  try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
+   applyLeadLayout(osmd,!!lead?.ok,{phone:matchMedia('(max-width:600px)').matches});
    const displayXML=openingMetadata(lead?.ok?leadEngravingXML(viewXML):viewXML).displayXML;stage.style.width=w+'px';osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
-   // Normal retains the existing responsive baseline; density changes logical width.
+   // Share compact header-aligned bounds; retain each mode's existing notation scale.
    const phone=matchMedia('(max-width:600px)').matches;
-   osmd.EngravingRules.PageLeftMargin=phone?(density==='auto'?2.4:.8):5;osmd.EngravingRules.PageRightMargin=phone?.8:5;
+   if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=Math.max(80,innerHeight-(score.getBoundingClientRect().top+scrollY)-document.querySelector('.masthead').getBoundingClientRect().height-18),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
-   const render=zoom=>{osmd.Zoom=zoom;osmd.render();avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const render=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
    let entry;
    if(density==='auto'){
     const candidates=[];
@@ -198,7 +200,8 @@ async function preparePrint(){
  if(isPdf())return preparePdfPrint(score,$('print-pages'));
  const printXML=lastViewXML||lastXML,printKey=viewOnly()?'':KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
- await engraver.load(leadState?.ok&&scoreSize==='large'?leadEngravingXML(printXML):printXML);engraver.Zoom=.8;engraver.render();avoidTempoCollisions(host,printXML);
+ applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true});
+ await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;engraver.render();if(leadState?.ok&&scoreSize==='large')balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);
  const pages=$('print-pages');pages.replaceChildren();
  for(const svg of host.querySelectorAll('svg')){const section=document.createElement('section');section.className='print-page';const label=document.createElement('p');label.className='print-key';label.textContent=printKey;section.append(label,svg.cloneNode(true));pages.append(section);}
  const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('svg').length;
