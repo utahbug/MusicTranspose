@@ -832,3 +832,11 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #song-loading{position:absolute;left:12px;right:12px;font:14px system-ui,sans-serif;color:#677570;padding:24px 0;margin:0}
 body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset,.subtitle,#pdf-notice){visibility:hidden}
 @media print{#song-loading{display:none!important}}
+
+/* Library dropdowns use control feedback rather than link underlines. */
+#library .library-filter-row #library-source,
+#library .library-filter-row .sort-choice,
+#library .library-filter-row .sort-choice::after,
+#library .library-filter-row :is(#library-source,.sort-choice) *{text-decoration:none}
+#library .library-filter-row :is(#library-source,.sort-choice):focus-within{background:#dce7ed;border-radius:4px}
+@media(hover:hover){#library .library-filter-row :is(#library-source,.sort-choice):hover{background:#dce7ed;border-radius:4px}}
