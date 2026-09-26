@@ -1,5 +1,5 @@
 import {planSystemPages,measuredSystems} from './system-pagination.js';
-// Screen-only selection over the existing OSMD renderer; print never imports this policy.
+// Shared geometry/quality checks; zoom selection and preferences remain screen-only.
 export const sizePreferenceKey='music-transpose-score-size-v1';
 export function readScoreSize(){try{const value=localStorage.getItem(sizePreferenceKey);return value==='normal'||value==='large'?value:'auto';}catch{return 'auto';}}
 export function saveScoreSize(value){try{localStorage.setItem(sizePreferenceKey,value);}catch{}}
@@ -22,5 +22,5 @@ export function assessLayout(host,systems,width,available,zoom){
 export function chooseLayout(entries){
  const baseline=entries.find(e=>e.autoReport.baseline)||entries[0],safe=entries.filter(e=>e.autoReport.readable&&e.autoReport.collisions===0);
  if(!safe.length)return baseline;
- return safe.sort((a,b)=>a.autoReport.pages-b.autoReport.pages||b.autoReport.visibleMeasures-a.autoReport.visibleMeasures||b.autoReport.visibleSystems-a.autoReport.visibleSystems||b.zoom-a.zoom)[0];
+ return safe.sort((a,b)=>a.autoReport.pages-b.autoReport.pages||b.zoom-a.zoom||b.autoReport.visibleMeasures-a.autoReport.visibleMeasures||b.autoReport.visibleSystems-a.autoReport.visibleSystems)[0];
 }

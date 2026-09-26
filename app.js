@@ -1,3 +1,4 @@
+import {renderFullScoreLayout} from './full-score-layout.js';
 import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
 import {applyLeadLayout,balanceLeadTail,leadPrintXML} from './lead-layout.js';
 import {normalOctaves,pianoHands,octaveSummary,shiftStaffOctaves} from './octave.js';
@@ -100,7 +101,7 @@ function trimScreenMargin(){
  const trim=view.width>0?Math.max(0,box.y-view.y-8)*svg.getBoundingClientRect().width/view.width:0;
  score.style.setProperty('--score-trim',trim+'px');
 }
-function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout,lead:!!entry.leadState?.ok}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
+function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout,lead:!!entry.leadState?.ok}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;score.dataset.fullScoreSpacing=entry.fullScoreSpacing||'lead';lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 // Keep the shared OSMD instance serialized; obsolete owners cannot publish its output.
 function pump(){
  if(rendering)return rendering.then(()=>pump());
@@ -119,7 +120,8 @@ async function renderScore(){
    const phone=matchMedia('(max-width:600px)').matches;
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
-   const render=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const renderOnce=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const render=zoom=>lead?.ok?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
    let entry;
    if(density==='auto'){
     const candidates=[];
@@ -202,9 +204,12 @@ async function preparePrint(){
  const printXML=lastViewXML||lastXML,printKey=viewOnly()?'':KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
  applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true});
- await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;engraver.render();if(leadState?.ok&&scoreSize==='large')balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);
+ await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;
+ const printWidth=794,keyInset=22,available=printWidth*270/190-keyInset;
+ const renderPrint=()=>{engraver.render();avoidTempoCollisions(host,printXML);return {systemLayout:captureSystems(engraver,host)};};
+ if(leadState?.ok&&scoreSize==='large'){engraver.render();balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);}else renderFullScoreLayout(engraver,renderPrint,e=>assessLayout(host,e.systemLayout,printWidth,available,.8));
  const pages=$('print-pages');pages.replaceChildren();
- const originals=[...host.querySelectorAll('svg')],printWidth=794,keyInset=22,available=printWidth*270/190-keyInset;
+ const originals=[...host.querySelectorAll('svg')];
  const groups=planSystemPages(measuredSystems(captureSystems(engraver,host),originals,printWidth),available,{gapCap:leadState?.ok&&scoreSize==='large'?14:24});
  for(const group of groups){const section=document.createElement('section');section.className='print-page';section.dataset.systems=group.count;section.dataset.used=group.used;section.dataset.available=available;const label=document.createElement('p');label.className='print-key';label.textContent=printKey;
   const svg=showSystemPage(createSystemCanvas(originals),group,printWidth);svg.setAttribute('viewBox',`0 ${-keyInset} ${printWidth} ${group.used+keyInset}`);svg.setAttribute('height',group.used+keyInset);section.append(label,svg);pages.append(section);}
