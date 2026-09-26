@@ -1,0 +1,47 @@
+import {createRequire} from 'node:module';import assert from 'node:assert/strict';
+const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE)('playwright'),browser=await chromium.launch({channel:'msedge',headless:true}),context=await browser.newContext(),p=await context.newPage(),errors=[];
+p.on('pageerror',e=>errors.push(e.message));const base=process.env.TEST_URL||'http://127.0.0.1:8771/';
+const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');
+const load=async id=>{await p.evaluate(id=>prototype.loadSong(id),id);await ready();};
+const shift=async(n,scope='both')=>{await p.evaluate(({n,scope})=>prototype.changeOctave(n,scope),{n,scope});await ready();};
+const view=async size=>{await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${size}]`).click();await ready();};
+const pitches=()=>p.evaluate(async()=>{await prototype.playback.prepare();return prototype.playback.timeline.notes.map(n=>n.midi);});
+async function invariant(rh,lh){assert(await p.evaluate(async({rh,lh})=>{
+ const {parseXML,transposeXML}=await import('./music.js'),a=parseXML(transposeXML(prototype.original,prototype.current)),z=parseXML(prototype.xml),hands=prototype.hands;
+ const an=[...a.querySelectorAll('note > pitch > octave')],zn=[...z.querySelectorAll('note > pitch > octave')];
+ for(let i=0;i<an.length;i++){const note=an[i].parentNode.parentNode,part=note.closest('part').id,staff=note.querySelector('staff')?.textContent||'1',delta=part===hands.rh.part&&staff===hands.rh.staff?rh:lh;if(Number(zn[i].textContent)-Number(an[i].textContent)!==delta)return false;zn[i].textContent=an[i].textContent;}
+ return a.documentElement.outerHTML===z.documentElement.outerHTML;
+ },{rh,lh}),'Only the intended staff octave fields change');}
+try{
+ await p.goto(base);await p.locator('.library-row').first().waitFor();
+ // Synthetic staff crossings and multiple voices retain ownership; explicit
+ // instruments, single-staff and ambiguous ensemble structures must fall back.
+ const unit=await p.evaluate(async()=>{
+  const {pianoHands,normalOctaves,shiftStaffOctaves}=await import('./octave.js'),{parseXML}=await import('./music.js'),{scoreTimeline}=await import('./playback.js');
+  const xml=`<score-partwise><part-list><score-part id="P"><part-name>Piano</part-name></score-part></part-list><part id="P"><measure><attributes><divisions>1</divisions><staves>2</staves><clef number="1"><sign>G</sign><line>2</line></clef><clef number="2"><sign>F</sign><line>4</line></clef></attributes><harmony><root><root-step>G</root-step></root><kind>major</kind></harmony><note><pitch><step>C</step><octave>2</octave></pitch><duration>1</duration><voice>1</voice><staff>1</staff></note><note><pitch><step>D</step><octave>5</octave></pitch><duration>1</duration><voice>2</voice><staff>2</staff></note><note><pitch><step>E</step><octave>3</octave></pitch><duration>1</duration><voice>3</voice><staff>1</staff></note></measure></part></score-partwise>`;
+  const hands=pianoHands(xml),changed=shiftStaffOctaves(xml,{...normalOctaves(),rh:1,lh:-1},hands);
+  return {hands: hands.ok,pitches:scoreTimeline(changed).notes.map(n=>n.midi),harmony:parseXML(changed).querySelector('harmony').outerHTML===parseXML(xml).querySelector('harmony').outerHTML,other:pianoHands(xml.replace('Piano','Violin')).ok,single:pianoHands(xml.replace('<staves>2</staves>','<staves>1</staves>')).ok,three:pianoHands(xml.replace('<staves>2</staves>','<staves>3</staves>')).ok};
+ });assert.deepEqual(unit,{hands:true,pitches:[48,62,64],harmony:true,other:false,single:false,three:false});console.log('PASS crossing registers, multiple voices, chord preservation, conservative fallback');
+ for(const id of ['nativity','faithful','silent-night']){
+  await load(id);if(await p.evaluate(()=>document.body.classList.contains('lead-score-open')))await view('normal');assert(await p.evaluate(()=>prototype.hands.ok),id);const baseNotes=await pitches();
+  await shift(1);await invariant(1,1);assert.deepEqual(await pitches(),baseNotes.map(n=>n+12));await shift(-1);await invariant(-1,-1);assert.deepEqual(await pitches(),baseNotes.map(n=>n-12));
+  await shift(0);await shift(1,'rh');await invariant(1,0);const mixed=await pitches();assert(mixed.some((n,i)=>n===baseNotes[i]+12)&&mixed.some((n,i)=>n===baseNotes[i]));
+  await shift(1,'lh');await invariant(1,1);await shift(0,'rh');await invariant(0,1);await shift(0,'lh');await invariant(0,0);
+  await shift(1,'rh');await p.evaluate(()=>prototype.changeKey(2));await ready();await invariant(1,0);assert.deepEqual(await pitches(),mixed.map(n=>n+2));
+  await p.locator('#reset').click();await ready();assert.deepEqual(await p.evaluate(()=>prototype.octaveState),{all:0,rh:0,lh:0,lead:0});assert.deepEqual(await pitches(),baseNotes);console.log('PASS per-staff notation/playback, key change, Reset',id);
+ }
+ // Render a controlled crossing-staff variant of the real multi-voice hymn.
+ await load('nativity');await p.evaluate(async()=>{const d=new DOMParser().parseFromString(prototype.original,'application/xml');for(const note of d.querySelectorAll('note')){const o=note.querySelector('pitch > octave');if(o)o.textContent=note.querySelector('staff')?.textContent==='2'?'5':'2';}await prototype.loadScore(new XMLSerializer().serializeToString(d));});await ready();await shift(1,'rh');await invariant(1,0);await shift(-1,'lh');await invariant(1,-1);assert(await p.locator('#score svg').count());console.log('PASS engraved real-score crossing-register variant');
+ await load('shepherd');await p.locator('#key').click();assert(await p.locator('#octave-scopes').isHidden());assert(await p.locator('#octave-reason').isVisible());await p.locator('#close-dialog').click();await shift(1);assert.equal(await p.evaluate(()=>prototype.octaveState.all),1);
+ await load('hhc-1054');await view('normal');await shift(1);const scoreState=await p.evaluate(()=>prototype.octaveState),scorePitches=await pitches();await view('large');await p.locator('#key').click();assert(await p.locator('#octave-scopes').isHidden());assert(await p.locator('#octave-reason').isHidden());await p.locator('#close-dialog').click();const melody=await pitches();await shift(-1);assert.deepEqual(await pitches(),melody.map(n=>n-12));assert.equal(await p.evaluate(()=>prototype.octaveState.lead),-1);await view('normal');assert.deepEqual(await pitches(),scorePitches);assert.equal(await p.evaluate(()=>prototype.octaveState.rh),scoreState.rh);await view('large');assert.deepEqual(await pitches(),melody.map(n=>n-12));await view('normal');console.log('PASS Lead single melody control, matching playback, independent Score/Lead retention');
+ // A single-staff structured score uses only the global register control.
+ await p.evaluate(async()=>{const {createLeadXML}=await import('./lead-view.js');await prototype.loadScore(createLeadXML(prototype.original).xml);});await ready();assert.equal(await p.evaluate(()=>prototype.hands.ok),false);const single=await pitches();await shift(1);assert.deepEqual(await pitches(),single.map(n=>n+12));console.log('PASS single-staff score and playback');
+ for(const [width,height] of [[320,568],[390,844],[844,390],[820,1180],[1440,1000]]){
+  await p.setViewportSize({width,height});await load('nativity');await p.locator('#key').click();await p.locator('[data-scope=rh]').click();await p.locator('input[name=octave][value="1"]').check();await ready();assert.match(await p.locator('#octave-summary').textContent(),/RH \+1.*LH 0/);assert.equal(await p.locator('[data-scope=rh]').getAttribute('aria-pressed'),'true');
+  assert(await p.locator('#key-dialog').evaluate(e=>{const r=e.getBoundingClientRect();return r.x>=0&&r.right<=innerWidth&&r.y>=0&&r.bottom<=innerHeight+1&&e.scrollWidth<=e.clientWidth;}));
+  const geometry=await p.evaluate(()=>{const rect=s=>document.querySelector(s).getBoundingClientRect();return {info:rect('#ensemble-context').top,hint:rect('#key-dialog > .dialog-hint').top,octave:rect('#key-octave').top,targets:[...document.querySelectorAll('#octave-scopes button,.octave-values label')].map(e=>e.getBoundingClientRect().height)};});assert(geometry.info<geometry.hint&&geometry.hint<geometry.octave);assert(geometry.targets.every(h=>h>=44));await p.screenshot({path:`test-results/octave-hands-${width}.png`});await p.locator('#close-dialog').click();
+  await p.locator('#show-lyrics').click();await p.locator('#lyrics-view').waitFor({state:'visible'});await p.locator('.lyrics-score-toggle').click();await ready();assert.equal(await p.evaluate(()=>prototype.octaveState.rh),1);console.log('PASS responsive dialog and Lyrics return',width,height);
+ }
+ await load('nativity');await shift(1,'rh');await shift(-1,'lh');const retained=await p.evaluate(()=>prototype.octaveState);await view('pdf');assert(await p.evaluate(()=>prototype.pdfFallback));assert(await p.locator('#key').isDisabled());await view('normal');assert.deepEqual(await p.evaluate(()=>prototype.octaveState),retained);await invariant(1,-1);console.log('PASS PDF fallback retains hand state and disables unavailable octave controls');
+ await context.setOffline(true);await p.reload();await ready();await load('nativity');assert.deepEqual(await p.evaluate(()=>prototype.octaveState),{all:0,rh:0,lh:0,lead:0});await shift(-1,'lh');await invariant(0,-1);await pitches();await context.setOffline(false);assert.deepEqual(errors,[]);console.log('PASS offline restart and octave playback; no browser errors');
+}finally{await browser.close();}
