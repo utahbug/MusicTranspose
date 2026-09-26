@@ -879,3 +879,11 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 /* Structured scores share the title/Lyrics bounds; PDF gutters are unchanged. */
 body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 @media(max-width:600px){body:not(.pdf-score-open) .score-paper{padding-left:5px;padding-right:5px}}
+
+/* Optional native search scope: one compact touch target, no extra header row. */
+#library .library-search-row{grid-template-columns:minmax(0,1fr) 44px 44px 44px}
+#library .search-scope{position:relative;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:5px;color:#365867;font-size:26px}
+#library .search-scope select{position:absolute;inset:0;width:44px;height:44px;opacity:0;cursor:pointer}
+#library .search-scope:hover{background:#edf1f3}
+#library .search-scope:focus-within{outline:2px solid #365867;outline-offset:-2px}
+#library .search-scope:has(option:not([value=titles]):checked){background:#e1edf1}
