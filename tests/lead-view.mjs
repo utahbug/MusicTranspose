@@ -38,7 +38,7 @@ try{
  for(const row of audit.filter(r=>r.ok)){
   await p.evaluate(id=>prototype.loadSong(id),row.id);await ready();if(await p.locator('#score-size').getAttribute('data-size')!=='large')await view('large');
   const state=await p.evaluate(()=>({lead:prototype.lead,parts:new DOMParser().parseFromString(prototype.viewXML,'application/xml').querySelectorAll('part').length,overflow:document.documentElement.scrollWidth>innerWidth}));
-  assert(state.lead.ok,JSON.stringify({id:row.id,state}));assert.equal(state.parts,1);assert(!state.overflow);assert(await p.locator('#lead-notice').isHidden());
+  assert(state.lead.ok,JSON.stringify({id:row.id,state}));assert.equal(state.parts,1);assert(!state.overflow);assert(await p.locator('#lead-notice').count()===0);
  }
  console.log('PASS all supported scores engraved on phone');
  // Real responsive scores include optional/slash chords, repeats, multi-verse lyrics, pickups and fallback.
@@ -46,10 +46,10 @@ try{
  for(const [width,height] of [[320,568],[390,844],[430,932],[844,390],[820,1180],[1440,1000]]){
   await p.setViewportSize({width,height});
   for(const id of ids){
-   await p.evaluate(id=>prototype.loadSong(id),id);await ready();await p.evaluate(()=>prototype.changeKey(2));await ready();
-   const original=await p.evaluate(()=>({song:prototype.song,current:prototype.current,xml:prototype.xml,lead:prototype.lead.ok,view:prototype.viewXML,store:{...localStorage}}));
-   assert.equal(original.current,2);if(!original.lead){assert(await p.locator('#lead-notice').isVisible());assert.equal(original.view,original.xml);}else assert.notEqual(original.view,original.xml);
-   await view('normal');assert.equal(await p.evaluate(()=>prototype.xml),original.xml);await view('large');assert.equal(await p.evaluate(()=>prototype.viewXML),original.view);assert.equal(await p.evaluate(()=>prototype.song),original.song);assert.equal(await p.evaluate(()=>prototype.current),2);
+   await p.evaluate(id=>prototype.loadSong(id,'large'),id);await ready();await p.evaluate(()=>prototype.changeKey(2));await ready();
+   const original=await p.evaluate(()=>({song:prototype.song,current:prototype.current,xml:prototype.xml,lead:!!prototype.lead?.ok,view:prototype.viewXML,store:{...localStorage}}));
+   assert.equal(original.current,2);if(!original.lead){assert.equal(await p.locator('#lead-notice').count(),0);assert.equal(await p.locator('#score-size').getAttribute('data-size'),'normal');assert(await p.locator('[data-size=large]').isHidden());assert.equal(original.view,original.xml);}else assert.notEqual(original.view,original.xml);
+   await view('normal');assert.equal(await p.evaluate(()=>prototype.xml),original.xml);if(original.lead)await view('large');assert.equal(await p.evaluate(()=>prototype.viewXML),original.view);assert.equal(await p.evaluate(()=>prototype.song),original.song);assert.equal(await p.evaluate(()=>prototype.current),2);
    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    if(original.lead){await p.evaluate(()=>prototype.preparePrint());assert(await p.locator('#print-pages svg').count()>0);}
    if(id==='hhc-1054'||id==='shepherd'||id==='faithful')await p.screenshot({path:`test-results/lead-${id}-${width}.png`,fullPage:true});

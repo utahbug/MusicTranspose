@@ -698,12 +698,8 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 
 .tap-zone-diagram{height:240px;grid-template-rows:var(--tap-upper,25%) 1fr}.tap-zone-diagram>div{min-height:0}
 
-/* Lead fallback is explicit; successful Lead uses the existing compact header. */
-#lead-notice{font:12px/1.35 system-ui,sans-serif;color:#53675d;margin:2px 0 6px}#lead-notice[hidden]{display:none}
-@media print{#lead-notice{display:none!important}}
-
 /* Library: one sticky block keeps search, filters and columns aligned at every size. */
-#library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:44px minmax(0,1fr) 44px 44px 44px}
+#library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:minmax(0,1fr) 44px 44px}
 #library .library-heading{margin:0;background:transparent;color:#233331;padding:10px 4px;flex-wrap:nowrap;gap:8px;min-height:44px}
 #library .library-heading :is(h1,.eyebrow){color:#233331}
 #library .library-heading h1{font:600 18px/1.2 system-ui,sans-serif;color:inherit;letter-spacing:-.025em;margin:0}
@@ -721,24 +717,17 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #library .library-filter-row select{width:100%;max-width:none;height:44px;padding-left:6px;font-size:13px;text-overflow:ellipsis}
 #library .library-column-headings{display:grid;grid-template-columns:var(--library-columns);align-items:center;min-height:44px;border-top:1px solid #d6dfe3;color:#536b7a;font:600 11px/1.2 system-ui,sans-serif;text-align:center}
 #library .library-column-headings button{height:44px;min-width:44px;border:0;background:transparent;color:inherit;padding:0}
-#library #view-favorites{font-size:23px}
-#library #view-favorites[aria-pressed=true]{color:var(--library-gold);background:#e6e0d0;border-radius:4px}
 #library .song-column-heading{display:flex;align-items:center;gap:4px;text-align:left;min-width:0;padding-left:6px}
-#library #order-toggle{font-size:11px;text-decoration:underline;text-underline-offset:3px}
 #library-results{padding:0;border:0}
 #library-results::before,#library-results::after{display:none}
-#library .library-row:not(.reordering){grid-template-columns:44px minmax(0,1fr) 132px}
-#library .song-view-actions{display:grid;grid-template-columns:repeat(3,44px);align-items:center}
+#library .library-row:not(.reordering){grid-template-columns:var(--library-columns)}
+#library .song-view-actions{display:grid;grid-template-columns:44px;align-items:center}
 #library .song-view-actions button,#library .song-view-actions .lyrics-slot{height:44px;width:44px;min-height:44px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;background:transparent}
-#library .song-view-actions .lead-entry:disabled{opacity:.28;cursor:default}
 #library .song-view-actions svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 #library .song-entry{padding:10px 6px;gap:3px;min-height:60px}
 #library .song-entry strong{font-size:14px;line-height:1.3}
 #library .song-meta{font-size:11px;line-height:1.3}
 #library-message:not(:empty){padding:4px 8px;font-size:12px;margin:0}
-#library-more-dialog{width:300px;max-width:calc(100vw - 24px);padding:16px}
-#library-more-dialog>button{display:block;width:100%;min-height:48px;text-align:left;border:0;background:transparent;color:#365867;font:15px system-ui,sans-serif}
-#library-more-dialog .dialog-heading{margin-bottom:8px}
 @media(min-width:700px){#library{padding-inline:24px}#library .song-entry strong{font-size:16px}#library .song-meta{font-size:12px}#library .library-filter-row{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);max-width:640px}}
 @media(max-width:360px){#library .library-heading h1 span{display:none}#library .library-filter-row{gap:4px}#library .library-filter-row select{font-size:12px}#library .song-column-heading{gap:0}}
 
@@ -780,3 +769,31 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 .list-picker-controls select{width:100%;font-size:13px!important}
 .list-picker-controls label{font-size:12px}
 #list-picker-results{padding-bottom:8px}
+
+/* Compact Library controls share one row; actions occupy only two touch targets. */
+#library .library-filter-row{display:flex;gap:4px;max-width:none}
+#library .library-filter-row label{flex:0 1 auto;max-width:240px}
+#library .library-filter-row select{width:100%;max-width:100%;min-width:0;appearance:none;background:transparent;border:0;border-radius:4px;padding:0 22px 0 6px;color:#365867;font:13px system-ui,sans-serif;cursor:pointer}
+#library .library-filter-row label{position:relative}
+#library .library-filter-row label::after{content:'▾';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:12px;color:#536b7a;pointer-events:none}
+#library .library-filter-row .source-choice{max-width:210px;flex-shrink:1}
+#library .library-filter-row .list-choice{max-width:240px;flex-shrink:1}
+#library .library-filter-row .sort-choice{width:74px;flex:0 0 74px}
+#library-sort-label{display:flex;align-items:center;height:44px;padding-left:6px;font:13px system-ui,sans-serif;color:#365867;pointer-events:none}
+#library #order-toggle{position:absolute;inset:0;width:100%;height:44px;opacity:0}
+#library .sort-choice:focus-within{outline:2px solid #365867;outline-offset:-2px;border-radius:4px}
+#library .favorite{grid-column:3;min-width:44px;width:44px;min-height:44px;margin:0}
+#library .library-column-headings .song-column-heading{font-weight:600}
+#library-more-dialog{position:fixed;z-index:60;width:max-content;min-width:185px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:4px;background:#fff;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+#library-more-dialog[hidden]{display:none}
+#library-more-dialog>button{display:block;width:100%;min-height:44px;padding:8px 12px;text-align:left;border:0;border-radius:3px;background:transparent;color:#365867;font:14px system-ui,sans-serif}
+#library-more-dialog>button:hover,#library-more-dialog>button:focus-visible{background:#edf1f3}
+#library-more-dialog [aria-checked=true]::after{content:' ✓'}
+@media(max-width:600px),(max-width:900px) and (max-height:500px){
+ #library .library-column-headings{display:none}
+ #library .library-filter-row .source-choice{max-width:48%;flex:0 1 auto}
+ #library .library-filter-row .list-choice{max-width:40%;flex:0 1 auto}
+ #library .library-filter-row select{font-size:12px}
+ #library .library-header-panel{padding-bottom:2px}
+}
+@media print{#library-more-dialog{display:none!important}}

@@ -83,8 +83,9 @@ try{
    await page.evaluate(()=>syncAudits.length=0);
    await page.evaluate(id=>prototype.loadSong(id),song.id);await ready();await record(song,width,'auto',0);
    if(song.id===primary.id){
-    for(const mode of ['normal','large']){
-     await page.locator('#score-size').click();await page.locator(`#score-size-options [data-size=${mode}]`).click();await record(song,width,mode,0);
+    for(const mode of ['normal','legacy-lead']){
+     if(mode==='legacy-lead'){await page.evaluate(id=>prototype.loadSong(id,'large'),song.id);await ready();assert.equal(await page.locator('#score-size').getAttribute('data-size'),'normal');}
+     else{await page.locator('#score-size').click();await page.locator(`#score-size-options [data-size=${mode}]`).click();}await record(song,width,mode,0);
     }
     await page.locator('#score-size').click();await page.locator('#score-size-options [data-size=auto]').click();await ready();
     for(const shift of [-2,3]){await page.evaluate(n=>prototype.changeKey(n),shift);await record(song,width,'auto',shift);}
