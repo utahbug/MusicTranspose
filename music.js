@@ -1,3 +1,4 @@
+import {transposeChordDirections} from './chord-symbol.js';
 // Conventional spelling for each destination pitch class; keep the source spelling at 0.
 const MAJOR_KEYS = [
  {name:'C',fifths:0},{name:'D♭',fifths:-5},{name:'D',fifths:2},
@@ -47,12 +48,19 @@ export function transposeXML(original,shift,modeOverride){
   const midi=(o+1)*12+NATURAL[index]+a+shift,na=midi-((no+1)*12+NATURAL[ni]);
   step.textContent=LETTERS[ni];oct.textContent=String(no);alterChild(pitch,'alter',na,step);
  }
- for(const harmony of doc.querySelectorAll('harmony'))for(const type of ['root','bass']){
-  const node=harmony.querySelector(':scope > '+type),step=node?.querySelector(type+'-step');if(!step)continue;
-  const i=LETTERS.indexOf(step.textContent),ni=((i+key.diatonic)%7+7)%7,a=Number(node.querySelector(type+'-alter')?.textContent||0);
-  let na=((NATURAL[i]+a+shift-NATURAL[ni])%12+12)%12;if(na>6)na-=12;
-  step.textContent=LETTERS[ni];alterChild(node,type+'-alter',na,step);
+ // Use the same diatonic destination interval as pitched notes, retaining
+ // chromatic alterations instead of forcing every chord to sharps or flats.
+ const transposePitch=(step,alter)=>{
+  const i=LETTERS.indexOf(step),ni=mod(i+key.diatonic,7);
+  let next=mod(NATURAL[i]+alter+shift-NATURAL[ni],12);if(next>6)next-=12;
+  return {step:LETTERS[ni],alter:next};
+ };
+ for(const node of doc.querySelectorAll('harmony > root, harmony > bass')){
+  const type=node.localName,step=node.querySelector(type+'-step');if(!step)continue;
+  const next=transposePitch(step.textContent,Number(node.querySelector(type+'-alter')?.textContent||0));
+  step.textContent=next.step;alterChild(node,type+'-alter',next.alter,step);
  }
+ transposeChordDirections(doc,transposePitch);
  // Let the engraver recalculate visible accidentals against the new signature.
  for(const a of doc.querySelectorAll('note > accidental'))a.remove();
  return new XMLSerializer().serializeToString(doc);

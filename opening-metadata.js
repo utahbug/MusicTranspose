@@ -1,3 +1,4 @@
+import {parseChordSymbol} from './chord-symbol.js';
 // Opening directions only. Source XML for playback/print is never modified.
 const beats={whole:'𝅝',half:'𝅗𝅥',quarter:'♩',eighth:'♪','16th':'𝅘𝅥𝅯','32nd':'𝅘𝅥𝅰'};
 const clean=s=>s.replace(/\s+/g,' ').trim();
@@ -23,6 +24,7 @@ function candidate(node){
  }
  if(node.tagName==='words'){
   const text=clean(node.textContent),font=node.getAttribute('font-family')||'';
+  if(parseChordSymbol(text))return null; // Chord directions belong to their musical position, not the header.
   if(!text||text.length>64||text.split(' ').length>9||!/^[\p{L}][\p{L}\p{M}\s,.'’()–-]*$/u.test(text)||/ding|symbol/i.test(font)||node.children.length)return null;
   return {kind:'expression',text};
  }
