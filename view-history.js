@@ -10,7 +10,7 @@ export function createViewHistory({capture,restore,isBusy,onTravel}){
  function visit(route){
   if(restoring)return;
   snapshot();
-  if(current.view===route.view&&(!['score','lyrics'].includes(route.view)||current.song===route.song)&&(route.view!=='lists'||current.list===route.list))return;
+  if(current.view===route.view&&(!['score','lyrics'].includes(route.view)||current.song===route.song)&&(!['lists','library'].includes(route.view)||current.list===route.list)&&(route.view!=='lists'||!!current.picking===!!route.picking))return;
   current={...current,...route,scroll:0};write(current,true);
  }
  async function drain(){

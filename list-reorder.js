@@ -21,11 +21,14 @@ export function attachReorderHandle(handle,row,container,commit){
   if(!drag)return;const result=drag;drag=null;cancelAnimationFrame(frame);clearMarks();row.classList.remove('dragging');
   document.removeEventListener('keydown',escape);window.removeEventListener('blur',cancel);
   if(handle.hasPointerCapture(result.pointer))handle.releasePointerCapture(result.pointer);
-  if(save&&result.moved&&result.target)commit(result.target,result.before);
+  // Let touchend finish on the original target before a render replaces its row.
+  if(save&&result.moved&&result.target)setTimeout(()=>{if(row.isConnected)commit(result.target,result.before);},0);
  }
  const cancel=()=>finish(false),escape=e=>{if(e.key==='Escape'){e.preventDefault();cancel();}};
+ // A handle owns its touch gesture; ordinary rows keep native scrolling.
+ handle.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
  handle.addEventListener('pointerdown',e=>{
-  if(!e.isPrimary||e.button!==0)return;e.preventDefault();handle.focus({preventScroll:true});
+  if(!e.isPrimary||e.button!==0)return;if(e.pointerType==='mouse')e.preventDefault();handle.focus({preventScroll:true});
   drag={pointer:e.pointerId,start:e.clientY,y:e.clientY,time:performance.now(),moved:false};handle.setPointerCapture(e.pointerId);
   document.addEventListener('keydown',escape);window.addEventListener('blur',cancel);frame=requestAnimationFrame(tick);
  });
