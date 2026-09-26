@@ -11,7 +11,7 @@ Library/List clicks entered loadSong, which exposed the score view before commit
 - Shared OSMD work is serialized; old rendering can finish privately but cannot commit or populate the new song's render cache. Newest requests are accepted rather than discarded by a busy guard.
 - PDFs rasterize into detached frames and publish atomically only while current.
 - History travel invalidates pending selection work. Queued row clicks retain the original Library/List scroll snapshot.
-- No changes to Library layout, score engraving rules, Lead extraction, chords, transposition, or service-worker asset-selection logic. Shell cache advanced to v102 for deployment.
+- No changes to Library layout, score engraving rules, Lead extraction, chords, transposition, or service-worker asset-selection logic. Shell cache advanced to v103 for deployment.
 
 ## Targeted production validation
 
@@ -21,7 +21,9 @@ The app is static, with no compilation step. Tests ran against production files 
 - tests/score-lyrics-toggle.mjs: passed five layouts, repeated touch toggles, key/octave/XML/page preservation, playback continuity, focus, and resize.
 - tests/library-search-focus.mjs: passed four layouts, Home/Back/Forward, Library/List/filter/search/sort/scroll restoration, Files, Favorites, and offline reload.
 - SYNC_SMOKE=1 tests/measure-sync.mjs: passed 32 targeted real-score/synthetic cases, including above-staff lyric placement, measure/voice ownership, and transposed rendering.
+- Loading message uses absolute positioning at its natural position beneath the heading; an automated geometry check confirms that showing/hiding it does not affect the score bounds or engraving space.
 - Reviewed loading-state screenshot at 320px: only destination title/source and loading message; old key/score hidden, footer placement retained.
 - git diff --check passed. No full chord or music-engine regression suite was necessary or run.
 
 Files: app.js, library.js, pdf-score.js, styles.css, sw.js, tests/song-transition.mjs, this report.
+
