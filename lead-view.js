@@ -27,10 +27,10 @@ export function createLeadXML(source,context){
  if(!hymn)return projectLeadXML(source);
  const melody=hymnMelody(source);
  if(!melody.ok)return {ok:false,xml:source,reason:melody.reason,detail:melody.detail,message:'This hymn needs a soprano review before creating Lead.'};
- const result=projectLeadXML(melody.xml);
+ const result=projectLeadXML(melody.xml,melody.accompanimentCueStaff);
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
 }
-function projectLeadXML(source){
+function projectLeadXML(source,accompanimentCueStaff=null){
  let selected=null;
  const fallback=(reason,detail='')=>({ok:false,xml:source,reason,message:leadReasons[reason],detail,selection:selected});
  try{
@@ -49,7 +49,7 @@ function projectLeadXML(source){
   for(const [other,ns] of lanes)if(other!==key){
    const [p,s,v]=other.split(':');
    if(p===partId&&v===voice&&s!==staff&&ns.some(n=>child(n,'pitch')))return fallback('cross-staff');
-   if(ns.some(n=>child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue'))return fallback('outside-cues',other);
+   if(ns.some(n=>child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue')&&!(accompanimentCueStaff?.part===p&&accompanimentCueStaff?.staff===s))return fallback('outside-cues',other);
   }
   // Transposing instruments, staff tuning and editorial ossias need explicit handling.
   if(doc.querySelector('transpose,staff-tuning,ossia,part-link,measure-style,unpitched'))return fallback('unsupported','Transposing/tuned/ossia/condensed or unpitched notation');

@@ -9,15 +9,24 @@ const eps=1e-7;
 export function hymnMelody(source){
  const doc=new DOMParser().parseFromString(source,'application/xml'),parts=[...doc.querySelectorAll('score-partwise > part')];
  if(doc.querySelector('parsererror')||!parts.length)return fail('structure','Invalid partwise MusicXML');
- if(doc.querySelector('cue,note[type="cue"],type[size="cue"],grace,unpitched,transpose,staff-tuning,ossia,part-link,measure-style,octave-shift,tremolo'))return fail('notation','Cue, grace, octave-shift or other unusual notation requires review');
+ if(doc.querySelector('grace,unpitched,transpose,staff-tuning,ossia,part-link,measure-style,octave-shift,tremolo'))return fail('notation','Grace, octave-shift or other unusual notation requires review');
  if([...doc.querySelectorAll('clef-octave-change')].some(n=>Number(n.textContent)!==0))return fail('notation','Octave-transposing clef requires review');
  if([...doc.querySelectorAll('words')].some(n=>/divisi|div[.]|ossia|solo|unison.*optional/i.test(n.textContent)))return fail('notation','Divisi/solo/ossia indication');
+ // This pass handles the observed full-size cue export pattern only.
+ // Small cue noteheads and cue rests retain the original safe fallback.
+ const cueNotes=[...doc.querySelectorAll('note')].filter(n=>child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue'||n.getAttribute('type')==='cue');
+ if(cueNotes.some(n=>!child(n,'cue')||!child(n,'pitch')||child(n,'type')?.getAttribute('size')!=='full'))return fail('notation','Small, rest or unclassified cue notation requires review');
  const staves=parts.map(p=>Math.max(1,...[...p.querySelectorAll('staves')].map(n=>Number(n.textContent))));
  const clef=(p,staff)=>[...p.querySelectorAll('attributes > clef')].find(c=>(c.getAttribute('number')||'1')===staff)?.querySelector('sign')?.textContent;
  let upper,lower;
  if(parts.length===1&&staves[0]===2&&clef(parts[0],'1')==='G'&&clef(parts[0],'2')==='F'){upper={part:parts[0].id,staff:'1'};lower={part:parts[0].id,staff:'2'};}
  else if(parts.length===2&&staves.every(s=>s===1)&&clef(parts[0],'1')==='G'&&clef(parts[1],'1')==='F'){upper={part:parts[0].id,staff:'1'};lower={part:parts[1].id,staff:'1'};}
  else return fail('structure','Requires two staves in upper G / lower F order');
+ // Cues are allowed only in structurally identified lower accompaniment.
+ // They never enter the selected soprano; all timing, lyrics, divisi and
+ // crossing checks below still apply. Upper cues remain ambiguous.
+ if(cueNotes.some(n=>n.closest('part').id!==lower.part||text(n,'staff','1')!==lower.staff))return fail('notation','Upper-staff cue or cue-size notation requires review');
+
  const groups=[],lengths=[];
  for(const part of parts){let divisions=1;const measures=children(part,'measure');
   for(const [mi,measure] of measures.entries()){let cursor=0,last=null,end=0;
@@ -95,5 +104,5 @@ export function hymnMelody(source){
   base.replaceWith(copy);for(const extra of g.nodes.slice(1))extra.remove();
  }
  if(ties.size)return fail('ties','Soprano tie start has no matching stop');
- return {ok:true,xml:new XMLSerializer().serializeToString(doc),selection:{...upper,voice:'hymn-lead',sourceVoices:owners,evidence:'Hymns (1985): continuous upper lyric voice; at most two tones; no upper crossing'},proof};
+ return {ok:true,accompanimentCueStaff:cueNotes.length?lower:null,xml:new XMLSerializer().serializeToString(doc),selection:{...upper,voice:'hymn-lead',sourceVoices:owners,evidence:'Hymns (1985): continuous upper lyric voice; at most two tones; no upper crossing'},proof};
 }
