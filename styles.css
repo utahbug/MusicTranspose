@@ -857,3 +857,8 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 }
 @media(prefers-reduced-motion:reduce){.beat-dot{animation:none;transition:none}}
 @media print{.beat-rail{display:none!important}}
+
+/* Lyrics uses the same Library node, size, and safe-area anchor as Score. */
+.lyrics-footer{padding:4px max(12px,env(safe-area-inset-right,0px)) calc(4px + var(--playing-safe-bottom)) max(12px,env(safe-area-inset-left,0px));border-bottom:1px solid transparent}
+@media(max-width:600px){.lyrics-footer{padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}}
+@media(max-width:360px){#lyrics-view .lyrics-footer #songs{width:40px;min-width:40px;flex-basis:40px}}
