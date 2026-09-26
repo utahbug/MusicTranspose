@@ -494,14 +494,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #settings-dialog fieldset{margin-top:12px}
 .tap-help-line{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:#53675d;flex-wrap:wrap}
 #show-tap-zones{border:0;background:transparent;color:#365F7D;min-height:44px;padding:4px 6px;font:inherit;text-decoration:underline;text-underline-offset:3px}
-#tap-zones-help{width:360px;padding:20px}
-#tap-zones-help .dialog-heading{align-items:center}
-.tap-zone-diagram{display:grid;grid-template-columns:1fr 1fr;border:1px solid #8b9eaa;border-radius:4px;overflow:hidden;margin:12px 0}
-.tap-zone-diagram>div{display:flex;align-items:center;justify-content:center;min-height:76px;font-size:16px;color:#233331;background:#f1f4f5}
-.tap-zone-diagram>div:nth-child(odd){border-right:1px solid #8b9eaa}
-.tap-zone-diagram>div:nth-child(-n+2){border-bottom:1px solid #8b9eaa}
-.tap-zone-keys{font-size:12px;line-height:1.6;color:#53675d}
-@media print{#tap-zones-help{display:none!important}}
 
 /* Compact Library: source beside search, one textual control row, no More column. */
 #library .library-controls{display:block}
@@ -657,16 +649,15 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #tempo-reset{background:none;border:0;color:var(--accent,#4B6E88);min-height:36px;padding:4px 8px;text-decoration:underline}
 @media(max-width:360px){body.pdf-fallback-open .masthead #score-size{width:40px;min-width:40px;flex-basis:40px}}
 
-/* Priority #3: source and navigation help share the existing header space. */
+/* Compact score metadata and vertically grouped key controls. */
 @media screen{
  .score-heading .score-actions{flex-wrap:nowrap;gap:6px;align-items:center}
- #score-source{font:400 11px/1.25 system-ui,sans-serif;color:#677570;min-width:0;max-width:230px;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
- #score-tap-zones{display:inline-flex;align-items:center;justify-content:center;color:#536B7A}
+ #score-source{font:400 11px/1.25 system-ui,sans-serif;color:#677570;min-width:0;max-width:230px;margin-inline-end:8px;flex-shrink:0;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
  .score-heading .subtitle:empty{display:none}
  .score-heading .opening-metadata{margin-inline-start:0;max-width:100%}
- .key-comparison{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0;height:44px}
- .masthead .key-comparison #original-key-reference{font:400 10px/12px system-ui,sans-serif;white-space:nowrap;position:absolute;top:0;left:0;pointer-events:none;margin-inline-start:6px;color:#53675d}
- .masthead .key-comparison #key{min-height:44px;height:44px;flex-direction:row;gap:4px;padding:12px 6px 0}
+ .key-comparison{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0;gap:2px}
+ .masthead .key-comparison #original-key-reference{font:400 10px/12px system-ui,sans-serif;white-space:nowrap;align-self:flex-start;pointer-events:none;margin-inline-start:0;color:#53675d}
+ .masthead .key-comparison #key{min-height:44px;height:44px;flex-direction:row;gap:4px;padding:0 6px}
  .current-key-label{font:400 10px/1 system-ui,sans-serif;color:#53675d}
  .masthead .key-comparison #key-name{font-size:18px;line-height:22px}
  .masthead .key-comparison #key-signature{font-size:14px;line-height:22px}
@@ -676,11 +667,9 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
   .score-heading{grid-template-columns:minmax(0,1fr) auto;gap:4px}
   .score-heading .score-actions{gap:2px}
   #score-source{max-width:100px;text-align:right;font-size:10px}
-  .score-actions > #score-tap-zones{flex-basis:44px;width:44px}
-  #score-tap-zones svg{width:22px;height:22px}
   .masthead .key-comparison #key-name{font-size:15px}
   .masthead .key-comparison #key{gap:2px;padding-inline:2px}
-  .masthead .key-comparison #original-key-reference{margin-inline-start:2px}
+  .masthead .key-comparison #original-key-reference{margin-inline-start:0}
   .current-key-label{font-size:9px}
  }
  @media(max-width:360px){#score-source{max-width:76px}.masthead .key-comparison #key-name{font-size:14px}.masthead .key-comparison #key-signature{font-size:11px}.masthead .key-comparison #key{gap:1px}}
@@ -688,14 +677,13 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #score-tap-overlay{position:fixed;margin:0;padding:0;border:0;border-radius:4px;max-width:none;max-height:none;overflow:hidden;background:#eef4f8dd;color:#233331;box-shadow:none;touch-action:manipulation}
 #score-tap-overlay::backdrop{background:transparent;backdrop-filter:none}
 .score-tap-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:var(--tap-upper) 1fr;height:100%;pointer-events:none}
-.score-tap-grid>span{display:flex;align-items:center;justify-content:center;border:1px solid #536B7A;background:#e6eff3aa;font-size:clamp(16px,3vw,24px)}
+.score-tap-grid>span{display:flex;align-items:center;justify-content:center;border:1px solid #536B7A;background:#e6eff3aa;text-align:center;padding:4px 8px;min-height:0;font-size:clamp(16px,3vw,24px)}
 .score-tap-grid>span:nth-child(-n+2){background:#f4eddaaa}
 #dismiss-score-taps{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);min-height:44px;max-width:95%;white-space:nowrap;font-size:12px;border:1px solid #536B7A;border-radius:8px;padding:6px 12px;color:#233331;background:white}
 @media print{#score-tap-overlay{display:none!important}}
 
 @media screen and (max-width:600px){#score-source{font-size:0;max-width:100px}#score-source::after{content:attr(data-compact);font-size:10px}}
 
-.tap-zone-diagram{height:240px;grid-template-rows:var(--tap-upper,25%) 1fr}.tap-zone-diagram>div{min-height:0}
 
 /* Library: one sticky block keeps search, filters and columns aligned at every size. */
 #library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:minmax(0,1fr) 44px 44px}

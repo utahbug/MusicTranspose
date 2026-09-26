@@ -14,8 +14,8 @@ export function scoreTapAction(x,y,r=scoreTapGeometry()){
  return upper?(left?-Infinity:Infinity):(left?-1:1);
 }
 export function installScoreTaps({enabled,navigate}){
- const host=$('playing-view'),overlay=$('score-tap-overlay'),opener=$('score-tap-zones');
- let gesture=null,timer=0;
+ const host=$('playing-view');
+ let gesture=null;
  const cancel=()=>{gesture=null;};
  const safe=e=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden])')&&e.target instanceof Element&&!e.target.closest(interactive);
  // One pointer stream for both mouse and touch. No touchend/click navigation,
@@ -35,19 +35,5 @@ export function installScoreTaps({enabled,navigate}){
  // Opening/closing controls or replacing a score invalidates any in-flight tap.
  new MutationObserver(cancel).observe($('score'),{childList:true,attributes:true,attributeFilter:['aria-busy']});
  new MutationObserver(cancel).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open','hidden']});
- const close=()=>{clearTimeout(timer);cancel();if(overlay.open)overlay.close();};
- opener.addEventListener('click',()=>{
-  cancel();if(overlay.open){close();return;}
-  const r=scoreTapGeometry();if(r.height<=0)return;
-  Object.assign(overlay.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});
-  overlay.style.setProperty('--tap-upper',r.upper*100+'%');
-  overlay.showModal();opener.setAttribute('aria-expanded','true');
-  timer=setTimeout(close,8000);
- });
- overlay.addEventListener('pointerdown',()=>clearTimeout(timer));
- overlay.addEventListener('click',close);
- overlay.addEventListener('close',()=>{clearTimeout(timer);cancel();opener.setAttribute('aria-expanded','false');opener.focus({preventScroll:true});});
- for(const event of ['resize','scroll','beforeprint'])window.addEventListener(event,close,{passive:true});
- for(const event of ['library-open','score-session-reset'])document.addEventListener(event,close);
  return cancel;
 }
