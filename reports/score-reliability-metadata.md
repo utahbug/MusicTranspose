@@ -24,7 +24,7 @@ The app is static: no compilation/build step exists. The actual production files
 
 New tests/score-reliability.mjs covers touch at 320x568, 390x844, 430x932, 844x390 and 820x1180; mouse at 1440x1000. All six passed. Tests exercise repeated Next/Previous/First/Last, the 25% boundary (35% must be Next), compatibility clicks, stale/canceled/multi-pointer/long gestures, control/dialog exclusion, correct source changes and original/current keys, overlay geometry/dismissal/timer, target sizes/overflow, Lyrics return, playback control exclusion, PDFs and continuous taps. Additional focused checks cover common interactive widgets, Settings diagram, functional Lead selection and offline navigation/guide after reload.
 
-Representative songs include The Nativity Song, Shepherd, Tell Me the Story of Jesus, The Morning Breaks (Priority #1), Children All over the World and I Will Follow God's Plan (Priority #2), plus the five-page Choose to Serve the Lord PDF.
+Representative songs include The Nativity Song, The Shepherd’s Carol, Follow the Prophet, The Morning Breaks (Priority #1), Children All over the World and I Will Follow God's Plan (Priority #2), plus the five-page Choose to Serve the Lord PDF.
 
 Existing regressions passed:
 
