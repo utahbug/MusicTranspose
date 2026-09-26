@@ -297,8 +297,8 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  body.page-navigation #score>.pdf-page-frame:not(.current-page){display:none}
  body.page-navigation #score>.pdf-page-frame.current-page{max-width:var(--pdf-page-fit,100%);margin:0 auto}
 }
-#return-start{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px);z-index:4;width:44px;height:44px;padding:0;background:#fff;color:#536B7A;box-shadow:0 1px 4px #0002}
-@media print{#return-start,.fun-settings{display:none!important}}
+.return-start{position:fixed;bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px);z-index:4;width:44px;height:44px;padding:0;background:#fff;color:#536B7A;box-shadow:0 1px 4px #0002}
+@media print{.return-start,.fun-settings{display:none!important}}
 .fun-settings{width:300px;background:var(--lyrics-bg);color:var(--lyrics-ink);padding:20px}
 .fun-settings label{display:flex;align-items:center;gap:12px;min-height:44px;font-size:15px}
 .fun-settings select{min-height:44px;min-width:64px;font:inherit;background:var(--lyrics-bg);color:var(--lyrics-ink)}
@@ -794,4 +794,13 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  .score-paper > #original-key-reference{position:absolute;left:12px;bottom:4px;margin:0;font:400 10px/12px system-ui,sans-serif;color:#677570;white-space:nowrap;pointer-events:none}
  body.mxl-page-navigation .score-paper{padding-bottom:22px}
  body:has(#score-tap-overlay[open]) #original-key-reference{visibility:hidden}
+}
+
+/* Continuous-only button clearance is viewport space, not score engraving. */
+:root{--return-clearance:60px}
+#return-start{right:max(12px,env(safe-area-inset-right,0px))}
+#return-start-left{left:max(12px,env(safe-area-inset-left,0px))}
+@media screen{
+ body.continuous-return-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px + var(--return-clearance))}
+ body.continuous-return-visible :is(#score,#source-credits,#original-key-reference){clip-path:inset(0 0 var(--return-clip,0px) 0)}
 }

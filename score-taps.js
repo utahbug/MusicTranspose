@@ -2,9 +2,13 @@
 // PDF keeps MusicTranspose's existing half-height boundary and page-mode behavior.
 const $=id=>document.getElementById(id);
 const interactive='button,a,input,select,textarea,label,summary,dialog,[role=button],[role=slider],[role=menu],[role=menuitem],[role=link],[role=checkbox],[role=radio],[role=switch],[role=tab],[role=combobox],[role=spinbutton],[role=textbox],[contenteditable],[tabindex],audio,video';
+export function scoreVisibleBottom(){
+ const clearance=document.body.classList.contains('continuous-return-visible')?parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--return-clearance'))||0:0;
+ return Math.min(innerHeight,document.querySelector('.masthead').getBoundingClientRect().top)-clearance;
+}
 export function scoreTapGeometry(){
  const r=$('score').getBoundingClientRect(),pdf=document.body.classList.contains('pdf-score-open');
- const bottom=Math.min(innerHeight,document.querySelector('.masthead').getBoundingClientRect().top);
+ const bottom=scoreVisibleBottom();
  const top=pdf?r.top:Math.max(0,r.top),height=pdf?r.height:Math.max(0,bottom-top-8);
  return {left:r.left,top,width:r.width,height,upper:pdf?.5:.25};
 }

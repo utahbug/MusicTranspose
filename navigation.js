@@ -1,4 +1,4 @@
-import {installScoreTaps} from './score-taps.js';
+import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
 const $=id=>document.getElementById(id),panel=$('settings-dialog');
@@ -57,14 +57,27 @@ for(const name of ['blur','resize','beforeprint'])window.addEventListener(name,(
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 new MutationObserver(()=>{pause();sync();}).observe($('score'),{childList:true,attributes:true,attributeFilter:['aria-busy']});
 // Clearance tracks one/two-row phone toolbars and the optional navigation strip.
-new ResizeObserver(()=>{const height=document.querySelector('.masthead').getBoundingClientRect().height;const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--playing-safe-bottom'))||0;document.documentElement.style.setProperty('--playing-bar-height',Math.max(54,height-safe)+'px');if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}}).observe(document.querySelector('.masthead'));
+new ResizeObserver(()=>{const height=document.querySelector('.masthead').getBoundingClientRect().height;const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--playing-safe-bottom'))||0;document.documentElement.style.setProperty('--playing-bar-height',Math.max(54,height-safe)+'px');syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}}).observe(document.querySelector('.masthead'));
 
 
 // Real PDF pages and complete-system virtual MXL pages share the same navigation.
 function pages(){return document.body.classList.contains('pdf-score-open')?[...$('score').querySelectorAll(':scope > .pdf-page-frame')]:virtualFrames();}
 function playing(){return !document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open');}
 function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bar=document.querySelector('.masthead').getBoundingClientRect().height;for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,innerHeight-bar-80)*ratio+'px');}}}
-function syncStart(){$('return-start').hidden=mode!=='continuous'||!playing()||scrollY<100;}
+function hideStart(){
+ for(const button of document.querySelectorAll('.return-start'))button.hidden=true;
+ document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
+}
+function syncStart(){
+ const visible=mode==='continuous'&&playing()&&scrollY>=100,pdf=document.body.classList.contains('pdf-score-open');
+ $('return-start').hidden=!visible;$('return-start-left').hidden=!visible||pdf;
+ // Preserve the existing PDF right-side shortcut; paired controls apply to MXL.
+ const entering=visible&&!pdf&&!document.body.classList.contains('continuous-return-visible'),atEnd=scrollY+innerHeight>=document.documentElement.scrollHeight-1;
+ document.body.classList.toggle('continuous-return-visible',visible&&!pdf);
+ if(entering&&atEnd)window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'});
+ if(visible&&!pdf){const bottom=scoreVisibleBottom();for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.setProperty('--return-clip',Math.max(0,e.getBoundingClientRect().bottom-bottom)+'px');}
+ else for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
+}
 function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  const input=panel.querySelector('input[value=pages]');input.disabled=!available;$('page-mode-choice').classList.toggle('unavailable',!available);
@@ -76,20 +89,21 @@ function syncPages(){
 }
 function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex);sync();window.scrollTo({top:0,behavior:'instant'});}
 // Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
-$('return-start').onclick=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
+const returnToStart=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
+for(const button of document.querySelectorAll('.return-start'))button.onclick=returnToStart;
 const cancelScoreTap=installScoreTaps({
  enabled:()=>playing()&&window.prototype?.ready&&!prototype.busy&&$('score').getAttribute('aria-busy')==='false'&&(!document.body.classList.contains('pdf-score-open')||mode==='pages'),
  navigate:delta=>{pause();if(mode==='pages'){turn(delta);return;}
   // In scrolling views keep the selected mode; tap one screen with reading overlap.
-  const r=$('score').getBoundingClientRect(),bottom=document.querySelector('.masthead').getBoundingClientRect().top;
+  const r=$('score').getBoundingClientRect(),bottom=scoreVisibleBottom();
   window.scrollTo({top:delta===-Infinity?0:delta===Infinity?document.documentElement.scrollHeight:scrollY+delta*Math.max(1,bottom-Math.max(0,r.top))*.85,behavior:'instant'});
  }
 });
-window.addEventListener('scroll',syncStart,{passive:true});
+let startFrame=0;window.addEventListener('scroll',()=>{if(!startFrame)startFrame=requestAnimationFrame(()=>{startFrame=0;syncStart();});},{passive:true});
 let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();},180);});
 document.addEventListener('score-session-reset',()=>{resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
 $('pdf-trim').addEventListener('change',fitPage);
-document.addEventListener('library-open',()=>{pause();cancelScoreTap();pageIndex=0;$('return-start').hidden=true;});
+document.addEventListener('library-open',()=>{pause();cancelScoreTap();pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();
