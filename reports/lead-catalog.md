@@ -1,10 +1,10 @@
-# Lead catalog diagnostics - Phase 2B
+# Lead catalog diagnostics - Phase 2C
 
-679 structured scores: 243 supported, 436 safe fallbacks. Prior 203 unchanged; 40 Hymns added. See [Phase 2B report](lead-phase2b.md).
+679 structured scores: 244 supported, 435 safe fallbacks. Previous 243 unchanged; one justified same-voice connector added. See [Phase 2C report](lead-phase2c.md).
 
-## Supported (243)
+## Supported (244)
 
-| Song | Collection / page | Before Phase 2B | Current status | Stable ID |
+| Song | Collection / page | Before Phase 2C | Current status | Stable ID |
 |---|---|---|---|---|
 | Silent Night | Hymns (1985) / 204 | supported | supported | silent-night |
 | When I Am Baptized | Hymns for Home and Church / 1054 | supported | supported | hhc-1054 |
@@ -22,8 +22,8 @@
 | What Glorious Scenes Mine Eyes Behold | Hymns (1985) / 16 | supported | supported | song-bd206239-35ce-4c12-8862-8959adeb3954 |
 | The Voice of God Again Is Heard | Hymns (1985) / 18 | supported | supported | song-c2dba2c7-1ab3-4fb9-b955-f62d2174e06e |
 | God of Power, God of Right | Hymns (1985) / 20 | supported | supported | song-fc9d4e1e-780d-46db-b964-4bcf8951c99a |
-| We Listen to a Prophet’s Voice | Hymns (1985) / 22 | hymn-notation | supported | song-1e98ccb4-2e1f-4c52-9cd1-221913b8406b |
-| We Ever Pray for Thee | Hymns (1985) / 23 | hymn-notation | supported | song-30840d58-5d17-4bd8-933d-c28b91f4671e |
+| We Listen to a Prophet’s Voice | Hymns (1985) / 22 | supported | supported | song-1e98ccb4-2e1f-4c52-9cd1-221913b8406b |
+| We Ever Pray for Thee | Hymns (1985) / 23 | supported | supported | song-30840d58-5d17-4bd8-933d-c28b91f4671e |
 | God Bless Our Prophet Dear | Hymns (1985) / 24 | supported | supported | song-8923c903-61e1-44fe-b027-ec2f9ad4e53c |
 | Praise to the Man | Hymns (1985) / 27 | supported | supported | song-0244093d-d300-481a-bd08-b42e9641de47 |
 | A Poor Wayfaring Man of Grief | Hymns (1985) / 29 | supported | supported | song-ddbda143-e5df-412f-9a3d-58b91c576b1e |
@@ -34,10 +34,10 @@
 | They, the Builders of the Nation | Hymns (1985) / 36 | supported | supported | song-a6ca356e-b247-4919-a00a-1b3d10e9970e |
 | Come, All Ye Saints of Zion | Hymns (1985) / 38 | supported | supported | song-3058c978-9bad-4430-b0d3-543942db62b1 |
 | O Saints of Zion | Hymns (1985) / 39 | supported | supported | song-83805d97-c626-4ce1-8381-0f449ebd96d6 |
-| Arise, O Glorious Zion | Hymns (1985) / 40 | hymn-notation | supported | song-c69c52a5-22e9-48fc-8cb4-456926d98e3f |
+| Arise, O Glorious Zion | Hymns (1985) / 40 | supported | supported | song-c69c52a5-22e9-48fc-8cb4-456926d98e3f |
 | Let Zion in Her Beauty Rise | Hymns (1985) / 41 | supported | supported | song-3a21a9c9-9fcc-4f90-8f62-3c29c6475940 |
 | Hail to the Brightness of Zion’s Glad Morning! | Hymns (1985) / 42 | supported | supported | song-d3736eb5-55f8-4103-94fb-e08850bc669b |
-| Zion Stands with Hills Surrounded | Hymns (1985) / 43 | hymn-notation | supported | song-cc756c07-4000-4b4c-bc2e-18915ff8d8f9 |
+| Zion Stands with Hills Surrounded | Hymns (1985) / 43 | supported | supported | song-cc756c07-4000-4b4c-bc2e-18915ff8d8f9 |
 | Lead Me into Life Eternal | Hymns (1985) / 45 | supported | supported | song-fdf2b901-7ffb-4a7c-8394-43fd5ebea900 |
 | We Will Sing of Zion | Hymns (1985) / 47 | supported | supported | song-feb0636c-31af-4d69-873c-6db4bcb3e402 |
 | Adam-ondi-Ahman | Hymns (1985) / 49 | supported | supported | song-227dc125-afcd-4640-b3e7-5cfbe54dbcf7 |
@@ -48,10 +48,10 @@
 | Come, Ye Children of the Lord | Hymns (1985) / 58 | supported | supported | song-1c58db63-7ae0-4300-b271-9c472224d5cf |
 | Battle Hymn of the Republic | Hymns (1985) / 60 | supported | supported | song-f1f1c444-22ec-4703-a7ee-1f04d2bda224 |
 | Raise Your Voices to the Lord | Hymns (1985) / 61 | supported | supported | song-35c1d33c-fa24-4097-8b5f-dc9769654270 |
-| All Creatures of Our God and King | Hymns (1985) / 62 | hymn-notation | supported | song-93dfb488-c85f-4028-ab09-127470312f80 |
+| All Creatures of Our God and King | Hymns (1985) / 62 | supported | supported | song-93dfb488-c85f-4028-ab09-127470312f80 |
 | Great King of Heaven | Hymns (1985) / 63 | supported | supported | song-d4882737-c8ee-4d56-a9de-03285da10a68 |
 | Come, All Ye Saints Who Dwell on Earth | Hymns (1985) / 65 | supported | supported | song-d9056915-c14f-4fdb-bc3c-0fa5208a4c64 |
-| All Glory, Laud, and Honor | Hymns (1985) / 69 | hymn-notation | supported | song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22 |
+| All Glory, Laud, and Honor | Hymns (1985) / 69 | supported | supported | song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22 |
 | With Songs of Praise | Hymns (1985) / 71 | supported | supported | song-1b47066a-3316-48d8-8645-579371be37ca |
 | Praise to the Lord, the Almighty | Hymns (1985) / 72 | supported | supported | song-074060f8-de63-439b-97aa-3532a95ac2ff |
 | Praise the Lord with Heart and Voice | Hymns (1985) / 73 | supported | supported | song-3a815a03-f756-4846-893b-426459b114e1 |
@@ -80,45 +80,46 @@
 | God Speed the Right | Hymns (1985) / 106 | supported | supported | song-a4cd3587-5ed6-49b3-8997-511f3320a724 |
 | Lord, Accept Our True Devotion | Hymns (1985) / 107 | supported | supported | song-df3fbc2c-aa62-47e9-9479-97806f1da60f |
 | The Lord My Pasture Will Prepare | Hymns (1985) / 109 | supported | supported | song-16e918cc-7f28-4245-94a0-7b3c6130289a |
-| Cast Thy Burden upon the Lord | Hymns (1985) / 110 | hymn-notation | supported | song-07309f2c-ff75-4f28-8132-0a3820284b8a |
+| Cast Thy Burden upon the Lord | Hymns (1985) / 110 | supported | supported | song-07309f2c-ff75-4f28-8132-0a3820284b8a |
 | Rock of Ages | Hymns (1985) / 111 | supported | supported | song-3e6851de-71d8-4c7f-b8a6-2d4430ab14d0 |
 | Savior, Redeemer of My Soul | Hymns (1985) / 112 | supported | supported | song-4a03fe87-60f1-4aff-a6f1-1cbb2134dc8f |
 | Come unto Him | Hymns (1985) / 114 | supported | supported | song-25f1610b-9af9-4a10-a248-9eeb0dddd728 |
-| Come, Ye Disconsolate | Hymns (1985) / 115 | hymn-notation | supported | song-f16ad9c5-0f1c-4829-a588-69a6898ac86b |
+| Come, Ye Disconsolate | Hymns (1985) / 115 | supported | supported | song-f16ad9c5-0f1c-4829-a588-69a6898ac86b |
 | Come, Follow Me | Hymns (1985) / 116 | supported | supported | song-f603bb13-3881-43c0-9d98-333568a2e757 |
 | Ye Simple Souls Who Stray | Hymns (1985) / 118 | supported | supported | song-44c2d21e-c24c-4e9e-8eef-bd4336712d25 |
 | Lean on My Ample Arm | Hymns (1985) / 120 | supported | supported | song-18bca7ba-c893-4ab3-b780-988a271b95f4 |
 | I’m a Pilgrim, I’m a Stranger | Hymns (1985) / 121 | supported | supported | song-3537dbd2-afda-48ea-a9a8-5f647b712ad5 |
+| Though Deepening Trials | Hymns (1985) / 122 | hymn-notation | supported | song-af8cc3c9-0ae1-4878-9a60-9c5a37a19918 |
 | Oh, May My Soul Commune with Thee | Hymns (1985) / 123 | supported | supported | song-1cc93307-4486-4c99-b32b-013eaddf8d79 |
 | Does the Journey Seem Long? | Hymns (1985) / 127 | supported | supported | song-1e4ccb84-3de4-4ed7-9157-e61ef70e76fb |
-| When Faith Endures | Hymns (1985) / 128 | hymn-notation | supported | song-58520545-1525-4e0f-abb1-bf74e9f97863 |
+| When Faith Endures | Hymns (1985) / 128 | supported | supported | song-58520545-1525-4e0f-abb1-bf74e9f97863 |
 | Be Thou Humble | Hymns (1985) / 130 | supported | supported | song-5c566362-6161-406e-aa61-c9f115e778bc |
-| More Holiness Give Me | Hymns (1985) / 131 | hymn-notation | supported | song-0db210da-7549-4377-adf7-9cf11bdd8356 |
+| More Holiness Give Me | Hymns (1985) / 131 | supported | supported | song-0db210da-7549-4377-adf7-9cf11bdd8356 |
 | God Is in His Holy Temple | Hymns (1985) / 132 | supported | supported | song-3718f056-0eeb-459e-b03b-9455f7165edd |
-| I Believe in Christ | Hymns (1985) / 134 | hymn-notation | supported | song-382cbc91-e68b-4945-b1c2-3ade4f9aeacf |
-| My Redeemer Lives | Hymns (1985) / 135 | hymn-notation | supported | song-799da58b-def1-4487-9d63-88453408fb44 |
+| I Believe in Christ | Hymns (1985) / 134 | supported | supported | song-382cbc91-e68b-4945-b1c2-3ade4f9aeacf |
+| My Redeemer Lives | Hymns (1985) / 135 | supported | supported | song-799da58b-def1-4487-9d63-88453408fb44 |
 | Testimony | Hymns (1985) / 137 | supported | supported | song-136ed484-94e2-4484-8ad2-9f5710dc74ce |
 | Bless Our Fast, We Pray | Hymns (1985) / 138 | supported | supported | song-15580063-2fdb-4449-a5fc-48b0d74d84fa |
 | In Fasting We Approach Thee | Hymns (1985) / 139 | supported | supported | song-d825ccb7-4b12-46c1-adf7-827b256fcb8b |
 | Did You Think to Pray? | Hymns (1985) / 140 | supported | supported | song-f95d20b9-85e1-4867-baf4-de8f61e9ad24 |
 | Jesus, the Very Thought of Thee | Hymns (1985) / 141 | supported | supported | song-bed74172-dcd0-452f-ad71-f50bed6396df |
-| Sweet Hour of Prayer | Hymns (1985) / 142 | hymn-notation | supported | song-8f14b472-7feb-4ab0-8bc3-73587e9009df |
+| Sweet Hour of Prayer | Hymns (1985) / 142 | supported | supported | song-8f14b472-7feb-4ab0-8bc3-73587e9009df |
 | Let the Holy Spirit Guide | Hymns (1985) / 143 | supported | supported | song-61fd2221-1cdd-4463-a6e1-8954882f29b6 |
 | Prayer Is the Soul’s Sincere Desire | Hymns (1985) / 145 | supported | supported | song-2a8dce03-f1ae-4c0e-9557-9ce18a86d1e4 |
-| Sweet Is the Work | Hymns (1985) / 147 | hymn-notation | supported | song-996b318c-6edc-469d-9106-400442e2bb87 |
+| Sweet Is the Work | Hymns (1985) / 147 | supported | supported | song-996b318c-6edc-469d-9106-400442e2bb87 |
 | Sabbath Day | Hymns (1985) / 148 | supported | supported | song-407bf084-d7d4-4242-b2d4-8c1130f34da9 |
 | O Thou Kind and Gracious Father | Hymns (1985) / 150 | supported | supported | song-09d85576-1d34-4fc7-941a-716c41442cc3 |
 | We Meet, Dear Lord | Hymns (1985) / 151 | supported | supported | song-f3cd8413-290b-4feb-b2df-d1e39df4ec91 |
 | Father, This Hour Has Been One of Joy | Hymns (1985) / 154 | supported | supported | song-eff4a86d-ff65-4bcf-b614-71e2c31269b9 |
 | We Have Partaken of Thy Love | Hymns (1985) / 155 | supported | supported | song-55febf0b-26b2-4327-a640-a6401b65ce62 |
-| Sing We Now at Parting | Hymns (1985) / 156 | hymn-notation | supported | song-5aa7afaf-7501-4906-be60-d74529e814c9 |
+| Sing We Now at Parting | Hymns (1985) / 156 | supported | supported | song-5aa7afaf-7501-4906-be60-d74529e814c9 |
 | Thy Spirit, Lord, Has Stirred Our Souls | Hymns (1985) / 157 | supported | supported | song-3b0b2c47-c196-46d5-ac54-204ac0da91e3 |
 | Now the Day Is Over | Hymns (1985) / 159 | supported | supported | song-85ec02ed-7df1-425c-a214-483639e78fad |
-| Softly Now the Light of Day | Hymns (1985) / 160 | hymn-notation | supported | song-b2cbfc3e-9a20-48e6-b072-88496c5c932c |
+| Softly Now the Light of Day | Hymns (1985) / 160 | supported | supported | song-b2cbfc3e-9a20-48e6-b072-88496c5c932c |
 | The Lord Be with Us | Hymns (1985) / 161 | supported | supported | song-c6810178-0f12-4db6-833a-fd402902f3c5 |
 | Great God, to Thee My Evening Song | Hymns (1985) / 164 | supported | supported | song-43d20025-1500-4661-ba0d-15a2a3b6b190 |
 | Abide with Me; ’Tis Eventide | Hymns (1985) / 165 | supported | supported | song-a7939082-9b28-46e5-9738-b91a94d606de |
-| Abide with Me! | Hymns (1985) / 166 | hymn-notation | supported | song-082dec32-d317-42cd-86da-a44af8647d83 |
+| Abide with Me! | Hymns (1985) / 166 | supported | supported | song-082dec32-d317-42cd-86da-a44af8647d83 |
 | Come, Let Us Sing an Evening Hymn | Hymns (1985) / 167 | supported | supported | song-28aa9c01-91bf-42e3-a0e7-84ca29d72bd5 |
 | As the Shadows Fall | Hymns (1985) / 168 | supported | supported | song-67932407-2f82-46a3-80d1-94a4b873e3a2 |
 | As Now We Take the Sacrament | Hymns (1985) / 169 | supported | supported | song-9b6801af-10d6-4840-876a-56b8c52d2a8e |
@@ -133,28 +134,28 @@
 | Father in Heaven, We Do Believe | Hymns (1985) / 180 | supported | supported | song-7960a3a2-6bbe-434a-9f8f-b9e058ea6bfe |
 | Jesus of Nazareth, Savior and King | Hymns (1985) / 181 | supported | supported | song-7f35443e-000c-4aa3-ad43-bd434d8a1599 |
 | We’ll Sing All Hail to Jesus’ Name | Hymns (1985) / 182 | supported | supported | song-e7d28bd6-859b-47ed-9404-1b7980d69159 |
-| God Loved Us, So He Sent His Son | Hymns (1985) / 187 | hymn-notation | supported | song-0b39caae-1bee-4933-8309-1a366f120ea0 |
+| God Loved Us, So He Sent His Son | Hymns (1985) / 187 | supported | supported | song-0b39caae-1bee-4933-8309-1a366f120ea0 |
 | Thy Will, O Lord, Be Done | Hymns (1985) / 188 | supported | supported | song-5a2b2f3b-b58d-47a7-a999-a30b8dd6db59 |
 | O Thou, Before the World Began | Hymns (1985) / 189 | supported | supported | song-5c2ab76f-d95b-47b2-8d43-b13cf1731b4c |
 | In Memory of the Crucified | Hymns (1985) / 190 | supported | supported | song-44d1fc5b-6cca-4c61-8cad-698f05accbed |
 | Behold the Great Redeemer Die | Hymns (1985) / 191 | supported | supported | song-d62fc11a-4646-4563-a34b-896ed923a44b |
 | He Died! The Great Redeemer Died | Hymns (1985) / 192 | supported | supported | song-6d5c2f83-8c10-45a1-b6bd-51d1ea3be044 |
-| There Is a Green Hill Far Away | Hymns (1985) / 194 | hymn-notation | supported | song-f76de71c-a9f3-4b94-81f5-7e55ff447f94 |
+| There Is a Green Hill Far Away | Hymns (1985) / 194 | supported | supported | song-f76de71c-a9f3-4b94-81f5-7e55ff447f94 |
 | Jesus, Once of Humble Birth | Hymns (1985) / 196 | supported | supported | song-d112df90-a0be-48a5-9310-75d6796aca61 |
 | That Easter Morn | Hymns (1985) / 198 | supported | supported | song-98cbb293-33a5-4fcd-9fd9-4dc668ff7bb3 |
-| He Is Risen! | Hymns (1985) / 199 | hymn-notation | supported | song-5e5bc70a-2e08-4411-999d-628bf6079d88 |
+| He Is Risen! | Hymns (1985) / 199 | supported | supported | song-5e5bc70a-2e08-4411-999d-628bf6079d88 |
 | Once in Royal David’s City | Hymns (1985) / 205 | supported | supported | song-e0466d19-0b02-43a0-a730-6bbb9bf06ed5 |
-| Away in a Manger | Hymns (1985) / 206 | hymn-notation | supported | song-fafcb319-245b-4305-b2f1-f97fad331d5e |
+| Away in a Manger | Hymns (1985) / 206 | supported | supported | song-fafcb319-245b-4305-b2f1-f97fad331d5e |
 | O Little Town of Bethlehem | Hymns (1985) / 208 | supported | supported | song-971ceab4-9411-4127-8118-db8dd12e1816 |
-| While Shepherds Watched Their Flocks | Hymns (1985) / 211 | hymn-notation | supported | song-e9b41466-3dfd-4d38-8c29-7723246ec090 |
+| While Shepherds Watched Their Flocks | Hymns (1985) / 211 | supported | supported | song-e9b41466-3dfd-4d38-8c29-7723246ec090 |
 | I Heard the Bells on Christmas Day | Hymns (1985) / 214 | supported | supported | song-0cb749cd-a76b-4468-874d-5db8248e25ec |
 | Ring Out, Wild Bells | Hymns (1985) / 215 | supported | supported | song-a5d8ad72-20f6-4adb-86ad-1ca300b93804 |
-| We Are Sowing | Hymns (1985) / 216 | hymn-notation | supported | song-edae2ad8-a4c0-4132-935c-8895ee40b381 |
+| We Are Sowing | Hymns (1985) / 216 | supported | supported | song-edae2ad8-a4c0-4132-935c-8895ee40b381 |
 | Come, Let Us Anew | Hymns (1985) / 217 | supported | supported | song-f29c2c26-210a-4810-86c9-16b1f7d52118 |
 | We Give Thee But Thine Own | Hymns (1985) / 218 | supported | supported | song-851c75bb-54b3-4b76-b678-38c856d0d879 |
-| Dear to the Heart of the Shepherd | Hymns (1985) / 221 | hymn-notation | supported | song-c9add785-5429-47ec-bf7d-afc5581a87d6 |
+| Dear to the Heart of the Shepherd | Hymns (1985) / 221 | supported | supported | song-c9add785-5429-47ec-bf7d-afc5581a87d6 |
 | Hear Thou Our Hymn, O Lord | Hymns (1985) / 222 | supported | supported | song-b82e980c-4b96-42bd-813a-8e700ea468f5 |
-| Have I Done Any Good? | Hymns (1985) / 223 | hymn-notation | supported | song-138d4697-d2d9-414a-885c-82b760f1f371 |
+| Have I Done Any Good? | Hymns (1985) / 223 | supported | supported | song-138d4697-d2d9-414a-885c-82b760f1f371 |
 | I Have Work Enough to Do | Hymns (1985) / 224 | supported | supported | song-7bd903aa-341b-4d81-bc43-a16424ab1800 |
 | Improve the Shining Moments | Hymns (1985) / 226 | supported | supported | song-d0fcb69f-564a-4f27-951d-c08fc1a468e9 |
 | There Is Sunshine in My Soul Today | Hymns (1985) / 227 | supported | supported | song-6b45d05c-f74c-4d69-a12a-40069311541a |
@@ -176,47 +177,47 @@
 | Like Ten Thousand Legions Marching | Hymns (1985) / 253 | supported | supported | song-bbb8e898-903e-41ed-98d0-3e7cd5ff33fe |
 | Rejoice! A Glorious Sound Is Heard | Hymns (1985) / 257 | supported | supported | song-550fb578-d377-4dc9-bb00-9e9639a49c71 |
 | O Thou Rock of Our Salvation | Hymns (1985) / 258 | supported | supported | song-c2019d89-bd53-4f00-a653-d863b711aa15 |
-| Hope of Israel | Hymns (1985) / 259 | hymn-notation | supported | song-9e9db675-111d-48ee-91ed-23dd17b35d0d |
+| Hope of Israel | Hymns (1985) / 259 | supported | supported | song-9e9db675-111d-48ee-91ed-23dd17b35d0d |
 | Go, Ye Messengers of Glory | Hymns (1985) / 262 | supported | supported | song-5da6b83a-d1e1-452a-a50d-950d320260b2 |
-| Go Forth with Faith | Hymns (1985) / 263 | hymn-notation | supported | song-52bb81df-191d-4f69-9e80-6c003b5260cd |
+| Go Forth with Faith | Hymns (1985) / 263 | supported | supported | song-52bb81df-191d-4f69-9e80-6c003b5260cd |
 | Hark, All Ye Nations! | Hymns (1985) / 264 | supported | supported | song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb |
 | Arise, O God, and Shine | Hymns (1985) / 265 | supported | supported | song-c6123147-4784-40ce-b463-c4282a445eb9 |
 | How Wondrous and Great | Hymns (1985) / 267 | supported | supported | song-5847f4b8-6bab-4477-abb9-048d4bf80fdb |
-| Come, All Whose Souls Are Lighted | Hymns (1985) / 268 | hymn-notation | supported | song-e4ed1590-1b82-45da-b562-ffad9b124282 |
+| Come, All Whose Souls Are Lighted | Hymns (1985) / 268 | supported | supported | song-e4ed1590-1b82-45da-b562-ffad9b124282 |
 | Jehovah, Lord of Heaven and Earth | Hymns (1985) / 269 | supported | supported | song-7c922983-6513-4e23-9177-87fed5d1c786 |
 | Oh, Holy Words of Truth and Love | Hymns (1985) / 271 | supported | supported | song-af2e3f69-c0f9-4f65-9333-d8aca67ebdfc |
 | Oh Say, What Is Truth? | Hymns (1985) / 272 | supported | supported | song-c6a64145-1133-4688-8009-e1619839194d |
-| The Iron Rod | Hymns (1985) / 274 | hymn-notation | supported | song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0 |
+| The Iron Rod | Hymns (1985) / 274 | supported | supported | song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0 |
 | Men Are That They Might Have Joy | Hymns (1985) / 275 | supported | supported | song-ca897b7e-edc4-4afb-b834-b86f1cfb960f |
 | As I Search the Holy Scriptures | Hymns (1985) / 277 | supported | supported | song-4597aa28-e4f1-4060-8f51-e8374865a3ef |
 | Thanks for the Sabbath School | Hymns (1985) / 278 | supported | supported | song-127eea0f-8f0f-436a-996d-e0d381ad173f |
 | Thy Holy Word | Hymns (1985) / 279 | supported | supported | song-6ac17760-c92c-4964-a01a-c9a7a26521c6 |
-| Welcome, Welcome, Sabbath Morning | Hymns (1985) / 280 | hymn-notation | supported | song-00c582e3-baa8-410b-940c-9fd52aa166a9 |
+| Welcome, Welcome, Sabbath Morning | Hymns (1985) / 280 | supported | supported | song-00c582e3-baa8-410b-940c-9fd52aa166a9 |
 | Help Me Teach with Inspiration | Hymns (1985) / 281 | supported | supported | song-27f07185-eeeb-4ab8-a3d7-a1d3d9b923d7 |
 | We Meet Again in Sabbath School | Hymns (1985) / 282 | supported | supported | song-8182bd34-06bc-4948-8549-1fa8c8ae7ced |
-| The Glorious Gospel Light Has Shone | Hymns (1985) / 283 | hymn-notation | supported | song-07d3c84d-19f0-4fdd-8473-e5240ce09e9b |
+| The Glorious Gospel Light Has Shone | Hymns (1985) / 283 | supported | supported | song-07d3c84d-19f0-4fdd-8473-e5240ce09e9b |
 | God Moves in a Mysterious Way | Hymns (1985) / 285 | supported | supported | song-3a137ead-fbe7-46fb-b00d-74fcb4473424 |
 | Oh, What Songs of the Heart | Hymns (1985) / 286 | supported | supported | song-9658fc70-34ec-41a0-97b2-06bd052d842f |
-| Rise, Ye Saints, and Temples Enter | Hymns (1985) / 287 | hymn-notation | supported | song-867279ef-afe3-493f-a894-09131e17fb12 |
+| Rise, Ye Saints, and Temples Enter | Hymns (1985) / 287 | supported | supported | song-867279ef-afe3-493f-a894-09131e17fb12 |
 | How Beautiful Thy Temples, Lord | Hymns (1985) / 288 | supported | supported | song-7193f145-5d8c-4e0b-9963-2dec42ce3237 |
 | Holy Temples on Mount Zion | Hymns (1985) / 289 | supported | supported | song-46c851eb-32c2-49d7-9b0d-3276df8c83e2 |
 | Rejoice, Ye Saints of Latter Days | Hymns (1985) / 290 | supported | supported | song-696b206a-44c1-4d87-9619-29b0c8613c7a |
 | O My Father | Hymns (1985) / 292 | supported | supported | song-b61a15f7-c918-4320-9a79-03eef62b9f62 |
 | Each Life That Touches Ours for Good | Hymns (1985) / 293 | supported | supported | song-0ee49c88-a255-46aa-846b-eca80c0d1056 |
-| O Love That Glorifies the Son | Hymns (1985) / 295 | hymn-notation | supported | song-f119e442-cf72-43d4-8621-d208ec445397 |
-| Our Father, by Whose Name | Hymns (1985) / 296 | hymn-notation | supported | song-8aafccd0-12a9-4d8a-a2a2-15810fabb0a4 |
-| From Homes of Saints Glad Songs Arise | Hymns (1985) / 297 | hymn-notation | supported | song-5c596b17-dfb4-4993-9557-f92edda38b49 |
-| Home Can Be a Heaven on Earth | Hymns (1985) / 298 | hymn-notation | supported | song-76322083-0fe9-410e-aa73-e16acf321ca9 |
+| O Love That Glorifies the Son | Hymns (1985) / 295 | supported | supported | song-f119e442-cf72-43d4-8621-d208ec445397 |
+| Our Father, by Whose Name | Hymns (1985) / 296 | supported | supported | song-8aafccd0-12a9-4d8a-a2a2-15810fabb0a4 |
+| From Homes of Saints Glad Songs Arise | Hymns (1985) / 297 | supported | supported | song-5c596b17-dfb4-4993-9557-f92edda38b49 |
+| Home Can Be a Heaven on Earth | Hymns (1985) / 298 | supported | supported | song-76322083-0fe9-410e-aa73-e16acf321ca9 |
 | I Am a Child of God | Hymns (1985) / 301 | supported | supported | song-7076bf3f-727e-4280-90f1-60faf9796937 |
 | Keep the Commandments | Hymns (1985) / 303 | supported | supported | song-4a701cbd-1db3-463c-babd-4e2714b55713 |
-| The Light Divine | Hymns (1985) / 305 | hymn-notation | supported | song-7ffc2a79-7ac6-4a84-ace8-ff99f47faa00 |
+| The Light Divine | Hymns (1985) / 305 | supported | supported | song-7ffc2a79-7ac6-4a84-ace8-ff99f47faa00 |
 | God’s Daily Care | Hymns (1985) / 306 | supported | supported | song-3c43fab0-0fef-4e0f-a4d7-5f0eec562b92 |
-| In Our Lovely Deseret | Hymns (1985) / 307 | hymn-notation | supported | song-af85e05e-8681-406e-a412-22338e4fd595 |
+| In Our Lovely Deseret | Hymns (1985) / 307 | supported | supported | song-af85e05e-8681-406e-a412-22338e4fd595 |
 | As Sisters in Zion | Hymns (1985) / 309 | supported | supported | song-74bac8a9-6455-4706-8fc8-2be43e51eab3 |
-| A Key Was Turned in Latter Days | Hymns (1985) / 310 | hymn-notation | supported | song-c0a8cbd7-2188-43d3-9840-19faa722e6ca |
+| A Key Was Turned in Latter Days | Hymns (1985) / 310 | supported | supported | song-c0a8cbd7-2188-43d3-9840-19faa722e6ca |
 | We Meet Again as Sisters | Hymns (1985) / 311 | supported | supported | song-89b00dd7-73b9-42f3-9065-e743962094d2 |
 | Ye Who Are Called to Labor | Hymns (1985) / 321 | supported | supported | song-d5b6a45a-c463-41fc-bda3-192d8c384d5f |
-| Come, All Ye Sons of God | Hymns (1985) / 322 | hymn-notation | supported | song-83d1a9d7-b2c9-47c3-b5c7-3f3dcf881a33 |
+| Come, All Ye Sons of God | Hymns (1985) / 322 | supported | supported | song-83d1a9d7-b2c9-47c3-b5c7-3f3dcf881a33 |
 | Rise Up, O Men of God | Hymns (1985) / 324 | supported | supported | song-dc5448e4-122e-455e-828e-c6056f664c12 |
 | America the Beautiful | Hymns (1985) / 338 | supported | supported | song-49b12b3e-0ca7-4364-bc94-0ff16d27ef18 |
 | Thanks to Our Father | Children’s Songbook / 20b | supported | supported | song-fa7942d7-bf4c-4b89-ad43-f3fcdec88975 |
@@ -250,9 +251,9 @@
 | Healthy, Wealthy, and Wise | Children’s Songbook / 280 | supported | supported | song-aec87112-47f1-4b3b-83f6-464d0e9930aa |
 | You’ve Had a Birthday | Children’s Songbook / 285 | supported | supported | song-527daed2-ac88-4587-bc7a-09b28bf6cd3a |
 
-## Remaining fallbacks (436)
+## Remaining fallbacks (435)
 
-| Song | Collection / page | Before Phase 2B | Current status | Stable ID |
+| Song | Collection / page | Before Phase 2C | Current status | Stable ID |
 |---|---|---|---|---|
 | The Nativity Song | Children’s Songbook / 52 | multiple-lyrics | multiple-lyrics | nativity |
 | The Shepherd’s Carol | Children’s Songbook / 40b | outside-cues | outside-cues | shepherd |
@@ -384,12 +385,12 @@
 | The Happy Day at Last Has Come | Hymns (1985) / 32 | hymn-annotations | hymn-annotations | song-cbd1bb83-a645-46fe-aa1b-e36954956a2b |
 | The Wintry Day, Descending to Its Close | Hymns (1985) / 37 | hymn-notation | hymn-notation | song-9ff39fb5-5f6d-46cf-bfc6-78c782cc205f |
 | Beautiful Zion, Built Above | Hymns (1985) / 44 | hymn-annotations | hymn-annotations | song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283 |
-| Glorious Things of Thee Are Spoken | Hymns (1985) / 46 | hymn-notation | hymn-divisi | song-78c0fc15-9524-4949-bcdc-fdd85578e169 |
+| Glorious Things of Thee Are Spoken | Hymns (1985) / 46 | hymn-divisi | hymn-divisi | song-78c0fc15-9524-4949-bcdc-fdd85578e169 |
 | Glorious Things Are Sung of Zion | Hymns (1985) / 48 | hymn-annotations | hymn-annotations | song-8c6e1e3e-f81a-4480-aa88-ad23c54b3567 |
 | The Day Dawn Is Breaking | Hymns (1985) / 52 | hymn-lyrics | hymn-lyrics | song-3bf93f00-922d-488b-9a10-9af10ffefdac |
 | Lo, the Mighty God Appearing! | Hymns (1985) / 55 | hymn-notation | hymn-notation | song-14c4606f-00f7-4fac-80c9-33c49d5a945c |
 | Softly Beams the Sacred Dawning | Hymns (1985) / 56 | hymn-notation | hymn-notation | song-0f33c621-9f0e-4bf3-9a91-65996d45de52 |
-| Come, O Thou King of Kings | Hymns (1985) / 59 | hymn-notation | hymn-lyrics | song-7a1eae9e-0913-4af9-bd9f-b2ae6615b197 |
+| Come, O Thou King of Kings | Hymns (1985) / 59 | hymn-lyrics | hymn-lyrics | song-7a1eae9e-0913-4af9-bd9f-b2ae6615b197 |
 | On This Day of Joy and Gladness | Hymns (1985) / 64 | hymn-notation | hymn-notation | song-4bdf04d7-47b9-469b-a26d-28524ab2a778 |
 | Rejoice, the Lord Is King! | Hymns (1985) / 66 | hymn-notation | hymn-notation | song-0d512ac4-4118-4073-8ecf-fd57d437634e |
 | Glory to God on High | Hymns (1985) / 67 | hymn-notation | hymn-notation | song-0dabe0c3-ecb6-4812-ac00-51320858adf8 |
@@ -408,21 +409,20 @@
 | Our Savior’s Love | Hymns (1985) / 113 | hymn-notation | hymn-notation | song-d74a3637-cbf2-49e6-910e-c58b6a3ebda5 |
 | Come unto Jesus | Hymns (1985) / 117 | hymn-voices | hymn-voices | song-6b2e4b0d-14ab-45b8-88f2-2920e489aad8 |
 | Come, We That Love the Lord | Hymns (1985) / 119 | hymn-notation | hymn-notation | song-ef087bb5-0a02-4298-90c7-b4c96c88ab85 |
-| Though Deepening Trials | Hymns (1985) / 122 | hymn-notation | hymn-notation | song-af8cc3c9-0ae1-4878-9a60-9c5a37a19918 |
 | How Gentle God’s Commands | Hymns (1985) / 125 | hymn-notation | hymn-notation | song-b5834e14-4342-46b2-a2d7-58babed1c682 |
 | How Long, O Lord Most Holy and True | Hymns (1985) / 126 | hymn-annotations | hymn-annotations | song-6084e096-1426-4424-8793-93148c0759fe |
 | Where Can I Turn for Peace? | Hymns (1985) / 129 | hymn-notation | hymn-notation | song-919219ad-9b5c-4d45-a0c4-36e043b737c8 |
 | Father in Heaven | Hymns (1985) / 133 | hymn-notation | hymn-notation | song-ff10598c-cbc9-4d5f-8d8f-b2ec7a12bffb |
-| I Know That My Redeemer Lives | Hymns (1985) / 136 | hymn-notation | hymn-divisi | song-14959cda-04e8-4b5c-aec4-f52c1d275702 |
+| I Know That My Redeemer Lives | Hymns (1985) / 136 | hymn-divisi | hymn-divisi | song-14959cda-04e8-4b5c-aec4-f52c1d275702 |
 | Secret Prayer | Hymns (1985) / 144 | hymn-lyrics | hymn-lyrics | song-871573d0-1157-4bec-9ab4-c4155f9ba449 |
 | Gently Raise the Sacred Strain | Hymns (1985) / 146 | hymn-notation | hymn-notation | song-10666d31-f264-4151-a6b6-25360274b1b7 |
 | As the Dew from Heaven Distilling | Hymns (1985) / 149 | hymn-notation | hymn-notation | song-0e7388b8-b436-489b-8160-ef52d4e30d09 |
-| God Be with You Till We Meet Again | Hymns (1985) / 152 | hymn-notation | hymn-lyrics | song-e8873d16-0ab4-40cd-9dd6-4f0df8e66e5e |
+| God Be with You Till We Meet Again | Hymns (1985) / 152 | hymn-lyrics | hymn-lyrics | song-e8873d16-0ab4-40cd-9dd6-4f0df8e66e5e |
 | Lord, We Ask Thee Ere We Part | Hymns (1985) / 153 | hymn-notation | hymn-notation | song-45cf2148-72b0-45c1-8d7c-708f6f160952 |
 | Before Thee, Lord, I Bow My Head | Hymns (1985) / 158 | hymn-lyrics | hymn-lyrics | song-60037a98-4847-429d-ae66-8296e5472aa0 |
 | Lord, We Come before Thee Now | Hymns (1985) / 162 | hymn-notation | hymn-notation | song-afa8b3be-7502-4a2e-a593-9c931366e7d8 |
 | Lord, Dismiss Us with Thy Blessing | Hymns (1985) / 163 | hymn-notation | hymn-notation | song-b8d1b6eb-1557-4028-bfeb-26de1bf91d81 |
-| In Humility, Our Savior | Hymns (1985) / 172 | hymn-notation | hymn-annotations | song-b6f97276-963c-40de-928a-4eb66cccc694 |
+| In Humility, Our Savior | Hymns (1985) / 172 | hymn-annotations | hymn-annotations | song-b6f97276-963c-40de-928a-4eb66cccc694 |
 | ’Tis Sweet to Sing the Matchless Love | Hymns (1985) / 176 | hymn-notation | hymn-notation | song-67e562b7-551a-4a3c-8361-1fce2441d0dd |
 | In Remembrance of Thy Suffering | Hymns (1985) / 183 | hymn-notation | hymn-notation | song-b1c61173-9938-4245-a727-35ed8454815f |
 | Upon the Cross of Calvary | Hymns (1985) / 184 | hymn-notation | hymn-notation | song-5430f91e-00a4-4627-abc7-ec95f70f2329 |
@@ -431,14 +431,14 @@
 | I Stand All Amazed | Hymns (1985) / 193 | hymn-notation | hymn-notation | song-a66f2976-c2a3-4edd-9651-fa5e829b053a |
 | How Great the Wisdom and the Love | Hymns (1985) / 195 | hymn-notation | hymn-notation | song-9c6985e6-c862-404c-8ac4-f90524a797de |
 | O Savior, Thou Who Wearest a Crown | Hymns (1985) / 197 | hymn-notation | hymn-notation | song-aba725bb-369b-4210-9cee-f0f762f94a7a |
-| Christ the Lord Is Risen Today | Hymns (1985) / 200 | hymn-notation | hymn-annotations | song-cb87dc92-579f-42f4-b83f-03ccaf28e602 |
+| Christ the Lord Is Risen Today | Hymns (1985) / 200 | hymn-annotations | hymn-annotations | song-cb87dc92-579f-42f4-b83f-03ccaf28e602 |
 | Joy to the World | Hymns (1985) / 201 | hymn-notation | hymn-notation | song-b84d63a6-cb12-4f44-a1b5-c83641a234f9 |
-| Angels We Have Heard on High | Hymns (1985) / 203 | hymn-notation | hymn-annotations | song-c8c15b83-e038-4dc7-9901-c015de754fb4 |
+| Angels We Have Heard on High | Hymns (1985) / 203 | hymn-annotations | hymn-annotations | song-c8c15b83-e038-4dc7-9901-c015de754fb4 |
 | It Came upon the Midnight Clear | Hymns (1985) / 207 | hymn-notation | hymn-notation | song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc |
 | Hark! The Herald Angels Sing | Hymns (1985) / 209 | hymn-notation | hymn-notation | song-53c57be6-2733-45c7-94ad-773835a4fd19 |
 | With Wondering Awe | Hymns (1985) / 210 | hymn-notation | hymn-notation | song-10325904-fe2e-47d7-8693-95dc83af7702 |
 | Far, Far Away on Judea’s Plains | Hymns (1985) / 212 | hymn-notation | hymn-notation | song-9be03820-2e2a-453e-9270-2138bf79d9c2 |
-| The First Noel | Hymns (1985) / 213 | hymn-notation | hymn-annotations | song-8aaafadd-0290-4b8f-aa76-a7b167782212 |
+| The First Noel | Hymns (1985) / 213 | hymn-annotations | hymn-annotations | song-8aaafadd-0290-4b8f-aa76-a7b167782212 |
 | Lord, I Would Follow Thee | Hymns (1985) / 220 | hymn-notation | hymn-notation | song-2af92b23-6596-4623-a644-d480cb1a89fa |
 | We Are Marching On to Glory | Hymns (1985) / 225 | hymn-notation | hymn-notation | song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f |
 | You Can Make the Pathway Bright | Hymns (1985) / 228 | hymn-lyrics | hymn-lyrics | song-54db47df-6f16-441c-ac53-df09cfdb294c |
@@ -447,14 +447,14 @@
 | Nay, Speak No Ill | Hymns (1985) / 233 | hymn-notation | hymn-notation | song-3ddb41e2-934a-401e-bedf-d04cb65f51cb |
 | Count Your Blessings | Hymns (1985) / 241 | hymn-lyrics | hymn-lyrics | song-2afc0981-e463-470e-8cab-632d0b0b57e6 |
 | Let Us All Press On | Hymns (1985) / 243 | hymn-notation | hymn-notation | song-47443947-36d1-4509-8639-866143aa7468 |
-| Onward, Christian Soldiers | Hymns (1985) / 246 | hymn-notation | hymn-lyrics | song-95e908ac-a3bd-4000-a45b-6ee588196bdf |
+| Onward, Christian Soldiers | Hymns (1985) / 246 | hymn-lyrics | hymn-lyrics | song-95e908ac-a3bd-4000-a45b-6ee588196bdf |
 | Called to Serve | Hymns (1985) / 249 | hymn-divisi | hymn-divisi | song-d92bb26c-6a08-4beb-a917-b787102678da |
 | Behold! A Royal Army | Hymns (1985) / 251 | hymn-notation | hymn-notation | song-630410cd-be22-4d5a-9445-0568b51e397c |
 | Put Your Shoulder to the Wheel | Hymns (1985) / 252 | hymn-lyrics | hymn-lyrics | song-ed92d57f-c9cb-402d-852c-f77ae768aa3d |
 | True to the Faith | Hymns (1985) / 254 | hymn-notation | hymn-notation | song-c25734b4-ba49-4c88-ba90-4927ede707c4 |
 | Carry On | Hymns (1985) / 255 | hymn-notation | hymn-notation | song-29ddec61-4020-4ab9-8400-7cc2acf115e4 |
 | As Zion’s Youth in Latter Days | Hymns (1985) / 256 | hymn-divisi | hymn-divisi | song-4a9720ac-e510-495e-806e-39e851843c73 |
-| Who’s on the Lord’s Side? | Hymns (1985) / 260 | hymn-notation | hymn-annotations | song-af8d66bd-9206-4235-934d-6070c186050a |
+| Who’s on the Lord’s Side? | Hymns (1985) / 260 | hymn-annotations | hymn-annotations | song-af8d66bd-9206-4235-934d-6070c186050a |
 | Thy Servants Are Prepared | Hymns (1985) / 261 | hymn-notation | hymn-notation | song-da061743-f23c-4f29-8abe-9d2665cc28d4 |
 | The Time Is Far Spent | Hymns (1985) / 266 | hymn-voices | hymn-voices | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
 | I’ll Go Where You Want Me to Go | Hymns (1985) / 270 | hymn-voices | hymn-voices | song-5171114c-7b99-40f8-9040-5186973263b3 |
@@ -470,10 +470,10 @@
 | We Ever Pray for Thee | Hymns (1985) / 312 | hymn-structure | hymn-structure | song-7e7e0440-5d08-4272-8abc-1a3c04020bc6 |
 | God Is Love | Hymns (1985) / 313 | hymn-structure | hymn-structure | song-5aa8b88e-ca6a-47f2-ac73-a673f5f2bb2f |
 | How Gentle God’s Commands | Hymns (1985) / 314 | hymn-structure | hymn-structure | song-158c3860-bb73-4e53-bc69-1ee81afe1a2b |
-| Jesus, the Very Thought of Thee | Hymns (1985) / 315 | hymn-notation | hymn-structure | song-f2a1cdf0-3858-4822-a2a1-8a4d69e96aae |
-| The Lord Is My Shepherd | Hymns (1985) / 316 | hymn-notation | hymn-structure | song-d4565aed-b6f7-4f72-9b71-a64bb29cc483 |
+| Jesus, the Very Thought of Thee | Hymns (1985) / 315 | hymn-structure | hymn-structure | song-f2a1cdf0-3858-4822-a2a1-8a4d69e96aae |
+| The Lord Is My Shepherd | Hymns (1985) / 316 | hymn-structure | hymn-structure | song-d4565aed-b6f7-4f72-9b71-a64bb29cc483 |
 | Sweet Is the Work | Hymns (1985) / 317 | hymn-structure | hymn-structure | song-4276e01d-13dc-41dd-ad96-5ad2ba4aa2ea |
-| Love at Home | Hymns (1985) / 318 | hymn-notation | hymn-structure | song-91e16b0e-3921-430f-8e14-fa25fffb72b1 |
+| Love at Home | Hymns (1985) / 318 | hymn-structure | hymn-structure | song-91e16b0e-3921-430f-8e14-fa25fffb72b1 |
 | Ye Elders of Israel | Hymns (1985) / 319 | hymn-crossing | hymn-crossing | song-7f407f0f-8d10-4bc4-9d74-03806c7e0969 |
 | The Priesthood of Our Lord | Hymns (1985) / 320 | hymn-notation | hymn-notation | song-c7318efd-a15a-401b-ad22-ed8d1e6f4b56 |
 | Rise Up, O Men of God | Hymns (1985) / 323 | hymn-notation | hymn-notation | song-2366be25-4e18-4d79-813c-18963c47e9a2 |
@@ -481,11 +481,11 @@
 | Come, Come, Ye Saints | Hymns (1985) / 326 | hymn-structure | hymn-structure | song-7221717c-6d2e-4d66-a718-24ec2a18b12a |
 | Go, Ye Messengers of Heaven | Hymns (1985) / 327 | hymn-structure | hymn-structure | song-be12fa93-1d5a-4e10-8331-3cbe87ddf1c3 |
 | An Angel from on High | Hymns (1985) / 328 | hymn-structure | hymn-structure | song-52171af8-d04b-41b8-bceb-c67ce28593a3 |
-| Thy Servants Are Prepared | Hymns (1985) / 329 | hymn-notation | hymn-structure | song-b8f1eda1-04f1-4732-a74d-0fdbbff8453d |
+| Thy Servants Are Prepared | Hymns (1985) / 329 | hymn-structure | hymn-structure | song-b8f1eda1-04f1-4732-a74d-0fdbbff8453d |
 | See, the Mighty Angel Flying | Hymns (1985) / 330 | hymn-structure | hymn-structure | song-ca068c43-7101-4edd-82bf-488cc7fb8d5b |
 | Oh Say, What Is Truth? | Hymns (1985) / 331 | hymn-structure | hymn-structure | song-f37a758e-c510-4a14-967b-b30bc2120150 |
 | Come, O Thou King of Kings | Hymns (1985) / 332 | hymn-structure | hymn-structure | song-c0ec9f6d-423b-4e75-8f86-e1fe4567bbcd |
-| High on the Mountain Top | Hymns (1985) / 333 | hymn-notation | hymn-structure | song-9255dd3d-d782-45fd-8ec1-98821f1cd0e9 |
+| High on the Mountain Top | Hymns (1985) / 333 | hymn-structure | hymn-structure | song-9255dd3d-d782-45fd-8ec1-98821f1cd0e9 |
 | I Need Thee Every Hour | Hymns (1985) / 334 | hymn-structure | hymn-structure | song-a874f72f-0d1e-4407-a7a8-2ff61609539f |
 | Brightly Beams Our Father’s Mercy | Hymns (1985) / 335 | hymn-structure | hymn-structure | song-6a40d4f6-2fcf-45df-96c9-dfe52aa91728 |
 | School Thy Feelings | Hymns (1985) / 336 | hymn-structure | hymn-structure | song-c30e5c84-a1bb-431d-b093-a2761eba0f82 |

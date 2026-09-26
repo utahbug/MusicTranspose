@@ -12,20 +12,21 @@ export function hymnMelody(source){
  if(doc.querySelector('grace,unpitched,transpose,staff-tuning,ossia,part-link,measure-style,octave-shift,tremolo'))return fail('notation','Grace, octave-shift or other unusual notation requires review');
  if([...doc.querySelectorAll('clef-octave-change')].some(n=>Number(n.textContent)!==0))return fail('notation','Octave-transposing clef requires review');
  if([...doc.querySelectorAll('words')].some(n=>/divisi|div[.]|ossia|solo|unison.*optional/i.test(n.textContent)))return fail('notation','Divisi/solo/ossia indication');
- // This pass handles the observed full-size cue export pattern only.
- // Small cue noteheads and cue rests retain the original safe fallback.
+ // Full-size cue markers may belong to lower accompaniment.
+ // A small upper note must separately prove a sung-to-sung connector below.
  const cueNotes=[...doc.querySelectorAll('note')].filter(n=>child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue'||n.getAttribute('type')==='cue');
- if(cueNotes.some(n=>!child(n,'cue')||!child(n,'pitch')||child(n,'type')?.getAttribute('size')!=='full'))return fail('notation','Small, rest or unclassified cue notation requires review');
+ const smallConnectors=cueNotes.filter(n=>n.closest('part')===parts[0]&&text(n,'staff','1')==='1'&&!child(n,'cue')&&child(n,'pitch')&&!child(n,'lyric')&&child(n,'type')?.getAttribute('size')==='cue');
+ if(cueNotes.some(n=>!smallConnectors.includes(n)&&(!child(n,'cue')||!child(n,'pitch')||child(n,'type')?.getAttribute('size')!=='full')))return fail('notation','Small, rest or unclassified cue notation requires review');
  const staves=parts.map(p=>Math.max(1,...[...p.querySelectorAll('staves')].map(n=>Number(n.textContent))));
  const clef=(p,staff)=>[...p.querySelectorAll('attributes > clef')].find(c=>(c.getAttribute('number')||'1')===staff)?.querySelector('sign')?.textContent;
  let upper,lower;
  if(parts.length===1&&staves[0]===2&&clef(parts[0],'1')==='G'&&clef(parts[0],'2')==='F'){upper={part:parts[0].id,staff:'1'};lower={part:parts[0].id,staff:'2'};}
  else if(parts.length===2&&staves.every(s=>s===1)&&clef(parts[0],'1')==='G'&&clef(parts[1],'1')==='F'){upper={part:parts[0].id,staff:'1'};lower={part:parts[1].id,staff:'1'};}
  else return fail('structure','Requires two staves in upper G / lower F order');
- // Cues are allowed only in structurally identified lower accompaniment.
+ // Actual cue markers are allowed only in identified lower accompaniment.
  // They never enter the selected soprano; all timing, lyrics, divisi and
- // crossing checks below still apply. Upper cues remain ambiguous.
- if(cueNotes.some(n=>n.closest('part').id!==lower.part||text(n,'staff','1')!==lower.staff))return fail('notation','Upper-staff cue or cue-size notation requires review');
+ // crossing checks below still apply. Only verified small connectors may be upper.
+ if(cueNotes.some(n=>!smallConnectors.includes(n)&&(n.closest('part').id!==lower.part||text(n,'staff','1')!==lower.staff)))return fail('notation','Upper-staff cue or cue-size notation requires review');
 
  const groups=[],lengths=[];
  for(const part of parts){let divisions=1;const measures=children(part,'measure');
@@ -66,6 +67,15 @@ export function hymnMelody(source){
   if(top===null){if(g.nodes.some(n=>child(n,'lyric')))return fail('lyrics','Lyrics on a rest');continue;}
   for(const other of groups.filter(n=>isUpper(n)&&!owners.includes(lane(n))&&n.start<g.end-eps&&n.end>g.start+eps))if(other.pitches.some(p=>p>top))return fail('crossing','Another upper-staff voice crosses above the identified soprano');
  }
+ // Preserve a short, explicitly notated passing note in the SAME soprano
+ // voice. Both neighboring groups must carry lyrics, with stepwise motion
+ // through this note. Never fill a soprano rest from another voice/staff.
+ for(const note of smallConnectors){
+  const i=candidates.findIndex(g=>g.chosen===note),g=candidates[i],before=candidates[i-1],after=candidates[i+1];
+  if(!g||g.nodes.length!==1||!before||!after||before.voice!==g.voice||after.voice!==g.voice||!before.nodes.some(n=>child(n,'lyric'))||!after.nodes.some(n=>child(n,'lyric'))||g.duration>1+eps)return fail('notation','Small note is not a bounded same-voice sung connector');
+  const a=pitch(before.chosen),b=pitch(note),c=pitch(after.chosen),left=b-a,right=c-b;
+  if(a===null||c===null||left*right<=0||Math.abs(left)>2||Math.abs(right)>2)return fail('notation','Small note has ambiguous melodic continuity');
+ }
  // Slurs attached to a chord anchor may describe either voice of that chord.
  // Transfer only explicitly upper slurs; never transfer an alto tie/fingering.
  const upperSlurs=new Set(),activeSlurs=new Map();
@@ -104,5 +114,5 @@ export function hymnMelody(source){
   base.replaceWith(copy);for(const extra of g.nodes.slice(1))extra.remove();
  }
  if(ties.size)return fail('ties','Soprano tie start has no matching stop');
- return {ok:true,accompanimentCueStaff:cueNotes.length?lower:null,xml:new XMLSerializer().serializeToString(doc),selection:{...upper,voice:'hymn-lead',sourceVoices:owners,evidence:'Hymns (1985): continuous upper lyric voice; at most two tones; no upper crossing'},proof};
+ return {ok:true,accompanimentCueStaff:cueNotes.some(n=>!smallConnectors.includes(n))?lower:null,xml:new XMLSerializer().serializeToString(doc),selection:{...upper,voice:'hymn-lead',sourceVoices:owners,...(smallConnectors.length?{continuation:{kind:'same-voice sung connector',count:smallConnectors.length}}:{}),evidence:'Hymns (1985): continuous upper lyric voice; at most two tones; no upper crossing'},proof};
 }
