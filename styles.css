@@ -697,3 +697,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media screen and (max-width:600px){#score-source{font-size:0;max-width:100px}#score-source::after{content:attr(data-compact);font-size:10px}}
 
 .tap-zone-diagram{height:240px;grid-template-rows:var(--tap-upper,25%) 1fr}.tap-zone-diagram>div{min-height:0}
+
+/* Lead fallback is explicit; successful Lead uses the existing compact header. */
+#lead-notice{font:12px/1.35 system-ui,sans-serif;color:#53675d;margin:2px 0 6px}#lead-notice[hidden]{display:none}
+@media print{#lead-notice{display:none!important}}
