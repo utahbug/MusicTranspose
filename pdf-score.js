@@ -20,17 +20,18 @@ function displayBounds(canvas){
  canvas.style.width=(canvas.width/w*100)+'%';canvas.style.left=(-b.left/w*100)+'%';canvas.style.top=(-b.top/h*100)+'%';
 }
 trimControl.onchange=()=>{trim=trimControl.checked;try{sessionStorage.setItem(trimKey,String(trim));}catch{}document.querySelectorAll('#score canvas.pdf-page').forEach(displayBounds);};
-export async function renderPdf(asset,host,title){
+// Rasterize into detached frames; publish once, only for the current selection.
+export async function renderPdf(asset,host,title,isCurrent=()=>true){
  pdfjsLib.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdf.worker.min.js',import.meta.url).href;
  if(!documents.has(asset)){const job=pdfjsLib.getDocument({url:asset,isEvalSupported:false}).promise;documents.set(asset,job);job.catch(()=>documents.delete(asset));}
- const doc=await documents.get(asset);host.replaceChildren();
+ const doc=await documents.get(asset);if(!isCurrent())return;const output=document.createDocumentFragment();
  for(let n=1;n<=doc.numPages;n++){
-  const page=await doc.getPage(n),base=page.getViewport({scale:1}),viewport=page.getViewport({scale:1800/base.width});
-  const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);host.append(frame);
+  const page=await doc.getPage(n);if(!isCurrent())return;const base=page.getViewport({scale:1}),viewport=page.getViewport({scale:1800/base.width});
+  const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);output.append(frame);
   await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
-  bounds.set(canvas,contentBounds(canvas));displayBounds(canvas);
+  if(!isCurrent())return;bounds.set(canvas,contentBounds(canvas));displayBounds(canvas);
  }
- return doc.numPages;
+ if(isCurrent())host.replaceChildren(output);return doc.numPages;
 }
 export function preparePdfPrint(host,pages){
  pages.replaceChildren();for(const canvas of host.querySelectorAll('canvas.pdf-page')){const section=document.createElement('section');section.className='print-page pdf-print-page';const image=document.createElement('img');image.src=canvas.toDataURL('image/png');image.alt=canvas.getAttribute('aria-label');section.append(image);pages.append(section);}document.body.classList.add('prepared-print');return pages.children.length;

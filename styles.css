@@ -827,3 +827,8 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  .desktop-prefix,.desktop-sort{display:none!important}.phone-sort{display:inline}
 }
 @media print{#library-source-menu{display:none!important}}
+
+/* Pending navigation never presents retained notation or key metadata as its destination. */
+#song-loading{font:14px system-ui,sans-serif;color:#677570;padding:24px 12px;min-height:100px;margin:0}
+body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset,.subtitle,#pdf-notice){visibility:hidden}
+@media print{#song-loading{display:none!important}}
