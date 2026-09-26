@@ -40,7 +40,7 @@ const playback=createPlayback(async()=>{
 });
 initPlaybackSettings(playback,()=>ready&&!busy&&!loading&&!isPdf()&&activeSong.playbackAvailable!==false);
 function playbackControls(){const h=document.querySelector('.score-heading h1');if(!isPdf()&&ready&&activeSong.playbackAvailable!==false)playback.attach(h);else h.querySelector('.song-playback')?.remove();}
-const lyricsView=createLyricsView($('lyrics-view'),{onLibrary:()=>library?.showLibrary(),onScore:()=>showScoreView(lyricsSong?.id)});
+const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
 // Read the established Score action slot without changing its layout. When Score is
 // hidden (direct Lyrics opening/resize), measure it invisibly and restore synchronously.
 function scoreToggleBounds(scrollOffset=0){
@@ -63,9 +63,9 @@ async function openLyrics(id){
  const fromScore=!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')&&ready&&activeSong.id===id;const toggleBounds=scoreToggleBounds();
  library?.navigating('lyrics',id);loading=true;setControls();
  try{const data=await getLyrics(id);if(!data)throw Error('Lyrics unavailable');
- const fresh=lyricsSong?.id!==id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
+ scoreScroll=document.body.classList.contains('library-open')?0:scrollY;lyricsSong=song;
  document.dispatchEvent(new Event('library-open'));library.showScore();document.body.classList.add('lyrics-open');
- lyricsView.show(data,{fresh});if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data);if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{loading=false;setControls();}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);

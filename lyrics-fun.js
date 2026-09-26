@@ -59,7 +59,8 @@ export function createLyricsFun(host,paper,initialLimit=4){
  function measure(){
   if(!dirty)return;dirty=false;
   const r=paper.getBoundingClientRect(),body=paper.querySelector('.lyrics-body'),bodyRect=body.getBoundingClientRect();
-  const top=Math.max(8,r.top+8),bottom=Math.min(innerHeight-8,r.bottom-8),height=Math.max(0,bottom-top);
+  const footer=host.querySelector('.lyrics-footer');
+  const top=Math.max(8,r.top+8),bottom=Math.min(footer?footer.getBoundingClientRect().top-8:innerHeight-8,r.bottom-8),height=Math.max(0,bottom-top);
   noteHeight=parseFloat(getComputedStyle(body).fontSize)*1.4;
   const usable=Math.max(0,height-noteHeight),middle=Math.min(usable*.5,Math.max(0,innerHeight/2-top-noteHeight/2));
   // Text is eligible, including wrapped titles and the notice before the first verse.
