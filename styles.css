@@ -804,3 +804,26 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  body.continuous-return-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px + var(--return-clearance))}
  body.continuous-return-visible :is(#score,#source-credits,#original-key-reference){clip-path:inset(0 0 var(--return-clip,0px) 0)}
 }
+
+/* Source represents a catalog collection or an active List, with one shared menu. */
+#library .library-filter-row{gap:16px;align-items:center}
+#library .library-filter-row #library-source{display:flex;align-items:center;gap:5px;width:max-content;max-width:calc(100% - 156px);min-width:0;flex:0 1 auto;min-height:44px;margin:0;padding:0 6px;border:0;background:transparent;color:#365867;font:13px system-ui,sans-serif;white-space:nowrap}
+#library-source-label{overflow:hidden;text-overflow:ellipsis}
+#library-source .desktop-prefix{flex:none}
+#library .library-filter-row .sort-choice{width:134px;flex:0 0 134px;max-width:none}
+#library-sort-label{white-space:pre}
+.phone-sort{display:none}
+#library-source-menu{position:fixed;z-index:60;width:max-content;min-width:220px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:4px;background:white;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+#library-source-menu[hidden]{display:none}
+#library-source-menu button{display:block;width:100%;min-height:44px;padding:8px 12px;margin:0;text-align:left;border:0;background:transparent;color:#365867;font:14px system-ui,sans-serif;overflow-wrap:anywhere}
+#library-source-menu button:hover,#library-source-menu button:focus-visible{background:#edf1f3}
+#library-source-menu [aria-checked=true]::after{content:' \2713'}
+#library-source-menu hr{border:0;border-top:1px solid #c2ced3;margin:4px 0}
+.source-menu-heading{padding:6px 12px;color:#536b7a;font:600 12px system-ui,sans-serif}
+@media(max-width:600px),(max-width:900px) and (max-height:500px){
+ #library .library-filter-row{gap:8px}
+ #library .library-filter-row #library-source{max-width:calc(100% - 92px)}
+ #library .library-filter-row .sort-choice{width:84px;flex-basis:84px}
+ .desktop-prefix,.desktop-sort{display:none!important}.phone-sort{display:inline}
+}
+@media print{#library-source-menu{display:none!important}}
