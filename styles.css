@@ -701,3 +701,43 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 /* Lead fallback is explicit; successful Lead uses the existing compact header. */
 #lead-notice{font:12px/1.35 system-ui,sans-serif;color:#53675d;margin:2px 0 6px}#lead-notice[hidden]{display:none}
 @media print{#lead-notice{display:none!important}}
+
+/* Library: one sticky block keeps search, filters and columns aligned at every size. */
+#library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:44px minmax(0,1fr) 44px 44px 44px}
+#library .library-heading{margin:0;background:transparent;color:#233331;padding:10px 4px;flex-wrap:nowrap;gap:8px;min-height:44px}
+#library .library-heading :is(h1,.eyebrow){color:#233331}
+#library .library-heading h1{font:600 18px/1.2 system-ui,sans-serif;color:inherit;letter-spacing:-.025em;margin:0}
+#library .library-heading h1 span{font-size:12px;font-weight:400;color:#536b7a;margin-left:8px;letter-spacing:0}
+#library-count{margin:0;white-space:nowrap;font-size:11px}
+#library .library-header-panel{position:sticky;top:0;z-index:20;padding:env(safe-area-inset-top) 0 0;background:#edf1f3;box-shadow:0 1px 0 #c2ced3}
+#library .library-controls{padding:4px 4px 0}
+#library .library-search-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;gap:0;flex-wrap:nowrap}
+#library .library-search-row .search-box{max-width:none;min-width:0}
+#library #library-search{border-color:#c2ced3;border-radius:5px;height:44px;padding:8px 10px}
+#library-search::-webkit-search-cancel-button{display:none}
+#library .library-search-row .quiet{display:flex;align-items:center;justify-content:center;height:44px;width:44px;padding:0;font-size:25px;text-decoration:none}
+#library .library-filter-row{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:12px}
+#library .library-filter-row label{min-width:0;display:block}
+#library .library-filter-row select{width:100%;max-width:none;height:44px;padding-left:6px;font-size:13px;text-overflow:ellipsis}
+#library .library-column-headings{display:grid;grid-template-columns:var(--library-columns);align-items:center;min-height:44px;border-top:1px solid #d6dfe3;color:#536b7a;font:600 11px/1.2 system-ui,sans-serif;text-align:center}
+#library .library-column-headings button{height:44px;min-width:44px;border:0;background:transparent;color:inherit;padding:0}
+#library #view-favorites{font-size:23px}
+#library #view-favorites[aria-pressed=true]{color:var(--library-gold);background:#e6e0d0;border-radius:4px}
+#library .song-column-heading{display:flex;align-items:center;gap:4px;text-align:left;min-width:0;padding-left:6px}
+#library #order-toggle{font-size:11px;text-decoration:underline;text-underline-offset:3px}
+#library-results{padding:0;border:0}
+#library-results::before,#library-results::after{display:none}
+#library .library-row:not(.reordering){grid-template-columns:44px minmax(0,1fr) 132px}
+#library .song-view-actions{display:grid;grid-template-columns:repeat(3,44px);align-items:center}
+#library .song-view-actions button,#library .song-view-actions .lyrics-slot{height:44px;width:44px;min-height:44px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;background:transparent}
+#library .song-view-actions .lead-entry:disabled{opacity:.28;cursor:default}
+#library .song-view-actions svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#library .song-entry{padding:10px 6px;gap:3px;min-height:60px}
+#library .song-entry strong{font-size:14px;line-height:1.3}
+#library .song-meta{font-size:11px;line-height:1.3}
+#library-message:not(:empty){padding:4px 8px;font-size:12px;margin:0}
+#library-more-dialog{width:300px;max-width:calc(100vw - 24px);padding:16px}
+#library-more-dialog>button{display:block;width:100%;min-height:48px;text-align:left;border:0;background:transparent;color:#365867;font:15px system-ui,sans-serif}
+#library-more-dialog .dialog-heading{margin-bottom:8px}
+@media(min-width:700px){#library{padding-inline:24px}#library .song-entry strong{font-size:16px}#library .song-meta{font-size:12px}#library .library-filter-row{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);max-width:640px}}
+@media(max-width:360px){#library .library-heading h1 span{display:none}#library .library-filter-row{gap:4px}#library .library-filter-row select{font-size:12px}#library .song-column-heading{gap:0}}

@@ -182,9 +182,10 @@ async function loadScore(xml,override){
  buildChooser();document.querySelector('.dialog-hint').textContent='All destinations remain '+source.mode+'.';document.querySelector('.footnote').textContent='Original key: '+source.name+' '+source.mode+' · Tap the key to choose another.';
  score.setAttribute('aria-busy','true');await pump();
 }
-async function loadSong(id){
+async function loadSong(id,requestedView){
  if(busy||loading)return;
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
+ if(requestedView==='large'||requestedView==='normal'&&scoreSize==='large'){scoreSize=requestedView;saveScoreSize(scoreSize);}
  library?.navigating('score',id);
  if(!playback.songKey.startsWith(song.id+':'))playback.stop();document.body.classList.remove('lyrics-open');lyricsView.hide();library?.showScore();loading=true;ready=false;document.dispatchEvent(new Event('score-session-reset'));$('status').textContent='Loading score…';setControls();clearTimeout(timer);
  try{

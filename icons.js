@@ -1,2 +1,5 @@
 // Shared decorative artwork; accessible names remain on the existing buttons.
 export const lyricsIcon = `<svg class="lyrics-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M7 6h14M7 10h14M7 14h6M7 18h3"/><g stroke-width="1.3"><ellipse cx="14.7" cy="22.5" rx="1.8" ry="1.2" transform="rotate(-20 14.7 22.5)" fill="currentColor" stroke="none"/><ellipse cx="20.7" cy="21" rx="1.8" ry="1.2" transform="rotate(-20 20.7 21)" fill="currentColor" stroke="none"/><path d="M16.3 22V15c0 2 3 2 1.8 4M22.3 20.5v-7c0 2 3 2 1.8 4"/></g></svg>`;
+
+// Single melodic line; same stroke weight and footprint as the Lyrics artwork.
+export const leadIcon = `<svg class="lead-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M3 9h22M3 14h22M3 19h22" opacity=".45"/><path d="M11 19V6l10-2v12M11 9l10-2"/><ellipse cx="8.5" cy="19.5" rx="2.5" ry="1.8" transform="rotate(-20 8.5 19.5)" fill="currentColor" stroke="none"/><ellipse cx="18.5" cy="16.5" rx="2.5" ry="1.8" transform="rotate(-20 18.5 16.5)" fill="currentColor" stroke="none"/></svg>`;

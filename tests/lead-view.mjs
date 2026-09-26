@@ -5,6 +5,7 @@ const view=async value=>{await p.locator('#score-size').click();await p.locator(
 try{
  await p.goto(base);await p.locator('.library-row').first().waitFor();
  const audit=await p.evaluate(async()=>{
+  const {bundledLeadIds}=await import('./lead-availability.js');
   const {songs}=await import('./songs.js'),{unpackMXL,transposeXML}=await import('./music.js'),{createLeadXML}=await import('./lead-view.js'),{scoreTimeline}=await import('./playback.js');
   const parse=x=>new DOMParser().parseFromString(x,'application/xml'),serialize=e=>new XMLSerializer().serializeToString(e),rows=[];
   const must=(ok,why)=>{if(!ok)throw Error(why);};
@@ -29,6 +30,7 @@ try{
     const oldTimeline=scoreTimeline(original),newTimeline=scoreTimeline(output);must(Math.abs(oldTimeline.duration-newTimeline.duration)<1e-5,s.id+' playback duration');
    }
   }
+  must(JSON.stringify([...bundledLeadIds].sort())===JSON.stringify(rows.filter(r=>r.ok).map(r=>r.id).sort()),'Library Lead index matches actual extraction');
   return rows;
  });
  fs.writeFileSync('test-results/lead-audit.json',JSON.stringify(audit,null,2));console.log('PASS source/extracted note timing, lyrics, all directions/harmony, repeats and playback lengths',audit.filter(r=>r.ok).length,'leads;',audit.length,'scores audited');
