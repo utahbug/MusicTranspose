@@ -1,3 +1,4 @@
+import {addLeadHarmonyAnchors,installLeadTextAnchors} from './lead-spacing.js';
 import {repeatedCadenceMelody} from './cadence-melody.js';
 import {hymnMelody} from './hymn-melody.js';
 import {songs as bundledSongs} from './songs.js';
@@ -163,7 +164,7 @@ function projectLeadXML(source,accompanimentCueStaff=null){
 // Split only the engraving copy into simultaneous chords; the derived score
 // and transposition pipeline retain the original structured harmony groups.
 export function leadEngravingXML(source){
- const doc=new DOMParser().parseFromString(source,'application/xml');let changed=false;
+ const doc=new DOMParser().parseFromString(source,'application/xml');let changed=addLeadHarmonyAnchors(doc);
  for(const harmony of [...doc.querySelectorAll('harmony')]){
   if(children(harmony,'root').length<2)continue;
   const groups=[];let group=null;
@@ -175,6 +176,7 @@ export function leadEngravingXML(source){
 }
 
 export function installLeadHarmony(OSMD){
+ installLeadTextAnchors(OSMD);
  const reader=OSMD.ChordSymbolReader,factory=OSMD.VexFlowGraphicalSymbolFactory.prototype;
  if(reader.musicTransposeLead)return;reader.musicTransposeLead=true;
  const read=reader.readChordSymbol,create=factory.createChordSymbols;

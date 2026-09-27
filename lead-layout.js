@@ -1,9 +1,11 @@
 // Lead-only engraving policy. Restore every touched rule when the shared
 // engraver returns to Score, including values cached by the engine on load.
 const originals=new WeakMap();
-const profile={MinimumDistanceBetweenSystems:3,MinSkyBottomDistBetweenSystems:2.5,VoiceSpacingAddendVexflow:2,VoiceSpacingMultiplierVexflow:.75,MinNoteDistance:1.7};
+// Let OSMD honor the measured maximum across all verses; its default 2.5x
+// cap can truncate the space required by a long lyric in a short pickup.
+const profile={MinimumDistanceBetweenSystems:3,MinSkyBottomDistBetweenSystems:2.5,VoiceSpacingAddendVexflow:2,VoiceSpacingMultiplierVexflow:.75,MinNoteDistance:1.7,MaximumLyricsElongationFactor:Number.POSITIVE_INFINITY};
 export function applyLeadLayout(engraver,enabled,{print=false}={}){
- const rules=engraver.EngravingRules;
+ const rules=engraver.EngravingRules;rules.musicTransposeLead=enabled;
  if(!originals.has(engraver))originals.set(engraver,Object.fromEntries([...Object.keys(profile),'PageLeftMargin','PageRightMargin','PageTopMargin','PageBottomMargin','NewSystemAtXMLNewSystemAttribute'].map(k=>[k,rules[k]])));
  Object.assign(rules,originals.get(engraver));
  if(enabled)Object.assign(rules,profile,{PageLeftMargin:print?2:.6,PageRightMargin:print?2:.6,...(print?{PageTopMargin:3,PageBottomMargin:3}:{})});
