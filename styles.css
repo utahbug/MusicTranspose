@@ -900,3 +900,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library-filter-menu [aria-checked=true]::after{content:' ✓'}
 @media(max-width:600px){#library .library-filter-row #library-source{max-width:calc(100% - 144px)}}
 @media print{#library-filter-menu{display:none!important}}
+
+#home-screen-dialog{width: min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:16px;border:1px solid #c2ced3;border-radius:8px}
+#home-screen-dialog h2{font-size:18px;margin:0}
+#home-screen-dialog button{min-height:44px}
+#home-screen-dialog li{margin:8px 0;line-height:1.4}
+#home-screen-status:empty{display:none}
+#library-more-dialog>button[hidden]{display:none}

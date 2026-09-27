@@ -1,3 +1,4 @@
+import {initHomeScreen} from './home-screen.js';
 import {createSongSearch} from './library-search.js';
 import {attachReorderHandle} from './list-reorder.js';
 import {lyricsIcon} from './icons.js';
@@ -87,7 +88,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function placeMore(){if(more.hidden)return;const r=moreButton.getBoundingClientRect();more.style.left=Math.max(8,Math.min(r.right-more.offsetWidth,innerWidth-more.offsetWidth-8))+'px';more.style.top=Math.max(8,Math.min(r.bottom+4,innerHeight-more.offsetHeight-8))+'px';}
  moreButton.onclick=()=>{closeFilter();closeSource();blurSearch();if(!more.hidden){closeMore();return;}more.hidden=false;moreButton.setAttribute('aria-expanded','true');placeMore();more.querySelector('button').focus({preventScroll:true});};
  document.addEventListener('pointerdown',e=>{if(!more.hidden&&!more.contains(e.target)&&!moreButton.contains(e.target))closeMore();});
- document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled)')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
+ document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled):not([hidden])')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeMore);window.addEventListener('scroll',placeMore,{passive:true});
  const filterButton=$('library-filter'),filterMenu=$('library-filter-menu');
  function closeFilter(focus=false){filterMenu.hidden=true;filterButton.setAttribute('aria-expanded','false');if(focus)filterButton.focus({preventScroll:true});}
@@ -96,6 +97,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('pointerdown',e=>{if(!filterMenu.hidden&&!filterMenu.contains(e.target)&&!filterButton.contains(e.target))closeFilter();});
  document.addEventListener('keydown',e=>{if(filterMenu.hidden)return;if(e.key==='Escape'){e.preventDefault();closeFilter(true);}else if(e.key==='Tab')closeFilter();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...filterMenu.querySelectorAll('button')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeFilter);window.addEventListener('scroll',placeFilter,{passive:true});
+ initHomeScreen({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-clear').focus({preventScroll:true});};
  function render(){
