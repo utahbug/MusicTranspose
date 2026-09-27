@@ -3,3 +3,6 @@ export const lyricsIcon = `<svg class="lyrics-icon" viewBox="0 0 28 28" aria-hid
 
 // Single melodic line; same stroke weight and footprint as the Lyrics artwork.
 export const leadIcon = `<svg class="lead-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M3 9h22M3 14h22M3 19h22" opacity=".45"/><path d="M11 19V6l10-2v12M11 9l10-2"/><ellipse cx="8.5" cy="19.5" rx="2.5" ry="1.8" transform="rotate(-20 8.5 19.5)" fill="currentColor" stroke="none"/><ellipse cx="18.5" cy="16.5" rx="2.5" ry="1.8" transform="rotate(-20 18.5 16.5)" fill="currentColor" stroke="none"/></svg>`;
+
+// Font-independent treble clef, with a slight forward lean for the direct Lead action.
+export const leadSheetIcon = `<svg class="lead-sheet-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><g transform="translate(2 0) skewX(-8)"><path d="M15 18.5c-4-1.3-3.4-6.7.3-7.3 4.3-.7 7 4 4.4 7.4-2.6 3.5-9.9 2.5-10.2-2.5-.3-4.8 7.4-8.1 7.4-12.3 0-3.3-3.1-2.4-3.5.6-.5 3.7 1.1 9.1 2 13.9l.8 4.1c.6 3.6-4.2 4.4-4.9 1.5"/><circle cx="12.1" cy="23.2" r="1.4" fill="currentColor" stroke="none"/></g></svg>`;
