@@ -11,19 +11,20 @@ try{for(const [width,height] of [[320,568],[390,844],[844,390],[820,1180],[1440,
  const select=async value=>{await page.locator('#library-source').click();await page.locator(`[data-source="${value}"]`).click();};
  const lead=()=>page.locator('[data-song="cs-168"] [aria-label="Open Lead sheet"]');
  const available=await page.evaluate(async()=>{const {songs,supportsLead}=await import('./catalog.js');return songs.filter(supportsLead).map(s=>s.id);});
+ const alignment=await page.locator('.library-row').evaluateAll(es=>es.map(e=>({lyrics:e.querySelector('.song-view-actions').getBoundingClientRect().x,star:e.querySelector('.favorite').getBoundingClientRect().x,lead:e.querySelector('[aria-label="Open Lead sheet"]')?.getBoundingClientRect().x})));for(const r of alignment){assert.equal(r.lyrics,alignment[0].lyrics);assert.equal(r.star,alignment[0].star);if(r.lead!==undefined)assert.equal(r.lead,r.lyrics+44);}
  const rows=await page.locator('.library-row').evaluateAll(es=>es.map(e=>({id:e.dataset.song,lead:!!e.querySelector('[aria-label="Open Lead sheet"]'),actions:e.querySelector('.song-view-actions').getBoundingClientRect().width})));
  assert.equal(rows.filter(r=>r.lead).length,available.length);
- for(const row of rows){assert.equal(row.lead,available.includes(row.id));assert.equal(row.actions,row.lead?88:44);}
+ for(const row of rows){assert.equal(row.lead,available.includes(row.id));assert.equal(row.actions,88);}
  await page.locator('#library-filter').click();await page.locator('#view-lead-sheets').click();await page.keyboard.press('Escape');
  assert.equal(await page.locator('.library-row').count(),available.length);assert.equal(await page.locator('[aria-label="Open Lead sheet"]').count(),available.length);
- await select('list:direct');await page.locator('#library-search').fill('Missionary');
+ await select('list:direct');await page.locator('#library-filter').click();await page.locator('#view-lead-sheets').click();await page.keyboard.press('Escape');await page.locator('#library-search').fill('Missionary');
  const row=page.locator('[data-song="cs-168"]');
  const bounds=await row.evaluate(e=>{const selectors=['.song-entry','[title="Lyrics"]','[aria-label="Open Lead sheet"]','.favorite'];return selectors.map(s=>{const r=e.querySelector(s).getBoundingClientRect();return {x:r.x,right:r.right,width:r.width,height:r.height};});});
  assert(bounds[0].width>=140);for(let i=1;i<bounds.length;i++){assert(bounds[i].x>=bounds[i-1].right-1);assert(bounds[i].width>=44&&bounds[i].height>=44);}
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:`test-results/library-direct-lead-${width}.png`});
  await lead().focus();await page.keyboard.press('Enter');await ready();assert.equal(await page.evaluate(()=>prototype.song),'cs-168');assert.equal(await page.locator('#score-size').getAttribute('data-size'),'large');assert(await page.evaluate(()=>prototype.lead.ok));
- await page.locator('#songs').click();assert.equal(await page.locator('#library-source-label').textContent(),'Practice');assert.equal(await page.locator('#library-search').inputValue(),'Missionary');assert.equal(await page.locator('#order-toggle').inputValue(),'manual');assert.equal(await page.locator('#view-lead-sheets').getAttribute('aria-checked'),'true');assert.notEqual(await page.evaluate(()=>document.activeElement.id),'library-search');
+ await page.locator('#songs').click();assert.equal(await page.locator('#library-source-label').textContent(),'Practice');assert.equal(await page.locator('#library-search').inputValue(),'Missionary');assert.equal(await page.locator('#order-toggle').inputValue(),'manual');assert.equal(await page.locator('#view-lead-sheets').getAttribute('aria-checked'),'false');assert.notEqual(await page.evaluate(()=>document.activeElement.id),'library-search');
  await row.locator('.song-entry').click();await ready();assert.notEqual(await page.locator('#score-size').getAttribute('data-size'),'large');await page.locator('#songs').click();
  await row.locator('[title="Lyrics"]').click();await page.locator('#lyrics-view').waitFor({state:'visible'});await page.locator('#songs').click();
  await row.locator('.favorite').click();assert.equal(await row.locator('.favorite').getAttribute('aria-pressed'),'false');await row.locator('.favorite').click();assert.equal(await row.locator('.favorite').getAttribute('aria-pressed'),'true');
