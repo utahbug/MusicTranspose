@@ -1,3 +1,4 @@
+import {repeatedCadenceMelody} from './cadence-melody.js';
 import {hymnMelody} from './hymn-melody.js';
 import {songs as bundledSongs} from './songs.js';
 // Conservative lead-sheet projection. The source XML is immutable; ambiguity
@@ -21,10 +22,16 @@ export const leadReasons={
 };
 const hymnIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns (1985)').map(s=>s.id));
 // Eligibility comes from the bundled catalog, never a user-supplied title or
-// imported collection label. Other collections keep the original extractor.
+// imported collection label. Other collections use the general projector first,
+// with a separate guarded repeated-cadence rule only for chordal rejections.
 export function createLeadXML(source,context){
  const hymn=!context?.local&&hymnIds.has(context?.id);
- if(!hymn)return projectLeadXML(source);
+ if(!hymn){
+  const original=projectLeadXML(source);if(original.ok||original.reason!=='chordal-melody')return original;
+  const cadence=repeatedCadenceMelody(source);if(!cadence)return original;
+  const result=projectLeadXML(cadence.xml);
+  return result.ok?{...result,selection:{...result.selection,evidence:cadence.evidence},melodyProof:cadence.proof,cadences:cadence.cadences,accompanimentCues:cadence.accompanimentCues}:original;
+ }
  const melody=hymnMelody(source);
  if(!melody.ok)return {ok:false,xml:source,reason:melody.reason,detail:melody.detail,message:'This hymn needs a soprano review before creating Lead.'};
  const result=projectLeadXML(melody.xml,melody.accompanimentCueStaff);

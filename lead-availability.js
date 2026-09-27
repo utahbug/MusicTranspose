@@ -1,6 +1,8 @@
-// Generated from tests/lead-hymn-audit.mjs; extraction remains authoritative.
+// Generated from tests/lead-audit.mjs. The Lead regression suite verifies this index.
+// Availability is presentation metadata; createLeadXML remains the authority when opening.
 export const bundledLeadIds=new Set([
  "silent-night",
+ "hhc-1035",
  "hhc-1054",
  "cs-168",
  "cs-169",
