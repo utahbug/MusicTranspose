@@ -24,12 +24,13 @@ export function addLeadHarmonyAnchors(doc){
 }
 
 // OSMD groups words at the same timestamp without considering above/below
-// placement. Keep source corner marks separate from simultaneous prose (Unison).
+// placement. Keep source corner marks separate from simultaneous prose (Unison)
+// in every score view; their source timestamp and placement remain authoritative.
 export function installLeadTextAnchors(OSMD){
  const reader=OSMD.ExpressionReader.prototype;if(reader.musicTransposeCornerAnchors)return;reader.musicTransposeCornerAnchors=true;
  const read=reader.interpretWords;
  reader.interpretWords=function(node,...args){
-  const corner=this.musicSheet.Rules.musicTransposeLead&&['\u231c','\u231d'].includes(node.value.trim())&&/DingPI/i.test(node.attribute('font-family')?.value||'');
+  const corner=['\u231c','\u231d'].includes(node.value.trim())&&/DingPI/i.test(node.attribute('font-family')?.value||'');
   if(!corner)return read.call(this,node,...args);
   const previous=this.getMultiExpression;this.getMultiExpression=undefined;
   try{return read.call(this,node,...args);}finally{this.getMultiExpression=previous;}
