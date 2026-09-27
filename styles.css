@@ -903,3 +903,23 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .lyrics-paper{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y pinch-zoom}
 
 @media print{.return-start{display:none!important}}
+
+/* PrimarySongs v528 footer Tools: same glyph, surface, menu spacing and states. */
+.pdf-footer-tools-wrap{position:relative;flex:none;--surface:#fff;--line:#B7CCE0;--ink:#1F2A2E;--accent:#2B5F9E;--accent-strong:#214A78;--accent-soft:#EAF2FB}
+.pdf-mobile-tools-button{position:relative;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);border-radius:11px;box-shadow:0 2px 7px #1f2a2e17;color:var(--accent-strong);min-height:46px;min-width:62px;padding:4px 10px}
+.pdf-mobile-tools-button>svg{fill:none;height:25px;width:25px;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+.pdf-mobile-tools-button:hover,.pdf-mobile-tools-button:focus-visible,.pdf-mobile-tools-button[aria-expanded=true]{background:var(--accent-soft);border-color:var(--accent)}
+.pdf-mobile-tools-button.has-active-tool::after{background:#F2B84B;border:2px solid var(--surface);border-radius:999px;content:"";height:9px;width:9px;position:absolute;right:2px;top:2px}
+.pdf-mobile-tools-menu{position:absolute;bottom:calc(100% + 9px);right:0;z-index:30;display:grid;gap:3px;min-width:156px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:11px;box-shadow:0 10px 28px #18334e3d}
+.masthead .pdf-mobile-tools-menu button,.masthead .pdf-mobile-tools-menu #print{display:flex;align-items:center;justify-content:flex-start;width:100%;height:auto;min-height:44px;margin:0;padding:7px 10px;gap:9px;border:0;border-radius:7px;background:transparent;color:var(--ink);font-size:.84rem;font-weight:750;text-align:left;white-space:nowrap}
+.masthead .pdf-mobile-tools-menu button:hover:not(:disabled),.masthead .pdf-mobile-tools-menu button:focus-visible,.masthead .pdf-mobile-tools-menu button[aria-pressed=true],.masthead .pdf-mobile-tools-menu #print:hover:not(:disabled),.masthead .pdf-mobile-tools-menu #print:focus-visible{background:var(--accent-soft);color:var(--accent-strong)}
+.pdf-mobile-tools-menu button>span:first-child{display:inline-flex;align-items:center;justify-content:center;font-size:1.08rem;width:22px;flex:none}
+.pdf-mobile-theme-swatch{background:linear-gradient(135deg,#fff 0 49%,#111820 51% 100%);border:1px solid var(--line);border-radius:999px;height:20px;width:20px!important}
+@media(max-width:600px){.pdf-mobile-tools-button{min-width:44px;min-height:44px;padding:4px 8px}}
+/* Display-only page theme: print, app chrome and Lyrics keep their own colors. */
+@media screen{
+ .score-page-dark .score-paper{background:#101417;color:#e8ecef}
+ .score-page-dark #score{background:white;filter:invert(1) hue-rotate(180deg)}
+ .score-page-dark #source-credits{filter:invert(1) hue-rotate(180deg)}
+ .score-page-dark :is(.score-heading h1,#original-key-reference,#score-source,.opening-metadata){color:#d7e0e6}
+}

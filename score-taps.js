@@ -21,7 +21,7 @@ export function installScoreTaps({enabled,navigate}){
  const host=$('playing-view');
  let gesture=null;
  const cancel=()=>{gesture=null;};
- const safe=e=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden])')&&e.target instanceof Element&&!e.target.closest(interactive);
+ const safe=e=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden]),#score-tools-menu:not([hidden])')&&e.target instanceof Element&&!e.target.closest(interactive);
  // One pointer stream for both mouse and touch. No touchend/click navigation,
  // so the browser's compatibility click cannot cause a second action.
  document.addEventListener('pointerdown',e=>{
