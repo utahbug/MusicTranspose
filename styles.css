@@ -907,3 +907,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #home-screen-dialog li{margin:8px 0;line-height:1.4}
 #home-screen-status:empty{display:none}
 #library-more-dialog>button[hidden]{display:none}
+
+/* Credits may follow the last complete system when the printed page has room. */
+@media print{.print-page.last-score-page{break-after:auto}.print-credits{break-before:auto;break-inside:avoid;padding-top:10px}}

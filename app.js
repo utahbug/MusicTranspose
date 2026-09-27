@@ -210,9 +210,10 @@ async function preparePrint(){
  if(leadState?.ok&&scoreSize==='large'){engraver.render();balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);}else renderFullScoreLayout(engraver,renderPrint,e=>assessLayout(host,e.systemLayout,printWidth,available,.8));
  const pages=$('print-pages');pages.replaceChildren();
  const originals=[...host.querySelectorAll('svg')];
- const groups=planSystemPages(measuredSystems(captureSystems(engraver,host),originals,printWidth),available,{gapCap:leadState?.ok&&scoreSize==='large'?14:24});
+ const groups=planSystemPages(measuredSystems(captureSystems(engraver,host),originals,printWidth),available,{gapCap:leadState?.ok&&scoreSize==='large'?14:24,minimumGap:leadState?.ok&&scoreSize==='large'?8:12});
  for(const group of groups){const section=document.createElement('section');section.className='print-page';section.dataset.systems=group.count;section.dataset.used=group.used;section.dataset.available=available;const label=document.createElement('p');label.className='print-key';label.textContent=printKey;
   const svg=showSystemPage(createSystemCanvas(originals),group,printWidth);svg.setAttribute('viewBox',`0 ${-keyInset} ${printWidth} ${group.used+keyInset}`);svg.setAttribute('height',group.used+keyInset);section.append(label,svg);pages.append(section);}
+ pages.lastElementChild?.classList.add('last-score-page');
  const credits=document.createElement('section');credits.className='print-credits';const h=document.createElement('h2');h.textContent=activeSong.title+' · Score credits';const creditCopy=$('source-credits').cloneNode(true);creditCopy.removeAttribute('id');creditCopy.className='source-copy';credits.append(h,creditCopy);pages.append(credits);document.body.classList.add('prepared-print');return pages.querySelectorAll('.print-page').length;
 }
 $('print').onclick=async()=>{if(busy)return;$('print').disabled=true;try{await preparePrint();window.print();}catch(e){console.error(e);$('status').textContent='Unable to prepare printing. Please try again.';}finally{setControls();}};

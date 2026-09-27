@@ -29,7 +29,7 @@ export function prepareVirtualPages(force=false){
  if(!force&&geometry===key&&frames.length)return active;geometry=key;
  for(const f of score.querySelectorAll(':scope > .mxl-page-frame'))f.remove();
  const originals=[...score.querySelectorAll('svg')],canvas=createSystemCanvas(originals);
- const groups=planSystemPages(measuredSystems(source.systems,originals,width),available,{gapCap:source.lead?14:24});
+ const groups=planSystemPages(measuredSystems(source.systems,originals,width),available,{gapCap:source.lead?14:24,minimumGap:source.lead?8:12});
  frames=groups.map(page=>{const first=page.systems[0],last=page.systems.at(-1),frame=document.createElement('div');frame.className='mxl-page-frame';frame.dataset.start=page.start;frame.dataset.end=page.end;frame.dataset.systems=page.count;
   frame._view={...first,top:first.top,bottom:last.bottom,svgIndex:first.svgIndex===last.svgIndex?first.svgIndex:-1,page,used:page.used,canvas,width};frame.style.height=available+'px';score.append(frame);return frame;});
  active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));return active;

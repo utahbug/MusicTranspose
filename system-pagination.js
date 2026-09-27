@@ -1,20 +1,30 @@
-// Pure, complete-system pagination. Coordinates are display pixels; note scale is unchanged.
-export function planSystemPages(items,available,{gapCap=24}={}){
+// Complete-system pagination, using measured ink bounds in display pixels.
+// Callers may permit bounded blank-gap reduction; notation is never rescaled here.
+export function planSystemPages(items,available,{gapCap=24,minimumGap=gapCap}={}){
  if(!items.length)return [];
- const limit=Math.max(1,available),n=items.length,best=Array(n+1);best[n]={pages:0,cost:0,next:n};
- for(let i=n-1;i>=0;i--){let used=0;
+ const limit=Math.max(1,available),floor=Math.max(0,Math.min(gapCap,minimumGap)),n=items.length;
+ const gap=s=>Math.min(gapCap,Math.max(0,s.gap??gapCap));
+ const best=Array(n+1);best[n]={pages:0,reduction:0,cost:0,next:n};
+ for(let i=n-1;i>=0;i--){let ink=0,naturalGaps=0,minimumGaps=0;
   for(let j=i;j<n;j++){
-   used+=items[j].height+(j===i?0:Math.min(gapCap,Math.max(0,items[j].gap??gapCap)));
-   if(used>limit+1e-6&&j>i)break;
-   const tail=best[j+1],candidate={pages:1+tail.pages,cost:Math.max(0,limit-used)**2+tail.cost,next:j+1};
-   if(!best[i]||candidate.pages<best[i].pages||candidate.pages===best[i].pages&&candidate.cost<=best[i].cost+1e-6)best[i]=candidate;
-   if(used>limit)break; // An indivisible oversized system stays alone.
+   ink+=items[j].height;if(j>i){naturalGaps+=gap(items[j]);minimumGaps+=Math.min(floor,gap(items[j]));}
+   if(ink+minimumGaps>limit+1e-6&&j>i)break;
+   const natural=ink+naturalGaps,reduction=j>i?Math.max(0,natural-limit):0,used=natural-reduction,tail=best[j+1];
+   const candidate={pages:1+tail.pages,reduction:reduction+tail.reduction,cost:Math.max(0,limit-used)**2+tail.cost,next:j+1,localReduction:reduction};
+   // First avoid page turns, then preserve breathing room, then balance unused height.
+   const previous=best[i];
+   if(!previous||candidate.pages<previous.pages||candidate.pages===previous.pages&&(candidate.reduction<previous.reduction-1e-6||Math.abs(candidate.reduction-previous.reduction)<=1e-6&&candidate.cost<=previous.cost+1e-6))best[i]=candidate;
+   if(ink+minimumGaps>limit)break; // An indivisible oversized system stays alone.
   }
  }
  const pages=[];
- for(let i=0;i<n;){const end=best[i].next;let used=0;const systems=[];
-  for(let k=i;k<end;k++){const gap=k===i?0:Math.min(gapCap,Math.max(0,items[k].gap??gapCap));used+=gap;systems.push({...items[k],y:used});used+=items[k].height;}
-  pages.push({systems,used,available:limit,start:items[i].start,end:items[end-1].end,count:systems.reduce((sum,s)=>sum+(s.systems||1),0)});i=end;
+ for(let i=0;i<n;){const end=best[i].next,reduction=best[i].localReduction;let capacity=0,used=0;const systems=[];
+  for(let k=i+1;k<end;k++)capacity+=gap(items[k])-Math.min(floor,gap(items[k]));
+  for(let k=i;k<end;k++){
+   const original=k===i?0:gap(items[k]),adjustment=capacity>0?reduction*(original-Math.min(floor,original))/capacity:0,appliedGap=original-adjustment;
+   used+=appliedGap;systems.push({...items[k],y:used,appliedGap});used+=items[k].height;
+  }
+  pages.push({systems,used,available:limit,gapReduction:reduction,start:items[i].start,end:items[end-1].end,count:systems.reduce((sum,s)=>sum+(s.systems||1),0)});i=end;
  }
  return pages;
 }

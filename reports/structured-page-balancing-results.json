@@ -1,0 +1,4266 @@
+[
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3
+    ],
+    "systemHeights": [
+      247.1,
+      227.8,
+      224.99,
+      222.88,
+      223.9,
+      240.28,
+      269.02
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "unused": [
+        229,
+        6,
+        7,
+        236,
+        207
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "unused": [
+        229,
+        6,
+        7,
+        236,
+        207
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      2,
+      3,
+      1
+    ],
+    "systemHeights": [
+      201.63,
+      206.52,
+      194.46,
+      164.52,
+      221.89,
+      178.04
+    ],
+    "before": {
+      "pages": 3,
+      "counts": [
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        52,
+        93,
+        65
+      ]
+    },
+    "after": {
+      "pages": 3,
+      "counts": [
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        52,
+        93,
+        65
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "systemHeights": [
+      165.6,
+      143.95,
+      158.82,
+      154.31,
+      152.77,
+      143.65,
+      143.95,
+      152.23,
+      175.26,
+      158.82
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        152,
+        149,
+        165,
+        166,
+        128
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        152,
+        149,
+        165,
+        166,
+        128
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      2,
+      2,
+      2,
+      3,
+      2,
+      3
+    ],
+    "systemHeights": [
+      215.82,
+      188.76,
+      173.16,
+      196.32,
+      231.42,
+      188.76,
+      212.56,
+      201.24,
+      194.13,
+      184.86,
+      172.92,
+      237.08,
+      188.76,
+      213.41,
+      221.87
+    ],
+    "before": {
+      "pages": 8,
+      "counts": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        47,
+        82,
+        244,
+        50,
+        57,
+        94,
+        26,
+        17
+      ]
+    },
+    "after": {
+      "pages": 8,
+      "counts": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        47,
+        82,
+        244,
+        50,
+        57,
+        94,
+        26,
+        17
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      3,
+      2,
+      4,
+      3,
+      3,
+      3,
+      4,
+      3
+    ],
+    "systemHeights": [
+      158.72,
+      158.08,
+      189.88,
+      154.88,
+      175.58,
+      174.08,
+      152.89,
+      142.08,
+      194.04,
+      173.41,
+      181.56
+    ],
+    "before": {
+      "pages": 6,
+      "counts": [
+        2,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        135,
+        286,
+        121,
+        125,
+        116,
+        100
+      ]
+    },
+    "after": {
+      "pages": 6,
+      "counts": [
+        2,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        135,
+        286,
+        121,
+        125,
+        116,
+        100
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "systemHeights": [
+      130.23,
+      130.72,
+      121.92,
+      125.83,
+      125.83,
+      130.5,
+      130.72,
+      121.92,
+      144.97,
+      121.92,
+      130.72,
+      121.92,
+      121.92,
+      121.65,
+      121.65,
+      125.83,
+      136.82,
+      130.72,
+      139.94,
+      121.92,
+      149.8
+    ],
+    "before": {
+      "pages": 7,
+      "counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "unused": [
+        65,
+        66,
+        50,
+        73,
+        83,
+        54,
+        36
+      ]
+    },
+    "after": {
+      "pages": 7,
+      "counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "unused": [
+        65,
+        66,
+        50,
+        73,
+        83,
+        54,
+        36
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "systemHeights": [
+      200.53,
+      184.86,
+      180.96,
+      179.79,
+      188.83,
+      195.89,
+      199.19,
+      212.89,
+      235.68
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        66,
+        91,
+        67,
+        40,
+        240
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        66,
+        91,
+        67,
+        40,
+        240
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.702,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      3
+    ],
+    "systemHeights": [
+      180.85,
+      166.37,
+      162.86,
+      163.17,
+      169.95,
+      176.97,
+      192.27,
+      222.63
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        105,
+        126,
+        105,
+        37
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        105,
+        126,
+        105,
+        37
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "systemHeights": [
+      144.03,
+      126.32,
+      121.92,
+      132.07,
+      128.92,
+      131.87,
+      131.84,
+      135.12,
+      144.17,
+      159.86,
+      145.62
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        3,
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        56,
+        55,
+        37,
+        156
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        3,
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        56,
+        55,
+        37,
+        156
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      3,
+      1
+    ],
+    "systemHeights": [
+      177.02,
+      222.68,
+      189.76,
+      219.92,
+      255.82,
+      212.54,
+      196.52,
+      420.42,
+      192.8
+    ],
+    "before": {
+      "pages": 6,
+      "counts": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        52,
+        42,
+        220,
+        43,
+        55,
+        283
+      ]
+    },
+    "after": {
+      "pages": 6,
+      "counts": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        52,
+        42,
+        220,
+        43,
+        55,
+        283
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "systemHeights": [
+      144.76,
+      179.66,
+      167.24,
+      204.6,
+      173.9,
+      160.76,
+      192.64,
+      160.27
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        127,
+        80,
+        117,
+        106
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        127,
+        80,
+        117,
+        106
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "systemHeights": [
+      155.3,
+      178.19,
+      134.18,
+      157.06,
+      157.06,
+      169.67,
+      148.26,
+      140.4,
+      115.11,
+      136.91
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        128,
+        171,
+        135,
+        173,
+        210
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        3,
+        2,
+        3
+      ],
+      "unused": [
+        128,
+        0,
+        144,
+        55
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      2,
+      1
+    ],
+    "systemHeights": [
+      209.78,
+      162.48,
+      168.86,
+      210.95,
+      218.78,
+      230.55,
+      198.62,
+      200.23,
+      231.66,
+      211.34
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        80,
+        72,
+        13,
+        53,
+        9
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        80,
+        72,
+        13,
+        53,
+        9
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.702,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "systemHeights": [
+      189.2,
+      146.63,
+      200.11,
+      191.27,
+      221.17,
+      183.37,
+      181.3,
+      214.51
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        116,
+        60,
+        47,
+        56
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        116,
+        60,
+        47,
+        56
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      1,
+      2
+    ],
+    "systemHeights": [
+      133.3,
+      118.0,
+      125.19,
+      144.3,
+      125.19,
+      152.27,
+      103.33,
+      130.27,
+      107.66,
+      116.39
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        71,
+        192,
+        206,
+        93
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        71,
+        192,
+        206,
+        93
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      3,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      3,
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "systemHeights": [
+      244.88,
+      276.47,
+      248.04,
+      221.28,
+      239.22,
+      204.12,
+      219.96,
+      219.72,
+      262.87,
+      247.26,
+      260.52,
+      239.22,
+      209.78,
+      216.06,
+      269.45
+    ],
+    "before": {
+      "pages": 12,
+      "counts": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "unused": [
+        231,
+        199,
+        228,
+        255,
+        8,
+        14,
+        213,
+        229,
+        215,
+        237,
+        26,
+        206
+      ]
+    },
+    "after": {
+      "pages": 12,
+      "counts": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "unused": [
+        231,
+        199,
+        228,
+        255,
+        8,
+        14,
+        213,
+        229,
+        215,
+        237,
+        26,
+        206
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      3,
+      4,
+      2,
+      2,
+      2,
+      4,
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    "systemHeights": [
+      216.44,
+      207.48,
+      205.88,
+      180.48,
+      180.28,
+      221.09,
+      213.76,
+      196.28,
+      171.64,
+      219.2,
+      168.44
+    ],
+    "before": {
+      "pages": 6,
+      "counts": [
+        2,
+        2,
+        2,
+        1,
+        2,
+        2
+      ],
+      "unused": [
+        28,
+        72,
+        53,
+        262,
+        84,
+        81
+      ]
+    },
+    "after": {
+      "pages": 6,
+      "counts": [
+        2,
+        2,
+        2,
+        1,
+        2,
+        2
+      ],
+      "unused": [
+        28,
+        72,
+        53,
+        262,
+        84,
+        81
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Lead",
+    "viewport": [
+      402,
+      650
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.88,
+    "width": 376,
+    "availableHeight": 475.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "systemHeights": [
+      150.24,
+      152.23,
+      149.82,
+      158.82,
+      148.32,
+      152.23,
+      147.83,
+      143.65,
+      152.72,
+      147.83,
+      155.88,
+      152.23,
+      148.32,
+      152.23,
+      147.83,
+      150.24,
+      152.72,
+      158.82
+    ],
+    "before": {
+      "pages": 8,
+      "counts": [
+        3,
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        6,
+        155,
+        4,
+        161,
+        154,
+        161,
+        164,
+        150
+      ]
+    },
+    "after": {
+      "pages": 7,
+      "counts": [
+        3,
+        2,
+        3,
+        3,
+        2,
+        3,
+        2
+      ],
+      "unused": [
+        6,
+        155,
+        4,
+        0,
+        161,
+        0,
+        150
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      5,
+      5,
+      5
+    ],
+    "systemHeights": [
+      258.25,
+      236.97,
+      271.17
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        201
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        201
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      5,
+      5,
+      5
+    ],
+    "systemHeights": [
+      258.25,
+      236.97,
+      271.17
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        201
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        201
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      4,
+      4,
+      3,
+      4
+    ],
+    "systemHeights": [
+      168.78,
+      184.03,
+      156.15,
+      178.47
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        286
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        286
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      6,
+      5,
+      5,
+      7,
+      5,
+      6
+    ],
+    "systemHeights": [
+      227.76,
+      231.66,
+      235.92,
+      196.56,
+      237.08,
+      228.89
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        272,
+        305
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        272,
+        305
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      6,
+      5,
+      5,
+      7,
+      5,
+      6
+    ],
+    "systemHeights": [
+      227.76,
+      231.66,
+      235.92,
+      196.56,
+      237.08,
+      228.89
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        272,
+        305
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        272,
+        305
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      5,
+      4,
+      4,
+      5,
+      5,
+      4,
+      4,
+      3
+    ],
+    "systemHeights": [
+      142.38,
+      128.6,
+      142.38,
+      144.48,
+      124.6,
+      139.48,
+      144.3,
+      152.75
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        4,
+        4
+      ],
+      "unused": [
+        417,
+        413
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        4,
+        4
+      ],
+      "unused": [
+        417,
+        413
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "systemHeights": [
+      221.09,
+      199.47,
+      213.63,
+      248.01
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        63
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        63
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "systemHeights": [
+      221.09,
+      199.47,
+      213.63,
+      248.01
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        63
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        63
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      3,
+      3,
+      2,
+      4
+    ],
+    "systemHeights": [
+      157.03,
+      143.2,
+      146.25,
+      167.03
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        360
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        360
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      2,
+      4,
+      1,
+      2,
+      3
+    ],
+    "systemHeights": [
+      227.34,
+      249.94,
+      212.52,
+      232.44,
+      216.98
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        514,
+        309
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        514,
+        309
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      2,
+      4,
+      1,
+      2,
+      3
+    ],
+    "systemHeights": [
+      227.34,
+      249.94,
+      212.52,
+      232.44,
+      216.98
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        514,
+        309
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        514,
+        309
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      2,
+      3,
+      2,
+      2,
+      3
+    ],
+    "systemHeights": [
+      186.74,
+      160.18,
+      173.04,
+      180.4,
+      139.57
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        5
+      ],
+      "unused": [
+        120
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        5
+      ],
+      "unused": [
+        120
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      4,
+      6,
+      7,
+      3
+    ],
+    "systemHeights": [
+      198.5,
+      260.9,
+      225.92,
+      234.75
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        24
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        24
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      4,
+      6,
+      7,
+      3
+    ],
+    "systemHeights": [
+      198.5,
+      260.9,
+      225.92,
+      234.75
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        24
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        24
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      3,
+      5,
+      6,
+      6
+    ],
+    "systemHeights": [
+      135.88,
+      160.66,
+      155.33,
+      137.33
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        385
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        385
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Normal",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      6,
+      3,
+      3,
+      7,
+      3,
+      3
+    ],
+    "systemHeights": [
+      272.18,
+      276.12,
+      235.56,
+      279.24,
+      256.58,
+      270.27
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        191,
+        169
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        191,
+        169
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Most music",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      6,
+      3,
+      3,
+      7,
+      3,
+      3
+    ],
+    "systemHeights": [
+      272.18,
+      276.12,
+      235.56,
+      279.24,
+      256.58,
+      270.27
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        191,
+        169
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        191,
+        169
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Lead",
+    "viewport": [
+      820,
+      1180
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 772,
+    "availableHeight": 1015.7,
+    "measuresPerSystem": [
+      4,
+      4,
+      3,
+      5,
+      4,
+      2,
+      3
+    ],
+    "systemHeights": [
+      161.98,
+      160.38,
+      160.38,
+      159.36,
+      160.38,
+      157.48,
+      164.88
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        4
+      ],
+      "unused": [
+        505,
+        332
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        4
+      ],
+      "unused": [
+        505,
+        332
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      5,
+      5,
+      5
+    ],
+    "systemHeights": [
+      298.28,
+      273.71,
+      313.99
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        240,
+        522
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        240,
+        522
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.81,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      7
+    ],
+    "systemHeights": [
+      287.31,
+      281.05
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        245
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        245
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      6,
+      4,
+      5
+    ],
+    "systemHeights": [
+      190.98,
+      158.82,
+      179.11
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        279
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        279
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      6,
+      9,
+      7,
+      4
+    ],
+    "systemHeights": [
+      240.3,
+      285.99,
+      244.8,
+      276.3,
+      255.85
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        285,
+        20
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        285,
+        20
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      6,
+      9,
+      7,
+      4
+    ],
+    "systemHeights": [
+      240.3,
+      285.99,
+      244.8,
+      276.3,
+      255.85
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        285,
+        20
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        3
+      ],
+      "unused": [
+        285,
+        20
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      6,
+      9,
+      5,
+      6
+    ],
+    "systemHeights": [
+      142.38,
+      152.06,
+      133.6,
+      139.48,
+      152.75
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        5
+      ],
+      "unused": [
+        59
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        5
+      ],
+      "unused": [
+        59
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      4,
+      3,
+      5
+    ],
+    "systemHeights": [
+      254.95,
+      240.11,
+      286.92
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        6
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        6
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      4,
+      3,
+      5
+    ],
+    "systemHeights": [
+      254.95,
+      240.11,
+      286.92
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        6
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        6
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      5,
+      3,
+      4
+    ],
+    "systemHeights": [
+      157.03,
+      146.45,
+      167.56
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        337
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        337
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      3,
+      4,
+      3,
+      2
+    ],
+    "systemHeights": [
+      279.92,
+      301.75,
+      290.27,
+      225.91
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        230,
+        296
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        230,
+        296
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.81,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      3,
+      4,
+      4,
+      1
+    ],
+    "systemHeights": [
+      252.23,
+      266.35,
+      258.62,
+      199.68
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        307,
+        356
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        307,
+        356
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      3,
+      4,
+      2,
+      3
+    ],
+    "systemHeights": [
+      186.74,
+      173.26,
+      180.4,
+      139.57
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        114
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        114
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      4,
+      7,
+      6,
+      3
+    ],
+    "systemHeights": [
+      228.88,
+      288.28,
+      262.32,
+      271.61
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        295,
+        278
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        295,
+        278
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.738,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      6,
+      7,
+      7
+    ],
+    "systemHeights": [
+      228.89,
+      236.38,
+      244.02
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        78
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        78
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      7,
+      6,
+      7
+    ],
+    "systemHeights": [
+      160.66,
+      157.75,
+      139.77
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        350
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        3
+      ],
+      "unused": [
+        350
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Normal",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      4,
+      8,
+      5
+    ],
+    "systemHeights": [
+      323.8,
+      285.3,
+      322.2,
+      308.25
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        210,
+        181
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        210,
+        181
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Most music",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      8,
+      4,
+      8,
+      5
+    ],
+    "systemHeights": [
+      323.8,
+      285.3,
+      322.2,
+      308.25
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        210,
+        181
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        210,
+        181
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Lead",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1116,
+    "availableHeight": 835.703,
+    "measuresPerSystem": [
+      7,
+      5,
+      8,
+      5
+    ],
+    "systemHeights": [
+      161.98,
+      164.88,
+      160.38,
+      164.88
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        142
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        4
+      ],
+      "unused": [
+        142
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3
+    ],
+    "systemHeights": [
+      247.1,
+      227.8,
+      224.99,
+      222.88,
+      223.9,
+      240.28,
+      269.02
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        171,
+        198,
+        182,
+        401
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        171,
+        198,
+        182,
+        401
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      2,
+      3,
+      1
+    ],
+    "systemHeights": [
+      201.63,
+      206.52,
+      194.46,
+      164.52,
+      221.89,
+      178.04
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        32,
+        71
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        3,
+        3
+      ],
+      "unused": [
+        32,
+        71
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      2,
+      2,
+      2,
+      3,
+      2,
+      3
+    ],
+    "systemHeights": [
+      215.82,
+      188.76,
+      173.16,
+      196.32,
+      231.42,
+      188.76,
+      212.56,
+      201.24,
+      194.13,
+      184.86,
+      172.92,
+      237.08,
+      188.76,
+      213.41,
+      221.87
+    ],
+    "before": {
+      "pages": 6,
+      "counts": [
+        3,
+        2,
+        3,
+        3,
+        2,
+        2
+      ],
+      "unused": [
+        44,
+        218,
+        19,
+        70,
+        220,
+        211
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "unused": [
+        44,
+        7,
+        14,
+        27,
+        0
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      3,
+      3,
+      3,
+      3,
+      2,
+      4,
+      3,
+      3,
+      3,
+      4,
+      3
+    ],
+    "systemHeights": [
+      158.72,
+      158.08,
+      189.88,
+      154.88,
+      175.58,
+      174.08,
+      152.89,
+      142.08,
+      194.04,
+      173.41,
+      181.56
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        3,
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        119,
+        117,
+        133,
+        294
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        3,
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        119,
+        117,
+        133,
+        294
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "systemHeights": [
+      200.53,
+      184.86,
+      180.96,
+      179.79,
+      188.83,
+      195.89,
+      199.19,
+      212.89,
+      235.68
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        2,
+        3,
+        2,
+        2
+      ],
+      "unused": [
+        260,
+        72,
+        251,
+        202
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        2,
+        3,
+        2,
+        2
+      ],
+      "unused": [
+        260,
+        72,
+        251,
+        202
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.702,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      3
+    ],
+    "systemHeights": [
+      180.85,
+      166.37,
+      162.86,
+      163.17,
+      169.95,
+      176.97,
+      192.27,
+      222.63
+    ],
+    "before": {
+      "pages": 3,
+      "counts": [
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        112,
+        112,
+        231
+      ]
+    },
+    "after": {
+      "pages": 3,
+      "counts": [
+        3,
+        3,
+        2
+      ],
+      "unused": [
+        112,
+        112,
+        231
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      3,
+      1
+    ],
+    "systemHeights": [
+      177.02,
+      222.68,
+      189.76,
+      219.92,
+      255.82,
+      212.54,
+      196.52,
+      420.42,
+      192.8
+    ],
+    "before": {
+      "pages": 4,
+      "counts": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        32,
+        170,
+        237,
+        36
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        32,
+        170,
+        237,
+        36
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.64,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "systemHeights": [
+      144.76,
+      179.66,
+      167.24,
+      204.6,
+      173.9,
+      160.76,
+      192.64,
+      160.27
+    ],
+    "before": {
+      "pages": 3,
+      "counts": [
+        3,
+        2,
+        3
+      ],
+      "unused": [
+        130,
+        267,
+        115
+      ]
+    },
+    "after": {
+      "pages": 3,
+      "counts": [
+        3,
+        2,
+        3
+      ],
+      "unused": [
+        130,
+        267,
+        115
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      2,
+      1
+    ],
+    "systemHeights": [
+      209.78,
+      162.48,
+      168.86,
+      210.95,
+      218.78,
+      230.55,
+      198.62,
+      200.23,
+      231.66,
+      211.34
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "unused": [
+        274,
+        266,
+        207,
+        247,
+        203
+      ]
+    },
+    "after": {
+      "pages": 4,
+      "counts": [
+        3,
+        2,
+        3,
+        2
+      ],
+      "unused": [
+        81,
+        216,
+        0,
+        203
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.702,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      1,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "systemHeights": [
+      189.2,
+      146.63,
+      200.11,
+      191.27,
+      221.17,
+      183.37,
+      181.3,
+      214.51
+    ],
+    "before": {
+      "pages": 3,
+      "counts": [
+        3,
+        2,
+        3
+      ],
+      "unused": [
+        86,
+        242,
+        43
+      ]
+    },
+    "after": {
+      "pages": 3,
+      "counts": [
+        3,
+        2,
+        3
+      ],
+      "unused": [
+        86,
+        242,
+        43
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Normal",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.78,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      2,
+      2,
+      3,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      3,
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "systemHeights": [
+      244.88,
+      276.47,
+      248.04,
+      221.28,
+      239.22,
+      204.12,
+      219.96,
+      219.72,
+      262.87,
+      247.26,
+      260.52,
+      239.22,
+      209.78,
+      216.06,
+      269.45
+    ],
+    "before": {
+      "pages": 8,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        124,
+        176,
+        202,
+        208,
+        136,
+        148,
+        220,
+        400
+      ]
+    },
+    "after": {
+      "pages": 8,
+      "counts": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "unused": [
+        124,
+        176,
+        202,
+        208,
+        136,
+        148,
+        220,
+        400
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Most music",
+    "viewport": [
+      402,
+      844
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.702,
+    "width": 376,
+    "availableHeight": 669.812,
+    "measuresPerSystem": [
+      3,
+      4,
+      2,
+      1,
+      1,
+      2,
+      4,
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    "systemHeights": [
+      237.64,
+      235.53,
+      225.83,
+      183.71,
+      197.96,
+      197.75,
+      243.43,
+      233.77,
+      215.3,
+      189.2,
+      238.33,
+      185.69
+    ],
+    "before": {
+      "pages": 5,
+      "counts": [
+        2,
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        173,
+        15,
+        207,
+        200,
+        26
+      ]
+    },
+    "after": {
+      "pages": 5,
+      "counts": [
+        2,
+        3,
+        2,
+        2,
+        3
+      ],
+      "unused": [
+        173,
+        15,
+        207,
+        200,
+        26
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      5,
+      5,
+      5
+    ],
+    "systemHeights": [
+      298.26,
+      265.6,
+      313.46
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        68,
+        342
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        68,
+        342
+      ]
+    }
+  },
+  {
+    "song": "Redeemer of Israel",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.81,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      8,
+      7
+    ],
+    "systemHeights": [
+      287.29,
+      281.05
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        65
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        65
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      8,
+      6,
+      9,
+      7,
+      4
+    ],
+    "systemHeights": [
+      262.8,
+      285.94,
+      244.8,
+      249.3,
+      255.85
+    ],
+    "before": {
+      "pages": 3,
+      "counts": [
+        1,
+        2,
+        2
+      ],
+      "unused": [
+        393,
+        101,
+        136
+      ]
+    },
+    "after": {
+      "pages": 3,
+      "counts": [
+        1,
+        2,
+        2
+      ],
+      "unused": [
+        393,
+        101,
+        136
+      ]
+    }
+  },
+  {
+    "song": "Now Let Us Rejoice",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.738,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      9,
+      9,
+      9,
+      7
+    ],
+    "systemHeights": [
+      204.43,
+      208.61,
+      224.07,
+      231.08
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        219,
+        186
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        219,
+        186
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      4,
+      3,
+      5
+    ],
+    "systemHeights": [
+      254.95,
+      240.05,
+      287.04
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        137,
+        369
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        1
+      ],
+      "unused": [
+        137,
+        369
+      ]
+    }
+  },
+  {
+    "song": "Silent Night",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.738,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      6,
+      6
+    ],
+    "systemHeights": [
+      210.33,
+      235.06
+    ],
+    "before": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        189
+      ]
+    },
+    "after": {
+      "pages": 1,
+      "counts": [
+        2
+      ],
+      "unused": [
+        189
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      3,
+      4,
+      3,
+      2
+    ],
+    "systemHeights": [
+      271.31,
+      306.28,
+      284.4,
+      225.91
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        54,
+        122
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        54,
+        122
+      ]
+    }
+  },
+  {
+    "song": "I Want to Be a Missionary Now",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.81,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      3,
+      4,
+      4,
+      1
+    ],
+    "systemHeights": [
+      252.18,
+      275.26,
+      261.47,
+      199.68
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        118,
+        173
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        118,
+        173
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      4,
+      7,
+      6,
+      3
+    ],
+    "systemHeights": [
+      228.88,
+      301.78,
+      262.32,
+      271.61
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        101,
+        98
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        101,
+        98
+      ]
+    }
+  },
+  {
+    "song": "When I Am Baptized",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 1,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      4,
+      7,
+      6,
+      3
+    ],
+    "systemHeights": [
+      228.88,
+      301.78,
+      262.32,
+      271.61
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        101,
+        98
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        101,
+        98
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Normal",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      8,
+      4,
+      8,
+      5
+    ],
+    "systemHeights": [
+      323.8,
+      271.8,
+      317.7,
+      306.45
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        43,
+        8
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        43,
+        8
+      ]
+    }
+  },
+  {
+    "song": "I Believe in Christ",
+    "mode": "Most music",
+    "viewport": [
+      1180,
+      820
+    ],
+    "pdfPages": 2,
+    "notationScale": 0.9,
+    "width": 1108,
+    "availableHeight": 655.703,
+    "measuresPerSystem": [
+      8,
+      4,
+      8,
+      5
+    ],
+    "systemHeights": [
+      323.8,
+      271.8,
+      317.7,
+      306.45
+    ],
+    "before": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        43,
+        8
+      ]
+    },
+    "after": {
+      "pages": 2,
+      "counts": [
+        2,
+        2
+      ],
+      "unused": [
+        43,
+        8
+      ]
+    }
+  }
+]
