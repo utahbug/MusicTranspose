@@ -1,8 +1,10 @@
-import assert from 'node:assert/strict';import {createWorm,stepWorm,wormPoints,wormHit,shortenWorm,resizeWorm,phaseDuration,laserPalette} from '../lyrics-fun-ambient.js';
-const paths=new Set();let escapes=0;
-for(const [width,height,font] of [[340,650,22],[760,1000,24],[760,650,24],[760,850,24]])for(let run=0;run<40;run++){
- const w=createWorm(width,height,font);assert((w.count-1)*w.spacing/width>.35&&(w.count-1)*w.spacing/width<.45);assert(w.count<=96);assert.equal(wormHit(w,{x:w.x,y:w.y}).index,0);
- const history=[];for(let i=0;i<2400;i++){stepWorm(w,1/60);assert(w.trail.length<=1024);if(i%120===0)history.push([Math.round(w.x),Math.round(w.y),w.speed,w.target]);if(w.escaped){escapes++;break;}}paths.add(JSON.stringify(history));
- for(let i=0;i<100;i++)shortenWorm(w);assert.equal(w.count,1);resizeWorm(w,width*1.4,height,font);assert.equal(w.count,1);
+import assert from 'node:assert/strict';
+import {laserOrigin,missEndpoint,chooseFunTarget} from '../lyrics-fun.js';
+import {phaseNames} from '../lyrics-fun-ambient.js';
+assert.deepEqual(phaseNames,['notes','variation','notes-return']);
+for(const [w,h] of [[320,200],[390,700],[820,950],[1440,800]])for(let i=0;i<1000;i++){
+ const p=laserOrigin(w,h);assert(['left','right'].includes(p.edge));assert.equal(p.x,p.edge==='left'?0:w);assert(p.y>=h*.55&&p.y<=h*.9);
+ const end=missEndpoint(p,w,h);assert.equal(end.x,p.edge==='left'?w:0);assert.equal(end.y,p.y);
+ const diverted=missEndpoint(p,w,h,{x:w/2,y:-1000});assert(diverted.y>=8&&diverted.y<=h-8);
 }
-assert.equal(paths.size,160);assert(escapes>100);for(let i=0;i<100;i++){assert(phaseDuration(0)>=22000&&phaseDuration(0)<=28000);assert(phaseDuration(1)>=32000&&phaseDuration(1)<=42000);}assert.equal(laserPalette.light.length,6);console.log('PASS 160 independent waypoint paths, responsive 40% lengths, escapes, head-only minimum, timing and palette', {escapes});
+assert.equal(chooseFunTarget([]),null);assert.equal(chooseFunTarget(['a','b'],()=>.9),'b');console.log('PASS side-only origins, bounded lower launch region, full-width miss paths, note-only phases');
