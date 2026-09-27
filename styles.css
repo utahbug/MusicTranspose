@@ -788,7 +788,6 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media print{.lyrics-footer{display:none!important}}
 
 /* Temporary Lead tester shortcut: reuse the compact context label at every width. */
-#library.lead-filter-active #library-context{display:inline;font-size:11px;margin-left:6px;white-space:nowrap}
 /* Passive metadata belongs to the score paper, outside the level footer controls. */
 @media screen{
  .score-paper > #original-key-reference{position:absolute;left:12px;bottom:4px;margin:0;font:400 10px/12px system-ui,sans-serif;color:#677570;white-space:nowrap;pointer-events:none}
@@ -887,3 +886,17 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library .search-scope:hover{background:#edf1f3}
 #library .search-scope:focus-within{outline:2px solid #365867;outline-offset:-2px}
 #library .search-scope:has(option:not([value=titles]):checked){background:#e1edf1}
+
+/* Library filters share the Source/Sort row without taking another sticky row. */
+#library .library-filter-row #library-source{max-width:calc(100% - 210px)}
+#library #library-filter{position:relative;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;display:grid;place-items:center;margin-left:auto;border-radius:5px}
+#library-filter.filters-active{background:#dce7ed;color:#173e3b}
+#library-filter.filters-active::after{content:'';position:absolute;right:5px;top:5px;width:6px;height:6px;border-radius:50%;background:currentColor}
+#library-filter:focus-visible{outline:2px solid #365867;outline-offset:-2px}
+#library-filter-menu{position:fixed;z-index:60;width:200px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:4px;background:#fff;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+#library-filter-menu[hidden]{display:none}
+#library-filter-menu>button{display:block;width:100%;min-height:44px;padding:8px 12px;text-align:left;border:0;border-radius:3px;background:transparent;color:#365867;font:14px system-ui,sans-serif}
+#library-filter-menu>button:hover,#library-filter-menu>button:focus-visible{background:#edf1f3}
+#library-filter-menu [aria-checked=true]::after{content:' ✓'}
+@media(max-width:600px){#library .library-filter-row #library-source{max-width:calc(100% - 144px)}}
+@media print{#library-filter-menu{display:none!important}}
