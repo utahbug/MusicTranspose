@@ -960,3 +960,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .lyrics-font-menu button[aria-checked=true]{background:color-mix(in srgb,var(--lyrics-ink) 12%,var(--lyrics-bg))}
  .lyrics-font-menu button[aria-checked=true]::after{content:'✓';margin-left:16px}
 }
+
+/* Proven prior Lyrics artwork inside the existing, unchanged corner controls. */
+@media screen{
+ .lyrics-tools .pdf-mobile-theme-swatch{--line:#B7CCE0}
+ #lyrics-view #lyrics-font-size{font-size:19px}
+ #lyrics-view .lyrics-score-toggle{font-size:25px}
+}

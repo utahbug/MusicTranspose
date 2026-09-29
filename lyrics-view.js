@@ -1,4 +1,3 @@
-import {scoreIcon,themeIcon,fontSizeIcon} from './icons.js';
 import {lyricIds} from './lyrics-index.js';
 export {lyricIds};
 let pending;
@@ -21,12 +20,12 @@ export function createLyricsView(host,{onScore,libraryControl}){
  function draw(){
  dispose();host.replaceChildren();host.classList.toggle('lyrics-dark',dark);host.dataset.size=sizes[size];
  const tools=make('div',null,'lyrics-tools');tools.setAttribute('role','group');tools.setAttribute('aria-label','Lyrics controls');
- const theme=button('',dark?'Use light background':'Use dark background',()=>{dark=!dark;saveAppearance();host.classList.toggle('lyrics-dark',dark);theme.setAttribute('aria-pressed',String(dark));theme.title=dark?'Use light background':'Use dark background';theme.setAttribute('aria-label',theme.title);});theme.innerHTML=themeIcon;theme.setAttribute('aria-pressed',String(dark));
+ const theme=button('',dark?'Use light background':'Use dark background',()=>{dark=!dark;saveAppearance();host.classList.toggle('lyrics-dark',dark);theme.setAttribute('aria-pressed',String(dark));theme.title=dark?'Use light background':'Use dark background';theme.setAttribute('aria-label',theme.title);});theme.innerHTML='<span class="pdf-mobile-theme-swatch" aria-hidden="true"></span>';theme.setAttribute('aria-pressed',String(dark));
  const fontWrap=make('div',null,'lyrics-font-wrap'),menu=make('div',null,'lyrics-font-menu');menu.id='lyrics-font-options';menu.hidden=true;menu.setAttribute('role','menu');menu.setAttribute('aria-label','Lyrics text size');
  const closeFont=(focus=false)=>{menu.hidden=true;font.setAttribute('aria-expanded','false');if(focus)font.focus({preventScroll:true});};
  const openFont=()=>{menu.hidden=false;font.setAttribute('aria-expanded','true');const r=font.getBoundingClientRect();menu.style.left=Math.max(8,Math.min(r.right-menu.offsetWidth,innerWidth-menu.offsetWidth-8))+'px';menu.style.top=Math.max(8,r.top-menu.offsetHeight-8)+'px';menu.querySelector('[aria-checked=true]').focus({preventScroll:true});};
- const font=button('','Lyrics text size',()=>menu.hidden?openFont():closeFont(true));font.id='lyrics-font-size';font.innerHTML=fontSizeIcon;font.setAttribute('aria-haspopup','menu');font.setAttribute('aria-expanded','false');font.setAttribute('aria-controls',menu.id);
- for(const [index,name] of sizeNames.entries()){const option=button(name,name,()=>{size=index;saveAppearance();host.dataset.size=sizes[size];for(const [i,item] of [...menu.children].entries())item.setAttribute('aria-checked',String(i===size));font.title='Lyrics text size: '+sizeNames[size];closeFont(true);});option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
+ const font=button('','Lyrics text size',()=>menu.hidden?openFont():closeFont(true));font.id='lyrics-font-size';font.textContent=['A','A+','A++'][Math.min(size,2)];font.setAttribute('aria-haspopup','menu');font.setAttribute('aria-expanded','false');font.setAttribute('aria-controls',menu.id);
+ for(const [index,name] of sizeNames.entries()){const option=button(name,name,()=>{size=index;saveAppearance();host.dataset.size=sizes[size];for(const [i,item] of [...menu.children].entries())item.setAttribute('aria-checked',String(i===size));font.textContent=['A','A+','A++'][Math.min(size,2)];font.title='Lyrics text size: '+sizeNames[size];closeFont(true);});option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
  font.title='Lyrics text size: '+sizeNames[size];fontWrap.append(font,menu);
  font.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openFont();}});
  menu.addEventListener('keydown',e=>{e.stopPropagation();const items=[...menu.children],i=items.indexOf(document.activeElement);if(e.key==='Escape'){e.preventDefault();closeFont(true);}else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
@@ -35,7 +34,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  document.addEventListener('focusin',e=>{if(!fontWrap.contains(e.target))closeFont();},options);
  document.addEventListener('keydown',e=>{if(!menu.hidden&&e.key==='Escape'){e.preventDefault();e.stopPropagation();closeFont(true);}},options);
  for(const event of ['resize','scroll','beforeprint'])window.addEventListener(event,()=>closeFont(),options);
- const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.innerHTML=scoreIcon;
+ const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.textContent='♫';
  tools.append(theme,fontWrap,scoreToggle);
  const footer=make('div',null,'lyrics-footer');
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,tools);host.append(footer);
