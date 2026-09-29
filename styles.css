@@ -984,3 +984,19 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 }
 @media(max-width:600px){#pdf-annotation-panel{width:calc(100% - 16px)}#pdf-annotation-notice{font-size:11px;padding:5px 8px}.pdf-annotation-toolbar{gap:5px;padding:5px}}
 @media print{#pdf-annotation-panel,.pdf-annotation-canvas{display:none!important}}
+
+/* Musician-facing Score View; internal density choices stay in the renderer. */
+@media screen{
+ body .masthead .utility-controls #score-size{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:auto;min-width:100px;flex:0 0 auto;height:44px;padding:0 8px;margin:0;color:#536b7a;font:13px system-ui,sans-serif;white-space:nowrap}
+ #score-size-options{flex-direction:column;align-items:stretch;gap:2px;min-width:160px;max-width:calc(100vw - 16px)}
+ #score-size-options button{justify-content:flex-start;width:100%;height:44px;min-height:44px;padding:0 12px;margin:0;border:1px solid transparent;font-size:14px}
+ #score-size-options button[hidden]{display:none}
+ #score-size-options button[aria-checked=true]{background:#e5edf2;border-color:#536b7a;box-shadow:inset 0 0 0 1px #536b7a}
+ @media(max-width:600px){
+  .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px minmax(0,1fr);row-gap:3px}
+  .masthead .playing-controls{grid-column:1 / -1;grid-row:2;justify-self:center}
+  .masthead #songs{position:absolute;left:max(4px,env(safe-area-inset-left,0px));bottom:calc(4px + var(--playing-safe-bottom));margin:0;width:44px;min-width:44px}
+  .masthead .utility-controls{grid-column:2;grid-row:3;justify-self:end;gap:2px}
+  body .masthead .utility-controls #score-size{min-width:0;padding-inline:6px;font-size:12px}
+ }
+}

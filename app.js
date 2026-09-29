@@ -82,7 +82,7 @@ $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
 const sourceCache=new Map(); // Unpack a bundled score only on its first selection.
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 function width(){return Math.round(score.clientWidth);}
-function setControls(){annotations.sync();metronome?.sync();document.querySelector('#score-size-options [data-size=large]').hidden=!leadSource?.ok||activeSong.scoreType==='pdf';document.body.classList.toggle('lead-score-open',!isPdf()&&scoreSize==='large'&&!!leadState?.ok);$('score-source').textContent=activeSong.collection+(activeSong.page?' · '+activeSong.page:'');$('score-source').title=$('score-source').textContent;$('score-source').dataset.compact=({'Children’s Songbook':'CS',"Children's Songbook":"CS",'Hymns (1985)':'Hymns','Hymns for Home and Church':'HHC'}[activeSong.collection]||activeSong.collection)+(activeSong.page?' · '+activeSong.page:'');const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(pdfFallback||busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; $('score-size').disabled=(isPdf()&&!activeSong.pdfAsset)||!ready||busy||loading;$('score-pdf-option').hidden=!activeSong.pdfAsset;$('score-size').dataset.size=scoreSize;for(const option of $('score-size-options').querySelectorAll('[data-size]'))option.setAttribute('aria-pressed',String(option.dataset.size===(pdfFallback?'pdf':scoreSize))); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
+function setControls(){annotations.sync();metronome?.sync();document.querySelector('#score-size-options [data-size=large]').hidden=!leadSource?.ok||activeSong.scoreType==='pdf';document.body.classList.toggle('lead-score-open',!isPdf()&&scoreSize==='large'&&!!leadState?.ok);$('score-source').textContent=activeSong.collection+(activeSong.page?' · '+activeSong.page:'');$('score-source').title=$('score-source').textContent;$('score-source').dataset.compact=({'Children’s Songbook':'CS',"Children's Songbook":"CS",'Hymns (1985)':'Hymns','Hymns for Home and Church':'HHC'}[activeSong.collection]||activeSong.collection)+(activeSong.page?' · '+activeSong.page:'');const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(pdfFallback||busy||loading||wanted!==current||wantedOctave!==currentOctave);playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; syncScoreView(); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
  syncOctaveControls();
  for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
@@ -159,17 +159,26 @@ function buildChooser(){
 $('lower').replaceChildren(...[...$('lower').children].reverse());
 }
 $('reset').onclick=()=>{wantedOctave=normalOctaves();changeKey(0);};
+function syncScoreView(){
+ const view=isPdf()?'pdf':scoreSize==='large'?'large':'auto',label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view];
+ $('score-size').disabled=!ready||busy||loading;$('score-size').dataset.size=scoreSize;$('score-size').dataset.view=view;
+ $('score-view-label').textContent=label;$('score-size').setAttribute('aria-label','Score View: '+label);$('score-size').title='Score View: '+label;
+ $('score-pdf-option').hidden=activeSong.scoreType!=='pdf'&&!activeSong.pdfAsset;
+ $('score-size-options').querySelector('[data-size=auto]').hidden=activeSong.scoreType==='pdf';
+ for(const option of $('score-size-options').querySelectorAll('[data-size]')){const selected=option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));}
+}
 const sizeOptions=$('score-size-options');
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
-$('score-size').onclick=()=>{if((isPdf()&&!activeSong.pdfAsset)||busy||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
+$('score-size').onclick=()=>{if(busy||loading||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
 for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=async()=>{
  playback.stop();
  const next=option.dataset.size==='large'&&!leadSource?.ok?'normal':option.dataset.size;closeSizeOptions(true);
- if(next==='pdf'){await showPdfFallback();return;}
+ const restoreFocus=()=>{const button=$('score-size');if(document.activeElement===document.body&&!button.disabled&&button.getClientRects().length)button.focus({preventScroll:true});};
+ if(next==='pdf'){if(!isPdf())await showPdfFallback();restoreFocus();return;}
  if(pdfFallback){pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open');$('pdf-notice').hidden=true;document.dispatchEvent(new Event('score-session-reset'));readingPosition=null;}
  else readingPosition=rememberReadingPosition();
  scoreSize=next;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}
- score.setAttribute('aria-label',activeSong.title+' sheet music');score.setAttribute('aria-busy','true');await pump();
+ score.setAttribute('aria-label',activeSong.title+' sheet music');score.setAttribute('aria-busy','true');await pump();restoreFocus();
 };
 // Legacy helper also serves the normal Original PDF presentation (not an error).
 async function showPdfFallback(selectionToken){
@@ -184,11 +193,15 @@ async function showPdfFallback(selectionToken){
  finally{finishSelection(token);}
 }
 document.addEventListener('pointerdown',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&!$('score-size').contains(e.target))closeSizeOptions();});
+sizeOptions.addEventListener('keydown',e=>{
+ if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();e.stopPropagation();const options=[...sizeOptions.querySelectorAll('button:not([hidden]):not(:disabled)')],index=options.indexOf(document.activeElement);options[e.key==='Home'?0:e.key==='End'?options.length-1:(index+(['ArrowDown','ArrowRight'].includes(e.key)?1:-1)+options.length)%options.length]?.focus();}
+});
 document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'){e.preventDefault();closeSizeOptions(true);}});
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
 // One control map at every viewport; move existing buttons, preserving handlers/focus.
 document.querySelector('.playing-controls').prepend($('songs'));
 document.querySelector('.utility-controls').prepend($('score-size'));
+document.querySelector('.utility-controls').append($('settings'));
 document.querySelector('.utility-controls').append($('show-lyrics'));
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>closeSizeOptions());
