@@ -11,7 +11,7 @@ try{for(const [width,height] of [[820,1180],[1180,820],[390,844],[1440,1000]]){
  const store=()=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)||'{"documents":{}}'),key);
  const pages=async(id='nativity')=>Object.values((await store()).documents).find(d=>d.songId===id)?.pages||{};
  const layer=()=>p.locator('.pdf-page-frame.current-page .pdf-annotation-canvas');
- const position=()=>p.locator('#page-position').textContent();
+ const position=async()=>(await p.locator('#page-position').getAttribute('aria-label')).replace('Page ','').replace(' of ',' / ');
  const draw=async(x,y,end=x+.12,kind=width===1440?'mouse':'touch')=>{
   const r=await layer().boundingBox(),a={x:r.x+x*r.width,y:r.y+y*r.height},b={x:r.x+end*r.width,y:a.y};
   if(kind==='touch'&&engine==='chromium'){const d=await c.newCDPSession(p);await d.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[a]});for(let i=1;i<=8;i++)await d.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:a.x+(b.x-a.x)*i/8,y:a.y}]});await d.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await d.detach();}

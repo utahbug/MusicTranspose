@@ -8,7 +8,7 @@ try{for(const [width,height,touch] of (baseline?[[820,1180,true]]:[[820,1180,tru
  const context=await browser.newContext({viewport:{width,height},hasTouch:touch,serviceWorkers:'block'}),p=await context.newPage(),errors=[];
  p.on('pageerror',e=>errors.push(e.message));await p.goto(process.env.TEST_URL||'http://127.0.0.1:8775/');await p.locator('.library-row').first().waitFor();
  const ready=async()=>{await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');await p.waitForTimeout(150);};
- const position=async()=>Number((await p.locator('#page-position').textContent()).split('/')[0]);
+ const position=async()=>Number((await p.locator('#page-position').getAttribute('aria-label')).match(/^Page (\d+)/)[1]);
  const geometry=()=>p.evaluate(async()=>(await import('./score-taps.js')).scoreTapGeometry());
  const tap=async(x,y)=>{const r=await geometry();const a=r.left+r.width*x,b=r.top+r.height*y;if(touch)await p.touchscreen.tap(a,b);else await p.mouse.click(a,b);await p.waitForTimeout(20);};
  // Synthetic drift/cancellation complements browser-generated touch/mouse taps.
@@ -29,7 +29,7 @@ try{for(const [width,height,touch] of (baseline?[[820,1180,true]]:[[820,1180,tru
   // A stale duplicate release, touchend and compatibility click must do nothing.
   send('pointerup');host.dispatchEvent(new Event('touchend',{bubbles:true}));host.dispatchEvent(new MouseEvent('click',{bubbles:true,clientX:x,clientY:y}));
  },opts);
- for(const [name,id,view] of [['PDF','choose-to-serve-the-lord',null],['XML','song-a13c43da-0243-4019-ad08-d7be530074f5','normal'],['Lead','song-a13c43da-0243-4019-ad08-d7be530074f5','large']]){
+ for(const [name,id,view] of [['PDF','choose-to-serve-the-lord',null],['XML','song-a13c43da-0243-4019-ad08-d7be530074f5','auto'],['Lead','song-a13c43da-0243-4019-ad08-d7be530074f5','large']]){
   await p.evaluate(id=>prototype.loadSong(id),id);await ready();
   if(view){await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${view}]`).click();await ready();}
   await p.locator('#settings').click();await p.locator('input[name=navigation][value=pages]').check();await p.locator('#close-settings').click();await p.waitForTimeout(100);
