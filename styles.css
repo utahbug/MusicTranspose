@@ -1000,3 +1000,15 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
   body .masthead .utility-controls #score-size{min-width:0;padding-inline:6px;font-size:12px}
  }
 }
+
+/* Two control clusters; page status remains accessible outside the toolbar grid. */
+@media screen{
+ @media(min-width:601px){
+  .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:auto minmax(0,1fr)}
+  .masthead .utility-controls{grid-column:2}
+ }
+ @media(max-width:600px){
+  .masthead .toolbar .playing-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .playing-controls{grid-row:1}
+  .masthead .toolbar .utility-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .utility-controls{grid-row:2}
+ }
+}

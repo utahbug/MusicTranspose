@@ -204,6 +204,10 @@ document.querySelector('.playing-controls').prepend($('songs'));
 document.querySelector('.utility-controls').prepend($('score-size'));
 document.querySelector('.utility-controls').append($('settings'));
 document.querySelector('.utility-controls').append($('show-lyrics'));
+// Reuse the same key node; narrow phones retain their safe Reset/Key row.
+const phoneToolbar=matchMedia('(max-width:600px)');
+function placeKeyControl(){if(phoneToolbar.matches)document.querySelector('.playing-controls').append($('key'));else $('score-size').after($('key'));}
+phoneToolbar.addEventListener('change',placeKeyControl);placeKeyControl();
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
