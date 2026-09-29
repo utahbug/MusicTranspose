@@ -27,7 +27,7 @@ export async function renderPdf(asset,host,title,isCurrent=()=>true){
  const doc=await documents.get(asset);if(!isCurrent())return;const output=document.createDocumentFragment();
  for(let n=1;n<=doc.numPages;n++){
   const page=await doc.getPage(n);if(!isCurrent())return;const base=page.getViewport({scale:1}),viewport=page.getViewport({scale:1800/base.width});
-  const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);output.append(frame);
+  const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.dataset.pdfPage=String(n);frame.dataset.pdfDocument=doc.fingerprints?.[0]||doc.fingerprint||asset;frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);output.append(frame);
   await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
   if(!isCurrent())return;bounds.set(canvas,contentBounds(canvas));displayBounds(canvas);
  }

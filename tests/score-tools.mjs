@@ -4,7 +4,7 @@ const ready=p=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.
 try{for(const [width,height] of [[320,568],[390,844],[844,390],[820,1180],[1440,1000]]){
 const c=await browser.newContext({viewport:{width,height},hasTouch:width!==1440}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
 await p.addInitScript(()=>localStorage.setItem('music-transpose-navigation-v1',JSON.stringify({mode:'pages'})));
-await p.goto(process.env.TEST_URL||'http://127.0.0.1:8771/');await p.locator('.library-row').first().waitFor();await p.evaluate(()=>prototype.loadSong('nativity'));await ready(p);await p.waitForTimeout(200);
+await p.goto(process.env.TEST_URL||'http://127.0.0.1:8771/');await p.locator('.library-row').first().waitFor();await p.evaluate(()=>prototype.loadSong('nativity','normal'));await ready(p);await p.waitForTimeout(200);
 const before=await p.locator('#page-position').textContent(),frames=await p.locator('.mxl-page-frame').count();
 await p.locator('#score-tools').click();assert.equal(await p.locator('#score-tools').getAttribute('aria-expanded'),'true');assert.equal(await p.locator('#print').count(),1);
 const menu=await p.locator('#score-tools-menu').boundingBox(),button=await p.locator('#score-tools').boundingBox();assert(Math.abs(button.y-menu.y-menu.height-9)<1);assert(menu.x>=0&&menu.y>=0&&menu.x+menu.width<=width);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));

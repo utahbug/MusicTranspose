@@ -27,7 +27,7 @@ function sync(){
 function pause(message='Paused'){if(!running)return;running=false;cancelAnimationFrame(frame);$('navigation-status').textContent=message;sync();}
 function tick(time){if(!running)return;const dt=Math.min((time-lastTime)/1000,.1);lastTime=time;position+=speed*dt;window.scrollTo({top:position,behavior:'instant'});expected=scrollY;
  if(scrollY>=document.documentElement.scrollHeight-innerHeight-1){pause('End of score');return;}frame=requestAnimationFrame(tick);}
-function start(){if(!window.prototype?.ready||prototype.busy)return;position=scrollY;expected=scrollY;lastTime=performance.now();running=true;$('navigation-status').textContent='';sync();frame=requestAnimationFrame(tick);}
+function start(){if(document.body.classList.contains('pdf-annotation-active')||!window.prototype?.ready||prototype.busy)return;position=scrollY;expected=scrollY;lastTime=performance.now();running=true;$('navigation-status').textContent='';sync();frame=requestAnimationFrame(tick);}
 function toggle(){running?pause():start();}
 function advance(){pause();const bar=document.querySelector('.masthead').getBoundingClientRect().height;window.scrollBy({top:Math.max(1,(innerHeight-bar)*.85),behavior:'instant'});}
 $('settings').onclick=()=>{pause();sync();panel.showModal();panel.querySelector('input:checked:not(:disabled)')?.focus();};$('close-settings').onclick=()=>panel.close();
@@ -48,7 +48,7 @@ document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle,#
 document.addEventListener('touchstart',e=>{if(e.target.closest('main'))pause();},{passive:true});
 window.addEventListener('scroll',()=>{if(running&&Math.abs(scrollY-expected)>2)pause();},{passive:true});
 document.addEventListener('keydown',e=>{
- if(document.body.classList.contains('library-open')||document.body.classList.contains('lyrics-open')||document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
+ if(document.body.classList.contains('pdf-annotation-active')||document.body.classList.contains('library-open')||document.body.classList.contains('lyrics-open')||document.querySelector('dialog[open]')||e.target.closest('input,select,textarea,[contenteditable]'))return;
  if(mode==='pages'&&['PageDown','ArrowRight','PageUp','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();if(e.repeat)return;turn(e.key==='Home'?-Infinity:e.key==='End'?Infinity:['PageDown','ArrowRight'].includes(e.key)?1:-1);return;}
  if(mode==='hybrid'&&['PageDown','ArrowRight'].includes(e.key)){e.preventDefault();advance();return;}
  if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))pause();
@@ -81,7 +81,7 @@ function syncStart(){
 function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  const input=panel.querySelector('input[value=pages]');input.disabled=!available;$('page-mode-choice').classList.toggle('unavailable',!available);
- $('show-tap-zones').disabled=!available;
+ $('show-tap-zones').disabled=!available||document.body.classList.contains('pdf-annotation-active');
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
  frames.forEach((f,i)=>{f.classList.toggle('current-page',i===pageIndex);if(mode==='pages')f.setAttribute('aria-hidden',String(i!==pageIndex));else f.removeAttribute('aria-hidden');});
  $('page-position').textContent=frames.length?`${pageIndex+1} / ${frames.length}`:'';$('page-position').setAttribute('aria-label',`${pdf?'Page':'Virtual page'} ${pageIndex+1} of ${frames.length}`);$('page-position').hidden=mode!=='pages'||!available||frames.length<=1||!playing();
@@ -92,7 +92,7 @@ function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().le
 const returnToStart=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
 for(const button of document.querySelectorAll('.return-start'))button.onclick=returnToStart;
 const cancelScoreTap=installScoreTaps({
- enabled:()=>playing()&&window.prototype?.ready&&!prototype.busy&&$('score').getAttribute('aria-busy')==='false'&&(!document.body.classList.contains('pdf-score-open')||mode==='pages'),
+ enabled:()=>!document.body.classList.contains('pdf-annotation-active')&&playing()&&window.prototype?.ready&&!prototype.busy&&$('score').getAttribute('aria-busy')==='false'&&(!document.body.classList.contains('pdf-score-open')||mode==='pages'),
  navigate:delta=>{pause();if(mode==='pages'){turn(delta);return;}
   // In scrolling views keep the selected mode; tap one screen with reading overlap.
   const r=$('score').getBoundingClientRect(),bottom=scoreVisibleBottom();
@@ -110,3 +110,13 @@ sync();
 
 document.addEventListener('score-view-shown',syncPages);
 document.addEventListener('metronome-layout',()=>{syncPages();syncStart();});
+
+// Annotation uses the existing PDF frames and turn path, without changing the saved navigation mode.
+document.addEventListener('pdf-annotation-mode',()=>{pause();cancelScoreTap();syncPages();});
+document.addEventListener('pdf-annotation-turn',e=>{
+ if(!document.body.classList.contains('pdf-annotation-active')||!document.body.classList.contains('pdf-score-open'))return;
+ const list=pages(),index=list.indexOf(e.detail.frame),delta=e.detail.delta;if(index<0||![-1,1].includes(delta))return;
+ pause();const target=list[Math.max(0,Math.min(list.length-1,index+delta))];
+ if(mode==='pages')turn(delta);else target.scrollIntoView({block:'start',behavior:'instant'});
+ document.dispatchEvent(new CustomEvent('pdf-annotation-page-shown',{detail:target}));
+});
