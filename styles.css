@@ -1046,3 +1046,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  /* Structured scores inherit the existing whole-score dark-page inversion. */
 }
 @media print{#page-position{display:none!important}}
+
+@media screen and (max-width:600px){#page-position{font-size:22px;padding:0 7px}}
+@media screen{#page-position.page-position-compact{font-size:22px;padding:0 7px}}

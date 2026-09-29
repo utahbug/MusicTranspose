@@ -1,3 +1,4 @@
+import {clearPdfCounterPosition} from './pdf-counter-clearance.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
@@ -80,8 +81,17 @@ function syncStart(){
 }
 // Keep passive status clear of the floating annotation tools, without moving pages/tools.
 function positionPageStatus(){
- pagePosition.style.bottom='8px';if(pagePosition.hidden)return;
- const tools=$('pdf-annotation-panel');if(tools.hidden)return;
+ pagePosition.style.bottom='8px';pagePosition.style.right='8px';pagePosition.classList.remove('page-position-compact','sr-only');if(pagePosition.hidden)return;
+ const tools=$('pdf-annotation-panel'),canvas=pagePosition.parentElement.querySelector('.pdf-page');
+ if(canvas){
+  const findPosition=()=>clearPdfCounterPosition(canvas,pagePosition.parentElement.getBoundingClientRect(),pagePosition.getBoundingClientRect(),tools.hidden?null:tools.getBoundingClientRect());
+  let position=findPosition();
+  if(!position){pagePosition.classList.add('page-position-compact');position=findPosition();}
+  if(position){pagePosition.style.bottom=position.bottom+'px';pagePosition.style.right=position.right+'px';}
+  else pagePosition.classList.add('sr-only'); // Retain the live status if no safe visual rectangle exists.
+  return;
+ }
+ if(tools.hidden)return;
  const r=pagePosition.getBoundingClientRect(),t=tools.getBoundingClientRect();
  if(r.right>t.left&&r.left<t.right&&r.bottom>t.top&&r.top<t.bottom){
   const f=pagePosition.parentElement.getBoundingClientRect();
@@ -122,7 +132,7 @@ let startFrame=0;window.addEventListener('scroll',()=>{if(!startFrame)startFrame
 let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();},180);});
 document.addEventListener('score-session-reset',()=>{pagePosition.hidden=true;resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
-$('pdf-trim').addEventListener('change',fitPage);
+$('pdf-trim').addEventListener('change',()=>{fitPage();positionPageStatus();});
 document.addEventListener('library-open',e=>{pagePosition.hidden=true;pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();
