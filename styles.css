@@ -1035,3 +1035,13 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .pdf-score-open #pdf-notice{min-height:0;margin-bottom:0}
 }
 @media print{.score-identity-header #score-source{display:none}}
+
+/* Passive performance status follows the current page without changing its layout. */
+@media screen{
+ .mxl-page-frame{position:relative}
+ #page-position{position:absolute;right:8px;bottom:8px;z-index:3;padding:3px 7px;min-width:0;font:600 26px/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em;white-space:nowrap;color:#24343d;background:rgba(255,255,255,.94);border:0;border-radius:2px;pointer-events:none;user-select:none}
+ #page-position[hidden],body.library-open #page-position,body.lyrics-open #page-position{display:none}
+ .pdf-score-open .score-page-dark #page-position{color:#e8ecef;background:rgba(16,20,23,.94)}
+ /* Structured scores inherit the existing whole-score dark-page inversion. */
+}
+@media print{#page-position{display:none!important}}

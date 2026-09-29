@@ -1,7 +1,7 @@
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
-const $=id=>document.getElementById(id),panel=$('settings-dialog');
+const $=id=>document.getElementById(id),panel=$('settings-dialog'),pagePosition=$('page-position');
 const storageKey='music-transpose-navigation-v1';
 const validMode=value=>['continuous','auto','pages'].includes(value);
 const readPreference=storage=>{try{const value=JSON.parse(storage.getItem(storageKey)||'{}');return value&&typeof value==='object'?value:{};}catch{return {};}};
@@ -78,14 +78,33 @@ function syncStart(){
  if(visible&&!pdf){const bottom=scoreVisibleBottom();for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.setProperty('--return-clip',Math.max(0,e.getBoundingClientRect().bottom-bottom)+'px');}
  else for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
 }
+// Keep passive status clear of the floating annotation tools, without moving pages/tools.
+function positionPageStatus(){
+ pagePosition.style.bottom='8px';if(pagePosition.hidden)return;
+ const tools=$('pdf-annotation-panel');if(tools.hidden)return;
+ const r=pagePosition.getBoundingClientRect(),t=tools.getBoundingClientRect();
+ if(r.right>t.left&&r.left<t.right&&r.bottom>t.top&&r.top<t.bottom){
+  const f=pagePosition.parentElement.getBoundingClientRect();
+  pagePosition.style.bottom=Math.max(8,Math.min(f.height-r.height-8,f.bottom-t.top+8))+'px';
+ }
+}
+const positionResize=new ResizeObserver(positionPageStatus);positionResize.observe($('pdf-annotation-panel'));positionResize.observe($('score'));
+window.addEventListener('scroll',positionPageStatus,{passive:true});
+window.addEventListener('resize',positionPageStatus);
 function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  const input=panel.querySelector('input[value=pages]');input.disabled=!available;$('page-mode-choice').classList.toggle('unavailable',!available);
  $('show-tap-zones').disabled=!available||document.body.classList.contains('pdf-annotation-active');
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
  frames.forEach((f,i)=>{f.classList.toggle('current-page',i===pageIndex);if(mode==='pages')f.setAttribute('aria-hidden',String(i!==pageIndex));else f.removeAttribute('aria-hidden');});
- $('page-position').textContent=frames.length?`${pageIndex+1} / ${frames.length}`:'';$('page-position').setAttribute('aria-label',`${pdf?'Page':'Virtual page'} ${pageIndex+1} of ${frames.length}`);$('page-position').hidden=mode!=='pages'||!available||frames.length<=1||!playing();
- fitPage();syncStart();
+ // One passive status node follows the current frame, including replaced virtual frames.
+ const positionText=frames.length?`${pageIndex+1} / ${frames.length}`:'';
+ if(pagePosition.textContent!==positionText)pagePosition.textContent=positionText;
+ pagePosition.setAttribute('aria-label',`Page ${pageIndex+1} of ${frames.length}`);
+ pagePosition.hidden=mode!=='pages'||!available||frames.length<=1||!playing();
+ const positionHost=frames[pageIndex]||document.querySelector('.score-paper');
+ if(pagePosition.parentElement!==positionHost)positionHost.append(pagePosition);
+ fitPage();syncStart();positionPageStatus();
 }
 function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex,false);sync();window.scrollTo({top:0,behavior:'instant'});}
 // Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
@@ -101,10 +120,10 @@ const cancelScoreTap=installScoreTaps({
 });
 let startFrame=0;window.addEventListener('scroll',()=>{if(!startFrame)startFrame=requestAnimationFrame(()=>{startFrame=0;syncStart();});},{passive:true});
 let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();},180);});
-document.addEventListener('score-session-reset',()=>{resetVirtualSource();pageIndex=0;});
+document.addEventListener('score-session-reset',()=>{pagePosition.hidden=true;resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
 $('pdf-trim').addEventListener('change',fitPage);
-document.addEventListener('library-open',e=>{pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
+document.addEventListener('library-open',e=>{pagePosition.hidden=true;pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();
 
