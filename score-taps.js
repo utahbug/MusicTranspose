@@ -20,27 +20,39 @@ export function scoreTapAction(x,y,r=scoreTapGeometry()){
 export function installScoreTaps({enabled,navigate}){
  const host=$('playing-view');
  let gesture=null;
- const cancel=()=>{gesture=null;};
- const safe=e=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden]),#score-tools-menu:not([hidden])')&&e.target instanceof Element&&!e.target.closest(interactive);
- // One pointer stream for both mouse and touch. No touchend/click navigation,
- // so the browser's compatibility click cannot cause a second action.
+ const cancel=()=>{const g=gesture;gesture=null;if(g&&host.hasPointerCapture(g.id))host.releasePointerCapture(g.id);};
+ const available=()=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden]),#score-tools-menu:not([hidden])');
+ const safe=target=>available()&&target instanceof Element&&!target.closest(interactive);
+ // One pointer stream owns navigation; touchend and compatibility clicks never navigate.
  document.addEventListener('pointerdown',e=>{
-  cancel();if(!host.contains(e.target)||!e.isPrimary||e.button!==0||!safe(e))return;
+  // Mutations which predate this pointer cannot invalidate its new gesture.
+  scoreChanges.takeRecords();controlChanges.takeRecords();
+  cancel();if(!host.contains(e.target)||!e.isPrimary||e.button!==0||!safe(e.target))return;
   const action=scoreTapAction(e.clientX,e.clientY);if(action===null)return;
-  // PDF finger taps tolerate small contact drift; mouse, pen and MXL stay unchanged.
-  const pdfTouch=e.pointerType==='touch'&&document.body.classList.contains('pdf-score-open');
-  gesture={id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),action,pdfTouch,tolerance:pdfTouch?16:10};
+  // Input type, never score format, determines slop and down-zone retention.
+  const touch=e.pointerType==='touch';
+  gesture={id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),action,touch,tolerance:touch?16:10};
+  // Capture on the stable view, not an SVG slice which virtual pages may replace.
+  if(touch&&e.isTrusted)host.setPointerCapture(e.pointerId);
  },true);
  document.addEventListener('pointermove',e=>{if(gesture&&(e.pointerId!==gesture.id||Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>gesture.tolerance))cancel();},{passive:true});
  document.addEventListener('pointerup',e=>{
-  const g=gesture;cancel();if(!g||g.id!==e.pointerId||!host.contains(e.target)||!safe(e)||performance.now()-g.time>600||Math.hypot(e.clientX-g.x,e.clientY-g.y)>g.tolerance||scoreTapAction(e.clientX,e.clientY)===null||(!g.pdfTouch&&scoreTapAction(e.clientX,e.clientY)!==g.action)||!getSelection().isCollapsed)return;
-  // Within the PDF touch slop, retain the down-zone even if contact drifts across a boundary.
+  const g=gesture;cancel();if(!g||g.id!==e.pointerId)return;
+  // Captured touch events target the host; still reject releases over real controls.
+  const target=g.touch?document.elementFromPoint(e.clientX,e.clientY):e.target;
+  if(!host.contains(target)||!safe(target)||performance.now()-g.time>600||Math.hypot(e.clientX-g.x,e.clientY-g.y)>g.tolerance||scoreTapAction(e.clientX,e.clientY)===null||(!g.touch&&scoreTapAction(e.clientX,e.clientY)!==g.action)||!getSelection().isCollapsed)return;
   navigate(g.action);
  },{passive:true});
  for(const event of ['pointercancel','lostpointercapture','score-session-reset','score-engraved','library-open','visibilitychange'])document.addEventListener(event,cancel,true);
  for(const event of ['scroll','resize','blur','beforeprint'])window.addEventListener(event,cancel,{passive:true});
- // Opening/closing controls or replacing a score invalidates any in-flight tap.
- new MutationObserver(cancel).observe($('score'),{childList:true,attributes:true,attributeFilter:['aria-busy']});
- new MutationObserver(cancel).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open','hidden']});
+ // Semantic score changes cancel; harmless DOM maintenance does not own gestures.
+ const scoreChanges=new MutationObserver(records=>{if(records.some(r=>r.oldValue==='true')||$('score').getAttribute('aria-busy')==='true')cancel();});
+ scoreChanges.observe($('score'),{attributes:true,attributeFilter:['aria-busy'],attributeOldValue:true});
+ const controlChanges=new MutationObserver(records=>{
+  // Also catch a blocking control opened and closed within the same task.
+  const wasBlocking=records.some(r=>r.attributeName==='open'?r.target.matches('dialog')&&r.oldValue!==null:r.target.matches('#score-size-options,#score-tools-menu')&&r.oldValue===null);
+  if(!available()||wasBlocking)cancel();
+ });
+ controlChanges.observe(document.body,{subtree:true,attributes:true,attributeFilter:['open','hidden'],attributeOldValue:true});
  return cancel;
 }
