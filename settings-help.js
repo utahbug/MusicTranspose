@@ -1,6 +1,8 @@
+import {tapZonesIcon} from './icons.js';
 import {scoreTapGeometry} from './score-taps.js';
 // Help uses the real score geometry; it never changes the navigation mode.
 const $=id=>document.getElementById(id),overlay=$('score-tap-overlay'),opener=$('show-tap-zones');
+opener.innerHTML=tapZonesIcon;
 let timer=0;
 const close=()=>{clearTimeout(timer);if(overlay.open)overlay.close();};
 opener.addEventListener('click',()=>{
@@ -12,6 +14,6 @@ opener.addEventListener('click',()=>{
 });
 overlay.addEventListener('pointerdown',()=>clearTimeout(timer));
 overlay.addEventListener('click',close);
-overlay.addEventListener('close',()=>{clearTimeout(timer);$('settings').focus({preventScroll:true});});
+overlay.addEventListener('close',()=>{clearTimeout(timer);if(opener.getClientRects().length&&!opener.disabled)opener.focus({preventScroll:true});});
 for(const event of ['resize','scroll','beforeprint'])window.addEventListener(event,close,{passive:true});
 for(const event of ['library-open','score-session-reset'])document.addEventListener(event,close);

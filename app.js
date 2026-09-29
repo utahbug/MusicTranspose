@@ -57,16 +57,6 @@ initPlaybackSettings(playback,()=>ready&&!busy&&!loading&&!isPdf()&&activeSong.p
 metronome=createMetronome(playback,()=>({available:ready&&!busy&&!loading&&!isPdf()&&activeSong.playbackAvailable!==false&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
 function playbackControls(){const h=document.querySelector('.score-heading h1');if(!isPdf()&&ready&&activeSong.playbackAvailable!==false)playback.attach(h);else h.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
-// Read the established Score action slot without changing its layout. When Score is
-// hidden (direct Lyrics opening/resize), measure it invisibly and restore synchronously.
-function scoreToggleBounds(scrollOffset=0){
- const control=$('show-lyrics'),main=$('playing-view');let r=control.getBoundingClientRect();
- if(r.width&&r.height)return {x:r.x,y:r.y,width:r.width,height:r.height};
- const style=main.getAttribute('style'),hidden=control.hidden,pdf=document.body.classList.contains('pdf-score-open');
- try{document.body.classList.remove('pdf-score-open');control.hidden=false;main.style.setProperty('display','block','important');Object.assign(main.style,{visibility:'hidden',position:'absolute',top:'0',left:'0',width:'100%'});r=control.getBoundingClientRect();return {x:r.x,y:r.y+scrollY-scrollOffset,width:r.width,height:r.height};}
- finally{if(style===null)main.removeAttribute('style');else main.setAttribute('style',style);control.hidden=hidden;document.body.classList.toggle('pdf-score-open',pdf);}
-}
-window.addEventListener('resize',()=>{if(document.body.classList.contains('lyrics-open'))requestAnimationFrame(()=>lyricsView.alignToggle(scoreToggleBounds(scoreScroll)));});
 async function showScoreView(id){
  if(!id)return;
  library?.navigating('score',id);
@@ -76,12 +66,12 @@ async function showScoreView(id){
 }
 async function openLyrics(id){
  const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id))return;
- const fromScore=!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')&&ready&&activeSong.id===id;const toggleBounds=scoreToggleBounds();
+ const fromScore=!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')&&ready&&activeSong.id===id;
  const retained=ready&&activeSong.id===id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;
  library?.navigating('lyrics',id);const token=beginSelection(song,retained);
  try{const data=await getLyrics(id);if(token!==selectionVersion)return;if(!data)throw Error('Lyrics unavailable');if(retained)score.setAttribute('aria-busy','false');lyricsSong=song;
  document.dispatchEvent(new Event('library-open'));document.body.classList.add('lyrics-open');
- lyricsView.show(data);if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});lyricsView.alignToggle(toggleBounds);if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data);if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){if(token!==selectionVersion)return;finishSelection(token);library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{finishSelection(token);}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
@@ -194,6 +184,8 @@ document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.con
 // One control map at every viewport; move existing buttons, preserving handlers/focus.
 document.querySelector('.playing-controls').prepend($('songs'));
 document.querySelector('.utility-controls').prepend($('score-size'));
+document.querySelector('.utility-controls').append($('show-lyrics'));
+$('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
 for(const button of $('octave-scopes').querySelectorAll('button'))button.onclick=()=>{octaveScope=button.dataset.scope;syncOctaveControls();};

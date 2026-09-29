@@ -236,7 +236,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #show-lyrics{font-size:25px;color:#536B7A}.score-heading h1{grid-row:1 / span 2}
 #lyrics-view{--lyrics-bg:#FFFFFF;--lyrics-ink:#1F2A2E;--lyrics-muted:#5C6B70;background:var(--lyrics-bg);color:var(--lyrics-ink);min-height:100dvh;padding:16px max(16px,calc((100% - 780px)/2)) 48px;font-family:system-ui,sans-serif}
 #lyrics-view.lyrics-dark{--lyrics-bg:#0B0D0E;--lyrics-ink:#F7FAFB;--lyrics-muted:#B8C8CE;color-scheme:dark}
-.lyrics-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:22px}.lyrics-tools{display:flex;gap:6px}.lyrics-tools button{width:44px;padding:0;font-size:19px}
 #lyrics-view button{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}#lyrics-view h1{font:600 26px/1.25 system-ui;margin:0}.lyrics-source{color:var(--lyrics-muted);font-size:14px;line-height:1.5}
 .lyrics-body{font-size:24px;line-height:1.65}.lyrics-body section{margin-top:28px}.lyrics-body h2{font:600 14px system-ui;color:var(--lyrics-muted);margin:0 0 8px}.lyrics-body p{white-space:pre-line;margin:0;overflow-wrap:break-word}
 #lyrics-view[data-size=small] .lyrics-body{font-size:19px}#lyrics-view[data-size=large] .lyrics-body{font-size:30px}.lyrics-refrain{border-left:3px solid #536B7A;padding-left:16px}.lyrics-notice{font-size:13px;color:var(--lyrics-muted);line-height:1.5}
@@ -252,18 +251,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .lyrics-paper{padding:14px 12px}
  #lyrics-view[data-size=medium] .lyrics-body{font-size:22px}
 }
-/* Optional Lyrics ambience stays outside text flow and never intercepts input. */
-.lyrics-fun-layer{position:fixed;z-index:6;overflow:hidden;pointer-events:none;--fun-beam:#386F9B}
-.lyrics-dark .lyrics-fun-layer{--fun-beam:#8DD8FF}
-.lyrics-fun-note{position:absolute;z-index:1;width:44px;height:56px;color:var(--lyrics-ink);filter:drop-shadow(0 0 2px var(--lyrics-bg))}
-.lyrics-fun-effect{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
-#lyrics-view .song-playback,.lyrics-top{position:relative;z-index:7}
-.lyrics-fun-beam{animation:fun-beam .28s ease-out forwards}
-.lyrics-fun-spark{animation:fun-spark .4s ease-out forwards}
-@keyframes fun-beam{to{opacity:0}}
-@keyframes fun-spark{to{transform:translate(var(--dx),var(--dy));opacity:0}}
-@media(prefers-reduced-motion:reduce){.lyrics-fun-spark{animation-name:fun-beam}}
-@media print{.lyrics-fun-layer{display:none!important}}
+
 
 .lyrics-icon{width:26px;height:28px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
@@ -617,8 +605,6 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 
 /* Same physical action slot as Score, independent of the narrower lyric column. */
 #lyrics-view{position:relative}
-.lyrics-score-toggle{position:absolute;min-width:44px;min-height:44px;padding:0;font-size:25px;z-index:7}
-.lyrics-top{flex-wrap:wrap;align-items:flex-start}
 .lyrics-tools{margin-inline-start:auto}
 
 /* Alternate local PDF remains a view of the structured song. */
@@ -771,7 +757,6 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #lyrics-view{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 .lyrics-footer{position:fixed;left:0;right:0;bottom:0;z-index:12;display:flex;align-items:center;gap:12px;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:var(--lyrics-bg);border-top:1px solid var(--lyrics-muted)}
 #lyrics-view .lyrics-footer #songs{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;color:var(--primary-blue-text);border-color:var(--primary-blue)}
-#lyrics-view .lyrics-fun-stop{min-height:44px;min-width:120px;margin-inline:auto;padding:8px 24px;background:var(--lyrics-ink);color:var(--lyrics-bg);font:600 16px system-ui,sans-serif}
 @media print{.lyrics-footer{display:none!important}}
 
 /* Temporary Lead tester shortcut: reuse the compact context label at every width. */
@@ -900,7 +885,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 #library .song-view-heading{width:88px}
 
-.lyrics-paper{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y pinch-zoom}
 
 @media print{.return-start{display:none!important}}
 
@@ -924,11 +908,55 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-page-dark :is(.score-heading h1,#original-key-reference,#score-source,.opening-metadata){color:#d7e0e6}
 }
 
-/* Shared Library identity header; MusicDocs colors do not alter working surfaces. */
+/* Shared Library / Lyrics identity treatment; reading surfaces keep their own theme. */
 @media screen{
- #library .library-heading{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);background:var(--app-header-background);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.22),0 3px 14px rgba(22,49,83,.16)}
+ #library .library-heading,.lyrics-identity-header{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);background:var(--app-header-background);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.22),0 3px 14px rgba(22,49,83,.16)}
  #library .library-heading :is(h1,.eyebrow,h1 span){color:inherit}
  /* The small count reaches the green end: backing preserves 4.5:1 contrast without changing its box. */
  #library .library-heading #library-count{color:#fff;background:rgba(0,0,0,.12);box-shadow:0 0 0 2px rgba(0,0,0,.12);border-radius:2px}
  #library .library-heading h1:focus-visible{outline:2px solid #fff;outline-offset:2px}
+}
+
+/* Auto-scroll's auxiliary strip stays above the stable footer corners. */
+@media screen{
+ .masthead:has(#navigation-strip:not([hidden])){display:flex;flex-direction:column-reverse;gap:0}
+ .masthead:has(#navigation-strip:not([hidden])) .toolbar{padding-bottom:calc(4px + var(--playing-safe-bottom))}
+ .masthead:has(#navigation-strip:not([hidden])) #navigation-strip{padding-bottom:4px}
+ .masthead:has(#navigation-strip:not([hidden]))>.toolbar,.masthead:has(#navigation-strip:not([hidden]))>#navigation-strip{width:100%}
+}
+
+/* Shared footer corner slot: identical dimensions and safe-area edges in both views. */
+@media screen{
+ .masthead #show-lyrics,.lyrics-tools button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;border:1px solid #c2cdc6;border-radius:8px;background:transparent;color:#536b7a}
+ .lyrics-tools{display:flex;align-items:center;gap:6px;margin-left:auto}
+ @media(min-width:601px){.lyrics-tools{min-height:46px}}
+ .lyrics-score-toggle{position:static}
+ .lyrics-tools button{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}
+ .view-switch svg,.lyrics-tools svg,#show-tap-zones svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .view-switch:hover,.lyrics-tools button:hover,#show-tap-zones:hover:not(:disabled){background:color-mix(in srgb,currentColor 9%,transparent)}
+ .view-switch:focus-visible,.lyrics-tools button:focus-visible,#show-tap-zones:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+ .score-actions #show-tap-zones{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;margin:0;padding:0;border:1px solid #b7cce0;border-radius:9px;color:#365f7d;background:transparent;text-decoration:none}
+ .score-page-dark #show-tap-zones{color:#d7e0e6}
+ /* At narrow widths only, keep the existing key controls above the corner row. */
+ @media(max-width:380px){
+  .masthead .toolbar:has(#show-lyrics:not([hidden])) .playing-controls{grid-column:1 / -1;grid-row:2;justify-self:center}
+  .masthead .toolbar:has(#show-lyrics:not([hidden])) .utility-controls{grid-column:2;grid-row:3}
+  .masthead .toolbar:has(#show-lyrics:not([hidden])) #songs{position:absolute;left:max(4px,env(safe-area-inset-left,0px));bottom:calc(4px + var(--playing-safe-bottom))}
+ }
+}
+
+/* Compact song identity; the title's existing playback button stays beside it. */
+@media screen{
+ #lyrics-view .lyrics-identity-header{position:relative;min-height:56px;padding:8px 60px 8px 10px;margin:-18px -18px 0}
+ #lyrics-view .lyrics-identity-header h1{display:block;font:600 18px/1.2 system-ui,sans-serif;letter-spacing:-.025em;color:#fff;overflow-wrap:anywhere}
+ #lyrics-view .lyrics-identity-header .lyrics-source{font:400 11px/1.3 system-ui,sans-serif;color:#fff;margin-top:4px;margin-bottom:0;overflow-wrap:anywhere}
+ #lyrics-view .lyrics-identity-header .song-playback{position:absolute;right:8px;top:calc(50% - 22px);color:#fff}
+ #lyrics-view .lyrics-identity-header :focus-visible{outline:2px solid #fff;outline-offset:2px}
+ @media(max-width:600px){#lyrics-view .lyrics-identity-header{margin:-14px -12px 0}}
+ #lyrics-view[data-size=extra-large] .lyrics-body{font-size:36px}
+ .lyrics-font-wrap{position:relative;flex:none}
+ .lyrics-font-menu{position:fixed;z-index:30;display:grid;min-width:156px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:5px;gap:3px;border:1px solid var(--lyrics-muted);border-radius:9px;background:var(--lyrics-bg);color:var(--lyrics-ink);box-shadow:0 6px 24px #172e3b33}
+ .lyrics-tools .lyrics-font-menu button{width:100%;min-height:44px;justify-content:space-between;padding:7px 10px;border:0;border-radius:6px;font:14px system-ui,sans-serif;white-space:nowrap}
+ .lyrics-font-menu button[aria-checked=true]{background:color-mix(in srgb,var(--lyrics-ink) 12%,var(--lyrics-bg))}
+ .lyrics-font-menu button[aria-checked=true]::after{content:'✓';margin-left:16px}
 }
