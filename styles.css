@@ -1032,7 +1032,8 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-identity-header .score-actions > button:focus-visible{outline:2px solid #fff;outline-offset:-3px}
  .score-heading .subtitle{margin-top:2px}
  .pdf-score-open .score-heading .subtitle{display:none}
- .pdf-score-open #pdf-notice{min-height:0;margin-bottom:0}
+ /* Keep the raw PDF link/state available internally without permanent page text. */
+ #pdf-notice,.pdf-score-open #pdf-notice{display:none}
 }
 @media print{.score-identity-header #score-source{display:none}}
 
