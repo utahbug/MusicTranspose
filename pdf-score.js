@@ -36,3 +36,10 @@ export async function renderPdf(asset,host,title,isCurrent=()=>true){
 export function preparePdfPrint(host,pages){
  pages.replaceChildren();for(const canvas of host.querySelectorAll('canvas.pdf-page')){const section=document.createElement('section');section.className='print-page pdf-print-page';const image=document.createElement('img');image.src=canvas.toDataURL('image/png');image.alt=canvas.getAttribute('aria-label');section.append(image);pages.append(section);}document.body.classList.add('prepared-print');return pages.children.length;
 }
+
+// Return the clean source already held by PDF.js, including local/offline documents.
+export async function originalPdfData(asset){
+ const job=documents.get(asset)||documents.get([...documents.keys()].find(key=>new URL(key,location.href).href===asset));
+ if(!job)throw Error('Open the Original PDF before saving it.');
+ return (await job).getData();
+}
