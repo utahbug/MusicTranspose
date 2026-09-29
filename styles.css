@@ -155,7 +155,7 @@
 #library .library-controls select option{color:#233331;background:#fff}
 #library .list-actions{gap:6px}#library .list-actions label{flex:0 1 auto}
 #library .library-controls .quiet{border:0;background:transparent;color:var(--library-accent);padding:6px;min-height:44px;border-radius:2px}
-@media(hover:hover){#library .library-controls .quiet:not(#library-clear):hover{text-decoration:underline;text-underline-offset:3px}#library .library-controls select:hover{color:#233331}}
+@media(hover:hover){#library .library-controls .quiet:not(#library-clear):not(#library-source):hover{text-decoration:underline;text-underline-offset:3px}#library .library-controls select:hover{color:#233331}}
 #library .library-controls .quiet[aria-pressed=true]{text-decoration:underline;text-underline-offset:3px}
 #library-results{border-top-color:var(--library-maroon)}
 #library .library-row .favorite{color:#61716F}#library .library-row .favorite[aria-pressed=true]{color:var(--library-gold)}
