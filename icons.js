@@ -11,8 +11,8 @@ export const leadSheetIcon = `<svg class="lead-sheet-icon" viewBox="-180 -1143 1
 
 // Corner controls share a 24px outline family; accessible names live on buttons.
 const outline=paths=>`<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths}</svg>`;
-export const scoreIcon=outline('<path d="M9 18V5l11-2v13M9 8l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/>');
+export const scoreIcon=outline('<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M7 7h10M7 10h5M7 13h3M16 17V10"/><ellipse cx="14" cy="17" rx="2" ry="1.5" fill="currentColor"/>');
 export const themeIcon=outline('<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"/>');
-export const fontSizeIcon=outline('<path d="M2 18 6 6l4 12M3.5 14h5M17 12v6M17 15a3 3 0 1 0-6 0 3 3 0 0 0 6 0M19 9l2 2 2-2"/>');
+export const fontSizeIcon=outline('<path d="M3 5h10M8 5v14M5 19h6M18 5v14m-3-11 3-3 3 3m-6 8 3 3 3-3"/>');
 // Primary app Tap Zones artwork, reused with the existing guide.
 export const tapZonesIcon=outline('<path d="M12 2v3M5.7 4.7l2.1 2.1M18.3 4.7l-2.1 2.1M10.2 13V8.8a1.8 1.8 0 0 1 3.6 0v4.1l1.1-.8a1.7 1.7 0 0 1 2.4.4l1.2 1.8a3 3 0 0 1 .3 2.7l-1.1 3H10l-3.3-4.1a1.6 1.6 0 0 1 2.3-2.2l1.2.9V13Z"/>');
