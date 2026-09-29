@@ -230,8 +230,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 @media print{#score-size{display:none!important}}
 
 /* Integrated song views; management and source metadata stay separate. */
-#library .library-row:not(.reordering){grid-template-columns:44px minmax(0,1fr) 88px 32px}
-.song-view-actions{display:flex}.song-view-actions button{width:44px;min-width:44px;padding:0;font-size:23px;color:#536B7A;border:0}
 .score-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:4px}.score-actions .quiet{width:44px;height:44px;padding:0;margin-top:2px}
 #show-lyrics{font-size:25px;color:#536B7A}.score-heading h1{grid-row:1 / span 2}
 #lyrics-view{--lyrics-bg:#FFFFFF;--lyrics-ink:#1F2A2E;--lyrics-muted:#5C6B70;background:var(--lyrics-bg);color:var(--lyrics-ink);min-height:100dvh;padding:16px max(16px,calc((100% - 780px)/2)) 48px;font-family:system-ui,sans-serif}
@@ -520,10 +518,6 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 .lists-heading .eyebrow{color:#e1e9ed}
 #lists-view .list-song-title:disabled{opacity:1;color:#62706f}
 
-/* Stable Score/Lyrics slots; local editing gets a second row, never displaces Score. */
-.song-view-actions{display:grid;grid-template-columns:44px 44px;align-items:center}
-.song-view-actions .lyrics-slot{width:44px;height:44px}
-.song-view-actions button[aria-label^="Edit local music:"]{grid-column:2}
 /* Match radio width, native inline margins and label gap through a shared grid. */
 #navigation-settings .setting-choice{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:10px}
 #navigation-settings .tap-help-line{margin-inline-start:38px}
@@ -654,7 +648,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 
 
 /* Library: one sticky block keeps search, filters and columns aligned at every size. */
-#library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:minmax(0,1fr) 88px 44px}
+#library{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));--library-columns:minmax(0,1fr) 44px}
 #library .library-heading{margin:0;background:transparent;color:#233331;padding:10px 4px;flex-wrap:nowrap;gap:8px;min-height:44px}
 #library .library-heading :is(h1,.eyebrow){color:#233331}
 #library .library-heading h1{font:600 18px/1.2 system-ui,sans-serif;color:inherit;letter-spacing:-.025em;margin:0}
@@ -662,9 +656,9 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #library-count{margin:0;white-space:nowrap;font-size:11px}
 #library .library-header-panel{position:sticky;top:0;z-index:20;padding:env(safe-area-inset-top) 0 0;background:#edf1f3;box-shadow:0 1px 0 #c2ced3}
 #library .library-controls{padding:4px 4px 0}
-#library .library-search-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;gap:0;flex-wrap:nowrap}
-#library .library-search-row .search-box{max-width:none;min-width:0}
-#library #library-search{border-color:#c2ced3;border-radius:5px;height:44px;padding:8px 10px}
+#library .library-search-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;max-width:588px;gap:0;flex-wrap:nowrap}
+#library .library-search-row .search-box{position:relative;display:block;max-width:none;min-width:0}
+#library #library-search{border-color:#c2ced3;border-radius:5px;height:44px;padding:8px 44px 8px 10px}
 #library-search::-webkit-search-cancel-button{display:none}
 #library .library-search-row .quiet{display:flex;align-items:center;justify-content:center;height:44px;width:44px;padding:0;font-size:25px;text-decoration:none}
 #library .library-filter-row{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:12px}
@@ -676,9 +670,6 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #library-results{padding:0;border:0}
 #library-results::before,#library-results::after{display:none}
 #library .library-row:not(.reordering){grid-template-columns:var(--library-columns)}
-#library .song-view-actions{display:grid;grid-template-columns:44px 44px;align-items:center}
-#library .song-view-actions button,#library .song-view-actions .lyrics-slot{height:44px;width:44px;min-height:44px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;background:transparent}
-#library .song-view-actions svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 #library .song-entry{padding:10px 6px;gap:3px;min-height:60px}
 #library .song-entry strong{font-size:14px;line-height:1.3}
 #library .song-meta{font-size:11px;line-height:1.3}
@@ -779,7 +770,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 /* Source represents a catalog collection or an active List, with one shared menu. */
 #library .library-filter-row{gap:16px;align-items:center}
 #library .library-filter-row #library-source{display:flex;align-items:center;gap:5px;width:max-content;max-width:calc(100% - 156px);min-width:0;flex:0 1 auto;min-height:44px;margin:0;padding:0 6px;border:0;background:transparent;color:#365867;font:13px system-ui,sans-serif;white-space:nowrap}
-#library-source-label{overflow:hidden;text-overflow:ellipsis}
+#library-source-label{overflow:hidden;text-overflow:ellipsis;font-weight:600}
 #library-source .desktop-prefix{flex:none}
 #library .library-filter-row .sort-choice{width:134px;flex:0 0 134px;max-width:none}
 #library-sort-label{white-space:pre}
@@ -852,7 +843,9 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 @media(max-width:600px){body:not(.pdf-score-open) .score-paper{padding-left:5px;padding-right:5px}}
 
 /* Optional native search scope: one compact touch target, no extra header row. */
-#library .library-search-row{grid-template-columns:minmax(0,1fr) 44px 44px 44px}
+#library #library-clear{position:absolute;right:0;top:0;background:transparent;border:0;border-radius:5px;font-size:22px}
+#library #library-clear[hidden]{display:none}
+@media(max-width:600px){#library .library-search-row{max-width:none}}
 #library .search-scope{position:relative;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:5px;color:#365867;font-size:26px}
 #library .search-scope select{position:absolute;inset:0;width:44px;height:44px;opacity:0;cursor:pointer}
 #library .search-scope:hover{background:#edf1f3}
@@ -883,7 +876,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 /* Credits may follow the last complete system when the printed page has room. */
 @media print{.print-page.last-score-page{break-after:auto}.print-credits{break-before:auto;break-inside:avoid;padding-top:10px}}
 
-#library .song-view-heading{width:88px}
 
 
 @media print{.return-start{display:none!important}}
