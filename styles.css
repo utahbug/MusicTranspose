@@ -923,3 +923,12 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-page-dark #source-credits{filter:invert(1) hue-rotate(180deg)}
  .score-page-dark :is(.score-heading h1,#original-key-reference,#score-source,.opening-metadata){color:#d7e0e6}
 }
+
+/* Shared Library identity header; MusicDocs colors do not alter working surfaces. */
+@media screen{
+ #library .library-heading{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);background:var(--app-header-background);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.22),0 3px 14px rgba(22,49,83,.16)}
+ #library .library-heading :is(h1,.eyebrow,h1 span){color:inherit}
+ /* The small count reaches the green end: backing preserves 4.5:1 contrast without changing its box. */
+ #library .library-heading #library-count{color:#fff;background:rgba(0,0,0,.12);box-shadow:0 0 0 2px rgba(0,0,0,.12);border-radius:2px}
+ #library .library-heading h1:focus-visible{outline:2px solid #fff;outline-offset:2px}
+}
