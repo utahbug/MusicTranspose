@@ -7,7 +7,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:8768/';
 const context=await browser.newContext({viewport:{width:1180,height:820},hasTouch:true});
 const p=await context.newPage(),errors=[],requests=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>requests.push(r.url()));
 const ready=async()=>{await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');await p.waitForTimeout(150);};
-const open=async id=>{await p.evaluate(id=>prototype.loadSong(id),id);await ready();};
+const open=async id=>{await p.evaluate(id=>prototype.loadSong(id,'normal'),id);await ready();};
 const size=async mode=>{await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size="${mode}"]`).click();await ready();};
 const settings=async()=>{await p.locator('#settings').click();await p.waitForFunction(()=>document.querySelector('#tempo-value').textContent.includes('BPM'));};
 try{
@@ -22,7 +22,7 @@ try{
   const pages=await p.locator('#score .pdf-page-frame').count();assert(pages>0);assert.equal(await p.evaluate(()=>prototype.preparePrint()),pages);await p.emulateMedia({media:'print'});assert(await p.locator('.toolbar').isHidden());assert.equal(await p.locator('#print-pages img').count(),pages);await p.emulateMedia({media:'screen'});
   await p.locator('#settings').click();assert(await p.locator('#playback-settings').isHidden());await p.locator('input[name=navigation][value=pages]').check();await p.locator('#close-settings').click();await p.keyboard.press('End');if(pages>1)assert.equal(await p.locator('#page-position').textContent(),`${pages} / ${pages}`);await p.keyboard.press('Home');
   if(await p.locator('#show-lyrics').isVisible()){await p.locator('#show-lyrics').click();assert.equal(await p.locator('#lyrics-view .song-playback').count(),0);await p.getByRole('button',{name:'View Score',exact:true}).click();assert(await p.evaluate(()=>prototype.pdfFallback));}
-  await size('large');assert(!(await p.evaluate(()=>prototype.pdfFallback)));assert.equal(await p.evaluate(()=>prototype.xml),xml);assert.equal(await p.evaluate(()=>prototype.current),1);assert.equal(await p.evaluate(()=>prototype.octave),1);await p.locator('#reset').click();await ready();assert.equal(await p.evaluate(()=>prototype.current+prototype.octave),0);
+  await size('normal');assert(!(await p.evaluate(()=>prototype.pdfFallback)));assert.equal(await p.evaluate(()=>prototype.xml),xml);assert.equal(await p.evaluate(()=>prototype.current),1);assert.equal(await p.evaluate(()=>prototype.octave),1);await p.locator('#reset').click();await ready();assert.equal(await p.evaluate(()=>prototype.current+prototype.octave),0);
   console.log('PASS structured/PDF/structured, tempo, identity, key/octave, print/pages',id,pages);
  }
  // Live speed changes preserve source-time position and encoded tempo relationships.

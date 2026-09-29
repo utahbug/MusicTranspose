@@ -104,8 +104,9 @@ let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResi
 document.addEventListener('score-session-reset',()=>{resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
 $('pdf-trim').addEventListener('change',fitPage);
-document.addEventListener('library-open',()=>{pause();cancelScoreTap();pageIndex=0;hideStart();});
+document.addEventListener('library-open',e=>{pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Migrate an existing valid session choice without replacing it.
 sync();
 
+document.addEventListener('score-view-shown',syncPages);
 document.addEventListener('metronome-layout',()=>{syncPages();syncStart();});
