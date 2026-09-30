@@ -1,3 +1,4 @@
+import {createScoreVoice,configurePlaybackOutput,playbackSounds} from './playback-voices.js';
 // MusicXML performance timeline: written-order measures, all pitched parts/voices.
 export function scoreTimeline(xml){
  const doc=new DOMParser().parseFromString(xml,'application/xml');
@@ -46,16 +47,14 @@ export function scoreTimeline(xml){
  return {notes,measures,duration:seconds(total),fallbackTempo:fallback?90:null,tempos:changes,warnings:[...warnings],repeats:doc.querySelectorAll('repeat,ending,sound[dalsegno],sound[dacapo]').length>0,order:'linear'};
 }
 export function createPlayback(getSource){
- let context,master,timeline,sourceKey='',state='stopped',position=0,epoch=0,timer=0,index=0,generation=0,pending=false,blocked=false;const voices=new Set(),holds=new Set(),songRates=new Map();let rate=1,songId='';
+ let context,master,limiter,timeline,sourceKey='',state='stopped',position=0,epoch=0,timer=0,index=0,generation=0,pending=false,blocked=false;const voices=new Set(),holds=new Set(),songRates=new Map();let rate=1,songId='';
+ const soundKey='music-transpose-playback-sound-v1';let sound='grand-piano';try{const saved=localStorage.getItem(soundKey);if(Object.hasOwn(playbackSounds,saved))sound=saved;}catch{}
+ function setSound(value){if(!Object.hasOwn(playbackSounds,value)||sound===value)return;sound=value;try{localStorage.setItem(soundKey,sound);}catch{}if(context)configurePlaybackOutput(master,limiter,sound);if(state==='playing')setTempo(tempo().bpm);}
  const icons={stopped:'<path d="M3 9h4l5-4v14l-5-4H3zM16 8q5 4 0 8M19 5q8 7 0 14"/>',playing:'<path d="M8 5v14M16 5v14" stroke-width="4"/>',paused:'<path d="m8 4 12 8-12 8z"/>'};
  function update(){for(const b of document.querySelectorAll('.song-playback')){const label={stopped:'Play song',playing:'Pause song',paused:'Resume song'}[state];b.setAttribute('aria-label',label);b.title=label+' · Hold to stop';b.disabled=pending||blocked;b.dataset.state=state;b.innerHTML='<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">'+icons[state]+'</svg>';}}
- function silence(){clearInterval(timer);timer=0;for(const v of voices){v.osc.onended=null;try{v.osc.stop();}catch{}v.osc.disconnect();v.gain.disconnect();}voices.clear();}
+ function silence(){clearInterval(timer);timer=0;for(const v of voices)v.dispose();voices.clear();}
  function stop(){for(const h of holds)clearTimeout(h);holds.clear();generation++;pending=false;silence();position=0;state='stopped';update();}
- function voice(n,start,duration){
-  const osc=context.createOscillator(),gain=context.createGain();osc.type='triangle';osc.frequency.value=440*2**((n.midi-69)/12);osc.connect(gain);gain.connect(master);
-  gain.gain.setValueAtTime(0,start);gain.gain.linearRampToValueAtTime(.13,start+.008);gain.gain.exponentialRampToValueAtTime(.035,start+Math.max(.02,duration*.8));gain.gain.linearRampToValueAtTime(0,start+duration+.025);
-  const v={osc,gain};voices.add(v);osc.onended=()=>{voices.delete(v);osc.disconnect();gain.disconnect();};osc.start(start);osc.stop(start+duration+.03);
- }
+ function voice(n,start,duration){const v=createScoreVoice(context,master,n.midi,start,duration,sound,()=>voices.delete(v));voices.add(v);}
  function schedule(){const elapsed=(context.currentTime-epoch)*rate;if(elapsed>=timeline.duration+.05){stop();return;}while(index<timeline.notes.length&&timeline.notes[index].start<elapsed+.2*rate){const n=timeline.notes[index++],remaining=n.start+n.duration-Math.max(n.start,elapsed);if(remaining>0)voice(n,context.currentTime+Math.max(0,n.start-elapsed)/rate,remaining/rate);}}
  // Positions remain source-timeline seconds. Only the audio clock is scaled.
  async function prepare(){
@@ -76,7 +75,7 @@ export function createPlayback(getSource){
   const token=++generation;pending=true;update();
   try{
    // Resume synchronously from the tap before fetching/unpacking a direct-Lyrics score.
-   if(!context){const C=window.AudioContext||window.webkitAudioContext;if(!C)throw Error('Audio unavailable');context=new C();master=context.createGain();master.gain.value=.35;const limiter=context.createDynamicsCompressor();master.connect(limiter);limiter.connect(context.destination);}
+   if(!context){const C=window.AudioContext||window.webkitAudioContext;if(!C)throw Error('Audio unavailable');context=new C();master=context.createGain();limiter=context.createDynamicsCompressor();configurePlaybackOutput(master,limiter,sound);master.connect(limiter);limiter.connect(context.destination);}
    const resumed=context.resume();await prepare();await resumed;if(token!==generation)return;
    index=0;while(index<timeline.notes.length&&timeline.notes[index].start+timeline.notes[index].duration<=position)index++;
    epoch=context.currentTime-position/rate;state='playing';pending=false;update();schedule();timer=setInterval(schedule,25);
@@ -89,5 +88,5 @@ export function createPlayback(getSource){
  heading.append(b);update();
  }
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing'){position=Math.max(0,(context.currentTime-epoch)*rate);silence();state='paused';update();}});
- return {attach,stop,prepare,setTempo,get tempo(){return tempo();},setBlocked(value){blocked=value;update();},get state(){return state;},get position(){return state==='playing'?(context.currentTime-epoch)*rate:position;},get timeline(){return timeline;},get nodes(){return voices.size;},get songKey(){return sourceKey;}};
+ return {attach,stop,prepare,setTempo,setSound,get sound(){return sound;},get tempo(){return tempo();},setBlocked(value){blocked=value;update();},get state(){return state;},get position(){return state==='playing'?(context.currentTime-epoch)*rate:position;},get timeline(){return timeline;},get nodes(){return voices.size;},get songKey(){return sourceKey;}};
 }
