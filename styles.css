@@ -745,7 +745,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 
 /* Lyrics shares the Score Library button; footer space protects the final verse. */
 #lyrics-view{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
-.lyrics-footer{position:fixed;left:0;right:0;bottom:0;z-index:12;display:flex;align-items:center;gap:12px;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:var(--lyrics-bg);border-top:1px solid var(--lyrics-muted)}
+.lyrics-footer{position:fixed;left:0;right:0;bottom:0;z-index:12;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:var(--lyrics-bg);border-top:1px solid var(--lyrics-muted)}
 #lyrics-view .lyrics-footer #songs{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;color:var(--primary-blue-text);border-color:var(--primary-blue)}
 @media print{.lyrics-footer{display:none!important}}
 
@@ -822,7 +822,9 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 /* Lyrics uses the same Library node, size, and safe-area anchor as Score. */
 .lyrics-footer{padding:4px max(12px,env(safe-area-inset-right,0px)) calc(4px + var(--playing-safe-bottom)) max(12px,env(safe-area-inset-left,0px));border-bottom:1px solid transparent}
 @media(max-width:600px){.lyrics-footer{padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}}
-@media(max-width:360px){#lyrics-view .lyrics-footer #songs{width:40px;min-width:40px;flex-basis:40px}}
+/* Equal side columns keep the Lyrics group centered independently of Library. */
+.lyrics-footer .lyrics-tools{grid-column:2;grid-row:1;justify-self:center;margin-inline:0}
+#lyrics-view .lyrics-footer #songs{grid-column:1;grid-row:1;justify-self:start}
 
 /* Register scope belongs to the key dialog, not the score header. */
 #key-octave{display:block;margin:8px 0}

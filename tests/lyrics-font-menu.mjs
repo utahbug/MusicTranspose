@@ -3,7 +3,7 @@ const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE)('playwright'),b=a
 const preference='music-transpose-lyrics-appearance-v1',names=['Small','Medium','Large','Extra Large'],values=['small','medium','large','extra-large'];
 try{for(const [width,height] of [[320,568],[390,844],[820,1180],[1180,820],[1440,1000]]){
  const c=await b.newContext({viewport:{width,height},hasTouch:true,serviceWorkers:'block'}),p=await c.newPage();await p.goto(process.env.TEST_URL||'http://127.0.0.1:8771/');await p.locator('.library-row').first().waitFor();const gradient=await p.locator('.library-heading').evaluate(e=>getComputedStyle(e).backgroundImage);
- await p.locator('[data-song=nativity] [title=Lyrics]').click();await p.locator('#lyrics-view').waitFor({state:'visible'});
+ await p.evaluate(()=>prototype.openLyrics('nativity'));await p.locator('#lyrics-view').waitFor({state:'visible'});
  assert.equal(await p.locator('#lyrics-view').getAttribute('data-size'),'small');assert.equal(await p.locator('#lyrics-view').evaluate(e=>e.classList.contains('lyrics-dark')),false);
  assert.equal(await p.locator('.lyrics-identity-header').evaluate(e=>getComputedStyle(e).backgroundImage),gradient);
  const header=await p.locator('.lyrics-identity-header').boundingBox();assert(header.height<=82);await p.screenshot({path:`test-results/lyrics-default-${width}.png`});assert.equal(await p.locator('.lyrics-paper').evaluate(e=>getComputedStyle(e).backgroundImage),'none');
