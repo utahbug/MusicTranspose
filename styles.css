@@ -1241,7 +1241,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 @media(max-width:600px){.workspace-song-entry strong{font-size:14px}.workspace-song-entry .song-meta{font-size:11px}}
 
 /* List order is independent of each List's song order. */
-#lists-view .list-workspace-section .list-overview-row{grid-template-columns:minmax(0,1fr) 44px 44px}
+#lists-view .list-workspace-section .list-overview-row:has(.order-list){grid-template-columns:minmax(0,1fr) 44px 44px}
 .list-order-actions{display:flex;align-items:center;justify-content:flex-end;gap:4px;padding:0 4px;border-top:1px dashed #d1dadd;background:#f0f4f5;font-size:12px}
 .list-order-actions>span{margin-right:auto;padding-left:8px;color:#61716f}
 #lists-view .list-order-actions button{font-size:12px}
