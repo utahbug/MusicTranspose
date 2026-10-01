@@ -1122,10 +1122,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  @media(max-width:600px){body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:4px}}
 }
 
-/* Lyrics: persistent Library left, one compact control group right. */
+/* Lyrics: persistent Library left, controls centered in equal outer tracks. */
 @media screen{
- .lyrics-footer{grid-template-columns:minmax(0,1fr) auto}
- .lyrics-footer .lyrics-tools{justify-self:end;min-height:44px;gap:6px}
+ .lyrics-footer{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+ .lyrics-footer .lyrics-tools{justify-self:center;min-height:44px;gap:6px}
  .lyrics-tools > button,.lyrics-font-wrap > button{font-weight:500;border-color:color-mix(in srgb,var(--lyrics-muted) 45%,var(--lyrics-bg));border-radius:8px}
  .lyrics-tools > button[aria-pressed=true],.lyrics-font-wrap > button[aria-expanded=true]{background:color-mix(in srgb,#8da8bd 22%,var(--lyrics-bg));border-color:#8da8bd}
  .lyrics-tools .lyrics-font-menu button{font-weight:500}
@@ -1262,3 +1262,18 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #files-view #add-music{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;font-size:14px;font-weight:600;background:#e5eef2;border:1px solid #b7cbd5;color:#365f7d;border-radius:4px}
 #files-view #add-music:hover{background:#dce8ee}
 @media print{.workspace-return{display:none!important}}
+
+/* Phone score controls occupy explicit rows; page feedback never joins the flow. */
+@media screen and (max-width:600px){
+ .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px max-content minmax(0,1fr);grid-template-rows:44px 44px;gap:4px}
+ .masthead .toolbar .playing-controls,.masthead .toolbar .utility-controls{display:contents}
+ .masthead .toolbar #songs{grid-column:1;grid-row:1}
+ .masthead .toolbar #reset{grid-column:2;grid-row:1}
+ .masthead .toolbar #score-size{grid-column:3;grid-row:1;justify-self:start}
+ .masthead .toolbar #key{grid-column:4;grid-row:1;justify-self:start;margin:0;min-width:44px}
+ .pdf-score-open .masthead .toolbar #score-size{grid-column:2 / span 2}
+ .masthead .toolbar .pdf-footer-tools-wrap{grid-column:1;grid-row:2}
+ .masthead .toolbar #settings{grid-column:2;grid-row:2}
+ .masthead .toolbar #show-lyrics{grid-column:3;grid-row:2;justify-self:start;margin:0}
+ #page-position{position:absolute;right:max(8px,env(safe-area-inset-right,0px));bottom:calc(4px + var(--playing-safe-bottom));height:44px;display:flex;align-items:center;padding:0;font-size:13px}
+}
