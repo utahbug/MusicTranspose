@@ -1,14 +1,15 @@
 // Pointer capture supports mouse, pen and touch without making song titles draggable.
-export function attachReorderHandle(handle,row,container,commit){
+export function attachReorderHandle(handle,row,container,commit,{selector='[data-song]',idKey='song',targetSelector=null}={}){
  let drag=null,frame=0;
  const clearMarks=()=>container.querySelectorAll('.drop-before,.drop-after').forEach(e=>e.classList.remove('drop-before','drop-after'));
  function locate(){
   clearMarks();if(!drag)return;
-  const rows=[...container.querySelectorAll('[data-song]')].filter(e=>e!==row);
-  const target=rows.find(e=>drag.y<e.getBoundingClientRect().bottom)||rows.at(-1);
+  const rows=[...container.querySelectorAll(selector)].filter(e=>e!==row);
+  const bounds=e=>(targetSelector?e.querySelector(targetSelector):e).getBoundingClientRect();
+  const target=rows.find(e=>drag.y<bounds(e).bottom)||rows.at(-1);
   if(!target)return;
-  const box=target.getBoundingClientRect(),before=drag.y<box.top+box.height/2;
-  drag.target=target.dataset.song;drag.before=before;target.classList.add(before?'drop-before':'drop-after');
+  const box=bounds(target),before=drag.y<box.top+box.height/2;
+  drag.target=target.dataset[idKey];drag.before=before;target.classList.add(before?'drop-before':'drop-after');
  }
  function tick(time){
   if(!drag)return;
