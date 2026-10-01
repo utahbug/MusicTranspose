@@ -1,8 +1,8 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 578 supported; 88 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 580 supported; 86 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-## Supported Lead scores (578)
+## Supported Lead scores (580)
 
 Lead
 
@@ -30,6 +30,7 @@ Lead
 | Come, Lord Jesus | Hymns for Home and Church · 1018 | hhc-1018 |
 | To Love like Thee | Hymns for Home and Church · 1019 | hhc-1019 |
 | Softly and Tenderly Jesus Is Calling | Hymns for Home and Church · 1020 | hhc-1020 |
+| I Know That My Savior Loves Me | Hymns for Home and Church · 1021 | hhc-1021 |
 | Faith in Every Footstep | Hymns for Home and Church · 1022 | hhc-1022 |
 | Standing on the Promises | Hymns for Home and Church · 1023 | hhc-1023 |
 | I Have Faith in the Lord Jesus Christ | Hymns for Home and Church · 1024 | hhc-1024 |
@@ -47,6 +48,7 @@ Lead
 | Read the Book of Mormon and Pray | Hymns for Home and Church · 1036 | hhc-1036 |
 | I’m Gonna Live So God Can Use Me | Hymns for Home and Church · 1037 | hhc-1037 |
 | The Lord’s My Shepherd | Hymns for Home and Church · 1038 | hhc-1038 |
+| Because | Hymns for Home and Church · 1039 | hhc-1039 |
 | His Voice as the Sound | Hymns for Home and Church · 1040 | hhc-1040 |
 | O Lord, Who Gave Thy Life for Me | Hymns for Home and Church · 1041 | hhc-1041 |
 | Thou Gracious God, Whose Mercy Lends | Hymns for Home and Church · 1042 | hhc-1042 |
@@ -606,15 +608,6 @@ The right-hand melody needs review.
 | Jesus Once Was a Little Child | Children’s Songbook · 55 | song-85d24805-3347-4d78-8388-bdea635f8f46 |
 | Hosanna | Children’s Songbook · 66 | song-74995e8d-96f7-4f1f-9063-c1d285a9b635 |
 | I’ll Walk with You | Children’s Songbook · 140 | song-b974e287-1b1d-41a4-a5eb-cdedbf6aa62b |
-
-## rh-ties (2)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| I Know That My Savior Loves Me | Hymns for Home and Church · 1021 | hhc-1021 |
-| Because | Hymns for Home and Church · 1039 | hhc-1039 |
 
 ## rh-competing (5)
 
