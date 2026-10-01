@@ -1,11 +1,15 @@
 import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
 // OSMD model establishes systems; rendered ink expands bounds after layout corrections.
-export function captureSystems(osmd,host){
+export function captureSystems(osmd,host,{staffOwnership=false}={}){
  const svgs=[...host.querySelectorAll('svg')],out=[];
  osmd.GraphicSheet.MusicPages.forEach((page,svgIndex)=>{
   const svg=svgs[svgIndex];if(!svg)return;
   const systems=page.MusicSystems.map((s,i)=>{const box=s.PositionAndShape,measures=s.GraphicalMeasures.flat().map(m=>osmd.Sheet.SourceMeasures.indexOf(m.parentSourceMeasure)).filter(n=>n>=0);return {svgIndex,index:i,center:(box.AbsolutePosition.y+(box.BorderTop+box.BorderBottom)/2)*10,top:Infinity,bottom:-Infinity,start:Math.min(...measures),end:Math.max(...measures)};});
-  for(const el of svg.querySelectorAll('path,text,line,rect,ellipse,circle,polygon,polyline,use,image')){if(el.closest('defs,clipPath,mask'))continue;const b=el.getBBox();if(!b.width&&!b.height)continue;const m=svg.getCTM().inverse().multiply(el.getCTM()),points=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m)),top=Math.min(...points.map(p=>p.y)),bottom=Math.max(...points.map(p=>p.y)),center=(top+bottom)/2;const system=systems.reduce((a,s)=>Math.abs(s.center-center)<Math.abs(a.center-center)?s:a,systems[0]);if(system){system.top=Math.min(system.top,top-3);system.bottom=Math.max(system.bottom,bottom+3);}}
+  // Section trials must not assign a low verse lyric to the next short
+  // single-verse system merely because its vertical center is closer.
+  const staffGroups=[...svg.querySelectorAll('g.staffline')],owners=page.MusicSystems.flatMap((s,i)=>s.StaffLines.map(()=>systems[i]));
+  const staffOwners=staffOwnership&&staffGroups.length===owners.length?new Map(staffGroups.map((g,i)=>[g,owners[i]])):new Map();
+  for(const el of svg.querySelectorAll('path,text,line,rect,ellipse,circle,polygon,polyline,use,image')){if(el.closest('defs,clipPath,mask'))continue;const b=el.getBBox();if(!b.width&&!b.height)continue;const m=svg.getCTM().inverse().multiply(el.getCTM()),points=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m)),top=Math.min(...points.map(p=>p.y)),bottom=Math.max(...points.map(p=>p.y)),center=(top+bottom)/2;const system=staffOwners.get(el.closest('g.staffline'))||systems.reduce((a,s)=>Math.abs(s.center-center)<Math.abs(a.center-center)?s:a,systems[0]);if(system){system.top=Math.min(system.top,top-3);system.bottom=Math.max(system.bottom,bottom+3);}}
   // Overlapping ink cannot safely be separated; keep those adjacent systems together.
   for(const s of systems){if(!Number.isFinite(s.top))throw Error('Missing rendered system bounds');const previous=out.at(-1);if(previous?.svgIndex===svgIndex&&s.top<=previous.bottom){previous.bottom=Math.max(previous.bottom,s.bottom);previous.end=s.end;previous.systems++;}else out.push({...s,systems:1});}
  });return out;
@@ -29,7 +33,7 @@ export function prepareVirtualPages(force=false){
  if(!force&&geometry===key&&frames.length)return active;geometry=key;
  for(const f of score.querySelectorAll(':scope > .mxl-page-frame'))f.remove();
  const originals=[...score.querySelectorAll('svg')],canvas=createSystemCanvas(originals);
- const groups=planSystemPages(measuredSystems(source.systems,originals,width),available,{gapCap:source.lead?14:24,minimumGap:source.lead?8:12});
+ const groups=planSystemPages(measuredSystems(source.systems,originals,width),available,{gapCap:source.lead?14:24,minimumGap:source.lead?8:12,preferSections:!!source.lead});
  frames=groups.map(page=>{const first=page.systems[0],last=page.systems.at(-1),frame=document.createElement('div');frame.className='mxl-page-frame';frame.dataset.start=page.start;frame.dataset.end=page.end;frame.dataset.systems=page.count;
   frame._view={...first,top:first.top,bottom:last.bottom,svgIndex:first.svgIndex===last.svgIndex?first.svgIndex:-1,page,used:page.used,canvas,width};frame.style.height=available+'px';score.append(frame);return frame;});
  active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));return active;

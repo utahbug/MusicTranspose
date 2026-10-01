@@ -1,6 +1,6 @@
 // Complete-system pagination, using measured ink bounds in display pixels.
 // Callers may permit bounded blank-gap reduction; notation is never rescaled here.
-export function planSystemPages(items,available,{gapCap=24,minimumGap=gapCap}={}){
+export function planSystemPages(items,available,{gapCap=24,minimumGap=gapCap,preferSections=false}={}){
  if(!items.length)return [];
  const limit=Math.max(1,available),floor=Math.max(0,Math.min(gapCap,minimumGap)),n=items.length;
  const gap=s=>Math.min(gapCap,Math.max(0,s.gap??gapCap));
@@ -10,8 +10,9 @@ export function planSystemPages(items,available,{gapCap=24,minimumGap=gapCap}={}
    ink+=items[j].height;if(j>i){naturalGaps+=gap(items[j]);minimumGaps+=Math.min(floor,gap(items[j]));}
    if(ink+minimumGaps>limit+1e-6&&j>i)break;
    const natural=ink+naturalGaps,reduction=j>i?Math.max(0,natural-limit):0,used=natural-reduction,tail=best[j+1];
-   const candidate={pages:1+tail.pages,reduction:reduction+tail.reduction,cost:Math.max(0,limit-used)**2+tail.cost,next:j+1,localReduction:reduction};
-   // First avoid page turns, then preserve breathing room, then balance unused height.
+   const candidate={pages:1+tail.pages,reduction:reduction+tail.reduction,cost:Math.max(0,limit-used)**2+tail.cost-(preferSections&&j<n-1&&items[j].sectionEnd&&used>=limit*.35?limit*limit*.25:0),next:j+1,localReduction:reduction};
+   // Page count and breathing room remain hard priorities. Opt-in section evidence
+   // offsets only the balance cost, and only on a reasonably occupied page.
    const previous=best[i];
    if(!previous||candidate.pages<previous.pages||candidate.pages===previous.pages&&(candidate.reduction<previous.reduction-1e-6||Math.abs(candidate.reduction-previous.reduction)<=1e-6&&candidate.cost<=previous.cost+1e-6))best[i]=candidate;
    if(ink+minimumGaps>limit)break; // An indivisible oversized system stays alone.

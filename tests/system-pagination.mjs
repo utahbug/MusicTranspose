@@ -21,3 +21,17 @@ for(let n=1;n<=10;n++)for(const floor of [8,12]){
  for(const page of actual){assert(page.used<=limit+1e-6);page.systems.forEach((s,i)=>{assert.equal(s.height,input[s.start].height);if(i)assert(s.appliedGap>=floor-1e-6&&s.appliedGap<=24);});}
 }
 console.log('PASS bounded adaptive gaps, unchanged fitting pages, and exhaustive partition oracle');
+
+// Section preference is opt-in and subordinate to fit/page count/gap clearance.
+const section=items([200,200,200,200,200]);section[1].sectionEnd=true;
+assert.deepEqual(planSystemPages(section,650).map(p=>p.count),[3,2]);
+assert.deepEqual(planSystemPages(section,650,{preferSections:true}).map(p=>p.count),[2,3]);
+assert.equal(planSystemPages(section,1200,{preferSections:true}).length,1,'no new page for a section');
+const sparse=items([40,200,200,200,200]);sparse[0].sectionEnd=true;
+assert.deepEqual(planSystemPages(sparse,650,{preferSections:true}),planSystemPages(sparse,650),'no reward for an almost empty page');
+for(const limit of [390,450,650]){
+ const normal=planSystemPages(section,limit),preferred=planSystemPages(section,limit,{preferSections:true});
+ assert.equal(preferred.length,normal.length);assert(preferred.every(p=>p.used<=limit));
+ assert.deepEqual(preferred.flatMap(p=>p.systems.map(s=>s.start)),[0,1,2,3,4]);
+}
+console.log('PASS opt-in section preference, no extra pages, fit and blank-space guards');
