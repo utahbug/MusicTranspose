@@ -1066,10 +1066,18 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Song navigation belongs to the identity banner, outside the page-turn surface. */
 @media screen{
- .score-song-navigation{display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
+ .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;align-items:center}
+ .score-identity-header .score-title-block h1{grid-column:1;grid-row:1;align-self:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .score-identity-header #score-source{grid-column:1;grid-row:2;align-self:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .score-song-navigation{grid-column:2;grid-row:1 / span 2;display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
  .score-song-navigation button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0;color:inherit;border:1px solid transparent;background:transparent}
  .score-song-navigation button:not(:disabled):hover{background:#ffffff1f}
  .score-song-navigation button:focus-visible{outline:2px solid #fff;outline-offset:-3px}
  .score-song-navigation button:disabled{opacity:.4;cursor:default;background:transparent}
+}
+@media screen and (max-width:600px){
+ .score-song-navigation > span{display:none}
+ .score-song-navigation{gap:0}
+ .score-identity-header,.score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{column-gap:4px}
 }
 @media print{.score-song-navigation{display:none}}
