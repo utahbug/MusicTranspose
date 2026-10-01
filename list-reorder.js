@@ -1,6 +1,6 @@
 // Pointer capture supports mouse, pen and touch without making song titles draggable.
-export function attachReorderHandle(handle,row,container,commit,{selector='[data-song]',idKey='song',targetSelector=null}={}){
- let drag=null,frame=0;
+export function attachReorderHandle(handle,row,container,commit,{selector='[data-song]',idKey='song',targetSelector=null,onActivate=null}={}){
+ let drag=null,frame=0,suppressClick=false;
  const clearMarks=()=>container.querySelectorAll('.drop-before,.drop-after').forEach(e=>e.classList.remove('drop-before','drop-after'));
  function locate(){
   clearMarks();if(!drag)return;
@@ -19,7 +19,7 @@ export function attachReorderHandle(handle,row,container,commit,{selector='[data
   frame=requestAnimationFrame(tick);
  }
  function finish(save){
-  if(!drag)return;const result=drag;drag=null;cancelAnimationFrame(frame);clearMarks();row.classList.remove('dragging');
+  if(!drag)return;const result=drag;suppressClick=result.moved;drag=null;cancelAnimationFrame(frame);clearMarks();row.classList.remove('dragging');
   document.removeEventListener('keydown',escape);window.removeEventListener('blur',cancel);
   if(handle.hasPointerCapture(result.pointer))handle.releasePointerCapture(result.pointer);
   // Let touchend finish on the original target before a render replaces its row.
@@ -27,7 +27,7 @@ export function attachReorderHandle(handle,row,container,commit,{selector='[data
  }
  const cancel=()=>finish(false),escape=e=>{if(e.key==='Escape'){e.preventDefault();cancel();}};
  // A handle owns its touch gesture; ordinary rows keep native scrolling.
- handle.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
+ if(!onActivate)handle.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
  handle.addEventListener('pointerdown',e=>{
   if(!e.isPrimary||e.button!==0)return;if(e.pointerType==='mouse')e.preventDefault();handle.focus({preventScroll:true});
   drag={pointer:e.pointerId,start:e.clientY,y:e.clientY,time:performance.now(),moved:false};handle.setPointerCapture(e.pointerId);
@@ -35,5 +35,5 @@ export function attachReorderHandle(handle,row,container,commit,{selector='[data
  });
  handle.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.pointer)return;drag.y=e.clientY;if(Math.abs(drag.y-drag.start)>5){drag.moved=true;row.classList.add('dragging');locate();}});
  handle.addEventListener('pointerup',()=>finish(true));handle.addEventListener('pointercancel',cancel);handle.addEventListener('lostpointercapture',cancel);
- handle.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();});
+ handle.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(!suppressClick)onActivate?.();suppressClick=false;});
 }
