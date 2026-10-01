@@ -1,8 +1,13 @@
 // Source views use factual collection memberships and explicit status, never IDs/titles/pages.
-export const sourceChoices=[['all','All Sources'],['hymnal','Hymnal'],['children','Children’s Songbook'],['home-church','Hymns for Home and Church'],['legacy','Legacy'],['other','Other'],['my-music','My Music']];
+export const sourceChoices=[['all','All Sources'],['hymnal','Hymnal'],['children','Children’s Songbook'],['home-church','Hymns for Home and Church'],['my-music','Files']];
+// These existing bundled user files retain their catalog identities and source credits.
+const bundledFileIds=new Set(['scripture-power','choose-to-serve-the-lord']);
+export const isFileSong=song=>!!song.local||bundledFileIds.has(song.id);
+export const normalizeSource=value=>value==='other'||value==='My Music'||value==='Files'?'my-music':sourceChoices.some(([id])=>id===value)?value:'all';
 export const activeHymnalCollections=['Hymns (1985)']; // Update only when authoritative edition metadata is available.
 const memberships=s=>[{collection:s.collection},...(s.collectionMemberships||[])];
 export function matchesSource(song,source){
+ if(source==='my-music')return isFileSong(song);
  if(song.local)return source==='all'||source==='my-music';
  const records=memberships(song),has=name=>records.some(m=>m.collection===name);
  const legacy=song.status==='legacy';

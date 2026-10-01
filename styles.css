@@ -1127,3 +1127,16 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .lyrics-tools button:focus-visible{outline:2px solid var(--lyrics-muted);outline-offset:2px}
  @media(max-width:600px){.lyrics-footer .lyrics-tools{gap:4px}}
 }
+
+/* Library source cleanup: title-aligned metadata and quiet control emphasis. */
+#library .song-entry{display:grid;grid-template-columns:minmax(0,1fr);column-gap:5px;row-gap:3px;padding-inline:12px;justify-items:start}
+#library .song-entry.numbered-song{grid-template-columns:max-content minmax(0,1fr)}
+#library .numbered-song .song-number{grid-column:1;grid-row:1;font-size:14px;line-height:1.3;font-weight:600}
+#library .numbered-song .song-title{grid-column:2;grid-row:1}
+#library .numbered-song > :not(.song-number):not(.song-title){grid-column:2}
+#library-sort-label .desktop-sort,#library-sort-label .phone-sort{font-weight:600}
+#library .library-filter-row .sort-choice{width:176px;flex-basis:176px}
+#library #library-search{border-color:#9caeb9;background:#f8fafb}
+#library #library-search:focus{border-color:#365f7d;background:#fff;outline:2px solid #536b7a;outline-offset:1px}
+@media(min-width:700px){#library .numbered-song .song-number{font-size:16px}}
+@media(max-width:600px){#library .library-filter-row .sort-choice{width:116px;flex-basis:116px}#library .library-filter-row #library-source{max-width:calc(100% - 132px)}}

@@ -10,4 +10,4 @@ export const byHash=hash=>transaction('readonly',s=>s.index('hash').get(hash));
 export const addRecord=record=>transaction('readwrite',(s,t)=>{t.objectStore('metadata').add(record.metadata);return s.add(record);});
 export const updateRecord=record=>transaction('readwrite',(s,t)=>{t.objectStore('metadata').put(record.metadata);return s.put(record);});
 export const removeRecord=id=>transaction('readwrite',(s,t)=>{t.objectStore('metadata').delete(id);return s.delete(id);});
-export function storageMessage(error){return error?.name==='ConstraintError'?'This exact file is already in My Music.':error?.name==='QuotaExceededError'?'Not enough browser storage. Free some space and try again.':'Unable to save on this device. Check browser storage permissions and try again.';}
+export function storageMessage(error){return error?.name==='ConstraintError'?'This exact file is already in Files.':error?.name==='QuotaExceededError'?'Not enough browser storage. Free some space and try again.':'Unable to save on this device. Check browser storage permissions and try again.';}

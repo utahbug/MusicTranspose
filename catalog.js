@@ -13,7 +13,7 @@ export async function refreshLocalMusic(){
   if(r.scoreType!=='pdf'){
    try{const record=await localRecord(r.id);leadAvailable=!!record?.xml&&createLeadXML(record.xml).ok;}catch{}
   }
-  return {...r,local:true,asset:'local:'+r.id,leadAvailable};
+  return {...r,collection:'Files',local:true,asset:'local:'+r.id,leadAvailable};
  }));
  songs.splice(0,songs.length,...bundled,...local);
  document.dispatchEvent(new Event('local-music-changed'));
