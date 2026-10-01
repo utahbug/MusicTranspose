@@ -853,17 +853,9 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Library filters share the Source/Sort row without taking another sticky row. */
 #library .library-filter-row #library-source{max-width:calc(100% - 210px)}
-#library #library-filter{position:relative;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;display:grid;place-items:center;margin-left:auto;border-radius:5px}
-#library-filter.filters-active{background:#dce7ed;color:#173e3b}
-#library-filter.filters-active::after{content:'';position:absolute;right:5px;top:5px;width:6px;height:6px;border-radius:50%;background:currentColor}
-#library-filter:focus-visible{outline:2px solid #365867;outline-offset:-2px}
-#library-filter-menu{position:fixed;z-index:60;width:200px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:4px;background:#fff;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
-#library-filter-menu[hidden]{display:none}
-#library-filter-menu>button{display:block;width:100%;min-height:44px;padding:8px 12px;text-align:left;border:0;border-radius:3px;background:transparent;color:#365867;font:14px system-ui,sans-serif}
-#library-filter-menu>button:hover,#library-filter-menu>button:focus-visible{background:#edf1f3}
-#library-filter-menu [aria-checked=true]::after{content:' ✓'}
+#library #view-favorites{position:relative;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;display:grid;place-items:center;margin-left:auto;border-radius:5px}
+#view-favorites:focus-visible{outline:2px solid #365867;outline-offset:-2px}
 @media(max-width:600px){#library .library-filter-row #library-source{max-width:calc(100% - 144px)}}
-@media print{#library-filter-menu{display:none!important}}
 
 #home-screen-dialog{width: min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:16px;border:1px solid #c2ced3;border-radius:8px}
 #home-screen-dialog h2{font-size:18px;margin:0}
@@ -1281,7 +1273,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library .library-controls{display:flex;flex-direction:column;align-items:stretch}
 #library .library-filter-row{flex-wrap:nowrap;gap:8px}
 #library .library-filter-row #library-source{max-width:none;flex:0 1 auto}
-#library #library-filter{margin-left:0}
+#library #view-favorites{margin-left:0}
 .library-navigation{display:flex;align-items:center;margin-left:auto;gap:0}
 #library .library-navigation .quiet{border:0;background:transparent;font-weight:500;color:#365867}
 #library #library-lists{padding:0 8px;font-size:13px}
@@ -1307,3 +1299,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #library-search-fields.open{display:flex;flex-direction:column}
  #library-search-fields label{font-size:14px}
 }
+
+/* One-tap Favorites uses the same star artwork and colors as song rows. */
+#library #view-favorites{color:#61716f}
+#view-favorites svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#library #view-favorites[aria-pressed=true]{color:#466879;background:#e5eef2}
+#view-favorites[aria-pressed=true] svg{fill:currentColor}
+#library #view-favorites:not(:disabled):hover{background:#eaf0f3;text-decoration:none}
