@@ -36,3 +36,18 @@ export function installLeadTextAnchors(OSMD){
   try{return read.call(this,node,...args);}finally{this.getMultiExpression=previous;}
  };
 }
+
+// A forward carries musical time but does not give OSMD a VexFlow entry in a
+// partially populated RH voice. Use invisible rests only in engraving XML so
+// late-entering notes and their aligned lyrics keep the source timestamps.
+export function addLeadVoiceGapAnchors(doc){
+ let changed=false;
+ for(const forward of [...doc.querySelectorAll('part > measure > forward')]){
+  const voice=forward.querySelector(':scope > voice'),duration=forward.querySelector(':scope > duration');
+  if(!voice||!duration||!(Number(duration.textContent)>0))continue;
+  const note=doc.createElement('note');note.setAttribute('print-object','no');note.setAttribute('print-spacing','yes');note.setAttribute('music-transpose-rh-gap','true');
+  note.append(doc.createElement('rest'),duration.cloneNode(true),voice.cloneNode(true));
+  const staff=doc.createElement('staff');staff.textContent='1';note.append(staff);forward.replaceWith(note);changed=true;
+ }
+ return changed;
+}

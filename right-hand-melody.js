@@ -9,7 +9,7 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false}={}){
+export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false,annotations=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
  // Invisible zero-time grace rests are engraving spacers, not musical events.
@@ -78,7 +78,7 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
   const competition=rh.some(g=>g.voice===primary&&g.nodes.some(n=>child(n,'lyric'))&&rh.some(o=>o.voice===other.voice&&o.mi===g.mi&&Math.abs(o.at-g.at)<eps&&o.nodes.some(n=>lyric(n)&&!g.nodes.some(a=>lyric(a)===lyric(n)))));
   if(competition)return fail('competing',`Concurrent independent right-hand lyric voices ${primary} and ${other.voice}`);
  }
- // Cue-rejected scores may use the complete verified piano treble texture.
+ // Cue/annotation-rejected scores may use the complete verified piano treble texture.
  // Keep original RH voices/chords and cue size instead of forcing one pitch.
  // Domain, notation and independent-lyric guards above still apply.
  if(retainTreble){
@@ -95,7 +95,8 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
   for(const p of info.filter(p=>p.optional))for(const n of p.part.querySelectorAll('measure > direction,measure > harmony,measure > sound')){
    if(!(n.matches('sound[tempo]')||n.querySelector('sound[tempo],metronome')))n.remove();
   }
-  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,selection:{...upper,voice:primary,sourceVoices:voices.map(v=>v.voice),evidence:'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
+  const annotationAdjustments=annotations?retainPairedRhSlurs(rh):[];
+  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,...(annotationAdjustments.length?{annotationAdjustments}:{}),selection:{...upper,voice:primary,sourceVoices:voices.map(v=>v.voice),...(annotations?{rightHandTexture:true}:{}),evidence:'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
  }
  const line=[];
  for(const [mi,length] of lengths.entries()){
@@ -289,6 +290,38 @@ function normalizeRhTieBoundaries(line,primary,endingPredecessors){
    remove(left,a,false,'start');remove(right,b,false,'stop');
    remove(left,a,true,'start');remove(right,b,true,'stop');
   }
+ }
+ return changes;
+}
+
+// Preserve complete RH slurs in musical order, even across original voices.
+// Source numbers may be reused in separate voices. Prefer a unique same-voice
+// chain; a cross-voice endpoint is safe only with one possible open chain.
+// An unmatched/ambiguous annotation is dispensable; its note never is.
+function retainPairedRhSlurs(rh){
+ const marks=rh.flatMap(g=>g.nodes.flatMap((n,index)=>[...n.querySelectorAll('notations > slur')].map(mark=>({g,n,index,mark})))).sort((a,b)=>a.g.mi-b.g.mi||a.g.at-b.g.at||({stop:0,continue:1,start:2}[a.mark.getAttribute('type')]??3)-({stop:0,continue:1,start:2}[b.mark.getAttribute('type')]??3));
+ const pending=new Map(),keep=new Set();
+ for(const e of marks){
+  const number=e.mark.getAttribute('number')||'1',type=e.mark.getAttribute('type');
+  if(!pending.has(number))pending.set(number,[]);
+  const open=pending.get(number);
+  if(type==='start'){open.push([e]);continue;}
+  // Source system-break continuation anchors carry old engraving positions.
+  // Retain the start/stop pair and let the renderer span its new systems.
+  if(type!=='stop')continue;
+  const same=open.filter(chain=>chain.at(-1).g.voice===e.g.voice),candidates=same.length?same:open;
+  if(candidates.length!==1){
+   // Do not guess which overlapping same-number start owns this endpoint.
+   for(const chain of [...candidates])open.splice(open.indexOf(chain),1);
+   continue;
+  }
+  const chain=candidates[0];chain.push(e);
+  if(type==='stop'){for(const entry of chain)keep.add(entry.mark);open.splice(open.indexOf(chain),1);}
+ }
+ const changes=[];
+ for(const e of marks)if(!keep.has(e.mark)){
+  changes.push({part:e.g.part,staff:e.g.staff,voice:e.g.voice,measure:e.g.mi,at:e.g.at,pitch:pitch(e.n),sourceChordIndex:e.index,annotation:'slur',type:e.mark.getAttribute('type'),number:e.mark.getAttribute('number')||'1',action:e.mark.getAttribute('type')==='continue'?'omit-layout-continuation':'omit-unmatched-or-ambiguous'});
+  e.mark.remove();
  }
  return changes;
 }

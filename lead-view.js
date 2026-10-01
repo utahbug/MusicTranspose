@@ -1,4 +1,4 @@
-import {addLeadHarmonyAnchors,installLeadTextAnchors} from './lead-spacing.js';
+import {addLeadHarmonyAnchors,addLeadVoiceGapAnchors,installLeadTextAnchors} from './lead-spacing.js';
 import {repeatedCadenceMelody} from './cadence-melody.js';
 import {rightHandMelody} from './right-hand-melody.js';
 import {hymnMelody} from './hymn-melody.js';
@@ -37,12 +37,12 @@ export function createLeadXML(source,context){
  // only for rejected bundled HHC scores, pending other collections' review.
  if(!melody.ok&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true});
  if(!melody.ok&&melody.reason==='rh-ties'&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true,normalizeTies:true});
- // Only cue-rejected paths broaden to a practical RH reduction. Existing
+ // Only cue/annotation-rejected paths broaden to a practical RH reduction. Existing
  // successful projections and other failure classes remain unchanged.
- if(!melody.ok&&melody.reason==='rh-cue')melody=rightHandMelody(source,{retainTreble:true});
+ if(!melody.ok&&['rh-cue','rh-annotations'].includes(melody.reason))melody=rightHandMelody(source,{retainTreble:true,annotations:melody.reason==='rh-annotations'});
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
  const result=projectLeadXML(melody.xml,null,melody.treble?melody.selection:null);
- return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{})}:{...result,xml:source};
+ return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{}),...(melody.annotationAdjustments?{annotationAdjustments:melody.annotationAdjustments}:{})}:{...result,xml:source};
 }
 function priorLeadXML(source,context){
  const hymn=!context?.local&&hymnIds.has(context?.id);
@@ -163,17 +163,26 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
     const copy=cleaned(e.node);events.push({...e,copy,order:order++});
    }
    if(barlines.has('left'))measure.append(barlines.get('left').copy);
-   let cursor=0;
-   const move=at=>{const delta=at-cursor;if(Math.abs(delta)>epsilon){const e=make(delta>0?'forward':'backup');e.append(make('duration',Math.abs(delta)*ticks));measure.append(e);cursor=at;}};
+   let cursor=0,activeVoice=null;
+   const move=(at,voice=null)=>{const delta=at-cursor;if(Math.abs(delta)>epsilon){
+    // Rewind to the origin so a voice-tagged forward describes the entry
+    // gap of an overlapping RH voice to the engraver as well as playback.
+    if(treble?.rightHandTexture&&delta< -epsilon&&at>epsilon){const back=make('backup');back.append(make('duration',cursor*ticks));measure.append(back);const forward=make('forward');forward.append(make('duration',at*ticks));if(voice!==null)forward.append(make('voice',voice));measure.append(forward);}
+    else{const e=make(delta>0?'forward':'backup');e.append(make('duration',Math.abs(delta)*ticks));if(delta>0&&voice!==null)e.append(make('voice',voice));measure.append(e);}
+    cursor=at;
+   }};
    // At shared onsets directions/chords precede notes; grace-note source order stays intact.
-   events.sort((a,b)=>a.at-b.at||(a.tag==='note')-(b.tag==='note')||a.order-b.order);
+   // Fuller annotation-rejected textures preserve source voice order so
+   // explicit voice-entry gaps can be represented for engraving. Cursor
+   // moves/offsets below retain every musical timestamp.
+   events.sort((a,b)=>treble?.rightHandTexture?a.order-b.order:a.at-b.at||(a.tag==='note')-(b.tag==='note')||a.order-b.order);
    for(const e of events){
-    if(e.tag==='note'){const chord=treble&&child(e.copy,'chord');if(!chord)move(e.at);if(child(e.copy,'duration'))child(e.copy,'duration').textContent=String(e.duration*ticks);if(!chord)cursor+=e.duration;}
+    if(e.tag==='note'){const chord=treble&&child(e.copy,'chord');if(treble?.rightHandTexture)activeVoice=text(e.copy,'voice','1');if(!chord)move(e.at,activeVoice);if(child(e.copy,'duration'))child(e.copy,'duration').textContent=String(e.duration*ticks);if(!chord)cursor+=e.duration;}
     else if(e.tag==='harmony'){move(e.at);}
     else if(Math.abs(e.at-cursor)>epsilon){const offset=make('offset',(e.at-cursor)*ticks);const before=[...e.copy.children].find(n=>['footnote','level','voice','staff','sound','listening'].includes(n.localName));e.copy.insertBefore(offset,before||null);}
     measure.append(e.copy);
    }
-   move(duration);
+   move(duration,activeVoice);
    if(barlines.has('middle'))throw Error('Mid-measure barline needs review');
    if(barlines.has('right'))measure.append(barlines.get('right').copy);
   }
@@ -186,7 +195,7 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
 // Split only the engraving copy into simultaneous chords; the derived score
 // and transposition pipeline retain the original structured harmony groups.
 export function leadEngravingXML(source){
- const doc=new DOMParser().parseFromString(source,'application/xml');let changed=addLeadHarmonyAnchors(doc);
+ const doc=new DOMParser().parseFromString(source,'application/xml');let changed=addLeadVoiceGapAnchors(doc);changed=addLeadHarmonyAnchors(doc)||changed;
  for(const harmony of [...doc.querySelectorAll('harmony')]){
   if(children(harmony,'root').length<2)continue;
   const groups=[];let group=null;

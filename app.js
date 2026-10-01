@@ -25,6 +25,8 @@ import {avoidTempoCollisions} from './score-layout.js';
 import {songs,supportsLead,refreshLocalMusic,localXML,localAsset} from './catalog.js';
 import {initMyMusic} from './my-music.js';
 import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,parseXML} from './music.js';
+// New annotation-rejected RH textures use the established RH spacing profile.
+const rightHandLead=lead=>lead?.selection?.voice==='rh-melody'||lead?.selection?.rightHandTexture===true;
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
 $('show-lyrics').innerHTML=lyricsIcon;
 let activeSong=songs[0],modeOverride,loading=false,pdfFallback=false,scoreSize=readScoreSize();
@@ -121,7 +123,7 @@ async function renderScore(){
  try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original,activeSong);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
-   applyLeadLayout(osmd,!!lead?.ok,{rightHand:lead?.selection?.voice==='rh-melody',phone:matchMedia('(max-width:600px)').matches});
+   applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
    const displayXML=openingMetadata(lead?.ok?leadEngravingXML(viewXML):viewXML).displayXML;stage.style.width=w+'px';osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
    // Share compact header-aligned bounds; retain each mode's existing notation scale.
@@ -129,7 +131,7 @@ async function renderScore(){
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
    const renderOnce=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
-   const render=zoom=>lead?.ok&&lead.selection?.voice!=='rh-melody'?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
+   const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
    let entry;
    if(density==='auto'){
     const candidates=[];
@@ -240,11 +242,11 @@ async function preparePrint(){
  if(isPdf())return preparePdfPrint(score,$('print-pages'));
  const printXML=lastViewXML||lastXML,printKey=viewOnly()?'':KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
- applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true,rightHand:leadState?.selection?.voice==='rh-melody'});
+ applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true,rightHand:rightHandLead(leadState)});
  await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;
  const printWidth=794,keyInset=22,available=printWidth*270/190-keyInset;
  const renderPrint=()=>{engraver.render();if(leadState?.ok&&scoreSize==='large')balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);return {systemLayout:captureSystems(engraver,host)};};
- if(leadState?.ok&&scoreSize==='large'&&leadState.selection?.voice!=='rh-melody'){engraver.render();balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);}else renderFullScoreLayout(engraver,renderPrint,e=>assessLayout(host,e.systemLayout,printWidth,available,.8));
+ if(leadState?.ok&&scoreSize==='large'&&!rightHandLead(leadState)){engraver.render();balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);}else renderFullScoreLayout(engraver,renderPrint,e=>assessLayout(host,e.systemLayout,printWidth,available,.8));
  const pages=$('print-pages');pages.replaceChildren();
  const originals=[...host.querySelectorAll('svg')];
  const groups=planSystemPages(measuredSystems(captureSystems(engraver,host),originals,printWidth),available,{gapCap:leadState?.ok&&scoreSize==='large'?14:24,minimumGap:leadState?.ok&&scoreSize==='large'?8:12});
