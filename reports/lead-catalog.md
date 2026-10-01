@@ -1,8 +1,8 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 640 supported; 26 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 658 supported; 8 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-## Supported Lead scores (640)
+## Supported Lead scores (658)
 
 Lead
 
@@ -141,6 +141,7 @@ Lead
 | Sweet Is the Peace the Gospel Brings | Hymns (1985) · 14 | song-053865e1-8dbf-42ea-b258-24d82df67120 |
 | I Saw a Mighty Angel Fly | Hymns (1985) · 15 | song-ee0a436c-bd6a-40c7-b388-271645fae693 |
 | What Glorious Scenes Mine Eyes Behold | Hymns (1985) · 16 | song-bd206239-35ce-4c12-8862-8959adeb3954 |
+| Awake, Ye Saints of God, Awake! | Hymns (1985) · 17 | song-3e347547-6e88-4577-92aa-baa1e97508c3 |
 | The Voice of God Again Is Heard | Hymns (1985) · 18 | song-c2dba2c7-1ab3-4fb9-b955-f62d2174e06e |
 | We Thank Thee, O God, for a Prophet | Hymns (1985) · 19 | song-a600b262-da66-46aa-9f11-3d4fee569802 |
 | God of Power, God of Right | Hymns (1985) · 20 | song-fc9d4e1e-780d-46db-b964-4bcf8951c99a |
@@ -371,6 +372,7 @@ Lead
 | Behold! A Royal Army | Hymns (1985) · 251 | song-630410cd-be22-4d5a-9445-0568b51e397c |
 | Put Your Shoulder to the Wheel | Hymns (1985) · 252 | song-ed92d57f-c9cb-402d-852c-f77ae768aa3d |
 | Like Ten Thousand Legions Marching | Hymns (1985) · 253 | song-bbb8e898-903e-41ed-98d0-3e7cd5ff33fe |
+| True to the Faith | Hymns (1985) · 254 | song-c25734b4-ba49-4c88-ba90-4927ede707c4 |
 | Carry On | Hymns (1985) · 255 | song-29ddec61-4020-4ab9-8400-7cc2acf115e4 |
 | As Zion’s Youth in Latter Days | Hymns (1985) · 256 | song-4a9720ac-e510-495e-806e-39e851843c73 |
 | Rejoice! A Glorious Sound Is Heard | Hymns (1985) · 257 | song-550fb578-d377-4dc9-bb00-9e9639a49c71 |
@@ -425,6 +427,13 @@ Lead
 | As Sisters in Zion | Hymns (1985) · 309 | song-74bac8a9-6455-4706-8fc8-2be43e51eab3 |
 | A Key Was Turned in Latter Days | Hymns (1985) · 310 | song-c0a8cbd7-2188-43d3-9840-19faa722e6ca |
 | We Meet Again as Sisters | Hymns (1985) · 311 | song-89b00dd7-73b9-42f3-9065-e743962094d2 |
+| We Ever Pray for Thee | Hymns (1985) · 312 | song-7e7e0440-5d08-4272-8abc-1a3c04020bc6 |
+| God Is Love | Hymns (1985) · 313 | song-5aa8b88e-ca6a-47f2-ac73-a673f5f2bb2f |
+| How Gentle God’s Commands | Hymns (1985) · 314 | song-158c3860-bb73-4e53-bc69-1ee81afe1a2b |
+| Jesus, the Very Thought of Thee | Hymns (1985) · 315 | song-f2a1cdf0-3858-4822-a2a1-8a4d69e96aae |
+| The Lord Is My Shepherd | Hymns (1985) · 316 | song-d4565aed-b6f7-4f72-9b71-a64bb29cc483 |
+| Sweet Is the Work | Hymns (1985) · 317 | song-4276e01d-13dc-41dd-ad96-5ad2ba4aa2ea |
+| Love at Home | Hymns (1985) · 318 | song-91e16b0e-3921-430f-8e14-fa25fffb72b1 |
 | Ye Elders of Israel | Hymns (1985) · 319 | song-7f407f0f-8d10-4bc4-9d74-03806c7e0969 |
 | The Priesthood of Our Lord | Hymns (1985) · 320 | song-c7318efd-a15a-401b-ad22-ed8d1e6f4b56 |
 | Ye Who Are Called to Labor | Hymns (1985) · 321 | song-d5b6a45a-c463-41fc-bda3-192d8c384d5f |
@@ -449,6 +458,7 @@ Lead
 | The Star-Spangled Banner | Hymns (1985) · 340 | song-fad48ddd-270a-4a5d-8a29-5b0d331d7b97 |
 | God Save the King | Hymns (1985) · 341 | song-74542232-448b-4795-8db7-45a579191b25 |
 | I Lived in Heaven | Children’s Songbook · 4 | song-1ec131f7-3c1a-466b-9a99-10de99c7598d |
+| I Know My Father Lives | Children’s Songbook · 5 | song-2a184969-eb57-4901-9829-48c3952bfda3 |
 | Thanks to Thee | Children’s Songbook · 6 | song-906752ee-4c52-4870-b28d-90b004bc15d0 |
 | Father, We Thank Thee for the Night | Children’s Songbook · 8 | song-8a31c5a6-c32d-4a4f-86c7-47641022054f |
 | Can a Little Child like Me? | Children’s Songbook · 9 | song-ffd5b22c-dacd-462e-9e86-5a887fc3970d |
@@ -478,6 +488,7 @@ Lead
 | Reverence Is Love | Children’s Songbook · 31 | song-d8ed02a9-c3b4-4dda-9c43-c556d1f0202e |
 | Samuel Tells of the Baby Jesus | Children’s Songbook · 36 | song-919dd2f4-e0c1-4c21-8d35-360b18579884 |
 | Stars Were Gleaming | Children’s Songbook · 37 | song-313e2ba6-0a2b-4cd8-b09f-85b1f15e2146 |
+| When Joseph Went to Bethlehem | Children’s Songbook · 38 | song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98 |
 | Little Jesus | Children’s Songbook · 39 | song-d8931689-386e-442a-9cb2-8d8e11c62490 |
 | There Was Starlight on the Hillside | Children’s Songbook · 40a | song-d56adcc9-4417-4825-b0da-78330d22d382 |
 | Once within a Lowly Stable | Children’s Songbook · 41 | song-2c5d7de5-e01e-4b8f-8671-496d9a55b86f |
@@ -557,6 +568,7 @@ Lead
 | I’m Glad to Pay a Tithing | Children’s Songbook · 150a | song-3d926c67-a572-4c38-b028-feedd4c65e7e |
 | I Want to Give the Lord My Tenth | Children’s Songbook · 150b | song-f66d2921-c20b-4ad1-887a-d3d5a20619f1 |
 | I Am Glad for Many Things | Children’s Songbook · 151 | song-6d7f962c-2ae3-4628-bbee-a0db1dd6cd88 |
+| Hum Your Favorite Hymn | Children’s Songbook · 152 | song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b |
 | The Lord Gave Me a Temple | Children’s Songbook · 153 | song-aeebeee0-8e31-4b89-bd15-6bfcfcd23227 |
 | Remember the Sabbath Day | Children’s Songbook · 155 | song-b5037aa1-dca4-4518-a1a3-f444dff63d14 |
 | The Chapel Doors | Children’s Songbook · 156 | song-69c31108-4e9d-4e7d-99b7-0eb88648b601 |
@@ -574,6 +586,7 @@ Lead
 | Tell Me, Dear Lord | Children’s Songbook · 176 | song-9c0291a1-b6cd-4d00-84ea-f1b54f32ce54 |
 | Teach Me to Walk in the Light | Children’s Songbook · 177 | song-edd901fb-1740-4471-a43d-99e02f5e4eb0 |
 | Teacher, Do You Love Me? | Children’s Songbook · 178 | song-97b815d1-3074-402d-87dc-054a26201437 |
+| How Dear to God Are Little Children | Children’s Songbook · 180 | song-fd033466-3e4a-40fa-8ad3-e630b114714d |
 | How Will They Know? | Children’s Songbook · 182 | song-be95cf4e-2b13-4a09-a71b-52ef90125517 |
 | Families Can Be Together Forever | Children’s Songbook · 188 | song-d381df73-f2ff-4ba8-ae94-23aa65c62164 |
 | Family Prayer | Children’s Songbook · 189 | song-d1247d99-85d2-4ad2-9821-989e80d0cb04 |
@@ -588,6 +601,7 @@ Lead
 | When We’re Helping | Children’s Songbook · 198b | song-77a0567d-64f3-45d1-a886-859d90d7463a |
 | I Have a Family Tree | Children’s Songbook · 199 | song-a2c12ca0-7604-403a-a014-05340ab04196 |
 | Grandmother | Children’s Songbook · 200 | song-dc1fc2be-c779-4f40-92a2-62255d2db15c |
+| I Often Go Walking | Children’s Songbook · 202 | song-76cd6774-a387-4585-90d5-e3d2e65c7957 |
 | My Mother Dear | Children’s Songbook · 203 | song-2a7b1393-50f3-43e7-a6bc-5c733c12954a |
 | Mother Dear | Children’s Songbook · 206a | song-fc635284-b22e-4e6f-a4cb-15d9fa962efe |
 | Dearest Mother, I Love You | Children’s Songbook · 206b | song-dca2f221-e83f-4965-b543-6c757954015e |
@@ -597,6 +611,7 @@ Lead
 | Daddy’s Homecoming | Children’s Songbook · 210 | song-8d986977-4e00-4b10-8dc4-5bb80dc12beb |
 | My Dad | Children’s Songbook · 211 | song-5e874136-5650-42b1-9e80-fa8c02fefd33 |
 | Pioneer Children Sang As They Walked | Children’s Songbook · 214 | song-20e2678f-8636-4f6c-80c0-9545a6eba581 |
+| Pioneer Children Were Quick to Obey | Children’s Songbook · 215 | song-6b1f3c16-3116-420c-a76c-37f47b94ead9 |
 | Little Pioneer Children | Children’s Songbook · 216 | song-82c7b8de-059a-4932-b759-e6245a71a2bd |
 | Westward Ho! | Children’s Songbook · 217 | song-35b2fde6-f9b4-4ebe-b877-e8e9dfe6a6a9 |
 | To Be a Pioneer | Children’s Songbook · 218 | song-55fb1ba6-d232-4a29-8d2e-fea05137432e |
@@ -626,6 +641,7 @@ Lead
 | Hello, Friends! | Children’s Songbook · 254a | song-93308474-67d5-40fd-a272-e9e1685252d8 |
 | Our Door Is Always Open | Children’s Songbook · 254b | song-d25bcb07-cdd9-4cc9-a257-4036f71cc774 |
 | Come with Me to Primary | Children’s Songbook · 255 | song-7b6546f5-152e-4fde-a2fc-5ef6a75aa9d3 |
+| We Welcome You | Children’s Songbook · 256 | song-50a783c6-eed6-4248-859f-c53cd02badb8 |
 | Our Primary Colors | Children’s Songbook · 258 | song-3da362a5-d583-4bb9-92e6-c3938fa1a0b8 |
 | We’re All Together Again | Children’s Songbook · 259 | song-059f2ffa-5f01-48b1-99e0-25360a7d527b |
 | Here We Are Together | Children’s Songbook · 261 | song-c888ad9b-01fb-4a34-9ebf-f5477a2d8b4a |
@@ -633,6 +649,7 @@ Lead
 | We Are Different | Children’s Songbook · 263 | song-dcb0645f-f0b0-4137-a0e4-1bb309078370 |
 | Happy Song | Children’s Songbook · 264 | song-892d44e7-56fc-4852-88e2-4c3a33ff5371 |
 | A Smile Is like the Sunshine | Children’s Songbook · 267b | song-fa8abdc0-e863-476f-9180-9a77241a18e9 |
+| Two Little Eyes | Children’s Songbook · 268 | song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d |
 | I Have Two Ears | Children’s Songbook · 269 | song-cc896df7-dd78-4a05-a772-b5d46aea004d |
 | Two Happy Feet | Children’s Songbook · 270 | song-bf35d758-9f87-433c-ba5b-39c381ef4e65 |
 | I Wiggle | Children’s Songbook · 271 | song-0a175f0f-81a6-4eff-96a9-13e5193f3bec |
@@ -645,6 +662,7 @@ Lead
 | Oh, How We Love to Stand | Children’s Songbook · 279 | song-fc6b438d-5264-4405-945e-1e3a615690d4 |
 | Healthy, Wealthy, and Wise | Children’s Songbook · 280 | song-aec87112-47f1-4b3b-83f6-464d0e9930aa |
 | Feliz Cumpleaños | Children’s Songbook · 282 | song-1d3b3497-8bae-4d35-a551-845a43efdd8a |
+| Your Happy Birthday | Children’s Songbook · 283 | song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2 |
 | Happy, Happy Birthday | Children’s Songbook · 284a | song-082c508f-fb6c-428f-9e6f-52fb9d71a7ea |
 | Have a Very Happy Birthday! | Children’s Songbook · 284b | song-29c9d8ed-2e25-4865-9867-2477f2fa81e4 |
 | You’ve Had a Birthday | Children’s Songbook · 285 | song-527daed2-ac88-4587-bc7a-09b28bf6cd3a |
@@ -661,46 +679,14 @@ The right-hand melody needs review.
 | Love Is Spoken Here | Children’s Songbook · 190 | song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7 |
 | Mother, Tell Me the Story | Children’s Songbook · 204 | song-01f2b576-9982-42c9-85ce-1930bd32bb27 |
 
-## rh-continuity (6)
+## incomplete-line (2)
 
-The right-hand melody needs review.
+The candidate melody does not cover the complete measure rhythm.
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
-| Awake, Ye Saints of God, Awake! | Hymns (1985) · 17 | song-3e347547-6e88-4577-92aa-baa1e97508c3 |
 | The Time Is Far Spent | Hymns (1985) · 266 | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
 | I’ll Go Where You Want Me to Go | Hymns (1985) · 270 | song-5171114c-7b99-40f8-9040-5186973263b3 |
-| Hum Your Favorite Hymn | Children’s Songbook · 152 | song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b |
-| We Welcome You | Children’s Songbook · 256 | song-50a783c6-eed6-4248-859f-c53cd02badb8 |
-| Your Happy Birthday | Children’s Songbook · 283 | song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2 |
-
-## rh-lyrics (12)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| True to the Faith | Hymns (1985) · 254 | song-c25734b4-ba49-4c88-ba90-4927ede707c4 |
-| We Ever Pray for Thee | Hymns (1985) · 312 | song-7e7e0440-5d08-4272-8abc-1a3c04020bc6 |
-| God Is Love | Hymns (1985) · 313 | song-5aa8b88e-ca6a-47f2-ac73-a673f5f2bb2f |
-| How Gentle God’s Commands | Hymns (1985) · 314 | song-158c3860-bb73-4e53-bc69-1ee81afe1a2b |
-| Jesus, the Very Thought of Thee | Hymns (1985) · 315 | song-f2a1cdf0-3858-4822-a2a1-8a4d69e96aae |
-| The Lord Is My Shepherd | Hymns (1985) · 316 | song-d4565aed-b6f7-4f72-9b71-a64bb29cc483 |
-| Sweet Is the Work | Hymns (1985) · 317 | song-4276e01d-13dc-41dd-ad96-5ad2ba4aa2ea |
-| Love at Home | Hymns (1985) · 318 | song-91e16b0e-3921-430f-8e14-fa25fffb72b1 |
-| I Know My Father Lives | Children’s Songbook · 5 | song-2a184969-eb57-4901-9829-48c3952bfda3 |
-| How Dear to God Are Little Children | Children’s Songbook · 180 | song-fd033466-3e4a-40fa-8ad3-e630b114714d |
-| I Often Go Walking | Children’s Songbook · 202 | song-76cd6774-a387-4585-90d5-e3d2e65c7957 |
-| Pioneer Children Were Quick to Obey | Children’s Songbook · 215 | song-6b1f3c16-3116-420c-a76c-37f47b94ead9 |
-
-## unsupported (2)
-
-This score needs a structural review before creating a Lead view.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| When Joseph Went to Bethlehem | Children’s Songbook · 38 | song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98 |
-| Two Little Eyes | Children’s Songbook · 268 | song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d |
 
 ## rh-notation (1)
 

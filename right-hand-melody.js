@@ -9,7 +9,7 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false,annotations=false,upperDomain=false}={}){
+export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false,annotations=false,upperDomain=false,soleLyrics=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
  // Invisible zero-time grace rests are engraving spacers, not musical events.
@@ -33,6 +33,7 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
   const candidates=info.filter(p=>!p.optional&&['G','C'].includes(p.clef('1'))&&[...p.part.querySelectorAll('note')].some(n=>text(n,'staff','1')==='1'&&child(n,'pitch')&&child(n,'lyric')));
   if(candidates.length!==1)return fail('domain','No unique lyric-bearing upper musical staff');
   upper={part:candidates[0].part.id,staff:'1'};
+  if(soleLyrics&&info.some(p=>!p.optional&&[...p.part.querySelectorAll('note')].some(n=>child(n,'lyric')&&(p.part.id!==upper.part||text(n,'staff','1')!==upper.staff))))return fail('competing','Lyrics occur outside the selected upper musical staff');
   lower={part:upper.part,staff:'2'};
   // Part links describe alternate printable layouts, not pitch semantics.
   // No external linked score is fetched or used to complete this reduction.
@@ -107,7 +108,7 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
    if(!(n.matches('sound[tempo]')||n.querySelector('sound[tempo],metronome')))n.remove();
   }
   const annotationAdjustments=annotations?retainPairedRhSlurs(rh):[];
-  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,...(annotationAdjustments.length?{annotationAdjustments}:{}),selection:{...upper,...(upperDomain?{upperMusicalDomain:true}:{}),voice:primary,sourceVoices:voices.map(v=>v.voice),...(annotations?{rightHandTexture:true}:{}),evidence:upperDomain?'Unique lyric-bearing upper musical staff; all voices retained; source clef and encoded pitches unchanged':'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
+  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,...(annotationAdjustments.length?{annotationAdjustments}:{}),selection:{...upper,...(upperDomain?{upperMusicalDomain:true}:{}),...(soleLyrics?{soleLyricUpper:true}:{}),voice:primary,sourceVoices:voices.map(v=>v.voice),...(annotations?{rightHandTexture:true}:{}),evidence:upperDomain?'Unique lyric-bearing upper musical staff; all voices retained; source clef and encoded pitches unchanged':'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
  }
  const line=[];
  for(const [mi,length] of lengths.entries()){

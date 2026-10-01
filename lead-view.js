@@ -42,8 +42,16 @@ export function createLeadXML(source,context){
  if(!melody.ok&&['rh-cue','rh-annotations'].includes(melody.reason))melody=rightHandMelody(source,{retainTreble:true,annotations:melody.reason==='rh-annotations'});
  // Domain-only fallback: earlier successes and competing-duet rejections stay intact.
  if(!melody.ok&&melody.reason==='rh-domain')melody=rightHandMelody(source,{upperDomain:true,retainTreble:true,annotations:true});
+ // Sole upper lyric ownership outranks accompaniment topology or voice continuity.
+ if(!melody.ok&&['rh-lyrics','rh-continuity'].includes(melody.reason)){const upper=rightHandMelody(source,{upperDomain:true,soleLyrics:true,retainTreble:true,annotations:true});if(upper.ok)melody=upper;}
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
- const result=projectLeadXML(melody.xml,null,melody.treble?melody.selection:null);
+ let result=projectLeadXML(melody.xml,null,melody.treble?melody.selection:null);
+ // A rejected projection can contain irrelevant lower-staff clef changes.
+ // Retry the same safe upper ownership rule; never weaken attribute guards.
+ if(!result.ok&&result.reason==='unsupported'){
+  const upper=rightHandMelody(source,{upperDomain:true,soleLyrics:true,retainTreble:true,annotations:true});
+  if(upper.ok){const projected=projectLeadXML(upper.xml,null,upper.selection);if(projected.ok){melody=upper;result=projected;}}
+ }
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{}),...(melody.annotationAdjustments?{annotationAdjustments:melody.annotationAdjustments}:{})}:{...result,xml:source};
 }
 function priorLeadXML(source,context){
@@ -87,7 +95,7 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
   for(const d of doc.querySelectorAll('divisions')){const n=Number(d.textContent);if(!Number.isInteger(n)||n<=0)throw Error('Invalid divisions');ticks=ticks/gcd(ticks,n)*n;if(ticks>1000000)throw Error('Incompatible divisions');}
   const data=parts.map(part=>{
    let divisions=1;return {part,measures:children(part,'measure').map(measure=>{
-    let cursor=0,last=0,end=0;const events=[];
+    let cursor=0,last=0,end=0;const events=[],silent=[];
     for(const node of measure.children){
      const tag=node.localName;
      if(tag==='attributes'){
@@ -100,7 +108,11 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
       divisions=number(node,'divisions',divisions);
      }
      if(tag==='backup'){cursor-=number(node,'duration')/divisions;if(cursor< -epsilon)throw Error('Negative cursor');continue;}
-     if(tag==='forward'){cursor+=number(node,'duration')/divisions;end=Math.max(end,cursor);continue;}
+     if(tag==='forward'){
+      const duration=number(node,'duration')/divisions;
+      if(treble?.soleLyricUpper&&part.id===partId&&text(node,'staff','1')===staff){if(!(duration>0))throw Error('Invalid upper-staff forward');silent.push({at:cursor,duration});}
+      cursor+=duration;end=Math.max(end,cursor);continue;
+     }
      let at=cursor,duration=0;
      if(tag==='note'){
       duration=child(node,'grace')?0:number(node,'duration')/divisions;
@@ -110,7 +122,7 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
      if(at< -epsilon)throw Error('Annotation before measure boundary');
      events.push({node,tag,at,duration,part:part.id,keep:tag==='note'&&(treble?part.id===partId&&text(node,'staff','1')===staff:lane(part.id,node)===key)});
     }
-    return {measure,events,end};
+    return {measure,events,end,silent};
    })};
   });
   const chosen=data.find(p=>p.part.id===partId),count=chosen.measures.length;
@@ -141,7 +153,7 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
    // A treble texture may overlap across voices/chords; its union must still
    // cover the complete measure. Legacy single-lane coverage stays exact.
    let covered=0;
-   for(const e of line){if(treble?e.at>covered+epsilon:Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=treble?Math.max(covered,e.at+e.duration):e.at+e.duration;}
+   for(const e of (treble?.soleLyricUpper?[...line,...original.silent].sort((a,b)=>a.at-b.at):line)){if(treble?e.at>covered+epsilon:Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=treble?Math.max(covered,e.at+e.duration):e.at+e.duration;}
    if(Math.abs(covered-duration)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);
    const measure=original.measure.cloneNode(false);measure.removeAttribute('width');lead.append(measure);
    // Keep selected-staff clef/key/time and all selected-part global attributes.
