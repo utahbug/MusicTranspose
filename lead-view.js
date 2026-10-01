@@ -40,6 +40,8 @@ export function createLeadXML(source,context){
  // Only cue/annotation-rejected paths broaden to a practical RH reduction. Existing
  // successful projections and other failure classes remain unchanged.
  if(!melody.ok&&['rh-cue','rh-annotations'].includes(melody.reason))melody=rightHandMelody(source,{retainTreble:true,annotations:melody.reason==='rh-annotations'});
+ // Domain-only fallback: earlier successes and competing-duet rejections stay intact.
+ if(!melody.ok&&melody.reason==='rh-domain')melody=rightHandMelody(source,{upperDomain:true,retainTreble:true,annotations:true});
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
  const result=projectLeadXML(melody.xml,null,melody.treble?melody.selection:null);
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{}),...(melody.annotationAdjustments?{annotationAdjustments:melody.annotationAdjustments}:{})}:{...result,xml:source};
@@ -89,7 +91,12 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
     for(const node of measure.children){
      const tag=node.localName;
      if(tag==='attributes'){
-      if(Math.abs(cursor)>epsilon)throw Error('Mid-measure attributes require review');
+      if(Math.abs(cursor)>epsilon){
+       // A clef change on a discarded lower staff has no pitch or timing
+       // effect on the upper-domain projection. Keep all other guards.
+       if(treble?.upperMusicalDomain&&[...node.children].every(a=>a.localName==='clef'&&(part.id!==partId||(a.getAttribute('number')||'1')!==staff)))continue;
+       throw Error('Mid-measure attributes require review');
+      }
       divisions=number(node,'divisions',divisions);
      }
      if(tag==='backup'){cursor-=number(node,'duration')/divisions;if(cursor< -epsilon)throw Error('Negative cursor');continue;}

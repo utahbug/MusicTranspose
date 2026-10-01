@@ -9,7 +9,7 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false,annotations=false}={}){
+export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false,annotations=false,upperDomain=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
  // Invisible zero-time grace rests are engraving spacers, not musical events.
@@ -26,7 +26,18 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
  });
  const grand=info.filter(p=>p.grand&&!p.optional);
  let upper,lower;
- if(grand.length===1){upper={part:grand[0].part.id,staff:'1'};lower={part:upper.part,staff:'2'};}
+ if(upperDomain){
+  // Staff order identifies the upper musical domain; clef spelling and XML
+  // voice numbers do not identify a hand. Require one non-optional upper
+  // staff with lyric evidence, then retain its complete texture.
+  const candidates=info.filter(p=>!p.optional&&['G','C'].includes(p.clef('1'))&&[...p.part.querySelectorAll('note')].some(n=>text(n,'staff','1')==='1'&&child(n,'pitch')&&child(n,'lyric')));
+  if(candidates.length!==1)return fail('domain','No unique lyric-bearing upper musical staff');
+  upper={part:candidates[0].part.id,staff:'1'};
+  lower={part:upper.part,staff:'2'};
+  // Part links describe alternate printable layouts, not pitch semantics.
+  // No external linked score is fetched or used to complete this reduction.
+  for(const link of doc.querySelectorAll('part-link'))link.remove();
+ }else if(grand.length===1){upper={part:grand[0].part.id,staff:'1'};lower={part:upper.part,staff:'2'};}
  else if(!grand.length){
   const treble=info.filter(p=>!p.optional&&p.clef('1')==='G'),bass=info.filter(p=>!p.optional&&p.clef('1')==='F');
   const preferred=treble.filter(p=>p.piano),u=preferred.length===1?preferred:treble;
@@ -38,7 +49,7 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
  const vocal=info.filter(p=>p.part.id!==upper.part&&p.part.id!==lower.part&&!p.optional&&p.part.querySelector('lyric'));
  if(vocal.length>1)return fail('competing','Multiple non-optional vocal parts; piano accompaniment does not establish a unique sung tune');
  if(doc.querySelector('transpose,staff-tuning,ossia,part-link,measure-style,unpitched,octave-shift,tremolo'))return fail('notation','Pitch-changing, condensed or tremolo notation requires review');
- if([...main.querySelectorAll('clef')].some(c=>(c.getAttribute('number')||'1')===upper.staff&&text(c,'sign')!=='G')||[...main.querySelectorAll('clef-octave-change')].some(n=>Number(n.textContent)))return fail('notation','Right-hand clef changes pitch interpretation');
+ if([...main.querySelectorAll('clef')].some(c=>(c.getAttribute('number')||'1')===upper.staff&&!(upperDomain?['G','C']:['G']).includes(text(c,'sign')))||[...main.querySelectorAll('clef-octave-change')].some(n=>Number(n.textContent)))return fail('notation','Right-hand clef changes pitch interpretation');
  const groups=[],lengths=[];
  for(const part of parts){let divisions=1;
   for(const [mi,m] of children(part,'measure').entries()){let cursor=0,last=null,end=0;
@@ -96,7 +107,7 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false,retainT
    if(!(n.matches('sound[tempo]')||n.querySelector('sound[tempo],metronome')))n.remove();
   }
   const annotationAdjustments=annotations?retainPairedRhSlurs(rh):[];
-  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,...(annotationAdjustments.length?{annotationAdjustments}:{}),selection:{...upper,voice:primary,sourceVoices:voices.map(v=>v.voice),...(annotations?{rightHandTexture:true}:{}),evidence:'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
+  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,...(annotationAdjustments.length?{annotationAdjustments}:{}),selection:{...upper,...(upperDomain?{upperMusicalDomain:true}:{}),voice:primary,sourceVoices:voices.map(v=>v.voice),...(annotations?{rightHandTexture:true}:{}),evidence:upperDomain?'Unique lyric-bearing upper musical staff; all voices retained; source clef and encoded pitches unchanged':'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
  }
  const line=[];
  for(const [mi,length] of lengths.entries()){

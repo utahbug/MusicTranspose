@@ -1,10 +1,10 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 619 supported; 47 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 640 supported; 26 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc45`. All 593 previously supported musical XML and engraving XML outputs are byte-for-byte unchanged. Availability and this report reuse the completed audit.
+## Supported Lead scores (640)
 
-## Supported Lead scores (619)
+Lead
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -109,6 +109,7 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | My Heavenly Father Loves Me | Children’s Songbook · 228 | cs-228 |
 | Search, Ponder, and Pray | Children’s Songbook · 109 | cs-109 |
 | When He Comes Again | Children’s Songbook · 82 | cs-82 |
+| Where Love Is | Children’s Songbook · 138 | cs-138 |
 | Beauty Everywhere | Children’s Songbook · 232 | cs-232 |
 | Children All Over the World | Children’s Songbook · 16 | cs-16 |
 | Follow the Prophet | Children’s Songbook · 110 | cs-110 |
@@ -191,6 +192,7 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | Glory to God on High | Hymns (1985) · 67 | song-0dabe0c3-ecb6-4812-ac00-51320858adf8 |
 | A Mighty Fortress Is Our God | Hymns (1985) · 68 | song-e3220a8e-7231-495a-9ad3-c8bf0d803897 |
 | All Glory, Laud, and Honor | Hymns (1985) · 69 | song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22 |
+| Sing Praise to Him | Hymns (1985) · 70 | song-95273aa4-6219-4608-a682-8db1ff47c3eb |
 | With Songs of Praise | Hymns (1985) · 71 | song-1b47066a-3316-48d8-8645-579371be37ca |
 | Praise to the Lord, the Almighty | Hymns (1985) · 72 | song-074060f8-de63-439b-97aa-3532a95ac2ff |
 | Praise the Lord with Heart and Voice | Hymns (1985) · 73 | song-3a815a03-f756-4846-893b-426459b114e1 |
@@ -427,7 +429,21 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | The Priesthood of Our Lord | Hymns (1985) · 320 | song-c7318efd-a15a-401b-ad22-ed8d1e6f4b56 |
 | Ye Who Are Called to Labor | Hymns (1985) · 321 | song-d5b6a45a-c463-41fc-bda3-192d8c384d5f |
 | Come, All Ye Sons of God | Hymns (1985) · 322 | song-83d1a9d7-b2c9-47c3-b5c7-3f3dcf881a33 |
+| Rise Up, O Men of God | Hymns (1985) · 323 | song-2366be25-4e18-4d79-813c-18963c47e9a2 |
 | Rise Up, O Men of God | Hymns (1985) · 324 | song-dc5448e4-122e-455e-828e-c6056f664c12 |
+| See the Mighty Priesthood Gathered | Hymns (1985) · 325 | song-3944bc27-59d4-48a7-86e6-e33d5c6d0fe9 |
+| Come, Come, Ye Saints | Hymns (1985) · 326 | song-7221717c-6d2e-4d66-a718-24ec2a18b12a |
+| Go, Ye Messengers of Heaven | Hymns (1985) · 327 | song-be12fa93-1d5a-4e10-8331-3cbe87ddf1c3 |
+| An Angel from on High | Hymns (1985) · 328 | song-52171af8-d04b-41b8-bceb-c67ce28593a3 |
+| Thy Servants Are Prepared | Hymns (1985) · 329 | song-b8f1eda1-04f1-4732-a74d-0fdbbff8453d |
+| See, the Mighty Angel Flying | Hymns (1985) · 330 | song-ca068c43-7101-4edd-82bf-488cc7fb8d5b |
+| Oh Say, What Is Truth? | Hymns (1985) · 331 | song-f37a758e-c510-4a14-967b-b30bc2120150 |
+| Come, O Thou King of Kings | Hymns (1985) · 332 | song-c0ec9f6d-423b-4e75-8f86-e1fe4567bbcd |
+| High on the Mountain Top | Hymns (1985) · 333 | song-9255dd3d-d782-45fd-8ec1-98821f1cd0e9 |
+| I Need Thee Every Hour | Hymns (1985) · 334 | song-a874f72f-0d1e-4407-a7a8-2ff61609539f |
+| Brightly Beams Our Father’s Mercy | Hymns (1985) · 335 | song-6a40d4f6-2fcf-45df-96c9-dfe52aa91728 |
+| School Thy Feelings | Hymns (1985) · 336 | song-c30e5c84-a1bb-431d-b093-a2761eba0f82 |
+| O Home Beloved | Hymns (1985) · 337 | song-01888570-7ed7-47b4-aa67-89bd2a6e4317 |
 | America the Beautiful | Hymns (1985) · 338 | song-49b12b3e-0ca7-4364-bc94-0ff16d27ef18 |
 | My Country, ’Tis of Thee | Hymns (1985) · 339 | song-eb901b55-ffbe-4f14-a2da-f553cf7ac8e0 |
 | The Star-Spangled Banner | Hymns (1985) · 340 | song-fad48ddd-270a-4a5d-8a29-5b0d331d7b97 |
@@ -478,6 +494,7 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | Little Lambs So White and Fair | Children’s Songbook · 58a | song-b913ecc7-b6c3-48a3-97d8-c66e66796231 |
 | Jesus Is Our Loving Friend | Children’s Songbook · 58b | song-f693e0ea-c5bc-4b18-a656-4e39f42e44d1 |
 | Jesus Loved the Little Children | Children’s Songbook · 59 | song-63fc5a4f-2368-424f-b846-e68f297ce802 |
+| Beautiful Savior | Children’s Songbook · 62 | song-bafeae46-294b-4583-9a7c-059aaaeee5f7 |
 | Did Jesus Really Live Again? | Children’s Songbook · 64 | song-e2a77063-2a61-44ed-ac39-03bed480a189 |
 | He Died That We Might Live Again | Children’s Songbook · 65 | song-a277af0a-105c-496a-aa78-e42a46064645 |
 | Hosanna | Children’s Songbook · 66 | song-74995e8d-96f7-4f1f-9063-c1d285a9b635 |
@@ -500,6 +517,7 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | God’s Love | Children’s Songbook · 97 | song-6c2138e8-4bb4-4f5e-9468-6e0aee95f355 |
 | Repentance | Children’s Songbook · 98 | song-3b08fbb3-d894-48c6-8cca-4dbab5bd6054 |
 | Help Me, Dear Father | Children’s Songbook · 99 | song-6441dc03-86a2-4d36-98b3-e51f7e0a266b |
+| Baptism | Children’s Songbook · 100 | song-97b13640-d426-4523-b60f-2e1ce99daea9 |
 | When Jesus Christ Was Baptized | Children’s Songbook · 102 | song-4a8fa141-3515-439d-9f72-a0b81ee5fce5 |
 | I Like My Birthdays | Children’s Songbook · 104 | song-d84817dd-d881-494f-9b7b-a4a57c281331 |
 | The Holy Ghost | Children’s Songbook · 105 | song-b02f9e7a-e579-432d-9e29-b6b850a7f653 |
@@ -542,11 +560,13 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | The Lord Gave Me a Temple | Children’s Songbook · 153 | song-aeebeee0-8e31-4b89-bd15-6bfcfcd23227 |
 | Remember the Sabbath Day | Children’s Songbook · 155 | song-b5037aa1-dca4-4518-a1a3-f444dff63d14 |
 | The Chapel Doors | Children’s Songbook · 156 | song-69c31108-4e9d-4e7d-99b7-0eb88648b601 |
+| When I Go to Church | Children’s Songbook · 157 | song-ac5608d8-fb15-4273-9797-860334501401 |
 | Dare to Do Right | Children’s Songbook · 158 | song-2b8984f9-0654-4bd2-a439-5f990b2de781 |
 | Stand for the Right | Children’s Songbook · 159 | song-98091677-00a4-4326-bad7-46eacb14fc29 |
 | Choose the Right Way | Children’s Songbook · 160 | song-799ad9aa-caed-4e48-a882-dab23cd9686a |
 | I Pledge Myself to Love the Right | Children’s Songbook · 161 | song-8e3cbb5c-9e8c-479d-a26e-3d73726a1e62 |
 | I Will Be Valiant | Children’s Songbook · 162 | song-775dde37-8058-43fb-b80e-d47464c16b8f |
+| I Am like a Star | Children’s Songbook · 163 | song-3a822800-2892-41af-92c3-34a7c7582866 |
 | A Young Man Prepared | Children’s Songbook · 166 | song-48d392a5-b087-45bf-bfa0-3bcd9b90070b |
 | Go the Second Mile | Children’s Songbook · 167 | song-8b5532e8-7cdb-4b3e-b79f-89f2b59d3738 |
 | The Things I Do | Children’s Songbook · 170 | song-6f4876b3-4c33-4b87-865b-b5e115ff4123 |
@@ -554,6 +574,7 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | Tell Me, Dear Lord | Children’s Songbook · 176 | song-9c0291a1-b6cd-4d00-84ea-f1b54f32ce54 |
 | Teach Me to Walk in the Light | Children’s Songbook · 177 | song-edd901fb-1740-4471-a43d-99e02f5e4eb0 |
 | Teacher, Do You Love Me? | Children’s Songbook · 178 | song-97b815d1-3074-402d-87dc-054a26201437 |
+| How Will They Know? | Children’s Songbook · 182 | song-be95cf4e-2b13-4a09-a71b-52ef90125517 |
 | Families Can Be Together Forever | Children’s Songbook · 188 | song-d381df73-f2ff-4ba8-ae94-23aa65c62164 |
 | Family Prayer | Children’s Songbook · 189 | song-d1247d99-85d2-4ad2-9821-989e80d0cb04 |
 | Home | Children’s Songbook · 192 | song-732f9096-6912-457b-849a-d8ea748c38fb |
@@ -630,6 +651,8 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 
 ## rh-competing (5)
 
+The right-hand melody needs review.
+
 | Song | Collection / page | Stable ID |
 |---|---|---|
 | A Child’s Prayer | Children’s Songbook · 12 | cs-12 |
@@ -640,6 +663,8 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 
 ## rh-continuity (6)
 
+The right-hand melody needs review.
+
 | Song | Collection / page | Stable ID |
 |---|---|---|
 | Awake, Ye Saints of God, Awake! | Hymns (1985) · 17 | song-3e347547-6e88-4577-92aa-baa1e97508c3 |
@@ -649,33 +674,9 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | We Welcome You | Children’s Songbook · 256 | song-50a783c6-eed6-4248-859f-c53cd02badb8 |
 | Your Happy Birthday | Children’s Songbook · 283 | song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2 |
 
-## rh-domain (21)
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| Where Love Is | Children’s Songbook · 138 | cs-138 |
-| Sing Praise to Him | Hymns (1985) · 70 | song-95273aa4-6219-4608-a682-8db1ff47c3eb |
-| Rise Up, O Men of God | Hymns (1985) · 323 | song-2366be25-4e18-4d79-813c-18963c47e9a2 |
-| See the Mighty Priesthood Gathered | Hymns (1985) · 325 | song-3944bc27-59d4-48a7-86e6-e33d5c6d0fe9 |
-| Come, Come, Ye Saints | Hymns (1985) · 326 | song-7221717c-6d2e-4d66-a718-24ec2a18b12a |
-| Go, Ye Messengers of Heaven | Hymns (1985) · 327 | song-be12fa93-1d5a-4e10-8331-3cbe87ddf1c3 |
-| An Angel from on High | Hymns (1985) · 328 | song-52171af8-d04b-41b8-bceb-c67ce28593a3 |
-| Thy Servants Are Prepared | Hymns (1985) · 329 | song-b8f1eda1-04f1-4732-a74d-0fdbbff8453d |
-| See, the Mighty Angel Flying | Hymns (1985) · 330 | song-ca068c43-7101-4edd-82bf-488cc7fb8d5b |
-| Oh Say, What Is Truth? | Hymns (1985) · 331 | song-f37a758e-c510-4a14-967b-b30bc2120150 |
-| Come, O Thou King of Kings | Hymns (1985) · 332 | song-c0ec9f6d-423b-4e75-8f86-e1fe4567bbcd |
-| High on the Mountain Top | Hymns (1985) · 333 | song-9255dd3d-d782-45fd-8ec1-98821f1cd0e9 |
-| I Need Thee Every Hour | Hymns (1985) · 334 | song-a874f72f-0d1e-4407-a7a8-2ff61609539f |
-| Brightly Beams Our Father’s Mercy | Hymns (1985) · 335 | song-6a40d4f6-2fcf-45df-96c9-dfe52aa91728 |
-| School Thy Feelings | Hymns (1985) · 336 | song-c30e5c84-a1bb-431d-b093-a2761eba0f82 |
-| O Home Beloved | Hymns (1985) · 337 | song-01888570-7ed7-47b4-aa67-89bd2a6e4317 |
-| Beautiful Savior | Children’s Songbook · 62 | song-bafeae46-294b-4583-9a7c-059aaaeee5f7 |
-| Baptism | Children’s Songbook · 100 | song-97b13640-d426-4523-b60f-2e1ce99daea9 |
-| When I Go to Church | Children’s Songbook · 157 | song-ac5608d8-fb15-4273-9797-860334501401 |
-| I Am like a Star | Children’s Songbook · 163 | song-3a822800-2892-41af-92c3-34a7c7582866 |
-| How Will They Know? | Children’s Songbook · 182 | song-be95cf4e-2b13-4a09-a71b-52ef90125517 |
-
 ## rh-lyrics (12)
+
+The right-hand melody needs review.
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -692,15 +693,19 @@ Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc
 | I Often Go Walking | Children’s Songbook · 202 | song-76cd6774-a387-4585-90d5-e3d2e65c7957 |
 | Pioneer Children Were Quick to Obey | Children’s Songbook · 215 | song-6b1f3c16-3116-420c-a76c-37f47b94ead9 |
 
-## rh-notation (1)
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| Mary’s Lullaby | Children’s Songbook · 44 | song-b867cc29-d8d3-4f09-9a8e-6eac312fade7 |
-
 ## unsupported (2)
+
+This score needs a structural review before creating a Lead view.
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
 | When Joseph Went to Bethlehem | Children’s Songbook · 38 | song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98 |
 | Two Little Eyes | Children’s Songbook · 268 | song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d |
+
+## rh-notation (1)
+
+The right-hand melody needs review.
+
+| Song | Collection / page | Stable ID |
+|---|---|---|
+| Mary’s Lullaby | Children’s Songbook · 44 | song-b867cc29-d8d3-4f09-9a8e-6eac312fade7 |
