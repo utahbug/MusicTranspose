@@ -1,15 +1,16 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 580 supported; 86 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 593 supported; 73 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-## Supported Lead scores (580)
+Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a35535b`. All 580 previously supported outputs are byte-for-byte unchanged. Availability and this report reuse that audit instead of rescanning the catalog.
 
-Lead
+## Supported Lead scores (593)
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
 | The Nativity Song | Children’s Songbook · 52 | nativity |
 | The Shepherd’s Carol | Children’s Songbook · 40b | shepherd |
+| Oh, Come, All Ye Faithful | Hymns (1985) · 202 | faithful |
 | Silent Night | Hymns (1985) · 204 | silent-night |
 | Come, Thou Fount of Every Blessing | Hymns for Home and Church · 1001 | hhc-1001 |
 | When the Savior Comes Again | Hymns for Home and Church · 1002 | hhc-1002 |
@@ -94,6 +95,7 @@ Lead
 | Long Ago, Within a Garden | Hymns for Home and Church · 1210 | hhc-1210 |
 | Called to Serve | Children’s Songbook · 174 | cs-174 |
 | I Feel My Savior’s Love | Children’s Songbook · 74 | cs-74 |
+| He Sent His Son | Children’s Songbook · 34 | cs-34 |
 | Jesus Has Risen | Children’s Songbook · 70 | cs-70 |
 | Jesus Wants Me for a Sunbeam | Children’s Songbook · 60 | cs-60 |
 | I Need My Heavenly Father | Children’s Songbook · 18 | cs-18 |
@@ -103,6 +105,7 @@ Lead
 | I Love to See the Temple | Children’s Songbook · 95 | cs-95 |
 | I Thank Thee, Dear Father | Children’s Songbook · 7 | cs-7 |
 | I’m Trying to Be like Jesus | Children’s Songbook · 78 | cs-78 |
+| My Heavenly Father Loves Me | Children’s Songbook · 228 | cs-228 |
 | Search, Ponder, and Pray | Children’s Songbook · 109 | cs-109 |
 | When He Comes Again | Children’s Songbook · 82 | cs-82 |
 | Beauty Everywhere | Children’s Songbook · 232 | cs-232 |
@@ -113,6 +116,7 @@ Lead
 | Do as I’m Doing | Children’s Songbook · 276 | cs-276 |
 | “Give,” Said the Little Stream | Children’s Songbook · 236 | cs-236 |
 | Head, Shoulders, Knees, and Toes | Children’s Songbook · 275a | cs-275a |
+| Hello Song | Children’s Songbook · 260 | cs-260 |
 | If You’re Happy | Children’s Songbook · 266 | cs-266 |
 | Once There Was a Snowman | Children’s Songbook · 249 | cs-249 |
 | Popcorn Popping | Children’s Songbook · 242 | cs-242 |
@@ -175,6 +179,7 @@ Lead
 | All Creatures of Our God and King | Hymns (1985) · 62 | song-93dfb488-c85f-4028-ab09-127470312f80 |
 | Great King of Heaven | Hymns (1985) · 63 | song-d4882737-c8ee-4d56-a9de-03285da10a68 |
 | Come, All Ye Saints Who Dwell on Earth | Hymns (1985) · 65 | song-d9056915-c14f-4fdb-bc3c-0fa5208a4c64 |
+| Rejoice, the Lord Is King! | Hymns (1985) · 66 | song-0d512ac4-4118-4073-8ecf-fd57d437634e |
 | A Mighty Fortress Is Our God | Hymns (1985) · 68 | song-e3220a8e-7231-495a-9ad3-c8bf0d803897 |
 | All Glory, Laud, and Honor | Hymns (1985) · 69 | song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22 |
 | With Songs of Praise | Hymns (1985) · 71 | song-1b47066a-3316-48d8-8645-579371be37ca |
@@ -184,6 +189,7 @@ Lead
 | In Hymns of Praise | Hymns (1985) · 75 | song-795bf192-9729-4769-b182-bd606a04d277 |
 | God of Our Fathers, We Come unto Thee | Hymns (1985) · 76 | song-5260cbb6-62fc-472a-ba72-3b2e8ae28391 |
 | Great Is the Lord | Hymns (1985) · 77 | song-c2a355f3-f48b-4485-beb1-d93fc6c9f846 |
+| God of Our Fathers, Whose Almighty Hand | Hymns (1985) · 78 | song-6a585b0f-afc8-48e1-9f15-8579d1e09eed |
 | With All the Power of Heart and Tongue | Hymns (1985) · 79 | song-4b4527e2-f878-4fc0-ab9a-543ec3fd2b54 |
 | God of Our Fathers, Known of Old | Hymns (1985) · 80 | song-0b9ad58e-c56e-4c3d-8632-05a2f30a6dbf |
 | Press Forward, Saints | Hymns (1985) · 81 | song-61e6163a-dc48-4728-8207-4870522f144b |
@@ -245,6 +251,7 @@ Lead
 | Let the Holy Spirit Guide | Hymns (1985) · 143 | song-61fd2221-1cdd-4463-a6e1-8954882f29b6 |
 | Secret Prayer | Hymns (1985) · 144 | song-871573d0-1157-4bec-9ab4-c4155f9ba449 |
 | Prayer Is the Soul’s Sincere Desire | Hymns (1985) · 145 | song-2a8dce03-f1ae-4c0e-9557-9ce18a86d1e4 |
+| Gently Raise the Sacred Strain | Hymns (1985) · 146 | song-10666d31-f264-4151-a6b6-25360274b1b7 |
 | Sweet Is the Work | Hymns (1985) · 147 | song-996b318c-6edc-469d-9106-400442e2bb87 |
 | Sabbath Day | Hymns (1985) · 148 | song-407bf084-d7d4-4242-b2d4-8c1130f34da9 |
 | As the Dew from Heaven Distilling | Hymns (1985) · 149 | song-0e7388b8-b436-489b-8160-ef52d4e30d09 |
@@ -343,6 +350,7 @@ Lead
 | Behold! A Royal Army | Hymns (1985) · 251 | song-630410cd-be22-4d5a-9445-0568b51e397c |
 | Put Your Shoulder to the Wheel | Hymns (1985) · 252 | song-ed92d57f-c9cb-402d-852c-f77ae768aa3d |
 | Like Ten Thousand Legions Marching | Hymns (1985) · 253 | song-bbb8e898-903e-41ed-98d0-3e7cd5ff33fe |
+| Carry On | Hymns (1985) · 255 | song-29ddec61-4020-4ab9-8400-7cc2acf115e4 |
 | As Zion’s Youth in Latter Days | Hymns (1985) · 256 | song-4a9720ac-e510-495e-806e-39e851843c73 |
 | Rejoice! A Glorious Sound Is Heard | Hymns (1985) · 257 | song-550fb578-d377-4dc9-bb00-9e9639a49c71 |
 | O Thou Rock of Our Salvation | Hymns (1985) · 258 | song-c2019d89-bd53-4f00-a653-d863b711aa15 |
@@ -375,6 +383,7 @@ Lead
 | How Beautiful Thy Temples, Lord | Hymns (1985) · 288 | song-7193f145-5d8c-4e0b-9963-2dec42ce3237 |
 | Holy Temples on Mount Zion | Hymns (1985) · 289 | song-46c851eb-32c2-49d7-9b0d-3276df8c83e2 |
 | Rejoice, Ye Saints of Latter Days | Hymns (1985) · 290 | song-696b206a-44c1-4d87-9619-29b0c8613c7a |
+| Turn Your Hearts | Hymns (1985) · 291 | song-54558001-8653-4c01-bbd9-6f4e2341a8ea |
 | O My Father | Hymns (1985) · 292 | song-b61a15f7-c918-4320-9a79-03eef62b9f62 |
 | Each Life That Touches Ours for Good | Hymns (1985) · 293 | song-0ee49c88-a255-46aa-846b-eca80c0d1056 |
 | Love at Home | Hymns (1985) · 294 | song-89b0379c-c1f8-41dd-a837-77870bcb3bd7 |
@@ -437,16 +446,19 @@ Lead
 | Once within a Lowly Stable | Children’s Songbook · 41 | song-2c5d7de5-e01e-4b8f-8671-496d9a55b86f |
 | Away in a Manger | Children’s Songbook · 42 | song-d165ef87-2efa-4a0c-a4b1-e07a742ea654 |
 | Who Is the Child? | Children’s Songbook · 46 | song-909fd495-7997-4820-af57-ac80a06ff83b |
+| Sleep, Little Jesus | Children’s Songbook · 47 | song-25ef9a7e-d288-4b92-b986-bc63cc20000c |
 | Oh, Hush Thee, My Baby | Children’s Songbook · 48 | song-36c8ae80-21be-418a-9fe2-776ee404badc |
 | Picture a Christmas | Children’s Songbook · 50 | song-7ffd9d24-2695-4332-b04b-9878065815fd |
 | Have a Very Merry Christmas! | Children’s Songbook · 51 | song-8ea11b12-adc5-4c90-852c-4ba372185b86 |
 | Christmas Bells | Children’s Songbook · 54 | song-b1ceddfd-861b-4791-97b0-fbb6ee28deed |
+| Jesus Once Was a Little Child | Children’s Songbook · 55 | song-85d24805-3347-4d78-8388-bdea635f8f46 |
 | I Think When I Read That Sweet Story | Children’s Songbook · 56 | song-2084d796-66fa-4d37-a8d4-dd7d3905fb59 |
 | Tell Me the Stories of Jesus | Children’s Songbook · 57 | song-2bff7122-3620-4041-9b68-3ce3dbdf5688 |
 | Little Lambs So White and Fair | Children’s Songbook · 58a | song-b913ecc7-b6c3-48a3-97d8-c66e66796231 |
 | Jesus Is Our Loving Friend | Children’s Songbook · 58b | song-f693e0ea-c5bc-4b18-a656-4e39f42e44d1 |
 | Jesus Loved the Little Children | Children’s Songbook · 59 | song-63fc5a4f-2368-424f-b846-e68f297ce802 |
 | Did Jesus Really Live Again? | Children’s Songbook · 64 | song-e2a77063-2a61-44ed-ac39-03bed480a189 |
+| Hosanna | Children’s Songbook · 66 | song-74995e8d-96f7-4f1f-9063-c1d285a9b635 |
 | Easter Hosanna | Children’s Songbook · 68 | song-71f46c6a-b141-4ae8-9d6a-2f3ce69d2cef |
 | To Think about Jesus | Children’s Songbook · 71 | song-30f5c349-41c5-429c-8f01-8a25481ecd56 |
 | The Sacrament | Children’s Songbook · 72 | song-389d1142-fc6d-4aac-9d70-3abc8845825d |
@@ -492,6 +504,7 @@ Lead
 | Latter-day Prophets | Children’s Songbook · 134 | song-a1d93d40-4f38-48a4-8693-6a591d097cd4 |
 | Our Bishop | Children’s Songbook · 135 | song-e10a048e-144a-4258-9fc2-b58484035a63 |
 | Love One Another | Children’s Songbook · 136 | song-eb7ac6fd-41a9-4ebb-8575-6d955bb32224 |
+| I’ll Walk with You | Children’s Songbook · 140 | song-b974e287-1b1d-41a4-a5eb-cdedbf6aa62b |
 | Every Star Is Different | Children’s Songbook · 142 | song-ead8a227-1190-48a5-b89e-b555fd641025 |
 | Shine On | Children’s Songbook · 144 | song-789a7af7-a66f-4685-a0d1-47bd9aa149b3 |
 | A Special Gift Is Kindness | Children’s Songbook · 145a | song-b3d23386-19f3-44ed-abc4-1e0ccdd20345 |
@@ -589,41 +602,7 @@ Lead
 | Have a Very Happy Birthday! | Children’s Songbook · 284b | song-29c9d8ed-2e25-4865-9867-2477f2fa81e4 |
 | You’ve Had a Birthday | Children’s Songbook · 285 | song-527daed2-ac88-4587-bc7a-09b28bf6cd3a |
 
-## rh-cue (13)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| Oh, Come, All Ye Faithful | Hymns (1985) · 202 | faithful |
-| He Sent His Son | Children’s Songbook · 34 | cs-34 |
-| My Heavenly Father Loves Me | Children’s Songbook · 228 | cs-228 |
-| Hello Song | Children’s Songbook · 260 | cs-260 |
-| Rejoice, the Lord Is King! | Hymns (1985) · 66 | song-0d512ac4-4118-4073-8ecf-fd57d437634e |
-| God of Our Fathers, Whose Almighty Hand | Hymns (1985) · 78 | song-6a585b0f-afc8-48e1-9f15-8579d1e09eed |
-| Gently Raise the Sacred Strain | Hymns (1985) · 146 | song-10666d31-f264-4151-a6b6-25360274b1b7 |
-| Carry On | Hymns (1985) · 255 | song-29ddec61-4020-4ab9-8400-7cc2acf115e4 |
-| Turn Your Hearts | Hymns (1985) · 291 | song-54558001-8653-4c01-bbd9-6f4e2341a8ea |
-| Sleep, Little Jesus | Children’s Songbook · 47 | song-25ef9a7e-d288-4b92-b986-bc63cc20000c |
-| Jesus Once Was a Little Child | Children’s Songbook · 55 | song-85d24805-3347-4d78-8388-bdea635f8f46 |
-| Hosanna | Children’s Songbook · 66 | song-74995e8d-96f7-4f1f-9063-c1d285a9b635 |
-| I’ll Walk with You | Children’s Songbook · 140 | song-b974e287-1b1d-41a4-a5eb-cdedbf6aa62b |
-
-## rh-competing (5)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| A Child’s Prayer | Children’s Songbook · 12 | cs-12 |
-| I Pray in Faith | Children’s Songbook · 14 | song-5b34793d-c858-4e54-9961-7bc8610ed54e |
-| The Word of Wisdom | Children’s Songbook · 154 | song-0e05929e-254b-41fc-9e4e-9b810b1fc37e |
-| Love Is Spoken Here | Children’s Songbook · 190 | song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7 |
-| Mother, Tell Me the Story | Children’s Songbook · 204 | song-01f2b576-9982-42c9-85ce-1930bd32bb27 |
-
 ## rh-annotations (26)
-
-The right-hand melody needs review.
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -654,9 +633,28 @@ The right-hand melody needs review.
 | I Will Be Valiant | Children’s Songbook · 162 | song-775dde37-8058-43fb-b80e-d47464c16b8f |
 | Pioneer Children Sang As They Walked | Children’s Songbook · 214 | song-20e2678f-8636-4f6c-80c0-9545a6eba581 |
 
-## rh-domain (21)
+## rh-competing (5)
 
-The right-hand melody needs review.
+| Song | Collection / page | Stable ID |
+|---|---|---|
+| A Child’s Prayer | Children’s Songbook · 12 | cs-12 |
+| I Pray in Faith | Children’s Songbook · 14 | song-5b34793d-c858-4e54-9961-7bc8610ed54e |
+| The Word of Wisdom | Children’s Songbook · 154 | song-0e05929e-254b-41fc-9e4e-9b810b1fc37e |
+| Love Is Spoken Here | Children’s Songbook · 190 | song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7 |
+| Mother, Tell Me the Story | Children’s Songbook · 204 | song-01f2b576-9982-42c9-85ce-1930bd32bb27 |
+
+## rh-continuity (6)
+
+| Song | Collection / page | Stable ID |
+|---|---|---|
+| Awake, Ye Saints of God, Awake! | Hymns (1985) · 17 | song-3e347547-6e88-4577-92aa-baa1e97508c3 |
+| The Time Is Far Spent | Hymns (1985) · 266 | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
+| I’ll Go Where You Want Me to Go | Hymns (1985) · 270 | song-5171114c-7b99-40f8-9040-5186973263b3 |
+| Hum Your Favorite Hymn | Children’s Songbook · 152 | song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b |
+| We Welcome You | Children’s Songbook · 256 | song-50a783c6-eed6-4248-859f-c53cd02badb8 |
+| Your Happy Birthday | Children’s Songbook · 283 | song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2 |
+
+## rh-domain (21)
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -682,22 +680,7 @@ The right-hand melody needs review.
 | I Am like a Star | Children’s Songbook · 163 | song-3a822800-2892-41af-92c3-34a7c7582866 |
 | How Will They Know? | Children’s Songbook · 182 | song-be95cf4e-2b13-4a09-a71b-52ef90125517 |
 
-## rh-continuity (6)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| Awake, Ye Saints of God, Awake! | Hymns (1985) · 17 | song-3e347547-6e88-4577-92aa-baa1e97508c3 |
-| The Time Is Far Spent | Hymns (1985) · 266 | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
-| I’ll Go Where You Want Me to Go | Hymns (1985) · 270 | song-5171114c-7b99-40f8-9040-5186973263b3 |
-| Hum Your Favorite Hymn | Children’s Songbook · 152 | song-7daf63ad-3b6d-4bd0-bb1e-63bf7913598b |
-| We Welcome You | Children’s Songbook · 256 | song-50a783c6-eed6-4248-859f-c53cd02badb8 |
-| Your Happy Birthday | Children’s Songbook · 283 | song-e63fee42-2d82-4b63-ad5d-5abba6fc46a2 |
-
 ## rh-lyrics (12)
-
-The right-hand melody needs review.
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -714,19 +697,15 @@ The right-hand melody needs review.
 | I Often Go Walking | Children’s Songbook · 202 | song-76cd6774-a387-4585-90d5-e3d2e65c7957 |
 | Pioneer Children Were Quick to Obey | Children’s Songbook · 215 | song-6b1f3c16-3116-420c-a76c-37f47b94ead9 |
 
-## unsupported (2)
+## rh-notation (1)
 
-This score needs a structural review before creating a Lead view.
+| Song | Collection / page | Stable ID |
+|---|---|---|
+| Mary’s Lullaby | Children’s Songbook · 44 | song-b867cc29-d8d3-4f09-9a8e-6eac312fade7 |
+
+## unsupported (2)
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
 | When Joseph Went to Bethlehem | Children’s Songbook · 38 | song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98 |
 | Two Little Eyes | Children’s Songbook · 268 | song-1de71f3c-b3e0-40c2-98b9-f372a573bf6d |
-
-## rh-notation (1)
-
-The right-hand melody needs review.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| Mary’s Lullaby | Children’s Songbook · 44 | song-b867cc29-d8d3-4f09-9a8e-6eac312fade7 |
