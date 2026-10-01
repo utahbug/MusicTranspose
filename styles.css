@@ -1184,3 +1184,28 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library .favorite svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 #library .favorite[aria-pressed=true] svg{fill:currentColor}
 #library .favorite:hover{background:#eaf0f3;text-decoration:none}
+
+/* List metadata stays local to a List; its compact actions share one row. */
+.list-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#library .library-row.list-entry-row{grid-template-columns:minmax(0,1fr) 44px 44px 44px}
+#library .list-entry-row .song-entry{grid-column:1;min-width:0}
+#library .list-entry-row .song-title,#library .list-entry-row .song-meta{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#library .list-entry-row .edit-list-entry{grid-column:2}
+#library .list-entry-row .favorite{grid-column:3}
+#library .list-entry-row .order-song{grid-column:4}
+#library .list-icon,#lists-view .list-icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:4px;background:transparent;color:#61716f}
+#library .list-icon:hover,#lists-view .list-icon:hover{background:#eaf0f3;text-decoration:none}
+#library .list-row-tools .list-order-number{margin-right:auto}
+#list-name-dialog,#list-entry-dialog{font-family:system-ui,sans-serif;width:380px;max-width:calc(100vw - 48px);box-sizing:border-box}
+#list-name-dialog h2,#list-entry-dialog h2{font-size:20px;font-weight:600}
+#list-description-input,#list-entry-name{width:100%;box-sizing:border-box;font:16px system-ui,sans-serif;min-height:44px;padding:8px;border:1px solid #b5c3c5;border-radius:4px;background:#fff;color:#233331}
+#list-description-input{resize:vertical;margin-top:0}
+#list-name-input{margin-bottom:16px}
+#list-entry-form label{display:block;margin-bottom:6px}
+#list-entry-dialog dl{font-size:14px;margin:0 0 20px}
+#list-entry-dialog dt{color:#526560;margin-top:10px}
+#list-entry-dialog dd{margin:3px 0 0;overflow-wrap:anywhere}
+.list-edit-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+#list-entry-dialog button{min-height:44px;min-width:44px;padding:8px;font:inherit;border:0;border-radius:4px;background:transparent;color:#365f7d}
+#list-entry-dialog :focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+@media print{#list-entry-dialog{display:none!important}}

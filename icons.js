@@ -20,5 +20,8 @@ export const tapZonesIcon=outline('<path d="M12 2v3M5.7 4.7l2.1 2.1M18.3 4.7l-2.
 // Lyrics return-to-score control: compact notation, without a document outline.
 export const musicIcon=outline('<path d="M9 18V6l10-2v12M9 9l10-2"/><ellipse cx="7" cy="18" rx="2" ry="1.5"/><ellipse cx="17" cy="16" rx="2" ry="1.5"/>');
 
+// List editing and ordering share the toolbar outline weight.
+export const editIcon=outline('<path d="m16 4 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15Z"/>');
+export const orderIcon=outline('<path d="M8 5h13M8 12h13M8 19h13M3 5h.01M3 12h.01M3 19h.01"/>');
 // Quiet outline/filled favorite, using the shared 24px outline family.
 export const favoriteIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 2.78 5.63L21 9.54l-4.5 4.38 1.06 6.19L12 17.19l-5.56 2.92 1.06-6.19L3 9.54l6.22-.91Z"/></svg>`;
