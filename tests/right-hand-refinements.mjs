@@ -1,0 +1,30 @@
+import {createRequire} from 'node:module';
+const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE)('playwright');
+const b=await chromium.launch({channel:'msedge',headless:true}),p=await b.newPage({serviceWorkers:'block'});
+try{await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');console.log(await p.evaluate(async()=>{
+ const {rightHandMelody}=await import('./right-hand-melody.js');
+ const must=(v,m)=>{if(!v)throw Error(m);},parse=s=>new DOMParser().parseFromString(s,'application/xml');
+ const n=(step,voice=1,lyric='',extra='',duration=1)=>`<note>${step?`<pitch><step>${step}</step><octave>4</octave></pitch>`:'<rest/>'}<duration>${duration}</duration><voice>${voice}</voice><type>quarter</type>${extra}${lyric?`<lyric><text>${lyric}</text></lyric>`:''}</note>`;
+ const slur=(type,placement='')=>`<notations><slur number="1" type="${type}" ${placement?`placement="${placement}"`:''}/></notations>`;
+ const back=d=>`<backup><duration>${d}</duration></backup>`;
+ const score=(measures,length=2)=>`<score-partwise><part-list><score-part id="R"><part-name>Piano RH</part-name></score-part><score-part id="L"><part-name>Piano LH</part-name></score-part></part-list><part id="R">${measures.map((m,i)=>`<measure number="${i+1}"><attributes><divisions>1</divisions><clef><sign>G</sign><line>2</line></clef></attributes>${m}</measure>`).join('')}</part><part id="L">${measures.map((_,i)=>`<measure number="${i+1}"><attributes><divisions>1</divisions><clef><sign>F</sign><line>4</line></clef></attributes>${n('',1,'','',length)}</measure>`).join('')}</part></score-partwise>`;
+ const run=s=>rightHandMelody(s,{refine:true});
+ const cross=score([n('G',1,'one')+n('A',1,'two',slur('stop'))+back(2)+n('C',2,'',slur('start','below'))+n('',2)]);
+ const a=run(cross);must(a.ok,JSON.stringify(a));must(a.proof.map(e=>e.pitch).join(',')==='67,69','Accompaniment replaced RH tune');must(!parse(a.xml).querySelector('slur'),'Complete accompaniment pair was not removed');
+ must(!run(cross.replace('placement="below"','')).ok,'Unplaced discarded slur must remain ambiguous');
+ const independent=score([n('G',1,'one',slur('start','above'))+n('A',1,'two',slur('stop'))+back(2)+n('C',2,'',slur('start','below'))+n('D',2,'',slur('stop'))]);
+ const paired=run(independent);must(paired.ok,'Independent slur voices');must(parse(paired.xml).querySelectorAll('slur').length===2,'Melody slur must survive');
+ const handoff=score([n('',1)+n('A',1,'word')+back(2)+n('G',2)+n('',2)]);
+ const h=run(handoff);must(h.ok&&h.proof[0].voice==='2'&&h.proof[0].pitch===67,'Exact rest-window RH handoff');
+ must(!run(handoff.replace('</measure></part><part id="L">',back(2)+n('E',3)+n('',3)+'</measure></part><part id="L">')).ok,'Competing handoffs must not be guessed');
+ const spacer='<note print-object="no"><grace/><rest/><voice>1</voice></note>';
+ must(run(score([spacer+n('C',1,'one')+n('D',1,'two')])).ok,'Invisible grace rest spacer');
+ must(!run(score([spacer.replace('<rest/>','<pitch><step>C</step><octave>4</octave></pitch>')+n('C',1,'one')+n('D',1,'two')])).ok,'Real grace note must remain guarded');
+ const tie=type=>`<tie type="${type}"/><notations><tied type="${type}"/></notations>`;
+ const ending=(number,type,location)=>`<barline location="${location}"><ending number="${number}" type="${type}"/></barline>`;
+ const branches=score([n('C',1,'word',tie('start')),ending('1','start','left')+n('C',1,'',tie('stop'))+ending('1','stop','right'),ending('2','start','left')+n('C',1,'',tie('stop'))+ending('2','stop','right')],1);
+ must(run(branches).ok,'Common predecessor tie into later ending');
+ must(!run(branches.replace(ending('2','start','left')+n('C',1,'',tie('stop')),ending('2','start','left')+n('D',1,'',tie('stop')))).ok,'Wrong-pitch alternate-ending tie');
+ must(!run(score([n('C',1,'word',tie('start'))+n('C')])).ok,'Missing sound tie stop must not be repaired');
+ return 'PASS source slur ownership, independent voices, ambiguous slur rejection, exact RH rest handoff, competing handoff rejection, grace spacers versus real notes, alternate-ending ties, dangling/wrong-pitch tie rejection';
+}));}finally{await b.close();}

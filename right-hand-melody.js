@@ -9,9 +9,12 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source){
+export function rightHandMelody(source,{refine=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
+ // Invisible zero-time grace rests are engraving spacers, not musical events.
+ // Real grace notes and annotated rests retain the conservative rejection.
+ if(refine)for(const n of doc.querySelectorAll('note[print-object="no"]'))if(child(n,'grace')&&child(n,'rest')&&!Number(text(n,'duration','0'))&&!n.querySelector('pitch,lyric,notations,tie'))n.remove();
  const parts=[...doc.querySelectorAll('score-partwise > part')];
  const info=parts.map(part=>{
   const definition=[...doc.querySelectorAll('score-part')].find(p=>p.id===part.id);
@@ -58,6 +61,16 @@ export function rightHandMelody(source){
   }
  }
  const rh=groups.filter(g=>g.part===upper.part&&g.staff===upper.staff);
+ // A single separate vocal lane may identify lyrics on the piano RH, but
+ // never contributes notes. Require every lyric onset, bounded duration and chord-pitch
+ // intersection to agree with exactly one RH voice across the entire score.
+ if(refine&&!rh.some(g=>g.nodes.some(n=>child(n,'lyric')))&&vocal.length===1){
+  const sung=groups.filter(g=>g.part===vocal[0].part.id&&g.nodes.some(n=>child(n,'lyric')));
+  const lanes=new Set(sung.map(g=>g.staff+':'+g.voice));
+  const matches=[...new Set(rh.map(g=>g.voice))].map(voice=>sung.map(g=>rh.filter(r=>r.voice===voice&&r.mi===g.mi&&Math.abs(r.at-g.at)<eps&&r.duration<=g.duration+eps&&r.nodes.some(n=>pitch(n)!==null&&g.nodes.some(v=>pitch(v)===pitch(n)))))).filter(rows=>rows.every(r=>r.length===1));
+  if(lanes.size!==1||!sung.length||matches.length!==1)return fail('lyrics','Separate vocal lyrics do not align uniquely with a complete piano RH voice');
+  matches[0].forEach(([g],i)=>{g.alignedPitches=sung[i].nodes.map(pitch);for(const l of children(sung[i].nodes.find(n=>child(n,'lyric')),'lyric'))g.nodes[0].append(l.cloneNode(true));});
+ }
  const voices=[...new Set(rh.map(g=>g.voice))].map(voice=>({voice,lyrics:rh.filter(g=>g.voice===voice).reduce((s,g)=>s+g.nodes.filter(n=>child(n,'lyric')).length,0)})).sort((a,b)=>b.lyrics-a.lyrics);
  if(!voices[0]?.lyrics)return fail('lyrics','No principal lyric evidence on piano right hand');
  const primary=voices[0].voice;
@@ -74,6 +87,22 @@ export function rightHandMelody(source){
    let g=candidates.find(g=>g.voice===primary);
    if(!g){const lyrical=candidates.filter(g=>g.nodes.some(n=>child(n,'lyric')));if(lyrical.length===1)g=lyrical[0];else if(candidates.length===1)g=candidates[0];}
    if(!g)return fail('continuity',`No unique right-hand continuation at measure ${mi+1}, beat ${at+1}`);
+   if(refine&&g.nodes.every(n=>child(n,'rest'))){
+    // Replace a principal-voice rest only with a unique complete RH phrase
+    // that tiles that exact rest window. Never shorten a source note or rest.
+    let end=at+g.duration;const paths=[];
+    for(;;){const next=rh.find(o=>o.mi===mi&&o.voice===primary&&Math.abs(o.at-end)<eps&&o.nodes.every(n=>child(n,'rest')));if(!next)break;end+=next.duration;}
+    for(const voice of new Set(rh.filter(o=>o.mi===mi&&o.voice!==primary).map(o=>o.voice))){
+     const path=[];let cursor=at;
+     while(cursor<end-eps){let found=rh.filter(o=>o.mi===mi&&o.voice===voice&&Math.abs(o.at-cursor)<eps&&o.at+o.duration<=end+eps&&o.nodes.every(n=>pitch(n)!==null&&!cue(n)));
+      if(!found.length&&!rh.some(o=>o.mi===mi&&o.voice===voice&&o.at<=cursor+eps&&o.at+o.duration>cursor+eps&&o.nodes.some(n=>pitch(n)!==null)))found=rh.filter(o=>o.mi===mi&&o.voice===primary&&Math.abs(o.at-cursor)<eps&&o.at+o.duration<=end+eps&&o.nodes.every(n=>child(n,'rest')));
+      if(found.length!==1)break;path.push(found[0]);cursor+=found[0].duration;}
+
+     if(path.some(o=>o.voice!==primary)&&Math.abs(cursor-end)<eps)paths.push(path);
+    }
+    if(paths.length>1)return fail('continuity',`Competing RH instrumental handoffs at measure ${mi+1}`);
+    if(paths.length===1){line.push(...paths[0]);at=end;continue;}
+   }
    if(g.nodes.some(n=>child(n,'lyric')&&!child(n,'pitch')))return fail('lyrics',`Lyrics on a rest at measure ${mi+1}`);
    if(at===0&&Math.abs(g.duration-length)<eps&&g.nodes.every(n=>child(n,'rest'))&&rh.some(o=>o!==g&&o.mi===mi&&o.at<at+g.duration-eps&&o.at+o.duration>at+eps&&o.nodes.some(n=>child(n,'pitch')&&!cue(n))))return fail('continuity',`Primary RH rest overlaps another instrumental line at measure ${mi+1}; handoff needs review`);
    line.push(g);at+=g.duration;
@@ -83,11 +112,27 @@ export function rightHandMelody(source){
  // Dynamic programming considers both previous and future chord choices. The
  // upper-tone prior is balanced by step/repeated-pitch continuity and exact tie
  // constraints; lyric absence never removes an event from the rhythmic line.
+ // Later alternate endings can continue a tie from the common measure,
+ // rather than from the preceding ending in document order. Only consecutive,
+ // explicitly numbered ending branches are recognized; pitch must be forced
+ // by the already viable common-predecessor states (never guessed).
+ const endingPredecessors=new Map();
+ if(refine){let common=null,lastEnd=-2,lastNumber=0;
+  for(const [mi,m] of children(main,'measure').entries()){
+   const start=m.querySelector('barline[location="left"] > ending[type="start"]');
+   if(start){const numbers=(start.getAttribute('number')||'').split(',').map(n=>Number(n.trim()));
+    if(numbers.includes(1)){common=line.findLastIndex(g=>g.mi===mi-1);lastNumber=Math.max(...numbers);}
+    else if(common!==null&&common>=0&&lastEnd===mi-1&&numbers.every(n=>Number.isInteger(n)&&n>lastNumber)){endingPredecessors.set(mi,common);lastNumber=Math.max(...numbers);}
+    else common=null;
+   }
+   if(m.querySelector('barline > ending[type="stop"],barline > ending[type="discontinue"]'))lastEnd=mi;
+  }
+ }
  const layers=[];
  for(const [i,g] of line.entries()){
   if(new Set(g.nodes.map(lyric).filter(Boolean)).size>1)return fail('competing',`Different lyric texts within a right-hand chord at measure ${g.mi+1}`);
-  const nodes=g.nodes.filter(n=>pitch(n)!==null||child(n,'rest'));
-  if(nodes.length!==g.nodes.length||nodes.some(n=>pitch(n)!==null&&!Number.isFinite(pitch(n))))return fail('structure',`Invalid pitch at measure ${g.mi+1}`);
+  const nodes=g.nodes.filter(n=>(pitch(n)!==null||child(n,'rest'))&&(!g.alignedPitches||g.alignedPitches.includes(pitch(n))));
+  if((!g.alignedPitches&&nodes.length!==g.nodes.length)||nodes.some(n=>pitch(n)!==null&&!Number.isFinite(pitch(n))))return fail('structure',`Invalid pitch at measure ${g.mi+1}`);
   if(nodes.some(n=>child(n,'rest'))&&nodes.length>1)return fail('structure','Mixed rest and chord');
   const highest=Math.max(...nodes.map(n=>pitch(n)??-Infinity));
   const layer=nodes.map(n=>{
@@ -96,7 +141,8 @@ export function rightHandMelody(source){
    let best={cost:i?Infinity:stop?Infinity:local,previous:-1};
    for(const [j,prev] of (layers[i-1]||[]).entries()){
     const start=children(prev.node,'tie').some(t=>t.getAttribute('type')==='start'),a=pitch(prev.node);
-    if((start||stop)&&!(start&&stop&&a===value))continue;
+    const predecessor=endingPredecessors.get(g.mi),branch=refine&&g.at===0&&stop&&!start&&predecessor!==undefined&&layers[predecessor]?.filter(e=>Number.isFinite(e.cost)).every(e=>pitch(e.node)===value&&children(e.node,'tie').some(t=>t.getAttribute('type')==='start'));
+    if((start||stop)&&!(start&&stop&&a===value)&&!branch)continue;
     const distance=a===null||value===null?0:Math.abs(value-a);
     const motion=distance*.12+Math.max(0,distance-7)*.35-(distance===0&&value!==null?.65:0);
     const cost=prev.cost+local+motion+(line[i-1].voice===g.voice?0:1);
@@ -112,8 +158,40 @@ export function rightHandMelody(source){
  if(children(line.at(-1).chosen,'tie').some(t=>t.getAttribute('type')==='start'))return fail('ties','Unclosed final melody tie');
  // Small RH notes are retained only as bounded same-voice pitch connectors.
  for(const [i,g] of line.entries())if(cue(g.chosen)){
+  if(refine){
+   let first=i,last=i;while(first&&cue(line[first-1].chosen)&&line[first-1].voice===primary)first--;while(last+1<line.length&&cue(line[last+1].chosen)&&line[last+1].voice===primary)last++;
+   const run=line.slice(first,last+1),before=line[first-1],after=line[last+1];
+   const anchored=run[0].nodes.some(n=>child(n,'lyric'))&&before?.voice===primary&&pitch(before.chosen)!==null&&Math.abs(pitch(run[0].chosen)-pitch(before.chosen))<=2;
+   const closes=!after||(after.voice===primary&&(pitch(after.chosen)===null||Math.abs(pitch(after.chosen)-pitch(run.at(-1).chosen))<=2));
+   if(run.length>1&&anchored&&closes&&run.every((e,j)=>e.voice===primary&&pitch(e.chosen)!==null&&(!j||Math.abs(pitch(e.chosen)-pitch(run[j-1].chosen))<=2)))continue;
+   const measure=children(main,'measure')[g.mi],phrase=line.filter(e=>e.mi===g.mi);
+   // A complete principal-voice cue phrase with lyrics in an explicit ending
+   // is the written repeat melody, not a disconnected optional cue suggestion.
+   const ending=measure.querySelector('barline[location="left"] > ending[type="start"]');
+   if(ending&&phrase.every(e=>e.voice===primary&&cue(e.chosen)&&pitch(e.chosen)!==null)&&phrase.some(e=>e.nodes.some(n=>child(n,'lyric')))&&phrase.every((e,j)=>!j||Math.abs(pitch(e.chosen)-pitch(phrase[j-1].chosen))<=2))continue;
+  }
   const before=line[i-1],after=line[i+1],a=before&&pitch(before.chosen),b=pitch(g.chosen),c=after&&pitch(after.chosen);
   if(a==null||b==null||c==null||before.voice!==g.voice||after.voice!==g.voice||g.duration>1||Math.abs(b-a)>2||Math.abs(c-b)>2)return fail('cue',`Unproven right-hand cue at measure ${g.mi+1}`);
+ }
+ if(refine){
+  // Pair source RH slurs by musical time, not XML voice/document order. A
+  // complete below-staff accompaniment pair may end on a melody chord anchor.
+  // Keep melody pairs intact; never manufacture a replacement endpoint.
+  const selected=new Map(line.map(g=>[g,g.chosen])),pending=new Map(),pairs=[];
+  const marks=rh.flatMap(g=>g.nodes.flatMap(n=>[...n.querySelectorAll('notations > slur')].map(mark=>({g,n,mark})))).sort((a,b)=>a.g.mi-b.g.mi||a.g.at-b.g.at||(a.n===b.n?0:({stop:0,start:1,continue:2}[a.mark.getAttribute('type')])-({stop:0,start:1,continue:2}[b.mark.getAttribute('type')])));
+  for(const e of marks){const number=e.mark.getAttribute('number')||'1',k=number+':'+e.g.voice,type=e.mark.getAttribute('type');
+   if(type==='start'){if(pending.has(k))return fail('annotations',`Overlapping source RH slur ${number} in voice ${e.g.voice} at measure ${e.g.mi+1}`);pending.set(k,[e]);}
+   else{const candidates=pending.has(k)?[k]:[...pending.keys()].filter(key=>key.startsWith(number+':'));
+    if(candidates.length!==1)return fail('annotations',`Ambiguous source RH slur ${number} endpoint at measure ${e.g.mi+1}`);
+    const owner=candidates[0];pending.get(owner).push(e);if(type==='stop'){pairs.push(pending.get(owner));pending.delete(owner);}
+   }
+  }
+  if(pending.size)return fail('annotations','Unclosed source RH slur');
+  for(const pair of pairs){const start=pair[0],end=pair.at(-1),above=start.mark.getAttribute('placement')==='above'||start.mark.getAttribute('orientation')==='over',below=start.mark.getAttribute('placement')==='below'||start.mark.getAttribute('orientation')==='under';
+   const belongs=selected.has(start.g)&&(selected.get(start.g)===start.n||above);
+   if(belongs){if(!pair.every(e=>selected.has(e.g)))return fail('annotations',`Melody slur leaves selected RH path at measure ${end.g.mi+1}`);}
+   else{if(!below)return fail('annotations',`Uncertain source RH slur ownership at measure ${start.g.mi+1}`);for(const e of pair)e.mark.remove();}
+  }
  }
  const slurs=new Map(),copies=[],proof=[];
  for(const g of line){

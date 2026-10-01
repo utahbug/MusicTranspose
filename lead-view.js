@@ -27,10 +27,14 @@ const hymnIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns (1985)').map(
 // imported collection label. Other collections use the general projector first,
 // with a separate guarded repeated-cadence rule only for chordal rejections.
 const pianoIds=new Set(bundledSongs.filter(s=>['Hymns (1985)','Hymns for Home and Church','Children’s Songbook'].includes(s.collection)).map(s=>s.id));
+const hhcIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns for Home and Church').map(s=>s.id));
 export function createLeadXML(source,context){
  const prior=priorLeadXML(source,context);
  if(prior.ok||context?.local||!pianoIds.has(context?.id))return prior;
- const melody=rightHandMelody(source);
+ let melody=rightHandMelody(source);
+ // Preserve every proven Phase 3 projection. Refinement is currently enabled
+ // only for rejected bundled HHC scores, pending other collections' review.
+ if(!melody.ok&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true});
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
  const result=projectLeadXML(melody.xml);
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
@@ -120,7 +124,7 @@ function projectLeadXML(source,accompanimentCueStaff=null){
   for(let mi=0;mi<count;mi++){
    const original=chosen.measures[mi],all=data.map(p=>p.measures[mi]);
    if(all.some(m=>m.measure.getAttribute('number')!==original.measure.getAttribute('number')))throw Error('Measure numbering differs between parts');
-   const duration=Math.max(...all.map(m=>m.end)),line=original.events.filter(e=>e.keep);
+   const duration=Math.max(...all.map(m=>m.end)),line=original.events.filter(e=>e.keep).sort((a,b)=>a.at-b.at);
    let covered=0;
    for(const e of line){if(Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=e.at+e.duration;}
    if(Math.abs(covered-duration)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);
