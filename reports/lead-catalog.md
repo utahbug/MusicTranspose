@@ -1,8 +1,8 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 658 supported; 8 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 660 supported; 6 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-## Supported Lead scores (658)
+## Supported Lead scores (660)
 
 Lead
 
@@ -384,9 +384,11 @@ Lead
 | Go Forth with Faith | Hymns (1985) · 263 | song-52bb81df-191d-4f69-9e80-6c003b5260cd |
 | Hark, All Ye Nations! | Hymns (1985) · 264 | song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb |
 | Arise, O God, and Shine | Hymns (1985) · 265 | song-c6123147-4784-40ce-b463-c4282a445eb9 |
+| The Time Is Far Spent | Hymns (1985) · 266 | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
 | How Wondrous and Great | Hymns (1985) · 267 | song-5847f4b8-6bab-4477-abb9-048d4bf80fdb |
 | Come, All Whose Souls Are Lighted | Hymns (1985) · 268 | song-e4ed1590-1b82-45da-b562-ffad9b124282 |
 | Jehovah, Lord of Heaven and Earth | Hymns (1985) · 269 | song-7c922983-6513-4e23-9177-87fed5d1c786 |
+| I’ll Go Where You Want Me to Go | Hymns (1985) · 270 | song-5171114c-7b99-40f8-9040-5186973263b3 |
 | Oh, Holy Words of Truth and Love | Hymns (1985) · 271 | song-af2e3f69-c0f9-4f65-9333-d8aca67ebdfc |
 | Oh Say, What Is Truth? | Hymns (1985) · 272 | song-c6a64145-1133-4688-8009-e1619839194d |
 | Truth Reflects upon Our Senses | Hymns (1985) · 273 | song-bfb6a184-1d9c-4e05-bc9e-71efae11eea1 |
@@ -678,15 +680,6 @@ The right-hand melody needs review.
 | The Word of Wisdom | Children’s Songbook · 154 | song-0e05929e-254b-41fc-9e4e-9b810b1fc37e |
 | Love Is Spoken Here | Children’s Songbook · 190 | song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7 |
 | Mother, Tell Me the Story | Children’s Songbook · 204 | song-01f2b576-9982-42c9-85ce-1930bd32bb27 |
-
-## incomplete-line (2)
-
-The candidate melody does not cover the complete measure rhythm.
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| The Time Is Far Spent | Hymns (1985) · 266 | song-f2965762-2cb1-43a5-b5c3-b5395e5de292 |
-| I’ll Go Where You Want Me to Go | Hymns (1985) · 270 | song-5171114c-7b99-40f8-9040-5186973263b3 |
 
 ## rh-notation (1)
 

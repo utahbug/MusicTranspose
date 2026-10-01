@@ -94,8 +94,8 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
   const gcd=(a,b)=>b?gcd(b,a%b):a;let ticks=1;
   for(const d of doc.querySelectorAll('divisions')){const n=Number(d.textContent);if(!Number.isInteger(n)||n<=0)throw Error('Invalid divisions');ticks=ticks/gcd(ticks,n)*n;if(ticks>1000000)throw Error('Incompatible divisions');}
   const data=parts.map(part=>{
-   let divisions=1;return {part,measures:children(part,'measure').map(measure=>{
-    let cursor=0,last=0,end=0;const events=[],silent=[];
+   let divisions=1,meter=null;return {part,measures:children(part,'measure').map(measure=>{
+    let cursor=0,last=0,end=0;const events=[],silent=[],forwards=[];
     for(const node of measure.children){
      const tag=node.localName;
      if(tag==='attributes'){
@@ -106,10 +106,12 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
        throw Error('Mid-measure attributes require review');
       }
       divisions=number(node,'divisions',divisions);
+      const time=child(node,'time');if(time){const beats=children(time,'beats'),types=children(time,'beat-type');meter=beats.length===1&&types.length===1&&/^\d+$/.test(beats[0].textContent.trim())?Number(beats[0].textContent)*4/Number(types[0].textContent):null;}
      }
      if(tag==='backup'){cursor-=number(node,'duration')/divisions;if(cursor< -epsilon)throw Error('Negative cursor');continue;}
      if(tag==='forward'){
       const duration=number(node,'duration')/divisions;
+      forwards.push({at:cursor,duration,staff:text(node,'staff','1')});
       if(treble?.soleLyricUpper&&part.id===partId&&text(node,'staff','1')===staff){if(!(duration>0))throw Error('Invalid upper-staff forward');silent.push({at:cursor,duration});}
       cursor+=duration;end=Math.max(end,cursor);continue;
      }
@@ -122,7 +124,7 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
      if(at< -epsilon)throw Error('Annotation before measure boundary');
      events.push({node,tag,at,duration,part:part.id,keep:tag==='note'&&(treble?part.id===partId&&text(node,'staff','1')===staff:lane(part.id,node)===key)});
     }
-    return {measure,events,end,silent};
+    return {measure,events,end,silent,forwards,meter};
    })};
   });
   const chosen=data.find(p=>p.part.id===partId),count=chosen.measures.length;
@@ -154,7 +156,20 @@ function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
    // cover the complete measure. Legacy single-lane coverage stays exact.
    let covered=0;
    for(const e of (treble?.soleLyricUpper?[...line,...original.silent].sort((a,b)=>a.at-b.at):line)){if(treble?e.at>covered+epsilon:Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=treble?Math.max(covered,e.at+e.duration):e.at+e.duration;}
-   if(Math.abs(covered-duration)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);
+   if(Math.abs(covered-duration)>epsilon){
+    // Only a proven sole lyric-bearing upper domain may inherit a short silent
+    // tail. Require the source cursor extent AND every part's inherited meter
+    // to agree, plus an explicit lower-part forward covering that exact tail.
+    // Continuous upper coverage was checked above; never repair interior holes
+    // or pad pickups to nominal length. No sounding material may occupy the gap.
+    const gap=duration-covered;
+    const silentTail=treble?.soleLyricUpper&&mi>0&&covered>0&&gap>epsilon&&gap<=.5+epsilon
+     &&all.every(m=>Number.isFinite(m.meter)&&Math.abs(m.meter-duration)<epsilon
+      &&m.events.filter(e=>e.tag==='note').every(e=>e.at+e.duration<=covered+epsilon))
+     &&all.some(m=>m!==original&&m.forwards.some(f=>f.duration>0&&f.at<=covered+epsilon&&Math.abs(f.at+f.duration-duration)<epsilon));
+    if(!silentTail)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);
+    // The existing final move(duration) emits standard, silent MusicXML forward.
+   }
    const measure=original.measure.cloneNode(false);measure.removeAttribute('width');lead.append(measure);
    // Keep selected-staff clef/key/time and all selected-part global attributes.
    const attrs=make('attributes');attrs.append(make('divisions',ticks));
