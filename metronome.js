@@ -34,9 +34,11 @@ export function pulseState(timeline,seconds,rate=1){
  const duration=Math.min(downbeat?.22:.15,interval/rate*.6),elapsed=Math.max(0,(local-events[index])/rate);
  return {...beat,sequence,side:sequence%2?'right':'left',downbeat,elapsed,duration};
 }
+// Manual beats have no measure, meter, pickup, or score-position interpretation.
+export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.15,interval*.6)};}
 export function createMetronome(playback,getState){
  const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
- let visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0;
+ let visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
  const enabled=()=>visual||click;
  const rails=['left','right'].map(side=>{const e=document.createElement('div');e.className='beat-rail beat-rail-'+side;e.setAttribute('aria-hidden','true');e.hidden=true;document.body.append(e);return e;});
  let version=0,prepared='',pending='',frame=0,last=0,position=0,previousPlayback='stopped',timeline=null;
@@ -62,37 +64,41 @@ export function createMetronome(playback,getState){
   }
  }
  function tick(now){
-  const state=getState();if(!enabled()||!state.available||document.hidden||!timeline){hide();return;}
-  const play=playback.state;
+  const state=getState();if(!enabled()||!state.available||document.hidden||!state.standalone&&!timeline){hide();return;}
+  const play=state.standalone?'stopped':playback.state;
   if(play==='playing'||play==='paused')position=Math.max(0,playback.position);
-  else{if(previousPlayback!=='stopped')position=0;else if(last)position+=(now-last)/1000*playback.tempo.rate;}
+  else{if(previousPlayback!=='stopped')position=0;else if(last)position+=(now-last)/1000*(state.standalone?1:playback.tempo.rate);}
   last=now;previousPlayback=play;
-  const beat=pulseState(timeline,position,playback.tempo.rate);if(beat){if(visual)draw(beat,play==='paused');if(click&&play!=='paused'&&beat.sequence!==lastClick){playback.clickBeat(beat.downbeat);lastClick=beat.sequence;}}
+  const beat=state.standalone?standalonePulse(position,manualBpm):pulseState(timeline,position,playback.tempo.rate);if(beat){if(visual)draw(beat,play==='paused');if(click&&play!=='paused'&&beat.sequence!==lastClick){playback.clickBeat(beat.downbeat);lastClick=beat.sequence;}}
   if(visual){setVisible(true);place();}else{for(const rail of rails)rail.hidden=true;setVisible(false);}frame=requestAnimationFrame(tick);
  }
  async function sync(){
   const state=getState();opener.hidden=!state.available;if(!state.available)closePanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
+  if(state.standalone){version++;pending='';prepared='';timeline=null;if(!frame)frame=requestAnimationFrame(tick);return;}
   if(prepared===state.xml&&timeline){if(!frame)frame=requestAnimationFrame(tick);return;}
   if(pending===state.xml)return;const token=++version;pending=state.xml;hide();
   try{await playback.prepare();if(token!==version||!getState().available||!enabled())return;timeline=playback.timeline;prepared=state.xml;position=0;previousPlayback='stopped';frame=requestAnimationFrame(tick);}catch{if(token===version){timeline=null;hide();}}finally{if(token===version)pending='';}
  }
+ const tempo=()=>getState().standalone?{bpm:manualBpm,min:40,max:240}:playback.tempo;
+ function setTempo(bpm){if(getState().standalone){manualBpm=Math.max(40,Math.min(240,bpm));position=0;last=0;lastClick=-1;}else playback.setTempo(bpm);}
  function controls(){
+  $('metronome-mode').hidden=!getState().standalone;
   for(const [id,on] of [['metronome-visual',visual],['metronome-click',click]]){$(id).setAttribute('aria-pressed',String(on));$(id).querySelector('span').textContent=on?'On':'Off';}
-  const t=playback.tempo;$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;
+  const t=tempo();$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;
  }
  function closePanel(focus=false){opening++;panel.hidden=true;opener.setAttribute('aria-expanded','false');releaseToolPanel('metronome');if(focus)$('score-tools').focus({preventScroll:true});}
  opener.addEventListener('click',async()=>{
   if(!getState().available)return;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
   for(const b of panel.querySelectorAll('button:not(#metronome-done)'))b.disabled=true;
-  try{await playback.prepare();if(token!==opening||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();requestAnimationFrame(()=>{if(!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
+  try{if(!getState().standalone)await playback.prepare();if(token!==opening||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();requestAnimationFrame(()=>{if(!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
   catch{if(token===opening){$('metronome-message').textContent='Unable to prepare metronome timing. Try again online.';}}
  });
  $('metronome-visual').onclick=()=>{visual=!visual;controls();sync();};
  $('metronome-click').onclick=async()=>{const token=++clickRequest;if(click){click=false;playback.silenceClicks();controls();sync();return;}
   try{await playback.enableClick();if(token!==clickRequest||!getState().available)return;click=true;lastClick=-1;controls();sync();}catch{$('metronome-message').textContent='Click sound is unavailable.';}
  };
- for(const [id,delta] of [['tempo-down',-4],['tempo-up',4]])$(id).onclick=()=>{playback.setTempo(playback.tempo.bpm+delta);controls();};
- $('tap-tempo').onclick=()=>{const now=performance.now();if(taps.length&&now-taps.at(-1)>2000)taps=[];taps.push(now);taps=taps.slice(-5);if(taps.length>1)playback.setTempo(60000*(taps.length-1)/(now-taps[0]));controls();};
+ for(const [id,delta] of [['tempo-down',-4],['tempo-up',4]])$(id).onclick=()=>{setTempo(tempo().bpm+delta);controls();};
+ $('tap-tempo').onclick=()=>{const now=performance.now();if(taps.length&&now-taps.at(-1)>2000)taps=[];taps.push(now);taps=taps.slice(-5);if(taps.length>1)setTempo(60000*(taps.length-1)/(now-taps[0]));controls();};
  $('metronome-done').onclick=()=>closePanel(true);
  panel.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape'){e.preventDefault();closePanel(true);}});
  function reset(){version++;clickRequest++;prepared='';pending='';timeline=null;position=0;visual=false;click=false;taps=[];hide();closePanel();controls();}

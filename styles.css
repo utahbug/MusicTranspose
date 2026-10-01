@@ -1320,3 +1320,5 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #import-filename{overflow-wrap:anywhere;margin:4px 0}
 #music-import.editing-file :is(label[for=music-file],#music-file,.setting-note,#import-preview,#import-summary,#import-warnings,label[for=import-page],#import-page){display:none}
 #import-cancel{min-height:44px}
+
+#metronome-mode{font:400 12px system-ui,sans-serif;color:#536b7a;padding:0 4px}

@@ -65,7 +65,7 @@ const playback=createPlayback(async()=>{
  return {id:song.id,key:song.id+':'+xml,xml};
 });
 initPlaybackSettings(playback);
-metronome=createMetronome(playback,()=>({available:ready&&!busy&&!loading&&hasTiming(activeSong)&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
+metronome=createMetronome(playback,()=>({standalone:!hasTiming(activeSong),available:ready&&!busy&&!loading&&!!activeSong&&!activeSong.missing&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
 function playbackControls(){const actions=document.querySelector('.score-heading .score-actions');if(ready&&hasTiming(activeSong)){playback.attach(actions);const button=actions.querySelector('.song-playback');if(actions.firstElementChild!==button)actions.prepend(button);}else actions.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
