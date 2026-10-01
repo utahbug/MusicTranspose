@@ -47,7 +47,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function persistWorkspace(){try{localStorage.setItem(workspaceKey,JSON.stringify({activeList,contexts:[...contexts].map(([id,{favoritesOnly,leadOnly,searchScope,...context}])=>[id,context])}));}catch{}}
  function applyContext(context={}){if(!context||typeof context!=='object')context={};source=activeList?'all':normalizeSource(context.source);sort=activeList?(['manual','title','number'].includes(context.sort)?context.sort:'manual'):(context.sort==='number'?'number':'title');$('library-search').value=context.query||'';libraryScroll=context.scroll||0;favoritesOnly=!!context.favoritesOnly;leadOnly=!!context.leadOnly;searchScope=['titles','lyrics','all'].includes(context.searchScope)?context.searchScope:'titles';$('library-search-scope').value=searchScope;}
  const lists=createListsView({getState:()=>state,save,onLibrary:()=>selectList(null),onSelect:selectList,onChanged:()=>{if(activeList&&!group()){if(!$('lists-view').hidden){activeList=null;reordering=false;applyContext(contexts.get('library'));}else{selectList(null);return;}}render();persistWorkspace();},onAdded:(id,added,saved)=>{selectList(id);sort='manual';source='all';$('library-search').value='';render();$('library-message').textContent=saved?added.length+' songs added.':'Changes last only while this page is open.';requestAnimationFrame(()=>{const row=$('library-results').querySelector(`[data-song="${CSS.escape(added[0])}"]`);if(row)window.scrollTo({top:scrollY+row.getBoundingClientRect().top-document.querySelector('.library-header-panel').getBoundingClientRect().height-8,behavior:'instant'});row?.querySelector('.song-entry')?.focus({preventScroll:true});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();});}});
- const files=createFilesView({onLibrary:()=>{showLibrary();$('library-more').focus({preventScroll:true});},onSong:id=>open(id)});
+ const files=createFilesView({onLibrary:()=>{showLibrary();$('library-more').focus({preventScroll:true});},onSong:(id,ids)=>{pendingSongSet={ids,origin:'files'};open(id);}});
  function returnLabels(){const label=activeList?'Back to list':'Library';$('songs').setAttribute('aria-label',label);$('songs').title=label;}
  function showScore(){blurSearch();files.hide();lists.hide();returnLabels();document.body.classList.remove('library-open');$('library').hidden=true;document.title=current?(songs.find(s=>s.id===current)?.title||'Music')+' · Music Transpose':'MusicTranspose';}
  function showLibrary(){if(isBusy())return;const position=libraryScroll;navigation?.visit({view:'library',list:activeList,song:null});files.hide();lists.hide();document.dispatchEvent(new Event('library-open'));leaveScore?.();document.body.classList.add('library-open');$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();window.scrollTo({top:position,behavior:'instant'});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();focusLibrary();}
@@ -139,7 +139,11 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('view-favorites').onclick=()=>{favoritesOnly=!favoritesOnly;render();};
  $('order-toggle').onchange=()=>{sort=$('order-toggle').value;if(!activeList)globalSort=sort;savePreferences();render();};
 
- $('view-files').onclick=()=>{clearLeadFilter();closeMore();blurSearch();navigation?.visit({view:'files'});libraryScroll=scrollY;remember();persistWorkspace();lists.hide();files.open();};
+ function showFiles(){closeMore();blurSearch();navigation?.visit({view:'files'});if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}lists.hide();files.open();}
+ $('view-files').onclick=showFiles;
+ document.addEventListener('music-import-open',()=>{if($('files-view').hidden)showFiles();navigation?.visit({view:'import'});});
+ document.addEventListener('music-import-close',()=>{if(navigation?.current.view==='import')navigation.replace({view:'files'});});
+ document.addEventListener('local-music-saved',()=>{if(navigation?.current.view==='import')navigation.replace({view:'files'});});
  $('library-search').onkeydown=e=>{if(e.key==='Escape'&&e.currentTarget.value){e.preventDefault();$('library-clear').click();}};
  $('library-search').oninput=render;$('songs').onclick=showLibrary;
  document.addEventListener('click',e=>{if(e.target.closest('.header-home')&&$('library').hidden)showLibrary();});
@@ -159,7 +163,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');files.hide();lists.hide();$('library').hidden=true;
   if(route.view==='lists'&&route.picking&&state.groups.some(g=>g.id===route.list))lists.pick(route.list,false);
   else if(route.view==='lists'&&!route.list)lists.open();
-  else if(route.view==='files')files.open();
+  else if(route.view==='files'||route.view==='import'){files.open();if(route.view==='import'){await new Promise(resolve=>setTimeout(resolve,0));$('add-music').click();}}
   else{if(route.view==='lists'){activeList=state.groups.some(g=>g.id===route.list)?route.list:null;sort=activeList?'manual':globalSort;route={...route,view:'library',list:activeList};}$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();if(document.activeElement!==document.body&&document.activeElement!==$('library-search'))focusLibrary();}
   window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;
  }

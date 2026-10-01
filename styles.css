@@ -478,7 +478,11 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #library .library-row:not(.reordering){grid-template-columns:40px minmax(0,1fr) auto}
 @media(max-width:600px){#library .library-search-row .search-box{flex-basis:170px}#library .library-results-tools{gap:0 6px}}
 
-#music-import{width:660px;max-height:calc(100dvh - 32px);overflow:auto}
+#music-import{width:660px;max-height:calc(100dvh - 32px);overflow:hidden}
+#music-import[open]{display:flex;flex-direction:column}
+#music-import .dialog-heading,#music-import .import-actions{flex-shrink:0}
+#music-import .import-body{min-height:0;overflow:auto;padding:2px 4px}
+#music-import .import-actions{padding-bottom:env(safe-area-inset-bottom,0px);border-top:1px solid #d8e1da;padding-top:12px}
 #music-import label{display:block;margin:10px 0 5px;font-size:14px}
 #music-import input:not([type=checkbox]){display:block;width:100%;min-width:0;box-sizing:border-box}
 #import-preview{overflow:auto;max-height:38vh;margin-top:12px;background:white;color:#233331}
@@ -548,7 +552,8 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #files-view button{min-width:44px;min-height:44px;padding:8px;border:0;border-radius:4px;background:transparent;color:#365f7d;font:inherit;cursor:pointer}
 #files-view .files-heading button{color:white}
 #files-view button:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
-#files-view #add-music{margin-top:8px}
+#files-view #add-music{margin:12px 0;background:#365f7d;color:white;padding:8px 16px;font-weight:600}
+#files-view .file-row.just-added{background:#edf3f5;box-shadow:inset 3px 0 #365f7d}
 .files-note,#files-status,.files-empty{font-size:13px}.files-note{color:#53675d;margin:0 0 10px}#files-status:empty{display:none}
 .file-row{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;border-bottom:1px solid #c4cfd3;background:#fafbf8}
 #files-view .file-entry{display:flex;flex-direction:column;gap:2px;text-align:left;color:#233331;min-width:0}

@@ -8,10 +8,10 @@ export function createFilesView({onLibrary,onSong}){
   const files=songs.filter(isFileSong).sort((a,b)=>collator.compare(a.title,b.title)||collator.compare(a.originalFilename,b.originalFilename));
   $('files-count').textContent=files.length+' '+(files.length===1?'file':'files');
   const host=$('files-results');host.replaceChildren();
-  if(!files.length){host.append(element('p','No files added yet.','files-empty'));return;}
+  if(!files.length){host.append(element('p','No music files yet.','files-empty'));return;}
   for(const file of files){
    const row=element('div',null,'file-row');row.dataset.file=file.id;
-   const open=element('button',null,'file-entry');open.type='button';open.setAttribute('aria-label','Open file: '+file.title);open.onclick=()=>onSong(file.id);
+   const open=element('button',null,'file-entry');open.type='button';open.setAttribute('aria-label','Open file: '+file.title);open.onclick=()=>onSong(file.id,files.map(song=>song.id));
    open.append(element('strong',file.title));
    const status=file.scoreType==='pdf'?['PDF',file.pages?file.pages+' '+(file.pages===1?'page':'pages'):'']:['MusicXML',file.capability,file.tonic?file.tonic+' '+file.mode:'',file.warnings?.length?'Needs review':''];
    open.append(element('span',status.filter(Boolean).join(' · '),'song-meta'),element('span',file.originalFilename||file.asset.split('/').at(-1),'file-name'));
@@ -22,6 +22,6 @@ export function createFilesView({onLibrary,onSong}){
  }
  $('files-library').onclick=onLibrary;
  document.addEventListener('local-music-changed',render);
- document.addEventListener('local-music-saved',e=>{if(!$('files-view').hidden){$('files-status').textContent=e.detail;$('add-music').focus({preventScroll:true});}});
+ document.addEventListener('local-music-saved',e=>{if(!$('files-view').hidden){$('files-status').textContent=e.detail.message||e.detail;const row=e.detail.id&&$('files-results').querySelector(`[data-file="${CSS.escape(e.detail.id)}"]`);if(row){row.classList.add('just-added');row.scrollIntoView({block:'nearest'});row.querySelector('.file-entry').focus({preventScroll:true});}else $('add-music').focus({preventScroll:true});}});
  return {render,open(){render();$('files-status').textContent='';$('files-view').hidden=false;$('library').hidden=true;document.body.classList.add('library-open');document.title='Files · MusicTranspose';window.scrollTo(0,0);$('files-heading').focus({preventScroll:true});},hide(){$('files-view').hidden=true;}};
 }
