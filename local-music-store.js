@@ -11,3 +11,9 @@ export const addRecord=record=>transaction('readwrite',(s,t)=>{t.objectStore('me
 export const updateRecord=record=>transaction('readwrite',(s,t)=>{t.objectStore('metadata').put(record.metadata);return s.put(record);});
 export const removeRecord=id=>transaction('readwrite',(s,t)=>{t.objectStore('metadata').delete(id);return s.delete(id);});
 export function storageMessage(error){return error?.name==='ConstraintError'?'This exact file is already in Files.':error?.name==='QuotaExceededError'?'Not enough browser storage. Free some space and try again.':'Unable to save on this device. Check browser storage permissions and try again.';}
+
+// Optional metadata is additive: older records need no database migration.
+export function fileDetails(metadata){return {displayName:metadata.displayName?.trim()||metadata.title||metadata.originalFilename||'Untitled',description:metadata.description||'',category:metadata.category||''};}
+const fileOverridesKey='music-transpose-bundled-file-details-v1';
+export function bundledFileDetails(){try{return JSON.parse(localStorage.getItem(fileOverridesKey)||'{}')||{};}catch{return {};}}
+export function saveBundledFileDetails(id,details){localStorage.setItem(fileOverridesKey,JSON.stringify({...bundledFileDetails(),[id]:details}));}

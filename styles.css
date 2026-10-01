@@ -1306,3 +1306,17 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library #view-favorites[aria-pressed=true]{color:#466879;background:#e5eef2}
 #view-favorites[aria-pressed=true] svg{fill:currentColor}
 #library #view-favorites:not(:disabled):hover{background:#eaf0f3;text-decoration:none}
+
+/* Files identity stays compact; editable details never replace source identity. */
+.files-heading{padding:10px 16px}
+.files-heading h1{font-size:22px}
+.files-heading .eyebrow{margin-bottom:2px}
+#files-count{margin:10px 0 0;color:#536b7a;font-size:13px}
+#import-description,#import-category{display:block;width:100%;box-sizing:border-box;font:16px system-ui,sans-serif;min-height:44px;padding:8px;border:1px solid #b5c3c5;border-radius:4px;background:#fff;color:#233331;margin-bottom:12px}
+#import-description{resize:vertical}
+#import-details label{display:block;margin-bottom:5px}
+#import-details #import-memberships label{display:flex;min-height:44px;gap:8px;align-items:center;font-weight:400}
+.import-filename{font-size:13px;color:#536b7a;margin:12px 0}
+#import-filename{overflow-wrap:anywhere;margin:4px 0}
+#music-import.editing-file :is(label[for=music-file],#music-file,.setting-note,#import-preview,#import-summary,#import-warnings,label[for=import-page],#import-page){display:none}
+#import-cancel{min-height:44px}

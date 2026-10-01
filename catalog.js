@@ -1,7 +1,8 @@
+import {isFileSong} from './library-query.js';
 import {bundledLeadIds} from './lead-availability.js';
 import {createLeadXML} from './lead-view.js';
 import {songs as bundled} from './songs.js';
-import {localMetadata,localRecord} from './local-music-store.js';
+import {localMetadata,localRecord,fileDetails,bundledFileDetails} from './local-music-store.js';
 export const songs=[...bundled];
 // Bundled capability metadata and imported-source checks share one filter predicate.
 export const supportsLead=song=>!song.missing&&song.scoreType!=='pdf'&&(song.local?song.leadAvailable===true:bundledLeadIds.has(song.id));
@@ -13,9 +14,11 @@ export async function refreshLocalMusic(){
   if(r.scoreType!=='pdf'){
    try{const record=await localRecord(r.id);leadAvailable=!!record?.xml&&createLeadXML(record.xml).ok;}catch{}
   }
-  return {...r,collection:'Files',local:true,asset:'local:'+r.id,leadAvailable};
+  return {...r,...fileDetails(r),title:fileDetails(r).displayName,collection:'Files',local:true,asset:'local:'+r.id,leadAvailable};
  }));
- songs.splice(0,songs.length,...bundled,...local);
+ const overrides=bundledFileDetails();
+ const publicSongs=bundled.map(s=>{if(!isFileSong(s))return s;const details=fileDetails({...s,...overrides[s.id]});return {...s,...details,title:details.displayName};});
+ songs.splice(0,songs.length,...publicSongs,...local);
  document.dispatchEvent(new Event('local-music-changed'));
 }
 export async function localXML(song){const r=await localRecord(song.id);if(!r?.xml)throw Error('Local score unavailable');return r.xml;}
