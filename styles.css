@@ -1273,8 +1273,8 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library .library-controls{display:flex;flex-direction:column;align-items:stretch}
 #library .library-filter-row{flex-wrap:nowrap;gap:8px}
 #library .library-filter-row #library-source{max-width:none;flex:0 1 auto}
-#library #view-favorites{margin-left:0}
-.library-navigation{display:flex;align-items:center;margin-left:auto;gap:0}
+#library #view-favorites{margin-left:auto}
+.library-navigation{display:flex;align-items:center;margin-left:0;gap:0}
 #library .library-navigation .quiet{border:0;background:transparent;font-weight:500;color:#365867}
 #library #library-lists{padding:0 8px;font-size:13px}
 #library #library-lists:hover,#library #library-lists:focus-visible{text-decoration:underline;text-underline-offset:3px}
