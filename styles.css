@@ -1170,7 +1170,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library-home strong,#library-home small{display:block}#library-home strong{font-size:16px;font-weight:500}#library-home small{font-size:13px;color:#536b7a;margin-top:4px}
 #library-home nav>button:hover{background:#eaf0f3}#library-home nav>button:focus-visible{outline:2px solid #536b7a;outline-offset:-2px}
 #library-home nav>button:has(+hr){border-bottom-color:transparent}
-#library-home hr{border:0;border-top:1px solid #c4cfd3;margin:18px 0 14px}
+#library-home hr{width:25%;height:3px;border:0;border-top:1px solid var(--score-frame-outer);border-bottom:1px solid var(--score-frame-inner);margin:16px 0 12px}
 @media(max-width:600px){#library-home{padding:10px 8px 24px}}
 @media print{#library-home{display:none!important}}
 
