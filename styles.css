@@ -1067,7 +1067,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 /* Song navigation belongs to the identity banner, outside the page-turn surface. */
 @media screen{
  .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;align-items:center}
- .score-identity-header .score-title-block h1{grid-column:1;grid-row:1;align-self:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ body .score-identity-header .score-title-block h1{grid-column:1;grid-row:1;align-self:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  .score-identity-header #score-source{grid-column:1;grid-row:2;align-self:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  .score-song-navigation{grid-column:2;grid-row:1 / span 2;display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
  .score-song-navigation button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0;color:inherit;border:1px solid transparent;background:transparent}
@@ -1099,3 +1099,20 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #metronome-done{background:#245a9a;color:white}
 @media(max-width:600px){#metronome-panel{width:calc(100% - 16px);box-sizing:border-box}.metronome-setting{gap:6px}.metronome-setting select{max-width:60%}}
 @media print{#metronome-panel{display:none!important}}
+
+/* Score controls share optical size and restrained interaction states. */
+@media screen{
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset){display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:8px;box-shadow:none;color:#365b72;border-color:#b7c8d5}
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset) > svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:6px}
+ body .masthead .utility-controls #score-size{font-weight:500}
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset,#score-size):not(:disabled):hover{background:#eaf2f8;border-color:#8da8bd}
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#score-size)[aria-expanded=true]:not(:disabled),
+ body:has(#settings-dialog[open]) .masthead #settings,
+ body:has(#metronome-panel:not([hidden])) .masthead #score-tools,
+ body.pdf-annotation-active .masthead #score-tools{background:#e5edf2;border-color:#8da8bd;box-shadow:none}
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset,#score-size):disabled{opacity:.4;cursor:default;background:transparent;border-color:#b7c8d5}
+ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset,#score-size):focus-visible{outline:2px solid #245a9a;outline-offset:2px}
+ .score-identity-header .song-playback,.score-identity-header #show-tap-zones{border-radius:8px}
+ @media(max-width:600px){body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:4px}}
+}
