@@ -1322,3 +1322,22 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #import-cancel{min-height:44px}
 
 #metronome-mode{font:400 12px system-ui,sans-serif;color:#536b7a;padding:0 4px}
+
+.files-action-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#files-view #files-info{display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;padding:0;border-radius:50%;color:#fff;background:linear-gradient(110deg,var(--primary-blue),#237c7a);box-shadow:none}
+#files-view #files-info:hover{filter:brightness(1.1)}
+#files-view #files-info:focus-visible{outline:2px solid #245a9a;outline-offset:3px}
+#files-info-dialog{padding:20px;max-height:calc(100dvh - 32px);font:14px/1.45 system-ui,sans-serif}
+#files-info-dialog[open]{display:flex;flex-direction:column}
+#files-info-dialog .dialog-heading{flex:none;align-items:center;gap:12px;padding-bottom:12px}
+#files-info-dialog h2{font:600 20px/1.3 system-ui,sans-serif}
+.files-info-content{overflow:auto;min-height:0}
+#files-info-dialog h3{font:600 13px/1.4 system-ui,sans-serif;color:#365f7d;margin:16px 0 6px;letter-spacing:0}
+#files-info-dialog h3:first-child{margin-top:0}
+#files-info-dialog h4{font:600 14px/1.4 system-ui,sans-serif;margin:12px 0 4px}
+#files-info-dialog ul{padding-left:22px;margin:4px 0 8px}
+#files-info-dialog li{margin:3px 0}
+#files-info-dialog p{margin:8px 0}
+#files-info-dialog .files-info-note{margin-left:22px;color:#536b7a}
+#files-info-dialog strong{font-weight:600}
+@media(max-width:600px){#files-info-dialog{padding:16px;max-width:calc(100vw - 24px)}}

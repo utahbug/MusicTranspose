@@ -21,6 +21,11 @@ export function createFilesView({onLibrary,onSong}){
    row.append(open,edit);host.append(row);
   }
  }
+ const info=$('files-info-dialog');
+ $('files-info').onclick=()=>{info.showModal();$('files-info-title').focus();};
+ $('files-info-close').onclick=()=>info.close();
+ info.addEventListener('close',()=>{$('files-info').focus({preventScroll:true});});
+ info.addEventListener('click',e=>{if(e.target!==info)return;const r=info.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)info.close();});
  $('files-library').onclick=onLibrary;
  document.addEventListener('local-music-changed',render);
  document.addEventListener('local-music-saved',e=>{if(!$('files-view').hidden){$('files-status').textContent=e.detail.message||e.detail;const row=e.detail.id&&$('files-results').querySelector(`[data-file="${CSS.escape(e.detail.id)}"]`);if(row){row.classList.add('just-added');row.scrollIntoView({block:'nearest'});row.querySelector(e.detail.edited?'.file-edit':'.file-entry').focus({preventScroll:true});}else $('add-music').focus({preventScroll:true});}});
