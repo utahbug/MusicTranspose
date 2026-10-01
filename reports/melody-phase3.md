@@ -26,7 +26,7 @@ Hymn 19's exact previous failure was `hymn-notation: Upper-staff cue or cue-size
 | Hymns for Home and Church | 81 | 2 | 70 | 11 | 86.42% |
 | **Total** | **679** | **245** | **569** | **110** | **83.80%** |
 
-The 13 authorized instrumental removals are all unsupported. After their separate catalog commit, the expected total is **666 structured, 569 supported, 97 fallbacks** (85.44%); Children’s becomes **216/250**, or 86.40%. Two PDF-only catalog entries remain unaffected.
+The 13 authorized instrumental removals are all unsupported. The final post-cleanup audit verifies **666 structured, 569 supported, 97 fallbacks** (85.44%); Children’s becomes **216/250**, or 86.40%. Two PDF-only catalog entries remain unaffected.
 
 ## Failure reasons
 
@@ -186,7 +186,9 @@ Screenshots and detailed geometry are under ignored `test-results/phase3-*.png`;
 - `tests/lead-hhc1035.mjs` and `tests/lead-hhc1035-polish.mjs`: exact reviewed melody/harmony plus lyric/chord layout. Old blanket fallback expectations were replaced only where Phase 3 intentionally broadens the policy.
 - `tests/lead-layout.mjs`: legacy Lead/Transpose geometry restoration across five viewports; updated the retired menu selector and ignored only volatile VexFlow-generated IDs in SVG comparisons.
 - `tests/pdf-first-capabilities.mjs` and `tests/score-view-menu-state.mjs`: tablet capability/menu roundtrips; the unsupported fixture is now the genuinely ambiguous A Child’s Prayer rather than newly supported Nativity.
-- Final index-consistency audit and representative direct Melody opens are recorded separately in `melody-phase3-final-index.json` after catalog cleanup.
+- Final index-consistency audit passed: 569 indexed successes, zero missing successes, zero stale positives, zero orphan IDs, and ten representative direct Melody opens. Results are recorded separately in `melody-phase3-final-index.json` after catalog cleanup.
+
+`tests/score-export.mjs` passed at 820px, including original PDF bytes/offline behavior and HHC 1035 musical export. New RH print smoke checks passed for Amazing Grace (1 page), Gethsemane (2), and I Am a Child of God (1), preserving the in-memory musical XML.
 
 No unrelated music-engine/chord suite was run. No title-specific algorithm exceptions, source MXL edits, playback synthesis changes, toolbar changes, or PrimarySongs changes.
 
@@ -203,3 +205,23 @@ Separate catalog cleanup: `imported-songs.js`; removes precisely the 13 requeste
 The 110 pre-cleanup fallbacks (97 after cleanup) retain exact reasons in the JSON; HHC details are all listed above. Prioritize slur ownership, single-vocal-to-piano lyric alignment (HHC 1018), grace-note timing (1021), cue ownership (1030), editorial ties (1039/1206), and independent duet lines. No unsafe automatic LH continuation or fabricated notes were used to increase coverage.
 
 The deterministic chord model has source-provenance and visual checks, but physical iPad performance and a musician's judgment of editorial melody choices remain valuable, especially the newly supported arrangements with chordal introductions and verse handoffs.
+
+## Verified catalog removals
+
+Exactly these 13 entries were removed; every source asset remains on disk.
+
+| Page | Title | Stable ID |
+|---|---|---|
+| 288 | Impromptu | `song-8fa768c2-7402-4551-800a-2bdf30049be5` |
+| 289 | To a Wild Rose | `song-3c854990-9860-47b6-88f2-c395d45ebae5` |
+| 290 | Each Sunday Morning | `song-f6248e54-3bfb-4c7a-9f65-0f27075a943e` |
+| 291 | In Quietude | `song-b428e858-0133-4d4a-8a95-911b868aef60` |
+| 292a | Loving Shepherd | `song-82b08bde-2e30-461f-88be-c410be00d868` |
+| 292b | Morning Prayer | `song-b01244cb-7bb7-424c-9f78-c2f39b6e112a` |
+| 293 | My Heart Ever Faithful | `song-0929ad3e-a434-4c6a-856e-0eb036eddee5` |
+| 294 | Andante | `song-8047e6c9-bc52-49c5-abe8-89b924e6f00a` |
+| 295 | O Rest in the Lord | `song-6964e731-38cd-482a-992a-944a7d14c5f8` |
+| 296 | Air from Orpheus | `song-41eb4c94-5450-444d-acbb-8cb434ffe645` |
+| 297 | Supplication | `song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf` |
+| 298 | Prelude in F | `song-55a94a2f-1049-41e7-bc34-4c9be1e585f4` |
+| 299 | Distant Bells | `song-352e183f-b5d1-4b0e-9244-990fb0bdd165` |
