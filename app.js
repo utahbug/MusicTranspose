@@ -1,3 +1,5 @@
+import {installAccompanimentLayout,configureAccompanimentLayout} from './accompaniment-layout.js';
+installAccompanimentLayout(opensheetmusicdisplay);
 import {preferMusicalSections} from './section-layout.js';
 import {appendSourceCreditFooter} from './print-source-credits.js';
 import {createPdfAnnotations} from './pdf-annotations.js';
@@ -125,7 +127,7 @@ async function renderScore(){
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original,activeSong);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
    applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
-   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(viewXML):viewXML).displayXML;stage.style.width=w+'px';osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(viewXML):viewXML).displayXML;stage.style.width=w+'px';configureAccompanimentLayout(osmd,displayXML);osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
    // Internal engraving margins participate in automatic system breaking.
    // Share compact header-aligned bounds; retain each mode's existing notation scale.
    const phone=matchMedia('(max-width:600px)').matches;
