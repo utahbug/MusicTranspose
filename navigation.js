@@ -22,7 +22,7 @@ function sync(){
  // Measure pagination after any Auto-scroll strip has its final height.
  syncPages();
  $('scroll-speed').value=speed;$('speed-value').textContent=speed+' px/s';$('speed-summary').textContent=speed+' px/s';
- $('auto-toggle').textContent=running?'Pause scrolling':'Start scrolling';$('auto-toggle').setAttribute('aria-pressed',String(running));$('settings-auto-start').textContent=running?'Pause scrolling':'Start scrolling';
+ $('auto-toggle').textContent=running?'Pause scrolling':'Start scrolling';$('auto-toggle').setAttribute('aria-pressed',String(running));
 }
 function pause(message='Paused'){if(!running)return;running=false;cancelAnimationFrame(frame);$('navigation-status').textContent=message;sync();}
 function tick(time){if(!running)return;const dt=Math.min((time-lastTime)/1000,.1);lastTime=time;position+=speed*dt;window.scrollTo({top:position,behavior:'instant'});expected=scrollY;
@@ -41,10 +41,10 @@ for(const input of panel.querySelectorAll('input[name="navigation"]'))input.onch
  $('navigation-status').textContent='';persist();sync();
 };
 $('scroll-speed').oninput=e=>{speed=Number(e.target.value);persist();sync();};
-$('auto-toggle').onclick=toggle;$('settings-auto-start').onclick=()=>{panel.close();toggle();};$('screenful-next').onclick=advance;
+$('auto-toggle').onclick=toggle;$('screenful-next').onclick=advance;
 // Only deliberate user inputs pause scrolling; our own scroll events do not.
 document.addEventListener('wheel',()=>pause(),{passive:true});
-document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle,#settings-auto-start'))pause();},{passive:true});
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle'))pause();},{passive:true});
 document.addEventListener('touchstart',e=>{if(e.target.closest('main'))pause();},{passive:true});
 window.addEventListener('scroll',()=>{if(running&&Math.abs(scrollY-expected)>2)pause();},{passive:true});
 document.addEventListener('keydown',e=>{

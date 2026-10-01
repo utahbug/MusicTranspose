@@ -1081,3 +1081,21 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-identity-header,.score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{column-gap:4px}
 }
 @media print{.score-song-navigation{display:none}}
+
+/* Persistent configuration and compact, immediate metronome controls. */
+#settings-dialog legend{font-weight:600}
+#settings-dialog .setting-choice{font-weight:400}
+.settings-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:12px;border-top:1px solid #d3dce0}
+.settings-actions button{min-width:80px;min-height:44px;font-weight:500;border:1px solid #b7c8d5;border-radius:6px;background:white;color:#183e67}
+#apply-settings{background:#245a9a;color:white}
+#metronome-panel{position:fixed;z-index:4;left:50%;transform:translateX(-50%);bottom:calc(var(--playing-bar-height,64px) + var(--playing-safe-bottom,env(safe-area-inset-bottom,0px)) + 8px);width:max-content;max-width:calc(100% - 16px);border:1px solid #a9bbc8;border-radius:10px;background:#f7f9fb;color:#183e67;box-shadow:0 5px 20px #19365230;padding:6px}
+#metronome-panel[hidden]{display:none}
+.metronome-live-controls{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.metronome-live-controls button{min-height:44px;min-width:44px;padding:6px 10px;font:500 14px system-ui,sans-serif;color:#183e67;background:white;border:1px solid #b7c8d5;border-radius:6px}
+.metronome-live-controls button[aria-pressed=true]{background:#e3eff8;border-color:#245a9a}
+.metronome-live-controls button:focus-visible,.settings-actions button:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
+.metronome-bpm{display:flex;align-items:center;gap:4px}
+#tempo-value{min-width:76px;text-align:center;font:500 14px system-ui,sans-serif;font-variant-numeric:tabular-nums}
+#metronome-done{background:#245a9a;color:white}
+@media(max-width:600px){#metronome-panel{width:calc(100% - 16px);box-sizing:border-box}.metronome-setting{gap:6px}.metronome-setting select{max-width:60%}}
+@media print{#metronome-panel{display:none!important}}

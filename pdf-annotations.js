@@ -1,3 +1,4 @@
+import {claimToolPanel,releaseToolPanel} from './tool-panel.js';
 // Adapted from PrimarySongs v528 PDF annotations (610a1eb). Original PDF pixels stay untouched.
 const storageKey='music-transpose-pdf-annotations-v1';
 const colors=['#245A9A','#C62828','#7A3045','#B67817'];
@@ -54,7 +55,7 @@ export function createPdfAnnotations({getState}){
   }
   selected=readingFrame();schedule();controls();
  }
- function setMode(value,focus=false){const next=!!value&&available();if(next===active)return;cancelGesture();active=next;document.body.classList.toggle('pdf-annotation-active',active);panel.hidden=!active;
+ function setMode(value,focus=false){const next=!!value&&available();if(next===active)return;if(next)claimToolPanel('annotation',()=>setMode(false));else releaseToolPanel('annotation');cancelGesture();active=next;document.body.classList.toggle('pdf-annotation-active',active);panel.hidden=!active;
   document.dispatchEvent(new CustomEvent('pdf-annotation-mode',{detail:{active}}));
   if(active){selected=readingFrame();sync();requestAnimationFrame(()=>{if(active)toolbar.querySelector(`[data-annotation-tool="${tool}"]`).focus({preventScroll:true});});}else if(focus) $('score-tools').focus({preventScroll:true});controls();
  }

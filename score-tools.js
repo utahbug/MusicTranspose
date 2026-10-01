@@ -6,7 +6,7 @@ try{dark=localStorage.getItem(preference)==='true';}catch{}
 function applyTheme(){document.getElementById('playing-view').classList.toggle('score-page-dark',dark);theme.setAttribute('aria-pressed',String(dark));theme.lastElementChild.textContent=dark?'Light page':'Dark page';button.classList.toggle('has-active-tool',dark);}
 function mainMenu(){exportMenu.hidden=true;exportButton.setAttribute('aria-expanded','false');menu.classList.remove('export-open');}
 function close(focus=false){menu.hidden=true;mainMenu();button.setAttribute('aria-expanded','false');if(focus)button.focus();}
-const items=()=>[...(exportMenu.hidden?menu:exportMenu).querySelectorAll(':scope > button:not(:disabled)')];
+const items=()=>[...(exportMenu.hidden?menu:exportMenu).querySelectorAll(':scope > button:not(:disabled):not([hidden])')];
 function position(){
  menu.style.right='0px';menu.style.maxHeight=Math.max(44,button.getBoundingClientRect().top-16)+'px';
  const r=menu.getBoundingClientRect();menu.style.right=(r.left<8?r.left-8:Math.max(0,r.right-innerWidth+8))+'px';

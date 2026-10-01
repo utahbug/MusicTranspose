@@ -1,5 +1,6 @@
+import {claimToolPanel,releaseToolPanel} from './tool-panel.js';
 // Peripheral score-edge pulses use the existing metronome/playback clock.
-// No audio changes or independent pulse timer.
+// Visual and click share this clock and the source timeline; no second beat timer.
 export function beatState(timeline,seconds){
  const measures=timeline.measures;if(!measures?.length)return null;
  let quarter=0,elapsed=0,bpm=timeline.tempos[0][1];
@@ -34,13 +35,14 @@ export function pulseState(timeline,seconds,rate=1){
  return {...beat,sequence,side:sequence%2?'right':'left',downbeat,elapsed,duration};
 }
 export function createMetronome(playback,getState){
- const control=document.getElementById('metronome-mode'),score=document.getElementById('score'),key='music-transpose-metronome-session-v1';
- let enabled=false;try{enabled=sessionStorage.getItem(key)==='dots';}catch{}control.value=enabled?'dots':'off';
+ const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
+ let visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0;
+ const enabled=()=>visual||click;
  const rails=['left','right'].map(side=>{const e=document.createElement('div');e.className='beat-rail beat-rail-'+side;e.setAttribute('aria-hidden','true');e.hidden=true;document.body.append(e);return e;});
  let version=0,prepared='',pending='',frame=0,last=0,position=0,previousPlayback='stopped',timeline=null;
  const reduced=matchMedia('(prefers-reduced-motion:reduce)');
  function setVisible(on){document.body.classList.toggle('metronome-visible',on);}
- function hide(){cancelAnimationFrame(frame);frame=0;last=0;for(const e of rails){e.hidden=true;e.style.opacity='0';}setVisible(false);}
+ function hide(){playback.silenceClicks();lastClick=-1;cancelAnimationFrame(frame);frame=0;last=0;for(const e of rails){e.hidden=true;e.style.opacity='0';}setVisible(false);}
  function place(){
   const r=score.getBoundingClientRect(),heading=document.querySelector('.score-heading').getBoundingClientRect(),footer=document.querySelector('.masthead').getBoundingClientRect();
   const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--beat-safe-top'))||0;
@@ -60,24 +62,43 @@ export function createMetronome(playback,getState){
   }
  }
  function tick(now){
-  const state=getState();if(!enabled||!state.available||document.hidden||!timeline){hide();return;}
+  const state=getState();if(!enabled()||!state.available||document.hidden||!timeline){hide();return;}
   const play=playback.state;
   if(play==='playing'||play==='paused')position=Math.max(0,playback.position);
   else{if(previousPlayback!=='stopped')position=0;else if(last)position+=(now-last)/1000*playback.tempo.rate;}
   last=now;previousPlayback=play;
-  const beat=pulseState(timeline,position,playback.tempo.rate);if(beat)draw(beat,play==='paused');
-  for(const rail of rails)rail.hidden=false;setVisible(true);place();frame=requestAnimationFrame(tick);
+  const beat=pulseState(timeline,position,playback.tempo.rate);if(beat){if(visual)draw(beat,play==='paused');if(click&&play!=='paused'&&beat.sequence!==lastClick){playback.clickBeat(beat.downbeat);lastClick=beat.sequence;}}
+  if(visual){setVisible(true);place();}else{for(const rail of rails)rail.hidden=true;setVisible(false);}frame=requestAnimationFrame(tick);
  }
  async function sync(){
-  const state=getState();if(!enabled||!state.available||document.hidden){version++;pending='';hide();return;}
+  const state=getState();opener.hidden=!state.available;if(!state.available)closePanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
   if(prepared===state.xml&&timeline){if(!frame)frame=requestAnimationFrame(tick);return;}
   if(pending===state.xml)return;const token=++version;pending=state.xml;hide();
-  try{await playback.prepare();if(token!==version||!getState().available||!enabled)return;timeline=playback.timeline;prepared=state.xml;position=0;previousPlayback='stopped';frame=requestAnimationFrame(tick);}catch{if(token===version){timeline=null;hide();}}finally{if(token===version)pending='';}
+  try{await playback.prepare();if(token!==version||!getState().available||!enabled())return;timeline=playback.timeline;prepared=state.xml;position=0;previousPlayback='stopped';frame=requestAnimationFrame(tick);}catch{if(token===version){timeline=null;hide();}}finally{if(token===version)pending='';}
  }
- control.addEventListener('change',()=>{enabled=control.value==='dots';try{sessionStorage.setItem(key,control.value);}catch{}position=0;last=0;sync();});
+ function controls(){
+  for(const [id,on] of [['metronome-visual',visual],['metronome-click',click]]){$(id).setAttribute('aria-pressed',String(on));$(id).querySelector('span').textContent=on?'On':'Off';}
+  const t=playback.tempo;$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;
+ }
+ function closePanel(focus=false){opening++;panel.hidden=true;opener.setAttribute('aria-expanded','false');releaseToolPanel('metronome');if(focus)$('score-tools').focus({preventScroll:true});}
+ opener.addEventListener('click',async()=>{
+  if(!getState().available)return;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
+  for(const b of panel.querySelectorAll('button:not(#metronome-done)'))b.disabled=true;
+  try{await playback.prepare();if(token!==opening||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();requestAnimationFrame(()=>{if(!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
+  catch{if(token===opening){$('metronome-message').textContent='Unable to prepare metronome timing. Try again online.';}}
+ });
+ $('metronome-visual').onclick=()=>{visual=!visual;controls();sync();};
+ $('metronome-click').onclick=async()=>{const token=++clickRequest;if(click){click=false;playback.silenceClicks();controls();sync();return;}
+  try{await playback.enableClick();if(token!==clickRequest||!getState().available)return;click=true;lastClick=-1;controls();sync();}catch{$('metronome-message').textContent='Click sound is unavailable.';}
+ };
+ for(const [id,delta] of [['tempo-down',-4],['tempo-up',4]])$(id).onclick=()=>{playback.setTempo(playback.tempo.bpm+delta);controls();};
+ $('tap-tempo').onclick=()=>{const now=performance.now();if(taps.length&&now-taps.at(-1)>2000)taps=[];taps.push(now);taps=taps.slice(-5);if(taps.length>1)playback.setTempo(60000*(taps.length-1)/(now-taps[0]));controls();};
+ $('metronome-done').onclick=()=>closePanel(true);
+ panel.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape'){e.preventDefault();closePanel(true);}});
+ function reset(){version++;clickRequest++;prepared='';pending='';timeline=null;position=0;visual=false;click=false;taps=[];hide();closePanel();controls();}
  document.addEventListener('visibilitychange',sync);
- document.addEventListener('library-open',()=>{version++;pending='';hide();});
- document.addEventListener('score-session-reset',()=>{version++;prepared='';pending='';timeline=null;hide();});
+ document.addEventListener('library-open',reset);
+ document.addEventListener('score-session-reset',reset);
  window.addEventListener('beforeprint',hide);window.addEventListener('afterprint',sync);
  return {sync};
 }
