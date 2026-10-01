@@ -1276,3 +1276,34 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .masthead .toolbar #show-lyrics{grid-column:3;grid-row:2;justify-self:start;margin:0}
  #page-position{position:absolute;right:max(8px,env(safe-area-inset-right,0px));bottom:calc(4px + var(--playing-safe-bottom));height:44px;display:flex;align-items:center;padding:0;font-size:13px}
 }
+
+/* Library navigation above a wide search with independent field preferences. */
+#library .library-controls{display:flex;flex-direction:column;align-items:stretch}
+#library .library-filter-row{flex-wrap:nowrap;gap:8px}
+#library .library-filter-row #library-source{max-width:none;flex:0 1 auto}
+#library #library-filter{margin-left:0}
+.library-navigation{display:flex;align-items:center;margin-left:auto;gap:0}
+#library .library-navigation .quiet{border:0;background:transparent;font-weight:500;color:#365867}
+#library #library-lists{padding:0 8px;font-size:13px}
+#library #library-lists:hover,#library #library-lists:focus-visible{text-decoration:underline;text-underline-offset:3px}
+#library #library-more{width:44px;padding:0;display:flex;align-items:center;justify-content:center}
+#library .library-search-row{position:relative;display:flex;gap:8px;max-width:none;width:100%}
+#library .library-search-row .search-box{flex:1 1 0;max-width:none}
+#library-search-fields{display:flex;flex:none;gap:4px}
+#library-search-fields label{min-height:44px;padding:0 7px;gap:5px;font-size:13px;font-weight:500;border-radius:4px;cursor:pointer}
+#library-search-fields label:has(:checked){background:#e5eef2}
+#library-search-fields input{accent-color:#365f7d;width:14px;height:14px;margin:0}
+#library-search-fields label:focus-within{outline:2px solid #365867;outline-offset:-2px}
+#library .library-search-row #library-search-options{display:none}
+@media(max-width:600px){
+ #library .library-filter-row{gap:2px}
+ #library .library-filter-row #library-source{flex:1 1 0;min-width:0;padding-inline:2px;font-size:12px}
+ #library .library-filter-row .sort-choice{flex:0 0 90px;width:90px}
+ #library #library-sort-label{font-size:12px;padding-left:2px}
+ #library #library-lists{padding:0 4px;font-size:12px}
+ #library .library-search-row #library-search-options{display:flex;flex:none;border:0;background:transparent}
+ #library #library-search{font-size:14px}
+ #library-search-fields{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:65;min-width:156px;padding:4px;background:white;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+ #library-search-fields.open{display:flex;flex-direction:column}
+ #library-search-fields label{font-size:14px}
+}
