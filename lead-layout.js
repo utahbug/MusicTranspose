@@ -10,9 +10,35 @@ const profile={MinimumDistanceBetweenSystems:3,MinSkyBottomDistBetweenSystems:2.
 const rightHandProfile={VoiceSpacingAddendVexflow:3,VoiceSpacingMultiplierVexflow:.85,MaximumLyricsElongationFactor:5,LyricOverlapAllowedIntoNextMeasure:0};
 export function applyLeadLayout(engraver,enabled,{print=false,rightHand=false}={}){
  const rules=engraver.EngravingRules;rules.musicTransposeLead=enabled;
- if(!originals.has(engraver))originals.set(engraver,Object.fromEntries([...new Set([...Object.keys(profile),...Object.keys(rightHandProfile)]),'PageLeftMargin','PageRightMargin','PageTopMargin','PageBottomMargin','NewSystemAtXMLNewSystemAttribute'].map(k=>[k,rules[k]])));
+ if(!originals.has(engraver))originals.set(engraver,Object.fromEntries([...new Set([...Object.keys(profile),...Object.keys(rightHandProfile)]),'SystemRightMargin','PageLeftMargin','PageRightMargin','PageTopMargin','PageBottomMargin','NewSystemAtXMLNewSystemAttribute'].map(k=>[k,rules[k]])));
  Object.assign(rules,originals.get(engraver));
  if(enabled)Object.assign(rules,profile,rightHand?rightHandProfile:{},{PageLeftMargin:print?2:.6,PageRightMargin:print?2:.6,...(print?{PageTopMargin:3,PageBottomMargin:3}:{})});
+}
+
+// Measure every retained voice/verse after engraving. OSMD can leave the last
+// lyric wider than its final note's allotted space, even with no lyric collision.
+// Reserve only that measured overhang plus a small clearance; keep glyph scale
+// and musical XML intact. Reset per render trial so padding never accumulates.
+export function renderLeadLayout(engraver,host){
+ const rules=engraver.EngravingRules;
+ rules.SystemRightMargin=originals.get(engraver)?.SystemRightMargin??0;
+ const safeMargin=rules.PageRightMargin+rules.SystemRightMargin;
+ const render=()=>{engraver.render();balanceLeadTail(engraver);};
+ render();
+ for(let attempt=0;attempt<3;attempt++){
+  const svgs=[...host.querySelectorAll('svg')];let overhang=0;
+  for(const [i,page] of engraver.GraphicSheet.MusicPages.entries()){
+   const width=svgs[i]?.viewBox.baseVal.width/10;
+   if(!Number.isFinite(width)||width<=0)continue;
+   const right=width-safeMargin;
+   for(const system of page.MusicSystems)for(const staff of system.StaffLines)
+    for(const measure of staff.Measures)for(const entry of measure.staffEntries)
+     for(const lyric of entry.LyricsEntries){const box=lyric.GraphicalLabel.PositionAndShape;overhang=Math.max(overhang,box.AbsolutePosition.x+box.BorderRight-right);}
+  }
+  if(overhang<=.01)break;
+  rules.SystemRightMargin+=overhang+.2;
+  render();
+ }
 }
 
 // Rebalance only a genuinely sparse final line. Costs come from the engine's

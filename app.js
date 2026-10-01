@@ -2,7 +2,7 @@ import {appendSourceCreditFooter} from './print-source-credits.js';
 import {createPdfAnnotations} from './pdf-annotations.js';
 import {renderFullScoreLayout} from './full-score-layout.js';
 import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
-import {applyLeadLayout,balanceLeadTail,leadPrintXML} from './lead-layout.js';
+import {applyLeadLayout,balanceLeadTail,renderLeadLayout,leadPrintXML} from './lead-layout.js';
 import {normalOctaves,pianoHands,octaveSummary,shiftStaffOctaves} from './octave.js';
 import {createMetronome} from './metronome.js';
 import {createLeadXML,leadReasons,leadEngravingXML,installLeadHarmony} from './lead-view.js';
@@ -130,7 +130,7 @@ async function renderScore(){
    const phone=matchMedia('(max-width:600px)').matches;
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
-   const renderOnce=zoom=>{osmd.Zoom=zoom;osmd.render();if(lead?.ok)balanceLeadTail(osmd);avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const renderOnce=zoom=>{osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);const systemLayout=captureSystems(osmd,stage);return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
    const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
    let entry;
    if(density==='auto'){
