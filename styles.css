@@ -1281,22 +1281,21 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library #library-more{width:44px;padding:0;display:flex;align-items:center;justify-content:center}
 #library .library-search-row{position:relative;display:flex;gap:8px;max-width:none;width:100%}
 #library .library-search-row .search-box{flex:1 1 0;max-width:none}
-#library-search-fields{display:flex;flex:none;gap:4px}
+#library-search-fields{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:65;min-width:156px;padding:4px;background:white;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+#library-search-fields.open{display:flex;flex-direction:column}
 #library-search-fields label{min-height:44px;padding:0 7px;gap:5px;font-size:13px;font-weight:500;border-radius:4px;cursor:pointer}
-#library-search-fields label:has(:checked){background:#e5eef2}
+#library-search-fields label:hover{background:#edf1f3}
 #library-search-fields input{accent-color:#365f7d;width:14px;height:14px;margin:0}
 #library-search-fields label:focus-within{outline:2px solid #365867;outline-offset:-2px}
-#library .library-search-row #library-search-options{display:none}
+#library .library-search-row #library-search-options{display:flex;align-items:center;gap:5px;flex:none;width:auto;text-decoration:none;border:0;background:transparent;font-size:13px;font-weight:400;color:var(--library-accent)}
 @media(max-width:600px){
  #library .library-filter-row{gap:2px}
  #library .library-filter-row #library-source{flex:1 1 0;min-width:0;padding-inline:2px;font-size:12px}
  #library .library-filter-row .sort-choice{flex:0 0 90px;width:90px}
  #library #library-sort-label{font-size:12px;padding-left:2px}
  #library #library-lists{padding:0 4px;font-size:12px}
- #library .library-search-row #library-search-options{display:flex;flex:none;border:0;background:transparent}
+ #library .library-search-row #library-search-options{font-size:12px;padding-inline:4px}
  #library #library-search{font-size:14px}
- #library-search-fields{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:65;min-width:156px;padding:4px;background:white;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
- #library-search-fields.open{display:flex;flex-direction:column}
  #library-search-fields label{font-size:14px}
 }
 
