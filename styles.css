@@ -1063,3 +1063,13 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .masthead #score-export-options button:disabled{opacity:1;color:#65717a;background:#f3f5f6;cursor:default}
 .masthead #score-export-options button:disabled small{color:#65717a}
 .masthead #score-export-back{font-weight:600;color:var(--accent-strong);border-bottom:1px solid var(--line);border-radius:6px 6px 0 0}
+
+/* Song navigation belongs to the identity banner, outside the page-turn surface. */
+@media screen{
+ .score-song-navigation{display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
+ .score-song-navigation button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0;color:inherit;border:1px solid transparent;background:transparent}
+ .score-song-navigation button:not(:disabled):hover{background:#ffffff1f}
+ .score-song-navigation button:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+ .score-song-navigation button:disabled{opacity:.4;cursor:default;background:transparent}
+}
+@media print{.score-song-navigation{display:none}}

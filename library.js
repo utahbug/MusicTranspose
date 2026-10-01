@@ -16,7 +16,7 @@ const collator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
 function node(tag,text,className){const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;}
 function button(text,label,action){const b=node('button',text,'quiet');b.type='button';if(label)b.setAttribute('aria-label',label);b.onclick=action;return b;}
 export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPendingSelection,stopPlayback,showScoreView}){
- let navigation;
+ let navigation,orderedSongs=[],songSet=null,pendingSongSet=null,restoringSongSet=false;
  const search=createSongSearch();let searchScope='titles',searchLoading=false,searchRequest=0;
  $('library-search-scope').onchange=async()=>{const request=++searchRequest;searchScope=$('library-search-scope').value;searchLoading=searchScope!=='titles';render();if(searchLoading){try{await search.prepare();}catch{if(request===searchRequest){searchScope='titles';$('library-search-scope').value='titles';$('library-message').textContent='Lyrics search unavailable. Titles search is still available; choose the scope again to retry.';}}}if(request===searchRequest){searchLoading=false;render();}};
  // Navigation restores browsing context, never text-entry intent.
@@ -41,19 +41,19 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function save(){try{localStorage.setItem(storageKey,JSON.stringify(state));return true;}catch{$('library-message').textContent='Browser storage is unavailable. Changes will last only while this page is open.';return false;}}
  // Preserve every existing sequence, including older stores without a version marker.
  if(state.orderingVersion!==1){state.orderingVersion=1;save();}
- const browse=()=>({query:$('library-search').value,source,sort,scroll:($('library').hidden?libraryScroll:scrollY)});
- // Favorites is session state; Lead is temporary and clears on navigation. Neither is saved.
+ const browse=()=>({query:$('library-search').value,source,sort,searchScope,favoritesOnly,leadOnly,scroll:($('library').hidden?libraryScroll:scrollY)});
+ // Filters travel with score history, but remain session-only workspace preferences.
  function clearLeadFilter(){leadOnly=false;$('view-lead-sheets').setAttribute('aria-checked','false');$('library-filter').classList.toggle('filters-active',favoritesOnly);$('library-filter').title=favoritesOnly?'Filter songs (active)':'Filter songs';}
  function remember(){contexts.set(activeList||'library',browse());}
- function persistWorkspace(){try{localStorage.setItem(workspaceKey,JSON.stringify({activeList,contexts:[...contexts]}));}catch{}}
- function applyContext(context={}){if(!context||typeof context!=='object')context={};source=!activeList&&sourceChoices.some(([id])=>id===context.source)?context.source:'all';sort=activeList?(['manual','title','number'].includes(context.sort)?context.sort:'manual'):(context.sort==='number'?'number':'title');$('library-search').value=context.query||'';libraryScroll=context.scroll||0;}
+ function persistWorkspace(){try{localStorage.setItem(workspaceKey,JSON.stringify({activeList,contexts:[...contexts].map(([id,{favoritesOnly,leadOnly,searchScope,...context}])=>[id,context])}));}catch{}}
+ function applyContext(context={}){if(!context||typeof context!=='object')context={};source=!activeList&&sourceChoices.some(([id])=>id===context.source)?context.source:'all';sort=activeList?(['manual','title','number'].includes(context.sort)?context.sort:'manual'):(context.sort==='number'?'number':'title');$('library-search').value=context.query||'';libraryScroll=context.scroll||0;favoritesOnly=!!context.favoritesOnly;leadOnly=!!context.leadOnly;searchScope=['titles','lyrics','all'].includes(context.searchScope)?context.searchScope:'titles';$('library-search-scope').value=searchScope;}
  const lists=createListsView({getState:()=>state,save,onLibrary:()=>selectList(null),onSelect:selectList,onChanged:()=>{if(activeList&&!group()){if(!$('lists-view').hidden){activeList=null;reordering=false;applyContext(contexts.get('library'));}else{selectList(null);return;}}render();persistWorkspace();},onAdded:(id,added,saved)=>{selectList(id);sort='manual';source='all';$('library-search').value='';render();$('library-message').textContent=saved?added.length+' songs added.':'Changes last only while this page is open.';requestAnimationFrame(()=>{const row=$('library-results').querySelector(`[data-song="${CSS.escape(added[0])}"]`);if(row)window.scrollTo({top:scrollY+row.getBoundingClientRect().top-document.querySelector('.library-header-panel').getBoundingClientRect().height-8,behavior:'instant'});row?.querySelector('.song-entry')?.focus({preventScroll:true});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();});}});
  const files=createFilesView({onLibrary:()=>{showLibrary();$('library-more').focus({preventScroll:true});},onSong:id=>open(id)});
  function returnLabels(){const label=activeList?'Back to list':'Library';$('songs').setAttribute('aria-label',label);$('songs').title=label;}
- function showScore(){clearLeadFilter();blurSearch();files.hide();lists.hide();returnLabels();document.body.classList.remove('library-open');$('library').hidden=true;document.title=current?(songs.find(s=>s.id===current)?.title||'Music')+' · Music Transpose':'MusicTranspose';}
- function showLibrary(){if(isBusy())return;clearLeadFilter();const position=libraryScroll;navigation?.visit({view:'library',list:activeList,song:null});files.hide();lists.hide();document.dispatchEvent(new Event('library-open'));leaveScore?.();document.body.classList.add('library-open');$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();window.scrollTo({top:position,behavior:'instant'});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();focusLibrary();}
+ function showScore(){blurSearch();files.hide();lists.hide();returnLabels();document.body.classList.remove('library-open');$('library').hidden=true;document.title=current?(songs.find(s=>s.id===current)?.title||'Music')+' · Music Transpose':'MusicTranspose';}
+ function showLibrary(){if(isBusy())return;const position=libraryScroll;navigation?.visit({view:'library',list:activeList,song:null});files.hide();lists.hide();document.dispatchEvent(new Event('library-open'));leaveScore?.();document.body.classList.add('library-open');$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();window.scrollTo({top:position,behavior:'instant'});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();focusLibrary();}
  function selectList(id){if(isBusy())return;clearLeadFilter();if(!$('library').hidden)remember();const next=state.groups.some(g=>g.id===id)?id:null;navigation?.visit({view:'library',list:next,song:null});activeList=next;reordering=false;applyContext(contexts.get(activeList||'library')||(activeList?{sort:'manual'}:{sort:globalSort}));showLibrary();remember();persistWorkspace();}
- function open(id,view){reordering=false;if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}loadSong(id,view);}
+ function open(id,view){reordering=false;if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();pendingSongSet={ids:[...orderedSongs],origin:'library'};}loadSong(id,view);}
  function listTools(){const g=group();$('active-list-tools').hidden=!g;$('library').classList.toggle('editing-list',!!g&&reordering);$('library-context').textContent=g?'List':'Library';$('edit-list-order').textContent=reordering?'Done editing':'Edit order';$('edit-list-order').setAttribute('aria-pressed',String(reordering));$('order-toggle').disabled=reordering;$('library-source').disabled=reordering;$('library-search').disabled=reordering;$('library-search-scope').disabled=reordering;$('library-clear').disabled=reordering;$('view-favorites').disabled=reordering;$('view-lead-sheets').disabled=reordering;$('library-filter').disabled=reordering;}
  function move(id,to,before=true){const g=group();if(!g||id===to||!g.songs.includes(id)||!g.songs.includes(to))return;g.songs.splice(g.songs.indexOf(id),1);g.songs.splice(g.songs.indexOf(to)+(before?0:1),0,id);const saved=save();render();$('library-message').textContent=saved?'Order saved.':'Changes last only while this page is open.';$('library-results').querySelector(`[data-song="${CSS.escape(id)}"] .reorder-grip`)?.focus({preventScroll:true});}
  function removeSong(id){const g=group();if(!g)return;const i=g.songs.indexOf(id);g.songs=g.songs.filter(x=>x!==id);const saved=save();render();$('library-message').textContent=saved?'Removed from this list. Song remains in the Library.':'Changes last only while this page is open.';const rows=$('library-results').children;(rows[Math.min(i,rows.length-1)]?.querySelector('.song-entry')||$('edit-list-order')).focus({preventScroll:true});}
@@ -113,6 +113,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   let found=pool.filter(s=>(reordering||!leadOnly||supportsLead(s))&&(!query||search.match(s,query,searchScope).matched)&&matchesSource(s,source)&&(reordering||!favoritesOnly||state.favorites.includes(s.id))).map(s=>songForSource(s,source));
   const title=(a,b)=>collator.compare(a.title,b.title);
   if(sort!=='manual')found.sort((a,b)=>(sort==='manual'?g.songs.indexOf(a.id)-g.songs.indexOf(b.id):0)||(/^\d+[ab]?$/.test(query)?Number(String(b.page).toLowerCase()===query)-Number(String(a.page).toLowerCase()===query):0)||(sort==='number'?(compareNumbers(a,b)||title(a,b)):compareAlphabeticalTitles(a,b)));
+  orderedSongs=found.filter(s=>!s.missing).map(s=>s.id);
   const fragment=document.createDocumentFragment();
   for(const s of found){
    const row=node('div',null,'library-row');row.dataset.song=s.id;
@@ -147,12 +148,12 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('local-music-memberships',e=>{for(const item of e.detail.memberships){const g=state.groups.find(g=>g.id===item.id);if(g)g.songs=item.checked?[...new Set([...g.songs,e.detail.id])]:g.songs.filter(id=>id!==e.detail.id);}save();});
  function capture(route){if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}return {...route,scroll:scrollY,library:{...browse(),activeList,current}};}
  async function restore(route){
-  clearLeadFilter();
   closeSource();closeMore();closeFilter();for(const d of document.querySelectorAll('dialog[open]'))d.close();blurSearch();reordering=false;
   const context=route.library||{},candidate=Object.hasOwn(context,'activeList')?context.activeList:route.origin?.list??route.list;activeList=state.groups.some(g=>g.id===candidate)?candidate:null;applyContext({...context,sort:context.sort||(activeList?'manual':globalSort)});current=context.current||current;
+  if(searchScope!=='titles'){try{await search.prepare();}catch{searchScope='titles';$('library-search-scope').value=searchScope;}}
   if(!activeList)globalSort=sort;
   if(route.view==='score'||route.view==='lyrics'){
-   if(songs.some(s=>s.id===route.song)){if(route.view==='lyrics'&&lyricIds.has(route.song))await openLyrics(route.song);else{route={...route,view:'score'};await showScoreView(route.song);}if(!document.body.classList.contains('library-open')){window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;}}
+   if(songs.some(s=>s.id===route.song)){songSet=route.songSet||fallbackSet(route.song);restoringSongSet=true;try{if(route.view==='lyrics'&&lyricIds.has(route.song))await openLyrics(route.song);else{route={...route,view:'score'};await showScoreView(route.song);}}finally{restoringSongSet=false;syncSongNavigation();}if(!document.body.classList.contains('library-open')){window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;}}
    route={...route,view:'library',list:activeList,song:null,scroll:libraryScroll};
   }
   leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');files.hide();lists.hide();$('library').hidden=true;
@@ -162,9 +163,35 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   else{if(route.view==='lists'){activeList=state.groups.some(g=>g.id===route.list)?route.list:null;sort=activeList?'manual':globalSort;route={...route,view:'library',list:activeList};}$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();focusLibrary();}
   window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;
  }
+ // A snapshot of the displayed IDs is shared by score routes, never catalog-wide by accident.
+ function fallbackSet(id){
+  const song=songs.find(s=>s.id===id);if(!song)return {ids:[],origin:'unavailable'};
+  const sourceId=sourceChoices.find(([value])=>value!=='all'&&matchesSource(song,value))?.[0];
+  if(!sourceId)return {ids:[id],origin:'unavailable'};
+  const ids=songs.filter(s=>matchesSource(s,sourceId)).map(s=>songForSource(s,sourceId)).sort(compareAlphabeticalTitles).map(s=>s.id);
+  return {ids,origin:'collection',source:sourceId};
+ }
+ function neighbors(){
+  const ids=(songSet?.ids||[]).filter(id=>songs.some(s=>s.id===id)),index=ids.indexOf(current);
+  return index<0?[]:[ids[index-1],ids[index+1]];
+ }
+ function syncSongNavigation(){
+  const adjacent=neighbors();for(const [i,id] of ['previous-song','next-song'].entries())$(id).disabled=isBusy()||document.body.classList.contains('song-loading')||!adjacent[i];
+ }
+ async function stepSong(direction){
+  if(isBusy()||document.body.classList.contains('song-loading'))return;
+  const id=neighbors()[direction];if(!id)return;
+  await loadSong(id);syncSongNavigation();
+  const control=$(direction?'next-song':'previous-song');
+  if(!control.disabled)control.focus({preventScroll:true});
+  else document.querySelector('.score-heading h1').focus({preventScroll:true});
+ }
+ $('previous-song').onclick=()=>stepSong(0);$('next-song').onclick=()=>stepSong(1);
+ new MutationObserver(syncSongNavigation).observe(document.body,{attributes:true,attributeFilter:['class']});
+ new MutationObserver(syncSongNavigation).observe($('score'),{attributes:true,attributeFilter:['aria-busy']});
  // Workspace preferences supplement, never rewrite, saved list membership.
  try{const saved=JSON.parse(localStorage.getItem(workspaceKey)||'null');if(saved){for(const item of saved.contexts||[])if(Array.isArray(item)&&item.length===2){const {leadOnly:obsoleteLead,...context}=item[1]||{};contexts.set(item[0],context);}activeList=state.groups.some(g=>g.id===saved.activeList)?saved.activeList:null;if(contexts.has(activeList||'library'))applyContext(contexts.get(activeList||'library'));}}catch{}
  const startupScroll=libraryScroll;render();if(!history.state?.musicTransposeNavigation){window.scrollTo({top:startupScroll,behavior:'instant'});libraryScroll=scrollY;remember();persistWorkspace();}
  navigation=createViewHistory({capture,restore,isBusy,onTravel:(next,previous)=>{cancelPendingSelection?.();if(!['score','lyrics'].includes(next.view)||next.song!==previous.song)stopPlayback?.();}});
- return {context:()=>activeList,startHistory:()=>navigation.start(),navigating(view,id){clearLeadFilter();const previous=navigation.current;navigation.visit({view,song:id,origin:['score','lyrics'].includes(previous.view)?previous.origin:{view:previous.view,list:activeList,scroll:scrollY}});},showScore,showLibrary,opened(id){returnLabels();$('library-message').textContent='';current=id;state.recent=[id,...state.recent.filter(x=>x!==id)].slice(0,30);save();render();},failed(){leaveScore?.();navigation.replace({view:'library',list:activeList,song:null});files.hide();lists.hide();document.body.classList.add('library-open');$('library').hidden=false;document.title='MusicTranspose · Library';render();$('library-message').textContent='Unable to open this score. Try again online or choose another song.';}};
+ return {context:()=>activeList,startHistory:()=>navigation.start(),navigating(view,id){const previous=navigation.current;if(!restoringSongSet){songSet=pendingSongSet||(['score','lyrics'].includes(previous.view)&&songSet?.ids.includes(id)?songSet:fallbackSet(id));pendingSongSet=null;}navigation.visit({view,song:id,songSet,origin:['score','lyrics'].includes(previous.view)?previous.origin:{view:previous.view,list:activeList,scroll:scrollY}});},showScore,showLibrary,opened(id){returnLabels();$('library-message').textContent='';current=id;syncSongNavigation();state.recent=[id,...state.recent.filter(x=>x!==id)].slice(0,30);save();render();},failed(){leaveScore?.();navigation.replace({view:'library',list:activeList,song:null});files.hide();lists.hide();document.body.classList.add('library-open');$('library').hidden=false;document.title='MusicTranspose · Library';render();$('library-message').textContent='Unable to open this score. Try again online or choose another song.';}};
 }
