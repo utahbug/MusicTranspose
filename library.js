@@ -1,5 +1,6 @@
 import {favoriteIcon,editIcon,orderIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
+import {initOfflineMusic} from './offline-music.js';
 import {initHomeScreen} from './home-screen.js';
 import {createSongSearch,normalizeSearchFields} from './library-search.js';
 import {attachReorderHandle} from './list-reorder.js';
@@ -103,6 +104,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled):not([hidden])')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeMore);window.addEventListener('scroll',placeMore,{passive:true});
 
+ initOfflineMusic({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
  initHomeScreen({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{render();closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};

@@ -1355,3 +1355,13 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  @media(hover:hover){body :is(.masthead,.lyrics-footer,#files-view,#lists-view) :is(#songs,.workspace-library):not(:disabled):hover{filter:brightness(1.07)}}
  body :is(.masthead,.lyrics-footer,#files-view,#lists-view) :is(#songs,.workspace-library):not(:disabled):active{filter:brightness(.9)}
 }
+
+#offline-music-dialog{width:420px;max-width:calc(100vw - 24px);padding:20px;border-radius:12px}
+#offline-music-dialog h3{font-family:inherit;font-size:14px;font-weight:600;margin:16px 0 4px}
+#offline-music-dialog p{font-size:14px;line-height:1.45;margin:6px 0 12px}
+#offline-music-dialog progress{width:100%;height:12px;accent-color:#365f7d}
+#offline-music-dialog .offline-actions{display:flex;justify-content:flex-end;gap:8px}
+#offline-music-dialog button{min-height:44px;font-weight:500}
+
+#pdf-offline-message{font-size:14px;line-height:1.45;color:#536b7a;margin:10px 0}
+@media print{#pdf-offline-message,#offline-music-dialog{display:none!important}}
