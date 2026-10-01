@@ -33,7 +33,7 @@ try{for(const [width,height] of [[390,844],[820,1180],[1180,820],[1440,1000]]){
   await p.locator('#songs').click();await p.locator('#library').waitFor({state:'visible'});
  }
  // Fresh Original -> Transpose, independent of Melody preparation.
- await p.evaluate(()=>prototype.loadSong('nativity'));await ready();await pdf();assert(await p.locator('#score-size-options [data-size=large]').isDisabled());await view('auto');assert(await p.locator('#score svg').count()>0);
+ await p.evaluate(()=>prototype.loadSong('cs-12'));await ready();await pdf();assert(await p.locator('#score-size-options [data-size=large]').isDisabled());await view('auto');assert(await p.locator('#score svg').count()>0);
  // True PDF-only: no structured capabilities or fabricated timing.
  await p.evaluate(()=>prototype.loadSong('choose-to-serve-the-lord'));await ready();await pdf();assert(await p.locator('#score-size-options [data-size=large]').isDisabled());assert(await p.locator('#score-size-options [data-size=auto]').isDisabled());await p.locator('#settings').click();assert(await p.locator('#playback-settings').isHidden());await p.locator('#close-settings').click();assert.equal(await p.locator('.beat-rail:visible').count(),0);assert.equal(await p.locator('.score-heading .song-playback').count(),0);
  // Import a real supported XML source to exercise the local leadAvailable model.

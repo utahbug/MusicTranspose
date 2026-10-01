@@ -1,9 +1,10 @@
 import {addLeadHarmonyAnchors,installLeadTextAnchors} from './lead-spacing.js';
 import {repeatedCadenceMelody} from './cadence-melody.js';
+import {rightHandMelody} from './right-hand-melody.js';
 import {hymnMelody} from './hymn-melody.js';
 import {songs as bundledSongs} from './songs.js';
-// Conservative lead-sheet projection. The source XML is immutable; ambiguity
-// returns it verbatim. Lyric ownership identifies a lane, never staff order.
+// Source XML is immutable. Preserve proven projections; rejected bundled piano
+// scores use the guarded right-hand domain before the same single-lane projector.
 const children=(e,name)=>[...e.children].filter(n=>n.localName===name);
 const child=(e,name)=>children(e,name)[0];
 const text=(e,name,fallback='')=>child(e,name)?.textContent.trim()??fallback;
@@ -25,7 +26,16 @@ const hymnIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns (1985)').map(
 // Eligibility comes from the bundled catalog, never a user-supplied title or
 // imported collection label. Other collections use the general projector first,
 // with a separate guarded repeated-cadence rule only for chordal rejections.
+const pianoIds=new Set(bundledSongs.filter(s=>['Hymns (1985)','Hymns for Home and Church','Children’s Songbook'].includes(s.collection)).map(s=>s.id));
 export function createLeadXML(source,context){
+ const prior=priorLeadXML(source,context);
+ if(prior.ok||context?.local||!pianoIds.has(context?.id))return prior;
+ const melody=rightHandMelody(source);
+ if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
+ const result=projectLeadXML(melody.xml);
+ return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
+}
+function priorLeadXML(source,context){
  const hymn=!context?.local&&hymnIds.has(context?.id);
  if(!hymn){
   const original=projectLeadXML(source);if(original.ok||original.reason!=='chordal-melody')return original;
