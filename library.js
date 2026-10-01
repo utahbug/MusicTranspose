@@ -19,6 +19,8 @@ function node(tag,text,className){const e=document.createElement(tag);if(text)e.
 function button(text,label,action){const b=node('button',text,'quiet');b.type='button';if(label)b.setAttribute('aria-label',label);b.onclick=action;return b;}
 export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPendingSelection,stopPlayback,showScoreView}){
  const freshLaunch=beginLibrarySession();
+ for(const id of ['files-library','lists-library'])$(id).innerHTML=$('songs').innerHTML;
+ $('lists-library').onclick=showLibrary;
  let navigation,orderedSongs=[],songSet=null,pendingSongSet=null,restoringSongSet=false;
  const search=createSongSearch();let searchScope='titles',searchLoading=false,searchRequest=0;
  $('library-search-scope').onchange=async()=>{const request=++searchRequest;searchScope=$('library-search-scope').value;searchLoading=searchScope!=='titles';render();if(searchLoading){try{await search.prepare();}catch{if(request===searchRequest){searchScope='titles';$('library-search-scope').value='titles';$('library-message').textContent='Lyrics search unavailable. Titles search is still available; choose the scope again to retry.';}}}if(request===searchRequest){searchLoading=false;render();}};
