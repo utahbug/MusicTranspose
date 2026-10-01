@@ -812,9 +812,10 @@ body.song-loading :is(#score,#source-credits,#original-key-reference,#key,#reset
 .metronome-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;font:14px system-ui,sans-serif}
 .metronome-setting select{min-height:44px;font:inherit;color:#365867;background:#fff;border:1px solid #c2ced3;border-radius:5px;padding:4px 8px}
 /* Fixed overlays occupy no score space and never intercept notation gestures. */
-.beat-rail{position:fixed;width:4px;z-index:9;background:#2d768a;border-radius:2px;pointer-events:none;user-select:none;opacity:0}
+.beat-rail{--beat-color:45,118,138;position:fixed;width:10px;z-index:9;background:linear-gradient(90deg,rgba(var(--beat-color),0),rgba(var(--beat-color),.65) 30%,rgba(var(--beat-color),.9) 50%,rgba(var(--beat-color),.65) 70%,rgba(var(--beat-color),0));border-radius:5px;pointer-events:none;user-select:none;opacity:0}
+.beat-rail[data-downbeat=true]{background:linear-gradient(90deg,rgba(var(--beat-color),0),rgba(var(--beat-color),.85) 20%,rgba(var(--beat-color),1) 50%,rgba(var(--beat-color),.85) 80%,rgba(var(--beat-color),0))}
 .beat-rail[hidden]{display:none}
-body:has(#playing-view.score-page-dark) .beat-rail{background:#66c9c4}
+body:has(#playing-view.score-page-dark) .beat-rail{--beat-color:102,201,196}
 @media print{.beat-rail{display:none!important}}
 
 /* Lyrics uses the same Library node, size, and safe-area anchor as Score. */

@@ -31,11 +31,11 @@ export function pulseState(timeline,seconds,rate=1){
  }
  const index=Math.max(0,events.findLastIndex(t=>t<=local+1e-8)),sequence=Math.floor(seconds/timeline.duration)*events.length+index;
  const downbeat=beat.index===0,interval=(events[index+1]??timeline.duration)-events[index];
- const duration=Math.min(downbeat?.22:.15,interval/rate*.6),elapsed=Math.max(0,(local-events[index])/rate);
+ const duration=Math.min(downbeat?.34:.28,interval/rate*.6),elapsed=Math.max(0,(local-events[index])/rate);
  return {...beat,sequence,side:sequence%2?'right':'left',downbeat,elapsed,duration};
 }
 // Manual beats have no measure, meter, pickup, or score-position interpretation.
-export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.15,interval*.6)};}
+export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.28,interval*.6)};}
 export function createMetronome(playback,getState){
  const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
  let visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
@@ -50,7 +50,7 @@ export function createMetronome(playback,getState){
   const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--beat-safe-top'))||0;
   const top=Math.max(safe,r.top,heading.bottom),bottom=Math.min(r.bottom,footer.top-8,innerHeight);
   for(const [i,e] of rails.entries()){
-   e.style.left=Math.max(0,Math.min(innerWidth-4,i?r.right+2:r.left-6))+'px';e.style.top=top+'px';e.style.height=Math.max(0,bottom-top)+'px';e.hidden=bottom<=top;
+   e.style.left=Math.max(0,Math.min(innerWidth-10,i?r.right+2:r.left-12))+'px';e.style.top=top+'px';e.style.height=Math.max(0,bottom-top)+'px';e.hidden=bottom<=top;
   }
  }
  function draw(beat,paused){
@@ -60,7 +60,7 @@ export function createMetronome(playback,getState){
    if(e.dataset.sequence!==String(beat.sequence)||e.dataset.beat!==String(beat.index)||e.dataset.count!==String(beat.count)){
     e.dataset.beat=String(beat.index);e.dataset.count=String(beat.count);e.dataset.sequence=String(beat.sequence);e.dataset.downbeat=String(beat.downbeat);
    }
-   const opacity=String(active?gain*(beat.downbeat?.9:.65):0);if(e.style.opacity!==opacity)e.style.opacity=opacity;
+   const opacity=String(active?gain*(beat.downbeat?1:.85):0);if(e.style.opacity!==opacity)e.style.opacity=opacity;
   }
  }
  function tick(now){

@@ -19,7 +19,7 @@ export function createScoreVoice(context,destination,midi,start,duration,sound,o
   track(osc,gain);osc.start(start);osc.stop(off+.03);return {dispose};
  }
  // Balance the richer partial sums against the legacy single oscillator for chords.
- const scale=.22,release=sound==='electric-piano'?.11:.055;
+ const scale=.22,release=sound==='electric-piano'?.11:Math.min(.12,Math.max(.025,duration*.24));
  const addTone=(ratio,type,level,attack,decay,sustain=.0001,detune=0)=>{
   const osc=context.createOscillator(),gain=context.createGain();osc.type=type;osc.frequency.value=frequency*ratio;osc.detune.value=detune;
   const a=Math.max(.004,attack),d=Math.max(attack+.02,decay),end=Math.min(duration,d);
@@ -35,10 +35,11 @@ export function createScoreVoice(context,destination,midi,start,duration,sound,o
   addTone(1,'sine',.31,.004,2.1,.0001,-7);addTone(1,'sine',.22,.004,1.8,.0001,7);
   addTone(2.01,'sine',.17,.002,1.15);addTone(3.98,'sine',.075,.001,.55);addTone(7.96,'sine',.025,.001,.22);
  }else{
-  // Primary's held-chord envelope supports long/tied written notes, not pedal sustain.
+  // Keep a modest body for ordinary notes; long/tied notes retain Primary's held envelope.
+  // Release is duration-limited above so short figures do not acquire long tails.
   const held=duration>1.35;
-  addTone(1,'triangle',.36,.003,held?2.4:1.35,held?.035:.0001,-3);
-  addTone(1,'sine',.2,.002,held?2.1:1.05,held?.025:.0001,3);
+  addTone(1,'triangle',.36,.003,held?2.4:1.6,held?.035:.012,-3);
+  addTone(1,'sine',.2,.002,held?2.1:1.3,held?.025:.008,3);
   addTone(2,'sine',.11,.001,held?1.25:.5,held?.008:.0001,-4);addTone(3,'sine',.04,.001,.24,.0001,5);
   if(!noiseBuffers.has(context)){const n=Math.ceil(context.sampleRate*.035),buffer=context.createBuffer(1,n,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<n;i++)data[i]=(Math.random()*2-1)*(1-i/n);noiseBuffers.set(context,buffer);}
   const source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();source.buffer=noiseBuffers.get(context);filter.type='lowpass';filter.frequency.value=4200;
