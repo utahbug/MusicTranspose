@@ -1,3 +1,4 @@
+import {applyScorePageHint} from './score-page-hints.js';
 import {installAccompanimentLayout,configureAccompanimentLayout} from './accompaniment-layout.js';
 installAccompanimentLayout(opensheetmusicdisplay);
 import {preferMusicalSections} from './section-layout.js';
@@ -133,7 +134,7 @@ async function renderScore(){
    const phone=matchMedia('(max-width:600px)').matches;
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
-   const renderOnce=zoom=>{osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage);if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const renderOnce=(zoom,staffOwnership=false)=>{osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage,{staffOwnership});if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
    const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
    let entry;
    if(density==='auto'){
@@ -144,6 +145,7 @@ async function renderScore(){
     autoChoice={geometry,zoom:entry.zoom};
    }else entry=render(density==='large'?(lead?.ok?(phone?.88:.9):base):base*scoreSizes[density]);
    if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   if(!lead?.ok)entry=applyScorePageHint(osmd,stage,activeSong.id,'transpose',entry,{width:w,available,render:renderOnce});
    cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&octave===wantedOctave&&w===width())break;

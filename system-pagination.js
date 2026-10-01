@@ -7,6 +7,7 @@ export function planSystemPages(items,available,{gapCap=24,minimumGap=gapCap,pre
  const best=Array(n+1);best[n]={pages:0,reduction:0,cost:0,next:n};
  for(let i=n-1;i>=0;i--){let ink=0,naturalGaps=0,minimumGaps=0;
   for(let j=i;j<n;j++){
+   if(j>i&&items[j].pageBreakBefore)break;
    ink+=items[j].height;if(j>i){naturalGaps+=gap(items[j]);minimumGaps+=Math.min(floor,gap(items[j]));}
    if(ink+minimumGaps>limit+1e-6&&j>i)break;
    const natural=ink+naturalGaps,reduction=j>i?Math.max(0,natural-limit):0,used=natural-reduction,tail=best[j+1];

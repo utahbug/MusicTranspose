@@ -35,3 +35,9 @@ for(const limit of [390,450,650]){
  assert.deepEqual(preferred.flatMap(p=>p.systems.map(s=>s.start)),[0,1,2,3,4]);
 }
 console.log('PASS opt-in section preference, no extra pages, fit and blank-space guards');
+// Explicit presentation markers are hard boundaries, never blank pages.
+const forced=items([200,200,200,200]);forced[2].pageBreakBefore=true;
+assert.deepEqual(planSystemPages(forced,900).map(p=>[p.start,p.end]),[[0,1],[2,3]]);
+forced[0].pageBreakBefore=true;assert.equal(planSystemPages(forced,900).length,2);
+assert.deepEqual(planSystemPages(forced,450).flatMap(p=>p.systems.map(s=>s.start)),[0,1,2,3]);
+console.log('PASS explicit page boundary, first-system guard and complete coverage');
