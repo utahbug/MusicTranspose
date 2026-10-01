@@ -1265,13 +1265,12 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Phone score controls occupy explicit rows; page feedback never joins the flow. */
 @media screen and (max-width:600px){
- .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px max-content minmax(0,1fr);grid-template-rows:44px 44px;gap:4px}
+ .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px 104px minmax(0,1fr);grid-template-rows:44px 44px;gap:4px}
  .masthead .toolbar .playing-controls,.masthead .toolbar .utility-controls{display:contents}
  .masthead .toolbar #songs{grid-column:1;grid-row:1}
  .masthead .toolbar #reset{grid-column:2;grid-row:1}
- .masthead .toolbar #score-size{grid-column:3;grid-row:1;justify-self:start}
+ body .masthead .toolbar #score-size{grid-column:3;grid-row:1;justify-self:start;width:104px}
  .masthead .toolbar #key{grid-column:4;grid-row:1;justify-self:start;margin:0;min-width:44px}
- .pdf-score-open .masthead .toolbar #score-size{grid-column:2 / span 2}
  .masthead .toolbar .pdf-footer-tools-wrap{grid-column:1;grid-row:2}
  .masthead .toolbar #settings{grid-column:2;grid-row:2}
  .masthead .toolbar #show-lyrics{grid-column:3;grid-row:2;justify-self:start;margin:0}
