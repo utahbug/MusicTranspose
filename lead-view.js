@@ -4,7 +4,8 @@ import {rightHandMelody} from './right-hand-melody.js';
 import {hymnMelody} from './hymn-melody.js';
 import {songs as bundledSongs} from './songs.js';
 // Source XML is immutable. Preserve proven projections; rejected bundled piano
-// scores use the guarded right-hand domain before the same single-lane projector.
+// scores use the guarded right-hand domain before projection. Cue-rejected
+// piano scores may preserve the complete treble texture rather than one lane.
 const children=(e,name)=>[...e.children].filter(n=>n.localName===name);
 const child=(e,name)=>children(e,name)[0];
 const text=(e,name,fallback='')=>child(e,name)?.textContent.trim()??fallback;
@@ -36,8 +37,11 @@ export function createLeadXML(source,context){
  // only for rejected bundled HHC scores, pending other collections' review.
  if(!melody.ok&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true});
  if(!melody.ok&&melody.reason==='rh-ties'&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true,normalizeTies:true});
+ // Only cue-rejected paths broaden to a practical RH reduction. Existing
+ // successful projections and other failure classes remain unchanged.
+ if(!melody.ok&&melody.reason==='rh-cue')melody=rightHandMelody(source,{retainTreble:true});
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
- const result=projectLeadXML(melody.xml);
+ const result=projectLeadXML(melody.xml,null,melody.treble?melody.selection:null);
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{})}:{...result,xml:source};
 }
 function priorLeadXML(source,context){
@@ -53,7 +57,7 @@ function priorLeadXML(source,context){
  const result=projectLeadXML(melody.xml,melody.accompanimentCueStaff);
  return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
 }
-function projectLeadXML(source,accompanimentCueStaff=null){
+function projectLeadXML(source,accompanimentCueStaff=null,treble=null){
  let selected=null;
  const fallback=(reason,detail='')=>({ok:false,xml:source,reason,message:leadReasons[reason],detail,selection:selected});
  try{
@@ -64,12 +68,13 @@ function projectLeadXML(source,accompanimentCueStaff=null){
    const key=lane(part.id,note);if(!lanes.has(key))lanes.set(key,[]);lanes.get(key).push(note);
   }
   const lyrical=[...lanes].filter(([,notes])=>notes.some(n=>child(n,'lyric')));
-  if(lyrical.length>1)return fallback('multiple-lyrics',lyrical.map(([key])=>key).join(', '));
+  if(!treble&&lyrical.length>1)return fallback('multiple-lyrics',lyrical.map(([key])=>key).join(', '));
   if(!lyrical.length)return fallback('no-melody');
-  const [key,notes]=lyrical[0],[partId,staff,voice]=key.split(':');selected={part:partId,staff,voice,evidence:'unique monophonic lyric-bearing lane'};
+  const [key,laneNotes]=treble?[[treble.part,treble.staff,treble.voice].join(':'),[]]:lyrical[0],[partId,staff,voice]=key.split(':');
+  const notes=treble?[...lanes].filter(([k])=>k.split(':')[0]===partId&&k.split(':')[1]===staff).flatMap(([,ns])=>ns):laneNotes;selected={part:partId,staff,voice,evidence:'unique monophonic lyric-bearing lane'};
   if(!notes.some(n=>child(n,'pitch'))||notes.some(n=>child(n,'lyric')&&!child(n,'pitch')))return fallback('no-melody');
-  if(notes.some(n=>child(n,'chord')))return fallback('chordal-melody');
-  for(const [other,ns] of lanes)if(other!==key){
+  if(!treble&&notes.some(n=>child(n,'chord')))return fallback('chordal-melody');
+  for(const [other,ns] of lanes)if(!treble&&other!==key){
    const [p,s,v]=other.split(':');
    if(p===partId&&v===voice&&s!==staff&&ns.some(n=>child(n,'pitch')))return fallback('cross-staff');
    if(ns.some(n=>child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue')&&!(accompanimentCueStaff?.part===p&&accompanimentCueStaff?.staff===s))return fallback('outside-cues',other);
@@ -96,7 +101,7 @@ function projectLeadXML(source,accompanimentCueStaff=null){
       end=Math.max(end,at+duration,cursor);
      }else at+=number(node,'offset')/divisions;
      if(at< -epsilon)throw Error('Annotation before measure boundary');
-     events.push({node,tag,at,duration,part:part.id,keep:tag==='note'&&lane(part.id,node)===key});
+     events.push({node,tag,at,duration,part:part.id,keep:tag==='note'&&(treble?part.id===partId&&text(node,'staff','1')===staff:lane(part.id,node)===key)});
     }
     return {measure,events,end};
    })};
@@ -118,7 +123,7 @@ function projectLeadXML(source,accompanimentCueStaff=null){
     for(const a of ['default-x','default-y','relative-x','relative-y'])e.removeAttribute(a);
    }
    for(const e of children(copy,'staff'))e.textContent='1';
-   for(const e of children(copy,'voice'))e.textContent='1';
+   if(!treble)for(const e of children(copy,'voice'))e.textContent='1';
    child(copy,'offset')?.remove();return copy;
   };
   const fingerprint=node=>{const copy=cleaned(node);for(const e of children(copy,'staff'))e.remove();for(const e of children(copy,'voice'))e.remove();return xml(copy).replace(/>\s+</g,'><');};
@@ -126,8 +131,10 @@ function projectLeadXML(source,accompanimentCueStaff=null){
    const original=chosen.measures[mi],all=data.map(p=>p.measures[mi]);
    if(all.some(m=>m.measure.getAttribute('number')!==original.measure.getAttribute('number')))throw Error('Measure numbering differs between parts');
    const duration=Math.max(...all.map(m=>m.end)),line=original.events.filter(e=>e.keep).sort((a,b)=>a.at-b.at);
+   // A treble texture may overlap across voices/chords; its union must still
+   // cover the complete measure. Legacy single-lane coverage stays exact.
    let covered=0;
-   for(const e of line){if(Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=e.at+e.duration;}
+   for(const e of line){if(treble?e.at>covered+epsilon:Math.abs(e.at-covered)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);covered=treble?Math.max(covered,e.at+e.duration):e.at+e.duration;}
    if(Math.abs(covered-duration)>epsilon)return fallback('incomplete-line',`Measure ${original.measure.getAttribute('number')}`);
    const measure=original.measure.cloneNode(false);measure.removeAttribute('width');lead.append(measure);
    // Keep selected-staff clef/key/time and all selected-part global attributes.
@@ -161,7 +168,7 @@ function projectLeadXML(source,accompanimentCueStaff=null){
    // At shared onsets directions/chords precede notes; grace-note source order stays intact.
    events.sort((a,b)=>a.at-b.at||(a.tag==='note')-(b.tag==='note')||a.order-b.order);
    for(const e of events){
-    if(e.tag==='note'){move(e.at);if(child(e.copy,'duration'))child(e.copy,'duration').textContent=String(e.duration*ticks);cursor+=e.duration;}
+    if(e.tag==='note'){const chord=treble&&child(e.copy,'chord');if(!chord)move(e.at);if(child(e.copy,'duration'))child(e.copy,'duration').textContent=String(e.duration*ticks);if(!chord)cursor+=e.duration;}
     else if(e.tag==='harmony'){move(e.at);}
     else if(Math.abs(e.at-cursor)>epsilon){const offset=make('offset',(e.at-cursor)*ticks);const before=[...e.copy.children].find(n=>['footnote','level','voice','staff','sound','listening'].includes(n.localName));e.copy.insertBefore(offset,before||null);}
     measure.append(e.copy);

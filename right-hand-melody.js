@@ -9,7 +9,7 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source,{refine=false,normalizeTies=false}={}){
+export function rightHandMelody(source,{refine=false,normalizeTies=false,retainTreble=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
  // Invisible zero-time grace rests are engraving spacers, not musical events.
@@ -77,6 +77,25 @@ export function rightHandMelody(source,{refine=false,normalizeTies=false}={}){
  for(const other of voices.slice(1).filter(v=>v.lyrics>=voices[0].lyrics*.3)){
   const competition=rh.some(g=>g.voice===primary&&g.nodes.some(n=>child(n,'lyric'))&&rh.some(o=>o.voice===other.voice&&o.mi===g.mi&&Math.abs(o.at-g.at)<eps&&o.nodes.some(n=>lyric(n)&&!g.nodes.some(a=>lyric(a)===lyric(n)))));
   if(competition)return fail('competing',`Concurrent independent right-hand lyric voices ${primary} and ${other.voice}`);
+ }
+ // Cue-rejected scores may use the complete verified piano treble texture.
+ // Keep original RH voices/chords and cue size instead of forcing one pitch.
+ // Domain, notation and independent-lyric guards above still apply.
+ if(retainTreble){
+  const proof=rh.flatMap(g=>g.nodes.map((n,i)=>({part:g.part,staff:g.staff,voice:g.voice,measure:g.mi,at:g.at,duration:g.duration,pitch:pitch(n),rest:pitch(n)===null,sourceChordIndex:i}))).sort((a,b)=>a.measure-b.measure||a.at-b.at);
+  for(const g of rh)for(const n of g.nodes){
+   if(pitch(n)!==null&&!Number.isFinite(pitch(n)))return fail('structure',`Invalid RH pitch at measure ${g.mi+1}`);
+   // MusicXML <cue> suppresses playback. These are intentional playable RH
+   // alternatives: preserve their small notation while retaining their sound.
+   if(child(n,'cue')){if(!child(n,'type'))return fail('structure','Cue note has no notated type');child(n,'type').setAttribute('size','cue');child(n,'cue').remove();}
+  }
+  // Optional parts contribute no notes to the projection. Retain only their
+  // global tempo directions: some sources put the score's sole tempo above
+  // the descant. Keep cursor carriers here so those timestamps stay exact.
+  for(const p of info.filter(p=>p.optional))for(const n of p.part.querySelectorAll('measure > direction,measure > harmony,measure > sound')){
+   if(!(n.matches('sound[tempo]')||n.querySelector('sound[tempo],metronome')))n.remove();
+  }
+  return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,treble:true,selection:{...upper,voice:primary,sourceVoices:voices.map(v=>v.voice),evidence:'Verified piano RH treble texture; original voices, chords and cue-sized notes retained'}};
  }
  const line=[];
  for(const [mi,length] of lengths.entries()){
