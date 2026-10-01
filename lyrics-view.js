@@ -1,3 +1,4 @@
+import {musicIcon} from './icons.js';
 import {lyricIds} from './lyrics-index.js';
 export {lyricIds};
 let pending;
@@ -34,7 +35,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  document.addEventListener('focusin',e=>{if(!fontWrap.contains(e.target))closeFont();},options);
  document.addEventListener('keydown',e=>{if(!menu.hidden&&e.key==='Escape'){e.preventDefault();e.stopPropagation();closeFont(true);}},options);
  for(const event of ['resize','scroll','beforeprint'])window.addEventListener(event,()=>closeFont(),options);
- const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.textContent='♫';
+ const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.innerHTML=musicIcon;
  tools.append(theme,fontWrap,scoreToggle);
  const footer=make('div',null,'lyrics-footer');
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,tools);host.append(footer);

@@ -16,3 +16,6 @@ export const themeIcon=outline('<circle cx="12" cy="12" r="9"/><path d="M12 3a9 
 export const fontSizeIcon=outline('<path d="M3 5h10M8 5v14M5 19h6M18 5v14m-3-11 3-3 3 3m-6 8 3 3 3-3"/>');
 // Primary app Tap Zones artwork, reused with the existing guide.
 export const tapZonesIcon=outline('<path d="M12 2v3M5.7 4.7l2.1 2.1M18.3 4.7l-2.1 2.1M10.2 13V8.8a1.8 1.8 0 0 1 3.6 0v4.1l1.1-.8a1.7 1.7 0 0 1 2.4.4l1.2 1.8a3 3 0 0 1 .3 2.7l-1.1 3H10l-3.3-4.1a1.6 1.6 0 0 1 2.3-2.2l1.2.9V13Z"/>');
+
+// Lyrics return-to-score control: compact notation, without a document outline.
+export const musicIcon=outline('<path d="M9 18V6l10-2v12M9 9l10-2"/><ellipse cx="7" cy="18" rx="2" ry="1.5"/><ellipse cx="17" cy="16" rx="2" ry="1.5"/>');

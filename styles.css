@@ -1116,3 +1116,14 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-identity-header .song-playback,.score-identity-header #show-tap-zones{border-radius:8px}
  @media(max-width:600px){body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:4px}}
 }
+
+/* Lyrics: persistent Library left, one compact control group right. */
+@media screen{
+ .lyrics-footer{grid-template-columns:minmax(0,1fr) auto}
+ .lyrics-footer .lyrics-tools{justify-self:end;min-height:44px;gap:6px}
+ .lyrics-tools > button,.lyrics-font-wrap > button{font-weight:500;border-color:color-mix(in srgb,var(--lyrics-muted) 45%,var(--lyrics-bg));border-radius:8px}
+ .lyrics-tools > button[aria-pressed=true],.lyrics-font-wrap > button[aria-expanded=true]{background:color-mix(in srgb,#8da8bd 22%,var(--lyrics-bg));border-color:#8da8bd}
+ .lyrics-tools .lyrics-font-menu button{font-weight:500}
+ .lyrics-tools button:focus-visible{outline:2px solid var(--lyrics-muted);outline-offset:2px}
+ @media(max-width:600px){.lyrics-footer .lyrics-tools{gap:4px}}
+}
