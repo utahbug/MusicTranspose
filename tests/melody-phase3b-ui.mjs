@@ -6,7 +6,7 @@ const b=await chromium.launch({channel:'msedge',headless:true}),p=await b.newPag
 const errors=[];p.on('pageerror',e=>errors.push(e.message));
 try{
  await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.locator('.library-row').first().waitFor();
- const rows=JSON.parse(await fs.readFile('test-results/phase3b-audit.json','utf8')).filter(r=>r.ok&&!r.oldOk);
+ const rows=JSON.parse(await fs.readFile('test-results/phase3b-audit.json','utf8')).filter(r=>r.ok&&r.phase3b);
  assert.equal(rows.length,9);
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false',{},{timeout:120000});
  const view=async value=>{await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${value}]`).click();await ready();};
@@ -21,6 +21,6 @@ try{
   await view('pdf');assert.equal(await p.locator('#score-view-label').textContent(),'Original');await view('large');assert.deepEqual(await p.evaluate(async()=>(await import('./playback.js')).scoreTimeline(prototype.viewXML).notes.map(n=>[n.midi,n.start,n.duration])),shifted);
   console.log('PASS direct Original/Melody, committed transposition/playback, actual MusicXML download, key restoration',id);
  }
- for(const id of ['hhc-1021','hhc-1039','cs-12']){await p.evaluate(id=>prototype.loadSong(id),id);await ready();assert(await p.locator('#score-size-options [data-size=large]').isDisabled());}
- assert.deepEqual(errors,[]);console.log('PASS unresolved source ties and deferred duet remain disabled; no runtime errors');
+ for(const id of ['cs-12']){await p.evaluate(id=>prototype.loadSong(id),id);await ready();assert(await p.locator('#score-size-options [data-size=large]').isDisabled());}
+ assert.deepEqual(errors,[]);console.log('PASS deferred duet remains disabled; no runtime errors');
 }finally{await b.close();}

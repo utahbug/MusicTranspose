@@ -1,0 +1,31 @@
+import {createRequire} from 'node:module';
+const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE)('playwright');
+const b=await chromium.launch({channel:'msedge',headless:true}),p=await b.newPage({serviceWorkers:'block'});
+try{await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');console.log(await p.evaluate(async()=>{
+ const {rightHandMelody}=await import('./right-hand-melody.js'),{scoreTimeline}=await import('./playback.js');
+ const must=(v,m)=>{if(!v)throw Error(m);},parse=s=>new DOMParser().parseFromString(s,'application/xml');
+ const note=(step,extra='',word='',duration=1,voice=1,octave=4)=>`<note><pitch><step>${step}</step><octave>${octave}</octave></pitch><duration>${duration}</duration><voice>${voice}</voice><type>quarter</type>${extra}${word?`<lyric><text>${word}</text></lyric>`:''}</note>`;
+ const sound=type=>`<tie type="${type}"/>`,visual=type=>`<notations><tied type="${type}"/></notations>`;
+ const slur=type=>`<notations><slur type="${type}" number="1" placement="above"/></notations>`;
+ const score=(right,duration,left='')=>`<score-partwise><part-list><score-part id="R"><part-name>Piano RH</part-name></score-part><score-part id="L"><part-name>Piano LH</part-name></score-part></part-list><part id="R"><measure number="1"><attributes><divisions>1</divisions><clef><sign>G</sign><line>2</line></clef></attributes>${right}</measure></part><part id="L"><measure number="1"><attributes><divisions>1</divisions><clef><sign>F</sign><line>4</line></clef></attributes>${left||`<note><rest/><duration>${duration}</duration></note>`}</measure></part></score-partwise>`;
+ const run=s=>rightHandMelody(s,{refine:true,normalizeTies:true});
+ const missing=score(note('F',sound('start')+visual('start'),'word',2)+note('F',visual('stop')),3),fixed=run(missing);
+ must(!rightHandMelody(missing,{refine:true}).ok,'Strict baseline should reject missing playback stop');must(fixed.ok&&fixed.proof.length===2,'Missing playback stop projection');
+ must(fixed.tieAdjustments.length===1&&fixed.tieAdjustments[0].action==='add-playback-stop','Only verified visual endpoint normalized');must(scoreTimeline(fixed.xml).notes.length===1,'Verified visual tie must merge once');must(scoreTimeline(fixed.xml).notes[0].duration===2,'Tie duration at default 90 bpm must be three beats');
+ const complete=score(note('F',sound('start')+visual('start'),'word')+note('F',sound('stop')+visual('stop')),2);
+ must(run(complete).xml===rightHandMelody(complete,{refine:true}).xml,'Already valid ties must not change');
+ const intro=score(note('G',sound('start')+visual('start'))+note('C','','',1,1,5)+note('D','','word',1,1,5),3),kept=run(intro);
+ must(kept.ok&&kept.proof.map(n=>n.pitch).join(',')==='67,72,74','Lyricless introduction notes must all survive');must(kept.tieAdjustments.length===2&&!parse(kept.xml).querySelector('tie,tied'),'Only orphan tie artifacts omitted');must(kept.proof.every(n=>n.part==='R'&&n.staff==='1'),'No LH notes');
+ const repeated=run(score(note('G',sound('start')+visual('start')+slur('start'),'word')+note('G',slur('stop')),2));
+ must(repeated.ok&&scoreTimeline(repeated.xml).notes.length===2,'A slur or repeated pitch must never invent a sustain');must(parse(repeated.xml).querySelectorAll('slur').length===2,'Slur endpoints must survive tie normalization');
+ const orphan=run(score(note('G','','word')+note('A',sound('stop')+visual('stop')),2));must(orphan.ok&&orphan.proof.length===2&&!parse(orphan.xml).querySelector('tie,tied'),'Orphan stop: retain the note');
+ const chord=note('G',sound('start')+visual('start'),'word')+note('B',sound('start')+visual('start')).replace('<note>','<note><chord/>')+note('C','','',1,1,5);
+ must(!run(score(chord,2)).ok,'Ambiguous malformed chord ties stay guarded');
+ must(!run(score(note('G',sound('start')+visual('start'),'word')+note('G','','',1,2),2)).ok,'Tie normalization must not authorize a voice handoff');
+ const bass=note('C','','',1,1,3)+note('G',sound('stop')+visual('stop'));
+ must(!run(score(note('G',sound('start')+visual('start'),'word'),2,bass)).ok,'LH cannot fill a missing RH event');
+ const pickup=run(score(note('G','','word',2)+note('C','<cue/>')+note('F'),4));must(pickup.ok&&pickup.proof.map(n=>n.pitch).join(',')==='67,60,65','Lyricless single principal-voice cue pickup must survive');
+ const tiedCue=run(score(note('G',sound('start')+visual('start'),'word')+note('G','<cue/>'+sound('stop')+visual('stop'),'',2)+note('F'),4));must(tiedCue.ok&&tiedCue.proof.length===3,'Long lyricless tied cue continuation must survive');
+ must(!run(missing.replace('<tie type="start"/>','<tie type="start" time-only="2"/>')).ok,'Explicit verse-conditional ties stay guarded');
+ return 'PASS visual-pair normalization, valid-tie identity, lyricless introductions/pickups/tied cues, slurs not sustain, orphan marker omission, chord/voice/LH/conditional guards';
+}));}finally{await b.close();}

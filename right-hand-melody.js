@@ -9,7 +9,7 @@ const fail=(reason,detail)=>({ok:false,reason:'rh-'+reason,detail});
 const lyric=n=>children(n,'lyric').map(l=>[...l.querySelectorAll('text')].map(t=>t.textContent).join(' ')).join('|');
 const cue=n=>!!child(n,'cue')||child(n,'type')?.getAttribute('size')==='cue';
 
-export function rightHandMelody(source,{refine=false}={}){
+export function rightHandMelody(source,{refine=false,normalizeTies=false}={}){
  const doc=new DOMParser().parseFromString(source,'application/xml');
  if(doc.querySelector('parsererror'))return fail('structure','Invalid MusicXML');
  // Invisible zero-time grace rests are engraving spacers, not musical events.
@@ -128,6 +128,7 @@ export function rightHandMelody(source,{refine=false}={}){
    if(m.querySelector('barline > ending[type="stop"],barline > ending[type="discontinue"]'))lastEnd=mi;
   }
  }
+ const tieAdjustments=normalizeTies?normalizeRhTieBoundaries(line,primary,endingPredecessors):[];
  const layers=[];
  for(const [i,g] of line.entries()){
   if(new Set(g.nodes.map(lyric).filter(Boolean)).size>1)return fail('competing',`Different lyric texts within a right-hand chord at measure ${g.mi+1}`);
@@ -158,6 +159,16 @@ export function rightHandMelody(source,{refine=false}={}){
  if(children(line.at(-1).chosen,'tie').some(t=>t.getAttribute('type')==='start'))return fail('ties','Unclosed final melody tie');
  // Small RH notes are retained only as bounded same-voice pitch connectors.
  for(const [i,g] of line.entries())if(cue(g.chosen)){
+  if(normalizeTies){
+   const before=line[i-1],after=line[i+1];
+   // Cue size cannot remove a verified sustained RH continuation. The actual
+   // source event remains, even when its verse has no syllable or it is long.
+   if(before&&before.voice===g.voice&&g.voice===primary&&pitch(before.chosen)===pitch(g.chosen)&&children(before.chosen,'tie').some(t=>t.getAttribute('type')==='start')&&children(g.chosen,'tie').some(t=>t.getAttribute('type')==='stop'))continue;
+   // A single short pickup written in the established principal RH voice may
+   // leap, rather than move by step. Both surrounding principal events must
+   // be full-sized pitched notes within an octave; lyrics are not a filter.
+   if(g.nodes.length===1&&g.duration<=1&&before&&after&&g.voice===primary&&before.voice===primary&&after.voice===primary&&!cue(before.chosen)&&!cue(after.chosen)&&[before,g,after].every(e=>pitch(e.chosen)!==null)&&Math.abs(pitch(before.chosen)-pitch(g.chosen))<=12&&Math.abs(pitch(after.chosen)-pitch(g.chosen))<=12)continue;
+  }
   if(refine){
    let first=i,last=i;while(first&&cue(line[first-1].chosen)&&line[first-1].voice===primary)first--;while(last+1<line.length&&cue(line[last+1].chosen)&&line[last+1].voice===primary)last++;
    const run=line.slice(first,last+1),before=line[first-1],after=line[last+1];
@@ -225,5 +236,40 @@ export function rightHandMelody(source,{refine=false}={}){
  for(const p of info.filter(p=>p.optional)){p.part.remove();[...doc.querySelectorAll('score-part')].find(n=>n.id===p.part.id)?.remove();}
  for(const n of doc.querySelectorAll('note')){for(const l of children(n,'lyric'))l.remove();child(n,'cue')?.remove();if(child(n,'type')?.getAttribute('size')==='cue')child(n,'type').removeAttribute('size');}
  for(const [i,g] of line.entries()){g.nodes[0].replaceWith(copies[i]);for(const extra of g.nodes.slice(1))extra.remove();}
- return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,selection:{...upper,voice:'rh-melody',sourceVoices:[...new Set(line.map(g=>g.voice))],evidence:'Piano right-hand domain; complete rhythmic line; chord continuity with upper-tone prior and exact ties'}};
+ return {ok:true,xml:new XMLSerializer().serializeToString(doc),proof,...(tieAdjustments.length?{tieAdjustments}:{}),selection:{...upper,voice:'rh-melody',sourceVoices:[...new Set(line.map(g=>g.voice))],evidence:'Piano right-hand domain; complete rhythmic line; chord continuity with upper-tone prior and exact ties'}};
+}
+
+// Fallback only: source RH events and a unique continuous principal voice take
+// precedence over incomplete playback tie metadata. Slurs are never consulted.
+// Ambiguous chord choices/voice changes retain the original strict tie guards.
+function normalizeRhTieBoundaries(line,primary,endingPredecessors){
+ const changes=[];
+ const marks=(n,visual,type)=>visual?[...n.querySelectorAll('notations > tied')].filter(e=>e.getAttribute('type')===type):children(n,'tie').filter(e=>e.getAttribute('type')===type);
+ const record=(g,n,action)=>changes.push({measure:g.mi+1,at:g.at,voice:g.voice,pitch:pitch(n),action});
+ const remove=(g,n,visual,type)=>{for(const e of marks(n,visual,type)){e.remove();record(g,n,'omit-'+(visual?'visual':'playback')+'-'+type);}};
+ const add=(g,n,type)=>{if(marks(n,false,type).length)return;const e=n.ownerDocument.createElement('tie');e.setAttribute('type',type);const duration=child(n,'duration');duration.after(e);record(g,n,'add-playback-'+type);};
+ for(let i=1;i<line.length;i++){
+  const right=line[i],branch=right.at===0?endingPredecessors.get(right.mi):undefined,left=line[branch??(i-1)];
+  // The lane already tiles every measure. Require a unique, non-rest source
+  // pitch at both ends of this boundary; no pitch selection or rhythm edits.
+  if(left.voice!==primary||right.voice!==primary||left.part!==right.part||left.staff!==right.staff||left.nodes.length!==1||right.nodes.length!==1)continue;
+  const a=left.nodes[0],b=right.nodes[0];if(pitch(a)===null||pitch(b)===null)continue;
+  // Do not reinterpret conditional/let-ring/continuation tie notation.
+  if([a,b].some(n=>[...n.querySelectorAll('tie,notations > tied')].some(t=>t.hasAttribute('time-only')||!['start','stop'].includes(t.getAttribute('type')))))continue;
+  const soundStart=marks(a,false,'start').length,soundStop=marks(b,false,'stop').length,visualStart=marks(a,true,'start').length,visualStop=marks(b,true,'stop').length;
+  if(!soundStart&&!soundStop&&!visualStart&&!visualStop)continue;
+  if([soundStart,soundStop,visualStart,visualStop].some(count=>count>1))continue;
+  const same=pitch(a)===pitch(b),visualPair=same&&visualStart&&visualStop,soundPair=same&&soundStart&&soundStop;
+  if(visualPair){add(left,a,'start');add(right,b,'stop');}
+  else if(soundPair){
+   // Valid sounding sustain survives; an unmatched visual endpoint does not.
+   remove(left,a,true,'start');remove(right,b,true,'stop');
+  }else{
+   // Keep both original notes, pitches and durations. An orphan endpoint (or
+   // a pitch-changing alleged tie) cannot sustain this monophonic RH path.
+   remove(left,a,false,'start');remove(right,b,false,'stop');
+   remove(left,a,true,'start');remove(right,b,true,'stop');
+  }
+ }
+ return changes;
 }

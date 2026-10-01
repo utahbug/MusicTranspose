@@ -35,9 +35,10 @@ export function createLeadXML(source,context){
  // Preserve every proven Phase 3 projection. Refinement is currently enabled
  // only for rejected bundled HHC scores, pending other collections' review.
  if(!melody.ok&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true});
+ if(!melody.ok&&melody.reason==='rh-ties'&&hhcIds.has(context?.id))melody=rightHandMelody(source,{refine:true,normalizeTies:true});
  if(!melody.ok)return {...prior,reason:melody.reason,detail:melody.detail,message:'The right-hand melody needs review.'};
  const result=projectLeadXML(melody.xml);
- return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof}:{...result,xml:source};
+ return result.ok?{...result,selection:melody.selection,melodyProof:melody.proof,...(melody.tieAdjustments?{tieAdjustments:melody.tieAdjustments}:{})}:{...result,xml:source};
 }
 function priorLeadXML(source,context){
  const hymn=!context?.local&&hymnIds.has(context?.id);
