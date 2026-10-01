@@ -696,12 +696,12 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #library.editing-list .library-row{scroll-margin-top:225px}
 #library.editing-list .library-search-row input:disabled{opacity:.6}
 #lists-view{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
-#lists-view .lists-heading{background:transparent;color:#233331;padding:0 4px;min-height:44px}
-#lists-view .lists-heading h1{font-size:20px}#lists-view .lists-heading .eyebrow{display:none}#lists-view .lists-heading p:last-child{color:#536b7a;font-size:12px}
-#lists-view .lists-heading button{color:#365f7d}
-#lists-view .list-overview-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:2px;padding:4px}
+#lists-view .lists-heading{padding:12px 16px;min-height:44px}
+#lists-view .lists-heading h1{font-size:20px}#lists-view .lists-heading .eyebrow{display:none}#lists-view .lists-heading p:last-child{color:#eef5f7;font-size:13px}
+#lists-view .lists-heading button{color:inherit}
+#lists-view .list-overview-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:8px;margin:8px 0;border:1px solid #c4cfd3;border-radius:6px}
 #lists-view .list-overview-entry{display:flex;flex-direction:column;text-align:left;gap:4px;min-width:0}
-#lists-view .list-overview-row>button{font-size:12px}#lists-view .list-overview-entry strong{font-size:15px}
+#lists-view .list-overview-row>button{font-size:12px}#lists-view .list-overview-entry strong{font-size:16px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 #list-picker-completion{position:fixed;bottom:var(--list-keyboard-inset,0px);left:0;right:0;z-index:30;display:flex;justify-content:center;gap:8px;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom));background:#edf1f3;border-top:1px solid #c2ced3}
 #lists-view #list-picker-done{background:#365f7d;color:white;font-weight:600;font-size:14px;padding:8px 12px;min-height:44px}
 #lists-view #list-picker-done:disabled{opacity:.45}
@@ -901,7 +901,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Shared Library / Lyrics / Score identity treatment; reading surfaces keep their own theme. */
 @media screen{
- #library .library-heading,.lyrics-identity-header,.score-identity-header{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);background:var(--app-header-background);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.22),0 3px 14px rgba(22,49,83,.16)}
+ #library .library-heading,.lyrics-identity-header,.score-identity-header,#lists-view .lists-heading{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);background:var(--app-header-background);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.22),0 3px 14px rgba(22,49,83,.16)}
  #library .library-heading :is(h1,.eyebrow,h1 span){color:inherit}
  /* The small count reaches the green end: backing preserves 4.5:1 contrast without changing its box. */
  #library .library-heading #library-count{color:#fff;background:rgba(0,0,0,.12);box-shadow:0 0 0 2px rgba(0,0,0,.12);border-radius:2px}
@@ -1156,3 +1156,15 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 :is(.library-heading,.score-identity-header,.lyrics-identity-header,.files-heading,.lists-heading):has(.header-home:focus-visible) h1{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
 #library .library-heading h1:focus,.score-heading h1:focus,#lyrics-view .lyrics-identity-header h1:focus,#files-heading:focus,#lists-heading:focus{outline:none;box-shadow:none}
 @media print{.header-home{display:none!important}}
+
+/* Lists overview: browsing is primary, management stays secondary. */
+#lists-actions{margin:12px 0}
+#lists-actions>button{background:#e4edf1;border:1px solid #afc3cd;font-weight:500;padding:8px 14px}
+#lists-view .list-overview-entry{min-height:56px;color:#233331}
+#lists-view .list-overview-entry>span{color:#536b7a;font-size:13px}
+.list-manage-actions{display:flex;gap:6px}
+#lists-view .list-manage-actions button{font-size:13px;font-weight:400;border:1px solid #c4cfd3;background:#f5f7f7;padding:8px 12px}
+#lists-view .list-overview-entry:hover,#lists-view .list-manage-actions button:hover,#lists-actions>button:hover{background:#eaf0f3;text-decoration:none}
+@media(max-width:600px){#lists-view .list-overview-row{gap:6px}.list-manage-actions{gap:4px}#lists-view .list-manage-actions button{padding:8px}}
+
+#lists-view .header-home:focus,#lists-view .header-home:focus-visible{outline:none;box-shadow:none}
