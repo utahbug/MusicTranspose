@@ -1,10 +1,10 @@
 # Lead catalog diagnostics
 
-All 666 structured scores audited. 593 supported; 73 safely fall back to the full structured score. No title exceptions or manual melody assignments.
+All 666 structured scores audited. 619 supported; 47 safely fall back to the full structured score. No title exceptions or manual melody assignments.
 
-Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a35535b`. All 580 previously supported outputs are byte-for-byte unchanged. Availability and this report reuse that audit instead of rescanning the catalog.
+Current audit: `tests/melody-phase4b.mjs` with `PHASE4B_FULL=1`; baseline `080bc45`. All 593 previously supported musical XML and engraving XML outputs are byte-for-byte unchanged. Availability and this report reuse the completed audit.
 
-## Supported Lead scores (593)
+## Supported Lead scores (619)
 
 | Song | Collection / page | Stable ID |
 |---|---|---|
@@ -95,6 +95,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Long Ago, Within a Garden | Hymns for Home and Church · 1210 | hhc-1210 |
 | Called to Serve | Children’s Songbook · 174 | cs-174 |
 | I Feel My Savior’s Love | Children’s Songbook · 74 | cs-74 |
+| I Will Follow God’s Plan | Children’s Songbook · 164 | cs-164 |
 | He Sent His Son | Children’s Songbook · 34 | cs-34 |
 | Jesus Has Risen | Children’s Songbook · 70 | cs-70 |
 | Jesus Wants Me for a Sunbeam | Children’s Songbook · 60 | cs-60 |
@@ -133,6 +134,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Israel, Israel, God Is Calling | Hymns (1985) · 7 | song-79a297b0-52bf-444f-ab42-1c6a0f64a68d |
 | Awake and Arise | Hymns (1985) · 8 | song-67615f0c-02aa-43e8-aeba-f033ded5a54d |
 | Come, Rejoice | Hymns (1985) · 9 | song-ace2cff9-0ce8-49f5-b05c-4aafb791c5f8 |
+| Come, Sing to the Lord | Hymns (1985) · 10 | song-0062ade2-ac69-44dc-8de7-a487aed78391 |
 | What Was Witnessed in the Heavens? | Hymns (1985) · 11 | song-49ba0aeb-f5d2-4981-935d-516c41cadbad |
 | An Angel from on High | Hymns (1985) · 13 | song-37bb3222-740c-4eaf-965a-623fe7b7f244 |
 | Sweet Is the Peace the Gospel Brings | Hymns (1985) · 14 | song-053865e1-8dbf-42ea-b258-24d82df67120 |
@@ -145,11 +147,14 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | We Listen to a Prophet’s Voice | Hymns (1985) · 22 | song-1e98ccb4-2e1f-4c52-9cd1-221913b8406b |
 | We Ever Pray for Thee | Hymns (1985) · 23 | song-30840d58-5d17-4bd8-933d-c28b91f4671e |
 | God Bless Our Prophet Dear | Hymns (1985) · 24 | song-8923c903-61e1-44fe-b027-ec2f9ad4e53c |
+| Now We’ll Sing with One Accord | Hymns (1985) · 25 | song-2d106db3-f58f-4686-a612-650514fafc20 |
+| Joseph Smith’s First Prayer | Hymns (1985) · 26 | song-4dcc79a0-8d67-4ac6-913b-370e8e8c4f9c |
 | Praise to the Man | Hymns (1985) · 27 | song-0244093d-d300-481a-bd08-b42e9641de47 |
 | Saints, Behold How Great Jehovah | Hymns (1985) · 28 | song-31031672-e61c-46ca-9c09-758f395b3ad3 |
 | A Poor Wayfaring Man of Grief | Hymns (1985) · 29 | song-ddbda143-e5df-412f-9a3d-58b91c576b1e |
 | Come, Come, Ye Saints | Hymns (1985) · 30 | song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6 |
 | O God, Our Help in Ages Past | Hymns (1985) · 31 | song-be4dabe1-259d-45e1-9cfc-0a3a182d707c |
+| The Happy Day at Last Has Come | Hymns (1985) · 32 | song-cbd1bb83-a645-46fe-aa1b-e36954956a2b |
 | Our Mountain Home So Dear | Hymns (1985) · 33 | song-c852eacf-b85c-4778-97b8-d146fe7f34a8 |
 | O Ye Mountains High | Hymns (1985) · 34 | song-f76df380-7901-4f21-bf86-a6b36a10a8e8 |
 | For the Strength of the Hills | Hymns (1985) · 35 | song-cee5b409-48b4-42f6-be30-8f377c1cc9d0 |
@@ -161,9 +166,11 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Let Zion in Her Beauty Rise | Hymns (1985) · 41 | song-3a21a9c9-9fcc-4f90-8f62-3c29c6475940 |
 | Hail to the Brightness of Zion’s Glad Morning! | Hymns (1985) · 42 | song-d3736eb5-55f8-4103-94fb-e08850bc669b |
 | Zion Stands with Hills Surrounded | Hymns (1985) · 43 | song-cc756c07-4000-4b4c-bc2e-18915ff8d8f9 |
+| Beautiful Zion, Built Above | Hymns (1985) · 44 | song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283 |
 | Lead Me into Life Eternal | Hymns (1985) · 45 | song-fdf2b901-7ffb-4a7c-8394-43fd5ebea900 |
 | Glorious Things of Thee Are Spoken | Hymns (1985) · 46 | song-78c0fc15-9524-4949-bcdc-fdd85578e169 |
 | We Will Sing of Zion | Hymns (1985) · 47 | song-feb0636c-31af-4d69-873c-6db4bcb3e402 |
+| Glorious Things Are Sung of Zion | Hymns (1985) · 48 | song-8c6e1e3e-f81a-4480-aa88-ad23c54b3567 |
 | Adam-ondi-Ahman | Hymns (1985) · 49 | song-227dc125-afcd-4640-b3e7-5cfbe54dbcf7 |
 | Come, Thou Glorious Day of Promise | Hymns (1985) · 50 | song-94f3ae20-5262-4fae-9a1a-a1fd5117fcec |
 | Sons of Michael, He Approaches | Hymns (1985) · 51 | song-f044f99a-89d3-4e15-8b75-417be0ba3729 |
@@ -178,8 +185,10 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Raise Your Voices to the Lord | Hymns (1985) · 61 | song-35c1d33c-fa24-4097-8b5f-dc9769654270 |
 | All Creatures of Our God and King | Hymns (1985) · 62 | song-93dfb488-c85f-4028-ab09-127470312f80 |
 | Great King of Heaven | Hymns (1985) · 63 | song-d4882737-c8ee-4d56-a9de-03285da10a68 |
+| On This Day of Joy and Gladness | Hymns (1985) · 64 | song-4bdf04d7-47b9-469b-a26d-28524ab2a778 |
 | Come, All Ye Saints Who Dwell on Earth | Hymns (1985) · 65 | song-d9056915-c14f-4fdb-bc3c-0fa5208a4c64 |
 | Rejoice, the Lord Is King! | Hymns (1985) · 66 | song-0d512ac4-4118-4073-8ecf-fd57d437634e |
+| Glory to God on High | Hymns (1985) · 67 | song-0dabe0c3-ecb6-4812-ac00-51320858adf8 |
 | A Mighty Fortress Is Our God | Hymns (1985) · 68 | song-e3220a8e-7231-495a-9ad3-c8bf0d803897 |
 | All Glory, Laud, and Honor | Hymns (1985) · 69 | song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22 |
 | With Songs of Praise | Hymns (1985) · 71 | song-1b47066a-3316-48d8-8645-579371be37ca |
@@ -193,11 +202,13 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | With All the Power of Heart and Tongue | Hymns (1985) · 79 | song-4b4527e2-f878-4fc0-ab9a-543ec3fd2b54 |
 | God of Our Fathers, Known of Old | Hymns (1985) · 80 | song-0b9ad58e-c56e-4c3d-8632-05a2f30a6dbf |
 | Press Forward, Saints | Hymns (1985) · 81 | song-61e6163a-dc48-4728-8207-4870522f144b |
+| For All the Saints | Hymns (1985) · 82 | song-99149a84-9950-4fc0-b34d-dd0bae0166c3 |
 | Guide Us, O Thou Great Jehovah | Hymns (1985) · 83 | song-85824e7f-8c1e-4876-9f3f-b06143e42248 |
 | Faith of Our Fathers | Hymns (1985) · 84 | song-9f2a063d-1180-4f63-a580-0227046d15cf |
 | How Firm a Foundation | Hymns (1985) · 85 | song-41d7a6e2-b770-49c9-b48b-82a070d520cc |
 | God Is Love | Hymns (1985) · 87 | song-275ccb42-e6a0-4cb7-b1ee-2fcf952ee1de |
 | Great God, Attend While Zion Sings | Hymns (1985) · 88 | song-f2764211-707a-409a-bf14-d0a4c5488535 |
+| The Lord Is My Light | Hymns (1985) · 89 | song-8b09b308-9dc7-4948-98a9-87174a580235 |
 | From All That Dwell below the Skies | Hymns (1985) · 90 | song-bd2235e9-00fe-477d-a1f3-3c2c6b2fa4e5 |
 | Father, Thy Children to Thee Now Raise | Hymns (1985) · 91 | song-a3074538-3191-4f39-b4fe-7c3f43deb06f |
 | For the Beauty of the Earth | Hymns (1985) · 92 | song-deb16777-4998-4df2-af47-ebe4dd8b0c1f |
@@ -205,6 +216,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Come, Ye Thankful People | Hymns (1985) · 94 | song-20e5012e-d35a-4100-9d85-b8aca2256aca |
 | Now Thank We All Our God | Hymns (1985) · 95 | song-89004405-751f-44e8-9ec7-4c5a2ff9cee1 |
 | Dearest Children, God Is Near You | Hymns (1985) · 96 | song-44d6f635-2cbd-42bb-8de9-0e8844e83b92 |
+| Lead, Kindly Light | Hymns (1985) · 97 | song-81729459-26a5-4009-be58-ad263d0a35ad |
 | I Need Thee Every Hour | Hymns (1985) · 98 | song-2aff8662-2b9d-4a85-a4dd-84c4adc0d54c |
 | Nearer, Dear Savior, to Thee | Hymns (1985) · 99 | song-6f07e565-f3c0-4bb4-a033-59e8d9811e12 |
 | Nearer, My God, to Thee | Hymns (1985) · 100 | song-00dbf08d-281a-4a99-9a9a-77815f9d9d14 |
@@ -232,6 +244,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Though Deepening Trials | Hymns (1985) · 122 | song-af8cc3c9-0ae1-4878-9a60-9c5a37a19918 |
 | Oh, May My Soul Commune with Thee | Hymns (1985) · 123 | song-1cc93307-4486-4c99-b32b-013eaddf8d79 |
 | How Gentle God’s Commands | Hymns (1985) · 125 | song-b5834e14-4342-46b2-a2d7-58babed1c682 |
+| How Long, O Lord Most Holy and True | Hymns (1985) · 126 | song-6084e096-1426-4424-8793-93148c0759fe |
 | Does the Journey Seem Long? | Hymns (1985) · 127 | song-1e4ccb84-3de4-4ed7-9157-e61ef70e76fb |
 | When Faith Endures | Hymns (1985) · 128 | song-58520545-1525-4e0f-abb1-bf74e9f97863 |
 | Where Can I Turn for Peace? | Hymns (1985) · 129 | song-919219ad-9b5c-4d45-a0c4-36e043b737c8 |
@@ -277,6 +290,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | As Now We Take the Sacrament | Hymns (1985) · 169 | song-9b6801af-10d6-4840-876a-56b8c52d2a8e |
 | God, Our Father, Hear Us Pray | Hymns (1985) · 170 | song-a47ece80-fd65-440d-be9b-7be355ed59f2 |
 | With Humble Heart | Hymns (1985) · 171 | song-59e36b81-bc02-4475-b6bf-0bea9ee96e99 |
+| In Humility, Our Savior | Hymns (1985) · 172 | song-b6f97276-963c-40de-928a-4eb66cccc694 |
 | While of These Emblems We Partake | Hymns (1985) · 173 | song-eb2f61bb-b8f9-40e9-b545-daf6f477b72b |
 | While of These Emblems We Partake | Hymns (1985) · 174 | song-20acbafe-d231-40a7-b91e-4f9a04640393 |
 | O God, the Eternal Father | Hymns (1985) · 175 | song-9744d4ba-2243-422c-91c6-b5788b2c9c56 |
@@ -304,6 +318,9 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | O Savior, Thou Who Wearest a Crown | Hymns (1985) · 197 | song-aba725bb-369b-4210-9cee-f0f762f94a7a |
 | That Easter Morn | Hymns (1985) · 198 | song-98cbb293-33a5-4fcd-9fd9-4dc668ff7bb3 |
 | He Is Risen! | Hymns (1985) · 199 | song-5e5bc70a-2e08-4411-999d-628bf6079d88 |
+| Christ the Lord Is Risen Today | Hymns (1985) · 200 | song-cb87dc92-579f-42f4-b83f-03ccaf28e602 |
+| Joy to the World | Hymns (1985) · 201 | song-b84d63a6-cb12-4f44-a1b5-c83641a234f9 |
+| Angels We Have Heard on High | Hymns (1985) · 203 | song-c8c15b83-e038-4dc7-9901-c015de754fb4 |
 | Once in Royal David’s City | Hymns (1985) · 205 | song-e0466d19-0b02-43a0-a730-6bbb9bf06ed5 |
 | Away in a Manger | Hymns (1985) · 206 | song-fafcb319-245b-4305-b2f1-f97fad331d5e |
 | It Came upon the Midnight Clear | Hymns (1985) · 207 | song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc |
@@ -311,6 +328,8 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Hark! The Herald Angels Sing | Hymns (1985) · 209 | song-53c57be6-2733-45c7-94ad-773835a4fd19 |
 | With Wondering Awe | Hymns (1985) · 210 | song-10325904-fe2e-47d7-8693-95dc83af7702 |
 | While Shepherds Watched Their Flocks | Hymns (1985) · 211 | song-e9b41466-3dfd-4d38-8c29-7723246ec090 |
+| Far, Far Away on Judea’s Plains | Hymns (1985) · 212 | song-9be03820-2e2a-453e-9270-2138bf79d9c2 |
+| The First Noel | Hymns (1985) · 213 | song-8aaafadd-0290-4b8f-aa76-a7b167782212 |
 | I Heard the Bells on Christmas Day | Hymns (1985) · 214 | song-0cb749cd-a76b-4468-874d-5db8248e25ec |
 | Ring Out, Wild Bells | Hymns (1985) · 215 | song-a5d8ad72-20f6-4adb-86ad-1ca300b93804 |
 | We Are Sowing | Hymns (1985) · 216 | song-edae2ad8-a4c0-4132-935c-8895ee40b381 |
@@ -355,6 +374,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Rejoice! A Glorious Sound Is Heard | Hymns (1985) · 257 | song-550fb578-d377-4dc9-bb00-9e9639a49c71 |
 | O Thou Rock of Our Salvation | Hymns (1985) · 258 | song-c2019d89-bd53-4f00-a653-d863b711aa15 |
 | Hope of Israel | Hymns (1985) · 259 | song-9e9db675-111d-48ee-91ed-23dd17b35d0d |
+| Who’s on the Lord’s Side? | Hymns (1985) · 260 | song-af8d66bd-9206-4235-934d-6070c186050a |
 | Thy Servants Are Prepared | Hymns (1985) · 261 | song-da061743-f23c-4f29-8abe-9d2665cc28d4 |
 | Go, Ye Messengers of Glory | Hymns (1985) · 262 | song-5da6b83a-d1e1-452a-a50d-950d320260b2 |
 | Go Forth with Faith | Hymns (1985) · 263 | song-52bb81df-191d-4f69-9e80-6c003b5260cd |
@@ -403,6 +423,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | As Sisters in Zion | Hymns (1985) · 309 | song-74bac8a9-6455-4706-8fc8-2be43e51eab3 |
 | A Key Was Turned in Latter Days | Hymns (1985) · 310 | song-c0a8cbd7-2188-43d3-9840-19faa722e6ca |
 | We Meet Again as Sisters | Hymns (1985) · 311 | song-89b00dd7-73b9-42f3-9065-e743962094d2 |
+| Ye Elders of Israel | Hymns (1985) · 319 | song-7f407f0f-8d10-4bc4-9d74-03806c7e0969 |
 | The Priesthood of Our Lord | Hymns (1985) · 320 | song-c7318efd-a15a-401b-ad22-ed8d1e6f4b56 |
 | Ye Who Are Called to Labor | Hymns (1985) · 321 | song-d5b6a45a-c463-41fc-bda3-192d8c384d5f |
 | Come, All Ye Sons of God | Hymns (1985) · 322 | song-83d1a9d7-b2c9-47c3-b5c7-3f3dcf881a33 |
@@ -458,6 +479,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Jesus Is Our Loving Friend | Children’s Songbook · 58b | song-f693e0ea-c5bc-4b18-a656-4e39f42e44d1 |
 | Jesus Loved the Little Children | Children’s Songbook · 59 | song-63fc5a4f-2368-424f-b846-e68f297ce802 |
 | Did Jesus Really Live Again? | Children’s Songbook · 64 | song-e2a77063-2a61-44ed-ac39-03bed480a189 |
+| He Died That We Might Live Again | Children’s Songbook · 65 | song-a277af0a-105c-496a-aa78-e42a46064645 |
 | Hosanna | Children’s Songbook · 66 | song-74995e8d-96f7-4f1f-9063-c1d285a9b635 |
 | Easter Hosanna | Children’s Songbook · 68 | song-71f46c6a-b141-4ae8-9d6a-2f3ce69d2cef |
 | To Think about Jesus | Children’s Songbook · 71 | song-30f5c349-41c5-429c-8f01-8a25481ecd56 |
@@ -472,6 +494,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | On a Golden Springtime | Children’s Songbook · 88 | song-540fe1ec-07da-47d3-a3e4-0cd5f71b5641 |
 | The Priesthood Is Restored | Children’s Songbook · 89 | song-971fd988-d7e9-4e39-8c02-47840e323bf6 |
 | Truth from Elijah | Children’s Songbook · 90 | song-b2b8b304-743e-4dfe-9568-35c05cbd4f6d |
+| The Hearts of the Children | Children’s Songbook · 92 | song-7549b091-cb78-4873-8d6f-315a7c81882f |
 | Family History—I Am Doing It | Children’s Songbook · 94 | song-480ba302-e450-4fd0-9109-6a4ea74d8777 |
 | Faith | Children’s Songbook · 96 | song-9a5e2466-f9a8-4028-9a74-02b5c274ad76 |
 | God’s Love | Children’s Songbook · 97 | song-6c2138e8-4bb4-4f5e-9468-6e0aee95f355 |
@@ -501,6 +524,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | The Tenth Article of Faith | Children’s Songbook · 128b | song-7aa6c4d8-5f33-4bde-a292-d1087e70cf17 |
 | The Eleventh Article of Faith | Children’s Songbook · 130 | song-4c3e1b7e-c395-409c-b254-fc7cb78a05fd |
 | The Twelfth Article of Faith | Children’s Songbook · 131 | song-d4fac03a-a5c9-4b8b-9ecd-7b2119f7d9af |
+| The Thirteenth Article of Faith | Children’s Songbook · 132 | song-3beead66-a2f8-4121-b3f6-9245a21af2cc |
 | Latter-day Prophets | Children’s Songbook · 134 | song-a1d93d40-4f38-48a4-8693-6a591d097cd4 |
 | Our Bishop | Children’s Songbook · 135 | song-e10a048e-144a-4258-9fc2-b58484035a63 |
 | Love One Another | Children’s Songbook · 136 | song-eb7ac6fd-41a9-4ebb-8575-6d955bb32224 |
@@ -522,6 +546,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Stand for the Right | Children’s Songbook · 159 | song-98091677-00a4-4326-bad7-46eacb14fc29 |
 | Choose the Right Way | Children’s Songbook · 160 | song-799ad9aa-caed-4e48-a882-dab23cd9686a |
 | I Pledge Myself to Love the Right | Children’s Songbook · 161 | song-8e3cbb5c-9e8c-479d-a26e-3d73726a1e62 |
+| I Will Be Valiant | Children’s Songbook · 162 | song-775dde37-8058-43fb-b80e-d47464c16b8f |
 | A Young Man Prepared | Children’s Songbook · 166 | song-48d392a5-b087-45bf-bfa0-3bcd9b90070b |
 | Go the Second Mile | Children’s Songbook · 167 | song-8b5532e8-7cdb-4b3e-b79f-89f2b59d3738 |
 | The Things I Do | Children’s Songbook · 170 | song-6f4876b3-4c33-4b87-865b-b5e115ff4123 |
@@ -550,6 +575,7 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Fathers | Children’s Songbook · 209 | song-83dc556e-d1cd-4288-8b89-42dfb7419f2f |
 | Daddy’s Homecoming | Children’s Songbook · 210 | song-8d986977-4e00-4b10-8dc4-5bb80dc12beb |
 | My Dad | Children’s Songbook · 211 | song-5e874136-5650-42b1-9e80-fa8c02fefd33 |
+| Pioneer Children Sang As They Walked | Children’s Songbook · 214 | song-20e2678f-8636-4f6c-80c0-9545a6eba581 |
 | Little Pioneer Children | Children’s Songbook · 216 | song-82c7b8de-059a-4932-b759-e6245a71a2bd |
 | Westward Ho! | Children’s Songbook · 217 | song-35b2fde6-f9b4-4ebe-b877-e8e9dfe6a6a9 |
 | To Be a Pioneer | Children’s Songbook · 218 | song-55fb1ba6-d232-4a29-8d2e-fea05137432e |
@@ -601,37 +627,6 @@ Current audit: `tests/melody-phase4a.mjs` with `PHASE4A_FULL=1`; baseline `a3553
 | Happy, Happy Birthday | Children’s Songbook · 284a | song-082c508f-fb6c-428f-9e6f-52fb9d71a7ea |
 | Have a Very Happy Birthday! | Children’s Songbook · 284b | song-29c9d8ed-2e25-4865-9867-2477f2fa81e4 |
 | You’ve Had a Birthday | Children’s Songbook · 285 | song-527daed2-ac88-4587-bc7a-09b28bf6cd3a |
-
-## rh-annotations (26)
-
-| Song | Collection / page | Stable ID |
-|---|---|---|
-| I Will Follow God’s Plan | Children’s Songbook · 164 | cs-164 |
-| Come, Sing to the Lord | Hymns (1985) · 10 | song-0062ade2-ac69-44dc-8de7-a487aed78391 |
-| Now We’ll Sing with One Accord | Hymns (1985) · 25 | song-2d106db3-f58f-4686-a612-650514fafc20 |
-| Joseph Smith’s First Prayer | Hymns (1985) · 26 | song-4dcc79a0-8d67-4ac6-913b-370e8e8c4f9c |
-| The Happy Day at Last Has Come | Hymns (1985) · 32 | song-cbd1bb83-a645-46fe-aa1b-e36954956a2b |
-| Beautiful Zion, Built Above | Hymns (1985) · 44 | song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283 |
-| Glorious Things Are Sung of Zion | Hymns (1985) · 48 | song-8c6e1e3e-f81a-4480-aa88-ad23c54b3567 |
-| On This Day of Joy and Gladness | Hymns (1985) · 64 | song-4bdf04d7-47b9-469b-a26d-28524ab2a778 |
-| Glory to God on High | Hymns (1985) · 67 | song-0dabe0c3-ecb6-4812-ac00-51320858adf8 |
-| For All the Saints | Hymns (1985) · 82 | song-99149a84-9950-4fc0-b34d-dd0bae0166c3 |
-| The Lord Is My Light | Hymns (1985) · 89 | song-8b09b308-9dc7-4948-98a9-87174a580235 |
-| Lead, Kindly Light | Hymns (1985) · 97 | song-81729459-26a5-4009-be58-ad263d0a35ad |
-| How Long, O Lord Most Holy and True | Hymns (1985) · 126 | song-6084e096-1426-4424-8793-93148c0759fe |
-| In Humility, Our Savior | Hymns (1985) · 172 | song-b6f97276-963c-40de-928a-4eb66cccc694 |
-| Christ the Lord Is Risen Today | Hymns (1985) · 200 | song-cb87dc92-579f-42f4-b83f-03ccaf28e602 |
-| Joy to the World | Hymns (1985) · 201 | song-b84d63a6-cb12-4f44-a1b5-c83641a234f9 |
-| Angels We Have Heard on High | Hymns (1985) · 203 | song-c8c15b83-e038-4dc7-9901-c015de754fb4 |
-| Far, Far Away on Judea’s Plains | Hymns (1985) · 212 | song-9be03820-2e2a-453e-9270-2138bf79d9c2 |
-| The First Noel | Hymns (1985) · 213 | song-8aaafadd-0290-4b8f-aa76-a7b167782212 |
-| Who’s on the Lord’s Side? | Hymns (1985) · 260 | song-af8d66bd-9206-4235-934d-6070c186050a |
-| Ye Elders of Israel | Hymns (1985) · 319 | song-7f407f0f-8d10-4bc4-9d74-03806c7e0969 |
-| He Died That We Might Live Again | Children’s Songbook · 65 | song-a277af0a-105c-496a-aa78-e42a46064645 |
-| The Hearts of the Children | Children’s Songbook · 92 | song-7549b091-cb78-4873-8d6f-315a7c81882f |
-| The Thirteenth Article of Faith | Children’s Songbook · 132 | song-3beead66-a2f8-4121-b3f6-9245a21af2cc |
-| I Will Be Valiant | Children’s Songbook · 162 | song-775dde37-8058-43fb-b80e-d47464c16b8f |
-| Pioneer Children Sang As They Walked | Children’s Songbook · 214 | song-20e2678f-8636-4f6c-80c0-9545a6eba581 |
 
 ## rh-competing (5)
 
