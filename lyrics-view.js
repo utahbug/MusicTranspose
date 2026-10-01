@@ -39,7 +39,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  tools.append(theme,fontWrap,scoreToggle);
  const footer=make('div',null,'lyrics-footer');
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,tools);host.append(footer);
- const header=make('header',null,'lyrics-identity-header');header.append(make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
+ const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');header.append(home,make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
  if(current.notes.length)paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
  const body=make('div',null,'lyrics-body');
  for(const verse of current.verses){const block=make('section');block.append(make('h2','Verse '+verse.number),make('p',verse.text));body.append(block);}

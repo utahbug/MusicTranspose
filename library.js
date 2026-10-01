@@ -20,8 +20,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const search=createSongSearch();let searchScope='titles',searchLoading=false,searchRequest=0;
  $('library-search-scope').onchange=async()=>{const request=++searchRequest;searchScope=$('library-search-scope').value;searchLoading=searchScope!=='titles';render();if(searchLoading){try{await search.prepare();}catch{if(request===searchRequest){searchScope='titles';$('library-search-scope').value='titles';$('library-message').textContent='Lyrics search unavailable. Titles search is still available; choose the scope again to retry.';}}}if(request===searchRequest){searchLoading=false;render();}};
  // Navigation restores browsing context, never text-entry intent.
- const libraryHeading=document.querySelector('.library-heading h1');
- libraryHeading.tabIndex=-1;
+ const libraryHeading=document.querySelector('.library-heading .header-home');
  function blurSearch(){if(document.activeElement===$('library-search'))$('library-search').blur();}
  function focusLibrary(){blurSearch();libraryHeading.focus({preventScroll:true});}
  blurSearch();
@@ -143,6 +142,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('view-files').onclick=()=>{clearLeadFilter();closeMore();blurSearch();navigation?.visit({view:'files'});libraryScroll=scrollY;remember();persistWorkspace();lists.hide();files.open();};
  $('library-search').onkeydown=e=>{if(e.key==='Escape'&&e.currentTarget.value){e.preventDefault();$('library-clear').click();}};
  $('library-search').oninput=render;$('songs').onclick=showLibrary;
+ document.addEventListener('click',e=>{if(e.target.closest('.header-home')&&$('library').hidden)showLibrary();});
  document.addEventListener('local-music-changed',()=>{render();lists.render();});
  document.addEventListener('local-music-deleted',e=>{const id=e.detail;state.favorites=state.favorites.filter(x=>x!==id);state.recent=state.recent.filter(x=>x!==id);for(const g of state.groups)g.songs=g.songs.filter(x=>x!==id);if(current===id)current=null;save();});
  document.addEventListener('local-music-memberships',e=>{for(const item of e.detail.memberships){const g=state.groups.find(g=>g.id===item.id);if(g)g.songs=item.checked?[...new Set([...g.songs,e.detail.id])]:g.songs.filter(id=>id!==e.detail.id);}save();});
@@ -160,7 +160,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   if(route.view==='lists'&&route.picking&&state.groups.some(g=>g.id===route.list))lists.pick(route.list,false);
   else if(route.view==='lists'&&!route.list)lists.open();
   else if(route.view==='files')files.open();
-  else{if(route.view==='lists'){activeList=state.groups.some(g=>g.id===route.list)?route.list:null;sort=activeList?'manual':globalSort;route={...route,view:'library',list:activeList};}$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();focusLibrary();}
+  else{if(route.view==='lists'){activeList=state.groups.some(g=>g.id===route.list)?route.list:null;sort=activeList?'manual':globalSort;route={...route,view:'library',list:activeList};}$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicTranspose';render();if(document.activeElement!==document.body&&document.activeElement!==$('library-search'))focusLibrary();}
   window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;
  }
  // A snapshot of the displayed IDs is shared by score routes, never catalog-wide by accident.

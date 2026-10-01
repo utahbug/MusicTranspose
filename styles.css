@@ -1140,3 +1140,14 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library #library-search:focus{border-color:#365f7d;background:#fff;outline:2px solid #536b7a;outline-offset:1px}
 @media(min-width:700px){#library .numbered-song .song-number{font-size:16px}}
 @media(max-width:600px){#library .library-filter-row .sort-choice{width:116px;flex-basis:116px}#library .library-filter-row #library-source{max-width:calc(100% - 132px)}}
+
+/* Home identity uses a title underline for keyboard focus, never a header-sized box. */
+.header-home{appearance:none;border:0;border-radius:0;box-shadow:none;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;text-align:inherit;cursor:pointer;padding:0}
+#library .library-heading .header-home:focus,.header-home:focus,.header-home:focus-visible{outline:none;box-shadow:none}
+.score-header-home{grid-column:1;grid-row:1 / span 2;align-self:stretch;justify-self:stretch;z-index:1;min-width:0;min-height:44px}
+.home-identity{position:relative}
+.identity-home{position:absolute;inset:0;z-index:1}
+.lyrics-header-home{position:absolute;inset:0 60px 0 0;z-index:1}
+:is(.library-heading,.score-identity-header,.lyrics-identity-header,.files-heading,.lists-heading):has(.header-home:focus-visible) h1{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+#library .library-heading h1:focus,.score-heading h1:focus,#lyrics-view .lyrics-identity-header h1:focus,#files-heading:focus,#lists-heading:focus{outline:none;box-shadow:none}
+@media print{.header-home{display:none!important}}
