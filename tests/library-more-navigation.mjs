@@ -3,7 +3,7 @@ const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE||'C:/Users/kenro/.
 try{for(const [width,height] of [[820,1180],[1440,1000],[390,844]]){
  const c=await b.newContext({viewport:{width,height},serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await c.addInitScript(ids=>{if(!localStorage.getItem('more-menu-seeded')){localStorage.setItem('more-menu-seeded','1');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:ids,groups:[{id:'test-list',name:'Rehearsal',songs:ids.slice(0,80)}]}));}},songs.map(s=>s.id));
- await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.locator('.library-row').first().waitFor();
+ await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.locator('[data-home-source=all]').click();await p.locator('.library-row').first().waitFor();
  const more=async()=>{await p.locator('#library-more').click();await p.locator('#library-more-dialog').waitFor({state:'visible'});};
  await more();assert.deepEqual(await p.locator('#library-more-dialog button:visible').allTextContents(),['Files','Lists','Add app to Home Screen…']);assert.equal(await p.locator('#library-more-dialog [role=separator]').count(),1);
  for(const id of ['view-files','view-lists','add-home-screen']){assert.equal(await p.evaluate(()=>document.activeElement.id),id);const box=await p.locator('#'+id).boundingBox();assert(box.height>=44);await p.keyboard.press('ArrowDown');}
