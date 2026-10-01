@@ -13,7 +13,7 @@ import {createLeadXML,leadReasons,leadEngravingXML,installLeadHarmony} from './l
 import {installLyricPlacement} from './lyric-placement.js';
 installLyricPlacement(opensheetmusicdisplay);
 installLeadHarmony(opensheetmusicdisplay);
-import {readScoreSize,saveScoreSize,candidateZooms,assessLayout,chooseLayout} from './auto-layout.js';
+import {readScoreSize,saveScoreSize,candidateZooms,assessLayout,chooseLayout,fitPhoneLayout} from './auto-layout.js';
 import {lyricsIcon} from './icons.js';
 import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,availableScoreHeight,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
@@ -22,7 +22,7 @@ import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
 import {initPlaybackSettings} from './playback-settings.js';
 import {createPlayback} from './playback.js';
 import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
-import {renderPdf,preparePdfPrint,originalPdfData} from './pdf-score.js';
+import {renderPdf,preparePdfPrint,originalPdfData,originalPageCount} from './pdf-score.js';
 import {createScoreExport} from './score-export.js';
 import {initLibrary} from './library.js';
 import {avoidTempoCollisions} from './score-layout.js';
@@ -125,7 +125,7 @@ function pump(){
 async function renderScore(){
  const token=selectionVersion;
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
- try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}`;const start=performance.now();const cached=cache.get(id);
+ try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize,phoneTarget=matchMedia('(max-width:600px)').matches?(originalPageCount(activeSong.pdfAsset)||1):null;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}:${phoneTarget}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original,activeSong);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
    applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
@@ -135,10 +135,18 @@ async function renderScore(){
    const phone=matchMedia('(max-width:600px)').matches;
    if(!lead?.ok){osmd.EngravingRules.PageLeftMargin=.6;osmd.EngravingRules.PageRightMargin=.6;}
    const base=phone||w<800?.78:.9,available=availableScoreHeight(score),geometry=`${w}:${innerHeight}:${phone}:${Math.round(available)}`;
-   const renderOnce=(zoom,staffOwnership=false)=>{osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage,{staffOwnership});if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
-   const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),e=>assessLayout(stage,e.systemLayout,w,available,zoom));
+   // Tail balancing can install temporary system breaks. Each phone scale trial
+   // must begin with the source breaks, not inherit the preceding larger layout.
+   const phoneBreaks=phone&&lead?.ok?osmd.Sheet.SourceMeasures.map(m=>m.printNewSystemXml):null,phoneBreakRule=osmd.EngravingRules.NewSystemAtXMLNewSystemAttribute;
+   const renderOnce=(zoom,staffOwnership=false)=>{if(phoneBreaks){osmd.Sheet.SourceMeasures.forEach((m,i)=>m.printNewSystemXml=phoneBreaks[i]);osmd.EngravingRules.NewSystemAtXMLNewSystemAttribute=phoneBreakRule;}osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage,{staffOwnership});if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   // Screen-only lower bound: 11px lyric text and at least .55 notation scale.
+   const phoneQuality={minimumLyric:11,pagination:{gapCap:lead?.ok?14:24,minimumGap:lead?.ok?8:12,preferSections:!!lead?.ok}};
+   const assess=e=>assessLayout(stage,e.systemLayout,w,available,e.zoom,phone?phoneQuality:undefined);
+   const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),assess);
    let entry;
-   if(density==='auto'){
+   if(phone&&(density==='auto'||lead?.ok)){
+    entry=fitPhoneLayout(render,assess,lead?.ok?.88:base,phoneTarget);
+   }else if(density==='auto'){
     const candidates=[];
     // Keep a valid density across nearby key/register changes, avoiding visual jumps.
     if(autoChoice?.geometry===geometry){const retained=render(autoChoice.zoom);retained.autoReport=assessLayout(stage,retained.systemLayout,w,available,retained.zoom);if(retained.autoReport.readable&&retained.autoReport.collisions===0){entry=retained;entry.autoReport.retained=true;}else candidates.push(retained);}

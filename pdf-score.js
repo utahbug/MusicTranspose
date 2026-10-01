@@ -1,5 +1,7 @@
 // The same score container, document scrolling and print-pages output serve both score types.
-const documents=new Map();
+const documents=new Map(),pageCounts=new Map();
+// Known authored targets only; fitting never downloads a PDF just to measure it.
+export const originalPageCount=asset=>pageCounts.get(asset)||null;
 const analysisCanvas=document.createElement('canvas');
 const bounds=new WeakMap(),trimKey='music-transpose-pdf-trim-v1';
 let trim=true;try{trim=sessionStorage.getItem(trimKey)!=='false';}catch{}
@@ -24,7 +26,7 @@ trimControl.onchange=()=>{trim=trimControl.checked;try{sessionStorage.setItem(tr
 export async function renderPdf(asset,host,title,isCurrent=()=>true){
  pdfjsLib.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdf.worker.min.js',import.meta.url).href;
  if(!documents.has(asset)){const job=pdfjsLib.getDocument({url:asset,isEvalSupported:false}).promise;documents.set(asset,job);job.catch(()=>documents.delete(asset));}
- const doc=await documents.get(asset);if(!isCurrent())return;const output=document.createDocumentFragment();
+ const doc=await documents.get(asset);pageCounts.set(asset,doc.numPages);if(!isCurrent())return;const output=document.createDocumentFragment();
  for(let n=1;n<=doc.numPages;n++){
   const page=await doc.getPage(n);if(!isCurrent())return;const base=page.getViewport({scale:1}),viewport=page.getViewport({scale:1800/base.width});
   const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.dataset.pdfPage=String(n);frame.dataset.pdfDocument=doc.fingerprints?.[0]||doc.fingerprint||asset;frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);output.append(frame);
