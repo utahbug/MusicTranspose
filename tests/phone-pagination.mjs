@@ -10,7 +10,7 @@ try{for(const [width,height,touch] of [[390,844,true],[820,1180,true],[1440,1000
  const nav=async mode=>{await p.locator('#settings').click();await p.locator(`input[name=navigation][value=${mode}]`).check();await p.locator('#apply-settings').click();};
  for(const id of ids){
   await p.evaluate(id=>prototype.loadSong(id),id);await ready();assert.equal(await p.locator('#score .pdf-page-frame').count(),1);assert.equal(await p.evaluate(async()=>{const {originalPageCount}=await import('./pdf-score.js');const {songs}=await import('./catalog.js');return originalPageCount(songs.find(s=>s.id===prototype.song).pdfAsset);}),1);
-  if(id===ids[0])assert.equal(await p.locator('input[name=navigation]:checked').inputValue(),touch&&width>=600?'pages':'continuous','Existing navigation default retained (desktop currently Continuous)');
+  if(id===ids[0])assert.equal(await p.locator('input[name=navigation]:checked').inputValue(),width>600?'pages':'continuous','Device navigation default');
   const counts=[];
   for(const mode of ['auto','large']){
    await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${mode}]`).click();await ready();

@@ -21,7 +21,7 @@ export function installScoreTaps({enabled,navigate}){
  const host=$('playing-view');
  let gesture=null;
  const cancel=()=>{const g=gesture;gesture=null;if(g&&host.hasPointerCapture(g.id))host.releasePointerCapture(g.id);};
- const available=()=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden]),#score-tools-menu:not([hidden])');
+ const available=()=>enabled()&&!document.querySelector('dialog[open],#score-size-options:not([hidden]),#score-tools-menu:not([hidden]),#score-navigation-menu:not([hidden])');
  const safe=target=>available()&&target instanceof Element&&!target.closest(interactive);
  // One pointer stream owns navigation; touchend and compatibility clicks never navigate.
  document.addEventListener('pointerdown',e=>{
@@ -50,7 +50,7 @@ export function installScoreTaps({enabled,navigate}){
  scoreChanges.observe($('score'),{attributes:true,attributeFilter:['aria-busy'],attributeOldValue:true});
  const controlChanges=new MutationObserver(records=>{
   // Also catch a blocking control opened and closed within the same task.
-  const wasBlocking=records.some(r=>r.attributeName==='open'?r.target.matches('dialog')&&r.oldValue!==null:r.target.matches('#score-size-options,#score-tools-menu')&&r.oldValue===null);
+  const wasBlocking=records.some(r=>r.attributeName==='open'?r.target.matches('dialog')&&r.oldValue!==null:r.target.matches('#score-size-options,#score-tools-menu,#score-navigation-menu')&&r.oldValue===null);
   if(!available()||wasBlocking)cancel();
  });
  controlChanges.observe(document.body,{subtree:true,attributes:true,attributeFilter:['open','hidden'],attributeOldValue:true});

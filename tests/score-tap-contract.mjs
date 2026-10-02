@@ -5,7 +5,7 @@ const b=await chromium.launch({channel:'msedge',headless:true});
 try{
  const c=await b.newContext({viewport:{width:820,height:1180},hasTouch:true,serviceWorkers:'block'}),p=await c.newPage();
  const base=process.env.TEST_URL||'http://127.0.0.1:8775/';
- await p.route('**/tap-contract',r=>r.fulfill({contentType:'text/html',body:`<style>body{margin:0}#score{width:800px;height:1000px}.masthead{position:fixed;top:1100px}</style><div id="playing-view"><div id="score" aria-busy="false"></div><button id="control">Control</button></div><div class="masthead"></div><dialog id="modal"></dialog><div id="score-size-options" hidden></div><div id="score-tools-menu" hidden></div><div id="unrelated" hidden></div>`}));
+ await p.route('**/tap-contract',r=>r.fulfill({contentType:'text/html',body:`<style>body{margin:0}#score{width:800px;height:1000px}.masthead{position:fixed;top:1100px}</style><div id="playing-view"><div id="score" aria-busy="false"></div><button id="control">Control</button></div><div class="masthead"></div><dialog id="modal"></dialog><div id="score-size-options" hidden></div><div id="score-tools-menu" hidden></div><div id="score-navigation-menu" hidden></div><div id="unrelated" hidden></div>`}));
  await p.goto(base+'tap-contract');
  const result=await p.evaluate(async()=>{
   const {installScoreTaps,scoreTapGeometry}=await import('./score-taps.js'),actions=[];let enabled=true;
@@ -22,12 +22,12 @@ try{
     event('pointerdown',{clientX,clientY});event('pointerup',{clientX:clientX+dx,clientY:clientY+dy});
     assert(actions.length===1&&actions[0]===action,form+' retained boundary action');
    }
-   for(const id of ['score-size-options','score-tools-menu']){down();document.getElementById(id).hidden=false;document.getElementById(id).hidden=true;await Promise.resolve();up();assert(!actions.length,form+' transient blocker');}
+   for(const id of ['score-size-options','score-tools-menu','score-navigation-menu']){down();document.getElementById(id).hidden=false;document.getElementById(id).hidden=true;await Promise.resolve();up();assert(!actions.length,form+' transient blocker');}
    down();document.querySelector('#modal').showModal();document.querySelector('#modal').close();await Promise.resolve();up();assert(!actions.length,form+' transient modal');
    down();up();up();score.dispatchEvent(new Event('touchend',{bubbles:true}));score.click();assert(actions.length===1&&actions[0]===1,form+' exactly one action');
    for(const name of ['score-session-reset','score-engraved','library-open','visibilitychange','pointercancel','lostpointercapture']){down();document.dispatchEvent(new Event(name));up();assert(!actions.length,form+' '+name);}
    for(const name of ['scroll','resize','blur','beforeprint']){down();window.dispatchEvent(new Event(name));up();assert(!actions.length,form+' '+name);}
-   for(const id of ['score-size-options','score-tools-menu']){down();document.getElementById(id).hidden=false;await Promise.resolve();document.getElementById(id).hidden=true;up();assert(!actions.length,form+' '+id);}
+   for(const id of ['score-size-options','score-tools-menu','score-navigation-menu']){down();document.getElementById(id).hidden=false;await Promise.resolve();document.getElementById(id).hidden=true;up();assert(!actions.length,form+' '+id);}
    down();score.setAttribute('aria-busy','true');score.setAttribute('aria-busy','false');await Promise.resolve();up();assert(!actions.length,form+' busy transaction');
    down();document.querySelector('#modal').showModal();await Promise.resolve();document.querySelector('#modal').close();up();assert(!actions.length,form+' modal');
    down();enabled=false;up();enabled=true;assert(!actions.length,form+' disabled');
