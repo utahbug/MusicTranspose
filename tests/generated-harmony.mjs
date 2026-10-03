@@ -21,30 +21,32 @@ try{
    const text=raw.replace('<note','<direction><direction-type><words>C7</words></direction-type></direction><note');check(await withGeneratedHarmony(text,id)===text,'text chord precedence');
    const lead=createLeadXML(xml,song);check(lead.ok,id+' Melody success');
    const lh=[...parseXML(lead.xml).querySelectorAll('harmony')];check(lh.every(n=>n.id.startsWith('mt-generated-')),'Melody retains provenance');check(lh.length===hs.length,id+' Melody harmony count');
-   check(lh.map(n=>n.querySelector('root').textContent+n.querySelector('kind').textContent+(n.querySelector('bass')?.textContent||'')).join('|')===hs.map(n=>n.querySelector('root').textContent+n.querySelector('kind').textContent+(n.querySelector('bass')?.textContent||'')).join('|'),'Melody harmony specification');
+   // Multiple voices can serialize harmony nodes in a different order; compare musical positions.
+   const harmonyEvents=doc=>[...doc.querySelectorAll('part')].flatMap(part=>{let divisions=1;return [...part.querySelectorAll(':scope > measure')].flatMap((m,measure)=>{let cursor=0;const events=[];for(const n of m.children){if(n.localName==='attributes')divisions=Number(n.querySelector('divisions')?.textContent||divisions);const duration=Number(n.querySelector(':scope > duration')?.textContent||0)/divisions;if(n.localName==='backup')cursor-=duration;else if(n.localName==='forward')cursor+=duration;else if(n.localName==='note'&&!n.querySelector('chord,grace'))cursor+=duration;else if(n.localName==='harmony')events.push({id:n.id,measure,offset:Math.round((cursor+Number(n.querySelector('offset')?.textContent||0)/divisions)*1e7)/1e7,root:n.querySelector('root').textContent,kind:n.querySelector('kind').textContent});}return events;});}).sort((a,b)=>a.id.localeCompare(b.id));
+   check(JSON.stringify(harmonyEvents(d))===JSON.stringify(harmonyEvents(parseXML(lead.xml))),id+' Melody musical harmony positions/specifications');
    for(const source of [xml,lead.xml]){
     const before=[...parseXML(source).querySelectorAll('harmony root,harmony bass')],after=[...parseXML(transposeXML(source,2,song.modeOverride)).querySelectorAll('harmony root,harmony bass')];
     check(before.length===after.length,'transposed count');check(before.every((n,i)=>(pitch(n)+2)%12===pitch(after[i])),'root and slash bass +2');
     const shifted=parseXML(transposeXML(source,2,song.modeOverride));check([...shifted.querySelectorAll('harmony kind')].map(n=>n.textContent).join('|')===[...parseXML(source).querySelectorAll('harmony kind')].map(n=>n.textContent).join('|'),'transposition preserves quality');check(!shifted.querySelector('harmony bass'),'transposed generated symbols remain root-only');
    }
    out.push({id,number:song.page,chords:hs.length});
-  }check(out.length===12,'exactly five pilots plus seven Christmas hymns');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
+  }check(out.length===42,'exactly twelve approved plus thirty Phase 3A hymns');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
  });console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!document.body.classList.contains('song-loading')&&document.querySelector('#score').getAttribute('aria-busy')==='false');
  for(const song of unit){
   if(process.env.HARMONY_RENDER_IDS&&!process.env.HARMONY_RENDER_IDS.split(',').includes(song.number))continue;
-  await p.evaluate(id=>prototype.loadSong(id),song.id);await ready();
+  await p.evaluate(id=>prototype.loadSong(id),song.id);await ready();const pdfPageCount=await p.locator('.pdf-page-frame').count()||null;
   for(const mode of ['auto','large']){
    await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${mode}]`).click();await ready();
-   for(const shift of [0,2]){
+   for(const shift of (process.env.HARMONY_ALT_ONLY?[2]:!process.env.HARMONY_ALT_IDS||process.env.HARMONY_ALT_IDS.split(',').includes(song.number)?[0,2]:[0])){
     await p.evaluate(shift=>prototype.changeKey(shift),shift);await ready();
     const state=await p.evaluate(()=>({harmony:new DOMParser().parseFromString(prototype.viewXML,'application/xml').querySelectorAll('harmony').length,overflow:document.documentElement.scrollWidth>innerWidth,svg:document.querySelectorAll('#score svg').length,text:document.querySelector('#score').textContent,report:document.querySelector('#score').autoReport,zoom:document.querySelector('#score').dataset.zoom}));
     assert.equal(state.harmony,song.chords);assert(!state.overflow);assert(state.svg>0);
     const screenshots=[];const pageCount=await p.locator('.mxl-page-frame').count();
     await p.keyboard.press('Home');
     for(let i=0;i<pageCount;i++){const file=`test-results/harmony-${song.number}-${mode}-${shift}-page${i+1}.png`;await p.screenshot({path:file});screenshots.push(file);if(i+1<pageCount)await p.keyboard.press('PageDown');}
-    await p.keyboard.press('Home');rows.push({...song,mode,shift,...state,pageCount,screenshots});console.log('PASS render',song.number,mode,shift,state.zoom);
+    await p.keyboard.press('Home');rows.push({...song,pdfPageCount,mode,shift,...state,pageCount,screenshots});console.log('PASS render',song.number,mode,shift,state.zoom);
    }
    await p.evaluate(()=>prototype.changeKey(0));await ready();
   }

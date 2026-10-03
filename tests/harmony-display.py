@@ -47,7 +47,24 @@ class Display(unittest.TestCase):
   self.assertEqual(approved,{k:new[k] for k in approved})
   batch=json.loads((ROOT/'reports/harmony-christmas.json').read_text(encoding='utf8'))
   self.assertEqual({r['number'] for r in batch},{203,206,207,208,209,212,213})
-  self.assertEqual(set(new)-set(approved),{r['id'] for r in batch if 'skipped' not in r})
+  prior12=json.loads(subprocess.check_output(['git','show','666a505:generated-harmony-data.js'],cwd=ROOT).decode().split('export const generatedHarmony = ')[1].strip().rstrip(';'))
+  self.assertEqual(prior12,{k:new[k] for k in prior12})
+  batch3=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
+  self.assertEqual(len(batch3),30)
+  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3 if 'skipped' not in r})
+ def test_batch3a_scope_and_events(self):
+  batch=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
+  self.assertEqual({r['number'] for r in batch},{3,6,19,21,26,27,29,34,35,36,58,60,68,85,89,92,94,96,97,98,103,104,105,111,125,131,134,136,140,141})
+  for r in batch:
+   self.assertEqual(r['harmonyCount'],0);self.assertEqual(r['chordText'],[])
+   self.assertEqual(__import__('hashlib').sha256((ROOT/r['asset']).read_bytes()).hexdigest(),r['sourceSha256'])
+   events=r['rootDisplay']['events'];self.assertTrue(events)
+   self.assertTrue(all(e['bass'] is None and '/' not in e['label'] for e in events))
+   self.assertEqual(len(events),len({(e['measure'],e['offset']) for e in events}))
+   self.assertTrue(all((a['rootPC'],a['kind'])!=(b['rootPC'],b['kind']) for a,b in zip(events,events[1:])))
+   self.assertEqual(events[0]['rootPC'],(7*events[0]['keyFifths'])%12)
+   self.assertEqual(events[-1]['rootPC'],events[0]['rootPC'])
+   self.assertTrue(any(e['kind']=='dominant' for e in events))
 class RootDisplay(unittest.TestCase):
  def run_policy(self,events,local=True):
   fn=runpy.run_path(str(ROOT/'tools/harmony-display.py'))['root_only_display'];return fn(events,M,local_density=local)
