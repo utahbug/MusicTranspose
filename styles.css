@@ -1395,3 +1395,13 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
    Continuous and the surrounding page retain native scrolling. Annotation owns
    its own drawing gestures and is excluded from this rule. */
 @media screen{body.page-navigation:not(.pdf-annotation-active) #score{touch-action:pinch-zoom}}
+
+/* Lists hierarchy: one open parent, indented information, fixed action columns. */
+#lists-view .list-workspace-section.is-open>.list-overview-row{background:#d5e3e6}
+#lists-view .list-overview-entry[aria-expanded=true]{background:transparent}
+#lists-view .list-overview-entry[aria-expanded=true]:hover{background:#cbdce1}
+#lists-view .workspace-song-entry{padding-left:60px}
+.workspace-song-entry strong,.workspace-song-entry .song-meta{white-space:normal;overflow-wrap:anywhere;text-overflow:clip}
+.workspace-song-row.dragging{position:relative;z-index:4;opacity:.95;background:#e1edf0;box-shadow:0 4px 14px #23333130;pointer-events:none}
+.workspace-song-row.dragging .order-song{pointer-events:auto}
+@media(max-width:600px){#lists-view .workspace-song-entry{padding-left:52px}.workspace-list-actions{gap:0}#lists-view .workspace-list-actions button{padding:8px}}
