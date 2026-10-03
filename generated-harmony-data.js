@@ -5604,16 +5604,6 @@ export const generatedHarmony = {
         "bass": null
       },
       {
-        "measure": 1,
-        "offset": 3.0,
-        "root": {
-          "step": "F",
-          "alter": 1
-        },
-        "kind": "minor",
-        "bass": null
-      },
-      {
         "measure": 2,
         "offset": 0,
         "root": {
@@ -5621,16 +5611,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "minor",
-        "bass": null
-      },
-      {
-        "measure": 2,
-        "offset": 1.0,
-        "root": {
-          "step": "E",
-          "alter": 0
-        },
-        "kind": "major",
         "bass": null
       },
       {
@@ -5651,16 +5631,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 2,
-        "offset": 3.0,
-        "root": {
-          "step": "B",
-          "alter": 0
-        },
-        "kind": "minor",
         "bass": null
       },
       {
@@ -5695,16 +5665,6 @@ export const generatedHarmony = {
       },
       {
         "measure": 4,
-        "offset": 1.0,
-        "root": {
-          "step": "A",
-          "alter": 0
-        },
-        "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 4,
         "offset": 1.5,
         "root": {
           "step": "A",
@@ -5734,16 +5694,6 @@ export const generatedHarmony = {
         "bass": null
       },
       {
-        "measure": 5,
-        "offset": 3.0,
-        "root": {
-          "step": "F",
-          "alter": 1
-        },
-        "kind": "minor",
-        "bass": null
-      },
-      {
         "measure": 6,
         "offset": 0,
         "root": {
@@ -5751,16 +5701,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "minor",
-        "bass": null
-      },
-      {
-        "measure": 6,
-        "offset": 1.0,
-        "root": {
-          "step": "E",
-          "alter": 0
-        },
-        "kind": "major",
         "bass": null
       },
       {
@@ -5781,16 +5721,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 6,
-        "offset": 3.0,
-        "root": {
-          "step": "B",
-          "alter": 0
-        },
-        "kind": "minor",
         "bass": null
       },
       {
@@ -5825,16 +5755,6 @@ export const generatedHarmony = {
       },
       {
         "measure": 8,
-        "offset": 1.0,
-        "root": {
-          "step": "A",
-          "alter": 0
-        },
-        "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 8,
         "offset": 1.5,
         "root": {
           "step": "A",
@@ -5861,16 +5781,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 9,
-        "offset": 1.0,
-        "root": {
-          "step": "B",
-          "alter": 0
-        },
-        "kind": "minor",
         "bass": null
       },
       {
@@ -5944,16 +5854,6 @@ export const generatedHarmony = {
         "bass": null
       },
       {
-        "measure": 11,
-        "offset": 3.0,
-        "root": {
-          "step": "F",
-          "alter": 1
-        },
-        "kind": "minor",
-        "bass": null
-      },
-      {
         "measure": 12,
         "offset": 0,
         "root": {
@@ -5995,29 +5895,9 @@ export const generatedHarmony = {
       },
       {
         "measure": 13,
-        "offset": 1.0,
-        "root": {
-          "step": "E",
-          "alter": 0
-        },
-        "kind": "minor",
-        "bass": null
-      },
-      {
-        "measure": 13,
         "offset": 2.0,
         "root": {
           "step": "G",
-          "alter": 0
-        },
-        "kind": "major",
-        "bass": null
-      },
-      {
-        "measure": 13,
-        "offset": 3.0,
-        "root": {
-          "step": "D",
           "alter": 0
         },
         "kind": "major",
@@ -6031,16 +5911,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "dominant",
-        "bass": null
-      },
-      {
-        "measure": 14,
-        "offset": 0,
-        "root": {
-          "step": "B",
-          "alter": 0
-        },
-        "kind": "major",
         "bass": null
       },
       {
@@ -6091,16 +5961,6 @@ export const generatedHarmony = {
           "alter": 0
         },
         "kind": "minor",
-        "bass": null
-      },
-      {
-        "measure": 16,
-        "offset": 1.0,
-        "root": {
-          "step": "A",
-          "alter": 0
-        },
-        "kind": "major",
         "bass": null
       },
       {

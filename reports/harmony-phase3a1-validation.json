@@ -1,0 +1,664 @@
+{
+  "viewport": "820 x 1180, simulated iPad in Edge",
+  "scope": "Only #68 overlay changed. #35 and all forty other overlays remain exactly equal to commit 2df4662. No Batch 2 generation.",
+  "policy": "Opt-in temporal display stage after the accepted root-only/local-density stage. Evaluate four or more symbols within three meter-normalized beats, or three within 1.5 beats, across barlines. Counts describe symbols/onsets, not transitions between them. Compound meter uses dotted beats. Trigger is a review threshold, not a cap. Drop short same-root triad/seventh duplication and short weak-position diatonic minor/neighbor events lacking protected function. Preserve strong positions, predominant-to-dominant links, dominant/secondary-dominant resolutions and chromatic/diminished/seventh interpretations. Retained onsets/qualities are unchanged.",
+  "analysis": "#68 detailed analysis remains 59 events and 4 review windows, including bass/inversion metadata. Historical Phase 3A analysis/report data is unchanged. Source MXL/PDF and inference functions are unchanged. Runtime source-harmony precedence, fingerprint protection, injection-before-transposition, Melody projection and root-only policy remain intact.",
+  "hymn35": {
+    "displayBefore": 28,
+    "displayAfter": 28,
+    "removedEvents": [],
+    "chordsCauseExtraFullPage": false,
+    "before": [
+      {
+        "number": 35,
+        "mode": "auto",
+        "shift": 0,
+        "pageCount": 2,
+        "zoom": "0.78",
+        "systems": "5",
+        "report": {
+          "zoom": 0.78,
+          "pages": 2,
+          "visibleSystems": 2,
+          "visibleMeasures": 8,
+          "totalSystems": 5,
+          "clipping": 0,
+          "collisions": 0,
+          "minLyric": 15.599999975332942,
+          "oversize": 0,
+          "fitScale": 1,
+          "displayMinLyric": 15.599999975332942,
+          "readable": true,
+          "baseline": true,
+          "candidates": [
+            {
+              "zoom": 0.78,
+              "pages": 2,
+              "visibleSystems": 2,
+              "visibleMeasures": 8,
+              "totalSystems": 5,
+              "clipping": 0,
+              "collisions": 0,
+              "minLyric": 15.599999975332942,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 15.599999975332942,
+              "readable": true,
+              "baseline": true
+            },
+            {
+              "zoom": 0.702,
+              "pages": 2,
+              "visibleSystems": 2,
+              "visibleMeasures": 8,
+              "totalSystems": 5,
+              "clipping": 0,
+              "collisions": 1,
+              "minLyric": 14.040000150962397,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 14.040000150962397,
+              "readable": true,
+              "baseline": false
+            },
+            {
+              "zoom": 0.68,
+              "pages": 2,
+              "visibleSystems": 2,
+              "visibleMeasures": 8,
+              "totalSystems": 5,
+              "clipping": 0,
+              "collisions": 1,
+              "minLyric": 13.600000602129237,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 13.600000602129237,
+              "readable": true,
+              "baseline": false
+            }
+          ]
+        },
+        "harmony": 28
+      },
+      {
+        "number": 35,
+        "mode": "large",
+        "shift": 0,
+        "pageCount": 2,
+        "zoom": "0.9",
+        "systems": "6",
+        "report": null,
+        "harmony": 28
+      }
+    ],
+    "noOverlay": [
+      {
+        "number": 35,
+        "mode": "auto",
+        "shift": 0,
+        "pageCount": 2,
+        "zoom": "0.78",
+        "systems": "6",
+        "report": {
+          "zoom": 0.78,
+          "pages": 2,
+          "visibleSystems": 3,
+          "visibleMeasures": 11,
+          "totalSystems": 6,
+          "clipping": 1,
+          "collisions": 2,
+          "minLyric": 15.599999975332942,
+          "oversize": 0,
+          "fitScale": 1,
+          "displayMinLyric": 15.599999975332942,
+          "readable": false,
+          "baseline": true,
+          "candidates": [
+            {
+              "zoom": 0.78,
+              "pages": 2,
+              "visibleSystems": 3,
+              "visibleMeasures": 11,
+              "totalSystems": 6,
+              "clipping": 1,
+              "collisions": 2,
+              "minLyric": 15.599999975332942,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 15.599999975332942,
+              "readable": false,
+              "baseline": true
+            },
+            {
+              "zoom": 0.702,
+              "pages": 2,
+              "visibleSystems": 2,
+              "visibleMeasures": 8,
+              "totalSystems": 5,
+              "clipping": 0,
+              "collisions": 1,
+              "minLyric": 14.040000150962397,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 14.040000150962397,
+              "readable": true,
+              "baseline": false
+            },
+            {
+              "zoom": 0.68,
+              "pages": 2,
+              "visibleSystems": 2,
+              "visibleMeasures": 8,
+              "totalSystems": 5,
+              "clipping": 0,
+              "collisions": 1,
+              "minLyric": 13.600000602129237,
+              "oversize": 0,
+              "fitScale": 1,
+              "displayMinLyric": 13.600000602129237,
+              "readable": true,
+              "baseline": false
+            }
+          ]
+        },
+        "harmony": 0
+      },
+      {
+        "number": 35,
+        "mode": "large",
+        "shift": 0,
+        "pageCount": 1,
+        "zoom": "0.9",
+        "systems": "6",
+        "report": null,
+        "harmony": 0
+      }
+    ],
+    "after": [
+      {
+        "number": 35,
+        "view": "Full",
+        "shift": 0,
+        "beforePages": 2,
+        "afterPages": 2,
+        "beforeZoom": "0.78",
+        "afterZoom": "0.78",
+        "afterSystems": 5,
+        "screenshots": [
+          "test-results/harmony-35-auto-0-page1.png",
+          "test-results/harmony-35-auto-0-page2.png"
+        ]
+      },
+      {
+        "number": 35,
+        "view": "Full",
+        "shift": 2,
+        "beforePages": 2,
+        "afterPages": 2,
+        "beforeZoom": "0.78",
+        "afterZoom": "0.78",
+        "afterSystems": 6,
+        "screenshots": [
+          "test-results/harmony-35-auto-2-page1.png",
+          "test-results/harmony-35-auto-2-page2.png"
+        ]
+      },
+      {
+        "number": 35,
+        "view": "Melody",
+        "shift": 0,
+        "beforePages": 2,
+        "afterPages": 2,
+        "beforeZoom": "0.9",
+        "afterZoom": "0.9",
+        "afterSystems": 6,
+        "screenshots": [
+          "test-results/harmony-35-large-0-page1.png",
+          "test-results/harmony-35-large-0-page2.png"
+        ]
+      },
+      {
+        "number": 35,
+        "view": "Melody",
+        "shift": 2,
+        "beforePages": 2,
+        "afterPages": 2,
+        "beforeZoom": "0.9",
+        "afterZoom": "0.9",
+        "afterSystems": 7,
+        "screenshots": [
+          "test-results/harmony-35-large-2-page1.png",
+          "test-results/harmony-35-large-2-page2.png"
+        ]
+      }
+    ],
+    "conclusion": "Full already needs two pages without chords: six systems at 0.78, with alternate existing scale trials also yielding two pages. With chords it uses five systems at the same scale and remains two pages. This is existing structured layout/lyric-system packing, not a generated-chord-induced Full 1-to-2 transition. Leave the musically accepted 28-chord progression intact. Melody is six systems at 0.9 in both cases, but added above-staff harmony height changes packing from one to two pages in this simulation. This differs from the reported physical one-page Melody result; no physical-device diagnosis or pagination change is claimed."
+  },
+  "hymn68": {
+    "before": {
+      "displayed": 54,
+      "measures3Plus": 10,
+      "measures4Plus": 8,
+      "measures5Plus": 3,
+      "temporalClusters3Plus": 22,
+      "temporalClusters4Plus": 22,
+      "temporalClusters5Plus": 8
+    },
+    "after": {
+      "displayed": 40,
+      "measures3Plus": 9,
+      "measures4Plus": 0,
+      "measures5Plus": 0,
+      "temporalClusters3Plus": 2,
+      "temporalClusters4Plus": 2,
+      "temporalClusters5Plus": 0
+    },
+    "removedEvents": [
+      {
+        "measure": "X2",
+        "measureIndex": 2,
+        "offset": 1.0,
+        "chord": "E",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X4",
+        "measureIndex": 4,
+        "offset": 1.0,
+        "chord": "A",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X6",
+        "measureIndex": 6,
+        "offset": 1.0,
+        "chord": "E",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X8",
+        "measureIndex": 8,
+        "offset": 1.0,
+        "chord": "A",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X13",
+        "measureIndex": 13,
+        "offset": 3.0,
+        "chord": "D",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X14",
+        "measureIndex": 14,
+        "offset": 0,
+        "chord": "B",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X16",
+        "measureIndex": 16,
+        "offset": 1.0,
+        "chord": "A",
+        "durationBeats": 0.5,
+        "reason": "brief triad before the same-root dominant seventh"
+      },
+      {
+        "measure": "X1",
+        "measureIndex": 1,
+        "offset": 3.0,
+        "chord": "F#m",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X2",
+        "measureIndex": 2,
+        "offset": 3.0,
+        "chord": "Bm",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X5",
+        "measureIndex": 5,
+        "offset": 3.0,
+        "chord": "F#m",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X6",
+        "measureIndex": 6,
+        "offset": 3.0,
+        "chord": "Bm",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X9",
+        "measureIndex": 9,
+        "offset": 1.0,
+        "chord": "Bm",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X11",
+        "measureIndex": 11,
+        "offset": 3.0,
+        "chord": "F#m",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      },
+      {
+        "measure": "X13",
+        "measureIndex": 13,
+        "offset": 1.0,
+        "chord": "Em",
+        "durationBeats": 1.0,
+        "reason": "brief weak-position diatonic minor without a functional approach/resolution"
+      }
+    ],
+    "remainingDenseMeasures": [
+      {
+        "measure": "X2",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Bm"
+          },
+          {
+            "offset": 1.5,
+            "chord": "E7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "A"
+          }
+        ],
+        "reason": "Bm–E7–A: ii–V7–I in A."
+      },
+      {
+        "measure": "X4",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Em"
+          },
+          {
+            "offset": 1.5,
+            "chord": "A7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "D"
+          }
+        ],
+        "reason": "Em–A7–D: ii–V7–I in D."
+      },
+      {
+        "measure": "X6",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Bm"
+          },
+          {
+            "offset": 1.5,
+            "chord": "E7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "A"
+          }
+        ],
+        "reason": "Repeated Bm–E7–A functional cadence."
+      },
+      {
+        "measure": "X8",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Em"
+          },
+          {
+            "offset": 1.5,
+            "chord": "A7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "D"
+          }
+        ],
+        "reason": "Repeated Em–A7–D functional cadence."
+      },
+      {
+        "measure": "X9",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "A"
+          },
+          {
+            "offset": 2.0,
+            "chord": "F#m"
+          },
+          {
+            "offset": 3.0,
+            "chord": "E"
+          }
+        ],
+        "reason": "A and F#m occupy strong positions; E leads to A in the following measure."
+      },
+      {
+        "measure": "X11",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "G"
+          },
+          {
+            "offset": 1.0,
+            "chord": "C#dim"
+          },
+          {
+            "offset": 2.0,
+            "chord": "Bm"
+          }
+        ],
+        "reason": "D ends the preceding A-to-D motion; G and Bm are strong-position anchors, with the existing chromatic C#dim interpretation between them. Removing a structural anchor or uncertain chromatic interpretation merely to enforce a cap would exceed this conservative display pass. Review this window physically; C#dim-to-Bm is not claimed to be an authoritative functional analysis."
+      },
+      {
+        "measure": "X12",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Dmaj7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "E"
+          },
+          {
+            "offset": 3.5,
+            "chord": "E7"
+          }
+        ],
+        "reason": "Dmaj7–E–E7 spans 3.5 beats; E persists 1.5 beats, so this is not the rejected half-beat triad/seventh pair."
+      },
+      {
+        "measure": "X13",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "A"
+          },
+          {
+            "offset": 2.0,
+            "chord": "G"
+          },
+          {
+            "offset": 3.5,
+            "chord": "D7"
+          }
+        ],
+        "reason": "A–G–D7 spans 3.5 beats; strong-position anchors and a distinct seventh are retained."
+      },
+      {
+        "measure": "X16",
+        "events": [
+          {
+            "offset": 0,
+            "chord": "Em"
+          },
+          {
+            "offset": 1.5,
+            "chord": "A7"
+          },
+          {
+            "offset": 2.0,
+            "chord": "D"
+          }
+        ],
+        "reason": "Final Em–A7–D cadence."
+      }
+    ],
+    "remainingTemporalClusters": [
+      {
+        "start": "X10",
+        "startOffset": 3.0,
+        "end": "X11",
+        "endOffset": 2.0,
+        "spanBeats": 3.0,
+        "events": [
+          {
+            "measure": "X10",
+            "offset": 3.0,
+            "chord": "D"
+          },
+          {
+            "measure": "X11",
+            "offset": 0,
+            "chord": "G"
+          },
+          {
+            "measure": "X11",
+            "offset": 1.0,
+            "chord": "C#dim"
+          },
+          {
+            "measure": "X11",
+            "offset": 2.0,
+            "chord": "Bm"
+          }
+        ],
+        "reviewReason": "D ends the preceding A-to-D motion; G and Bm are strong-position anchors, with the existing chromatic C#dim interpretation between them. Removing a structural anchor or uncertain chromatic interpretation merely to enforce a cap would exceed this conservative display pass. Review this window physically; C#dim-to-Bm is not claimed to be an authoritative functional analysis."
+      },
+      {
+        "start": "X13",
+        "startOffset": 2.0,
+        "end": "X14",
+        "endOffset": 1.0,
+        "spanBeats": 3.0,
+        "events": [
+          {
+            "measure": "X13",
+            "offset": 2.0,
+            "chord": "G"
+          },
+          {
+            "measure": "X13",
+            "offset": 3.5,
+            "chord": "D7"
+          },
+          {
+            "measure": "X14",
+            "offset": 0.5,
+            "chord": "B7"
+          },
+          {
+            "measure": "X14",
+            "offset": 1.0,
+            "chord": "Em"
+          }
+        ],
+        "reviewReason": "G is a strong-position anchor; D7 and B7 have different roots/qualities, and B7-to-Em is a clear secondary-dominant resolution. Both seventh interpretations remain; do not collapse distinct chromatic harmonies into one label. Physical review should confirm the short D7 transition."
+      }
+    ],
+    "pages": [
+      {
+        "number": 68,
+        "view": "Full",
+        "shift": 0,
+        "beforePages": 1,
+        "afterPages": 1,
+        "beforeZoom": "0.702",
+        "afterZoom": "0.702",
+        "afterSystems": 4,
+        "screenshots": [
+          "test-results/harmony-68-auto-0-page1.png"
+        ]
+      },
+      {
+        "number": 68,
+        "view": "Full",
+        "shift": 2,
+        "beforePages": 2,
+        "afterPages": 1,
+        "beforeZoom": "0.702",
+        "afterZoom": "0.702",
+        "afterSystems": 4,
+        "screenshots": [
+          "test-results/harmony-68-auto-2-page1.png"
+        ]
+      },
+      {
+        "number": 68,
+        "view": "Melody",
+        "shift": 0,
+        "beforePages": 1,
+        "afterPages": 1,
+        "beforeZoom": "0.9",
+        "afterZoom": "0.9",
+        "afterSystems": 7,
+        "screenshots": [
+          "test-results/harmony-68-large-0-page1.png"
+        ]
+      },
+      {
+        "number": 68,
+        "view": "Melody",
+        "shift": 2,
+        "beforePages": 2,
+        "afterPages": 1,
+        "beforeZoom": "0.9",
+        "afterZoom": "0.9",
+        "afterSystems": 7,
+        "screenshots": [
+          "test-results/harmony-68-large-2-page1.png"
+        ]
+      }
+    ]
+  },
+  "visual": "All eight original/+2 Full/Melody combinations inspected page by page. #68 is materially cleaner, without observed chord/title, chord/lyric or chord/note collisions or duplicate labels. #35 placement is unchanged. Root spelling follows the existing key pipeline; original D and alternate E for #68, original Eb and alternate F for #35. Minor/seventh/diminished/major-seventh qualities survive. No generated bass nodes. Same overlay feeds both modes.",
+  "pageOutcome": "#68 original Full/Melody remain 1/1 pages; +2 Full/Melody improve from 2/2 to 1/1. Existing scale selections remain 0.702 Full and 0.9 Melody. No scaling, spacing or pagination rules changed. #35 remains 2/2 in the simulator before/after, original and +2.",
+  "tests": [
+    "7 temporal tests: close versus spread events, cross-barline density, functional three-chord progression, secondary/diminished protection, compound meter, input immutability and exact all-41-other-overlay equivalence",
+    "14 existing display tests",
+    "Targeted refinement --check and integrated generator --check; no other overlay data rewritten",
+    "Existing inference function AST equivalence and no source/layout/runtime modifications",
+    "42-overlay source precedence/fingerprint/invariance, same Melody musical events and structural +2 checks",
+    "7288 focused chord-transposition assertions (CHORD_UNIT_ONLY)",
+    "Eight Full/Melody original/+2 renders; two #35 no-overlay renders and two same-size pre-change measurements; prior verified eight-render baseline reused",
+    "git diff --check"
+  ],
+  "physicalReview": "Review #68 as accompaniment on iPad, especially the two retained four-symbol cross-bar windows X10–X11 and X13–X14. Confirm #35 actual device page count separately; simulation does not override the physical observation. Stop before Batch 2."
+}

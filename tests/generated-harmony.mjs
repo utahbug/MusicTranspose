@@ -41,7 +41,7 @@ try{
    await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${mode}]`).click();await ready();
    for(const shift of (process.env.HARMONY_ALT_ONLY?[2]:!process.env.HARMONY_ALT_IDS||process.env.HARMONY_ALT_IDS.split(',').includes(song.number)?[0,2]:[0])){
     await p.evaluate(shift=>prototype.changeKey(shift),shift);await ready();
-    const state=await p.evaluate(()=>({harmony:new DOMParser().parseFromString(prototype.viewXML,'application/xml').querySelectorAll('harmony').length,overflow:document.documentElement.scrollWidth>innerWidth,svg:document.querySelectorAll('#score svg').length,text:document.querySelector('#score').textContent,report:document.querySelector('#score').autoReport,zoom:document.querySelector('#score').dataset.zoom}));
+    const state=await p.evaluate(()=>({harmony:new DOMParser().parseFromString(prototype.viewXML,'application/xml').querySelectorAll('harmony').length,overflow:document.documentElement.scrollWidth>innerWidth,svg:document.querySelectorAll('#score svg').length,text:document.querySelector('#score').textContent,report:document.querySelector('#score').autoReport,zoom:document.querySelector('#score').dataset.zoom,systems:Number(document.querySelector('#score').dataset.systems)}));
     assert.equal(state.harmony,song.chords);assert(!state.overflow);assert(state.svg>0);
     const screenshots=[];const pageCount=await p.locator('.mxl-page-frame').count();
     await p.keyboard.press('Home');

@@ -100,3 +100,74 @@ def root_only_display(events, measures, *, local_density=False):
         if count>=3:
             remaining.append({'measure':measures[mi]['number'],'events':[{'offset':e['offset'],'chord':e['label']} for e in final if e['measure']==mi], 'reason':('Approved control: only slash removal and resulting deduplication allowed.' if not local_density else 'Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.')})
     return dict(events=final,decisions=decisions,previousCount=len(events),displayCount=len(final),slashBefore=sum(bool(e['bass']) for e in events),slashAfter=0,slashDuplicates=root_dedup,localSuppressed=len(removed),denseBefore=sum(n>=3 for n in before.values()),denseAfter=sum(n>=3 for n in after.values()),remainingDense=remaining)
+
+
+def temporal_display(events, measures):
+    """Opt-in accompaniment cleanup for close changes, including across barlines.
+
+    Meter-normalized time is measured in beats (compound dotted beats). A four-
+    symbol window within three beats, or three within 1.5 beats, merits review.
+    This is a trigger, never a cap. Retained events keep their encoded onset.
+    """
+    starts=[];total=0
+    for m in measures:
+        starts.append(total)
+        total+=m['duration']/(4/m['unit']*(3 if m['beats'] in [6,9,12] else 1))
+    def time(e):
+        m=measures[e['measure']]
+        return starts[e['measure']]+e['offset']/(4/m['unit']*(3 if m['beats'] in [6,9,12] else 1))
+    def windows(es):
+        ts=[time(e) for e in es];found=[]
+        for i in range(len(es)):
+            for size,span in [(4,3),(3,1.5)]:
+                if i+size<=len(es) and ts[i+size-1]-ts[i]<=span+1e-7:
+                    end=i+size
+                    while end<len(es) and ts[end]-ts[i]<=span+1e-7:end+=1
+                    found.append((i,end))
+        return sorted(set(w for w in found if not any(v!=w and v[0]<=w[0] and v[1]>=w[1] for v in found)))
+    result=deepcopy(events);before=windows(result);decisions=[]
+    def key(e):return (e['measure'],e['offset'])
+    def crowded(es):return {i for a,b in windows(es) for i in range(a,b)}
+    def record(e,why,duration):
+        decisions.append(dict(measure=e['sourceMeasure'],measureIndex=e['measure'],offset=e['offset'],chord=e['label'],durationBeats=duration,reason=why))
+    # A short triad followed by its seventh does not need two accompaniment labels.
+    # Keep the seventh at its actual onset; never manufacture an earlier seventh.
+    dense=crowded(result);kept=[]
+    for i,e in enumerate(result):
+        nxt=result[i+1] if i+1<len(result) else None
+        duration=time(nxt)-time(e) if nxt else total-time(e)
+        prev=result[i-1] if i else None
+        if i in dense and i>0 and nxt and duration<=1+1e-7 and e['rootPC']==nxt['rootPC'] and e['kind']=='major' and nxt['kind']=='dominant':
+            record(e,'brief triad before the same-root dominant seventh',duration)
+        elif i in dense and prev and nxt and duration<=1+1e-7 and prev['kind']=='dominant' and e['kind']=='major' and prev['rootPC']==e['rootPC'] and (e['rootPC']-nxt['rootPC'])%12==7:
+            record(e,'brief same-root triad between dominant seventh and resolution',duration)
+        else:kept.append(e)
+    result=kept
+    # Minor is not automatically essential. Protect actual functional links instead.
+    # Use the original crowded neighborhood too, so removing a redundant seventh
+    # preparation does not shield another low-value intermediate in that cluster.
+    candidates={key(e) for a,b in before for e in events[a:b]}
+    protected=set()
+    for i,e in enumerate(result):
+        prev=result[i-1] if i else None;nxt=result[i+1] if i+1<len(result) else None
+        if prev and ((prev['kind'] in ['major','dominant'] and (prev['rootPC']-e['rootPC'])%12==7) or (prev['kind']=='diminished' and (e['rootPC']-prev['rootPC'])%12 in [1,2])):protected.add(key(e))
+        if nxt and e['kind']=='minor' and nxt['kind'] in ['major','dominant'] and (e['rootPC']-nxt['rootPC'])%12==7:protected.add(key(e))
+    final=[]
+    for i,e in enumerate(result):
+        prev=result[i-1] if i else None;nxt=result[i+1] if i+1<len(result) else None
+        duration=time(nxt)-time(e) if nxt else total-time(e)
+        m=measures[e['measure']];beat=4/m['unit'];group=beat*(3 if m['beats'] in [6,9,12] else 2 if m['beats']==4 else m['beats'])
+        strong=abs(e['offset']%group)<1e-7
+        tonic=(7*m['fifths']+(9 if m['mode']=='minor' else 0))%12
+        scale={(tonic+x)%12 for x in ([0,2,3,5,7,8,10] if m['mode']=='minor' else [0,2,4,5,7,9,11])}
+        tones={(e['rootPC']+x)%12 for x in ([0,3,7] if e['kind']=='minor' else [0,4,7])}
+        reason=None
+        if key(e) in candidates and prev and nxt and not strong and duration<=1+1e-7 and key(e) not in protected and e['kind'] in ['major','minor'] and tones<=scale:
+            if identity(prev)==identity(nxt):reason='brief weak-position neighbor returning to prior harmony'
+            elif e['kind']=='minor':reason='brief weak-position diatonic minor without a functional approach/resolution'
+        if reason:record(e,reason,duration)
+        elif final and identity(final[-1])==identity(e):record(e,'redundant root/quality after temporal cleanup',duration)
+        else:final.append(e)
+    def describe(es,ws):
+        return [dict(start=es[a]['sourceMeasure'],startOffset=es[a]['offset'],end=es[b-1]['sourceMeasure'],endOffset=es[b-1]['offset'],spanBeats=round(time(es[b-1])-time(es[a]),6),events=[dict(measure=e['sourceMeasure'],offset=e['offset'],chord=e['label']) for e in es[a:b]]) for a,b in ws]
+    return dict(events=final,decisions=decisions,beforeClusters=describe(events,before),remainingClusters=describe(final,windows(final)))
