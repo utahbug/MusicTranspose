@@ -1,5 +1,5 @@
 // PrimarySongs v528: equal left/right halves, upper quarter First/Last.
-// PDF and MXL share zone proportions; navigation.js retains PDF's Page Turns rule.
+// PDF and MXL share zone proportions; navigation.js enables gestures only in Page Turns.
 const $=id=>document.getElementById(id);
 const interactive='button,a,input,select,textarea,label,summary,dialog,[role=button],[role=slider],[role=menu],[role=menuitem],[role=link],[role=checkbox],[role=radio],[role=switch],[role=tab],[role=combobox],[role=spinbutton],[role=textbox],[contenteditable],[tabindex],audio,video';
 export function scoreVisibleBottom(){
@@ -30,18 +30,31 @@ export function installScoreTaps({enabled,navigate}){
   cancel();if(!host.contains(e.target)||!e.isPrimary||e.button!==0||!safe(e.target))return;
   const action=scoreTapAction(e.clientX,e.clientY);if(action===null)return;
   // Input type, never score format, determines slop and down-zone retention.
+  // A hurried finger slip may travel up to 36 CSS px from its starting point;
+  // both move and release use this same radial allowance. Mouse/pen stay precise.
   const touch=e.pointerType==='touch';
-  gesture={id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),action,touch,tolerance:touch?16:10};
+  gesture={id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now(),action,touch,maxDistance:0,tolerance:touch?36:10};
   // Capture on the stable view, not an SVG slice which virtual pages may replace.
   if(touch&&e.isTrusted)host.setPointerCapture(e.pointerId);
  },true);
- document.addEventListener('pointermove',e=>{if(gesture&&(e.pointerId!==gesture.id||Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>gesture.tolerance))cancel();},{passive:true});
+ document.addEventListener('pointermove',e=>{
+  if(!gesture)return;if(e.pointerId!==gesture.id){cancel();return;}
+  const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;
+  gesture.maxDistance=Math.max(gesture.maxDistance,Math.hypot(dx,dy));
+  // Keep horizontal touch motion alive for release-time swipe classification.
+  // Once a substantial vertical drag takes ownership it cannot become a tap.
+  if(!gesture.touch&&gesture.maxDistance>gesture.tolerance||gesture.touch&&Math.abs(dy)>gesture.tolerance&&Math.abs(dy)>=Math.abs(dx))cancel();
+ },{passive:true});
  document.addEventListener('pointerup',e=>{
   const g=gesture;cancel();if(!g||g.id!==e.pointerId)return;
   // Captured touch events target the host; still reject releases over real controls.
   const target=g.touch?document.elementFromPoint(e.clientX,e.clientY):e.target;
-  if(!host.contains(target)||!safe(target)||performance.now()-g.time>600||Math.hypot(e.clientX-g.x,e.clientY-g.y)>g.tolerance||scoreTapAction(e.clientX,e.clientY)===null||(!g.touch&&scoreTapAction(e.clientX,e.clientY)!==g.action)||!getSelection().isCollapsed)return;
-  navigate(g.action);
+  if(!host.contains(target)||!safe(target)||performance.now()-g.time>600||scoreTapAction(e.clientX,e.clientY)===null||(!g.touch&&scoreTapAction(e.clientX,e.clientY)!==g.action)||!getSelection().isCollapsed)return;
+  const dx=e.clientX-g.x,dy=e.clientY-g.y,distance=Math.max(g.maxDistance,Math.hypot(dx,dy));
+  if(distance<=g.tolerance){navigate(g.action);return;}
+  // No dead horizontal band: beyond the tap radius, a 2:1 direction ratio
+  // means swipe. Swipe actions are always Previous/Next, never First/Last.
+  if(g.touch&&Math.abs(dx)>g.tolerance&&Math.abs(dx)>=2*Math.abs(dy))navigate(dx<0?1:-1);
  },{passive:true});
  for(const event of ['pointercancel','lostpointercapture','score-session-reset','score-engraved','library-open','visibilitychange'])document.addEventListener(event,cancel,true);
  for(const event of ['scroll','resize','blur','beforeprint'])window.addEventListener(event,cancel,{passive:true});

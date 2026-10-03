@@ -16,8 +16,23 @@ try{
   for(const form of ['pdf','xml','lead']){
    document.body.classList.toggle('pdf-score-open',form==='pdf');
    for(const mutation of [()=>score.replaceChildren(document.createElement('span')),()=>document.querySelector('#unrelated').hidden=false]){down();mutation();await Promise.resolve();up();assert(actions.length===1,form+' harmless DOM');}
+   // Physical-touch-like movement, including a move event before release.
+   for(const [dx,dy] of [[0,0],[8,0],[20,0],[30,0],[36,0],[0,20],[0,30],[0,36],[20,20],[25,25]]){
+    down();event('pointermove',{clientX:650+dx,clientY:650+dy});event('pointerup',{clientX:650+dx,clientY:650+dy});
+    up();score.dispatchEvent(new Event('touchend',{bubbles:true}));score.click();
+    assert(actions.length===1&&actions[0]===1,form+' accepted drift '+dx+','+dy);
+   }
+   for(const [dx,dy] of [[0,37],[30,30],[40,40],[0,80]]){
+    down();event('pointermove',{clientX:650+dx,clientY:650+dy});event('pointerup',{clientX:650+dx,clientY:650+dy});assert(!actions.length,form+' rejected drag');
+   }
+   for(const [dx,dy] of [[-37,0],[-50,0],[-80,20],[37,0],[60,20],[100,-30]]){
+    down();event('pointermove',{clientX:650+dx,clientY:650+dy});event('pointerup',{clientX:650+dx,clientY:650+dy});up();score.click();assert(actions.length===1&&actions[0]===(dx<0?1:-1),form+' swipe '+dx+','+dy);
+   }
+   for(const pointerType of ['mouse','pen'])for(const dx of [10,11]){
+    actions.length=0;event('pointerdown',{pointerType});event('pointermove',{pointerType,clientX:650+dx});event('pointerup',{pointerType,clientX:650+dx});assert(actions.length===(dx===10?1:0),form+' precise '+pointerType);
+   }
    const r=scoreTapGeometry();
-   for(const [x,y,dx,dy,action] of [[.501,.65,-4,0,1],[.499,.65,4,0,-1],[.8,.251,0,-4,1],[.8,.249,0,4,Infinity],[.2,.249,0,4,-Infinity]]){
+   for(const [x,y,dx,dy,action] of [[.501,.65,-30,0,1],[.499,.65,4,0,-1],[.8,.251,0,-30,1],[.8,.249,0,4,Infinity],[.2,.249,0,4,-Infinity]]){
     actions.length=0;const clientX=r.left+r.width*x,clientY=r.top+r.height*y;
     event('pointerdown',{clientX,clientY});event('pointerup',{clientX:clientX+dx,clientY:clientY+dy});
     assert(actions.length===1&&actions[0]===action,form+' retained boundary action');
@@ -32,7 +47,7 @@ try{
    down();document.querySelector('#modal').showModal();await Promise.resolve();document.querySelector('#modal').close();up();assert(!actions.length,form+' modal');
    down();enabled=false;up();enabled=true;assert(!actions.length,form+' disabled');
    down();event('pointerdown',{pointerId:52,isPrimary:false});up();assert(!actions.length,form+' multitouch');
-   down();event('pointermove',{clientX:680});up();assert(!actions.length,form+' out and back');
+   down();event('pointermove',{clientX:730});up();assert(!actions.length,form+' out and back');
    down();const range=document.createRange();range.selectNodeContents(document.querySelector('#control'));getSelection().addRange(range);up();getSelection().removeAllRanges();assert(!actions.length,form+' selection');
    actions.length=0;event('pointerdown',{},document.querySelector('#control'));up();assert(!actions.length,form+' interactive start');
    down();const rect=document.querySelector('#control').getBoundingClientRect();event('pointerup',{clientX:rect.x+5,clientY:rect.y+5});assert(!actions.length,form+' interactive release');

@@ -1390,3 +1390,8 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  @media(max-width:600px){.masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px 104px minmax(0,1fr)}}
 }
 @media print{#score-navigation{display:none!important}}
+
+/* In Page Turns the score owns single-finger taps/swipes; preserve pinch zoom.
+   Continuous and the surrounding page retain native scrolling. Annotation owns
+   its own drawing gestures and is excluded from this rule. */
+@media screen{body.page-navigation:not(.pdf-annotation-active) #score{touch-action:pinch-zoom}}
