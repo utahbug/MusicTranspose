@@ -25,9 +25,10 @@ try{
    for(const source of [xml,lead.xml]){
     const before=[...parseXML(source).querySelectorAll('harmony root,harmony bass')],after=[...parseXML(transposeXML(source,2,song.modeOverride)).querySelectorAll('harmony root,harmony bass')];
     check(before.length===after.length,'transposed count');check(before.every((n,i)=>(pitch(n)+2)%12===pitch(after[i])),'root and slash bass +2');
+    const shifted=parseXML(transposeXML(source,2,song.modeOverride));check([...shifted.querySelectorAll('harmony kind')].map(n=>n.textContent).join('|')===[...parseXML(source).querySelectorAll('harmony kind')].map(n=>n.textContent).join('|'),'transposition preserves quality');check(!shifted.querySelector('harmony bass'),'transposed generated symbols remain root-only');
    }
    out.push({id,number:song.page,chords:hs.length});
-  }check(out.length===5,'exactly five');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
+  }check(out.length===12,'exactly five pilots plus seven Christmas hymns');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
  });console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!document.body.classList.contains('song-loading')&&document.querySelector('#score').getAttribute('aria-busy')==='false');

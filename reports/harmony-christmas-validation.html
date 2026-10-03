@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><title>Christmas harmony validation</title><style>body{font:16px system-ui;max-width:1100px;margin:30px auto;padding:16px}td,th{padding:7px;text-align:left;border-bottom:1px solid #ddd}table{border-collapse:collapse}</style><h1>Christmas harmony: validation and musical review</h1><p>Analysis and display functions unchanged; seven-hymn rollout only. Five approved overlays compare exactly with Phase 1C. No notation-size or pagination changes. Source MXL unchanged. Original PDF counts observed during baseline opening.</p><p>All 28 combinations and all pages inspected. No obvious chord/title, notation or lyric collisions. No four-chord measures. Physical accompaniment judgment remains necessary, particularly #209/#213 seventh-color interpretations and #203 density.</p><p>13 display tests; deterministic generation; 12 overlays source precedence/invariance/Melody/+2 checks; 7288 existing focused chord assertions; 28 new-hymn renders; diff check</p><p>820 × 1180 simulated iPad; alternate key is +2 semitones. Counts are practical generated display, not authoritative source harmony.</p><table><tr><th>Hymn</th><th>Analysis → display</th><th>First stage / root dedup / local removals</th><th>Review windows</th><th>PDF</th><th>Full original/+2</th><th>Melody original/+2</th></tr>
+<tr><td>203 — Angels We Have Heard on High</td><td>44 → 36</td><td>6 / 2 / 0</td><td>13</td><td>2</td><td>1 / 1</td><td>2 / 2</td></tr>
+<tr><td>206 — Away in a Manger</td><td>17 → 16</td><td>1 / 0 / 0</td><td>7</td><td>1</td><td>1 / 1</td><td>1 / 1</td></tr>
+<tr><td>207 — It Came upon the Midnight Clear</td><td>22 → 21</td><td>0 / 1 / 0</td><td>12</td><td>1</td><td>1 / 1</td><td>2 / 2</td></tr>
+<tr><td>208 — O Little Town of Bethlehem</td><td>18 → 17</td><td>0 / 1 / 0</td><td>12</td><td>1</td><td>2 / 2</td><td>1 / 1</td></tr>
+<tr><td>209 — Hark! The Herald Angels Sing</td><td>39 → 34</td><td>3 / 0 / 2</td><td>14</td><td>2</td><td>1 / 2</td><td>1 / 1</td></tr>
+<tr><td>212 — Far, Far Away on Judea’s Plains</td><td>25 → 21</td><td>0 / 0 / 4</td><td>5</td><td>1</td><td>1 / 1</td><td>1 / 1</td></tr>
+<tr><td>213 — The First Noel</td><td>51 → 44</td><td>0 / 3 / 4</td><td>7</td><td>1</td><td>1 / 1</td><td>2 / 2</td></tr>
+</table><p>All seven baseline original-key structured views were one page before harmony. Full #208 and Melody #203/#207/#213 now take two pages. #209 Full takes two pages at +2. Useful chords were retained; no page-count forcing.</p>
+<h2>203: Angels We Have Heard on High</h2><p><code>song-c8c15b83-e038-4dc7-9901-c015de754fb4</code></p><p>Opening F; final F. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X3: Am precedes the C7–F resolution; retain the short dominant seventh.</li>
+<li>X5: C gains its seventh immediately before resolving to F; preserve the encoded quality-change timing.</li>
+</ul>
+<h2>206: Away in a Manger</h2><p><code>song-fafcb319-245b-4305-b2f1-f97fad331d5e</code></p><p>Opening F; final F. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X18: Gm predominant moves to C then C7 for the final F cadence.</li>
+</ul>
+<h2>207: It Came upon the Midnight Clear</h2><p><code>song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc</code></p><p>Opening Bb; final Bb. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X3: Eb–Edim–C7 preserves the chromatic approach to F in the following measure.</li>
+<li>X13: F moves to the secondary dominant C, gaining its seventh before resolving back to F.</li>
+</ul>
+<h2>208: O Little Town of Bethlehem</h2><p><code>song-971ceab4-9411-4127-8118-db8dd12e1816</code></p><p>Opening F; final F. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X8: F–Am–C7 retains a strong-beat minor change and dominant preparation.</li>
+</ul>
+<h2>209: Hark! The Herald Angels Sing</h2><p><code>song-53c57be6-2733-45c7-94ad-773835a4fd19</code></p><p>Opening F; final F. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X5: Dm–F–G7: the F lasts two beats and G7 prepares C; not a brief passing sonority.</li>
+<li>X6: Am–G–C: G is a functional dominant resolving to a sustained C.</li>
+<li>X7: Fmaj7–G–C retains the seventh sonority and dominant resolution; the major-seventh interpretation deserves physical review.</li>
+<li>X11: C7–F–C: retained dominant resolution to a two-beat tonic and subsequent dominant.</li>
+<li>X13: Gm–D–Gm: D major is the chromatic dominant of G minor, not an expendable diatonic neighbor.</li>
+</ul>
+<h2>212: Far, Far Away on Judea’s Plains</h2><p><code>song-9be03820-2e2a-453e-9270-2138bf79d9c2</code></p><p>Opening F; final F. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X8: F–Bb–Edim: strong-beat subdominant followed by a leading-tone diminished approach to F.</li>
+<li>X11: C–C7–F is the final dominant-seventh cadence.</li>
+</ul>
+<h2>213: The First Noel</h2><p><code>song-8aaafadd-0290-4b8f-aa76-a7b167782212</code></p><p>Opening D; final D. Root/quality retained through +2 transposition and Melody projection. Generated slashes: zero.</p><ul>
+<li>X21: Bm–Dmaj7–G retains minor/seventh colors approaching G; review the major-seventh reading in physical accompaniment.</li>
+<li>X22: D–Bm–C#dim retains the minor change and leading-tone diminished approach to the final D.</li>
+</ul>
+<p>Review all seven on physical iPad before expansion, especially #203 (overall density), #209/#213 (chromatic/seventh sonorities), and #208 (Full page break). Detailed omitted windows and internal bass analysis are in <a href="harmony-christmas.html">the generation report</a>.</p>

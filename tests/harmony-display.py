@@ -42,7 +42,12 @@ class Display(unittest.TestCase):
      event['bass']=None
      if not out or (out[-1]['root'],out[-1]['kind'])!=(event['root'],event['kind']):out.append(event)
     expected['events']=out;self.assertEqual(expected,new[p['id']])
-  self.assertEqual(set(old),set(new))
+  self.assertTrue(set(old)<=set(new))
+  approved=json.loads(subprocess.check_output(['git','show','5d692a5:generated-harmony-data.js'],cwd=ROOT).decode().split('export const generatedHarmony = ')[1].strip().rstrip(';'))
+  self.assertEqual(approved,{k:new[k] for k in approved})
+  batch=json.loads((ROOT/'reports/harmony-christmas.json').read_text(encoding='utf8'))
+  self.assertEqual({r['number'] for r in batch},{203,206,207,208,209,212,213})
+  self.assertEqual(set(new)-set(approved),{r['id'] for r in batch if 'skipped' not in r})
 class RootDisplay(unittest.TestCase):
  def run_policy(self,events,local=True):
   fn=runpy.run_path(str(ROOT/'tools/harmony-display.py'))['root_only_display'];return fn(events,M,local_density=local)

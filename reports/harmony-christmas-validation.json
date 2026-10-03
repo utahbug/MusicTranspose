@@ -1,0 +1,708 @@
+{
+  "viewport": "820 x 1180 simulated iPad in Edge",
+  "policy": "Analysis and display functions unchanged; seven-hymn rollout only. Five approved overlays compare exactly with Phase 1C. No notation-size or pagination changes. Source MXL unchanged. Original PDF counts observed during baseline opening.",
+  "visual": "All 28 combinations and all pages inspected. No obvious chord/title, notation or lyric collisions. No four-chord measures. Physical accompaniment judgment remains necessary, particularly #209/#213 seventh-color interpretations and #203 density.",
+  "tests": "13 display tests; deterministic generation; 12 overlays source precedence/invariance/Melody/+2 checks; 7288 existing focused chord assertions; 28 new-hymn renders; diff check",
+  "hymns": [
+    {
+      "number": 203,
+      "id": "song-c8c15b83-e038-4dc7-9901-c015de754fb4",
+      "title": "Angels We Have Heard on High",
+      "pdfPages": 2,
+      "analysisCount": 44,
+      "displayCount": 36,
+      "firstStageRemoved": 6,
+      "rootDedupRemoved": 2,
+      "localDensityRemoved": 0,
+      "reviewWindows": 13,
+      "denseMeasures": [
+        {
+          "measure": "X3",
+          "events": [
+            {
+              "offset": 1.0,
+              "chord": "Am"
+            },
+            {
+              "offset": 1.5,
+              "chord": "C7"
+            },
+            {
+              "offset": 2.0,
+              "chord": "F"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Am precedes the C7–F resolution; retain the short dominant seventh."
+        },
+        {
+          "measure": "X5",
+          "events": [
+            {
+              "offset": 1.0,
+              "chord": "C"
+            },
+            {
+              "offset": 1.5,
+              "chord": "C7"
+            },
+            {
+              "offset": 2.0,
+              "chord": "F"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "C gains its seventh immediately before resolving to F; preserve the encoded quality-change timing."
+        }
+      ],
+      "opening": "F",
+      "final": "F",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.68",
+          "screenshots": [
+            "test-results/harmony-203-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.68",
+          "screenshots": [
+            "test-results/harmony-203-auto-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-203-large-0-page1.png",
+            "test-results/harmony-203-large-0-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-203-large-2-page1.png",
+            "test-results/harmony-203-large-2-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 206,
+      "id": "song-fafcb319-245b-4305-b2f1-f97fad331d5e",
+      "title": "Away in a Manger",
+      "pdfPages": 1,
+      "analysisCount": 17,
+      "displayCount": 16,
+      "firstStageRemoved": 1,
+      "rootDedupRemoved": 0,
+      "localDensityRemoved": 0,
+      "reviewWindows": 7,
+      "denseMeasures": [
+        {
+          "measure": "X18",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Gm"
+            },
+            {
+              "offset": 2.0,
+              "chord": "C"
+            },
+            {
+              "offset": 2.5,
+              "chord": "C7"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Gm predominant moves to C then C7 for the final F cadence."
+        }
+      ],
+      "opening": "F",
+      "final": "F",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-206-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-206-auto-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-206-large-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-206-large-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 207,
+      "id": "song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc",
+      "title": "It Came upon the Midnight Clear",
+      "pdfPages": 1,
+      "analysisCount": 22,
+      "displayCount": 21,
+      "firstStageRemoved": 0,
+      "rootDedupRemoved": 1,
+      "localDensityRemoved": 0,
+      "reviewWindows": 12,
+      "denseMeasures": [
+        {
+          "measure": "X3",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Eb"
+            },
+            {
+              "offset": 1.5,
+              "chord": "Edim"
+            },
+            {
+              "offset": 2.0,
+              "chord": "C7"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Eb–Edim–C7 preserves the chromatic approach to F in the following measure."
+        },
+        {
+          "measure": "X13",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "F"
+            },
+            {
+              "offset": 1.5,
+              "chord": "C"
+            },
+            {
+              "offset": 2.5,
+              "chord": "C7"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "F moves to the secondary dominant C, gaining its seventh before resolving back to F."
+        }
+      ],
+      "opening": "Bb",
+      "final": "Bb",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.68",
+          "screenshots": [
+            "test-results/harmony-207-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.68",
+          "screenshots": [
+            "test-results/harmony-207-auto-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-207-large-0-page1.png",
+            "test-results/harmony-207-large-0-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-207-large-2-page1.png",
+            "test-results/harmony-207-large-2-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 208,
+      "id": "song-971ceab4-9411-4127-8118-db8dd12e1816",
+      "title": "O Little Town of Bethlehem",
+      "pdfPages": 1,
+      "analysisCount": 18,
+      "displayCount": 17,
+      "firstStageRemoved": 0,
+      "rootDedupRemoved": 1,
+      "localDensityRemoved": 0,
+      "reviewWindows": 12,
+      "denseMeasures": [
+        {
+          "measure": "X8",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "F"
+            },
+            {
+              "offset": 2.0,
+              "chord": "Am"
+            },
+            {
+              "offset": 3.0,
+              "chord": "C7"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "F–Am–C7 retains a strong-beat minor change and dominant preparation."
+        }
+      ],
+      "opening": "F",
+      "final": "F",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 2,
+          "zoom": "0.78",
+          "screenshots": [
+            "test-results/harmony-208-auto-0-page1.png",
+            "test-results/harmony-208-auto-0-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 2,
+          "zoom": "0.78",
+          "screenshots": [
+            "test-results/harmony-208-auto-2-page1.png",
+            "test-results/harmony-208-auto-2-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-208-large-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-208-large-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 209,
+      "id": "song-53c57be6-2733-45c7-94ad-773835a4fd19",
+      "title": "Hark! The Herald Angels Sing",
+      "pdfPages": 2,
+      "analysisCount": 39,
+      "displayCount": 34,
+      "firstStageRemoved": 3,
+      "rootDedupRemoved": 0,
+      "localDensityRemoved": 2,
+      "reviewWindows": 14,
+      "denseMeasures": [
+        {
+          "measure": "X5",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Dm"
+            },
+            {
+              "offset": 1.0,
+              "chord": "F"
+            },
+            {
+              "offset": 3.0,
+              "chord": "G7"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Dm–F–G7: the F lasts two beats and G7 prepares C; not a brief passing sonority."
+        },
+        {
+          "measure": "X6",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Am"
+            },
+            {
+              "offset": 1.0,
+              "chord": "G"
+            },
+            {
+              "offset": 2.0,
+              "chord": "C"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Am–G–C: G is a functional dominant resolving to a sustained C."
+        },
+        {
+          "measure": "X7",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Fmaj7"
+            },
+            {
+              "offset": 1.0,
+              "chord": "G"
+            },
+            {
+              "offset": 2.0,
+              "chord": "C"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Fmaj7–G–C retains the seventh sonority and dominant resolution; the major-seventh interpretation deserves physical review."
+        },
+        {
+          "measure": "X11",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "C7"
+            },
+            {
+              "offset": 1.0,
+              "chord": "F"
+            },
+            {
+              "offset": 3.0,
+              "chord": "C"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "C7–F–C: retained dominant resolution to a two-beat tonic and subsequent dominant."
+        },
+        {
+          "measure": "X13",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Gm"
+            },
+            {
+              "offset": 1.0,
+              "chord": "D"
+            },
+            {
+              "offset": 2.0,
+              "chord": "Gm"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Gm–D–Gm: D major is the chromatic dominant of G minor, not an expendable diatonic neighbor."
+        }
+      ],
+      "opening": "F",
+      "final": "F",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-209-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 2,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-209-auto-2-page1.png",
+            "test-results/harmony-209-auto-2-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-209-large-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-209-large-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 212,
+      "id": "song-9be03820-2e2a-453e-9270-2138bf79d9c2",
+      "title": "Far, Far Away on Judea’s Plains",
+      "pdfPages": 1,
+      "analysisCount": 25,
+      "displayCount": 21,
+      "firstStageRemoved": 0,
+      "rootDedupRemoved": 0,
+      "localDensityRemoved": 4,
+      "reviewWindows": 5,
+      "denseMeasures": [
+        {
+          "measure": "X8",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "F"
+            },
+            {
+              "offset": 2.0,
+              "chord": "Bb"
+            },
+            {
+              "offset": 3.0,
+              "chord": "Edim"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "F–Bb–Edim: strong-beat subdominant followed by a leading-tone diminished approach to F."
+        },
+        {
+          "measure": "X11",
+          "events": [
+            {
+              "offset": 1.0,
+              "chord": "C"
+            },
+            {
+              "offset": 1.5,
+              "chord": "C7"
+            },
+            {
+              "offset": 2.0,
+              "chord": "F"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "C–C7–F is the final dominant-seventh cadence."
+        }
+      ],
+      "opening": "F",
+      "final": "F",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-212-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-212-auto-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-212-large-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-212-large-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    },
+    {
+      "number": 213,
+      "id": "song-8aaafadd-0290-4b8f-aa76-a7b167782212",
+      "title": "The First Noel",
+      "pdfPages": 1,
+      "analysisCount": 51,
+      "displayCount": 44,
+      "firstStageRemoved": 0,
+      "rootDedupRemoved": 3,
+      "localDensityRemoved": 4,
+      "reviewWindows": 7,
+      "denseMeasures": [
+        {
+          "measure": "X21",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "Bm"
+            },
+            {
+              "offset": 1.0,
+              "chord": "Dmaj7"
+            },
+            {
+              "offset": 2.0,
+              "chord": "G"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "Bm–Dmaj7–G retains minor/seventh colors approaching G; review the major-seventh reading in physical accompaniment."
+        },
+        {
+          "measure": "X22",
+          "events": [
+            {
+              "offset": 0,
+              "chord": "D"
+            },
+            {
+              "offset": 1.0,
+              "chord": "Bm"
+            },
+            {
+              "offset": 2.0,
+              "chord": "C#dim"
+            }
+          ],
+          "reason": "Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.",
+          "musicalReview": "D–Bm–C#dim retains the minor change and leading-tone diminished approach to the final D."
+        }
+      ],
+      "opening": "D",
+      "final": "D",
+      "cases": [
+        {
+          "mode": "auto",
+          "shift": 0,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-213-auto-0-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "auto",
+          "shift": 2,
+          "pageCount": 1,
+          "zoom": "0.702",
+          "screenshots": [
+            "test-results/harmony-213-auto-2-page1.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 0,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-213-large-0-page1.png",
+            "test-results/harmony-213-large-0-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        },
+        {
+          "mode": "large",
+          "shift": 2,
+          "pageCount": 2,
+          "zoom": "0.9",
+          "screenshots": [
+            "test-results/harmony-213-large-2-page1.png",
+            "test-results/harmony-213-large-2-page2.png"
+          ],
+          "beforeOriginalKeyPages": 1
+        }
+      ]
+    }
+  ]
+}
