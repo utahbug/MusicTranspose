@@ -1,0 +1,255 @@
+{
+  "viewport": "820 x 1180, simulated iPad width in Edge",
+  "tests": "13 display tests; five-pilot generated/source invariants and transposition; 20 Full/Melody original/+2 renders; 7288 existing chord assertions; deterministic regeneration; diff check",
+  "layout": "No scaling, spacing, placement or pagination rules changed. Existing Auto may select a different zoom for the new display XML.",
+  "cases": [
+    {
+      "number": "2",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-2-auto-0-page1.png",
+        "test-results/harmony-2-auto-0-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.702"
+    },
+    {
+      "number": "2",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-2-auto-2-page1.png",
+        "test-results/harmony-2-auto-2-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.702"
+    },
+    {
+      "number": "2",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-2-large-0-page1.png",
+        "test-results/harmony-2-large-0-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "2",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-2-large-2-page1.png",
+        "test-results/harmony-2-large-2-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "30",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-30-auto-0-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.68"
+    },
+    {
+      "number": "30",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-30-auto-2-page1.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.68"
+    },
+    {
+      "number": "30",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-30-large-0-page1.png",
+        "test-results/harmony-30-large-0-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "30",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-30-large-2-page1.png",
+        "test-results/harmony-30-large-2-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "193",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-193-auto-0-page1.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.78"
+    },
+    {
+      "number": "193",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-193-auto-2-page1.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.78"
+    },
+    {
+      "number": "193",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-193-large-0-page1.png",
+        "test-results/harmony-193-large-0-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "193",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-193-large-2-page1.png",
+        "test-results/harmony-193-large-2-page2.png"
+      ],
+      "previousPages": 2,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "202",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.702",
+      "screenshots": [
+        "test-results/harmony-202-auto-0-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.702"
+    },
+    {
+      "number": "202",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.702",
+      "screenshots": [
+        "test-results/harmony-202-auto-2-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.702"
+    },
+    {
+      "number": "202",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-202-large-0-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "202",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-202-large-2-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "204",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-204-auto-0-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.78"
+    },
+    {
+      "number": "204",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-204-auto-2-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.78"
+    },
+    {
+      "number": "204",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-204-large-0-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.9"
+    },
+    {
+      "number": "204",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-204-large-2-page1.png"
+      ],
+      "previousPages": 1,
+      "previousZoom": "0.9"
+    }
+  ]
+}

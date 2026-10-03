@@ -13,10 +13,11 @@ try{
   const bare=xml=>{const d=parseXML(xml);d.querySelectorAll('harmony').forEach(n=>n.remove());return new XMLSerializer().serializeToString(d);};
   for(const [id,data] of Object.entries(generatedHarmony)){
    const song=songs.find(s=>s.id===id),raw=unpackMXL(await(await fetch(song.asset)).arrayBuffer()),xml=await withGeneratedHarmony(raw,id),d=parseXML(xml),hs=[...d.querySelectorAll('harmony')];
-   check(hs.length===data.events.length,id+' injected count');check(bare(xml)===bare(raw),id+' source notation unchanged');
+   check(hs.length===data.events.length,id+' injected count');check(!d.querySelector('harmony bass'),'generated display has no slash bass');check(bare(xml)===bare(raw),id+' source notation unchanged');
    check(await withGeneratedHarmony(xml,id)===xml,'idempotent');check(await withGeneratedHarmony(raw+' ',id)===raw+' ','fingerprint guard');
-   const authoritative=raw.replace('<note','<harmony><root><root-step>C</root-step></root><kind>major</kind></harmony><note');
-   check(await withGeneratedHarmony(authoritative,id)===authoritative,'source precedence');
+   const authoritative=raw.replace('<note','<harmony><root><root-step>C</root-step></root><kind>major</kind><bass><bass-step>E</bass-step></bass></harmony><note');
+   const fingerprint=data.xmlSha256;data.xmlSha256=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(authoritative)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+   check(await withGeneratedHarmony(authoritative,id)===authoritative,'source slash precedence even with matching fingerprint');data.xmlSha256=fingerprint;
    const text=raw.replace('<note','<direction><direction-type><words>C7</words></direction-type></direction><note');check(await withGeneratedHarmony(text,id)===text,'text chord precedence');
    const lead=createLeadXML(xml,song);check(lead.ok,id+' Melody success');
    const lh=[...parseXML(lead.xml).querySelectorAll('harmony')];check(lh.every(n=>n.id.startsWith('mt-generated-')),'Melody retains provenance');check(lh.length===hs.length,id+' Melody harmony count');

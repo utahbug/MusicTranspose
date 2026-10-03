@@ -4,7 +4,7 @@ simplify=runpy.run_path(str(ROOT/'tools/harmony-display.py'))['simplify']
 def e(root,kind,offset,bass=None):
  names={0:'C',2:'D',4:'E',7:'G',11:'B'}
  return dict(rootPC=root,root={'step':names[root],'alter':0},kind=kind,measure=0,sourceMeasure='1',offset=offset,bass={'step':names[bass],'alter':0} if bass is not None else None,bassNote=names[bass if bass is not None else root],label=names[root],keyFifths=0)
-M=[dict(unit=4,beats=4,duration=4,fifths=0,mode='major')]
+M=[dict(number="1",unit=4,beats=4,duration=4,fifths=0,mode='major')]
 class Display(unittest.TestCase):
  def test_passing_inversion_return(self):
   a=[e(0,'major',0),e(7,'major',1,11),e(0,'major',2)];before=copy.deepcopy(a)
@@ -36,6 +36,31 @@ class Display(unittest.TestCase):
   old=json.loads(subprocess.check_output(['git','show','3cd1468:generated-harmony-data.js'],cwd=ROOT).decode().split('export const generatedHarmony = ')[1].strip().rstrip(';'))
   new=json.loads((ROOT/'generated-harmony-data.js').read_text().split('export const generatedHarmony = ')[1].strip().rstrip(';'))
   for p in prior['pilots']:
-   if p['number'] in [30,193,204]:self.assertEqual(old[p['id']],new[p['id']])
+   if p['number'] in [30,193,204]:
+    expected=copy.deepcopy(old[p['id']]);out=[]
+    for event in expected['events']:
+     event['bass']=None
+     if not out or (out[-1]['root'],out[-1]['kind'])!=(event['root'],event['kind']):out.append(event)
+    expected['events']=out;self.assertEqual(expected,new[p['id']])
   self.assertEqual(set(old),set(new))
+class RootDisplay(unittest.TestCase):
+ def run_policy(self,events,local=True):
+  fn=runpy.run_path(str(ROOT/'tools/harmony-display.py'))['root_only_display'];return fn(events,M,local_density=local)
+ def test_slash_dedup_and_quality(self):
+  events=[e(0,'major',0),e(0,'major',1,4),e(0,'major',2,7),e(0,'minor',3)]
+  before=copy.deepcopy(events);r=self.run_policy(events,False)
+  self.assertEqual([x['kind'] for x in r['events']],['major','minor']);self.assertEqual(r['slashDuplicates'],2)
+  self.assertTrue(all(x['bass'] is None for x in r['events']));self.assertEqual(events,before)
+ def test_local_predominant_cadence(self):
+  r=self.run_policy([e(2,'minor',0),e(0,'major',1,7),e(7,'major',2)])
+  self.assertEqual([x['rootPC'] for x in r['events']],[2,7]);self.assertEqual(r['denseAfter'],0)
+ def test_local_neighbor(self):
+  r=self.run_policy([e(0,'major',0),e(2,'minor',1),e(0,'major',2),e(7,'major',3)])
+  self.assertEqual([x['rootPC'] for x in r['events']],[0,7])
+ def test_secondary_and_diminished_retained(self):
+  r=self.run_policy([e(0,'major',0),e(2,'dominant',1),e(7,'major',2),e(11,'diminished',3)])
+  self.assertEqual(len(r['events']),4)
+ def test_sparse_measures_unchanged(self):
+  r=self.run_policy([e(0,'major',0,4),e(7,'dominant',2)])
+  self.assertEqual(len(r['events']),2);self.assertEqual(r['localSuppressed'],0)
 if __name__=='__main__':unittest.main()

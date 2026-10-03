@@ -49,3 +49,54 @@ def simplify(events, measures):
         decisions.append({'measure':e['sourceMeasure'],'offset':e['offset'],'before':original['label'],'after':None if reason else e['label'],'suppressed':reason,'slashRemoved':bool(original['bass'] and (reason or slash_removed)),'durationQuarters':span,'strongBeat':strong,'shortProtected':bool(not reason and short and (protected or cadence or resolution))})
         if not reason: displayed.append(e)
     return {'events':displayed,'decisions':decisions,'suppressionCounts':dict(Counter(d['suppressed'] for d in decisions if d['suppressed']))}
+
+
+def root_only_display(events, measures, *, local_density=False):
+    """Phase 1C output stage. Root/quality only; analysis and source XML untouched."""
+    result=[];decisions=[]
+    for event in events:
+        e=deepcopy(event);e['bass']=None;e['label']=name(e['root'])+SUFFIX[e['kind']]
+        reason='slash-only duplicate' if result and identity(result[-1])==identity(e) else None
+        decisions.append(dict(measure=e['sourceMeasure'],offset=e['offset'],before=event['label'],after=None if reason else e['label'],suppressed=reason))
+        if not reason:result.append(e)
+    root_dedup=sum(d['suppressed'] is not None for d in decisions)
+    before=Counter(e['measure'] for e in events)
+    removed=set()
+    if local_density:
+        groups={m:[(i,e) for i,e in enumerate(result) if e['measure']==m] for m in {e['measure'] for e in result}}
+        for mi,group in groups.items():
+            if len(group)<3:continue
+            m=measures[mi];beat=4/m['unit'];tonic=(7*m['fifths']+(9 if m['mode']=='minor' else 0))%12
+            scale={(tonic+x)%12 for x in ([0,2,3,5,7,8,10] if m['mode']=='minor' else [0,2,4,5,7,9,11])}
+            for gi,(i,e) in enumerate(group):
+                if gi==0 or gi==len(group)-1:continue
+                prev=group[gi-1][1];nxt=group[gi+1][1];span=nxt['offset']-e['offset']
+                third=(e['rootPC']+(3 if e['kind']=='minor' else 4))%12
+                protected=e['kind'] not in ['major','minor'] or e['rootPC'] not in scale or third not in scale
+                if protected or span>beat+1e-7:continue
+                strong=abs(e['offset']%(beat*(3 if m['beats'] in [6,9,12] else 2 if m['beats']==4 else m['beats'])))<1e-7
+                reason=None
+                if not strong and identity(prev)==identity(nxt):
+                    reason='local weak-beat neighbor returning to the same harmony'
+                elif e['kind']=='major' and e['rootPC']==tonic and (prev['rootPC']-tonic)%12 in [2,5] and (nxt['rootPC']-tonic)%12==7:
+                    reason='local intermediate tonic between predominant and dominant'
+                elif not strong and e['kind']=='major' and e['rootPC']==tonic and (prev['rootPC']-tonic)%12==7 and (nxt['rootPC']-tonic)%12==5 and m['duration']-nxt['offset']>=2*beat:
+                    reason='local brief tonic passing to sustained subdominant'
+                elif not strong and e['kind']=='major' and (e['rootPC']-tonic)%12 not in [0,7] and (e['rootPC']-nxt['rootPC'])%12!=7:
+                    reason='local weak-beat diatonic intermediate'
+                if reason:
+                    removed.add(i)
+                    next(d for d in decisions if d['measure']==e['sourceMeasure'] and d['offset']==e['offset']).update(after=None,suppressed=reason)
+    final=[]
+    for i,e in enumerate(result):
+        if i in removed:continue
+        if final and identity(final[-1])==identity(e):
+            removed.add(i)
+            next(d for d in decisions if d['measure']==e['sourceMeasure'] and d['offset']==e['offset']).update(after=None,suppressed='local-density resulting duplicate')
+        else:final.append(e)
+    after=Counter(e['measure'] for e in final)
+    remaining=[]
+    for mi,count in sorted(after.items()):
+        if count>=3:
+            remaining.append({'measure':measures[mi]['number'],'events':[{'offset':e['offset'],'chord':e['label']} for e in final if e['measure']==mi], 'reason':('Approved control: only slash removal and resulting deduplication allowed.' if not local_density else 'Retained opening/final harmony plus strong-beat, seventh-quality, minor, or chromatic functional change; no eligible short intermediate.')})
+    return dict(events=final,decisions=decisions,previousCount=len(events),displayCount=len(final),slashBefore=sum(bool(e['bass']) for e in events),slashAfter=0,slashDuplicates=root_dedup,localSuppressed=len(removed),denseBefore=sum(n>=3 for n in before.values()),denseAfter=sum(n>=3 for n in after.values()),remainingDense=remaining)
