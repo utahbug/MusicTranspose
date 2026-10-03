@@ -4,7 +4,7 @@ export const sizePreferenceKey='music-transpose-score-size-v1';
 export function readScoreSize(){try{const value=localStorage.getItem(sizePreferenceKey);return value==='normal'||value==='large'?value:'auto';}catch{return 'auto';}}
 export function saveScoreSize(value){try{localStorage.setItem(sizePreferenceKey,value);}catch{}}
 export function candidateZooms(base,phone){return [...new Set([1,.9,.82].map(n=>Number(Math.max(phone?.64:.68,base*n).toFixed(3))))];}
-export function assessLayout(host,systems,width,available,zoom,{minimumLyric=12.5,pagination={gapCap:24}}={}){
+export function assessLayout(host,systems,width,available,zoom,{minimumLyric=12.5,lyricTolerance=0,pagination={gapCap:24}}={}){
  const svgs=[...host.querySelectorAll('svg')];let clipping=0,collisions=0,minLyric=Infinity,oversize=0;
  for(const svg of svgs){
   const rect=svg.getBoundingClientRect(),box=svg.getBBox(),v=svg.viewBox.baseVal,scale=rect.width/v.width;
@@ -17,7 +17,7 @@ export function assessLayout(host,systems,width,available,zoom,{minimumLyric=12.
  const groups=planSystemPages(measured,available,pagination);
  // Oversized complete systems already fit to height in the pager. Judge the resulting text size.
  const fitScale=Math.min(1,...measured.map(s=>available/s.height)),displayMinLyric=minLyric*fitScale;
- const first=groups[0];return {zoom,pages:groups.length,visibleSystems:first?.count||0,visibleMeasures:first?first.end-first.start+1:0,totalSystems:systems.reduce((n,s)=>n+s.systems,0),clipping,collisions,minLyric:Number.isFinite(minLyric)?minLyric:null,oversize,fitScale,displayMinLyric:Number.isFinite(displayMinLyric)?displayMinLyric:null,readable:!clipping&&displayMinLyric>=minimumLyric};
+ const first=groups[0];return {zoom,pages:groups.length,visibleSystems:first?.count||0,visibleMeasures:first?first.end-first.start+1:0,totalSystems:systems.reduce((n,s)=>n+s.systems,0),clipping,collisions,minLyric:Number.isFinite(minLyric)?minLyric:null,oversize,fitScale,displayMinLyric:Number.isFinite(displayMinLyric)?displayMinLyric:null,readable:!clipping&&displayMinLyric+lyricTolerance>=minimumLyric};
 }
 export function chooseLayout(entries){
  const baseline=entries.find(e=>e.autoReport.baseline)||entries[0],safe=entries.filter(e=>e.autoReport.readable&&e.autoReport.collisions===0);

@@ -5,7 +5,7 @@ installAccompanimentLayout(opensheetmusicdisplay);
 import {preferMusicalSections} from './section-layout.js';
 import {appendSourceCreditFooter} from './print-source-credits.js';
 import {createPdfAnnotations} from './pdf-annotations.js';
-import {renderFullScoreLayout} from './full-score-layout.js';
+import {renderFullScoreLayout,renderPhoneFullScore} from './full-score-layout.js';
 import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
 import {applyLeadLayout,balanceLeadTail,renderLeadLayout,leadPrintXML} from './lead-layout.js';
 import {normalOctaves,pianoHands,octaveSummary,shiftStaffOctaves} from './octave.js';
@@ -139,9 +139,10 @@ async function renderScore(){
    // Tail balancing can install temporary system breaks. Each phone scale trial
    // must begin with the source breaks, not inherit the preceding larger layout.
    const phoneBreaks=phone&&lead?.ok?osmd.Sheet.SourceMeasures.map(m=>m.printNewSystemXml):null,phoneBreakRule=osmd.EngravingRules.NewSystemAtXMLNewSystemAttribute;
-   const renderOnce=(zoom,staffOwnership=false)=>{if(phoneBreaks){osmd.Sheet.SourceMeasures.forEach((m,i)=>m.printNewSystemXml=phoneBreaks[i]);osmd.EngravingRules.NewSystemAtXMLNewSystemAttribute=phoneBreakRule;}osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage,{staffOwnership});if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
+   const fullRightMargin=osmd.EngravingRules.SystemRightMargin;
+   const renderOnce=(zoom,staffOwnership=false)=>{if(phoneBreaks){osmd.Sheet.SourceMeasures.forEach((m,i)=>m.printNewSystemXml=phoneBreaks[i]);osmd.EngravingRules.NewSystemAtXMLNewSystemAttribute=phoneBreakRule;}osmd.Zoom=zoom;if(lead?.ok)renderLeadLayout(osmd,stage);else if(phone)renderPhoneFullScore(osmd,stage,fullRightMargin);else osmd.render();avoidTempoCollisions(stage,displayXML);let systemLayout=captureSystems(osmd,stage,{staffOwnership});if(lead?.ok)systemLayout=preferMusicalSections(osmd,stage,viewXML,systemLayout,{width:w,available,zoom,render:(staffOwnership=false)=>{renderLeadLayout(osmd,stage);avoidTempoCollisions(stage,displayXML);return captureSystems(osmd,stage,{staffOwnership});}});return {systemLayout,svg:stage.innerHTML,xml,viewXML,leadState:lead,zoom,systems:osmd.GraphicSheet.MusicPages.reduce((n,p)=>n+p.MusicSystems.length,0)};};
    // Screen-only lower bound: 11px lyric text and at least .55 notation scale.
-   const phoneQuality={minimumLyric:11,pagination:{gapCap:lead?.ok?14:24,minimumGap:lead?.ok?8:12,preferSections:!!lead?.ok}};
+   const phoneQuality={minimumLyric:11,lyricTolerance:lead?.ok?0:1e-6,pagination:{gapCap:lead?.ok?14:24,minimumGap:lead?.ok?8:12,preferSections:!!lead?.ok}};
    const assess=e=>assessLayout(stage,e.systemLayout,w,available,e.zoom,phone?phoneQuality:undefined);
    const render=zoom=>lead?.ok&&!rightHandLead(lead)?renderOnce(zoom):renderFullScoreLayout(osmd,()=>renderOnce(zoom),assess);
    let entry;
