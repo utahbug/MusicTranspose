@@ -1,0 +1,294 @@
+{
+  "viewport": {
+    "width": 820,
+    "height": 1180,
+    "browser": "Chromium / desktop Edge, simulated iPad width"
+  },
+  "visualReview": "Every page of all 20 combinations inspected. Harmony above staff; no obvious chord/title/lyric collisions or duplicate symbols. Physical iPad judgment remains pending.",
+  "layoutTradeoff": "Added chord rows make seven existing one-page view/key combinations use two pages. No pagination or Melody-layout code changed; do not describe page counts as unchanged.",
+  "tests": {
+    "inferenceTests": 7,
+    "existingChordAssertions": 7288,
+    "pilotOverlayAndMelodyChecks": 5,
+    "viewKeyCombinations": 20,
+    "reproducibility": "pass",
+    "sourceMXLHashes": "all 21 unchanged"
+  },
+  "cases": [
+    {
+      "number": "2",
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.702",
+      "screenshots": [
+        "test-results/harmony-2-auto-0-page1.png",
+        "test-results/harmony-2-auto-0-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "2",
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.702",
+      "screenshots": [
+        "test-results/harmony-2-auto-2-page1.png",
+        "test-results/harmony-2-auto-2-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "2",
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-2-large-0-page1.png",
+        "test-results/harmony-2-large-0-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "2",
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-2-large-2-page1.png",
+        "test-results/harmony-2-large-2-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "30",
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-30-auto-0-page1.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.702"
+    },
+    {
+      "number": "30",
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.68",
+      "screenshots": [
+        "test-results/harmony-30-auto-2-page1.png",
+        "test-results/harmony-30-auto-2-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.702"
+    },
+    {
+      "number": "30",
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-30-large-0-page1.png",
+        "test-results/harmony-30-large-0-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "30",
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-30-large-2-page1.png",
+        "test-results/harmony-30-large-2-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "193",
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-193-auto-0-page1.png",
+        "test-results/harmony-193-auto-0-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.702"
+    },
+    {
+      "number": "193",
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-193-auto-2-page1.png",
+        "test-results/harmony-193-auto-2-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.702"
+    },
+    {
+      "number": "193",
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-193-large-0-page1.png",
+        "test-results/harmony-193-large-0-page2.png"
+      ],
+      "withoutOverlayPages": 2,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "193",
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-193-large-2-page1.png",
+        "test-results/harmony-193-large-2-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "202",
+      "id": "faithful",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-202-auto-0-page1.png",
+        "test-results/harmony-202-auto-0-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "202",
+      "id": "faithful",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-202-auto-2-page1.png",
+        "test-results/harmony-202-auto-2-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "202",
+      "id": "faithful",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-202-large-0-page1.png",
+        "test-results/harmony-202-large-0-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "202",
+      "id": "faithful",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-202-large-2-page1.png",
+        "test-results/harmony-202-large-2-page2.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "204",
+      "id": "silent-night",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-204-auto-0-page1.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "204",
+      "id": "silent-night",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.78",
+      "screenshots": [
+        "test-results/harmony-204-auto-2-page1.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.78"
+    },
+    {
+      "number": "204",
+      "id": "silent-night",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-204-large-0-page1.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.9"
+    },
+    {
+      "number": "204",
+      "id": "silent-night",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "zoom": "0.9",
+      "screenshots": [
+        "test-results/harmony-204-large-2-page1.png"
+      ],
+      "withoutOverlayPages": 1,
+      "withoutOverlayZoom": "0.9"
+    }
+  ]
+}

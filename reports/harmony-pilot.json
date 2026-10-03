@@ -1,0 +1,3326 @@
+{
+  "inventory": [
+    {
+      "number": 2,
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "title": "The Spirit of God",
+      "asset": "./assets/scores/song-a13c43da-0243-4019-ad08-d7be530074f5.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "049a96f925bb22451665704fb0998057d1b5521c3be9507a480a00e33903d5e6"
+    },
+    {
+      "number": 7,
+      "id": "song-79a297b0-52bf-444f-ab42-1c6a0f64a68d",
+      "title": "Israel, Israel, God Is Calling",
+      "asset": "./assets/scores/song-79a297b0-52bf-444f-ab42-1c6a0f64a68d.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "646ef093347cdb031eeab20d621b125eb298a60e6b7829326d7dc6f0cc2dbb5e"
+    },
+    {
+      "number": 30,
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "title": "Come, Come, Ye Saints",
+      "asset": "./assets/scores/song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "9f702f9509b87c3bbbedddac0869f0e431c87f9164f5b7f76ca2feee533f7249"
+    },
+    {
+      "number": 62,
+      "id": "song-93dfb488-c85f-4028-ab09-127470312f80",
+      "title": "All Creatures of Our God and King",
+      "asset": "./assets/scores/song-93dfb488-c85f-4028-ab09-127470312f80.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "9b5b2f91b6016f59ac92c0b05cd9215f5e400618f03f892c04a16ea63561b879"
+    },
+    {
+      "number": 100,
+      "id": "song-00dbf08d-281a-4a99-9a9a-77815f9d9d14",
+      "title": "Nearer, My God, to Thee",
+      "asset": "./assets/scores/song-00dbf08d-281a-4a99-9a9a-77815f9d9d14.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "c2eb7cf3185c02b8fbb8ed7835a9126cac3905fac20743d379f2907dc2167633"
+    },
+    {
+      "number": 108,
+      "id": "song-dea11113-d74a-48fb-a683-976303a87d10",
+      "title": "The Lord Is My Shepherd",
+      "asset": "./assets/scores/song-dea11113-d74a-48fb-a683-976303a87d10.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "bbca094608b50635787e375a000fd669aaa5469b02c115eed96eca1d8bbd72c4"
+    },
+    {
+      "number": 193,
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "title": "I Stand All Amazed",
+      "asset": "./assets/scores/song-a66f2976-c2a3-4edd-9651-fa5e829b053a.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "7e745567be572ef2145cc63492f4f9a8efd382f0dce64a6088d3a0aae5d3ed3f"
+    },
+    {
+      "number": 246,
+      "id": "song-95e908ac-a3bd-4000-a45b-6ee588196bdf",
+      "title": "Onward, Christian Soldiers",
+      "asset": "./assets/scores/song-95e908ac-a3bd-4000-a45b-6ee588196bdf.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "08ddbfafe4400b756c0ea186ad0253b120f2f4d50d8dcece68442cafe96d7e2d"
+    },
+    {
+      "number": 270,
+      "id": "song-5171114c-7b99-40f8-9040-5186973263b3",
+      "title": "I’ll Go Where You Want Me to Go",
+      "asset": "./assets/scores/song-5171114c-7b99-40f8-9040-5186973263b3.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "4a4d105b0fc7273c46305d28b2db8de344bf4ca6d0f9867be707c97374232c2b"
+    },
+    {
+      "number": 292,
+      "id": "song-b61a15f7-c918-4320-9a79-03eef62b9f62",
+      "title": "O My Father",
+      "asset": "./assets/scores/song-b61a15f7-c918-4320-9a79-03eef62b9f62.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "3a5a610add80f7bc5d888cee67251f2951b42942dcd9caa19806a22fc072b7cc"
+    },
+    {
+      "number": 301,
+      "id": "song-7076bf3f-727e-4280-90f1-60faf9796937",
+      "title": "I Am a Child of God",
+      "asset": "./assets/scores/song-7076bf3f-727e-4280-90f1-60faf9796937.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "b9ede5f8b86c9a18c9a0a9fa1811473d4cda251838d8fc930bcb3d0b1c0b6d37"
+    },
+    {
+      "number": 307,
+      "id": "song-af85e05e-8681-406e-a412-22338e4fd595",
+      "title": "In Our Lovely Deseret",
+      "asset": "./assets/scores/song-af85e05e-8681-406e-a412-22338e4fd595.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "4d26a63acd8f77a09843dd4e4e6a124524c4b9da2407c73fb486c6a481d89343"
+    },
+    {
+      "number": 202,
+      "id": "faithful",
+      "title": "Oh, Come, All Ye Faithful",
+      "asset": "./assets/faithful.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "bece21bc4b144307460d0ace33fa436dfa79728eee0663e27dd4a0df23996222"
+    },
+    {
+      "number": 203,
+      "id": "song-c8c15b83-e038-4dc7-9901-c015de754fb4",
+      "title": "Angels We Have Heard on High",
+      "asset": "./assets/scores/song-c8c15b83-e038-4dc7-9901-c015de754fb4.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "f93580224e9697bc78453aff4755968f2793894023bef095fc423058bb689c98"
+    },
+    {
+      "number": 204,
+      "id": "silent-night",
+      "title": "Silent Night",
+      "asset": "./assets/silent-night.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "670fbd0da52a1965d96627f748e17b678b14b8bff91c20f1515392a223303c4e"
+    },
+    {
+      "number": 206,
+      "id": "song-fafcb319-245b-4305-b2f1-f97fad331d5e",
+      "title": "Away in a Manger",
+      "asset": "./assets/scores/song-fafcb319-245b-4305-b2f1-f97fad331d5e.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "515d1ef5c584b2d22a6a7a23c5529468a64f38a7979d1a6ee8eb696bad3bc2e9"
+    },
+    {
+      "number": 207,
+      "id": "song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc",
+      "title": "It Came upon the Midnight Clear",
+      "asset": "./assets/scores/song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "d6050e84d42fb969962532401e1c52c119685f5b1f7a0ce592792b5d8ede823d"
+    },
+    {
+      "number": 208,
+      "id": "song-971ceab4-9411-4127-8118-db8dd12e1816",
+      "title": "O Little Town of Bethlehem",
+      "asset": "./assets/scores/song-971ceab4-9411-4127-8118-db8dd12e1816.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "00ab6fde561f719f39aac214e0253a7ba69c73371c92a6b98d902f124ab12e94"
+    },
+    {
+      "number": 209,
+      "id": "song-53c57be6-2733-45c7-94ad-773835a4fd19",
+      "title": "Hark! The Herald Angels Sing",
+      "asset": "./assets/scores/song-53c57be6-2733-45c7-94ad-773835a4fd19.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "86094b48801461c9b30afb78f671a66ef215c2a93e17fb992251a04a11e8d254"
+    },
+    {
+      "number": 212,
+      "id": "song-9be03820-2e2a-453e-9270-2138bf79d9c2",
+      "title": "Far, Far Away on Judea’s Plains",
+      "asset": "./assets/scores/song-9be03820-2e2a-453e-9270-2138bf79d9c2.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "b0f20f0210cdcc7ebe56f7cd22797c10b4af338179067b4bfcae2a1b52645bf9"
+    },
+    {
+      "number": 213,
+      "id": "song-8aaafadd-0290-4b8f-aa76-a7b167782212",
+      "title": "The First Noel",
+      "asset": "./assets/scores/song-8aaafadd-0290-4b8f-aa76-a7b167782212.mxl",
+      "harmonyCount": 0,
+      "chordText": [],
+      "status": "none",
+      "sourceSha256": "9ca1b96b0508d682c9cda88a15f17dabf062b805ee3929f7919d1dbc6b3b7c93"
+    }
+  ],
+  "pilots": [
+    {
+      "number": 2,
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "title": "The Spirit of God",
+      "events": [
+        {
+          "measure": 0,
+          "sourceMeasure": "0",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 1,
+          "sourceMeasure": "X1",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "minor",
+          "bass": null,
+          "label": "Gm",
+          "bassNote": "G",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.946,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 5,
+          "sourceMeasure": "X5",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "A",
+            "alter": 0
+          },
+          "label": "F7/A",
+          "bassNote": "A",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 1.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 2.0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 1.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "minor",
+          "bass": {
+            "step": "E",
+            "alter": -1
+          },
+          "label": "Cm/Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 0
+          },
+          "label": "Bb/F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 3.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "minor",
+          "bass": null,
+          "label": "Gm",
+          "bassNote": "G",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 13,
+          "sourceMeasure": "X13",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 14,
+          "sourceMeasure": "X14",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.946,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 15,
+          "sourceMeasure": "X15",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "A",
+            "alter": 0
+          },
+          "label": "F7/A",
+          "bassNote": "A",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 16,
+          "sourceMeasure": "X16",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 1.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 2.0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 1.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "minor",
+          "bass": {
+            "step": "E",
+            "alter": -1
+          },
+          "label": "Cm/Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 0
+          },
+          "label": "Bb/F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 3.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 23,
+          "sourceMeasure": "X23",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 23,
+          "sourceMeasure": "X23",
+          "offset": 3.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "dominant",
+          "bass": null,
+          "label": "C7",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 24,
+          "sourceMeasure": "X24",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 24,
+          "sourceMeasure": "X24",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 25,
+          "sourceMeasure": "X25",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F7/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 3.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 27,
+          "sourceMeasure": "X27",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 27,
+          "sourceMeasure": "X27",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F7/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 27,
+          "sourceMeasure": "X27",
+          "offset": 3.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 28,
+          "sourceMeasure": "X28",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "A",
+            "alter": 0
+          },
+          "label": "F7/A",
+          "bassNote": "A",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 28,
+          "sourceMeasure": "X28",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 29,
+          "sourceMeasure": "X29",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 31,
+          "sourceMeasure": "X31",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 31,
+          "sourceMeasure": "X31",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 31,
+          "sourceMeasure": "X31",
+          "offset": 3.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 32,
+          "sourceMeasure": "X32",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 32,
+          "sourceMeasure": "X32",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F7/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 32,
+          "sourceMeasure": "X32",
+          "offset": 3.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 33,
+          "sourceMeasure": "X33",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 0.946,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 33,
+          "sourceMeasure": "X33",
+          "offset": 3.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "dominant",
+          "bass": null,
+          "label": "C7",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 34,
+          "sourceMeasure": "X34",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 34,
+          "sourceMeasure": "X34",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 35,
+          "sourceMeasure": "X35",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F7/C",
+          "bassNote": "C",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 36,
+          "sourceMeasure": "X36",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.946,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 37,
+          "sourceMeasure": "X37",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 37,
+          "sourceMeasure": "X37",
+          "offset": 2.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "Bb/D",
+          "bassNote": "D",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 37,
+          "sourceMeasure": "X37",
+          "offset": 3.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "minor",
+          "bass": {
+            "step": "E",
+            "alter": -1
+          },
+          "label": "Cm/Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 38,
+          "sourceMeasure": "X38",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 0
+          },
+          "label": "Bb/F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 38,
+          "sourceMeasure": "X38",
+          "offset": 2.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": null,
+          "label": "F",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 38,
+          "sourceMeasure": "X38",
+          "offset": 3.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 39,
+          "sourceMeasure": "X39",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        }
+      ],
+      "review": [
+        {
+          "measure": "X3",
+          "offset": 2.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb",
+          "coverage": 0.75
+        },
+        {
+          "measure": "X7",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Cm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X13",
+          "offset": 2.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb",
+          "coverage": 0.75
+        },
+        {
+          "measure": "X17",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Cm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X24",
+          "offset": 1.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb",
+          "coverage": 0.5
+        },
+        {
+          "measure": "X34",
+          "offset": 1.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb",
+          "coverage": 0.5
+        },
+        {
+          "measure": "X37",
+          "offset": 1.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Cm",
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+      "title": "Come, Come, Ye Saints",
+      "events": [
+        {
+          "measure": 0,
+          "sourceMeasure": "0",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 0.938,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 1,
+          "sourceMeasure": "X1",
+          "offset": 2.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "major",
+          "bass": null,
+          "label": "C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 1.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "Am/C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "G/D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 5,
+          "sourceMeasure": "X5",
+          "offset": 2.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "major",
+          "bass": null,
+          "label": "C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 1.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "Am/C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "G/D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 0.923,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "dominant",
+          "bass": null,
+          "label": "D7",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 10,
+          "sourceMeasure": "X10",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 0.917,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 14,
+          "sourceMeasure": "X14",
+          "offset": 1.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "Am/C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 15,
+          "sourceMeasure": "X15",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "G/D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 15,
+          "sourceMeasure": "X15",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        }
+      ],
+      "review": [
+        {
+          "measure": "X1",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "D",
+          "coverage": 0.688
+        },
+        {
+          "measure": "X5",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "D",
+          "coverage": 0.688
+        },
+        {
+          "measure": "X7",
+          "offset": 1.0,
+          "reason": "Retained previous harmony through short weak-beat motion"
+        },
+        {
+          "measure": "X9",
+          "offset": 1.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "D",
+          "coverage": 0.688
+        },
+        {
+          "measure": "X11",
+          "offset": 2.5,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        },
+        {
+          "measure": "X12",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "G",
+          "coverage": 0.625
+        }
+      ]
+    },
+    {
+      "number": 193,
+      "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+      "title": "I Stand All Amazed",
+      "events": [
+        {
+          "measure": 1,
+          "sourceMeasure": "X1",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 0.926,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": {
+            "step": "B",
+            "alter": -1
+          },
+          "label": "Eb7/Bb",
+          "bassNote": "Bb",
+          "keyFifths": -4,
+          "pitchCoverage": 0.982,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": null,
+          "label": "Eb7",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 0.926,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 0.93,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 14,
+          "sourceMeasure": "X14",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 0.926,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -4,
+          "pitchCoverage": 0.778,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": null,
+          "label": "Eb7",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 0.974,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 20,
+          "sourceMeasure": "X20",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 0.833,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 22,
+          "sourceMeasure": "X22",
+          "offset": 1.0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": null,
+          "label": "Eb7",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 23,
+          "sourceMeasure": "X23",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 0.937,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 24,
+          "sourceMeasure": "X24",
+          "offset": 1.0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": {
+            "step": "G",
+            "alter": 0
+          },
+          "label": "Eb7/G",
+          "bassNote": "G",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 24,
+          "sourceMeasure": "X24",
+          "offset": 2.0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 25,
+          "sourceMeasure": "X25",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "minor",
+          "bass": {
+            "step": "D",
+            "alter": -1
+          },
+          "label": "Bbm/Db",
+          "bassNote": "Db",
+          "keyFifths": -4,
+          "pitchCoverage": 0.912,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 25,
+          "sourceMeasure": "X25",
+          "offset": 1.0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "minor",
+          "bass": null,
+          "label": "Bbm",
+          "bassNote": "Bb",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "major",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "F/C",
+          "bassNote": "C",
+          "keyFifths": -4,
+          "pitchCoverage": 0.912,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 1.0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": {
+            "step": "E",
+            "alter": -1
+          },
+          "label": "Ab/Eb",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 26,
+          "sourceMeasure": "X26",
+          "offset": 2.0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "dominant",
+          "bass": null,
+          "label": "Eb7",
+          "bassNote": "Eb",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 27,
+          "sourceMeasure": "X27",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": -1
+          },
+          "rootPC": 8,
+          "kind": "major",
+          "bass": null,
+          "label": "Ab",
+          "bassNote": "Ab",
+          "keyFifths": -4,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        }
+      ],
+      "review": [
+        {
+          "measure": "0",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Cm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X5",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        },
+        {
+          "measure": "X6",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        },
+        {
+          "measure": "X10",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Cm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X15",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Gm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X16",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Bb",
+          "coverage": 0.778
+        },
+        {
+          "measure": "X18",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Fm",
+          "coverage": 0.296
+        },
+        {
+          "measure": "X22",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb",
+          "coverage": 0.529
+        },
+        {
+          "measure": "X22",
+          "offset": 1.5,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Eb7",
+          "coverage": 0.75
+        }
+      ]
+    },
+    {
+      "number": 202,
+      "id": "faithful",
+      "title": "Oh, Come, All Ye Faithful",
+      "events": [
+        {
+          "measure": 0,
+          "sourceMeasure": "0",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 1.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 1
+          },
+          "label": "D/F#",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 2.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 3.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "major",
+          "bass": null,
+          "label": "C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "G/D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 3.0,
+          "root": {
+            "step": "E",
+            "alter": 0
+          },
+          "rootPC": 4,
+          "kind": "minor",
+          "bass": null,
+          "label": "Em",
+          "bassNote": "E",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 5,
+          "sourceMeasure": "X5",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 5,
+          "sourceMeasure": "X5",
+          "offset": 3.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "major",
+          "bass": null,
+          "label": "A",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "B",
+            "alter": 0
+          },
+          "label": "G/B",
+          "bassNote": "B",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 1
+          },
+          "label": "D/F#",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 2.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "dominant",
+          "bass": null,
+          "label": "A7",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 0.882,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 2.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": null,
+          "label": "Am",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 10,
+          "sourceMeasure": "X10",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": null,
+          "label": "Am",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 10,
+          "sourceMeasure": "X10",
+          "offset": 2.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 1
+          },
+          "label": "D/F#",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 2.0,
+          "root": {
+            "step": "E",
+            "alter": 0
+          },
+          "rootPC": 4,
+          "kind": "minor",
+          "bass": null,
+          "label": "Em",
+          "bassNote": "E",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 3.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "Am/C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 0.946,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 12,
+          "sourceMeasure": "X12",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "B",
+            "alter": 0
+          },
+          "label": "G/B",
+          "bassNote": "B",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 13,
+          "sourceMeasure": "X13",
+          "offset": 1.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "A",
+            "alter": 0
+          },
+          "label": "D/A",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 13,
+          "sourceMeasure": "X13",
+          "offset": 2.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "B",
+            "alter": 0
+          },
+          "label": "G/B",
+          "bassNote": "B",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 14,
+          "sourceMeasure": "X14",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 15,
+          "sourceMeasure": "X15",
+          "offset": 1.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 1
+          },
+          "label": "D/F#",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 16,
+          "sourceMeasure": "X16",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 16,
+          "sourceMeasure": "X16",
+          "offset": 1.0,
+          "root": {
+            "step": "F",
+            "alter": 1
+          },
+          "rootPC": 6,
+          "kind": "diminished",
+          "bass": {
+            "step": "A",
+            "alter": 0
+          },
+          "label": "F#dim/A",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 17,
+          "sourceMeasure": "X17",
+          "offset": 3.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "minor",
+          "bass": null,
+          "label": "Am",
+          "bassNote": "A",
+          "keyFifths": 1,
+          "pitchCoverage": 0.941,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 1.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": {
+            "step": "F",
+            "alter": 1
+          },
+          "label": "D/F#",
+          "bassNote": "F#",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 18,
+          "sourceMeasure": "X18",
+          "offset": 3.0,
+          "root": {
+            "step": "A",
+            "alter": 0
+          },
+          "rootPC": 9,
+          "kind": "dominant",
+          "bass": {
+            "step": "E",
+            "alter": 0
+          },
+          "label": "A7/E",
+          "bassNote": "E",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "major",
+          "bass": null,
+          "label": "D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 1.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "dominant",
+          "bass": {
+            "step": "C",
+            "alter": 0
+          },
+          "label": "D7/C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 2.0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "B",
+            "alter": 0
+          },
+          "label": "G/B",
+          "bassNote": "B",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 19,
+          "sourceMeasure": "X19",
+          "offset": 3.0,
+          "root": {
+            "step": "C",
+            "alter": 0
+          },
+          "rootPC": 0,
+          "kind": "major",
+          "bass": null,
+          "label": "C",
+          "bassNote": "C",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 20,
+          "sourceMeasure": "X20",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": {
+            "step": "D",
+            "alter": 0
+          },
+          "label": "G/D",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+        },
+        {
+          "measure": 20,
+          "sourceMeasure": "X20",
+          "offset": 2.0,
+          "root": {
+            "step": "D",
+            "alter": 0
+          },
+          "rootPC": 2,
+          "kind": "dominant",
+          "bass": null,
+          "label": "D7",
+          "bassNote": "D",
+          "keyFifths": 1,
+          "pitchCoverage": 0.882,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 21,
+          "sourceMeasure": "X21",
+          "offset": 0,
+          "root": {
+            "step": "G",
+            "alter": 0
+          },
+          "rootPC": 7,
+          "kind": "major",
+          "bass": null,
+          "label": "G",
+          "bassNote": "G",
+          "keyFifths": 1,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        }
+      ],
+      "review": [
+        {
+          "measure": "X6",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "G",
+          "coverage": 0.75
+        },
+        {
+          "measure": "X8",
+          "offset": 2.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "D",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X9",
+          "offset": 0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Bm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X12",
+          "offset": 2.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "D",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X13",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        },
+        {
+          "measure": "X14",
+          "offset": 2.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": "Bm",
+          "coverage": 1.0
+        },
+        {
+          "measure": "X17",
+          "offset": 1.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        }
+      ]
+    },
+    {
+      "number": 204,
+      "id": "silent-night",
+      "title": "Silent Night",
+      "events": [
+        {
+          "measure": 0,
+          "sourceMeasure": "0",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.944,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 2,
+          "sourceMeasure": "X2",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 3,
+          "sourceMeasure": "X3",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 4,
+          "sourceMeasure": "X4",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 5,
+          "sourceMeasure": "X5",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.917,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 6,
+          "sourceMeasure": "X6",
+          "offset": 0,
+          "root": {
+            "step": "E",
+            "alter": -1
+          },
+          "rootPC": 3,
+          "kind": "major",
+          "bass": null,
+          "label": "Eb",
+          "bassNote": "Eb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 7,
+          "sourceMeasure": "X7",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 0.917,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 8,
+          "sourceMeasure": "X8",
+          "offset": 0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 9,
+          "sourceMeasure": "X9",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 10,
+          "sourceMeasure": "X10",
+          "offset": 5.0,
+          "root": {
+            "step": "F",
+            "alter": 0
+          },
+          "rootPC": 5,
+          "kind": "dominant",
+          "bass": null,
+          "label": "F7",
+          "bassNote": "F",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        },
+        {
+          "measure": 11,
+          "sourceMeasure": "X11",
+          "offset": 0,
+          "root": {
+            "step": "B",
+            "alter": -1
+          },
+          "rootPC": 10,
+          "kind": "major",
+          "bass": null,
+          "label": "Bb",
+          "bassNote": "Bb",
+          "keyFifths": -2,
+          "pitchCoverage": 1,
+          "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+        }
+      ],
+      "review": [
+        {
+          "measure": "X8",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        },
+        {
+          "measure": "X10",
+          "offset": 3.0,
+          "reason": "Omitted: incomplete/ambiguous structural harmony",
+          "candidate": null,
+          "coverage": 0
+        }
+      ]
+    }
+  ]
+}

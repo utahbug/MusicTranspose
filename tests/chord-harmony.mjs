@@ -7,7 +7,7 @@ page.on('pageerror',e=>errors.push(e.message));
 const base=process.env.TEST_URL||'http://127.0.0.1:8768/';
 const ready=()=>page.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.querySelector('#score').getAttribute('aria-busy')==='false');
 try{
- await page.goto(base);await page.locator('.library-row').first().waitFor();
+ await page.goto(base);await page.locator('[data-home-source=all]').click();await page.locator('.library-row').first().waitFor();
  const unit=await page.evaluate(async()=>{
   const {parseChordSymbol,transposeChordSymbol}=await import('./chord-symbol.js');
   const {transposeXML,parseXML,originalKey,buildKeys}=await import('./music.js');
@@ -47,6 +47,7 @@ try{
   return {checks:checks.length,examples:examples.length};
  });
  console.log('PASS grammar, punctuation, key spelling, root/bass, structured harmony, playback and opening metadata',unit);
+ if(process.env.CHORD_UNIT_ONLY){await browser.close();process.exit(0);}
  const audit=await page.evaluate(async()=>{
   const {songs}=await import('./songs.js'),{unpackMXL,transposeXML,parseXML}=await import('./music.js'),{parseChordSymbol}=await import('./chord-symbol.js');
   const rows=[];let structured=0,slash=0,optional=0,textChords=0,nonchords=0;

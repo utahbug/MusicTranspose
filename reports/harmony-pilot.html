@@ -1,0 +1,228 @@
+<!doctype html><meta charset="utf-8"><title>1985 hymn harmony pilot</title><style>body{font:16px system-ui;max-width:1100px;margin:32px auto;padding:0 20px;color:#223}table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:6px;border-bottom:1px solid #ddd}code{font-size:12px}h2{margin-top:40px}</style><h1>1985 hymnal: five-hymn harmony pilot</h1><p>All 21 sources: zero native harmony elements and zero chord-like direction texts. Five requested pilots, no substitutions. Source MXL assets remain unchanged. These are inferred accompaniment suggestions requiring human musical review before expansion.</p><h2>Architecture and interpretation</h2><p>Development-time SATB analysis uses duration-weighted pitches, lowest sounding bass, key, meter, neighboring harmony and dominant-to-tonic motion. Metrical windows split at sustained bass changes and supported cadential dominants. Short notes are downweighted; unsupported/ambiguous windows are omitted. Repeated harmony is suppressed; a root-position resolution after an inversion is retained. Dense cadential passages can have more than two symbols per measure. Vocabulary supports major, minor, dominant seventh, major seventh, diminished and augmented; the pilot output uses major, minor, dominant seventh and diminished.</p><p>Runtime uses only five precomputed overlays, keyed by stable catalog ID and SHA-256 of unpacked source XML. Any source harmony or chord text takes precedence. A changed source fingerprint disables its old overlay. Injection changes a working copy before the existing transposition and Melody projection pipelines. Generated harmony IDs begin mt-generated-. No extraction, playback, pagination or PDF code changes.</p><p>Regenerate: python tools/harmony-inference.py. Verify: append --check. Analyze another file without adding it: --analyze path/to/score.mxl. Measure index is zero-based; source measure numbers are reproduced verbatim (including pickup 0 and X prefixes). Offsets are quarter-note units from measure start, not printed beat numbers. Pitch coverage is weighted chord-tone agreement, NOT a probability of correctness. Omitted windows are listed separately; a preceding symbol must not be taken as proof of harmony through an uncertain passage.</p><h2>21-source inventory</h2><table><tr><th>Hymn</th><th>Stable ID</th><th>Native / text</th></tr>
+<tr><td>2 — The Spirit of God</td><td><code>song-a13c43da-0243-4019-ad08-d7be530074f5</code></td><td>0 / 0</td></tr>
+<tr><td>7 — Israel, Israel, God Is Calling</td><td><code>song-79a297b0-52bf-444f-ab42-1c6a0f64a68d</code></td><td>0 / 0</td></tr>
+<tr><td>30 — Come, Come, Ye Saints</td><td><code>song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6</code></td><td>0 / 0</td></tr>
+<tr><td>62 — All Creatures of Our God and King</td><td><code>song-93dfb488-c85f-4028-ab09-127470312f80</code></td><td>0 / 0</td></tr>
+<tr><td>100 — Nearer, My God, to Thee</td><td><code>song-00dbf08d-281a-4a99-9a9a-77815f9d9d14</code></td><td>0 / 0</td></tr>
+<tr><td>108 — The Lord Is My Shepherd</td><td><code>song-dea11113-d74a-48fb-a683-976303a87d10</code></td><td>0 / 0</td></tr>
+<tr><td>193 — I Stand All Amazed</td><td><code>song-a66f2976-c2a3-4edd-9651-fa5e829b053a</code></td><td>0 / 0</td></tr>
+<tr><td>246 — Onward, Christian Soldiers</td><td><code>song-95e908ac-a3bd-4000-a45b-6ee588196bdf</code></td><td>0 / 0</td></tr>
+<tr><td>270 — I’ll Go Where You Want Me to Go</td><td><code>song-5171114c-7b99-40f8-9040-5186973263b3</code></td><td>0 / 0</td></tr>
+<tr><td>292 — O My Father</td><td><code>song-b61a15f7-c918-4320-9a79-03eef62b9f62</code></td><td>0 / 0</td></tr>
+<tr><td>301 — I Am a Child of God</td><td><code>song-7076bf3f-727e-4280-90f1-60faf9796937</code></td><td>0 / 0</td></tr>
+<tr><td>307 — In Our Lovely Deseret</td><td><code>song-af85e05e-8681-406e-a412-22338e4fd595</code></td><td>0 / 0</td></tr>
+<tr><td>202 — Oh, Come, All Ye Faithful</td><td><code>faithful</code></td><td>0 / 0</td></tr>
+<tr><td>203 — Angels We Have Heard on High</td><td><code>song-c8c15b83-e038-4dc7-9901-c015de754fb4</code></td><td>0 / 0</td></tr>
+<tr><td>204 — Silent Night</td><td><code>silent-night</code></td><td>0 / 0</td></tr>
+<tr><td>206 — Away in a Manger</td><td><code>song-fafcb319-245b-4305-b2f1-f97fad331d5e</code></td><td>0 / 0</td></tr>
+<tr><td>207 — It Came upon the Midnight Clear</td><td><code>song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc</code></td><td>0 / 0</td></tr>
+<tr><td>208 — O Little Town of Bethlehem</td><td><code>song-971ceab4-9411-4127-8118-db8dd12e1816</code></td><td>0 / 0</td></tr>
+<tr><td>209 — Hark! The Herald Angels Sing</td><td><code>song-53c57be6-2733-45c7-94ad-773835a4fd19</code></td><td>0 / 0</td></tr>
+<tr><td>212 — Far, Far Away on Judea’s Plains</td><td><code>song-9be03820-2e2a-453e-9270-2138bf79d9c2</code></td><td>0 / 0</td></tr>
+<tr><td>213 — The First Noel</td><td><code>song-8aaafadd-0290-4b8f-aa76-a7b167782212</code></td><td>0 / 0</td></tr>
+</table>
+<h2>2 — The Spirit of God</h2><p>Bb major; 66 symbols; 7 omitted/review windows. Opening labelled chord: Bb; final retained chord: Bb.</p><table><tr><th>Index / source measure</th><th>Quarter offset</th><th>Chord</th><th>Bass</th><th>Pitch coverage</th></tr>
+<tr><td>0 / 0</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>1 / X1</td><td>2.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>2.0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>3.0</td><td>Gm</td><td>G</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>4 / X4</td><td>0</td><td>Bb</td><td>Bb</td><td>0.946</td></tr>
+<tr><td>5 / X5</td><td>0</td><td>F7/A</td><td>A</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>1.0</td><td>Bb/D</td><td>D</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>2.0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>8 / X8</td><td>0</td><td>Bb/D</td><td>D</td><td>1</td></tr>
+<tr><td>8 / X8</td><td>1.0</td><td>Cm/Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>8 / X8</td><td>2.0</td><td>Bb/F</td><td>F</td><td>1</td></tr>
+<tr><td>8 / X8</td><td>3.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>9 / X9</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>2.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>12 / X12</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>12 / X12</td><td>2.0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>12 / X12</td><td>3.0</td><td>Gm</td><td>G</td><td>1</td></tr>
+<tr><td>13 / X13</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>14 / X14</td><td>0</td><td>Bb</td><td>Bb</td><td>0.946</td></tr>
+<tr><td>15 / X15</td><td>0</td><td>F7/A</td><td>A</td><td>1</td></tr>
+<tr><td>16 / X16</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>1.0</td><td>Bb/D</td><td>D</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>2.0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>0</td><td>Bb/D</td><td>D</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>1.0</td><td>Cm/Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>2.0</td><td>Bb/F</td><td>F</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>3.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>19 / X19</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>23 / X23</td><td>2.0</td><td>F/C</td><td>C</td><td>1</td></tr>
+<tr><td>23 / X23</td><td>3.0</td><td>C7</td><td>C</td><td>1</td></tr>
+<tr><td>24 / X24</td><td>0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>24 / X24</td><td>2.0</td><td>Bb/D</td><td>D</td><td>0.941</td></tr>
+<tr><td>25 / X25</td><td>0</td><td>F7/C</td><td>C</td><td>1</td></tr>
+<tr><td>26 / X26</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>26 / X26</td><td>2.0</td><td>F/C</td><td>C</td><td>1</td></tr>
+<tr><td>26 / X26</td><td>3.0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>27 / X27</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>27 / X27</td><td>2.0</td><td>F7/C</td><td>C</td><td>1</td></tr>
+<tr><td>27 / X27</td><td>3.0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>28 / X28</td><td>0</td><td>F7/A</td><td>A</td><td>1</td></tr>
+<tr><td>28 / X28</td><td>2.0</td><td>Bb</td><td>Bb</td><td>0.941</td></tr>
+<tr><td>29 / X29</td><td>0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>31 / X31</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>31 / X31</td><td>2.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>31 / X31</td><td>3.0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>32 / X32</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>32 / X32</td><td>2.0</td><td>F7/C</td><td>C</td><td>1</td></tr>
+<tr><td>32 / X32</td><td>3.0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>33 / X33</td><td>0</td><td>F</td><td>F</td><td>0.946</td></tr>
+<tr><td>33 / X33</td><td>3.0</td><td>C7</td><td>C</td><td>1</td></tr>
+<tr><td>34 / X34</td><td>0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>34 / X34</td><td>2.0</td><td>Bb/D</td><td>D</td><td>0.941</td></tr>
+<tr><td>35 / X35</td><td>0</td><td>F7/C</td><td>C</td><td>1</td></tr>
+<tr><td>36 / X36</td><td>0</td><td>Bb</td><td>Bb</td><td>0.946</td></tr>
+<tr><td>37 / X37</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>37 / X37</td><td>2.0</td><td>Bb/D</td><td>D</td><td>1</td></tr>
+<tr><td>37 / X37</td><td>3.0</td><td>Cm/Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>38 / X38</td><td>0</td><td>Bb/F</td><td>F</td><td>1</td></tr>
+<tr><td>38 / X38</td><td>2.0</td><td>F</td><td>F</td><td>1</td></tr>
+<tr><td>38 / X38</td><td>3.0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>39 / X39</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+</table><h3>Review before expansion</h3><ul>
+<li>Source measure X3, quarter offset 2.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb, coverage 0.75.</li>
+<li>Source measure X7, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Cm, coverage 1.0.</li>
+<li>Source measure X13, quarter offset 2.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb, coverage 0.75.</li>
+<li>Source measure X17, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Cm, coverage 1.0.</li>
+<li>Source measure X24, quarter offset 1.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb, coverage 0.5.</li>
+<li>Source measure X34, quarter offset 1.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb, coverage 0.5.</li>
+<li>Source measure X37, quarter offset 1.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Cm, coverage 1.0.</li>
+</ul>
+<h2>30 — Come, Come, Ye Saints</h2><p>G major; 18 symbols; 6 omitted/review windows. Opening labelled chord: G; final retained chord: G.</p><table><tr><th>Index / source measure</th><th>Quarter offset</th><th>Chord</th><th>Bass</th><th>Pitch coverage</th></tr>
+<tr><td>0 / 0</td><td>0</td><td>G</td><td>G</td><td>0.938</td></tr>
+<tr><td>1 / X1</td><td>2.0</td><td>C</td><td>C</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>1.0</td><td>Am/C</td><td>C</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>0</td><td>G/D</td><td>D</td><td>0.941</td></tr>
+<tr><td>3 / X3</td><td>1.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>5 / X5</td><td>2.0</td><td>C</td><td>C</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>1.0</td><td>Am/C</td><td>C</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>0</td><td>G/D</td><td>D</td><td>0.941</td></tr>
+<tr><td>8 / X8</td><td>0</td><td>G</td><td>G</td><td>0.923</td></tr>
+<tr><td>9 / X9</td><td>0</td><td>D7</td><td>F#</td><td>1</td></tr>
+<tr><td>10 / X10</td><td>0</td><td>G</td><td>G</td><td>0.917</td></tr>
+<tr><td>11 / X11</td><td>0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>12 / X12</td><td>1.0</td><td>G</td><td>G</td><td>0.941</td></tr>
+<tr><td>14 / X14</td><td>1.0</td><td>Am/C</td><td>C</td><td>1</td></tr>
+<tr><td>15 / X15</td><td>0</td><td>G/D</td><td>D</td><td>0.941</td></tr>
+<tr><td>15 / X15</td><td>1.0</td><td>G</td><td>G</td><td>1</td></tr>
+</table><h3>Review before expansion</h3><ul>
+<li>Source measure X1, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate D, coverage 0.688.</li>
+<li>Source measure X5, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate D, coverage 0.688.</li>
+<li>Source measure X7, quarter offset 1.0: Retained previous harmony through short weak-beat motion.</li>
+<li>Source measure X9, quarter offset 1.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate D, coverage 0.688.</li>
+<li>Source measure X11, quarter offset 2.5: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+<li>Source measure X12, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate G, coverage 0.625.</li>
+</ul>
+<h2>193 — I Stand All Amazed</h2><p>Ab major; 18 symbols; 9 omitted/review windows. Opening labelled chord: Ab; final retained chord: Ab.</p><table><tr><th>Index / source measure</th><th>Quarter offset</th><th>Chord</th><th>Bass</th><th>Pitch coverage</th></tr>
+<tr><td>1 / X1</td><td>0</td><td>Ab</td><td>Ab</td><td>0.926</td></tr>
+<tr><td>4 / X4</td><td>0</td><td>Eb7/Bb</td><td>Bb</td><td>0.982</td></tr>
+<tr><td>7 / X7</td><td>0</td><td>Eb7</td><td>Eb</td><td>0.926</td></tr>
+<tr><td>9 / X9</td><td>0</td><td>Ab</td><td>Ab</td><td>0.93</td></tr>
+<tr><td>14 / X14</td><td>0</td><td>Eb</td><td>Eb</td><td>0.926</td></tr>
+<tr><td>17 / X17</td><td>0</td><td>Bb</td><td>Bb</td><td>0.778</td></tr>
+<tr><td>19 / X19</td><td>0</td><td>Eb7</td><td>Eb</td><td>0.974</td></tr>
+<tr><td>20 / X20</td><td>0</td><td>Ab</td><td>Ab</td><td>0.833</td></tr>
+<tr><td>22 / X22</td><td>1.0</td><td>Eb7</td><td>Eb</td><td>1</td></tr>
+<tr><td>23 / X23</td><td>0</td><td>Ab</td><td>Ab</td><td>0.937</td></tr>
+<tr><td>24 / X24</td><td>1.0</td><td>Eb7/G</td><td>G</td><td>1</td></tr>
+<tr><td>24 / X24</td><td>2.0</td><td>Ab</td><td>Ab</td><td>1</td></tr>
+<tr><td>25 / X25</td><td>0</td><td>Bbm/Db</td><td>Db</td><td>0.912</td></tr>
+<tr><td>25 / X25</td><td>1.0</td><td>Bbm</td><td>Bb</td><td>1</td></tr>
+<tr><td>26 / X26</td><td>0</td><td>F/C</td><td>C</td><td>0.912</td></tr>
+<tr><td>26 / X26</td><td>1.0</td><td>Ab/Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>26 / X26</td><td>2.0</td><td>Eb7</td><td>Eb</td><td>1</td></tr>
+<tr><td>27 / X27</td><td>0</td><td>Ab</td><td>Ab</td><td>1</td></tr>
+</table><h3>Review before expansion</h3><ul>
+<li>Source measure 0, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Cm, coverage 1.0.</li>
+<li>Source measure X5, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+<li>Source measure X6, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+<li>Source measure X10, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Cm, coverage 1.0.</li>
+<li>Source measure X15, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Gm, coverage 1.0.</li>
+<li>Source measure X16, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Bb, coverage 0.778.</li>
+<li>Source measure X18, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Fm, coverage 0.296.</li>
+<li>Source measure X22, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb, coverage 0.529.</li>
+<li>Source measure X22, quarter offset 1.5: Omitted: incomplete/ambiguous structural harmony; rejected candidate Eb7, coverage 0.75.</li>
+</ul>
+<h2>202 — Oh, Come, All Ye Faithful</h2><p>G major; 46 symbols; 7 omitted/review windows. Opening labelled chord: G; final retained chord: G.</p><table><tr><th>Index / source measure</th><th>Quarter offset</th><th>Chord</th><th>Bass</th><th>Pitch coverage</th></tr>
+<tr><td>0 / 0</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>2 / X2</td><td>0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>1.0</td><td>D/F#</td><td>F#</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>2.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>3.0</td><td>C</td><td>C</td><td>1</td></tr>
+<tr><td>4 / X4</td><td>0</td><td>G/D</td><td>D</td><td>1</td></tr>
+<tr><td>4 / X4</td><td>2.0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>4 / X4</td><td>3.0</td><td>Em</td><td>E</td><td>1</td></tr>
+<tr><td>5 / X5</td><td>2.0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>5 / X5</td><td>3.0</td><td>A</td><td>A</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>1.0</td><td>G/B</td><td>B</td><td>1</td></tr>
+<tr><td>6 / X6</td><td>2.0</td><td>D/F#</td><td>F#</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>2.0</td><td>A7</td><td>A</td><td>0.882</td></tr>
+<tr><td>8 / X8</td><td>0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>9 / X9</td><td>2.0</td><td>Am</td><td>A</td><td>0.941</td></tr>
+<tr><td>9 / X9</td><td>3.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>10 / X10</td><td>0</td><td>Am</td><td>A</td><td>0.941</td></tr>
+<tr><td>10 / X10</td><td>2.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>0</td><td>D/F#</td><td>F#</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>1.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>2.0</td><td>Em</td><td>E</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>3.0</td><td>Am/C</td><td>C</td><td>1</td></tr>
+<tr><td>12 / X12</td><td>0</td><td>D</td><td>D</td><td>0.946</td></tr>
+<tr><td>12 / X12</td><td>3.0</td><td>G/B</td><td>B</td><td>1</td></tr>
+<tr><td>13 / X13</td><td>1.0</td><td>D/A</td><td>A</td><td>1</td></tr>
+<tr><td>13 / X13</td><td>2.0</td><td>G/B</td><td>B</td><td>1</td></tr>
+<tr><td>14 / X14</td><td>3.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>15 / X15</td><td>1.0</td><td>D/F#</td><td>F#</td><td>1</td></tr>
+<tr><td>16 / X16</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>16 / X16</td><td>1.0</td><td>F#dim/A</td><td>A</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>2.0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>17 / X17</td><td>3.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>0</td><td>Am</td><td>A</td><td>0.941</td></tr>
+<tr><td>18 / X18</td><td>1.0</td><td>G</td><td>G</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>2.0</td><td>D/F#</td><td>F#</td><td>1</td></tr>
+<tr><td>18 / X18</td><td>3.0</td><td>A7/E</td><td>E</td><td>1</td></tr>
+<tr><td>19 / X19</td><td>0</td><td>D</td><td>D</td><td>1</td></tr>
+<tr><td>19 / X19</td><td>1.0</td><td>D7/C</td><td>C</td><td>1</td></tr>
+<tr><td>19 / X19</td><td>2.0</td><td>G/B</td><td>B</td><td>1</td></tr>
+<tr><td>19 / X19</td><td>3.0</td><td>C</td><td>C</td><td>1</td></tr>
+<tr><td>20 / X20</td><td>0</td><td>G/D</td><td>D</td><td>1</td></tr>
+<tr><td>20 / X20</td><td>2.0</td><td>D7</td><td>D</td><td>0.882</td></tr>
+<tr><td>21 / X21</td><td>0</td><td>G</td><td>G</td><td>1</td></tr>
+</table><h3>Review before expansion</h3><ul>
+<li>Source measure X6, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate G, coverage 0.75.</li>
+<li>Source measure X8, quarter offset 2.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate D, coverage 1.0.</li>
+<li>Source measure X9, quarter offset 0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Bm, coverage 1.0.</li>
+<li>Source measure X12, quarter offset 2.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate D, coverage 1.0.</li>
+<li>Source measure X13, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+<li>Source measure X14, quarter offset 2.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate Bm, coverage 1.0.</li>
+<li>Source measure X17, quarter offset 1.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+</ul>
+<h2>204 — Silent Night</h2><p>Bb major; 11 symbols; 2 omitted/review windows. Opening labelled chord: Bb; final retained chord: Bb.</p><table><tr><th>Index / source measure</th><th>Quarter offset</th><th>Chord</th><th>Bass</th><th>Pitch coverage</th></tr>
+<tr><td>0 / 0</td><td>0</td><td>Bb</td><td>Bb</td><td>0.944</td></tr>
+<tr><td>2 / X2</td><td>0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>3 / X3</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>4 / X4</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>5 / X5</td><td>0</td><td>Bb</td><td>Bb</td><td>0.917</td></tr>
+<tr><td>6 / X6</td><td>0</td><td>Eb</td><td>Eb</td><td>1</td></tr>
+<tr><td>7 / X7</td><td>0</td><td>Bb</td><td>Bb</td><td>0.917</td></tr>
+<tr><td>8 / X8</td><td>0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>9 / X9</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+<tr><td>10 / X10</td><td>5.0</td><td>F7</td><td>F</td><td>1</td></tr>
+<tr><td>11 / X11</td><td>0</td><td>Bb</td><td>Bb</td><td>1</td></tr>
+</table><h3>Review before expansion</h3><ul>
+<li>Source measure X8, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+<li>Source measure X10, quarter offset 3.0: Omitted: incomplete/ambiguous structural harmony; rejected candidate None, coverage 0.</li>
+</ul>

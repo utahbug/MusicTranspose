@@ -1,3 +1,4 @@
+import {withGeneratedHarmony} from './generated-harmony.js';
 import {applyScorePageHint} from './score-page-hints.js';
 import {installAccompanimentLayout,configureAccompanimentLayout} from './accompaniment-layout.js';
 installAccompanimentLayout(opensheetmusicdisplay);
@@ -277,6 +278,7 @@ new ResizeObserver(scheduleScoreResize).observe(score);
 window.addEventListener('resize',scheduleScoreResize);
 async function loadScore(xml,override,token=selectionVersion,engrave=true,deriveLead=true){
  if(rendering)await rendering;if(token!==selectionVersion)return;
+ xml=await withGeneratedHarmony(xml,activeSong.id);if(token!==selectionVersion)return;
  const source=viewOnly()?null:originalKey(xml,override),keys=source?buildKeys(source):[];modeOverride=override;
  clearTimeout(timer);autoChoice=null;leadSource=deriveLead?createLeadXML(xml,activeSong):null;leadState=null;lastViewXML='';if(scoreSize==='large'&&leadSource&&!leadSource.ok){scoreSize='normal';saveScoreSize(scoreSize);}original=xml;handLayout=pianoHands(xml);KEYS=keys;current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;cache.clear();
  showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+' · '+activeSong.page,xml,$('score-source'));
