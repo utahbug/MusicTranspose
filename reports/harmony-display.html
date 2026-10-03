@@ -1,0 +1,123 @@
+<!doctype html><meta charset="utf-8"><title>Harmony display simplification</title><style>body{font:16px system-ui;max-width:1050px;margin:30px auto;padding:16px}td,th{padding:5px 12px;text-align:left;border-bottom:1px solid #ddd}table{border-collapse:collapse}</style><h1>Phase 1B: display-only simplification</h1><p>Detailed analysis and review windows are unchanged. The reusable display policy is enabled only for #2 and #202; approved #30/#193/#204 overlays are fingerprint-locked. No runtime, placement, notation-size, or pagination algorithm change. Duration means time to the next analysed harmony, capped at the measure boundary; this is a display heuristic, not proof of every intervening sonority.</p><p>Suppress short returning major sonorities, neighboring bass inversions, and brief dominant excursions returning to a short tonic within an ongoing phrase. Protect chromatic/secondary dominants, other chord qualities, sustained resolutions and cadential slash bass. Remove nonstructural slash bass and then deduplicate identical display chords. No fixed symbol quota.</p>
+<h2>2 — The Spirit of God</h2><p>Detailed: 66; displayed: 58. Slash symbols: 22 → 9. Review windows unchanged: 7.</p><p>{&#x27;brief voice-leading inversion&#x27;: 3, &#x27;brief dominant neighbor within sustained tonic&#x27;: 2, &#x27;redundant functional repeat after slash simplification&#x27;: 2, &#x27;weak-beat return to previous harmony&#x27;: 1}</p><table><tr><th>Source measure</th><th>Quarter offset</th><th>Before</th><th>After</th><th>Decision</th></tr>
+<tr><td>0</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X1</td><td>2.0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X2</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X2</td><td>2.0</td><td>F7</td><td>F7</td><td>retained short important event</td></tr>
+<tr><td>X2</td><td>3.0</td><td>Gm</td><td>Gm</td><td>retained short important event</td></tr>
+<tr><td>X3</td><td>0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X4</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X5</td><td>0</td><td>F7/A</td><td>F7/A</td><td>retained short important event</td></tr>
+<tr><td>X6</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X7</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X7</td><td>1.0</td><td>Bb/D</td><td>Bb</td><td>simplified slash bass</td></tr>
+<tr><td>X7</td><td>2.0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X8</td><td>0</td><td>Bb/D</td><td>—</td><td>brief voice-leading inversion</td></tr>
+<tr><td>X8</td><td>1.0</td><td>Cm/Eb</td><td>Cm</td><td>simplified slash bass</td></tr>
+<tr><td>X8</td><td>2.0</td><td>Bb/F</td><td>Bb/F</td><td>retained short important event</td></tr>
+<tr><td>X8</td><td>3.0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X9</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X11</td><td>2.0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X12</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X12</td><td>2.0</td><td>F7</td><td>F7</td><td>retained short important event</td></tr>
+<tr><td>X12</td><td>3.0</td><td>Gm</td><td>Gm</td><td>retained short important event</td></tr>
+<tr><td>X13</td><td>0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X14</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X15</td><td>0</td><td>F7/A</td><td>F7/A</td><td>retained short important event</td></tr>
+<tr><td>X16</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X17</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X17</td><td>1.0</td><td>Bb/D</td><td>Bb</td><td>simplified slash bass</td></tr>
+<tr><td>X17</td><td>2.0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X18</td><td>0</td><td>Bb/D</td><td>—</td><td>brief voice-leading inversion</td></tr>
+<tr><td>X18</td><td>1.0</td><td>Cm/Eb</td><td>Cm</td><td>simplified slash bass</td></tr>
+<tr><td>X18</td><td>2.0</td><td>Bb/F</td><td>Bb/F</td><td>retained short important event</td></tr>
+<tr><td>X18</td><td>3.0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X19</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X23</td><td>2.0</td><td>F/C</td><td>F/C</td><td>retained short important event</td></tr>
+<tr><td>X23</td><td>3.0</td><td>C7</td><td>C7</td><td>retained short important event</td></tr>
+<tr><td>X24</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X24</td><td>2.0</td><td>Bb/D</td><td>Bb</td><td>simplified slash bass</td></tr>
+<tr><td>X25</td><td>0</td><td>F7/C</td><td>F7/C</td><td>retained short important event</td></tr>
+<tr><td>X26</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X26</td><td>2.0</td><td>F/C</td><td>—</td><td>brief dominant neighbor within sustained tonic</td></tr>
+<tr><td>X26</td><td>3.0</td><td>Bb</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X27</td><td>0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X27</td><td>2.0</td><td>F7/C</td><td>F7</td><td>simplified slash bass</td></tr>
+<tr><td>X27</td><td>3.0</td><td>Bb</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X28</td><td>0</td><td>F7/A</td><td>F7/A</td><td>retained</td></tr>
+<tr><td>X28</td><td>2.0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X29</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X31</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X31</td><td>2.0</td><td>F</td><td>—</td><td>brief dominant neighbor within sustained tonic</td></tr>
+<tr><td>X31</td><td>3.0</td><td>Bb</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X32</td><td>0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X32</td><td>2.0</td><td>F7/C</td><td>F7</td><td>simplified slash bass</td></tr>
+<tr><td>X32</td><td>3.0</td><td>Bb</td><td>Bb</td><td>retained short important event</td></tr>
+<tr><td>X33</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X33</td><td>3.0</td><td>C7</td><td>C7</td><td>retained short important event</td></tr>
+<tr><td>X34</td><td>0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X34</td><td>2.0</td><td>Bb/D</td><td>Bb</td><td>simplified slash bass</td></tr>
+<tr><td>X35</td><td>0</td><td>F7/C</td><td>F7/C</td><td>retained short important event</td></tr>
+<tr><td>X36</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+<tr><td>X37</td><td>0</td><td>Eb</td><td>Eb</td><td>retained</td></tr>
+<tr><td>X37</td><td>2.0</td><td>Bb/D</td><td>—</td><td>brief voice-leading inversion</td></tr>
+<tr><td>X37</td><td>3.0</td><td>Cm/Eb</td><td>Cm</td><td>simplified slash bass</td></tr>
+<tr><td>X38</td><td>0</td><td>Bb/F</td><td>Bb/F</td><td>retained</td></tr>
+<tr><td>X38</td><td>2.0</td><td>F</td><td>F</td><td>retained</td></tr>
+<tr><td>X38</td><td>3.0</td><td>F7</td><td>F7</td><td>retained short important event</td></tr>
+<tr><td>X39</td><td>0</td><td>Bb</td><td>Bb</td><td>retained</td></tr>
+</table>
+<h2>30 — Come, Come, Ye Saints</h2><p>Detailed: 18; displayed: 18. Slash symbols: 6 → 6. Review windows unchanged: 6.</p><p>{}</p><table><tr><th>Source measure</th><th>Quarter offset</th><th>Before</th><th>After</th><th>Decision</th></tr>
+</table>
+<h2>193 — I Stand All Amazed</h2><p>Detailed: 18; displayed: 18. Slash symbols: 5 → 5. Review windows unchanged: 9.</p><p>{}</p><table><tr><th>Source measure</th><th>Quarter offset</th><th>Before</th><th>After</th><th>Decision</th></tr>
+</table>
+<h2>202 — Oh, Come, All Ye Faithful</h2><p>Detailed: 46; displayed: 31. Slash symbols: 16 → 4. Review windows unchanged: 7.</p><p>{&#x27;brief dominant neighbor within sustained tonic&#x27;: 3, &#x27;redundant functional repeat after slash simplification&#x27;: 5, &#x27;weak-beat return to previous harmony&#x27;: 6, &#x27;brief voice-leading inversion&#x27;: 1}</p><table><tr><th>Source measure</th><th>Quarter offset</th><th>Before</th><th>After</th><th>Decision</th></tr>
+<tr><td>0</td><td>0</td><td>G</td><td>G</td><td>retained</td></tr>
+<tr><td>X2</td><td>0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X3</td><td>0</td><td>G</td><td>G</td><td>retained short important event</td></tr>
+<tr><td>X3</td><td>1.0</td><td>D/F#</td><td>—</td><td>brief dominant neighbor within sustained tonic</td></tr>
+<tr><td>X3</td><td>2.0</td><td>G</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X3</td><td>3.0</td><td>C</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X4</td><td>0</td><td>G/D</td><td>G/D</td><td>retained</td></tr>
+<tr><td>X4</td><td>2.0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X4</td><td>3.0</td><td>Em</td><td>Em</td><td>retained short important event</td></tr>
+<tr><td>X5</td><td>2.0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X5</td><td>3.0</td><td>A</td><td>A</td><td>retained short important event</td></tr>
+<tr><td>X6</td><td>0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X6</td><td>1.0</td><td>G/B</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X6</td><td>2.0</td><td>D/F#</td><td>D/F#</td><td>retained</td></tr>
+<tr><td>X7</td><td>2.0</td><td>A7</td><td>A7</td><td>retained</td></tr>
+<tr><td>X8</td><td>0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X9</td><td>2.0</td><td>Am</td><td>Am</td><td>retained short important event</td></tr>
+<tr><td>X9</td><td>3.0</td><td>G</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X10</td><td>0</td><td>Am</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X10</td><td>2.0</td><td>G</td><td>G</td><td>retained</td></tr>
+<tr><td>X11</td><td>0</td><td>D/F#</td><td>—</td><td>brief voice-leading inversion</td></tr>
+<tr><td>X11</td><td>1.0</td><td>G</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X11</td><td>2.0</td><td>Em</td><td>Em</td><td>retained short important event</td></tr>
+<tr><td>X11</td><td>3.0</td><td>Am/C</td><td>Am</td><td>simplified slash bass</td></tr>
+<tr><td>X12</td><td>0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X12</td><td>3.0</td><td>G/B</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X13</td><td>1.0</td><td>D/A</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X13</td><td>2.0</td><td>G/B</td><td>G/B</td><td>retained</td></tr>
+<tr><td>X14</td><td>3.0</td><td>G</td><td>G</td><td>retained</td></tr>
+<tr><td>X15</td><td>1.0</td><td>D/F#</td><td>—</td><td>brief dominant neighbor within sustained tonic</td></tr>
+<tr><td>X16</td><td>0</td><td>G</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X16</td><td>1.0</td><td>F#dim/A</td><td>F#dim</td><td>simplified slash bass</td></tr>
+<tr><td>X17</td><td>0</td><td>G</td><td>G</td><td>retained</td></tr>
+<tr><td>X17</td><td>2.0</td><td>D</td><td>—</td><td>brief dominant neighbor within sustained tonic</td></tr>
+<tr><td>X17</td><td>3.0</td><td>G</td><td>—</td><td>redundant functional repeat after slash simplification</td></tr>
+<tr><td>X18</td><td>0</td><td>Am</td><td>Am</td><td>retained short important event</td></tr>
+<tr><td>X18</td><td>1.0</td><td>G</td><td>G</td><td>retained</td></tr>
+<tr><td>X18</td><td>2.0</td><td>D/F#</td><td>D</td><td>simplified slash bass</td></tr>
+<tr><td>X18</td><td>3.0</td><td>A7/E</td><td>A7</td><td>simplified slash bass</td></tr>
+<tr><td>X19</td><td>0</td><td>D</td><td>D</td><td>retained</td></tr>
+<tr><td>X19</td><td>1.0</td><td>D7/C</td><td>D7</td><td>simplified slash bass</td></tr>
+<tr><td>X19</td><td>2.0</td><td>G/B</td><td>G</td><td>simplified slash bass</td></tr>
+<tr><td>X19</td><td>3.0</td><td>C</td><td>—</td><td>weak-beat return to previous harmony</td></tr>
+<tr><td>X20</td><td>0</td><td>G/D</td><td>G/D</td><td>retained</td></tr>
+<tr><td>X20</td><td>2.0</td><td>D7</td><td>D7</td><td>retained</td></tr>
+<tr><td>X21</td><td>0</td><td>G</td><td>G</td><td>retained</td></tr>
+</table>
+<h2>204 — Silent Night</h2><p>Detailed: 11; displayed: 11. Slash symbols: 0 → 0. Review windows unchanged: 2.</p><p>{}</p><table><tr><th>Source measure</th><th>Quarter offset</th><th>Before</th><th>After</th><th>Decision</th></tr>
+</table>

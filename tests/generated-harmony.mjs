@@ -31,6 +31,7 @@ try{
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!document.body.classList.contains('song-loading')&&document.querySelector('#score').getAttribute('aria-busy')==='false');
  for(const song of unit){
+  if(process.env.HARMONY_RENDER_IDS&&!process.env.HARMONY_RENDER_IDS.split(',').includes(song.number))continue;
   await p.evaluate(id=>prototype.loadSong(id),song.id);await ready();
   for(const mode of ['auto','large']){
    await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${mode}]`).click();await ready();

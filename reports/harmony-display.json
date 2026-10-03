@@ -1,0 +1,3915 @@
+[
+  {
+    "number": 2,
+    "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+    "analysisCount": 66,
+    "displayCount": 58,
+    "review": [
+      {
+        "measure": "X3",
+        "offset": 2.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb",
+        "coverage": 0.75
+      },
+      {
+        "measure": "X7",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Cm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X13",
+        "offset": 2.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb",
+        "coverage": 0.75
+      },
+      {
+        "measure": "X17",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Cm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X24",
+        "offset": 1.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb",
+        "coverage": 0.5
+      },
+      {
+        "measure": "X34",
+        "offset": 1.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb",
+        "coverage": 0.5
+      },
+      {
+        "measure": "X37",
+        "offset": 1.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Cm",
+        "coverage": 1.0
+      }
+    ],
+    "events": [
+      {
+        "measure": 0,
+        "sourceMeasure": "0",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 1,
+        "sourceMeasure": "X1",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 3.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "minor",
+        "bass": null,
+        "label": "Gm",
+        "bassNote": "G",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 3,
+        "sourceMeasure": "X3",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.946,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 5,
+        "sourceMeasure": "X5",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": {
+          "step": "A",
+          "alter": 0
+        },
+        "label": "F7/A",
+        "bassNote": "A",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 1.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "D",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 2.0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 1.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "minor",
+        "bass": null,
+        "label": "Cm",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 2.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": {
+          "step": "F",
+          "alter": 0
+        },
+        "label": "Bb/F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 3.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 9,
+        "sourceMeasure": "X9",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 11,
+        "sourceMeasure": "X11",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 12,
+        "sourceMeasure": "X12",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 12,
+        "sourceMeasure": "X12",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 12,
+        "sourceMeasure": "X12",
+        "offset": 3.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "minor",
+        "bass": null,
+        "label": "Gm",
+        "bassNote": "G",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 13,
+        "sourceMeasure": "X13",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 14,
+        "sourceMeasure": "X14",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.946,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 15,
+        "sourceMeasure": "X15",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": {
+          "step": "A",
+          "alter": 0
+        },
+        "label": "F7/A",
+        "bassNote": "A",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 16,
+        "sourceMeasure": "X16",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 17,
+        "sourceMeasure": "X17",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 17,
+        "sourceMeasure": "X17",
+        "offset": 1.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "D",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 17,
+        "sourceMeasure": "X17",
+        "offset": 2.0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 1.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "minor",
+        "bass": null,
+        "label": "Cm",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 2.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": {
+          "step": "F",
+          "alter": 0
+        },
+        "label": "Bb/F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 3.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 19,
+        "sourceMeasure": "X19",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 23,
+        "sourceMeasure": "X23",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "F/C",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 23,
+        "sourceMeasure": "X23",
+        "offset": 3.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "dominant",
+        "bass": null,
+        "label": "C7",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 24,
+        "sourceMeasure": "X24",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 24,
+        "sourceMeasure": "X24",
+        "offset": 2.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "D",
+        "keyFifths": -2,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 25,
+        "sourceMeasure": "X25",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "F7/C",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 26,
+        "sourceMeasure": "X26",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 27,
+        "sourceMeasure": "X27",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 27,
+        "sourceMeasure": "X27",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 28,
+        "sourceMeasure": "X28",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": {
+          "step": "A",
+          "alter": 0
+        },
+        "label": "F7/A",
+        "bassNote": "A",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 28,
+        "sourceMeasure": "X28",
+        "offset": 2.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 29,
+        "sourceMeasure": "X29",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 31,
+        "sourceMeasure": "X31",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 32,
+        "sourceMeasure": "X32",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 32,
+        "sourceMeasure": "X32",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 32,
+        "sourceMeasure": "X32",
+        "offset": 3.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 33,
+        "sourceMeasure": "X33",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 0.946,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 33,
+        "sourceMeasure": "X33",
+        "offset": 3.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "dominant",
+        "bass": null,
+        "label": "C7",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 34,
+        "sourceMeasure": "X34",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 34,
+        "sourceMeasure": "X34",
+        "offset": 2.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "D",
+        "keyFifths": -2,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 35,
+        "sourceMeasure": "X35",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "F7/C",
+        "bassNote": "C",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 36,
+        "sourceMeasure": "X36",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.946,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 37,
+        "sourceMeasure": "X37",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 37,
+        "sourceMeasure": "X37",
+        "offset": 3.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "minor",
+        "bass": null,
+        "label": "Cm",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 38,
+        "sourceMeasure": "X38",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": {
+          "step": "F",
+          "alter": 0
+        },
+        "label": "Bb/F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 38,
+        "sourceMeasure": "X38",
+        "offset": 2.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": null,
+        "label": "F",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 38,
+        "sourceMeasure": "X38",
+        "offset": 3.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 39,
+        "sourceMeasure": "X39",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      }
+    ],
+    "decisions": [
+      {
+        "measure": "0",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X1",
+        "offset": 2.0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X2",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X2",
+        "offset": 2.0,
+        "before": "F7",
+        "after": "F7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X2",
+        "offset": 3.0,
+        "before": "Gm",
+        "after": "Gm",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X3",
+        "offset": 0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X4",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X5",
+        "offset": 0,
+        "before": "F7/A",
+        "after": "F7/A",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X6",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X7",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X7",
+        "offset": 1.0,
+        "before": "Bb/D",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X7",
+        "offset": 2.0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X8",
+        "offset": 0,
+        "before": "Bb/D",
+        "after": null,
+        "suppressed": "brief voice-leading inversion",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X8",
+        "offset": 1.0,
+        "before": "Cm/Eb",
+        "after": "Cm",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X8",
+        "offset": 2.0,
+        "before": "Bb/F",
+        "after": "Bb/F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X8",
+        "offset": 3.0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X9",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X11",
+        "offset": 2.0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X12",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X12",
+        "offset": 2.0,
+        "before": "F7",
+        "after": "F7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X12",
+        "offset": 3.0,
+        "before": "Gm",
+        "after": "Gm",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X13",
+        "offset": 0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X14",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X15",
+        "offset": 0,
+        "before": "F7/A",
+        "after": "F7/A",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X16",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X17",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X17",
+        "offset": 1.0,
+        "before": "Bb/D",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X17",
+        "offset": 2.0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X18",
+        "offset": 0,
+        "before": "Bb/D",
+        "after": null,
+        "suppressed": "brief voice-leading inversion",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X18",
+        "offset": 1.0,
+        "before": "Cm/Eb",
+        "after": "Cm",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X18",
+        "offset": 2.0,
+        "before": "Bb/F",
+        "after": "Bb/F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X18",
+        "offset": 3.0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X19",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X23",
+        "offset": 2.0,
+        "before": "F/C",
+        "after": "F/C",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X23",
+        "offset": 3.0,
+        "before": "C7",
+        "after": "C7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X24",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X24",
+        "offset": 2.0,
+        "before": "Bb/D",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X25",
+        "offset": 0,
+        "before": "F7/C",
+        "after": "F7/C",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X26",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X26",
+        "offset": 2.0,
+        "before": "F/C",
+        "after": null,
+        "suppressed": "brief dominant neighbor within sustained tonic",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X26",
+        "offset": 3.0,
+        "before": "Bb",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X27",
+        "offset": 0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X27",
+        "offset": 2.0,
+        "before": "F7/C",
+        "after": "F7",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X27",
+        "offset": 3.0,
+        "before": "Bb",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X28",
+        "offset": 0,
+        "before": "F7/A",
+        "after": "F7/A",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X28",
+        "offset": 2.0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X29",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X31",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X31",
+        "offset": 2.0,
+        "before": "F",
+        "after": null,
+        "suppressed": "brief dominant neighbor within sustained tonic",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X31",
+        "offset": 3.0,
+        "before": "Bb",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X32",
+        "offset": 0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X32",
+        "offset": 2.0,
+        "before": "F7/C",
+        "after": "F7",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X32",
+        "offset": 3.0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X33",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X33",
+        "offset": 3.0,
+        "before": "C7",
+        "after": "C7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X34",
+        "offset": 0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X34",
+        "offset": 2.0,
+        "before": "Bb/D",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X35",
+        "offset": 0,
+        "before": "F7/C",
+        "after": "F7/C",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X36",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X37",
+        "offset": 0,
+        "before": "Eb",
+        "after": "Eb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X37",
+        "offset": 2.0,
+        "before": "Bb/D",
+        "after": null,
+        "suppressed": "brief voice-leading inversion",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X37",
+        "offset": 3.0,
+        "before": "Cm/Eb",
+        "after": "Cm",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X38",
+        "offset": 0,
+        "before": "Bb/F",
+        "after": "Bb/F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X38",
+        "offset": 2.0,
+        "before": "F",
+        "after": "F",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X38",
+        "offset": 3.0,
+        "before": "F7",
+        "after": "F7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X39",
+        "offset": 0,
+        "before": "Bb",
+        "after": "Bb",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      }
+    ],
+    "suppressionCounts": {
+      "brief voice-leading inversion": 3,
+      "brief dominant neighbor within sustained tonic": 2,
+      "redundant functional repeat after slash simplification": 2,
+      "weak-beat return to previous harmony": 1
+    },
+    "slashBefore": 22,
+    "slashAfter": 9
+  },
+  {
+    "number": 30,
+    "id": "song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6",
+    "analysisCount": 18,
+    "displayCount": 18,
+    "review": [
+      {
+        "measure": "X1",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "D",
+        "coverage": 0.688
+      },
+      {
+        "measure": "X5",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "D",
+        "coverage": 0.688
+      },
+      {
+        "measure": "X7",
+        "offset": 1.0,
+        "reason": "Retained previous harmony through short weak-beat motion"
+      },
+      {
+        "measure": "X9",
+        "offset": 1.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "D",
+        "coverage": 0.688
+      },
+      {
+        "measure": "X11",
+        "offset": 2.5,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      },
+      {
+        "measure": "X12",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "G",
+        "coverage": 0.625
+      }
+    ],
+    "events": [
+      {
+        "measure": 0,
+        "sourceMeasure": "0",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 0.938,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 1,
+        "sourceMeasure": "X1",
+        "offset": 2.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "major",
+        "bass": null,
+        "label": "C",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 1.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "Am/C",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 3,
+        "sourceMeasure": "X3",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "D",
+          "alter": 0
+        },
+        "label": "G/D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 3,
+        "sourceMeasure": "X3",
+        "offset": 1.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 5,
+        "sourceMeasure": "X5",
+        "offset": 2.0,
+        "root": {
+          "step": "C",
+          "alter": 0
+        },
+        "rootPC": 0,
+        "kind": "major",
+        "bass": null,
+        "label": "C",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 1.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "Am/C",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "D",
+          "alter": 0
+        },
+        "label": "G/D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 0.923,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 9,
+        "sourceMeasure": "X9",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "dominant",
+        "bass": null,
+        "label": "D7",
+        "bassNote": "F#",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 10,
+        "sourceMeasure": "X10",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 0.917,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 11,
+        "sourceMeasure": "X11",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 12,
+        "sourceMeasure": "X12",
+        "offset": 1.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 14,
+        "sourceMeasure": "X14",
+        "offset": 1.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "Am/C",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 15,
+        "sourceMeasure": "X15",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "D",
+          "alter": 0
+        },
+        "label": "G/D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 15,
+        "sourceMeasure": "X15",
+        "offset": 1.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      }
+    ],
+    "decisions": [],
+    "suppressionCounts": {},
+    "slashBefore": 6,
+    "slashAfter": 6
+  },
+  {
+    "number": 193,
+    "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+    "analysisCount": 18,
+    "displayCount": 18,
+    "review": [
+      {
+        "measure": "0",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Cm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X5",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      },
+      {
+        "measure": "X6",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      },
+      {
+        "measure": "X10",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Cm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X15",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Gm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X16",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Bb",
+        "coverage": 0.778
+      },
+      {
+        "measure": "X18",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Fm",
+        "coverage": 0.296
+      },
+      {
+        "measure": "X22",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb",
+        "coverage": 0.529
+      },
+      {
+        "measure": "X22",
+        "offset": 1.5,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Eb7",
+        "coverage": 0.75
+      }
+    ],
+    "events": [
+      {
+        "measure": 1,
+        "sourceMeasure": "X1",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 0.926,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": {
+          "step": "B",
+          "alter": -1
+        },
+        "label": "Eb7/Bb",
+        "bassNote": "Bb",
+        "keyFifths": -4,
+        "pitchCoverage": 0.982,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": null,
+        "label": "Eb7",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 0.926,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 9,
+        "sourceMeasure": "X9",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 0.93,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 14,
+        "sourceMeasure": "X14",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 0.926,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 17,
+        "sourceMeasure": "X17",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -4,
+        "pitchCoverage": 0.778,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 19,
+        "sourceMeasure": "X19",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": null,
+        "label": "Eb7",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 0.974,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 20,
+        "sourceMeasure": "X20",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 0.833,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 22,
+        "sourceMeasure": "X22",
+        "offset": 1.0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": null,
+        "label": "Eb7",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 23,
+        "sourceMeasure": "X23",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 0.937,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 24,
+        "sourceMeasure": "X24",
+        "offset": 1.0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": {
+          "step": "G",
+          "alter": 0
+        },
+        "label": "Eb7/G",
+        "bassNote": "G",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 24,
+        "sourceMeasure": "X24",
+        "offset": 2.0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 25,
+        "sourceMeasure": "X25",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "minor",
+        "bass": {
+          "step": "D",
+          "alter": -1
+        },
+        "label": "Bbm/Db",
+        "bassNote": "Db",
+        "keyFifths": -4,
+        "pitchCoverage": 0.912,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 25,
+        "sourceMeasure": "X25",
+        "offset": 1.0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "minor",
+        "bass": null,
+        "label": "Bbm",
+        "bassNote": "Bb",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 26,
+        "sourceMeasure": "X26",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "major",
+        "bass": {
+          "step": "C",
+          "alter": 0
+        },
+        "label": "F/C",
+        "bassNote": "C",
+        "keyFifths": -4,
+        "pitchCoverage": 0.912,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 26,
+        "sourceMeasure": "X26",
+        "offset": 1.0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": {
+          "step": "E",
+          "alter": -1
+        },
+        "label": "Ab/Eb",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 26,
+        "sourceMeasure": "X26",
+        "offset": 2.0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "dominant",
+        "bass": null,
+        "label": "Eb7",
+        "bassNote": "Eb",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 27,
+        "sourceMeasure": "X27",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": -1
+        },
+        "rootPC": 8,
+        "kind": "major",
+        "bass": null,
+        "label": "Ab",
+        "bassNote": "Ab",
+        "keyFifths": -4,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      }
+    ],
+    "decisions": [],
+    "suppressionCounts": {},
+    "slashBefore": 5,
+    "slashAfter": 5
+  },
+  {
+    "number": 202,
+    "id": "faithful",
+    "analysisCount": 46,
+    "displayCount": 31,
+    "review": [
+      {
+        "measure": "X6",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "G",
+        "coverage": 0.75
+      },
+      {
+        "measure": "X8",
+        "offset": 2.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "D",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X9",
+        "offset": 0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Bm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X12",
+        "offset": 2.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "D",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X13",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      },
+      {
+        "measure": "X14",
+        "offset": 2.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": "Bm",
+        "coverage": 1.0
+      },
+      {
+        "measure": "X17",
+        "offset": 1.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      }
+    ],
+    "events": [
+      {
+        "measure": 0,
+        "sourceMeasure": "0",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 3,
+        "sourceMeasure": "X3",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "D",
+          "alter": 0
+        },
+        "label": "G/D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 2.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 3.0,
+        "root": {
+          "step": "E",
+          "alter": 0
+        },
+        "rootPC": 4,
+        "kind": "minor",
+        "bass": null,
+        "label": "Em",
+        "bassNote": "E",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 5,
+        "sourceMeasure": "X5",
+        "offset": 2.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 5,
+        "sourceMeasure": "X5",
+        "offset": 3.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "major",
+        "bass": null,
+        "label": "A",
+        "bassNote": "A",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 2.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": {
+          "step": "F",
+          "alter": 1
+        },
+        "label": "D/F#",
+        "bassNote": "F#",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 2.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "dominant",
+        "bass": null,
+        "label": "A7",
+        "bassNote": "A",
+        "keyFifths": 1,
+        "pitchCoverage": 0.882,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 9,
+        "sourceMeasure": "X9",
+        "offset": 2.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": null,
+        "label": "Am",
+        "bassNote": "A",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 10,
+        "sourceMeasure": "X10",
+        "offset": 2.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 11,
+        "sourceMeasure": "X11",
+        "offset": 2.0,
+        "root": {
+          "step": "E",
+          "alter": 0
+        },
+        "rootPC": 4,
+        "kind": "minor",
+        "bass": null,
+        "label": "Em",
+        "bassNote": "E",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 11,
+        "sourceMeasure": "X11",
+        "offset": 3.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": null,
+        "label": "Am",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 12,
+        "sourceMeasure": "X12",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 0.946,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 13,
+        "sourceMeasure": "X13",
+        "offset": 2.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "B",
+          "alter": 0
+        },
+        "label": "G/B",
+        "bassNote": "B",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 14,
+        "sourceMeasure": "X14",
+        "offset": 3.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 16,
+        "sourceMeasure": "X16",
+        "offset": 1.0,
+        "root": {
+          "step": "F",
+          "alter": 1
+        },
+        "rootPC": 6,
+        "kind": "diminished",
+        "bass": null,
+        "label": "F#dim",
+        "bassNote": "A",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 17,
+        "sourceMeasure": "X17",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "minor",
+        "bass": null,
+        "label": "Am",
+        "bassNote": "A",
+        "keyFifths": 1,
+        "pitchCoverage": 0.941,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 1.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 2.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "F#",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 18,
+        "sourceMeasure": "X18",
+        "offset": 3.0,
+        "root": {
+          "step": "A",
+          "alter": 0
+        },
+        "rootPC": 9,
+        "kind": "dominant",
+        "bass": null,
+        "label": "A7",
+        "bassNote": "E",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 19,
+        "sourceMeasure": "X19",
+        "offset": 0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "major",
+        "bass": null,
+        "label": "D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 19,
+        "sourceMeasure": "X19",
+        "offset": 1.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "dominant",
+        "bass": null,
+        "label": "D7",
+        "bassNote": "C",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 19,
+        "sourceMeasure": "X19",
+        "offset": 2.0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "B",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 20,
+        "sourceMeasure": "X20",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": {
+          "step": "D",
+          "alter": 0
+        },
+        "label": "G/D",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability (inversion)"
+      },
+      {
+        "measure": 20,
+        "sourceMeasure": "X20",
+        "offset": 2.0,
+        "root": {
+          "step": "D",
+          "alter": 0
+        },
+        "rootPC": 2,
+        "kind": "dominant",
+        "bass": null,
+        "label": "D7",
+        "bassNote": "D",
+        "keyFifths": 1,
+        "pitchCoverage": 0.882,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 21,
+        "sourceMeasure": "X21",
+        "offset": 0,
+        "root": {
+          "step": "G",
+          "alter": 0
+        },
+        "rootPC": 7,
+        "kind": "major",
+        "bass": null,
+        "label": "G",
+        "bassNote": "G",
+        "keyFifths": 1,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      }
+    ],
+    "decisions": [
+      {
+        "measure": "0",
+        "offset": 0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X2",
+        "offset": 0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X3",
+        "offset": 0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X3",
+        "offset": 1.0,
+        "before": "D/F#",
+        "after": null,
+        "suppressed": "brief dominant neighbor within sustained tonic",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X3",
+        "offset": 2.0,
+        "before": "G",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X3",
+        "offset": 3.0,
+        "before": "C",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X4",
+        "offset": 0,
+        "before": "G/D",
+        "after": "G/D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X4",
+        "offset": 2.0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X4",
+        "offset": 3.0,
+        "before": "Em",
+        "after": "Em",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X5",
+        "offset": 2.0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X5",
+        "offset": 3.0,
+        "before": "A",
+        "after": "A",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X6",
+        "offset": 0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X6",
+        "offset": 1.0,
+        "before": "G/B",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X6",
+        "offset": 2.0,
+        "before": "D/F#",
+        "after": "D/F#",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X7",
+        "offset": 2.0,
+        "before": "A7",
+        "after": "A7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X8",
+        "offset": 0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 4.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X9",
+        "offset": 2.0,
+        "before": "Am",
+        "after": "Am",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X9",
+        "offset": 3.0,
+        "before": "G",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X10",
+        "offset": 0,
+        "before": "Am",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X10",
+        "offset": 2.0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X11",
+        "offset": 0,
+        "before": "D/F#",
+        "after": null,
+        "suppressed": "brief voice-leading inversion",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X11",
+        "offset": 1.0,
+        "before": "G",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X11",
+        "offset": 2.0,
+        "before": "Em",
+        "after": "Em",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X11",
+        "offset": 3.0,
+        "before": "Am/C",
+        "after": "Am",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X12",
+        "offset": 0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X12",
+        "offset": 3.0,
+        "before": "G/B",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X13",
+        "offset": 1.0,
+        "before": "D/A",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X13",
+        "offset": 2.0,
+        "before": "G/B",
+        "after": "G/B",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X14",
+        "offset": 3.0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X15",
+        "offset": 1.0,
+        "before": "D/F#",
+        "after": null,
+        "suppressed": "brief dominant neighbor within sustained tonic",
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X16",
+        "offset": 0,
+        "before": "G",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X16",
+        "offset": 1.0,
+        "before": "F#dim/A",
+        "after": "F#dim",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X17",
+        "offset": 0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X17",
+        "offset": 2.0,
+        "before": "D",
+        "after": null,
+        "suppressed": "brief dominant neighbor within sustained tonic",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X17",
+        "offset": 3.0,
+        "before": "G",
+        "after": null,
+        "suppressed": "redundant functional repeat after slash simplification",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X18",
+        "offset": 0,
+        "before": "Am",
+        "after": "Am",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X18",
+        "offset": 1.0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X18",
+        "offset": 2.0,
+        "before": "D/F#",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X18",
+        "offset": 3.0,
+        "before": "A7/E",
+        "after": "A7",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X19",
+        "offset": 0,
+        "before": "D",
+        "after": "D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X19",
+        "offset": 1.0,
+        "before": "D7/C",
+        "after": "D7",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": true
+      },
+      {
+        "measure": "X19",
+        "offset": 2.0,
+        "before": "G/B",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": true,
+        "durationQuarters": 1.0,
+        "strongBeat": true,
+        "shortProtected": true
+      },
+      {
+        "measure": "X19",
+        "offset": 3.0,
+        "before": "C",
+        "after": null,
+        "suppressed": "weak-beat return to previous harmony",
+        "slashRemoved": false,
+        "durationQuarters": 1.0,
+        "strongBeat": false,
+        "shortProtected": false
+      },
+      {
+        "measure": "X20",
+        "offset": 0,
+        "before": "G/D",
+        "after": "G/D",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X20",
+        "offset": 2.0,
+        "before": "D7",
+        "after": "D7",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 2.0,
+        "strongBeat": true,
+        "shortProtected": false
+      },
+      {
+        "measure": "X21",
+        "offset": 0,
+        "before": "G",
+        "after": "G",
+        "suppressed": null,
+        "slashRemoved": false,
+        "durationQuarters": 3.0,
+        "strongBeat": true,
+        "shortProtected": false
+      }
+    ],
+    "suppressionCounts": {
+      "brief dominant neighbor within sustained tonic": 3,
+      "redundant functional repeat after slash simplification": 5,
+      "weak-beat return to previous harmony": 6,
+      "brief voice-leading inversion": 1
+    },
+    "slashBefore": 16,
+    "slashAfter": 4
+  },
+  {
+    "number": 204,
+    "id": "silent-night",
+    "analysisCount": 11,
+    "displayCount": 11,
+    "review": [
+      {
+        "measure": "X8",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      },
+      {
+        "measure": "X10",
+        "offset": 3.0,
+        "reason": "Omitted: incomplete/ambiguous structural harmony",
+        "candidate": null,
+        "coverage": 0
+      }
+    ],
+    "events": [
+      {
+        "measure": 0,
+        "sourceMeasure": "0",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.944,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 2,
+        "sourceMeasure": "X2",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 3,
+        "sourceMeasure": "X3",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 4,
+        "sourceMeasure": "X4",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 5,
+        "sourceMeasure": "X5",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.917,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 6,
+        "sourceMeasure": "X6",
+        "offset": 0,
+        "root": {
+          "step": "E",
+          "alter": -1
+        },
+        "rootPC": 3,
+        "kind": "major",
+        "bass": null,
+        "label": "Eb",
+        "bassNote": "Eb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 7,
+        "sourceMeasure": "X7",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 0.917,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 8,
+        "sourceMeasure": "X8",
+        "offset": 0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 9,
+        "sourceMeasure": "X9",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 10,
+        "sourceMeasure": "X10",
+        "offset": 5.0,
+        "root": {
+          "step": "F",
+          "alter": 0
+        },
+        "rootPC": 5,
+        "kind": "dominant",
+        "bass": null,
+        "label": "F7",
+        "bassNote": "F",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      },
+      {
+        "measure": 11,
+        "sourceMeasure": "X11",
+        "offset": 0,
+        "root": {
+          "step": "B",
+          "alter": -1
+        },
+        "rootPC": 10,
+        "kind": "major",
+        "bass": null,
+        "label": "Bb",
+        "bassNote": "Bb",
+        "keyFifths": -2,
+        "pitchCoverage": 1,
+        "review": "Heuristic accompaniment, not authoritative; pitch coverage is not a confidence probability"
+      }
+    ],
+    "decisions": [],
+    "suppressionCounts": {},
+    "slashBefore": 0,
+    "slashAfter": 0
+  }
+]
