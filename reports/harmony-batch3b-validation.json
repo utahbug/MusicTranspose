@@ -1,0 +1,2567 @@
+{
+  "batchOrder": [
+    142,
+    144,
+    143,
+    149,
+    152,
+    156,
+    163,
+    165,
+    166,
+    170,
+    172,
+    173,
+    174,
+    175,
+    181,
+    180,
+    187,
+    191,
+    192,
+    194,
+    195,
+    196,
+    199,
+    201,
+    210,
+    220,
+    223,
+    225,
+    226,
+    227
+  ],
+  "analysis": 652,
+  "display": 579,
+  "reviews": 137,
+  "originalRenders": 60,
+  "alternateRenders": 54,
+  "noOverlayPageComparisons": 60,
+  "accepted42Equivalent": true,
+  "sourceAssetsUnchanged": true,
+  "policyUnchanged": true,
+  "rows": [
+    {
+      "number": 142,
+      "title": "Sweet Hour of Prayer",
+      "id": "song-8f14b472-7feb-4ab0-8bc3-73587e9009df",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 25,
+      "display": 23,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 2,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 4,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 1,
+      "dense4PlusSpans": 1,
+      "pdfPages": 2,
+      "fullPages": 2,
+      "melodyPages": 1,
+      "baselineFull": 2,
+      "baselineMelody": 1,
+      "alternateFull": 2,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 4,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 144,
+      "title": "Secret Prayer",
+      "id": "song-871573d0-1157-4bec-9ab4-c4155f9ba449",
+      "key": "D major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 24,
+      "display": 21,
+      "firstStageRemovals": 3,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 2,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": null,
+      "alternateMelody": null,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "D",
+      "ending": "D",
+      "dominantSevenths": 4,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 143,
+      "title": "Let the Holy Spirit Guide",
+      "id": "song-61fd2221-1cdd-4463-a6e1-8954882f29b6",
+      "key": "F major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 15,
+      "display": 12,
+      "firstStageRemovals": 3,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 6,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 1,
+      "dense4PlusSpans": 1,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "F",
+      "ending": "F",
+      "dominantSevenths": 2,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 149,
+      "title": "As the Dew from Heaven Distilling",
+      "id": "song-0e7388b8-b436-489b-8160-ef52d4e30d09",
+      "key": "Bb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 15,
+      "display": 13,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 8,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Bb",
+      "ending": "Bb",
+      "dominantSevenths": 4,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 152,
+      "title": "God Be with You Till We Meet Again",
+      "id": "song-e8873d16-0ab4-40cd-9dd6-4f0df8e66e5e",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 17,
+      "display": 15,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 4,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 2,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": null,
+      "alternateMelody": null,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 1,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 156,
+      "title": "Sing We Now at Parting",
+      "id": "song-5aa7afaf-7501-4906-be60-d74529e814c9",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 16,
+      "display": 14,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 2,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 2,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [
+        "auto"
+      ],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Alternate-key page difference: auto"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 3,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 163,
+      "title": "Lord, Dismiss Us with Thy Blessing",
+      "id": "song-b8d1b6eb-1557-4028-bfeb-26de1bf91d81",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 17,
+      "display": 17,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 3,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": null,
+      "alternateMelody": null,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 0,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 165,
+      "title": "Abide with Me; ’Tis Eventide",
+      "id": "song-a7939082-9b28-46e5-9738-b91a94d606de",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 25,
+      "display": 24,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 1,
+      "reviews": 4,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 2,
+      "fullPages": 2,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 2,
+      "alternateMelody": 1,
+      "addedPageModes": [
+        "auto"
+      ],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Added page vs same-key no-overlay rendering: auto"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 6,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 166,
+      "title": "Abide with Me!",
+      "id": "song-082dec32-d317-42cd-86da-a44af8647d83",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 36,
+      "display": 29,
+      "firstStageRemovals": 6,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 1,
+      "reviews": 4,
+      "denseMeasures": 3,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Several measures with 3+ symbols",
+        "Augmented/major-seventh interpretation"
+      ],
+      "note": "Review augmented Caug and chromatic progression; no policy adjustment.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 8,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 170,
+      "title": "God, Our Father, Hear Us Pray",
+      "id": "song-a47ece80-fd65-440d-be9b-7be355ed59f2",
+      "key": "G major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 22,
+      "display": 19,
+      "firstStageRemovals": 1,
+      "rootDedupRemovals": 2,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 3,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 2,
+      "dense4PlusSpans": 2,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "G",
+      "ending": "G",
+      "dominantSevenths": 6,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 172,
+      "title": "In Humility, Our Savior",
+      "id": "song-b6f97276-963c-40de-928a-4eb66cccc694",
+      "key": "F major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 54,
+      "display": 44,
+      "firstStageRemovals": 5,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 4,
+      "reviews": 3,
+      "denseMeasures": 2,
+      "dense3PlusSpans": 2,
+      "dense4PlusSpans": 2,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 2,
+      "baselineFull": 1,
+      "baselineMelody": 2,
+      "alternateFull": 1,
+      "alternateMelody": 2,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster",
+        "Augmented/major-seventh interpretation",
+        "Melody has more pages than Full (existing layout policy)"
+      ],
+      "note": "Prioritize musical review: 44 displayed events and major-seventh color interpretations in a slow sacrament hymn. Melody already had two pages without chords.",
+      "opening": "F",
+      "ending": "F",
+      "dominantSevenths": 10,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 173,
+      "title": "While of These Emblems We Partake",
+      "id": "song-eb2f61bb-b8f9-40e9-b545-daf6f477b72b",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 17,
+      "display": 17,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 5,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 6,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 174,
+      "title": "While of These Emblems We Partake",
+      "id": "song-20acbafe-d231-40a7-b91e-4f9a04640393",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 21,
+      "display": 17,
+      "firstStageRemovals": 4,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 2,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Augmented/major-seventh interpretation"
+      ],
+      "note": "Review major-seventh interpretation; distinct from hymn 173.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 4,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 175,
+      "title": "O God, the Eternal Father",
+      "id": "song-9744d4ba-2243-422c-91c6-b5788b2c9c56",
+      "key": "D major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 21,
+      "display": 21,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 14,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 2,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "10+ uncertainty/review windows",
+        "Augmented/major-seventh interpretation",
+        "Consecutive uncertain measures with no new analysis event"
+      ],
+      "note": "14 uncertainty windows, including the opening 0/X1 without a new analysis chord; do not assume held harmony is authoritative. Full pagination improved naturally from two pages to one.",
+      "opening": "D",
+      "ending": "D",
+      "dominantSevenths": 5,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 181,
+      "title": "Jesus of Nazareth, Savior and King",
+      "id": "song-7f35443e-000c-4aa3-ad43-bd434d8a1599",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 21,
+      "display": 20,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 4,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 5,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 180,
+      "title": "Father in Heaven, We Do Believe",
+      "id": "song-7960a3a2-6bbe-434a-9f8f-b9e058ea6bfe",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 14,
+      "display": 14,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 3,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 3,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 187,
+      "title": "God Loved Us, So He Sent His Son",
+      "id": "song-0b39caae-1bee-4933-8309-1a366f120ea0",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 26,
+      "display": 20,
+      "firstStageRemovals": 3,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 3,
+      "reviews": 4,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 4,
+      "dense4PlusSpans": 4,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 6,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 191,
+      "title": "Behold the Great Redeemer Die",
+      "id": "song-d62fc11a-4646-4563-a34b-896ed923a44b",
+      "key": "Bb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 18,
+      "display": 18,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 9,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 2,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Consecutive uncertain measures with no new analysis event"
+      ],
+      "note": "Review omitted-analysis gap X8–X10; no invented filler chords.",
+      "opening": "Bb",
+      "ending": "Bb",
+      "dominantSevenths": 5,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 192,
+      "title": "He Died! The Great Redeemer Died",
+      "id": "song-6d5c2f83-8c10-45a1-b6bd-51d1ea3be044",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 23,
+      "display": 22,
+      "firstStageRemovals": 1,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 8,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 4,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 194,
+      "title": "There Is a Green Hill Far Away",
+      "id": "song-f76de71c-a9f3-4b94-81f5-7e55ff447f94",
+      "key": "Eb major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 13,
+      "display": 13,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 6,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Augmented/major-seventh interpretation"
+      ],
+      "note": "Review Ebmaj7 interpretation early in the hymn; placement is clear.",
+      "opening": "Eb",
+      "ending": "Eb",
+      "dominantSevenths": 3,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 195,
+      "title": "How Great the Wisdom and the Love",
+      "id": "song-9c6985e6-c862-404c-8ac4-f90524a797de",
+      "key": "F major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 16,
+      "display": 15,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 2,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "F",
+      "ending": "F",
+      "dominantSevenths": 2,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 196,
+      "title": "Jesus, Once of Humble Birth",
+      "id": "song-d112df90-a0be-48a5-9310-75d6796aca61",
+      "key": "D major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 19,
+      "display": 13,
+      "firstStageRemovals": 3,
+      "rootDedupRemovals": 3,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 4,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Consecutive uncertain measures with no new analysis event"
+      ],
+      "note": "Review omitted-analysis gap X14–X15; no invented filler chords.",
+      "opening": "D",
+      "ending": "D",
+      "dominantSevenths": 2,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 199,
+      "title": "He Is Risen!",
+      "id": "song-5e5bc70a-2e08-4411-999d-628bf6079d88",
+      "key": "C major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 22,
+      "display": 19,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 1,
+      "reviews": 8,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 1,
+      "addedPageModes": [],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Normal",
+      "flags": [],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "C",
+      "ending": "C",
+      "dominantSevenths": 0,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 201,
+      "title": "Joy to the World",
+      "id": "song-b84d63a6-cb12-4f44-a1b5-c83641a234f9",
+      "key": "D major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 12,
+      "display": 12,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 0,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 2,
+      "melodyPages": 2,
+      "baselineFull": 1,
+      "baselineMelody": 2,
+      "alternateFull": 1,
+      "alternateMelody": 2,
+      "addedPageModes": [
+        "auto"
+      ],
+      "alternatePageDifferences": [
+        "auto"
+      ],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Added page vs same-key no-overlay rendering: auto",
+        "Alternate-key page difference: auto"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "D",
+      "ending": "D",
+      "dominantSevenths": 4,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 210,
+      "title": "With Wondering Awe",
+      "id": "song-10325904-fe2e-47d7-8693-95dc83af7702",
+      "key": "G major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 20,
+      "display": 18,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 3,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 2,
+      "melodyPages": 1,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 2,
+      "alternateMelody": 1,
+      "addedPageModes": [
+        "auto"
+      ],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Non-tonic opening or ending",
+        "Added page vs same-key no-overlay rendering: auto"
+      ],
+      "note": "Opening D7 is supported by source pickup D/F#/C over bass D, resolving to G. Non-tonic opening is plausible, not an error.",
+      "opening": "D7",
+      "ending": "G",
+      "dominantSevenths": 6,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 220,
+      "title": "Lord, I Would Follow Thee",
+      "id": "song-2af92b23-6596-4623-a644-d480cb1a89fa",
+      "key": "D major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 24,
+      "display": 22,
+      "firstStageRemovals": 1,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 6,
+      "denseMeasures": 3,
+      "dense3PlusSpans": 3,
+      "dense4PlusSpans": 3,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 2,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 2,
+      "addedPageModes": [
+        "large"
+      ],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster",
+        "Several measures with 3+ symbols",
+        "Added page vs same-key no-overlay rendering: large",
+        "Melody has more pages than Full (existing layout policy)"
+      ],
+      "note": "Review short E–E7–A region and remaining close functional changes; Melody adds a page.",
+      "opening": "D",
+      "ending": "D",
+      "dominantSevenths": 3,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 223,
+      "title": "Have I Done Any Good?",
+      "id": "song-138d4697-d2d9-414a-885c-82b760f1f371",
+      "key": "G major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 40,
+      "display": 35,
+      "firstStageRemovals": 1,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 3,
+      "reviews": 7,
+      "denseMeasures": 3,
+      "dense3PlusSpans": 9,
+      "dense4PlusSpans": 9,
+      "pdfPages": 2,
+      "fullPages": 2,
+      "melodyPages": 2,
+      "baselineFull": 2,
+      "baselineMelody": 2,
+      "alternateFull": 3,
+      "alternateMelody": 2,
+      "addedPageModes": [],
+      "alternatePageDifferences": [
+        "auto"
+      ],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "4+ symbols in a short temporal cluster",
+        "Several measures with 3+ symbols",
+        "Alternate-key page difference: auto"
+      ],
+      "note": "Highest-priority density check: repeated close seventh/dominant progressions. Full becomes three pages at +2 versus two in original key.",
+      "opening": "G",
+      "ending": "G",
+      "dominantSevenths": 11,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 225,
+      "title": "We Are Marching On to Glory",
+      "id": "song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f",
+      "key": "F major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 25,
+      "display": 22,
+      "firstStageRemovals": 3,
+      "rootDedupRemovals": 0,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 5,
+      "denseMeasures": 1,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 2,
+      "melodyPages": 2,
+      "baselineFull": 2,
+      "baselineMelody": 1,
+      "alternateFull": 2,
+      "alternateMelody": 2,
+      "addedPageModes": [
+        "large"
+      ],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Added page vs same-key no-overlay rendering: large"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "F",
+      "ending": "F",
+      "dominantSevenths": 4,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 226,
+      "title": "Improve the Shining Moments",
+      "id": "song-d0fcb69f-564a-4f27-951d-c08fc1a468e9",
+      "key": "G major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 13,
+      "display": 12,
+      "firstStageRemovals": 0,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 3,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 2,
+      "baselineFull": 1,
+      "baselineMelody": 1,
+      "alternateFull": 1,
+      "alternateMelody": 2,
+      "addedPageModes": [
+        "large"
+      ],
+      "alternatePageDifferences": [],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Added page vs same-key no-overlay rendering: large",
+        "Melody has more pages than Full (existing layout policy)"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "G",
+      "ending": "G",
+      "dominantSevenths": 2,
+      "chromatic": false,
+      "generatedSlashCount": 0
+    },
+    {
+      "number": 227,
+      "title": "There Is Sunshine in My Soul Today",
+      "id": "song-6b45d05c-f74c-4d69-a12a-40069311541a",
+      "key": "G major",
+      "sourceHarmony": 0,
+      "sourceChordText": 0,
+      "analysis": 21,
+      "display": 18,
+      "firstStageRemovals": 2,
+      "rootDedupRemovals": 1,
+      "localRemovals": 0,
+      "temporalRemovals": 0,
+      "reviews": 1,
+      "denseMeasures": 0,
+      "dense3PlusSpans": 0,
+      "dense4PlusSpans": 0,
+      "pdfPages": 1,
+      "fullPages": 1,
+      "melodyPages": 2,
+      "baselineFull": 1,
+      "baselineMelody": 2,
+      "alternateFull": 2,
+      "alternateMelody": 2,
+      "addedPageModes": [],
+      "alternatePageDifferences": [
+        "auto"
+      ],
+      "reviewPriority": "Review recommended",
+      "flags": [
+        "Alternate-key page difference: auto",
+        "Melody has more pages than Full (existing layout policy)"
+      ],
+      "note": "No obvious chord/notation, lyric or title collision observed in the inspected views.",
+      "opening": "G",
+      "ending": "G",
+      "dominantSevenths": 4,
+      "chromatic": true,
+      "generatedSlashCount": 0
+    }
+  ],
+  "renderMeasurements": [
+    {
+      "number": "142",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-142-auto-0-page1.png",
+        "test-results/harmony-142-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "142",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-142-auto-2-page1.png",
+        "test-results/harmony-142-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "142",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-142-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "142",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-142-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "144",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-144-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "144",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-144-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "143",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 2,
+      "screenshots": [
+        "test-results/harmony-143-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "143",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 2,
+      "screenshots": [
+        "test-results/harmony-143-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "143",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 2,
+      "screenshots": [
+        "test-results/harmony-143-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "143",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 2,
+      "screenshots": [
+        "test-results/harmony-143-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "149",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-149-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "149",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-149-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "149",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-149-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "149",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-149-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "152",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-152-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "152",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-152-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "156",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-156-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "156",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-156-auto-2-page1.png",
+        "test-results/harmony-156-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "156",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-156-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "156",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-156-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "163",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-163-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "163",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-163-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "165",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-165-auto-0-page1.png",
+        "test-results/harmony-165-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "165",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-165-auto-2-page1.png",
+        "test-results/harmony-165-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "165",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-165-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "165",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-165-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "166",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-166-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "166",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-166-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "166",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-166-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "166",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-166-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "170",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-170-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "170",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-170-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "170",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-170-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "170",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-170-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "172",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-172-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "172",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-172-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "172",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 9,
+      "screenshots": [
+        "test-results/harmony-172-large-0-page1.png",
+        "test-results/harmony-172-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "172",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 9,
+      "screenshots": [
+        "test-results/harmony-172-large-2-page1.png",
+        "test-results/harmony-172-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "173",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-173-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "173",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-173-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "173",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-173-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "173",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-173-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "174",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-174-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "174",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-174-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "174",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-174-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "174",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-174-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "175",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-175-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "175",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-175-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "175",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-175-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "175",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-175-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "181",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-181-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "181",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-181-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "181",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-181-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "181",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-181-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "180",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-180-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "180",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-180-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "180",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-180-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "180",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-180-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "187",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-187-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "187",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-187-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "187",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-187-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "187",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-187-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "191",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-191-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "191",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-191-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "191",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-191-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "191",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-191-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "192",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-192-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "192",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-192-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "192",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-192-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "192",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-192-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "194",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-194-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "194",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-194-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "194",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-194-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "194",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-194-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "195",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-195-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "195",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-195-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "195",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-195-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "195",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-195-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "196",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-196-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "196",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-196-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "196",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-196-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "196",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-196-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "199",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-199-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "199",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 3,
+      "screenshots": [
+        "test-results/harmony-199-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "199",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-199-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "199",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-199-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "201",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-201-auto-0-page1.png",
+        "test-results/harmony-201-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "201",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-201-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "201",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 8,
+      "screenshots": [
+        "test-results/harmony-201-large-0-page1.png",
+        "test-results/harmony-201-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "201",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 8,
+      "screenshots": [
+        "test-results/harmony-201-large-2-page1.png",
+        "test-results/harmony-201-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "210",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-210-auto-0-page1.png",
+        "test-results/harmony-210-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "210",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-210-auto-2-page1.png",
+        "test-results/harmony-210-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "210",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-210-large-0-page1.png"
+      ]
+    },
+    {
+      "number": "210",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-210-large-2-page1.png"
+      ]
+    },
+    {
+      "number": "220",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-220-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "220",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-220-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "220",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 8,
+      "screenshots": [
+        "test-results/harmony-220-large-0-page1.png",
+        "test-results/harmony-220-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "220",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 8,
+      "screenshots": [
+        "test-results/harmony-220-large-2-page1.png",
+        "test-results/harmony-220-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "223",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.68",
+      "systems": 8,
+      "screenshots": [
+        "test-results/harmony-223-auto-0-page1.png",
+        "test-results/harmony-223-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "223",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 3,
+      "pdfPageCount": 2,
+      "zoom": "0.78",
+      "systems": 10,
+      "screenshots": [
+        "test-results/harmony-223-auto-2-page1.png",
+        "test-results/harmony-223-auto-2-page2.png",
+        "test-results/harmony-223-auto-2-page3.png"
+      ]
+    },
+    {
+      "number": "223",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 9,
+      "screenshots": [
+        "test-results/harmony-223-large-0-page1.png",
+        "test-results/harmony-223-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "223",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 2,
+      "zoom": "0.9",
+      "systems": 9,
+      "screenshots": [
+        "test-results/harmony-223-large-2-page1.png",
+        "test-results/harmony-223-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "225",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-225-auto-0-page1.png",
+        "test-results/harmony-225-auto-0-page2.png"
+      ]
+    },
+    {
+      "number": "225",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 5,
+      "screenshots": [
+        "test-results/harmony-225-auto-2-page1.png",
+        "test-results/harmony-225-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "225",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-225-large-0-page1.png",
+        "test-results/harmony-225-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "225",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-225-large-2-page1.png",
+        "test-results/harmony-225-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "226",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-226-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "226",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-226-large-0-page1.png",
+        "test-results/harmony-226-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "227",
+      "mode": "auto",
+      "shift": 0,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.68",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-227-auto-0-page1.png"
+      ]
+    },
+    {
+      "number": "227",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.78",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-227-auto-2-page1.png",
+        "test-results/harmony-227-auto-2-page2.png"
+      ]
+    },
+    {
+      "number": "227",
+      "mode": "large",
+      "shift": 0,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-227-large-0-page1.png",
+        "test-results/harmony-227-large-0-page2.png"
+      ]
+    },
+    {
+      "number": "227",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 7,
+      "screenshots": [
+        "test-results/harmony-227-large-2-page1.png",
+        "test-results/harmony-227-large-2-page2.png"
+      ]
+    },
+    {
+      "number": "226",
+      "mode": "auto",
+      "shift": 2,
+      "pageCount": 1,
+      "pdfPageCount": 1,
+      "zoom": "0.702",
+      "systems": 4,
+      "screenshots": [
+        "test-results/harmony-226-auto-2-page1.png"
+      ]
+    },
+    {
+      "number": "226",
+      "mode": "large",
+      "shift": 2,
+      "pageCount": 2,
+      "pdfPageCount": 1,
+      "zoom": "0.9",
+      "systems": 6,
+      "screenshots": [
+        "test-results/harmony-226-large-2-page1.png",
+        "test-results/harmony-226-large-2-page2.png"
+      ]
+    }
+  ]
+}

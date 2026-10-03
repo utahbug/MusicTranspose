@@ -5,13 +5,15 @@ const b=await chromium.launch({channel:'msedge',headless:true}),c=await b.newCon
 p.setDefaultTimeout(90000);p.on('pageerror',e=>errors.push(e.message));
 try{
  await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.locator('[data-home-source=all]').click();
- const unit=await p.evaluate(async()=>{
+ const unit=await p.evaluate(async(unitIds)=>{
   const {generatedHarmony}=await import('./generated-harmony-data.js'),{withGeneratedHarmony}=await import('./generated-harmony.js');
   const {songs}=await import('./songs.js'),{unpackMXL,transposeXML,parseXML}=await import('./music.js'),{createLeadXML}=await import('./lead-view.js');
   const check=(ok,msg)=>{if(!ok)throw Error(msg);},out=[];
   const pitch=n=>({C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n.firstElementChild.textContent]+Number(n.querySelector('root-alter,bass-alter')?.textContent||0)+120)%12;
   const bare=xml=>{const d=parseXML(xml);d.querySelectorAll('harmony').forEach(n=>n.remove());return new XMLSerializer().serializeToString(d);};
+  check(Object.keys(generatedHarmony).length===72,'exactly forty-two approved plus thirty Phase 3B hymns');
   for(const [id,data] of Object.entries(generatedHarmony)){
+   if(unitIds&&!unitIds.includes(songs.find(s=>s.id===id)?.page))continue;
    const song=songs.find(s=>s.id===id),raw=unpackMXL(await(await fetch(song.asset)).arrayBuffer()),xml=await withGeneratedHarmony(raw,id),d=parseXML(xml),hs=[...d.querySelectorAll('harmony')];
    check(hs.length===data.events.length,id+' injected count');check(!d.querySelector('harmony bass'),'generated display has no slash bass');check(bare(xml)===bare(raw),id+' source notation unchanged');
    check(await withGeneratedHarmony(xml,id)===xml,'idempotent');check(await withGeneratedHarmony(raw+' ',id)===raw+' ','fingerprint guard');
@@ -30,8 +32,8 @@ try{
     const shifted=parseXML(transposeXML(source,2,song.modeOverride));check([...shifted.querySelectorAll('harmony kind')].map(n=>n.textContent).join('|')===[...parseXML(source).querySelectorAll('harmony kind')].map(n=>n.textContent).join('|'),'transposition preserves quality');check(!shifted.querySelector('harmony bass'),'transposed generated symbols remain root-only');
    }
    out.push({id,number:song.page,chords:hs.length});
-  }check(out.length===42,'exactly twelve approved plus thirty Phase 3A hymns');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
- });console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
+  }check(out.length===(unitIds?unitIds.length:72),'expected structural coverage');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
+ },process.env.HARMONY_UNIT_IDS?.split(','));console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!document.body.classList.contains('song-loading')&&document.querySelector('#score').getAttribute('aria-busy')==='false');
  for(const song of unit){

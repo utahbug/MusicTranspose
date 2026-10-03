@@ -51,7 +51,8 @@ class Display(unittest.TestCase):
   self.assertEqual(prior12,{k:new[k] for k in prior12})
   batch3=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
   self.assertEqual(len(batch3),30)
-  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3 if 'skipped' not in r})
+  batch3b=json.loads((ROOT/'reports/harmony-batch3b.json').read_text(encoding='utf8'))
+  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3+batch3b if 'skipped' not in r})
  def test_batch3a_scope_and_events(self):
   batch=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
   self.assertEqual({r['number'] for r in batch},{3,6,19,21,26,27,29,34,35,36,58,60,68,85,89,92,94,96,97,98,103,104,105,111,125,131,134,136,140,141})

@@ -33,7 +33,7 @@ class Temporal(unittest.TestCase):
   parse=lambda s:json.loads(s.split('export const generatedHarmony = ')[1].strip().rstrip(';'))
   before=parse(subprocess.check_output(['git','show','2df4662:generated-harmony-data.js'],cwd=ROOT).decode());after=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'))
   batch=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'));r=next(x for x in batch if x['number']==68);id=r['id']
-  self.assertEqual({k:v for k,v in before.items() if k!=id},{k:v for k,v in after.items() if k!=id})
+  self.assertEqual({k:v for k,v in before.items() if k!=id},{k:after[k] for k in before if k!=id})
   self.assertEqual(len(before[id]['events']),54);self.assertEqual(len(after[id]['events']),40)
   oldBatch=subprocess.check_output(['git','show','2df4662:reports/harmony-batch3a.json'],cwd=ROOT)
   self.assertEqual(json.loads(oldBatch),batch)
