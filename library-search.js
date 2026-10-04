@@ -1,6 +1,20 @@
 import {normalizeSearch} from './songs.js';
 export const searchFields=['title','lyrics','page'];
-export function normalizeSearchFields(value){const fields=Array.isArray(value)?searchFields.filter(field=>value.includes(field)):[];return fields.length?fields:[...searchFields];}
+export const defaultSearchFields=['title','page'];
+export const searchPreferenceKey='music-transpose-search-fields-v2';
+export function normalizeSearchFields(value){const fields=Array.isArray(value)?searchFields.filter(field=>value.includes(field)):[];return fields.length?fields:[...defaultSearchFields];}
+// v2 is authoritative, including a deliberate later selection of all three fields.
+export function readSearchPreferences(storage){
+ let fields=[...defaultSearchFields];
+ try{
+  const current=storage.getItem(searchPreferenceKey);
+  if(current!==null)return normalizeSearchFields(JSON.parse(current));
+  const legacy=normalizeSearchFields(JSON.parse(storage.getItem('music-transpose-search-fields-v1')));
+  fields=legacy.length===searchFields.length?[...defaultSearchFields]:legacy;
+ }catch{}
+ try{storage.setItem(searchPreferenceKey,JSON.stringify(fields));}catch{}
+ return fields;
+}
 export const pageSearchKey=value=>normalizeSearch(String(value??'')).replace(/[^a-z0-9]/g,'');
 export const lyricText=record=>['verses','refrains','alternateLyrics'].flatMap(key=>(record[key]||[]).map(item=>item.text||'')).join(' ');
 export function createSongSearch(load=async()=>{const response=await fetch(new URL('./assets/lyrics.json',import.meta.url));if(!response.ok)throw Error('Lyrics unavailable');return response.json();}){

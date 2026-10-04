@@ -1418,3 +1418,52 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #clear-favorites-dialog button{min-height:44px;font-weight:500}
 #clear-favorites-confirm{background:#365b72;color:white;border-color:#365b72}
 @media print{.library-quick-access{display:none!important}}
+
+/* Shared Library theme controls retain the established header gradient. */
+.library-home-heading{position:relative;padding-right:68px}
+.library-home-heading .library-theme-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
+:is(#library-home,#library) .library-theme-toggle{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:white}
+#library .library-heading{padding-block:0;align-items:center}
+#library .library-heading h1{min-width:0}
+#library .library-heading #library-count{margin-left:auto}
+:is(#library-home,#library) .library-theme-toggle:hover{background:#ffffff1c}
+:is(#library-home,#library) .library-theme-toggle:active{background:#ffffff30}
+:is(#library-home,#library) .library-theme-toggle:focus-visible{outline:2px solid white;outline-offset:-3px}
+.library-theme-toggle .pdf-mobile-theme-swatch{--line:#b7cce0;display:block}
+@media screen{
+ :root[data-library-theme=dark]{--library-dark-page:#151f29;--library-dark-row:#202d38;--library-dark-panel:#263642;--library-dark-border:#465b6c;--library-dark-text:#edf3f7;--library-dark-muted:#b7c9d7;--library-dark-active:#344f62}
+ :root[data-library-theme=dark]:has(#library-home:not([hidden]),#library:not([hidden])),[data-library-theme=dark] body:has(#library-home:not([hidden]),#library:not([hidden])){background:var(--library-dark-page)}
+ [data-library-theme=dark] :is(#library-home,#library){color:var(--library-dark-text);color-scheme:dark;--library-accent:var(--library-dark-muted)}
+ [data-library-theme=dark] #library-home nav{--home-blue:#223448;--home-teal:#233b40;--home-green:#293b36}
+ [data-library-theme=dark] #library-home nav>button{background:var(--library-dark-row);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #library-home nav>button[data-home-source]:not([data-home-source=all]){background:linear-gradient(90deg,var(--home-blue),var(--home-teal) 60%,var(--home-green))}
+ [data-library-theme=dark] #library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,var(--home-green),var(--home-teal) 40%,var(--home-blue))}
+ [data-library-theme=dark] #library-home small{color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library-home nav>button:hover{filter:brightness(1.12)}
+ [data-library-theme=dark] #library-home nav>button:active{filter:brightness(1.2)}
+ [data-library-theme=dark] #library :is(.library-header-panel,.library-quick-access){background:var(--library-dark-panel);border-color:var(--library-dark-border);box-shadow:none}
+ [data-library-theme=dark] #library :is(.library-filter-row,.library-search-row,.library-quick-access) :is(button,select){color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library :is(#library-search,.library-quick-access button){background:#172530;color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #library #library-search::placeholder{color:#a8becf;opacity:1}
+ [data-library-theme=dark] #library #library-search:focus{border-color:#83baf0;box-shadow:0 0 0 1px #83baf0}
+ [data-library-theme=dark] #library :is(.library-column-headings,.library-row){border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #library .library-column-headings{color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library .library-row{background:var(--library-dark-row)}
+ [data-library-theme=dark] #library .song-entry{color:var(--library-dark-text)}
+ [data-library-theme=dark] #library :is(.song-meta,.song-number,.current-label,.empty-library,.favorite){color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library .current-song{background:#2c4354;box-shadow:inset 3px 0 #8fc6ed}
+ [data-library-theme=dark] #library :is(.favorite,#view-favorites)[aria-pressed=true]{color:#9acded;background:var(--library-dark-active)}
+ [data-library-theme=dark] #library :is(.song-entry,.favorite,.library-quick-access button):not(:disabled):hover{background:var(--library-dark-active)}
+ [data-library-theme=dark] :is(#library-source-menu,#library-more-dialog,#library-search-fields){background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border);color-scheme:dark}
+ [data-library-theme=dark] :is(#library-source-menu,#library-more-dialog)>button{color:var(--library-dark-text)}
+ [data-library-theme=dark] :is(#library-source-menu,#library-more-dialog) :is(hr,.source-menu-heading){border-color:var(--library-dark-border);color:var(--library-dark-muted)}
+ [data-library-theme=dark] :is(#library-source-menu,#library-more-dialog)>button:hover,[data-library-theme=dark] #library-search-fields label:hover{background:var(--library-dark-active)}
+ [data-library-theme=dark] :is(#library-source-menu,#library-more-dialog)>button[aria-checked=true]{background:var(--library-dark-active)}
+ [data-library-theme=dark] #library-search-fields input{accent-color:#83baf0}
+ [data-library-theme=dark] :is(#library-home nav,#library,#library-source-menu,#library-more-dialog,#library-search-fields) :is(button,input,select,label):focus-visible,[data-library-theme=dark] #library-search-fields label:focus-within{outline:2px solid #83baf0;outline-offset:-2px}
+ [data-library-theme=dark] #library .library-filter-row :is(#library-source,#library-sort-label,#view-favorites){color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library .library-filter-row :is(#library-source,.sort-choice):is(:hover,:focus-within){background:var(--library-dark-active)}
+ [data-library-theme=dark] #library .library-filter-row #view-favorites[aria-pressed=true]{color:#9acded;background:var(--library-dark-active)}
+ [data-library-theme=dark] #library .library-filter-row .sort-choice::after{color:var(--library-dark-muted)}
+ [data-library-theme=dark] #library :disabled{opacity:.45;cursor:default}
+}

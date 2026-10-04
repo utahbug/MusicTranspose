@@ -1,10 +1,11 @@
+import {initLibraryTheme} from './library-theme.js';
 import {installLibraryQuickAccess} from './library-quick-access.js';
 import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-availability.js';
 import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
 import {initOfflineMusic} from './offline-music.js';
 import {initHomeScreen} from './home-screen.js';
-import {createSongSearch,normalizeSearchFields} from './library-search.js';
+import {createSongSearch,normalizeSearchFields,readSearchPreferences,searchPreferenceKey} from './library-search.js';
 import {attachReorderHandle} from './list-reorder.js';
 import {createViewHistory} from './view-history.js';
 import {sourceChoices,normalizeSource,matchesSource,compareNumbers,compareAlphabeticalTitles,songForSource} from './library-query.js';
@@ -22,13 +23,14 @@ function node(tag,text,className){const e=document.createElement(tag);if(text)e.
 function button(text,label,action){const b=node('button',text,'quiet');b.type='button';if(label)b.setAttribute('aria-label',label);b.onclick=action;return b;}
 export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPendingSelection,stopPlayback,showScoreView}){
  const freshLaunch=beginLibrarySession();
+ initLibraryTheme();
  installLibraryQuickAccess();
  for(const [id,icon] of [['library-quick-lists',listsIcon],['library-quick-files',filesIcon]])$(id).insertAdjacentHTML('afterbegin',icon);
  for(const id of ['files-library','lists-library'])$(id).innerHTML=$('songs').innerHTML;
  $('lists-library').onclick=showHome;
  let navigation,orderedSongs=[],songSet=null,pendingSongSet=null,restoringSongSet=false;
- const search=createSongSearch(),searchPreferenceKey='music-transpose-search-fields-v1';let enabledFields=normalizeSearchFields(),searchLoading=true,searchError='';
- try{enabledFields=normalizeSearchFields(JSON.parse(localStorage.getItem(searchPreferenceKey)));}catch{}
+ const search=createSongSearch();let enabledFields=normalizeSearchFields(),searchLoading=true,searchError='';
+ try{enabledFields=readSearchPreferences(localStorage);}catch{}
  const fieldControls=[...document.querySelectorAll('[data-search-field]')],options=$('library-search-options'),fieldPanel=$('library-search-fields');
  function closeSearchOptions(focus=false){fieldPanel.classList.remove('open');options.setAttribute('aria-expanded','false');if(focus)options.focus();}
  options.onclick=()=>{const open=options.getAttribute('aria-expanded')!=='true';closeSource();closeMore();fieldPanel.classList.toggle('open',open);options.setAttribute('aria-expanded',String(open));if(open)fieldControls[0].focus();};
@@ -67,12 +69,12 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function save(){try{localStorage.setItem(storageKey,JSON.stringify(state));return true;}catch{$('library-message').textContent='Browser storage is unavailable. Changes will last only while this page is open.';return false;}}
  // Preserve every existing sequence, including older stores without a version marker.
  if(state.orderingVersion!==1){state.orderingVersion=1;save();}
- const browse=()=>({query:$('library-search').value,source,sort,searchFields:[...enabledFields],favoritesOnly,scroll:($('library').hidden?libraryScroll:scrollY)});
+ const browse=()=>({query:$('library-search').value,source,sort,searchFields:[...enabledFields],searchFieldsVersion:2,favoritesOnly,scroll:($('library').hidden?libraryScroll:scrollY)});
  // Filters travel with score history, but remain session-only workspace preferences.
 
  function remember(){contexts.set(activeList||'library',browse());}
  function persistWorkspace(){try{sessionStorage.setItem(workspaceKey,JSON.stringify({activeList,contexts:[...contexts]}));}catch{}}
- function applyContext(context={}){if(!context||typeof context!=='object')context={};source=activeList?'all':normalizeSource(context.source);sort=activeList?(['manual','title','number'].includes(context.sort)?context.sort:'manual'):(context.sort==='number'?'number':'title');$('library-search').value=context.query||'';libraryScroll=context.scroll||0;favoritesOnly=!!context.favoritesOnly;if(context.searchFields||context.searchScope)enabledFields=normalizeSearchFields(context.searchFields);}
+ function applyContext(context={}){if(!context||typeof context!=='object')context={};source=activeList?'all':normalizeSource(context.source);sort=activeList?(['manual','title','number'].includes(context.sort)?context.sort:'manual'):(context.sort==='number'?'number':'title');$('library-search').value=context.query||'';libraryScroll=context.scroll||0;favoritesOnly=!!context.favoritesOnly;if(context.searchFieldsVersion===2)enabledFields=normalizeSearchFields(context.searchFields);}
  const lists=createListsView({freshLaunch,getState:()=>state,save,onPick:id=>{navigation?.visit({view:'lists',list:id,picking:true,workspace:true});lists.pick(id);},onSong:(list,id,ids)=>{pendingSongSet={ids:[...ids],origin:'lists',list};open(id);},onLibrary:()=>navigation?.current.picking?selectList(null):showLibrary(),onSelect:id=>navigation?.current.workspace?showLists():selectList(id),onChanged:()=>{if(activeList&&!group()){if(!$('lists-view').hidden){activeList=null;reordering=false;applyContext(contexts.get('library'));}else{selectList(null);return;}}render();persistWorkspace();},onAdded:(id,added,saved)=>{if(navigation?.current.workspace){showLists();lists.finishAdded(id,added);navigation?.snapshot();return;}selectList(id);sort='manual';source='all';$('library-search').value='';render();$('library-message').textContent=saved?added.length+' songs added.':'Changes last only while this page is open.';requestAnimationFrame(()=>{const row=$('library-results').querySelector(`[data-song="${CSS.escape(added[0])}"]`);if(row)window.scrollTo({top:scrollY+row.getBoundingClientRect().top-document.querySelector('.library-header-panel').getBoundingClientRect().height-8,behavior:'instant'});row?.querySelector('.song-entry')?.focus({preventScroll:true});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();});}});
  const files=createFilesView({onLibrary:showHome,onSong:(id,ids)=>{pendingSongSet={ids,origin:'files'};open(id);}});
  function returnLabels(){for(const id of ['songs','files-library','lists-library']){$(id).setAttribute('aria-label','Library Home');$(id).title='Library Home';$(id).setAttribute('aria-controls','library-home');}}

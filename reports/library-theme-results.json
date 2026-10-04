@@ -1,0 +1,425 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "width": 390,
+      "surface": "home",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 370,
+        "left": 326,
+        "top": 23.5,
+        "bottom": 67.5
+      },
+      "header": {
+        "top": 10,
+        "bottom": 81
+      },
+      "titleRight": 314,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 390,
+      "surface": "home",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 370,
+        "left": 326,
+        "top": 23.5,
+        "bottom": 67.5
+      },
+      "header": {
+        "top": 10,
+        "bottom": 81
+      },
+      "titleRight": 314,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 390,
+      "surface": "results",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 378,
+        "left": 334,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 195.984375,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 390,
+      "surface": "results",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 378,
+        "left": 334,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 195.984375,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 430,
+      "surface": "home",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 410,
+        "left": 366,
+        "top": 23.5,
+        "bottom": 67.5
+      },
+      "header": {
+        "top": 10,
+        "bottom": 81
+      },
+      "titleRight": 354,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 430,
+      "surface": "home",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 410,
+        "left": 366,
+        "top": 23.5,
+        "bottom": 67.5
+      },
+      "header": {
+        "top": 10,
+        "bottom": 81
+      },
+      "titleRight": 354,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 430,
+      "surface": "results",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 418,
+        "left": 374,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 195.984375,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 430,
+      "surface": "results",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 418,
+        "left": 374,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 195.984375,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 820,
+      "surface": "home",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 784,
+        "left": 740,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 728,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 820,
+      "surface": "home",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 784,
+        "left": 740,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 728,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 820,
+      "surface": "results",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 792,
+        "left": 748,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 199.03125,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 820,
+      "surface": "results",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 792,
+        "left": 748,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 199.03125,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 1024,
+      "surface": "home",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 988,
+        "left": 944,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 932,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 1024,
+      "surface": "home",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 988,
+        "left": 944,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 932,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 1024,
+      "surface": "results",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 996,
+        "left": 952,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 199.03125,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 1024,
+      "surface": "results",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 996,
+        "left": 952,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 199.03125,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 1440,
+      "surface": "home",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 1224,
+        "left": 1180,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 1168,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    },
+    {
+      "width": 1440,
+      "surface": "home",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 1224,
+        "left": 1180,
+        "top": 29,
+        "bottom": 73
+      },
+      "header": {
+        "top": 12,
+        "bottom": 90
+      },
+      "titleRight": 1168,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 1440,
+      "surface": "results",
+      "theme": "dark",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 1232,
+        "left": 1188,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 379.03125,
+      "overflow": false,
+      "bg": "rgb(21, 31, 41)",
+      "label": "Use light Library theme"
+    },
+    {
+      "width": 1440,
+      "surface": "results",
+      "theme": "light",
+      "button": {
+        "width": 44,
+        "height": 44,
+        "right": 1232,
+        "left": 1188,
+        "top": 0,
+        "bottom": 44
+      },
+      "header": {
+        "top": 0,
+        "bottom": 44
+      },
+      "titleRight": 379.03125,
+      "overflow": false,
+      "bg": "rgba(0, 0, 0, 0)",
+      "label": "Use dark Library theme"
+    }
+  ]
+}
