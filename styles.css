@@ -1091,7 +1091,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library-home nav>button:hover{background:#eaf0f3}#library-home nav>button:focus-visible{outline:2px solid #536b7a;outline-offset:-2px}
 #library-home nav{--home-blue:color-mix(in srgb,#245a9a 8%,white);--home-teal:color-mix(in srgb,#237c7a 8%,white);--home-green:color-mix(in srgb,#2f8b61 8%,white)}
 #library-home nav>button[data-home-source]:not([data-home-source=all]){background:linear-gradient(90deg,var(--home-blue) 0%,var(--home-teal) 60%,var(--home-green) 100%)}
-#library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,var(--home-green) 0%,var(--home-teal) 40%,var(--home-blue) 100%)}
+#library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,#f0eef5,#eceaf2)}
 @media(hover:hover){#library-home nav>button:hover{filter:brightness(.98)}}
 #library-home nav>button:active{filter:brightness(.96)}
 @media(max-width:600px){#library-home{padding:10px 8px 24px}}
@@ -1363,7 +1363,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  [data-library-theme=dark] #library-home nav{--home-blue:#223448;--home-teal:#233b40;--home-green:#293b36}
  [data-library-theme=dark] #library-home nav>button{background:var(--library-dark-row);color:var(--library-dark-text);border-color:var(--library-dark-border)}
  [data-library-theme=dark] #library-home nav>button[data-home-source]:not([data-home-source=all]){background:linear-gradient(90deg,var(--home-blue),var(--home-teal) 60%,var(--home-green))}
- [data-library-theme=dark] #library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,var(--home-green),var(--home-teal) 40%,var(--home-blue))}
+ [data-library-theme=dark] #library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,#30303d,#292b38)}
  [data-library-theme=dark] #library-home small{color:var(--library-dark-muted)}
  [data-library-theme=dark] #library-home nav>button:hover{filter:brightness(1.12)}
  [data-library-theme=dark] #library-home nav>button:active{filter:brightness(1.2)}
