@@ -15,18 +15,25 @@ function startLayoutDiagnostics(){
  for(const event of ['pointerdown','pointerup','click','dblclick'])host.addEventListener(event,e=>e.stopPropagation());
  const ui=id=>shadow.getElementById(id);let lastChange=performance.now(),running=false,report=null,generation=0;
  function clear(message){report=null;window.musicTransposeLayoutReport=null;ui('copy').disabled=true;ui('values').textContent='';ui('report').hidden=true;ui('status').textContent=message;}
+ const entryTrace=[];
+ function traceEntry(phase){if(!entryTrace.length&&phase!=='before-search-blur')return;const api=window.prototype;entryTrace.push({phase,at:Math.round(performance.now()),libraryHidden:$('#library')?.hidden,scoreVisible:!!$('#playing-view')?.getClientRects().length,busy:api?.busy,loading:api?.loading,renderCount:api?.metrics?.length,footer:footerDiagnostics(),scoreBudget:availableScoreHeight($('#score')),navigation:api?.navigation});if(entryTrace.length>32)entryTrace.splice(1,1);}
+ document.addEventListener('score-entry',e=>{if(e.detail.phase==='before-search-blur')entryTrace.length=0;traceEntry(e.detail.phase);});
+ new MutationObserver(()=>traceEntry($('#library').hidden?'Library hidden / Score visible':'Library shown')).observe($('#library'),{attributes:true,attributeFilter:['hidden']});
+ new MutationObserver(()=>{if($('#score').getAttribute('aria-busy')==='false')traceEntry('render completed');}).observe($('#score'),{attributes:true,attributeFilter:['aria-busy']});
+ window.visualViewport?.addEventListener('resize',()=>traceEntry('visualViewport resize'));
+ window.visualViewport?.addEventListener('scroll',()=>traceEntry('visualViewport scroll'));
  function snapshot(){
   const score=$('#score'),api=window.prototype,v=window.visualViewport,frames=[...document.querySelectorAll('.mxl-page-frame')];let systemIndex=0;
   const pages=frames.map((frame,index)=>{const view=frame._view,available=parseFloat(frame.style.height),fit=view?Math.min(1,available/view.used):null;return {page:index+1,availableHeight:available,occupiedHeight:view?.used,displayFitScale:fit,unusedVerticalSpace:view?Math.max(0,available-view.used*fit):null,systemsAssigned:Number(frame.dataset.systems),systems:view?.page?.systems.map(s=>({system:++systemIndex,groupedSystems:s.systems||1,firstMeasureIndex:s.start,lastMeasureIndex:s.end,measures:s.end-s.start+1,effectiveWidth:view.width,renderedHeight:s.height*fit,plannedHeight:s.height,sourceTop:s.top,sourceBottom:s.bottom,y:s.y,scale:s.scale,gap:s.gap}))||[]};});
   const rawMode=$('#score-size-options [aria-pressed=true]')?.dataset.size;
-  return {diagnosticVersion:4,url:location.href,userAgent:navigator.userAgent,
+  return {diagnosticVersion:5,url:location.href,userAgent:navigator.userAgent,
    viewport:{innerWidth,innerHeight,scrollX,scrollY,clientWidth:document.documentElement.clientWidth,clientHeight:document.documentElement.clientHeight,devicePixelRatio,screenWidth:screen.width,screenHeight:screen.height,screenAvailWidth:screen.availWidth,screenAvailHeight:screen.availHeight,orientation:screen.orientation?.type||(matchMedia('(orientation:portrait)').matches?'portrait':'landscape')},
    visualViewport:v?{width:v.width,height:v.height,scale:v.scale,offsetTop:v.offsetTop,offsetLeft:v.offsetLeft}:null,
    browserPageZoom:'Not reliably exposed; visualViewport.scale is an observable scale, not a browser page-zoom percentage.',
    mediaQueries:Object.fromEntries(['(max-width:600px)','(max-width:850px)','(orientation:portrait)','(pointer:coarse)','(display-mode:standalone)'].map(q=>[q,matchMedia(q).matches])),
    layout:{header:rect($('.score-heading')),footer:rect($('.masthead')),toolbar:rect($('.masthead .toolbar')),footerViewportInset:getComputedStyle(document.documentElement).getPropertyValue('--footer-viewport-inset'),playingBarHeight:getComputedStyle(document.documentElement).getPropertyValue('--playing-bar-height'),toolbarControls:[...document.querySelectorAll('.masthead button')].filter(e=>e.getClientRects().length).map(e=>({id:e.id,label:e.getAttribute('aria-label'),bounds:rect(e)})),score:rect(score),scoreInsets:style(score),safeAreaInsets:safeArea(),effectiveScoreWidth:score?.clientWidth,usableVirtualPageHeight:pages[0]?.availableHeight??null,calculatedAvailableHeight:pages.length?availableScoreHeight(score):null},
    music:{songId:api?.song,title:$('.score-heading h1')?.textContent,mode:({auto:'Most music',normal:'Normal',large:'Lead',pdf:'PDF'})[rawMode]||rawMode,notationScale:score?.dataset.zoom,spacingProfile:score?.dataset.fullScoreSpacing,currentKey:$('#key-name')?.textContent,keyShift:api?.current,octave:api?.octaveState,navigation:$('input[name=navigation]:checked')?.value,pageIndicator:$('#page-position')?.textContent,pageCount:pages.length||null,renderedSystemCount:Number(score?.dataset.systems)||null},
-   footerDiagnostics:footerDiagnostics(),songNavigation:api?.navigation,renderCount:api?.metrics?.length,
+   entryTrace:[...entryTrace],footerDiagnostics:footerDiagnostics(),songNavigation:api?.navigation,renderCount:api?.metrics?.length,
    readiness:{loading:api?.loading,bodySongLoading:document.body.classList.contains('song-loading'),fonts:document.fonts.status,ready:api?.ready,busy:api?.busy,scoreBusy:score?.getAttribute('aria-busy')},pages};
  }
  function summary(r){const v=r.viewport,l=r.layout,m=r.music,visual=r.visualViewport,n=value=>value==null?'unavailable':round(value);return [
@@ -51,6 +58,8 @@ function startLayoutDiagnostics(){
   '', `SYSTEMS / PAGES · ${m.renderedSystemCount??'unavailable'} rendered systems`,
   ...r.pages.flatMap(p=>[`Page ${p.page}: ${p.systemsAssigned} systems; unused ${n(p.unusedVerticalSpace)}px; fit scale ${n(p.displayFitScale)}`,...p.systems.map(s=>`  System ${s.system}: ${s.measures} measures; height ${n(s.renderedHeight)}px${s.groupedSystems>1?' (inseparable group of '+s.groupedSystems+')':''}`)]),
   '', 'SONG NAVIGATION',
+  `Entry ${r.songNavigation?.entry?.path||'unknown'}; query ${JSON.stringify(r.songNavigation?.entry?.query)}; playable results ${r.songNavigation?.entry?.playableResultCount}; locator fallback ${r.songNavigation?.entry?.singleResultFallback}`,
+  `Focus: ${JSON.stringify(r.footerDiagnostics?.activeElement)}`,
   `Origin ${r.songNavigation?.origin}; ${r.songNavigation?.count} captured IDs; current index ${r.songNavigation?.index}`,
   `Previous: ${JSON.stringify(r.songNavigation?.previous)}`,
   `Next: ${JSON.stringify(r.songNavigation?.next)}`,
