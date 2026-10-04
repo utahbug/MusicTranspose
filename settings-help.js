@@ -6,7 +6,6 @@ opener.innerHTML=tapZonesIcon;
 let timer=0;
 const close=()=>{clearTimeout(timer);if(overlay.open)overlay.close();};
 opener.addEventListener('click',()=>{
- $('settings-dialog').close();
  const r=scoreTapGeometry();if(r.height<=0)return;
  Object.assign(overlay.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});
  overlay.style.setProperty('--tap-upper',r.upper*100+'%');

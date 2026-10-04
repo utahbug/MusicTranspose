@@ -25,7 +25,7 @@ import {openingMetadata,showOpeningMetadata} from './opening-metadata.js';
 import {captureSystems,availableScoreHeight,rememberReadingPosition,restoreReadingPosition} from './virtual-pages.js';
 import {alignTitleSubtitles} from './title-alignment.js';
 import {showInstrumentKeys,initEnsemble} from './instrument-keys.js';
-import {initPlaybackSettings} from './playback-settings.js';
+import {initPlaybackPreferences} from './playback-preferences.js';
 import {createPlayback} from './playback.js';
 import {getLyrics,lyricIds,createLyricsView} from './lyrics-view.js';
 import {renderPdf,preparePdfPrint,originalPdfData,originalPageCount} from './pdf-score.js';
@@ -71,9 +71,9 @@ const playback=createPlayback(async()=>{
  const xml=ready&&activeSong.id===song.id&&!isPdf()?(scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML):await structuredSource(song);
  return {id:song.id,key:song.id+':'+xml,xml};
 });
-initPlaybackSettings(playback);
+initPlaybackPreferences(playback);
 metronome=createMetronome(playback,()=>({standalone:!hasTiming(activeSong),available:ready&&!busy&&!loading&&!!activeSong&&!activeSong.missing&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
-function playbackControls(){const actions=document.querySelector('.score-heading .score-title-block');if(ready&&hasTiming(activeSong)){playback.attach(actions);}else actions.querySelector('.song-playback')?.remove();}
+function playbackControls(){$('score-sound').hidden=!hasTiming(activeSong);const actions=document.querySelector('.score-heading .score-title-block');if(ready&&hasTiming(activeSong)){playback.attach(actions);}else actions.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
 async function showScoreView(id){
@@ -260,7 +260,6 @@ document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.con
 // One control map at every viewport; move existing buttons, preserving handlers/focus.
 document.querySelector('.playing-controls').prepend($('songs'));
 document.querySelector('.utility-controls').prepend($('score-size'));
-document.querySelector('.utility-controls').append($('settings'));
 document.querySelector('.utility-controls').append($('show-lyrics'));
 // Keep DOM/keyboard order identical to the visual Score View and Key order.
 $('score-size').after($('key'));
@@ -358,7 +357,7 @@ function leaveScore(){
  clearTimeout(timer);current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;document.dispatchEvent(new Event('score-session-reset'));
  original='';lastXML='';renderWidth=0;cache.clear();score.replaceChildren();score.setAttribute('aria-busy','false');
  document.body.classList.remove('prepared-print');$('print-pages').replaceChildren();
- dialog.close();$('settings-dialog').close();setControls();
+ dialog.close();setControls();
 }
 // Local acceptance-test hooks.
 window.prototype={playback,get loading(){return loading;},get navigation(){return library?.diagnostics();},get lead(){return leadState;},get viewXML(){return lastViewXML;},get pdfFallback(){return pdfFallback;},get current(){return current;},get wanted(){return wanted;},get octave(){return handLayout.ok?(currentOctave.rh===currentOctave.lh?currentOctave.rh:null):currentOctave.all;},get octaveState(){return {...currentOctave};},get hands(){return handLayout;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},openLyrics,changeKey,changeOctave,preparePrint,loadScore,loadSong};

@@ -2,7 +2,7 @@ import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewpor
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
-const $=id=>document.getElementById(id),panel=$('settings-dialog'),pagePosition=$('score-navigation-button'),modeMenu=$('score-navigation-menu'),navCorner=$('score-navigation'),hint=$('page-navigation-hint');
+const $=id=>document.getElementById(id),pagePosition=$('score-navigation-button'),modeMenu=$('score-navigation-menu'),navCorner=$('score-navigation'),hint=$('page-navigation-hint');
 // v1 could contain automatically saved defaults; only v2 explicitly chosen
 // values override the device rule. Leave legacy data intact for compatibility.
 const storageKey='music-transpose-navigation-v2';
@@ -25,6 +25,7 @@ function hideHint(){clearTimeout(hintTimer);hint.hidden=true;}
 function showHint(){if(hintSeen)return;hintSeen=true;try{localStorage.setItem(hintKey,'seen');}catch{}hint.hidden=false;hintTimer=setTimeout(hideHint,6000);}
 function positionIndicator(){
  const paperElement=document.querySelector('.score-paper');
+ phoneStatus.hidden=!phoneScreen.matches||navCorner.hidden;
  if(navCorner.hidden){paperElement.style.removeProperty('--phone-paper-clip');return;}
  const paper=paperElement.getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
  if(phoneScreen.matches){
@@ -32,12 +33,13 @@ function positionIndicator(){
   // retain document scrolling; only ink under the reserved status strip is clipped.
   const top=Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight);
   paperElement.style.setProperty('--phone-paper-clip',Math.max(0,paper.bottom-(top-5))+'px');
+  phoneStatus.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
   navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
   navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
-  pageFeedback.style.right=(Math.max(0,innerWidth-paper.right)+navCorner.offsetWidth+8)+'px';
+  pageFeedback.style.right='auto';pageFeedback.style.left=Math.max(6,paper.left)+'px';
   pageFeedback.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
  }else{
-  paperElement.style.removeProperty('--phone-paper-clip');pageFeedback.style.removeProperty('right');pageFeedback.style.removeProperty('bottom');
+  paperElement.style.removeProperty('--phone-paper-clip');pageFeedback.style.removeProperty('left');pageFeedback.style.removeProperty('right');pageFeedback.style.removeProperty('bottom');
   const bottom=Math.min(paper.bottom-6,bar.top-8,innerHeight-8);
   navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
   navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
@@ -46,20 +48,25 @@ function positionIndicator(){
 // Outside the clipped phone sheet, but still within the existing playing view.
 // Desktop keeps precisely the same fixed positioning and interaction.
 document.querySelector('.score-paper').after(navCorner);
+const songNavigator=document.querySelector('.score-song-navigation'),songHeader=songNavigator.parentElement;
+const phoneStatus=document.createElement('div');phoneStatus.id='phone-score-status';$('playing-view').append(phoneStatus);
+function placeSongNavigation(){if(phoneScreen.matches)phoneStatus.append(songNavigator);else songHeader.insertBefore(songNavigator,songHeader.querySelector('.score-actions'));}
+phoneScreen.addEventListener('change',placeSongNavigation);placeSongNavigation();
+
 new ResizeObserver(positionIndicator).observe(document.querySelector('.score-paper'));
 function closeModeMenu(focus=false){modeMenu.hidden=true;pagePosition.setAttribute('aria-expanded','false');if(focus&&!navCorner.hidden)pagePosition.focus({preventScroll:true});}
 pagePosition.onclick=()=>{if(!modeMenu.hidden){closeModeMenu(true);return;}pause();hideHint();modeMenu.hidden=false;pagePosition.setAttribute('aria-expanded','true');positionIndicator();(modeMenu.querySelector('[aria-checked=true]')||modeMenu.querySelector('button')).focus();};
-for(const option of modeMenu.querySelectorAll('[data-navigation]'))option.onclick=()=>{chooseMode(option.dataset.navigation);closeModeMenu(true);};
+for(const option of modeMenu.querySelectorAll('[data-navigation]'))option.onclick=()=>{chooseMode(option.dataset.navigation);if(option.dataset.navigation!=='auto')closeModeMenu(true);};
 modeMenu.onkeydown=e=>{
  if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeModeMenu(true);return;}
- if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const options=[...modeMenu.querySelectorAll('button:not(:disabled)')],i=options.indexOf(document.activeElement);options[e.key==='Home'?0:e.key==='End'?options.length-1:(i+(e.key==='ArrowDown'?1:-1)+options.length)%options.length].focus();}
+ if(e.target.matches('input')){e.stopPropagation();return;}
+ if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const options=[...modeMenu.querySelectorAll('button:not(:disabled)')].filter(b=>b.getClientRects().length),i=options.indexOf(document.activeElement);options[e.key==='Home'?0:e.key==='End'?options.length-1:(i+(e.key==='ArrowDown'?1:-1)+options.length)%options.length].focus();}
 };
 document.addEventListener('pointerdown',e=>{if(!navCorner.contains(e.target))closeModeMenu();},{passive:true});
 document.addEventListener('focusin',e=>{if(!navCorner.contains(e.target))closeModeMenu();});
 window.addEventListener('beforeprint',()=>{closeModeMenu();hideHint();});
 function sync(){
- document.querySelectorAll('input[name="navigation"]').forEach(e=>e.checked=e.value===mode);
- $('auto-options').hidden=mode!=='auto';$('hybrid-help').hidden=mode!=='hybrid';
+ $('auto-options').hidden=mode!=='auto';
  $('navigation-strip').hidden=mode!=='auto'&&mode!=='hybrid';$('auto-toggle').hidden=mode!=='auto';$('speed-summary').hidden=mode!=='auto';$('screenful-next').hidden=mode!=='hybrid';
  // Measure pagination after any Auto-scroll strip has its final height.
  syncPages();
@@ -72,7 +79,6 @@ function tick(time){if(!running)return;const dt=Math.min((time-lastTime)/1000,.1
 function start(){if(document.body.classList.contains('pdf-annotation-active')||!window.prototype?.ready||prototype.busy)return;position=scrollY;expected=scrollY;lastTime=performance.now();running=true;$('navigation-status').textContent='';sync();frame=requestAnimationFrame(tick);}
 function toggle(){running?pause():start();}
 function advance(){pause();const bar=document.querySelector('.masthead').getBoundingClientRect().height;window.scrollBy({top:Math.max(1,(innerHeight-bar)*.85),behavior:'instant'});}
-$('settings').onclick=()=>{closeModeMenu();pause();sync();panel.showModal();panel.querySelector('input:checked:not(:disabled)')?.focus();};$('close-settings').onclick=()=>panel.close();
 function chooseMode(value,explicit=true){
  if(!validMode(value)||(explicit&&value==='pages'&&!pages().length&&!virtualAvailable()))return;
  if(value===mode){if(explicit)hasChoice=true;persist();sync();return;}
@@ -84,7 +90,6 @@ function chooseMode(value,explicit=true){
  if(wasPage||mode==='pages')window.scrollTo({top:0,behavior:'instant'});
  $('navigation-status').textContent='';persist();sync();
 }
-for(const input of panel.querySelectorAll('input[name="navigation"]'))input.onchange=()=>chooseMode(input.value);
 phoneScreen.addEventListener('change',()=>{if(!hasChoice)chooseMode(defaultMode(),false);});
 $('scroll-speed').oninput=e=>{speed=Number(e.target.value);persist();sync();};
 $('auto-toggle').onclick=toggle;$('screenful-next').onclick=advance;
@@ -151,7 +156,6 @@ function showPageFeedback(){
 window.addEventListener('beforeprint',hidePageFeedback);
 function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
- const input=panel.querySelector('input[value=pages]');input.disabled=!available;$('page-mode-choice').classList.toggle('unavailable',!available);
  $('show-tap-zones').disabled=!available||document.body.classList.contains('pdf-annotation-active');
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
  frames.forEach((f,i)=>{f.classList.toggle('current-page',i===pageIndex);if(mode==='pages')f.setAttribute('aria-hidden',String(i!==pageIndex));else f.removeAttribute('aria-hidden');});
@@ -180,7 +184,7 @@ window.addEventListener('resize',scheduleVirtualResize);
 // Keep phone page frames in step with browser-chrome changes as well as engraving.
 window.visualViewport?.addEventListener('resize',()=>{if(phoneScreen.matches&&Math.abs(visualViewport.scale-1)<.01&&!document.body.classList.contains('pdf-score-open'))scheduleVirtualResize();});
 document.addEventListener('score-session-reset',()=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();resetVirtualSource();pageIndex=0;});
-document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
+document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages')pageIndex=prepareVirtualPages(true);sync();});});
 $('pdf-trim').addEventListener('change',fitPage);
 document.addEventListener('library-open',e=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Retain only explicitly selected v2 modes.
