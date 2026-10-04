@@ -92,7 +92,7 @@ function chooseMode(value,explicit=true){
 }
 phoneScreen.addEventListener('change',()=>{if(!hasChoice)chooseMode(defaultMode(),false);});
 $('scroll-speed').oninput=e=>{speed=Number(e.target.value);persist();sync();};
-$('auto-toggle').onclick=toggle;$('screenful-next').onclick=advance;
+$('auto-toggle').onclick=()=>{toggle();if(running)closeModeMenu(true);};$('screenful-next').onclick=advance;
 // Only deliberate user inputs pause scrolling; our own scroll events do not.
 document.addEventListener('wheel',()=>pause(),{passive:true});
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle'))pause();},{passive:true});
