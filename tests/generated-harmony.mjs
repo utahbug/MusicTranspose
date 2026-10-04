@@ -4,6 +4,7 @@ const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE||'C:/Users/kenro/.
 const b=await chromium.launch({channel:'msedge',headless:true}),c=await b.newContext({viewport:{width:820,height:1180},serviceWorkers:'block'}),p=await c.newPage(),errors=[],rows=[];
 p.setDefaultTimeout(90000);p.on('pageerror',e=>errors.push(e.message));
 try{
+ if(process.env.HARMONY_NO_OVERLAY)await p.route('**/generated-harmony.js',async route=>{const body=(await(await route.fetch()).text()).replace('const overlay=generatedHarmony[songId];','if(window.harmonyDiagnosticWithoutOverlay)return xml; const overlay=generatedHarmony[songId];');await route.fulfill({body,contentType:'application/javascript'});});
  await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.locator('[data-home-source=all]').click();
  const unit=await p.evaluate(async(unitIds)=>{
   const {generatedHarmony}=await import('./generated-harmony-data.js'),{withGeneratedHarmony}=await import('./generated-harmony.js');
@@ -11,10 +12,11 @@ try{
   const check=(ok,msg)=>{if(!ok)throw Error(msg);},out=[];
   const pitch=n=>({C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n.firstElementChild.textContent]+Number(n.querySelector('root-alter,bass-alter')?.textContent||0)+120)%12;
   const bare=xml=>{const d=parseXML(xml);d.querySelectorAll('harmony').forEach(n=>n.remove());return new XMLSerializer().serializeToString(d);};
-  check(Object.keys(generatedHarmony).length===72,'exactly forty-two approved plus thirty Phase 3B hymns');
+  check(Object.keys(generatedHarmony).length===101,'exactly seventy-two approved plus twenty-nine Phase 3C hymns');
   for(const [id,data] of Object.entries(generatedHarmony)){
    if(unitIds&&!unitIds.includes(songs.find(s=>s.id===id)?.page))continue;
    const song=songs.find(s=>s.id===id),raw=unpackMXL(await(await fetch(song.asset)).arrayBuffer()),xml=await withGeneratedHarmony(raw,id),d=parseXML(xml),hs=[...d.querySelectorAll('harmony')];
+   const {parseChordSymbol}=await import('./chord-symbol.js');check(!parseXML(raw).querySelector('harmony')&&![...parseXML(raw).querySelectorAll('direction-type')].some(n=>parseChordSymbol([...n.querySelectorAll('words')].map(w=>w.textContent).join(''))),'raw source harmony audit');
    check(hs.length===data.events.length,id+' injected count');check(!d.querySelector('harmony bass'),'generated display has no slash bass');check(bare(xml)===bare(raw),id+' source notation unchanged');
    check(await withGeneratedHarmony(xml,id)===xml,'idempotent');check(await withGeneratedHarmony(raw+' ',id)===raw+' ','fingerprint guard');
    const authoritative=raw.replace('<note','<harmony><root><root-step>C</root-step></root><kind>major</kind><bass><bass-step>E</bass-step></bass></harmony><note');
@@ -32,9 +34,10 @@ try{
     const shifted=parseXML(transposeXML(source,2,song.modeOverride));check([...shifted.querySelectorAll('harmony kind')].map(n=>n.textContent).join('|')===[...parseXML(source).querySelectorAll('harmony kind')].map(n=>n.textContent).join('|'),'transposition preserves quality');check(!shifted.querySelector('harmony bass'),'transposed generated symbols remain root-only');
    }
    out.push({id,number:song.page,chords:hs.length});
-  }check(out.length===(unitIds?unitIds.length:72),'expected structural coverage');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
+  }check(out.length===(unitIds?unitIds.length:101),'expected structural coverage');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
  },process.env.HARMONY_UNIT_IDS?.split(','));console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
+ if(process.env.HARMONY_NO_OVERLAY)await p.evaluate(()=>window.harmonyDiagnosticWithoutOverlay=true);
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!document.body.classList.contains('song-loading')&&document.querySelector('#score').getAttribute('aria-busy')==='false');
  for(const song of unit){
   if(process.env.HARMONY_RENDER_IDS&&!process.env.HARMONY_RENDER_IDS.split(',').includes(song.number))continue;
@@ -44,14 +47,14 @@ try{
    for(const shift of (process.env.HARMONY_ALT_ONLY?[2]:!process.env.HARMONY_ALT_IDS||process.env.HARMONY_ALT_IDS.split(',').includes(song.number)?[0,2]:[0])){
     await p.evaluate(shift=>prototype.changeKey(shift),shift);await ready();
     const state=await p.evaluate(()=>({harmony:new DOMParser().parseFromString(prototype.viewXML,'application/xml').querySelectorAll('harmony').length,overflow:document.documentElement.scrollWidth>innerWidth,svg:document.querySelectorAll('#score svg').length,text:document.querySelector('#score').textContent,report:document.querySelector('#score').autoReport,zoom:document.querySelector('#score').dataset.zoom,systems:Number(document.querySelector('#score').dataset.systems)}));
-    assert.equal(state.harmony,song.chords);assert(!state.overflow);assert(state.svg>0);
+    assert.equal(state.harmony,process.env.HARMONY_NO_OVERLAY?0:song.chords);assert(!state.overflow);assert(state.svg>0);
     const screenshots=[];const pageCount=await p.locator('.mxl-page-frame').count();
     await p.keyboard.press('Home');
-    for(let i=0;i<pageCount;i++){const file=`test-results/harmony-${song.number}-${mode}-${shift}-page${i+1}.png`;await p.screenshot({path:file});screenshots.push(file);if(i+1<pageCount)await p.keyboard.press('PageDown');}
+    for(let i=0;i<pageCount;i++){const file=`test-results/${process.env.HARMONY_NO_OVERLAY?"bare-":""}harmony-${song.number}-${mode}-${shift}-page${i+1}.png`;await p.screenshot({path:file});screenshots.push(file);if(i+1<pageCount)await p.keyboard.press('PageDown');}
     await p.keyboard.press('Home');rows.push({...song,pdfPageCount,mode,shift,...state,pageCount,screenshots});console.log('PASS render',song.number,mode,shift,state.zoom);
    }
    await p.evaluate(()=>prototype.changeKey(0));await ready();
   }
  }
- assert.deepEqual(errors,[]);fs.writeFileSync('test-results/generated-harmony-results.json',JSON.stringify(rows,null,2));
+ assert.deepEqual(errors,[]);fs.writeFileSync(process.env.HARMONY_OUTPUT||'test-results/generated-harmony-results.json',JSON.stringify(rows,null,2));
 }finally{await b.close();}

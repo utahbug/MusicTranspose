@@ -1,0 +1,5535 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Harmony Phase 3C — final batch</title><style>body{font:16px system-ui;max-width:1500px;margin:32px auto;padding:0 20px;color:#223}table{border-collapse:collapse;font-size:13px;width:100%}td,th{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid #ddd}code{font-size:12px;overflow-wrap:anywhere}.scroll{overflow:auto}summary{cursor:pointer;padding:12px;background:#eef3f5}pre{white-space:pre-wrap;font-size:13px}img{max-width:100%;height:auto}h2{margin-top:36px}</style><h1>Generated harmony Phase 3C</h1><p>29 new Hymns (1985) overlays. #314 and #315 were explicitly excluded by the user. Batch totals: 30 + 30 + 29 = <strong>89 of the original 91</strong>, with two user exclusions. Earlier pilot/Christmas overlays: 12. Final total: <strong>101</strong>. No source-authoritative harmony was found or skipped.</p><p>Frozen production analysis/display policy; accepted 72 overlays remain exactly equivalent. Source MXL/PDF assets unchanged. No iPhone, UI, pagination, playback, Melody extraction or Hymn 201/223 work.</p><p>673 detailed analysis events produce 622 displayed root+quality symbols; zero generated slash basses. Detailed bass/inversion metadata and uncertainty windows remain in <a href="harmony-batch3c.json">the analysis report</a>. Existing source-harmony precedence, SHA-256 protection, offline precomputed data and injection-before-transposition path are unchanged.</p><h2>Physical review shortlist</h2><p>These are inferred suggestions, not authoritative harmony or human musical approval. No thresholds were retuned for outliers.</p><ol>
+<li>Carry On: 44 displayed events, 24 review windows, chromatic/augmented material, Full 2→3 pages and tighter lyrics.</li>
+<li>Called to Serve: retained short-span cluster, 18 review windows and major-seventh/diminished interpretations.</li>
+<li>As I Search the Holy Scriptures: three retained temporal clusters and major-seventh interpretations in a short hymn.</li>
+<li>Count Your Blessings: consecutive uncertain gaps; Melody expands from 2 to 3 pages at +2.</li>
+<li>Scatter Sunshine: retained four-event cluster, 13 review windows and Melody 1→2 pages with chords.</li>
+<li>True to the Faith: two retained temporal clusters and an uncertain X12–X13 gap. Existing Full pagination is unchanged.</li>
+</ol><h2>Counts and pages</h2><p>First = first-stage removal; dedup = root-only duplicate removal; local/temporal = the two density stages. Dense 3+/4+ counts are retained short temporal spans, not symbols per system. Spans can overlap; they are not a numerical quality score. Full/Melody are original-key pages. Bare is the same rendering without overlays. PDF counts came from repository assets already used by the test, without external bulk downloads.</p><div class="scroll"><table><tr><th>Hymn / key</th><th>Analysis → display</th><th>Removed: first / dedup / local / temporal</th><th>Review windows</th><th>Dense 3+ / 4+</th><th>PDF</th><th>Full / Melody</th><th>Bare F / M</th><th>+2 F / M</th><th>Priority</th></tr>
+<tr><td>228 — You Can Make the Pathway Bright (G major)</td><td>17 → 16</td><td>0 / 1 / 0 / 0</td><td>14</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>229 — Today, While the Sun Shines (G major)</td><td>19 → 19</td><td>0 / 0 / 0 / 0</td><td>1</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>1 / 1</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>230 — Scatter Sunshine (G major)</td><td>25 → 22</td><td>0 / 3 / 0 / 0</td><td>13</td><td>1 / 1</td><td>2</td><td>2 / 2</td><td>2 / 1</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>232 — Let Us Oft Speak Kind Words (G major)</td><td>23 → 23</td><td>0 / 0 / 0 / 0</td><td>7</td><td>0 / 0</td><td>2</td><td>3 / 2</td><td>3 / 2</td><td>3 / 2</td><td>Review recommended</td></tr>
+<tr><td>237 — Do What Is Right (G major)</td><td>23 → 23</td><td>0 / 0 / 0 / 0</td><td>2</td><td>0 / 0</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 1</td><td>Normal</td></tr>
+<tr><td>239 — Choose the Right (C major)</td><td>21 → 19</td><td>0 / 0 / 0 / 2</td><td>16</td><td>0 / 0</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>241 — Count Your Blessings (D major)</td><td>15 → 15</td><td>0 / 0 / 0 / 0</td><td>13</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>2 / 3</td><td>Review recommended</td></tr>
+<tr><td>243 — Let Us All Press On (C major)</td><td>20 → 17</td><td>1 / 0 / 2 / 0</td><td>6</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 1</td><td>3 / 2</td><td>Review recommended</td></tr>
+<tr><td>244 — Come Along, Come Along (G major)</td><td>24 → 21</td><td>0 / 3 / 0 / 0</td><td>4</td><td>0 / 0</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 1</td><td>Review recommended</td></tr>
+<tr><td>249 — Called to Serve (C major)</td><td>38 → 34</td><td>4 / 0 / 0 / 0</td><td>18</td><td>1 / 1</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>250 — We Are All Enlisted (Bb major)</td><td>23 → 22</td><td>0 / 0 / 0 / 1</td><td>5</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>3 / 2</td><td>Review recommended</td></tr>
+<tr><td>251 — Behold! A Royal Army (G major)</td><td>32 → 25</td><td>4 / 3 / 0 / 0</td><td>10</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>3 / 3</td><td>Review recommended</td></tr>
+<tr><td>252 — Put Your Shoulder to the Wheel (F major)</td><td>23 → 23</td><td>0 / 0 / 0 / 0</td><td>7</td><td>1 / 1</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 1</td><td>Review recommended</td></tr>
+<tr><td>254 — True to the Faith (G major)</td><td>30 → 28</td><td>1 / 1 / 0 / 0</td><td>9</td><td>2 / 2</td><td>2</td><td>3 / 2</td><td>3 / 2</td><td>3 / 2</td><td>Review recommended</td></tr>
+<tr><td>255 — Carry On (G major)</td><td>46 → 44</td><td>0 / 0 / 0 / 2</td><td>24</td><td>0 / 0</td><td>2</td><td>3 / 2</td><td>2 / 2</td><td>3 / 2</td><td>Review recommended</td></tr>
+<tr><td>256 — As Zion’s Youth in Latter Days (Eb major)</td><td>35 → 33</td><td>0 / 0 / 0 / 2</td><td>12</td><td>0 / 0</td><td>1</td><td>1 / 2</td><td>1 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>259 — Hope of Israel (Bb major)</td><td>17 → 17</td><td>0 / 0 / 0 / 0</td><td>6</td><td>0 / 0</td><td>1</td><td>1 / 1</td><td>1 / 1</td><td>1 / 1</td><td>Normal</td></tr>
+<tr><td>260 — Who’s on the Lord’s Side? (G major)</td><td>25 → 23</td><td>0 / 2 / 0 / 0</td><td>3</td><td>0 / 0</td><td>2</td><td>2 / 3</td><td>2 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>264 — Hark, All Ye Nations! (Bb major)</td><td>17 → 17</td><td>0 / 0 / 0 / 0</td><td>5</td><td>0 / 0</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 1</td><td>Review recommended</td></tr>
+<tr><td>266 — The Time Is Far Spent (Bb major)</td><td>14 → 14</td><td>0 / 0 / 0 / 0</td><td>4</td><td>0 / 0</td><td>1</td><td>2 / 2</td><td>2 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>272 — Oh Say, What Is Truth? (F major)</td><td>13 → 11</td><td>2 / 0 / 0 / 0</td><td>4</td><td>0 / 0</td><td>1</td><td>1 / 2</td><td>1 / 1</td><td>1 / 2</td><td>Review recommended</td></tr>
+<tr><td>273 — Truth Reflects upon Our Senses (G major)</td><td>19 → 18</td><td>0 / 1 / 0 / 0</td><td>5</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>2 / 2</td><td>Review recommended</td></tr>
+<tr><td>274 — The Iron Rod (D major)</td><td>22 → 19</td><td>2 / 1 / 0 / 0</td><td>4</td><td>0 / 0</td><td>2</td><td>1 / 1</td><td>1 / 1</td><td>Not selected</td><td>Normal</td></tr>
+<tr><td>277 — As I Search the Holy Scriptures (Bb major)</td><td>22 → 16</td><td>4 / 0 / 0 / 2</td><td>5</td><td>3 / 3</td><td>1</td><td>1 / 1</td><td>1 / 1</td><td>1 / 1</td><td>Review recommended</td></tr>
+<tr><td>294 — Love at Home (G major)</td><td>25 → 25</td><td>0 / 0 / 0 / 0</td><td>4</td><td>0 / 0</td><td>2</td><td>2 / 2</td><td>2 / 2</td><td>Not selected</td><td>Normal</td></tr>
+<tr><td>303 — Keep the Commandments (F major)</td><td>20 → 20</td><td>0 / 0 / 0 / 0</td><td>7</td><td>0 / 0</td><td>1</td><td>1 / 1</td><td>1 / 1</td><td>1 / 1</td><td>Normal</td></tr>
+<tr><td>304 — Teach Me to Walk in the Light (D major)</td><td>20 → 16</td><td>1 / 2 / 1 / 0</td><td>5</td><td>0 / 0</td><td>1</td><td>1 / 1</td><td>1 / 1</td><td>1 / 1</td><td>Review recommended</td></tr>
+<tr><td>308 — Love One Another (G major)</td><td>21 → 20</td><td>0 / 0 / 0 / 1</td><td>6</td><td>2 / 2</td><td>1</td><td>1 / 1</td><td>1 / 1</td><td>1 / 1</td><td>Review recommended</td></tr>
+<tr><td>317 — Sweet Is the Work (Ab major)</td><td>24 → 22</td><td>1 / 0 / 1 / 0</td><td>5</td><td>1 / 1</td><td>2</td><td>2 / 1</td><td>2 / 1</td><td>2 / 1</td><td>Review recommended</td></tr>
+</table></div><h2>Validation and limitations</h2><p>All 29 sources had zero native harmony and zero chord-like direction text, checked with the production chord parser. All 29 passed positional Full/Melody harmony equivalence and +2 structural transposition checks. Existing 7,288 chord assertions cover spelling/transposition behavior. Source slash-harmony precedence remains supported.</p><p>58 original-key renders and 54 +2 renders at 820×1180 were inspected. +2 covered all flagged/chromatic songs and page-expansion cases; only #274 and #294 needed no alternate visual render. Symbols remained above the staff, with no observed chord/title or chord/lyric collision and no duplicate generated symbols. This does not mean every existing lyric spacing problem is resolved.</p><p>Harmony adds an original-key page in #229 (both views), #230 (Melody), #243 (Melody), #255 (Full), #260 (Melody), and #272 (Melody). #232/#264/#266/#273 Full lyric warnings and #244 Melody close lyric joins also occur without chords. #255 has newly tighter Full lyrics (collision metric 0→3) and remains a reported release-review outlier. No layout changes were made.</p><p>Analytical checks: every ending is tonic-root; all openings are tonic-root except #255’s D7 in G, a plausible dominant pickup retained for review. Seventh/chromatic/diminished symbols remain where the frozen algorithm emits them. Consecutive uncertain gaps in #239/#241/#243/#254/#255 are listed below; a preceding symbol is not proof of the harmony through those gaps. Retained dense spans are evidence for review, not silently approved.</p><ul>
+<li>Deterministic append-only generation: tools/harmony-batch3c.py --check</li>
+<li>tests/harmony-batch3c.py: 4 passed (72-overlay equality, source bytes, frozen policy/runtime, revised membership)</li>
+<li>tests/harmony-display.py: 14 passed</li>
+<li>tests/harmony-temporal.py: 7 passed</li>
+<li>tests/harmony-inference.py: 7 passed</li>
+<li>tests/chord-harmony.mjs CHORD_UNIT_ONLY=1: 7,288 assertions, 25 examples</li>
+<li>tests/generated-harmony.mjs HARMONY_UNIT_ONLY=1, all 29: source/text precedence, fingerprint protection, idempotence, notation invariance, Full/Melody positional equality and +2 root/quality assertions</li>
+<li>58 original-key renders, 54 alternate-key renders (27 hymns), 58 original-key no-overlay controls at 820×1180; no horizontal overflow or browser errors</li>
+<li>All original/alternate virtual pages visually inspected through contact sheets; focused no-overlay visual comparisons</li>
+<li>git diff --check</li>
+</ul><h2>Stable IDs, musical review windows and retained dense spans</h2><p>Measure labels are source labels; offsets are quarter-note units, not necessarily printed beats. Full detailed decisions are retained in the linked JSON.</p>
+<details><summary>228 — You Can Make the Pathway Bright — Review recommended</summary><p>Stable ID: <code>song-54db47df-6f16-441c-ac53-df09cfdb294c</code></p><p>Source SHA-256: <code>186d8a6c94e925b72de65495f14d351980dd33e13da96e3b68cf1a0bec24d748</code></p><p>Opening G; ending G. 10+ uncertainty/review windows</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 11,
+    &quot;minor&quot;: 1,
+    &quot;dominant&quot;: 4
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>229 — Today, While the Sun Shines — Review recommended</summary><p>Stable ID: <code>song-22197efd-635b-4f62-b650-354c6c281624</code></p><p>Source SHA-256: <code>56b8f9a96443979df4c1d3c8a7723bcfbd04be321ce2068de1d917ceb7ef82f0</code></p><p>Opening G; ending G. Harmony adds a page: {&#x27;Full&#x27;: 1, &#x27;Melody&#x27;: 1}</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 14,
+    &quot;dominant&quot;: 5
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X32&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X33&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>230 — Scatter Sunshine — Review recommended</summary><p>Stable ID: <code>song-dac6f94b-6a48-40de-993c-82bb543bf96d</code></p><p>Source SHA-256: <code>a41df80030351ab690e5e104ba00e46dd9050a9518f19f648bdb7b4f00ac0884</code></p><p>Opening G; ending G. 4+ symbols in a short temporal cluster; 10+ uncertainty/review windows; Harmony adds a page: {&#x27;Full&#x27;: 0, &#x27;Melody&#x27;: 1}</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 12,
+    &quot;dominant&quot;: 8,
+    &quot;minor&quot;: 2
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X25&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;X26&quot;,
+      &quot;endOffset&quot;: 0,
+      &quot;spanBeats&quot;: 2.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X25&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;G&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X25&quot;,
+          &quot;offset&quot;: 1.5,
+          &quot;chord&quot;: &quot;Bm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X25&quot;,
+          &quot;offset&quot;: 2.5,
+          &quot;chord&quot;: &quot;D7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X26&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;G&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.958
+    },
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.958
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.958
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Am&quot;,
+      &quot;coverage&quot;: 0.424
+    },
+    {
+      &quot;measure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Am&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;Bm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>232 — Let Us Oft Speak Kind Words — Review recommended</summary><p>Stable ID: <code>song-37a6936e-9bb3-4081-b2e4-996ee9121150</code></p><p>Source SHA-256: <code>06260d7c99877f625884d3760e6cea58b227c592f2baa38fc7b54d477ae48a62</code></p><p>Opening G; ending G. Full lyric crowding remains without chords (collision metric 1 in both).</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 18,
+    &quot;dominant&quot;: 4,
+    &quot;minor&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.5
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>237 — Do What Is Right — Normal</summary><p>Stable ID: <code>song-1a7e3e3b-47c5-4986-963e-4bc8b80cdf9a</code></p><p>Source SHA-256: <code>68094005279bde3f1826a90577a894c2cfdea72ce6bb0f891506cbf5038c18cc</code></p><p>Opening G; ending G. No automatic or visual outlier flag.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 16,
+    &quot;dominant&quot;: 7
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.625
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.625
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>239 — Choose the Right — Review recommended</summary><p>Stable ID: <code>song-05f40854-1219-4052-8766-6a3a6935146e</code></p><p>Source SHA-256: <code>5f91ad193e3bcaefc4915eec62dc384cb2d5a50592955dad916dd3d1d77e9d44</code></p><p>Opening C; ending C. 10+ uncertainty/review windows; Consecutive uncertain measures with no new analysis event; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 14,
+    &quot;dominant&quot;: 5
+  },
+  &quot;uncertainGaps&quot;: [
+    [
+      &quot;X2&quot;,
+      &quot;X3&quot;
+    ],
+    [
+      &quot;X11&quot;,
+      &quot;X12&quot;
+    ]
+  ],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Dm&quot;,
+      &quot;coverage&quot;: 0.688
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.656
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Dm&quot;,
+      &quot;coverage&quot;: 0.375
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.656
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Dm&quot;,
+      &quot;coverage&quot;: 0.688
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>241 — Count Your Blessings — Review recommended</summary><p>Stable ID: <code>song-2afc0981-e463-470e-8cab-632d0b0b57e6</code></p><p>Source SHA-256: <code>13a0d79f3fa1cf1d57f3d6239418a03fd468209dce0bee49bf476a0097a60971</code></p><p>Opening D; ending D. 10+ uncertainty/review windows; Consecutive uncertain measures with no new analysis event; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 11,
+    &quot;dominant&quot;: 4
+  },
+  &quot;uncertainGaps&quot;: [
+    [
+      &quot;X2&quot;,
+      &quot;X3&quot;,
+      &quot;X4&quot;
+    ],
+    [
+      &quot;X10&quot;,
+      &quot;X11&quot;,
+      &quot;X12&quot;
+    ],
+    [
+      &quot;X19&quot;,
+      &quot;X20&quot;
+    ]
+  ],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D#dim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D#dim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.667
+    },
+    {
+      &quot;measure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.688
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>243 — Let Us All Press On — Review recommended</summary><p>Stable ID: <code>song-47443947-36d1-4509-8639-866143aa7468</code></p><p>Source SHA-256: <code>0916e6cd478ece568e13143fa8fd5daf425971e761fa054c82a38f16d6556489</code></p><p>Opening C; ending C. Consecutive uncertain measures with no new analysis event; Harmony adds a page: {&#x27;Full&#x27;: 0, &#x27;Melody&#x27;: 1}; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 11,
+    &quot;dominant&quot;: 6
+  },
+  &quot;uncertainGaps&quot;: [
+    [
+      &quot;X2&quot;,
+      &quot;X3&quot;
+    ]
+  ],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.719
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.559
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.721
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>244 — Come Along, Come Along — Review recommended</summary><p>Stable ID: <code>song-3c37c435-a330-47e2-a169-d83522595cc0</code></p><p>Source SHA-256: <code>7ae9c445c202fa5c4a7cd4fd888c51074b1d58b0b31d48dab751c607da60b7e6</code></p><p>Opening G; ending G. Melody has close lyric joins near the bottom; also visible without chords.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 13,
+    &quot;minor&quot;: 4,
+    &quot;dominant&quot;: 4
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>249 — Called to Serve — Review recommended</summary><p>Stable ID: <code>song-d92bb26c-6a08-4beb-a917-b787102678da</code></p><p>Source SHA-256: <code>745fda47012dbe147276b16de3ee14fd98508773a224a6ae7035a38301d9b14d</code></p><p>Opening C; ending C. 4+ symbols in a short temporal cluster; 10+ uncertainty/review windows; Augmented/major-seventh interpretation</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 16,
+    &quot;major-seventh&quot;: 4,
+    &quot;minor&quot;: 3,
+    &quot;dominant&quot;: 8,
+    &quot;diminished&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X12&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;X12&quot;,
+      &quot;endOffset&quot;: 3.0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X12&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Bdim&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X12&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;G7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X12&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;Bdim&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X12&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;G7&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C#dim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bdim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F#dim&quot;,
+      &quot;coverage&quot;: 0.7
+    },
+    {
+      &quot;measure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Dm&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Cmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Bm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Cmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Cmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bdim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bdim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bdim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Cmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Dm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>250 — We Are All Enlisted — Review recommended</summary><p>Stable ID: <code>song-6865def7-4ef7-4fac-ad57-27e468446e98</code></p><p>Source SHA-256: <code>13f0f0971c485f2f1913a2f37ac345ee2b5562ffa5daddf3b3d960b759c6f22e</code></p><p>Opening Bb; ending Bb. Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 15,
+    &quot;dominant&quot;: 6,
+    &quot;diminished&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Gm&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.688
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Gbdim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>251 — Behold! A Royal Army — Review recommended</summary><p>Stable ID: <code>song-630410cd-be22-4d5a-9445-0568b51e397c</code></p><p>Source SHA-256: <code>0ac2ed0901148f05bde68f7714639e83d4169461ab7e0a631cab399cf689a1c3</code></p><p>Opening G; ending G. 10+ uncertainty/review windows; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 14,
+    &quot;dominant&quot;: 10,
+    &quot;minor&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;E7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X32&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X33&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X33&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>252 — Put Your Shoulder to the Wheel — Review recommended</summary><p>Stable ID: <code>song-ed92d57f-c9cb-402d-852c-f77ae768aa3d</code></p><p>Source SHA-256: <code>bcb2d0bab4d1897cf5c6464f43ac71080ff76070b88502154262dfce2febb0b6</code></p><p>Opening F; ending F. 4+ symbols in a short temporal cluster; Several measures with 3+ symbols</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 15,
+    &quot;dominant&quot;: 4,
+    &quot;minor&quot;: 4
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X5&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;X6&quot;,
+      &quot;endOffset&quot;: 2.0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X5&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;F&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X6&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Gm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X6&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;D&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X6&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;Gm&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Gm&quot;,
+      &quot;coverage&quot;: 0.5
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>254 — True to the Faith — Review recommended</summary><p>Stable ID: <code>song-c25734b4-ba49-4c88-ba90-4927ede707c4</code></p><p>Source SHA-256: <code>48bcf41c0ba82bc6ea92c17a785448bfab69dad1cf75a1dfd50825ca041da74e</code></p><p>Opening G; ending G. 4+ symbols in a short temporal cluster; Several measures with 3+ symbols; Consecutive uncertain measures with no new analysis event</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 13,
+    &quot;dominant&quot;: 12,
+    &quot;minor&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [
+    [
+      &quot;X12&quot;,
+      &quot;X13&quot;
+    ]
+  ],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X8&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;X8&quot;,
+      &quot;endOffset&quot;: 3.0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;G&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;E7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;D&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;A7&quot;
+        }
+      ]
+    },
+    {
+      &quot;start&quot;: &quot;X8&quot;,
+      &quot;startOffset&quot;: 1.0,
+      &quot;end&quot;: &quot;X9&quot;,
+      &quot;endOffset&quot;: 0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;E7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;D&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;A7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X9&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;D&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.908
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Am&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.692
+    },
+    {
+      &quot;measure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.706
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;B7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>255 — Carry On — Review recommended</summary><p>Stable ID: <code>song-29ddec61-4020-4ab9-8400-7cc2acf115e4</code></p><p>Source SHA-256: <code>033d32eb6c00ed71b671a08dad38b3d9d10c1492de6d80b4fdff2ebcac61c126</code></p><p>Opening D7; ending G. Several measures with 3+ symbols; 10+ uncertainty/review windows; Augmented/major-seventh interpretation; Non-tonic opening or ending; Consecutive uncertain measures with no new analysis event; Harmony adds a page: {&#x27;Full&#x27;: 1, &#x27;Melody&#x27;: 0}; Highest review priority: Full grows from 2 to 3 pages; lyric crowding metric rises from 0 to 3. Chord symbols themselves remain above the staff. Opening D7 in G is a plausible dominant pickup, but not proof of correctness. Review chromatic/augmented interpretations and 24 uncertainty windows.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;dominant&quot;: 13,
+    &quot;major&quot;: 26,
+    &quot;minor&quot;: 4,
+    &quot;augmented&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [
+    [
+      &quot;X10&quot;,
+      &quot;X11&quot;
+    ]
+  ],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;B7&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;B7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Am&quot;,
+      &quot;coverage&quot;: 0.647
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;B&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;B&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X34&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;B7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D#&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Baug&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;B7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X30&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X31&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X32&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X32&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X32&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X33&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X35&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X35&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X35&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X36&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X36&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D#7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X37&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X37&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X38&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>256 — As Zion’s Youth in Latter Days — Review recommended</summary><p>Stable ID: <code>song-4a9720ac-e510-495e-806e-39e851843c73</code></p><p>Source SHA-256: <code>7071102fabd53ea4865d1de884ef2929cd3118c1cbe6dcf52457a43101303eaf</code></p><p>Opening Eb; ending Eb. Several measures with 3+ symbols; 10+ uncertainty/review windows; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 20,
+    &quot;dominant&quot;: 11,
+    &quot;minor&quot;: 2
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Fm&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Dm&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Fm&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Ab&quot;,
+      &quot;coverage&quot;: 0.706
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Fm&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Eb&quot;,
+      &quot;coverage&quot;: 0.471
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Cm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Cm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;Eb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;Bb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>259 — Hope of Israel — Normal</summary><p>Stable ID: <code>song-9e9db675-111d-48ee-91ed-23dd17b35d0d</code></p><p>Source SHA-256: <code>b21b9b52a01bd1781c19f0618d6b50fb96225c281938b3cf3b6138dae653649b</code></p><p>Opening Bb; ending Bb. No automatic or visual outlier flag.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 14,
+    &quot;dominant&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>260 — Who’s on the Lord’s Side? — Review recommended</summary><p>Stable ID: <code>song-af8d66bd-9206-4235-934d-6070c186050a</code></p><p>Source SHA-256: <code>8c74ba8277cb97c2bacd3c0ba7ecfbea9c18290c27cb8fccb351561036726784</code></p><p>Opening G; ending G. Harmony adds a page: {&#x27;Full&#x27;: 0, &#x27;Melody&#x27;: 1}; Alternate-key page count differs</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 10,
+    &quot;dominant&quot;: 6,
+    &quot;minor&quot;: 7
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;B&quot;,
+      &quot;coverage&quot;: 0.857
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 1.0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;B&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;B7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X26&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X29&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>264 — Hark, All Ye Nations! — Review recommended</summary><p>Stable ID: <code>song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb</code></p><p>Source SHA-256: <code>4459fa96b57cffc4f3785bda76b8b7aa7f4f869bedb59d263320c98cc19123bf</code></p><p>Opening Bb; ending Bb. Full lyric crowding remains without chords (metric 1 in both).</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 13,
+    &quot;minor&quot;: 2,
+    &quot;dominant&quot;: 2
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bbdim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Cm&quot;,
+      &quot;coverage&quot;: 0.812
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Cm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Dm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 3.5,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>266 — The Time Is Far Spent — Review recommended</summary><p>Stable ID: <code>song-f2965762-2cb1-43a5-b5c3-b5395e5de292</code></p><p>Source SHA-256: <code>9c7ee735c544a5b4232105d3292d20db8c056f1029d67329cd8542c6c8589289</code></p><p>Opening Bb; ending Bb. Full lyric-spacing warning remains without chords (metric 1 in both).</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 11,
+    &quot;dominant&quot;: 1,
+    &quot;minor&quot;: 2
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Cm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Cm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>272 — Oh Say, What Is Truth? — Review recommended</summary><p>Stable ID: <code>song-c6a64145-1133-4688-8009-e1619839194d</code></p><p>Source SHA-256: <code>90b687c642c5bc7bae5e9bf19f91c24d53ffaef7045a91f80b2a8845628292f1</code></p><p>Opening F; ending F. Harmony adds a page: {&#x27;Full&#x27;: 0, &#x27;Melody&#x27;: 1}</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 10,
+    &quot;dominant&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.5
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>273 — Truth Reflects upon Our Senses — Review recommended</summary><p>Stable ID: <code>song-bfb6a184-1d9c-4e05-bc9e-71efae11eea1</code></p><p>Source SHA-256: <code>357fe90abb3f070394ee9b926aa757dcb8aa4460e2442b583f7286423ef2d512</code></p><p>Opening G; ending G. Full lyric crowding remains without chords (metric 3 in both).</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 15,
+    &quot;dominant&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bm&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bm&quot;,
+      &quot;coverage&quot;: 1.0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X24&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X25&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X27&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X28&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>274 — The Iron Rod — Normal</summary><p>Stable ID: <code>song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0</code></p><p>Source SHA-256: <code>99f50f37a08bcb46ec4f328d53f3e0f03c6cf9f5c7289dfce4be7e95b4a699d8</code></p><p>Opening D; ending D. No automatic or visual outlier flag.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 12,
+    &quot;dominant&quot;: 7
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.625
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 0.625
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F#m&quot;,
+      &quot;coverage&quot;: 0.5
+    },
+    {
+      &quot;measure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.244
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>277 — As I Search the Holy Scriptures — Review recommended</summary><p>Stable ID: <code>song-4597aa28-e4f1-4060-8f51-e8374865a3ef</code></p><p>Source SHA-256: <code>961b375ead322aa61a652cb0fe529178a1e10aef72651613b00821d4607fdf89</code></p><p>Opening Bb; ending Bb. 4+ symbols in a short temporal cluster; Augmented/major-seventh interpretation</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 7,
+    &quot;major-seventh&quot;: 2,
+    &quot;minor&quot;: 3,
+    &quot;dominant&quot;: 4
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;0&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;0&quot;,
+      &quot;endOffset&quot;: 3.0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Bb&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;Bbmaj7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;Gm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;Bbmaj7&quot;
+        }
+      ]
+    },
+    {
+      &quot;start&quot;: &quot;0&quot;,
+      &quot;startOffset&quot;: 1.0,
+      &quot;end&quot;: &quot;X1&quot;,
+      &quot;endOffset&quot;: 0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;Bbmaj7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;Gm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;Bbmaj7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X1&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Eb&quot;
+        }
+      ]
+    },
+    {
+      &quot;start&quot;: &quot;0&quot;,
+      &quot;startOffset&quot;: 2.0,
+      &quot;end&quot;: &quot;X1&quot;,
+      &quot;endOffset&quot;: 1.0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;Gm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;0&quot;,
+          &quot;offset&quot;: 3.0,
+          &quot;chord&quot;: &quot;Bbmaj7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X1&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Eb&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X1&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;Bb&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bb&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Cm&quot;,
+      &quot;coverage&quot;: 0.875
+    },
+    {
+      &quot;measure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Edim&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Cm&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Bbmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;Bbmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Gm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;F7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>294 — Love at Home — Normal</summary><p>Stable ID: <code>song-89b0379c-c1f8-41dd-a837-77870bcb3bd7</code></p><p>Source SHA-256: <code>5b129001370b65da797c597d5710320f4afbbaf3b6cc1e70f760984682b644f7</code></p><p>Opening G; ending G. No automatic or visual outlier flag.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 22,
+    &quot;dominant&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X19&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X20&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X21&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X22&quot;,
+      &quot;offset&quot;: 3.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X23&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>303 — Keep the Commandments — Normal</summary><p>Stable ID: <code>song-4a701cbd-1db3-463c-babd-4e2714b55713</code></p><p>Source SHA-256: <code>ac4748b6596ccd7e3c4830b952da571f4714893572a39599e6252fa81897dbc1</code></p><p>Opening F; ending F. No automatic or visual outlier flag.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 11,
+    &quot;dominant&quot;: 6,
+    &quot;minor&quot;: 3
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Gm&quot;,
+      &quot;coverage&quot;: 0.667
+    },
+    {
+      &quot;measure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Gm&quot;,
+      &quot;coverage&quot;: 0.538
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Gm&quot;,
+      &quot;coverage&quot;: 0.667
+    },
+    {
+      &quot;measure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bbm&quot;,
+      &quot;coverage&quot;: 0.857
+    },
+    {
+      &quot;measure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Fdim&quot;,
+      &quot;coverage&quot;: 0.857
+    },
+    {
+      &quot;measure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;G&quot;,
+      &quot;coverage&quot;: 0.647
+    },
+    {
+      &quot;measure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C7&quot;,
+      &quot;coverage&quot;: 0.75
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Dm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0.5,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X16&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Dm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X17&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;C7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X18&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;F&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>304 — Teach Me to Walk in the Light — Review recommended</summary><p>Stable ID: <code>song-be6f6e17-ff47-442d-b2cf-cddfe767da67</code></p><p>Source SHA-256: <code>8aee573325bef9185804f74bcec5fbb7dce2482a4d05e6319da03d36747161c7</code></p><p>Opening D; ending D. Augmented/major-seventh interpretation</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 10,
+    &quot;dominant&quot;: 3,
+    &quot;minor&quot;: 2,
+    &quot;augmented&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Em&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;A7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;F#m&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Bm&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A#aug&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>308 — Love One Another — Review recommended</summary><p>Stable ID: <code>song-f182d927-0ec9-4aaa-8af8-b49268cd96b0</code></p><p>Source SHA-256: <code>c17b702f873cea04146cad348a3062c9f5b61f1dbdb511c8e1d97a3f5527b3e9</code></p><p>Opening G; ending G. 4+ symbols in a short temporal cluster; Augmented/major-seventh interpretation</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 8,
+    &quot;minor&quot;: 4,
+    &quot;major-seventh&quot;: 1,
+    &quot;dominant&quot;: 6,
+    &quot;diminished&quot;: 1
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X4&quot;,
+      &quot;startOffset&quot;: 1.0,
+      &quot;end&quot;: &quot;X5&quot;,
+      &quot;endOffset&quot;: 2.5,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X4&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;D7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X4&quot;,
+          &quot;offset&quot;: 1.5,
+          &quot;chord&quot;: &quot;Bm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X4&quot;,
+          &quot;offset&quot;: 2.5,
+          &quot;chord&quot;: &quot;D7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X5&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;D&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X5&quot;,
+          &quot;offset&quot;: 2.5,
+          &quot;chord&quot;: &quot;D7&quot;
+        }
+      ]
+    },
+    {
+      &quot;start&quot;: &quot;X8&quot;,
+      &quot;startOffset&quot;: 1.5,
+      &quot;end&quot;: &quot;X10&quot;,
+      &quot;endOffset&quot;: 0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X8&quot;,
+          &quot;offset&quot;: 1.5,
+          &quot;chord&quot;: &quot;F&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X9&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;E&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X9&quot;,
+          &quot;offset&quot;: 2.0,
+          &quot;chord&quot;: &quot;E7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X10&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Am&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;C&quot;,
+      &quot;coverage&quot;: 0.653
+    },
+    {
+      &quot;measure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;D7&quot;,
+      &quot;coverage&quot;: 0.75
+    },
+    {
+      &quot;measure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Em&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;Gmaj7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;Bm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;D&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X8&quot;,
+      &quot;offset&quot;: 1.5,
+      &quot;label&quot;: &quot;F&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;E&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;E7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Am&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Adim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;A7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;D7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;G&quot;
+    }
+  ]
+}</pre></details>
+<details><summary>317 — Sweet Is the Work — Review recommended</summary><p>Stable ID: <code>song-4276e01d-13dc-41dd-ad96-5ad2ba4aa2ea</code></p><p>Source SHA-256: <code>66b70347fad2b2625abbaf089c5fdedaa6aec68d74f6011d510bd0e9d80a80c6</code></p><p>Opening Ab; ending Ab. 4+ symbols in a short temporal cluster; Full remains two pages; its three-staff systems and sparse first page also occur without harmony. Layout untouched.</p><pre>{
+  &quot;qualities&quot;: {
+    &quot;major&quot;: 15,
+    &quot;diminished&quot;: 1,
+    &quot;dominant&quot;: 4,
+    &quot;minor&quot;: 2
+  },
+  &quot;uncertainGaps&quot;: [],
+  &quot;remainingClusters&quot;: [
+    {
+      &quot;start&quot;: &quot;X14&quot;,
+      &quot;startOffset&quot;: 0,
+      &quot;end&quot;: &quot;X15&quot;,
+      &quot;endOffset&quot;: 0,
+      &quot;spanBeats&quot;: 3.0,
+      &quot;events&quot;: [
+        {
+          &quot;measure&quot;: &quot;X14&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Bbm&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X14&quot;,
+          &quot;offset&quot;: 1.0,
+          &quot;chord&quot;: &quot;Ab&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X14&quot;,
+          &quot;offset&quot;: 2.5,
+          &quot;chord&quot;: &quot;Eb7&quot;
+        },
+        {
+          &quot;measure&quot;: &quot;X15&quot;,
+          &quot;offset&quot;: 0,
+          &quot;chord&quot;: &quot;Ab&quot;
+        }
+      ]
+    }
+  ],
+  &quot;reviewDetails&quot;: [
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Db&quot;,
+      &quot;coverage&quot;: 1.0
+    },
+    {
+      &quot;measure&quot;: &quot;0&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: null,
+      &quot;coverage&quot;: 0
+    },
+    {
+      &quot;measure&quot;: &quot;X10&quot;,
+      &quot;offset&quot;: 0,
+      &quot;reason&quot;: &quot;Omitted: incomplete/ambiguous structural harmony&quot;,
+      &quot;candidate&quot;: &quot;Ab&quot;,
+      &quot;coverage&quot;: 0.733
+    }
+  ],
+  &quot;events&quot;: [
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X1&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X2&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ddim&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X3&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X4&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X5&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X6&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X7&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Eb&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X9&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Ab7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X11&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Db&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X12&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Eb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X13&quot;,
+      &quot;offset&quot;: 2.0,
+      &quot;label&quot;: &quot;Fm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Bbm&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 1.0,
+      &quot;label&quot;: &quot;Ab&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X14&quot;,
+      &quot;offset&quot;: 2.5,
+      &quot;label&quot;: &quot;Eb7&quot;
+    },
+    {
+      &quot;sourceMeasure&quot;: &quot;X15&quot;,
+      &quot;offset&quot;: 0,
+      &quot;label&quot;: &quot;Ab&quot;
+    }
+  ]
+}</pre></details>
+<h2>Visual evidence</h2><p>Contact sheets contain every primary and alternate-key virtual page; auto means Full/Transpose, large means Melody. Extra sheets include additional +2 renders and no-overlay comparisons. Click an image to open its full contact sheet.</p>
+<details><summary>Original key</summary>
+<a href="harmony-batch3c-shots/batch3c-contact-0-00.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-00.jpg" alt="batch3c-contact-0-00"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-01.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-01.jpg" alt="batch3c-contact-0-01"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-02.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-02.jpg" alt="batch3c-contact-0-02"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-03.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-03.jpg" alt="batch3c-contact-0-03"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-04.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-04.jpg" alt="batch3c-contact-0-04"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-05.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-05.jpg" alt="batch3c-contact-0-05"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-06.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-06.jpg" alt="batch3c-contact-0-06"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-07.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-07.jpg" alt="batch3c-contact-0-07"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-08.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-08.jpg" alt="batch3c-contact-0-08"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-09.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-09.jpg" alt="batch3c-contact-0-09"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-10.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-10.jpg" alt="batch3c-contact-0-10"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-11.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-11.jpg" alt="batch3c-contact-0-11"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-12.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-12.jpg" alt="batch3c-contact-0-12"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-13.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-13.jpg" alt="batch3c-contact-0-13"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-14.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-14.jpg" alt="batch3c-contact-0-14"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-15.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-15.jpg" alt="batch3c-contact-0-15"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-16.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-16.jpg" alt="batch3c-contact-0-16"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-17.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-17.jpg" alt="batch3c-contact-0-17"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-18.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-18.jpg" alt="batch3c-contact-0-18"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-19.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-19.jpg" alt="batch3c-contact-0-19"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-20.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-20.jpg" alt="batch3c-contact-0-20"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-21.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-21.jpg" alt="batch3c-contact-0-21"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-22.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-22.jpg" alt="batch3c-contact-0-22"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-23.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-23.jpg" alt="batch3c-contact-0-23"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-0-24.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-0-24.jpg" alt="batch3c-contact-0-24"></a>
+</details>
+<details><summary>Alternate +2</summary>
+<a href="harmony-batch3c-shots/batch3c-contact-2-00.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-00.jpg" alt="batch3c-contact-2-00"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-01.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-01.jpg" alt="batch3c-contact-2-01"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-02.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-02.jpg" alt="batch3c-contact-2-02"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-03.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-03.jpg" alt="batch3c-contact-2-03"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-04.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-04.jpg" alt="batch3c-contact-2-04"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-05.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-05.jpg" alt="batch3c-contact-2-05"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-06.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-06.jpg" alt="batch3c-contact-2-06"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-07.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-07.jpg" alt="batch3c-contact-2-07"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-08.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-08.jpg" alt="batch3c-contact-2-08"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-09.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-09.jpg" alt="batch3c-contact-2-09"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-10.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-10.jpg" alt="batch3c-contact-2-10"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-11.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-11.jpg" alt="batch3c-contact-2-11"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-12.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-12.jpg" alt="batch3c-contact-2-12"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-13.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-13.jpg" alt="batch3c-contact-2-13"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-14.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-14.jpg" alt="batch3c-contact-2-14"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-15.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-15.jpg" alt="batch3c-contact-2-15"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-16.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-16.jpg" alt="batch3c-contact-2-16"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-17.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-17.jpg" alt="batch3c-contact-2-17"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-18.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-18.jpg" alt="batch3c-contact-2-18"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-19.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-19.jpg" alt="batch3c-contact-2-19"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-20.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-20.jpg" alt="batch3c-contact-2-20"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-21.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-21.jpg" alt="batch3c-contact-2-21"></a>
+<a href="harmony-batch3c-shots/batch3c-contact-2-22.jpg"><img loading="lazy" src="harmony-batch3c-shots/batch3c-contact-2-22.jpg" alt="batch3c-contact-2-22"></a>
+</details>
+<details><summary>Additional keys / no-overlay controls</summary>
+<a href="harmony-batch3c-shots/extra-review-0.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-0.jpg" alt="extra-review-0"></a>
+<a href="harmony-batch3c-shots/extra-review-1.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-1.jpg" alt="extra-review-1"></a>
+<a href="harmony-batch3c-shots/extra-review-2.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-2.jpg" alt="extra-review-2"></a>
+<a href="harmony-batch3c-shots/extra-review-3.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-3.jpg" alt="extra-review-3"></a>
+<a href="harmony-batch3c-shots/extra-review-4.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-4.jpg" alt="extra-review-4"></a>
+<a href="harmony-batch3c-shots/extra-review-5.jpg"><img loading="lazy" src="harmony-batch3c-shots/extra-review-5.jpg" alt="extra-review-5"></a>
+</details>
+<h2>Files changed</h2><ul><li><code>generated-harmony-data.js</code></li><li><code>sw.js</code></li><li><code>tools/harmony-inference.py</code></li><li><code>tools/harmony-batch3c.py</code></li><li><code>tools/harmony-batch3c-report.py</code></li><li><code>tests/generated-harmony.mjs</code></li><li><code>tests/harmony-display.py</code></li><li><code>tests/harmony-batch3c.py</code></li><li><code>reports/harmony-batch3c.json</code></li><li><code>reports/harmony-batch3c-validation.json</code></li><li><code>reports/harmony-batch3c-validation.html</code></li><li><code>reports/harmony-batch3c-shots/ (54 contact sheets)</code></li></ul>
+<h2>Release record</h2><p>Baseline 9ae1b6b. This report ships with the Phase 3C commit; the chat handoff records its SHA and verified deployment. Service worker shell v215 includes the new overlay data; score cache behavior is unchanged. No further hymns are authorized in this batch.</p><p><a href="harmony-batch3c-validation.json">Machine-readable validation</a> · <a href="harmony-batch3c.json">Detailed analysis and suppression decisions</a></p></html>
