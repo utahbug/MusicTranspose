@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {installScreenPickupLayout,enableScreenPickupLayout,pickupContentWidth} from '../screen-pickup-layout.js';
+class Calculator{calculateMeasureWidthFromStaffEntries(){return this.result;}}
+installScreenPickupLayout({VexFlowMusicSheetCalculator:Calculator});
+const rules={RenderLyrics:true,HorizontalBetweenLyricsDistance:.2,BetweenSyllableMinimumDistance:.5,ChordSymbolXSpacing:.5},c=new Calculator();c.rules=rules;c.result=158.42;
+const source={measureListIndex:0,Duration:{RealValue:.125},ActiveTimeSignature:{RealValue:.75},printNewSystemXml:false,printNewPageXml:false};
+const lyric=(text,verse,right)=>({LyricsEntry:{Text:text,VerseNumber:verse},GraphicalLabel:{PositionAndShape:{BorderLeft:0,BorderRight:right}}});
+const entries=[{PositionAndShape:{RelativePosition:{x:2.300912}},LyricsEntries:[lyric('1. Have','1',6.2197),lyric('2. There','2',6.627)],graphicalChordContainers:[]},{PositionAndShape:{RelativePosition:{x:8.62246}},LyricsEntries:[lyric('I','1',.666),lyric('are','2',2.4414)],graphicalChordContainers:[]}];
+const measures=[{parentSourceMeasure:source,isVisible:()=>true,staffEntries:entries}],snapshot=JSON.stringify(measures);
+assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2.348755),158.42,'Print/unregistered engravers untouched');
+enableScreenPickupLayout({EngravingRules:rules});
+const measured=pickupContentWidth(measures,rules);assert(measured>11&&measured<13);assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2.348755),measured);
+assert.equal(JSON.stringify(measures),snapshot,'Notes/lyrics/break flags remain read-only');
+c.result=20;assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2),20,'Ordinary lyric width is not capped');c.result=158.42;
+source.measureListIndex=1;assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2),158.42,'Later systems/section openings untouched');source.measureListIndex=0;
+source.Duration.RealValue=.75;assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2),158.42,'Complete opening measure untouched');source.Duration.RealValue=.125;
+source.printNewPageXml=true;source.printNewSystemXml=true;c.calculateMeasureWidthFromStaffEntries(measures,2);assert(source.printNewPageXml&&source.printNewSystemXml,'Intentional breaks remain authoritative');
+rules.RenderLyrics=false;assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2),158.42);rules.RenderLyrics=true;
+entries[0].graphicalChordContainers.push({PositionAndShape:{BorderLeft:-.7,BorderRight:15}});assert(pickupContentWidth(measures,rules)>17,'Chord ink and clearance preserved');
+entries.forEach(e=>e.LyricsEntries=[]);assert.equal(c.calculateMeasureWidthFromStaffEntries(measures,2),158.42,'No lyric-driven correction without lyrics');
+console.log('PASS screen pickup width: measured verses/chords, print isolation, ordinary widths, timing and explicit break preservation');

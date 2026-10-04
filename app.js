@@ -1,3 +1,5 @@
+import {installScreenPickupLayout,enableScreenPickupLayout} from './screen-pickup-layout.js';
+installScreenPickupLayout(opensheetmusicdisplay);
 import {withGeneratedHarmony} from './generated-harmony.js';
 import {applyScorePageHint} from './score-page-hints.js';
 import {installAccompanimentLayout,configureAccompanimentLayout} from './accompaniment-layout.js';
@@ -341,6 +343,7 @@ function leaveScore(){
 // Local acceptance-test hooks.
 window.prototype={playback,get lead(){return leadState;},get viewXML(){return lastViewXML;},get pdfFallback(){return pdfFallback;},get current(){return current;},get wanted(){return wanted;},get octave(){return handLayout.ok?(currentOctave.rh===currentOctave.lh?currentOctave.rh:null):currentOctave.all;},get octaveState(){return {...currentOctave};},get hands(){return handLayout;},get wantedOctave(){return wantedOctave;},get busy(){return busy;},get ready(){return ready;},get xml(){return lastXML;},get original(){return original;},get metrics(){return metrics;},get song(){return activeSong.id;},openLyrics,changeKey,changeOctave,preparePrint,loadScore,loadSong};
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
+ enableScreenPickupLayout(osmd);
  try{await refreshLocalMusic();}catch{$('library-message').textContent='Local music storage is unavailable. Built-in songs remain available.';}
  initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore,cancelPendingSelection,stopPlayback:()=>playback.stop(),showScoreView});library.startHistory();
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
