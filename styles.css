@@ -1176,7 +1176,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .workspace-return[hidden]{display:none}
 .workspace-return{gap:8px}
 .workspace-return .workspace-sibling{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid #b7cbd5;border-radius:4px;background:#f8fbfc;color:#365f7d}
-.workspace-return .workspace-sibling svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.workspace-return .workspace-sibling svg{flex-shrink:0;width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 @media(hover:hover){.workspace-return .workspace-sibling:hover{background:#e5eef2}}
 .workspace-return .workspace-sibling:active{background:#dce8ee}
 .workspace-return .workspace-sibling:focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
