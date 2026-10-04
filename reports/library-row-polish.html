@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Library row polish</title><style>body{font:16px/1.5 system-ui;max-width:950px;margin:32px auto;padding:0 20px;color:#243b49}img{max-width:100%;height:auto}li{margin:8px 0}</style><h1>Library row polish</h1><p>2026-10-04. Baseline: 3754897.</p><ul>
+<li>Normal numbered row: “2 · The Spirit of God” / “Hymns (1985)”. Alphabetical row: title / source, without a repeated number below.</li>
+<li>Removed “Open · Return to score”, current-song class assignment, left accent/tint, current-label styling and obsolete light/dark selectors. Internal current-song/history state remains unchanged.</li>
+<li>Removed row key, tonic/mode, PDF/MusicXML/capability metadata. Files are identified as Files; source-specific collection presentation remains for built-in music.</li>
+<li>Unavailable entries retain “Hymns (1985) · Score unavailable” and their existing accessible label/dialog handling. Missing saved-list references retain their existing exceptional explanation.</li>
+<li>Title/page searches use the minimal row. “Matched page” is suppressed. “Matched lyrics” remains only when the existing matcher reports a lyric-only match, explaining why an otherwise unrelated title appears. Matching logic and defaults are untouched.</li>
+<li>List-specific aliases remain the title. Favorite, Edit and Order controls remain. Saved titles/data, sorting and filters are unchanged.</li>
+<li>Light/Dark checks passed at 390/430/820/1440px. Sampled normal rows measure 61px, song buttons 60px, Favorite targets 44×44px; no blank third line, action overlap or horizontal overflow.</li>
+<li>Focused test covers Hymns numbered/alphabetical, Children’s Songbook, HHC, Files, saved List alias, unavailable #86, page/title/lyric searches, Favorite toggle, and returning from a previously opened score without a current-row marker.</li>
+<li>Tests: node tests/library-row-polish.mjs; node --check library.js; git diff --check. No harmony or Score suites.</li>
+<li>Product files: library.js, styles.css, sw.js (v223). Added focused test and report/screenshots. Existing unrelated diagnostic files remain untouched.</li>
+<li>Commit and deployment status are reported in the completion message.</li></ul>
+<p><a href="library-row-polish/results.json">Measured geometry</a></p>
+<h2>390px light</h2><img src="library-row-polish/390-light.png" alt="Minimal Library rows in light theme">
+<h2>430px dark</h2><img src="library-row-polish/430-dark.png" alt="Minimal Library rows in dark theme">
+<h2>820px light</h2><img src="library-row-polish/820-light.png" alt="iPad Library rows">
+<h2>1440px dark</h2><img src="library-row-polish/1440-dark.png" alt="Desktop Library rows"></html>

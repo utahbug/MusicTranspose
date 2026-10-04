@@ -8,7 +8,7 @@ import {initHomeScreen} from './home-screen.js';
 import {createSongSearch,normalizeSearchFields,readSearchPreferences,searchPreferenceKey} from './library-search.js';
 import {attachReorderHandle} from './list-reorder.js';
 import {createViewHistory} from './view-history.js';
-import {sourceChoices,normalizeSource,matchesSource,compareNumbers,compareAlphabeticalTitles,songForSource} from './library-query.js';
+import {sourceChoices,normalizeSource,matchesSource,isFileSong,compareNumbers,compareAlphabeticalTitles,songForSource} from './library-query.js';
 import {lyricIds} from './lyrics-index.js';
 import {createFilesView} from './files-view.js';
 import {createListsView} from './lists-view.js';
@@ -171,9 +171,8 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
    const row=node('div',null,'library-row');row.dataset.song=s.id;if(g)row.classList.add('list-entry-row');const displayName=g&&Object.hasOwn(g.displayNames||{},s.id)?g.displayNames[s.id]:s.title;
    const favorite=state.favorites.includes(s.id),star=button('',(favorite?'Remove from Favorites: ':'Add to Favorites: ')+s.title,()=>{state.favorites=favorite?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();const replacement=$('library-results').querySelector(`[data-song="${s.id}"] .favorite`);(replacement||libraryHeading).focus({preventScroll:true});});star.innerHTML=favoriteIcon;star.classList.add('favorite');star.setAttribute('aria-pressed',String(favorite));
    const number=String(s.songNumber??s.page??'').trim(),numberFirst=sort==='number'&&/^\d+[a-z]?$/i.test(number);
-   const entry=button('', 'Open '+displayName+(numberFirst?', '+number:''),()=>open(s.id));entry.className='song-entry'+(numberFirst?' numbered-song':'');if(numberFirst)entry.append(node('span',number+' ·','song-number'));entry.append(node('strong',displayName,'song-title'),node('span',[s.collection,numberFirst?'':s.page,isUnavailableScore(s)?'Score unavailable':s.scoreType==='pdf'?'PDF score':(s.local||s.transpositionAvailable===false)?'MusicXML · '+s.capability:`${s.tonic} ${s.mode}`].filter(Boolean).join(' · '),'song-meta'));
-   const reason=query&&search.match(s,query,enabledFields).reason;if(reason)entry.append(node('span',reason,'song-meta'));
-   if(s.id===current){row.classList.add('current-song');entry.append(node('span','Open · Return to score','current-label'));}
+   const entry=button('', 'Open '+displayName+(numberFirst?', '+number:''),()=>open(s.id));entry.className='song-entry'+(numberFirst?' numbered-song':'');if(numberFirst)entry.append(node('span',number+' ·','song-number'));entry.append(node('strong',displayName,'song-title'),node('span',[isFileSong(s)?'Files':s.collection,isUnavailableScore(s)?'Score unavailable':''].filter(Boolean).join(' · '),'song-meta'));
+   const reason=query&&search.match(s,query,enabledFields).reason;if(reason==='Matched lyrics')entry.append(node('span',reason,'song-meta'));
    entry.title=displayName;row.append(entry);if(isUnavailableScore(s)){entry.setAttribute('aria-label',`${number}, ${displayName}, score unavailable`);}else row.append(star);
    if(g&&!isUnavailableScore(s)){const pencil=button('','Edit song in list: '+displayName,()=>lists.editEntry(g.id,s,()=>rowFocus(s.id,'.edit-list-entry')));pencil.classList.add('list-icon','edit-list-entry');pencil.innerHTML=editIcon;pencil.title='Edit song in list';
     const grip=button('',(reordering?'Drag or use Arrow keys to reorder: ':'Order song: ')+displayName,()=>{if(!reordering){$('edit-list-order').click();rowFocus(s.id,'.reorder-grip');}});grip.classList.add('list-icon','order-song');grip.innerHTML=orderIcon;grip.title=reordering?'Drag to reorder; Arrow Up / Down moves one place':'Edit saved list order';
