@@ -1,5 +1,6 @@
+import {installLibraryQuickAccess} from './library-quick-access.js';
 import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-availability.js';
-import {favoriteIcon,editIcon,orderIcon} from './icons.js';
+import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
 import {initOfflineMusic} from './offline-music.js';
 import {initHomeScreen} from './home-screen.js';
@@ -21,6 +22,8 @@ function node(tag,text,className){const e=document.createElement(tag);if(text)e.
 function button(text,label,action){const b=node('button',text,'quiet');b.type='button';if(label)b.setAttribute('aria-label',label);b.onclick=action;return b;}
 export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPendingSelection,stopPlayback,showScoreView}){
  const freshLaunch=beginLibrarySession();
+ installLibraryQuickAccess();
+ for(const [id,icon] of [['library-quick-lists',listsIcon],['library-quick-files',filesIcon]])$(id).insertAdjacentHTML('afterbegin',icon);
  for(const id of ['files-library','lists-library'])$(id).innerHTML=$('songs').innerHTML;
  $('lists-library').onclick=showHome;
  let navigation,orderedSongs=[],songSet=null,pendingSongSet=null,restoringSongSet=false;
@@ -116,11 +119,19 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled):not([hidden])')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeMore);window.addEventListener('scroll',placeMore,{passive:true});
 
+ const clearFavoritesDialog=$('clear-favorites-dialog');
+ $('clear-favorites').onclick=()=>{if(!state.favorites.length)return;closeMore();clearFavoritesDialog.showModal();};
+ $('clear-favorites-cancel').onclick=()=>clearFavoritesDialog.close();
+ clearFavoritesDialog.addEventListener('close',()=>moreButton.focus({preventScroll:true}));
+ clearFavoritesDialog.addEventListener('click',e=>{if(e.target!==clearFavoritesDialog)return;const r=clearFavoritesDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)clearFavoritesDialog.close();});
+ $('clear-favorites-confirm').onclick=()=>{state.favorites=[];const saved=save();render();clearFavoritesDialog.close();$('library-message').textContent=saved?'Favorites cleared.':'Favorites cleared for this session. Browser storage is unavailable.';};
+
  initOfflineMusic({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
  initHomeScreen({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{render();closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};
  function render(){
+  $('clear-favorites').hidden=state.favorites.length===0;
   $('view-favorites').setAttribute('aria-pressed',String(favoritesOnly));$('view-favorites').setAttribute('aria-label',favoritesOnly?'Show all songs':'Show Favorites');$('view-favorites').title=favoritesOnly?'Show all songs':'Show Favorites';
   $('library-clear').hidden=!$('library-search').value;
   const query=normalizeSearch($('library-search').value);
@@ -169,6 +180,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function showLists(){if(isBusy())return;clearLeavingSearch();leaveScore?.();document.dispatchEvent(new Event('library-open'));$('library-home').hidden=true;closeMore();closeSource();blurSearch();navigation?.visit({view:'lists',list:null,picking:false,workspace:true});if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}files.hide();lists.open();}
  $('view-lists').onclick=showLists;$('library-lists').onclick=showLists;
  $('view-files').onclick=showFiles;
+ $('library-quick-lists').onclick=showLists;$('library-quick-files').onclick=showFiles;
  document.addEventListener('music-import-open',()=>{if($('files-view').hidden)showFiles();navigation?.visit({view:'import'});});
  document.addEventListener('music-import-close',()=>{if(navigation?.current.view==='import')navigation.replace({view:'files'});});
  document.addEventListener('local-music-saved',()=>{if(navigation?.current.view==='import')navigation.replace({view:'files'});});

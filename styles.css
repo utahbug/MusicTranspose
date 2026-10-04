@@ -1405,3 +1405,16 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .workspace-song-row.dragging{position:relative;z-index:4;opacity:.95;background:#e1edf0;box-shadow:0 4px 14px #23333130;pointer-events:none}
 .workspace-song-row.dragging .order-song{pointer-events:auto}
 @media(max-width:600px){#lists-view .workspace-song-entry{padding-left:52px}.workspace-list-actions{gap:0}#lists-view .workspace-list-actions button{padding:8px}}
+
+/* Library-only quick access; Score and Lyrics footer geometry is independent. */
+#library{--library-quick-inset:0px;--library-quick-safe-bottom:env(safe-area-inset-bottom,0px);padding-bottom:calc(80px + var(--library-quick-safe-bottom) + var(--library-quick-inset))}
+.library-quick-access{position:fixed;left:0;right:0;bottom:var(--library-quick-inset);z-index:12;display:flex;gap:8px;padding:8px max(8px,env(safe-area-inset-right,0px)) calc(8px + var(--library-quick-safe-bottom)) max(8px,env(safe-area-inset-left,0px));background:#eeeee8;border-top:1px solid #d1dadd}
+.library-quick-access button{display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;padding:8px 12px;border:1px solid #b7c8d5;border-radius:8px;background:#f7f9fa;color:#365b72;font:500 14px system-ui,sans-serif}
+.library-quick-access svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.library-quick-access button:hover{background:#eaf2f8;border-color:#8da8bd}
+.library-quick-access button:active{background:#dce9f1}
+#clear-favorites-dialog{max-width:min(420px,calc(100vw - 32px))}
+#clear-favorites-dialog h2{font-weight:600}
+#clear-favorites-dialog button{min-height:44px;font-weight:500}
+#clear-favorites-confirm{background:#365b72;color:white;border-color:#365b72}
+@media print{.library-quick-access{display:none!important}}

@@ -1,5 +1,5 @@
 // Shared decorative artwork; accessible names remain on the existing buttons.
-export const lyricsIcon = `<svg class="lyrics-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18M3 9h18M3 13h9M3 17h7M18 19v-6l3-1"/><ellipse cx="16" cy="19" rx="2" ry="1.5"/></svg>`;
+export const lyricsIcon = `<svg class="lyrics-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 17H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3M7 7h10M7 11h4M18 19v-7l3-1"/><ellipse cx="16" cy="19" rx="2" ry="1.5"/></svg>`;
 
 // Single melodic line; same stroke weight and footprint as the Lyrics artwork.
 export const leadIcon = `<svg class="lead-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M3 9h22M3 14h22M3 19h22" opacity=".45"/><path d="M11 19V6l10-2v12M11 9l10-2"/><ellipse cx="8.5" cy="19.5" rx="2.5" ry="1.8" transform="rotate(-20 8.5 19.5)" fill="currentColor" stroke="none"/><ellipse cx="18.5" cy="16.5" rx="2.5" ry="1.8" transform="rotate(-20 18.5 16.5)" fill="currentColor" stroke="none"/></svg>`;
@@ -25,3 +25,7 @@ export const editIcon=outline('<path d="m16 4 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-
 export const orderIcon=outline('<path d="M8 5h13M8 12h13M8 19h13M3 5h.01M3 12h.01M3 19h.01"/>');
 // Quiet outline/filled favorite, using the shared 24px outline family.
 export const favoriteIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 2.78 5.63L21 9.54l-4.5 4.38 1.06 6.19L12 17.19l-5.56 2.92 1.06-6.19L3 9.54l6.22-.91Z"/></svg>`;
+
+// Saved collections and added files: distinct silhouettes in the 24px outline family.
+export const listsIcon=outline('<path d="M3 17V3h14"/><rect x="6" y="6" width="15" height="15" rx="2"/><path d="M13 11h4M13 16h4M10 11h.01M10 16h.01"/>');
+export const filesIcon=outline('<path d="M3 19V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2ZM15 16v-6l3 1"/><ellipse cx="13" cy="16" rx="2" ry="1.5"/>');
