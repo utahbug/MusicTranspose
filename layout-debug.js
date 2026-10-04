@@ -1,3 +1,4 @@
+import {footerDiagnostics} from './layout-state.js';
 import {availableScoreHeight} from './virtual-pages.js';
 // Temporary, URL-gated diagnostics. No engraving, pagination, or preference writes.
 if(new URLSearchParams(location.search).get('layoutdebug')==='1')startLayoutDiagnostics();
@@ -18,14 +19,15 @@ function startLayoutDiagnostics(){
   const score=$('#score'),api=window.prototype,v=window.visualViewport,frames=[...document.querySelectorAll('.mxl-page-frame')];let systemIndex=0;
   const pages=frames.map((frame,index)=>{const view=frame._view,available=parseFloat(frame.style.height),fit=view?Math.min(1,available/view.used):null;return {page:index+1,availableHeight:available,occupiedHeight:view?.used,displayFitScale:fit,unusedVerticalSpace:view?Math.max(0,available-view.used*fit):null,systemsAssigned:Number(frame.dataset.systems),systems:view?.page?.systems.map(s=>({system:++systemIndex,groupedSystems:s.systems||1,firstMeasureIndex:s.start,lastMeasureIndex:s.end,measures:s.end-s.start+1,effectiveWidth:view.width,renderedHeight:s.height*fit,plannedHeight:s.height,sourceTop:s.top,sourceBottom:s.bottom,y:s.y,scale:s.scale,gap:s.gap}))||[]};});
   const rawMode=$('#score-size-options [aria-pressed=true]')?.dataset.size;
-  return {diagnosticVersion:3,url:location.href,userAgent:navigator.userAgent,
+  return {diagnosticVersion:4,url:location.href,userAgent:navigator.userAgent,
    viewport:{innerWidth,innerHeight,scrollX,scrollY,clientWidth:document.documentElement.clientWidth,clientHeight:document.documentElement.clientHeight,devicePixelRatio,screenWidth:screen.width,screenHeight:screen.height,screenAvailWidth:screen.availWidth,screenAvailHeight:screen.availHeight,orientation:screen.orientation?.type||(matchMedia('(orientation:portrait)').matches?'portrait':'landscape')},
    visualViewport:v?{width:v.width,height:v.height,scale:v.scale,offsetTop:v.offsetTop,offsetLeft:v.offsetLeft}:null,
    browserPageZoom:'Not reliably exposed; visualViewport.scale is an observable scale, not a browser page-zoom percentage.',
    mediaQueries:Object.fromEntries(['(max-width:600px)','(max-width:850px)','(orientation:portrait)','(pointer:coarse)','(display-mode:standalone)'].map(q=>[q,matchMedia(q).matches])),
    layout:{header:rect($('.score-heading')),footer:rect($('.masthead')),toolbar:rect($('.masthead .toolbar')),footerViewportInset:getComputedStyle(document.documentElement).getPropertyValue('--footer-viewport-inset'),playingBarHeight:getComputedStyle(document.documentElement).getPropertyValue('--playing-bar-height'),toolbarControls:[...document.querySelectorAll('.masthead button')].filter(e=>e.getClientRects().length).map(e=>({id:e.id,label:e.getAttribute('aria-label'),bounds:rect(e)})),score:rect(score),scoreInsets:style(score),safeAreaInsets:safeArea(),effectiveScoreWidth:score?.clientWidth,usableVirtualPageHeight:pages[0]?.availableHeight??null,calculatedAvailableHeight:pages.length?availableScoreHeight(score):null},
    music:{songId:api?.song,title:$('.score-heading h1')?.textContent,mode:({auto:'Most music',normal:'Normal',large:'Lead',pdf:'PDF'})[rawMode]||rawMode,notationScale:score?.dataset.zoom,spacingProfile:score?.dataset.fullScoreSpacing,currentKey:$('#key-name')?.textContent,keyShift:api?.current,octave:api?.octaveState,navigation:$('input[name=navigation]:checked')?.value,pageIndicator:$('#page-position')?.textContent,pageCount:pages.length||null,renderedSystemCount:Number(score?.dataset.systems)||null},
-   readiness:{fonts:document.fonts.status,ready:api?.ready,busy:api?.busy,scoreBusy:score?.getAttribute('aria-busy')},pages};
+   footerDiagnostics:footerDiagnostics(),songNavigation:api?.navigation,renderCount:api?.metrics?.length,
+   readiness:{loading:api?.loading,bodySongLoading:document.body.classList.contains('song-loading'),fonts:document.fonts.status,ready:api?.ready,busy:api?.busy,scoreBusy:score?.getAttribute('aria-busy')},pages};
  }
  function summary(r){const v=r.viewport,l=r.layout,m=r.music,visual=r.visualViewport,n=value=>value==null?'unavailable':round(value);return [
   `${m.title} · ${m.songId}`,
@@ -48,7 +50,13 @@ function startLayoutDiagnostics(){
   `Safe insets: ${JSON.stringify(l.safeAreaInsets)}`,
   '', `SYSTEMS / PAGES · ${m.renderedSystemCount??'unavailable'} rendered systems`,
   ...r.pages.flatMap(p=>[`Page ${p.page}: ${p.systemsAssigned} systems; unused ${n(p.unusedVerticalSpace)}px; fit scale ${n(p.displayFitScale)}`,...p.systems.map(s=>`  System ${s.system}: ${s.measures} measures; height ${n(s.renderedHeight)}px${s.groupedSystems>1?' (inseparable group of '+s.groupedSystems+')':''}`)]),
-  '', 'Copy report includes full precision, measure indices, and geometry.'
+  '', 'SONG NAVIGATION',
+  `Origin ${r.songNavigation?.origin}; ${r.songNavigation?.count} captured IDs; current index ${r.songNavigation?.index}`,
+  `Previous: ${JSON.stringify(r.songNavigation?.previous)}`,
+  `Next: ${JSON.stringify(r.songNavigation?.next)}`,
+  `Busy ${r.readiness.busy}; loading ${r.readiness.loading}; body loading ${r.readiness.bodySongLoading}; score busy ${r.readiness.scoreBusy}`,
+  `Footer visible: ${r.footerDiagnostics?.footerWithinVisibleViewport}; controls visible: ${r.footerDiagnostics?.allControlsVisible}; renders: ${r.renderCount}`,
+  '', 'Copy report includes full precision, measure indices, geometry and navigation state.'
  ].join('\n');}
  function ready(){return window.prototype?.ready&&!window.prototype.busy&&$('#score')?.getAttribute('aria-busy')==='false'&&!document.body.classList.contains('library-open')&&!$('#playing-view')?.hidden&&$('#lyrics-view')?.hidden;}
  const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -66,7 +74,7 @@ function startLayoutDiagnostics(){
     ui('values').textContent=summary(report);ui('report').value=JSON.stringify(report,null,2);ui('copy').disabled=false;
     ui('status').textContent='Settled measurements captured. '+(value.pages.length?'Measure indices include pickups.':'Virtual-page geometry unavailable in this view; use the same page-turn view that shows the problem.');return;
    }
-   clear('Not settled / no visible ready score. Open the affected score, then Refresh measurements.');
+   report={capturedAt:new Date().toISOString(),settledForMs:0,settled:false,captureReason:'Score did not become ready within 20 seconds; captured current state for diagnosis.',...snapshot()};window.musicTransposeLayoutReport=report;ui('values').textContent=summary(report);ui('report').value=JSON.stringify(report,null,2);ui('copy').disabled=false;ui('status').textContent='Current state captured, but not ready/settled. Copy report includes loading and disabled-control reasons.';
   }catch(error){clear('Unable to measure: '+error.message);}finally{running=false;}
  }
  let timer;function changed(){lastChange=performance.now();generation++;clear('Measurements changed; waiting for settled score…');clearTimeout(timer);timer=setTimeout(refresh,250);}
