@@ -1,3 +1,4 @@
+import {phoneFooter} from './footer-viewport.js';
 import {screenSecondaryLyrics} from './screen-secondary-lyrics.js';
 import {installScreenPickupLayout,enableScreenPickupLayout} from './screen-pickup-layout.js';
 installScreenPickupLayout(opensheetmusicdisplay);
@@ -39,7 +40,7 @@ const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dial
 $('show-lyrics').innerHTML=lyricsIcon;
 let activeSong=songs[0],modeOverride,loading=false,pdfFallback=false,scoreSize=readScoreSize();
 // OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
-let autoChoice=null,renderHeight=0;
+let autoChoice=null,renderHeight=0,renderBudget=null;
 const scoreSizes={normal:1};
 let leadSource=null,leadState=null,lastViewXML='';
 let readingPosition=null,handLayout={ok:false},octaveScope='both';
@@ -120,7 +121,7 @@ function trimScreenMargin(){
  const trim=view.width>0?Math.max(0,box.y-view.y-8)*svg.getBoundingClientRect().width/view.width:0;
  score.style.setProperty('--score-trim',trim+'px');
 }
-function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout,lead:!!entry.leadState?.ok}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;score.dataset.fullScoreSpacing=entry.fullScoreSpacing||'lead';lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
+function commit(entry,shift,octave,w){if(scoreSize==='auto'&&autoChoice)autoChoice.zoom=entry.zoom;score.innerHTML=entry.svg;document.dispatchEvent(new CustomEvent('score-engraved',{detail:{song:activeSong.id,systems:entry.systemLayout,lead:!!entry.leadState?.ok}}));score.dataset.systems=entry.systems;trimScreenMargin();restoreReadingPosition(readingPosition);readingPosition=null;current=shift;currentOctave=octave;renderWidth=w;renderHeight=innerHeight;renderBudget=entry.footerBudget;score.dataset.zoom=entry.zoom;score.autoReport=entry.autoReport||null;score.dataset.fullScoreSpacing=entry.fullScoreSpacing||'lead';lastXML=entry.xml;lastViewXML=entry.viewXML||entry.xml;leadState=entry.leadState||null;if(viewOnly()){$('status').textContent='View only · Transposition unavailable';document.querySelector('.masthead').dataset.printKey='';score.setAttribute('aria-busy','false');return;}const k=KEYS.find(k=>k.shift===current);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-name').dataset.compact=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`Current key ${k.name} ${k.mode}, ${Math.abs(k.fifths)} ${k.fifths<0?'flats':'sharps'}. Choose key`);$('status').textContent=`${k.name} ${k.mode}${shift===0?' · Original key':''} · ${octaveSummary(octave,handLayout,scoreSize==='large')}`;document.querySelector('.masthead').dataset.printKey=k.name+' '+k.mode;score.setAttribute('aria-busy','false');}
 // Keep the shared OSMD instance serialized; obsolete owners cannot publish its output.
 function pump(){
  if(rendering)return rendering.then(()=>pump());
@@ -129,13 +130,15 @@ function pump(){
 async function renderScore(){
  const token=selectionVersion;
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
- try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const density=scoreSize,phoneTarget=matchMedia('(max-width:600px)').matches?(originalPageCount(activeSong.pdfAsset)||1):null;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}:${phoneTarget}`;const start=performance.now();const cached=cache.get(id);
+ // Browser chrome can change the usable phone height without changing innerHeight.
+ // Cache and retry against that budget, not the previous view's fitting result.
+ try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const footerBudget=phoneFooter()?Math.round(availableScoreHeight(score)):null;const density=scoreSize,phoneTarget=matchMedia('(max-width:600px)').matches?(originalPageCount(activeSong.pdfAsset)||1):null;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}:${phoneTarget}:${footerBudget}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original,activeSong);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
    applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
    // Screen presentation only. Keep xml/viewXML canonical for timing, print and export.
    const screenXML=lead?.ok?viewXML:screenSecondaryLyrics(viewXML).xml;
-   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(screenXML):screenXML).displayXML;stage.style.width=w+'px';configureAccompanimentLayout(osmd,displayXML);osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(screenXML):screenXML).displayXML;stage.style.width=w+'px';configureAccompanimentLayout(osmd,displayXML);osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width()||(phoneFooter()&&footerBudget!==Math.round(availableScoreHeight(score))))continue;
    // Internal engraving margins participate in automatic system breaking.
    // Share compact header-aligned bounds; retain each mode's existing notation scale.
    const phone=matchMedia('(max-width:600px)').matches;
@@ -160,9 +163,9 @@ async function renderScore(){
     if(!entry){for(const zoom of candidateZooms(base,phone)){let candidate=candidates.find(e=>e.zoom===zoom);if(!candidate){candidate=render(zoom);candidate.autoReport=assessLayout(stage,candidate.systemLayout,w,available,zoom);candidates.push(candidate);}candidate.autoReport.baseline=zoom===base;}entry=chooseLayout(candidates);entry.autoReport.candidates=candidates.map(e=>({...e.autoReport,candidates:undefined}));}
     autoChoice={geometry,zoom:entry.zoom};
    }else entry=render(density==='large'?(lead?.ok?(phone?.88:.9):base):base*scoreSizes[density]);
-   if(target!==wanted||octave!==wantedOctave||w!==width())continue;
+   if(target!==wanted||octave!==wantedOctave||w!==width()||(phoneFooter()&&footerBudget!==Math.round(availableScoreHeight(score))))continue;
    if(!lead?.ok)entry=applyScorePageHint(osmd,stage,activeSong.id,'transpose',entry,{width:w,available,render:renderOnce});
-   cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
+   entry.footerBudget=footerBudget;cache.set(id,entry);if(cache.size>36)cache.delete(cache.keys().next().value);commit(entry,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:false});
   }
   if(target===wanted&&octave===wantedOctave&&w===width())break;
  }}catch(e){if(token!==selectionVersion)return;if(scoreSize==='large'&&leadSource?.ok){console.warn('Lead engraving fallback',activeSong.id,e);leadSource={ok:false,xml:original,reason:'rendering',message:leadReasons.rendering,detail:e.message};scoreSize='normal';saveScoreSize(scoreSize);engravedXML='';cache.clear();busy=false;return await renderScore();}console.error(e);wanted=current;wantedOctave=currentOctave;$('status').textContent='Could not change the score. Please reload to try again.';score.setAttribute('aria-busy','false');}
@@ -279,9 +282,10 @@ async function preparePrint(){
 }
 $('print').onclick=async()=>{if(busy)return;$('print').disabled=true;try{await preparePrint();window.print();}catch(e){console.error(e);$('status').textContent='Unable to prepare printing. Please try again.';}finally{setControls();}};
 let resizeTimer;
-function scheduleScoreResize(){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(original&&width()>100&&(width()!==renderWidth||(scoreSize==='auto'&&innerHeight!==renderHeight)))pump();},140);}
+function scheduleScoreResize(){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(original&&width()>100&&(width()!==renderWidth||(scoreSize==='auto'&&innerHeight!==renderHeight)||(phoneFooter()&&Math.round(availableScoreHeight(score))!==renderBudget)))pump();},140);}
 new ResizeObserver(scheduleScoreResize).observe(score);
 window.addEventListener('resize',scheduleScoreResize);
+document.addEventListener('score-footer-geometry',scheduleScoreResize);
 // Mobile Safari can settle its browser chrome through visualViewport alone.
 // Reuse the existing fitting path; pinch zoom must not re-engrave the score.
 window.visualViewport?.addEventListener('resize',()=>{if(matchMedia('(max-width:600px)').matches&&Math.abs(visualViewport.scale-1)<.01)scheduleScoreResize();});

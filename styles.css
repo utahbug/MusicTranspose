@@ -58,9 +58,9 @@
 #print{width:44px;min-width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#173e3b}
 
 /* Persistent playing controls; reserve their exact height plus the iOS home indicator. */
-:root{--playing-bar-height:54px;--playing-safe-bottom:env(safe-area-inset-bottom,0px)}
+:root{--footer-viewport-inset:0px;--playing-bar-height:54px;--playing-safe-bottom:env(safe-area-inset-bottom,0px)}
 @media screen{
- .masthead{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;z-index:5}
+ .masthead{position:fixed;top:auto;bottom:var(--footer-viewport-inset);left:0;right:0;width:100%;z-index:5}
  .masthead .toolbar{padding-bottom:calc(4px + var(--playing-safe-bottom));padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
  main{padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px)}
  html{scroll-padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px)}
@@ -749,8 +749,8 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media print{#library-more-dialog{display:none!important}}
 
 /* Lyrics shares the Score Library button; footer space protects the final verse. */
-#lyrics-view{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
-.lyrics-footer{position:fixed;left:0;right:0;bottom:0;z-index:12;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:var(--lyrics-bg);border-top:1px solid var(--lyrics-muted)}
+#lyrics-view{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px) + var(--footer-viewport-inset))}
+.lyrics-footer{position:fixed;left:0;right:0;bottom:var(--footer-viewport-inset);z-index:12;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:var(--lyrics-bg);border-top:1px solid var(--lyrics-muted)}
 #lyrics-view .lyrics-footer #songs{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;color:var(--primary-blue-text);border-color:var(--primary-blue)}
 @media print{.lyrics-footer{display:none!important}}
 

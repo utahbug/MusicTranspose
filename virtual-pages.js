@@ -1,3 +1,4 @@
+import {scoreFooterTop} from './footer-viewport.js';
 import {planSystemPages,measuredSystems,createSystemCanvas,showSystemPage} from './system-pagination.js';
 // OSMD model establishes systems; rendered ink expands bounds after layout corrections.
 export function captureSystems(osmd,host,{staffOwnership=false}={}){
@@ -22,9 +23,9 @@ export function virtualFrames(){return frames;}
 export function virtualAnchor(){return anchor;}
 export function seekVirtualMeasure(measure){anchor=measure;active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));}
 export function availableScoreHeight(score){
- const top=score.getBoundingClientRect().top+scrollY,bar=document.querySelector('.masthead').getBoundingClientRect().height;
+ const top=score.getBoundingClientRect().top+scrollY;
  // Keep toolbar/safe-area clearance and the passive Original-key inset.
- return Math.max(80,innerHeight-top-bar-32-(parseFloat(getComputedStyle(score).paddingTop)||0));
+ return Math.max(80,scoreFooterTop()-top-32-(parseFloat(getComputedStyle(score).paddingTop)||0));
 }
 export function prepareVirtualPages(force=false){
  if(!source)return 0;const score=document.getElementById('score');

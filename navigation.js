@@ -1,3 +1,4 @@
+import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
@@ -86,13 +87,25 @@ for(const name of ['blur','resize','beforeprint'])window.addEventListener(name,(
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 new MutationObserver(()=>{pause();sync();}).observe($('score'),{childList:true,attributes:true,attributeFilter:['aria-busy']});
 // Clearance tracks one/two-row phone toolbars and the optional navigation strip.
-new ResizeObserver(()=>{const height=document.querySelector('.masthead').getBoundingClientRect().height;const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--playing-safe-bottom'))||0;document.documentElement.style.setProperty('--playing-bar-height',Math.max(54,height-safe)+'px');syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}}).observe(document.querySelector('.masthead'));
+function measureFooter(){
+ const bounds=document.querySelector('.masthead').getBoundingClientRect(),height=bounds.height;
+ if(!height)return; // Lyrics/Library hide the Score footer; retain its last reservation.
+ const root=document.documentElement,safe=parseFloat(getComputedStyle(root).getPropertyValue('--playing-safe-bottom'))||0;
+ // Reserved layout footprint: physical toolbar plus browser obstruction, excluding
+ // safe padding (existing consumers add that exactly once).
+ const reserve=Math.max(54,height-safe)+(phoneFooter()?Math.max(0,innerHeight-bounds.bottom):0),value=reserve+'px';
+ if(root.style.getPropertyValue('--playing-bar-height')!==value){root.style.setProperty('--playing-bar-height',value);document.dispatchEvent(new Event('score-footer-geometry'));}
+ syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}
+}
+new ResizeObserver(measureFooter).observe(document.querySelector('.masthead'));
+document.addEventListener('footer-viewport-change',()=>{measureFooter();scheduleVirtualResize();});
+installFooterViewport();
 
 
 // Real PDF pages and complete-system virtual MXL pages share the same navigation.
 function pages(){return document.body.classList.contains('pdf-score-open')?[...$('score').querySelectorAll(':scope > .pdf-page-frame')]:virtualFrames();}
 function playing(){return !document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open');}
-function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bar=document.querySelector('.masthead').getBoundingClientRect().height;for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,innerHeight-bar-80)*ratio+'px');}}}
+function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bottom=scoreFooterTop();for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,bottom-80)*ratio+'px');}}}
 function hideStart(){
  for(const button of document.querySelectorAll('.return-start'))button.hidden=true;
  document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
