@@ -786,9 +786,11 @@ body:has(#playing-view.score-page-dark) .beat-rail{--beat-color:102,201,196}
 /* Register is a secondary disclosure after all key choices. */
 #key-octave{margin:16px 0 0}
 #key-octave[hidden],#octave-panel[hidden],#octave-scopes[hidden]{display:none}
-#octave-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px;border:1px solid #c4cfd3;border-radius:6px;background:#f5f7f7;color:#365867;font:500 13px system-ui}
+#octave-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 0;border:0;border-radius:0;background:transparent;color:#365867;font:500 13px system-ui}
 #octave-toggle:hover{background:#eaf0f3}
-#octave-panel{margin-top:6px}
+#octave-toggle:active{background:#e1ebef}
+#octave-toggle:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+#octave-panel{margin-top:6px;padding-left:24px}
 #octave-scopes,.octave-values{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
 .octave-values{margin-top:4px}
 .octave-group-label{width:38px;font:400 13px system-ui;color:#536b7a}
