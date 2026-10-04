@@ -1,3 +1,4 @@
+import {syncPdfPresentation} from './pdf-score.js';
 import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
@@ -168,6 +169,7 @@ function syncPages(){
  for(const option of modeMenu.querySelectorAll('[data-navigation]')){option.setAttribute('aria-checked',String(option.dataset.navigation===mode));option.disabled=option.dataset.navigation==='pages'&&!available;}
  if(navCorner.hidden){closeModeMenu();hidePageFeedback();}
  if(!paged||navCorner.hidden)hideHint();else if(frames.length>1&&window.prototype?.ready&&!prototype.busy)showHint();
+ if(pdf)syncPdfPresentation();
  fitPage();syncStart();positionIndicator();
 }
 function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex,false);sync();window.scrollTo({top:0,behavior:'instant'});hideHint();showPageFeedback();}

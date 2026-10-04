@@ -1464,3 +1464,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #score-offline-status{font-size:12px;white-space:normal;max-width:230px;padding:4px 10px;margin:0;color:inherit}
 .masthead #score-tools-menu:is(.sound-open,.export-open)>#score-offline-status{display:none}
 #library-saved-filter[aria-checked=true]::before{content:'✓ ';}
+
+/* Screen-only PDF stitching; original page canvases remain intact for print/marks. */
+#score.pdf-continuous>.pdf-page-frame{margin-bottom:12px}
+.pdf-footer-segment{display:block;width:100%;height:auto;margin:16px auto 0}
+.pdf-footer-segment[hidden]{display:none}
+@media screen{.pdf-score-open .score-page-dark .pdf-footer-segment{filter:invert(1) hue-rotate(180deg)}}
+@media print{.pdf-footer-segment{display:none!important}}

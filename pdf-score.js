@@ -1,8 +1,10 @@
+import {continuousAnalysis} from './pdf-continuous.js';
 // The same score container, document scrolling and print-pages output serve both score types.
 const documents=new Map(),pageCounts=new Map();
 // Known authored targets only; fitting never downloads a PDF just to measure it.
 export const originalPageCount=asset=>pageCounts.get(asset)||null;
 const analysisCanvas=document.createElement('canvas');
+const flows=new WeakMap();
 const bounds=new WeakMap(),trimKey='music-transpose-pdf-trim-v1';
 let trim=true;try{trim=sessionStorage.getItem(trimKey)!=='false';}catch{}
 const trimControl=document.getElementById('pdf-trim');trimControl.checked=trim;
@@ -16,24 +18,41 @@ function contentBounds(canvas){
  return {left:Math.max(0,Math.min(left-safety,Math.floor(w*.15))),top:Math.max(0,Math.min(top-safety,Math.floor(h*.15))),right:Math.min(w,Math.max(right+1+safety,Math.ceil(w*.85))),bottom:Math.min(h,Math.max(bottom+1+safety,Math.ceil(h*.85)))};
 }
 function displayBounds(canvas){
- const b=trim?bounds.get(canvas):{left:0,top:0,right:canvas.width,bottom:canvas.height};if(!b)return;
+ let b=trim?bounds.get(canvas):{left:0,top:0,right:canvas.width,bottom:canvas.height};if(!b)return;
+ const flow=flows.get(canvas);if(compact()&&flow)b={...b,top:flow.top,bottom:flow.bottom};
  const w=b.right-b.left,h=b.bottom-b.top,frame=canvas.parentElement;
  frame.dataset.trim=JSON.stringify(b);frame.style.aspectRatio=`${w} / ${h}`;
  canvas.style.width=(canvas.width/w*100)+'%';canvas.style.left=(-b.left/w*100)+'%';canvas.style.top=(-b.top/h*100)+'%';
 }
-trimControl.onchange=()=>{trim=trimControl.checked;try{sessionStorage.setItem(trimKey,String(trim));}catch{}document.querySelectorAll('#score canvas.pdf-page').forEach(displayBounds);};
+const compact=()=>!document.body.classList.contains('page-navigation')&&!document.body.classList.contains('pdf-annotation-active');
+export function syncPdfPresentation(host=document.getElementById('score')){
+ const active=compact();host.classList.toggle('pdf-continuous',active&&!!host.querySelector('canvas.pdf-page'));
+ host.querySelectorAll('canvas.pdf-page').forEach(displayBounds);
+ for(const footer of host.querySelectorAll('.pdf-footer-segment'))footer.hidden=!active;
+}
+trimControl.onchange=()=>{trim=trimControl.checked;try{sessionStorage.setItem(trimKey,String(trim));}catch{}syncPdfPresentation();};
 // Rasterize into detached frames; publish once, only for the current selection.
 export async function renderPdf(asset,host,title,isCurrent=()=>true){
  pdfjsLib.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdf.worker.min.js',import.meta.url).href;
  if(!documents.has(asset)){const job=pdfjsLib.getDocument({url:asset,isEvalSupported:false}).promise;documents.set(asset,job);job.catch(()=>documents.delete(asset));}
- const doc=await documents.get(asset);pageCounts.set(asset,doc.numPages);if(!isCurrent())return;const output=document.createDocumentFragment();
+ const doc=await documents.get(asset);pageCounts.set(asset,doc.numPages);if(!isCurrent())return;const output=document.createDocumentFragment(),footers=[];
  for(let n=1;n<=doc.numPages;n++){
   const page=await doc.getPage(n);if(!isCurrent())return;const base=page.getViewport({scale:1}),viewport=page.getViewport({scale:1800/base.width});
   const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);canvas.className='pdf-page';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${title}, page ${n} of ${doc.numPages}`);const frame=document.createElement('div');frame.className='pdf-page-frame';frame.dataset.pdfPage=String(n);frame.dataset.pdfDocument=doc.fingerprints?.[0]||doc.fingerprint||asset;frame.style.aspectRatio=`${canvas.width} / ${canvas.height}`;frame.append(canvas);output.append(frame);
   await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
-  if(!isCurrent())return;bounds.set(canvas,contentBounds(canvas));displayBounds(canvas);
+  if(!isCurrent())return;bounds.set(canvas,contentBounds(canvas));
+  let text=null;try{text=await page.getTextContent();}catch{}
+  if(!isCurrent())return;
+  const flow=continuousAnalysis(canvas,text,viewport);flows.set(canvas,flow);
+  frame.dataset.continuousBounds=JSON.stringify(flow);
+  if(flow.footer){
+   const segment=document.createElement('canvas');segment.className='pdf-footer-segment';segment.width=canvas.width;segment.height=flow.footer.bottom-flow.footer.top;
+   segment.getContext('2d').drawImage(canvas,0,flow.footer.top,canvas.width,segment.height,0,0,canvas.width,segment.height);
+   segment.setAttribute('role','img');segment.setAttribute('aria-label',`Copyright/permission notice from page ${n}: ${flow.footer.text}`);segment.dataset.sourcePage=String(n);footers.push(segment);
+  }
+  displayBounds(canvas);
  }
- if(isCurrent())host.replaceChildren(output);return doc.numPages;
+ if(isCurrent()){output.append(...footers);host.replaceChildren(output);syncPdfPresentation(host);}return doc.numPages;
 }
 export function preparePdfPrint(host,pages){
  pages.replaceChildren();for(const canvas of host.querySelectorAll('canvas.pdf-page')){const section=document.createElement('section');section.className='print-page pdf-print-page';const image=document.createElement('img');image.src=canvas.toDataURL('image/png');image.alt=canvas.getAttribute('aria-label');section.append(image);pages.append(section);}document.body.classList.add('prepared-print');return pages.children.length;
