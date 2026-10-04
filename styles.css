@@ -1195,6 +1195,12 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #files-view,#lists-view{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 .workspace-return{position:fixed;left:0;right:0;bottom:0;z-index:12;display:flex;padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));background:#eeeee8;border-top:1px solid #d1dadd}
 .workspace-return[hidden]{display:none}
+.workspace-return{gap:8px}
+.workspace-return .workspace-sibling{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid #b7cbd5;border-radius:4px;background:#f8fbfc;color:#365f7d}
+.workspace-return .workspace-sibling svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.workspace-return .workspace-sibling:hover{background:#e5eef2}}
+.workspace-return .workspace-sibling:active{background:#dce8ee}
+.workspace-return .workspace-sibling:focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
 :is(#files-view,#lists-view) .workspace-library{display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border-radius:4px;background:var(--primary-blue);color:var(--primary-blue-text);border:0}
 @media(hover:hover){:is(#files-view,#lists-view) .workspace-library:hover{background:var(--primary-blue-hover)}}
 :is(#files-view,#lists-view) .workspace-library:active{background:var(--primary-blue-pressed)}

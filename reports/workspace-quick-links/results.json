@@ -1,0 +1,187 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "lists": {
+      "home": {
+        "x": 8,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "files": {
+      "home": {
+        "x": 8,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "restoredScroll": 300,
+    "fileRowsPreserved": true,
+    "listDataUnchanged": true,
+    "historyAndFocus": "passed",
+    "safeArea": "34px padding simulation passed"
+  },
+  {
+    "width": 430,
+    "height": 844,
+    "lists": {
+      "home": {
+        "x": 8,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "files": {
+      "home": {
+        "x": 8,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 792,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "restoredScroll": 300,
+    "fileRowsPreserved": true,
+    "listDataUnchanged": true,
+    "historyAndFocus": "passed",
+    "safeArea": "34px padding simulation passed"
+  },
+  {
+    "width": 820,
+    "height": 1180,
+    "lists": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "files": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "restoredScroll": 300,
+    "fileRowsPreserved": true,
+    "listDataUnchanged": true,
+    "historyAndFocus": "passed",
+    "safeArea": "existing padding"
+  },
+  {
+    "width": 1024,
+    "height": 1180,
+    "lists": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "files": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "restoredScroll": 300,
+    "fileRowsPreserved": true,
+    "listDataUnchanged": true,
+    "historyAndFocus": "passed",
+    "safeArea": "existing padding"
+  },
+  {
+    "width": 1440,
+    "height": 1180,
+    "lists": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "files": {
+      "home": {
+        "x": 8,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      },
+      "sibling": {
+        "x": 60,
+        "y": 1128,
+        "width": 44,
+        "height": 44
+      }
+    },
+    "restoredScroll": 300,
+    "fileRowsPreserved": true,
+    "listDataUnchanged": true,
+    "historyAndFocus": "passed",
+    "safeArea": "existing padding"
+  }
+]

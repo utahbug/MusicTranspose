@@ -28,6 +28,9 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  for(const [id,icon] of [['library-quick-lists',listsIcon],['library-quick-files',filesIcon]])$(id).insertAdjacentHTML('afterbegin',icon);
  for(const id of ['files-library','lists-library'])$(id).innerHTML=$('songs').innerHTML;
  $('lists-library').onclick=showHome;
+ for(const [workspace,destination,icon,open] of [['lists','Files',filesIcon,showFiles],['files','Lists',listsIcon,showLists]]){
+  const quick=button('',destination,open);quick.id=workspace+'-quick-'+destination.toLowerCase();quick.classList.add('workspace-sibling');quick.title=destination;quick.setAttribute('aria-controls',destination.toLowerCase()+'-view');quick.innerHTML=icon;$(workspace+'-library').after(quick);
+ }
  let navigation,orderedSongs=[],songSet=null,pendingSongSet=null,restoringSongSet=false;
  const search=createSongSearch();let enabledFields=normalizeSearchFields(),searchLoading=true,searchError='';
  try{enabledFields=readSearchPreferences(localStorage);}catch{}
