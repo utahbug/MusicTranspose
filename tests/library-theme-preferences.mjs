@@ -25,5 +25,3 @@ try{for(const width of [390,430,820,1024,1440]){
 for(const old of [fields,['lyrics'],['lyrics','page']]){const c=await browsers.desktop.newContext({serviceWorkers:'block'}),p=await c.newPage();await p.addInitScript(old=>{if(!localStorage.getItem('seeded')){localStorage.setItem('seeded','1');localStorage.setItem('music-transpose-search-fields-v1',JSON.stringify(old));}},old);await p.goto('http://127.0.0.1:8780/');await p.locator('[data-home-source=all]').click();assert.deepEqual(await p.locator('[data-search-field]:checked').evaluateAll(es=>es.map(e=>e.dataset.searchField)),old.length===3?defaults:old);await c.close();}
 fs.writeFileSync('reports/library-theme-results.json',JSON.stringify({status:'passed',results},null,2));
 }finally{await Promise.all(Object.values(browsers).map(b=>b.close()));}
-
-
