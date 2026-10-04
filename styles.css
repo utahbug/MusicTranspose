@@ -1455,3 +1455,12 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #score-navigation-menu #navigation-strip{padding:0;background:transparent;flex-wrap:wrap;gap:4px}
 #score-navigation-menu #auto-toggle{width:100%;min-height:44px}
 #score-navigation-menu #speed-summary{display:none}
+
+/* Explicit offline retention is quiet metadata, with normal accessible action targets. */
+.offline-saved-badge{display:inline-flex;vertical-align:middle;margin-left:6px;color:inherit}
+.offline-saved-badge svg{flex:none}
+.list-offline-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 12px;color:var(--muted,#536b7a);font-size:13px}
+.list-offline-controls button{min-height:44px;max-width:100%;font-weight:500}
+#score-offline-status{font-size:12px;white-space:normal;max-width:230px;padding:4px 10px;margin:0;color:inherit}
+.masthead #score-tools-menu:is(.sound-open,.export-open)>#score-offline-status{display:none}
+#library-saved-filter[aria-checked=true]::before{content:'✓ ';}
