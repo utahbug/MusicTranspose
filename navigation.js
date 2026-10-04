@@ -144,7 +144,10 @@ const cancelScoreTap=installScoreTaps({
  navigate:delta=>{pause();turn(delta);}
 });
 let startFrame=0;window.addEventListener('scroll',()=>{if(!startFrame)startFrame=requestAnimationFrame(()=>{startFrame=0;syncStart();positionIndicator();});},{passive:true});
-let virtualResize;window.addEventListener('resize',()=>{clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();positionIndicator();},180);});
+let virtualResize;function scheduleVirtualResize(){clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();positionIndicator();},180);}
+window.addEventListener('resize',scheduleVirtualResize);
+// Keep phone page frames in step with browser-chrome changes as well as engraving.
+window.visualViewport?.addEventListener('resize',()=>{if(phoneScreen.matches&&Math.abs(visualViewport.scale-1)<.01&&!document.body.classList.contains('pdf-score-open'))scheduleVirtualResize();});
 document.addEventListener('score-session-reset',()=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages'){pageIndex=prepareVirtualPages(true);sync();}});});
 $('pdf-trim').addEventListener('change',fitPage);

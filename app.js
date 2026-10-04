@@ -279,6 +279,9 @@ let resizeTimer;
 function scheduleScoreResize(){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(original&&width()>100&&(width()!==renderWidth||(scoreSize==='auto'&&innerHeight!==renderHeight)))pump();},140);}
 new ResizeObserver(scheduleScoreResize).observe(score);
 window.addEventListener('resize',scheduleScoreResize);
+// Mobile Safari can settle its browser chrome through visualViewport alone.
+// Reuse the existing fitting path; pinch zoom must not re-engrave the score.
+window.visualViewport?.addEventListener('resize',()=>{if(matchMedia('(max-width:600px)').matches&&Math.abs(visualViewport.scale-1)<.01)scheduleScoreResize();});
 async function loadScore(xml,override,token=selectionVersion,engrave=true,deriveLead=true){
  if(rendering)await rendering;if(token!==selectionVersion)return;
  xml=await withGeneratedHarmony(xml,activeSong.id);if(token!==selectionVersion)return;
