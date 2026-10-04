@@ -533,11 +533,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 @media print{#files-view{display:none!important}}
 
 /* Performance controls relocate as the same accessible buttons at tablet width. */
-#key-octave{display:flex;align-items:center;gap:12px;margin:0 0 8px;padding:0;border:0}
-#key-octave legend{float:left;margin-right:12px;padding:0;font-size:14px}
-#key-octave label{display:flex;align-items:center;gap:5px;min-height:44px;font:14px system-ui,sans-serif;cursor:pointer}
-#key-octave input{accent-color:#536b7a;width:18px;height:18px}
-#key-octave input:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+
 @media screen{
  /* One intrinsic group reserves real space for metadata and nonshrinking controls. */
  .score-heading .score-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:4px 24px;min-width:0;max-width:100%}
@@ -787,16 +783,19 @@ body:has(#playing-view.score-page-dark) .beat-rail{--beat-color:102,201,196}
 .lyrics-footer .lyrics-tools{grid-column:2;grid-row:1;justify-self:center;margin-inline:0}
 #lyrics-view .lyrics-footer #songs{grid-column:1;grid-row:1;justify-self:start}
 
-/* Register scope belongs to the key dialog, not the score header. */
-#key-octave{display:block;margin:8px 0}
-#key-octave legend{float:none;margin:0 0 4px;font-weight:600}
-#octave-scopes,.octave-values{display:flex;gap:6px}
-#octave-scopes[hidden]{display:none}
-#octave-scopes button,.octave-values label{flex:1;min-width:0;min-height:44px;justify-content:center;border:1px solid #aab5bb;border-radius:7px;background:#fff;color:#253842}
-#octave-scopes button[aria-pressed=true],.octave-values label:has(input:checked){background:#e0e8ec;border-color:#536b7a;box-shadow:inset 0 -2px #536b7a}
-.octave-values{margin-top:6px}
-#octave-summary{font-size:13px;margin:5px 0}
-#key-octave #octave-reason{margin:4px 0;font-size:12px}
+/* Register is a secondary disclosure after all key choices. */
+#key-octave{margin:16px 0 0}
+#key-octave[hidden],#octave-panel[hidden],#octave-scopes[hidden]{display:none}
+#octave-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px;border:1px solid #c4cfd3;border-radius:6px;background:#f5f7f7;color:#365867;font:500 13px system-ui}
+#octave-toggle:hover{background:#eaf0f3}
+#octave-panel{margin-top:6px}
+#octave-scopes,.octave-values{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.octave-values{margin-top:4px}
+.octave-group-label{width:38px;font:400 13px system-ui;color:#536b7a}
+#octave-scopes button,.octave-values label{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:44px;min-width:44px;padding:6px 10px;margin:0;border:1px solid #c4cfd3;border-radius:18px;background:#f8fafb;color:#365867;font:500 13px system-ui;cursor:pointer}
+#octave-scopes button[aria-pressed=true],.octave-values label:has(input:checked){background:#e1ebef;border-color:#536b7a}
+.octave-values input{margin:0;width:14px;height:14px;accent-color:#536b7a}
+.octave-values label:focus-within{outline:2px solid #536b7a;outline-offset:2px}
 
 #key-dialog{position:fixed;inset:0;margin:auto}
 

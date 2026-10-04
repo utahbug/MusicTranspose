@@ -177,9 +177,16 @@ function syncOctaveControls(){
  const lead=scoreSize==='large'&&leadSource?.ok,split=handLayout.ok&&!lead,disabled=isPdf()||viewOnly()||!ready||busy||loading;
  $('key-octave').hidden=isPdf()||viewOnly();
  $('octave-scopes').hidden=!split;
- $('octave-reason').hidden=split||lead;
- $('octave-reason').textContent=handLayout.reason||'Separate hands require a clear two-staff piano layout.';
- $('octave-summary').textContent=octaveSummary(wantedOctave,handLayout,lead);
+ const down=n=>n<0?'8vb':'8va',spoken=n=>n<0?'one octave down':'one octave up';
+ let label='Normal',description='Normal';
+ if(lead||!split){const n=lead?wantedOctave.lead:wantedOctave.all;if(n){label=down(n);description=spoken(n);}}
+ else{const {rh,lh}=wantedOctave;if(rh||lh){if(rh&&lh&&rh!==lh){label='Custom';description='Custom, right hand '+spoken(rh)+', left hand '+spoken(lh);}
+ else{const hand=rh===lh?'Both':rh?'RH':'LH',n=rh||lh;label=hand+' · '+down(n);description=({Both:'both hands',RH:'right hand',LH:'left hand'})[hand]+', '+spoken(n);}}}
+ $('octave-label').textContent='Octave: '+label;
+ $('octave-toggle').setAttribute('aria-label','Octave, '+description);
+ const reason=!split&&!lead?(handLayout.reason||'Separate hands require a clear two-staff piano layout.'):'';
+ $('octave-toggle').title=reason;
+ if(reason)$('octave-toggle').setAttribute('aria-description',reason);else $('octave-toggle').removeAttribute('aria-description');
  for(const button of $('octave-scopes').querySelectorAll('button')){button.disabled=disabled;button.setAttribute('aria-pressed',String(button.dataset.scope===octaveScope));}
  const value=lead?wantedOctave.lead:!split?wantedOctave.all:octaveScope==='both'?(wantedOctave.rh===wantedOctave.lh?wantedOctave.rh:null):wantedOctave[octaveScope];
  for(const input of document.querySelectorAll('input[name=octave]')){input.disabled=disabled;input.checked=Number(input.value)===value;}
@@ -262,7 +269,8 @@ window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
 for(const button of $('octave-scopes').querySelectorAll('button'))button.onclick=()=>{octaveScope=button.dataset.scope;syncOctaveControls();};
 for(const input of document.querySelectorAll('input[name=octave]'))input.onchange=()=>changeOctave(Number(input.value));
-$('key').onclick=()=>{setControls();dialog.showModal();dialog.scrollTop=0;$('close-dialog').focus({preventScroll:true});};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
+$('octave-toggle').onclick=()=>{const expanded=$('octave-panel').hidden;$('octave-panel').hidden=!expanded;$('octave-toggle').setAttribute('aria-expanded',String(expanded));};
+$('key').onclick=()=>{$('octave-panel').hidden=true;$('octave-toggle').setAttribute('aria-expanded','false');setControls();dialog.showModal();dialog.scrollTop=0;$('close-dialog').focus({preventScroll:true});};$('close-dialog').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 async function preparePrint(){
  if(isPdf())return preparePdfPrint(score,$('print-pages'));
  const printXML=lastViewXML||lastXML,printKey=viewOnly()?'':KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
