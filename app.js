@@ -1,3 +1,4 @@
+import {showUnavailableScore} from './score-availability.js';
 import {phoneFooter} from './footer-viewport.js';
 import {screenSecondaryLyrics} from './screen-secondary-lyrics.js';
 import {installScreenPickupLayout,enableScreenPickupLayout} from './screen-pickup-layout.js';
@@ -313,6 +314,7 @@ async function prepareStructured(song,token,deriveLead=true){
 }
 async function loadSong(id,requestedView){
  const song=songs.find(s=>s.id===id);if(!song)throw new Error('Unknown song');
+ if(showUnavailableScore(song))return;
  const context=library?.context()??null;
  const resume=!requestedView&&workingSession?.id===id&&workingSession.context===context?workingSession:null;
  const originalPdf=!requestedView&&!resume&&!!song.pdfAsset&&song.scoreType!=='pdf';

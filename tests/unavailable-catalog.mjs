@@ -1,0 +1,16 @@
+import {execFileSync} from 'node:child_process';import {createSongSearch} from '../library-search.js';import {matchesSource,compareNumbers,compareAlphabeticalTitles} from '../library-query.js';import fs from 'node:fs';import assert from 'node:assert/strict';
+import {songs} from '../songs.js';import {unavailableSongs} from '../unavailable-songs.js';import {canOpenScore,isUnavailableScore} from '../score-availability.js';
+const prior=JSON.parse(fs.readFileSync('reports/hymnal-1985-inventory.json','utf8')).rows;
+const rows=Array.from({length:341},(_,i)=>{const number=i+1;const entries=songs.filter(s=>s.collection==='Hymns (1985)'&&Number(s.songNumber??s.page)===number||(s.collectionMemberships||[]).some(m=>m.collection==='Hymns (1985)'&&Number(m.songNumber??m.page)===number));assert.equal(entries.length,1,'one identity for '+number);const s=entries[0];if(canOpenScore(s))assert(fs.existsSync(s.asset));return {number,title:s.title,id:s.id,before:isUnavailableScore(s)?'C — known in archive metadata, omitted from runtime catalog':s.scoreType==='pdf'?'B':'A',after:isUnavailableScore(s)?'C':s.scoreType==='pdf'?'B':'A',asset:s.asset||null};});
+const missing=[12,54,86,124,219,299];assert.deepEqual(rows.filter(r=>r.after==='C').map(r=>r.number),missing);
+for(const s of unavailableSongs){assert.equal(s.title,prior.find(r=>String(r.number)===s.page).title);assert(!canOpenScore(s));assert(!s.asset&&!s.pdfAsset);assert.equal(s.missing,undefined);}
+assert(!canOpenScore({asset:'local:gone',missing:true}));assert(canOpenScore({asset:'local:ok'}));
+const scoreManifest=JSON.parse(fs.readFileSync('offline-scores.json','utf8')),pdfManifest=JSON.parse(fs.readFileSync('offline-pdfs.json','utf8'));
+assert(scoreManifest.every(x=>typeof x==='string'&&fs.existsSync(x)));assert(pdfManifest.assets.every(x=>fs.existsSync(x.url)));
+for(const s of unavailableSongs)assert(!JSON.stringify([scoreManifest,pdfManifest]).includes(s.id));
+const search=createSongSearch();for(const s of unavailableSongs){assert(matchesSource(s,'all')&&matchesSource(s,'hymnal'));assert(search.match(s,s.title,['title']).matched);assert(search.match(s,s.page,['page']).pageMatch);}
+const ordered=songs.filter(s=>matchesSource(s,'hymnal')).sort(compareNumbers);assert.deepEqual(ordered.slice(83,88).map(s=>s.page),['84','85','86','87','88']);const alpha=[...ordered].sort(compareAlphabeticalTitles);assert.equal(alpha.length,341);
+for(const file of ['offline-scores.json','offline-pdfs.json','generated-harmony-data.js'])assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),execFileSync('git',['show','8f6e317:'+file],{encoding:'utf8'}).replaceAll('\r\n','\n'),file+' unchanged');
+assert.equal(execFileSync('git',['diff','8f6e317','--name-only','--','assets'],{encoding:'utf8'}),'');
+const result={expected:341,structured:rows.filter(r=>r.after==='A').length,pdfOnly:rows.filter(r=>r.after==='B').length,unavailable:6,unresolved:0,duplicateNumbers:[],beforeGaps:missing,offlineStructured:scoreManifest.filter(s=>/\.(mxl|xml|musicxml)$/i.test(s)).length,offlinePdfs:pdfManifest.assets.length,rows};assert.equal(result.structured,335);
+fs.writeFileSync('reports/hymnal-catalog-completeness.json',JSON.stringify(result,null,2)+'\n');console.log('PASS catalog 1–341:',{...result,rows:undefined});

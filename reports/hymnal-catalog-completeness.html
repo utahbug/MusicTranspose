@@ -1,0 +1,367 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>1985 hymnal catalog completeness</title><style>body{font:16px system-ui;max-width:1100px;margin:32px auto;padding:0 18px;color:#233331}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:8px;border-bottom:1px solid #ddd}code{overflow-wrap:anywhere;font-size:12px}img{max-width:100%}blockquote{border-left:3px solid #789;padding-left:16px}</style><h1>Hymns (1985): visible catalog completeness</h1><p>All 341 expected numbers are now accounted for: <strong>335 structured scores, 0 PDF-only entries, 6 unavailable-but-visible entries, 0 unresolved gaps, 0 duplicate-number anomalies.</strong> This is a metadata and asset-presence audit, not a new full rendering audit.</p><h2>Before and restored entries</h2><p>The runtime catalog omitted #12, #54, #86, #124, #219 and #299. All six were already known in the project’s archive inventory (classification C), rather than unknown missing titles (D). No previous stable IDs existed for them.</p><table><tr><th>Number</th><th>Recovered title</th><th>Immutable catalog ID</th></tr>
+<tr><td>12</td><td>’Twas Witnessed in the Morning Sky</td><td><code>song-d8dfa7b4-9f81-478e-a7ad-ee6f6203c32e</code></td></tr>
+<tr><td>54</td><td>Behold, the Mountain of the Lord</td><td><code>song-27a8c59a-533c-49c7-afad-38235c3dc986</code></td></tr>
+<tr><td>86</td><td>How Great Thou Art</td><td><code>song-fc881a78-59ce-46b5-bb56-a5ab0e0cf947</code></td></tr>
+<tr><td>124</td><td>Be Still, My Soul</td><td><code>song-dcef334a-5a90-4472-9041-ad8148988b89</code></td></tr>
+<tr><td>219</td><td>Because I Have Been Given Much</td><td><code>song-5e185796-f0eb-4008-96cd-02604f6d3605</code></td></tr>
+<tr><td>299</td><td>Children of Our Heavenly Father</td><td><code>song-1d10d95d-cf62-4263-912d-741f38e1b7b0</code></td></tr>
+</table><h2>History and source evidence</h2><p>Commit 7854f17, scripts/import-hymnal-1985.py, reports/hymnal-1985-inventory.json and reports/hymnal-1985-full-import.md preserve all six titles. The importer’s state-C branch skipped them before adding runtime records: no native MXL, and the archived PDFs were notices rather than usable notation. That evidence supports metadata-only placeholders; no score or notice PDF has been added here. Git string/history searches found the import records, not an earlier working catalog-only dialog to restore.</p><h2>Availability and user experience</h2><p>New immutable song UUIDs, collection/edition/number/title metadata, availability: unavailable, availabilityReason: no-usable-score. No fake asset paths. This is separate from missing local files or unexpectedly failed asset requests. Future permitted assets should attach to the same identity and clear the unavailable flag.</p><p>Library row: <strong>86 · How Great Thou Art</strong><br>Hymns (1985) · Score unavailable</p><p>Click or keyboard activation opens a native modal with heading <strong>Score unavailable</strong> and the selected hymn identity:</p><blockquote>This hymn is part of Hymns (1985), but a digital score is not currently available in MusicTranspose. It remains listed so the hymnal sequence is complete.</blockquote><p>Close receives focus, Tab/Shift+Tab stays on its sole action, Escape and Close dismiss, and focus returns to the originating row. No legal reason is asserted in the user-facing notice. Existing dialog styling supplies the visible focus and 44px action.</p><h2>Search, navigation, Lists and offline</h2><p>All six participate in All Music, Hymns (1985), title/page-only searches and numerical/alphabetical sorting. The visible sequence includes 84, 85, 86, 87, 88. Playable navigation uses 84 ↔ 85 ↔ 87 ↔ 88; #86 never enters the active songSet. Previous/Next buttons remain enabled on #85 and #87. Direct loadSong calls are guarded before score state, history or asset loading changes.</p><p>Existing Favorites/Lists store song IDs, but their UI assumes playable entries. This task does not expand those workflows: catalog-only rows have no Favorite action and cannot be selected in Add songs. Existing user data is untouched. Saved navigation snapshots are filtered through the same playable predicate.</p><p>Offline manifests are byte-equivalent to baseline 8f6e317: 679 structured assets and 668 Original PDFs app-wide. The six catalog-only entries have no download paths and do not affect readiness/preparation totals. Service worker v216 precaches the two new metadata/availability modules; score-cache behavior is unchanged.</p><h2>Focused validation</h2><ul><li>node tests/unavailable-catalog.mjs: all 1–341 identities, recovered titles, real asset presence, source filters, title/page matching, sorts, missing-data distinction, unchanged manifests/harmony/source assets.</li><li>node tests/unavailable-catalog-ui.mjs: #86 in All/Hymnal, title/86 search, numerical 85/86/87 order, dialog activation/Escape/Close/focus, direct-load defense, playable neighbors 84/85/87/88 and list-picker exclusion.</li><li>390×932, 430×932, 820×1180 and 1440×932: no horizontal overflow, readable row/notice, dialog within viewport, Close target ≥44px. Screenshots visually inspected. Browser emulation is not physical Safari confirmation.</li><li>node --check library.js; node --check lists-view.js; git diff --check.</li></ul><h2>Files changed</h2><p>songs.js, unavailable-songs.js, score-availability.js, catalog.js, library.js, lists-view.js, app.js (entry guard only), sw.js; tests/unavailable-catalog.mjs, tests/unavailable-catalog-ui.mjs; this report, the full JSON audit and eight focused screenshots.</p><p>No score assets, restricted music/lyrics, generated harmony, phone layout, footer, pagination, score rendering, playback or extraction changes. No external score search/download was performed. Baseline: 8f6e317; release commit/deployment verification are recorded in the chat handoff.</p><h2>Visual checks</h2>
+<details><summary>390px Library and dialog</summary>
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-row-390.png" alt="row at 390px">
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-dialog-390.png" alt="dialog at 390px">
+</details>
+<details><summary>430px Library and dialog</summary>
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-row-430.png" alt="row at 430px">
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-dialog-430.png" alt="dialog at 430px">
+</details>
+<details><summary>820px Library and dialog</summary>
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-row-820.png" alt="row at 820px">
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-dialog-820.png" alt="dialog at 820px">
+</details>
+<details><summary>1440px Library and dialog</summary>
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-row-1440.png" alt="row at 1440px">
+<img loading="lazy" src="unavailable-catalog-shots/unavailable-dialog-1440.png" alt="dialog at 1440px">
+</details>
+<h2>Complete sequence audit</h2><p>A = structured score; B = PDF-only; C = known without usable score; D = unresolved; E = duplicate identity. Before: 335 A, six known C omitted from runtime. After:</p><table><tr><th>Number</th><th>Title</th><th>Class</th><th>Stable ID</th></tr>
+<tr><td>1</td><td>The Morning Breaks</td><td>A</td><td><code>song-3f9eca82-5b22-4785-8ac8-9e7c8c34070b</code></td></tr>
+<tr><td>2</td><td>The Spirit of God</td><td>A</td><td><code>song-a13c43da-0243-4019-ad08-d7be530074f5</code></td></tr>
+<tr><td>3</td><td>Now Let Us Rejoice</td><td>A</td><td><code>song-e3fab13a-2bab-4a23-8dfc-56307e1764eb</code></td></tr>
+<tr><td>4</td><td>Truth Eternal</td><td>A</td><td><code>song-a1915d8e-9b64-416b-a86b-dc66796dfab0</code></td></tr>
+<tr><td>5</td><td>High on the Mountain Top</td><td>A</td><td><code>song-00898d57-b8f5-4825-8ccb-bc8db590fff4</code></td></tr>
+<tr><td>6</td><td>Redeemer of Israel</td><td>A</td><td><code>song-e1cfcf58-9d20-4563-be05-856e4e8d936a</code></td></tr>
+<tr><td>7</td><td>Israel, Israel, God Is Calling</td><td>A</td><td><code>song-79a297b0-52bf-444f-ab42-1c6a0f64a68d</code></td></tr>
+<tr><td>8</td><td>Awake and Arise</td><td>A</td><td><code>song-67615f0c-02aa-43e8-aeba-f033ded5a54d</code></td></tr>
+<tr><td>9</td><td>Come, Rejoice</td><td>A</td><td><code>song-ace2cff9-0ce8-49f5-b05c-4aafb791c5f8</code></td></tr>
+<tr><td>10</td><td>Come, Sing to the Lord</td><td>A</td><td><code>song-0062ade2-ac69-44dc-8de7-a487aed78391</code></td></tr>
+<tr><td>11</td><td>What Was Witnessed in the Heavens?</td><td>A</td><td><code>song-49ba0aeb-f5d2-4981-935d-516c41cadbad</code></td></tr>
+<tr><td>12</td><td>’Twas Witnessed in the Morning Sky</td><td>C</td><td><code>song-d8dfa7b4-9f81-478e-a7ad-ee6f6203c32e</code></td></tr>
+<tr><td>13</td><td>An Angel from on High</td><td>A</td><td><code>song-37bb3222-740c-4eaf-965a-623fe7b7f244</code></td></tr>
+<tr><td>14</td><td>Sweet Is the Peace the Gospel Brings</td><td>A</td><td><code>song-053865e1-8dbf-42ea-b258-24d82df67120</code></td></tr>
+<tr><td>15</td><td>I Saw a Mighty Angel Fly</td><td>A</td><td><code>song-ee0a436c-bd6a-40c7-b388-271645fae693</code></td></tr>
+<tr><td>16</td><td>What Glorious Scenes Mine Eyes Behold</td><td>A</td><td><code>song-bd206239-35ce-4c12-8862-8959adeb3954</code></td></tr>
+<tr><td>17</td><td>Awake, Ye Saints of God, Awake!</td><td>A</td><td><code>song-3e347547-6e88-4577-92aa-baa1e97508c3</code></td></tr>
+<tr><td>18</td><td>The Voice of God Again Is Heard</td><td>A</td><td><code>song-c2dba2c7-1ab3-4fb9-b955-f62d2174e06e</code></td></tr>
+<tr><td>19</td><td>We Thank Thee, O God, for a Prophet</td><td>A</td><td><code>song-a600b262-da66-46aa-9f11-3d4fee569802</code></td></tr>
+<tr><td>20</td><td>God of Power, God of Right</td><td>A</td><td><code>song-fc9d4e1e-780d-46db-b964-4bcf8951c99a</code></td></tr>
+<tr><td>21</td><td>Come, Listen to a Prophet’s Voice</td><td>A</td><td><code>song-5aba71e5-7dd3-4865-9c55-daf9181c3f01</code></td></tr>
+<tr><td>22</td><td>We Listen to a Prophet’s Voice</td><td>A</td><td><code>song-1e98ccb4-2e1f-4c52-9cd1-221913b8406b</code></td></tr>
+<tr><td>23</td><td>We Ever Pray for Thee</td><td>A</td><td><code>song-30840d58-5d17-4bd8-933d-c28b91f4671e</code></td></tr>
+<tr><td>24</td><td>God Bless Our Prophet Dear</td><td>A</td><td><code>song-8923c903-61e1-44fe-b027-ec2f9ad4e53c</code></td></tr>
+<tr><td>25</td><td>Now We’ll Sing with One Accord</td><td>A</td><td><code>song-2d106db3-f58f-4686-a612-650514fafc20</code></td></tr>
+<tr><td>26</td><td>Joseph Smith’s First Prayer</td><td>A</td><td><code>song-4dcc79a0-8d67-4ac6-913b-370e8e8c4f9c</code></td></tr>
+<tr><td>27</td><td>Praise to the Man</td><td>A</td><td><code>song-0244093d-d300-481a-bd08-b42e9641de47</code></td></tr>
+<tr><td>28</td><td>Saints, Behold How Great Jehovah</td><td>A</td><td><code>song-31031672-e61c-46ca-9c09-758f395b3ad3</code></td></tr>
+<tr><td>29</td><td>A Poor Wayfaring Man of Grief</td><td>A</td><td><code>song-ddbda143-e5df-412f-9a3d-58b91c576b1e</code></td></tr>
+<tr><td>30</td><td>Come, Come, Ye Saints</td><td>A</td><td><code>song-9260b8f2-70a4-4755-9ab9-cf51a16c9cb6</code></td></tr>
+<tr><td>31</td><td>O God, Our Help in Ages Past</td><td>A</td><td><code>song-be4dabe1-259d-45e1-9cfc-0a3a182d707c</code></td></tr>
+<tr><td>32</td><td>The Happy Day at Last Has Come</td><td>A</td><td><code>song-cbd1bb83-a645-46fe-aa1b-e36954956a2b</code></td></tr>
+<tr><td>33</td><td>Our Mountain Home So Dear</td><td>A</td><td><code>song-c852eacf-b85c-4778-97b8-d146fe7f34a8</code></td></tr>
+<tr><td>34</td><td>O Ye Mountains High</td><td>A</td><td><code>song-f76df380-7901-4f21-bf86-a6b36a10a8e8</code></td></tr>
+<tr><td>35</td><td>For the Strength of the Hills</td><td>A</td><td><code>song-cee5b409-48b4-42f6-be30-8f377c1cc9d0</code></td></tr>
+<tr><td>36</td><td>They, the Builders of the Nation</td><td>A</td><td><code>song-a6ca356e-b247-4919-a00a-1b3d10e9970e</code></td></tr>
+<tr><td>37</td><td>The Wintry Day, Descending to Its Close</td><td>A</td><td><code>song-9ff39fb5-5f6d-46cf-bfc6-78c782cc205f</code></td></tr>
+<tr><td>38</td><td>Come, All Ye Saints of Zion</td><td>A</td><td><code>song-3058c978-9bad-4430-b0d3-543942db62b1</code></td></tr>
+<tr><td>39</td><td>O Saints of Zion</td><td>A</td><td><code>song-83805d97-c626-4ce1-8381-0f449ebd96d6</code></td></tr>
+<tr><td>40</td><td>Arise, O Glorious Zion</td><td>A</td><td><code>song-c69c52a5-22e9-48fc-8cb4-456926d98e3f</code></td></tr>
+<tr><td>41</td><td>Let Zion in Her Beauty Rise</td><td>A</td><td><code>song-3a21a9c9-9fcc-4f90-8f62-3c29c6475940</code></td></tr>
+<tr><td>42</td><td>Hail to the Brightness of Zion’s Glad Morning!</td><td>A</td><td><code>song-d3736eb5-55f8-4103-94fb-e08850bc669b</code></td></tr>
+<tr><td>43</td><td>Zion Stands with Hills Surrounded</td><td>A</td><td><code>song-cc756c07-4000-4b4c-bc2e-18915ff8d8f9</code></td></tr>
+<tr><td>44</td><td>Beautiful Zion, Built Above</td><td>A</td><td><code>song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283</code></td></tr>
+<tr><td>45</td><td>Lead Me into Life Eternal</td><td>A</td><td><code>song-fdf2b901-7ffb-4a7c-8394-43fd5ebea900</code></td></tr>
+<tr><td>46</td><td>Glorious Things of Thee Are Spoken</td><td>A</td><td><code>song-78c0fc15-9524-4949-bcdc-fdd85578e169</code></td></tr>
+<tr><td>47</td><td>We Will Sing of Zion</td><td>A</td><td><code>song-feb0636c-31af-4d69-873c-6db4bcb3e402</code></td></tr>
+<tr><td>48</td><td>Glorious Things Are Sung of Zion</td><td>A</td><td><code>song-8c6e1e3e-f81a-4480-aa88-ad23c54b3567</code></td></tr>
+<tr><td>49</td><td>Adam-ondi-Ahman</td><td>A</td><td><code>song-227dc125-afcd-4640-b3e7-5cfbe54dbcf7</code></td></tr>
+<tr><td>50</td><td>Come, Thou Glorious Day of Promise</td><td>A</td><td><code>song-94f3ae20-5262-4fae-9a1a-a1fd5117fcec</code></td></tr>
+<tr><td>51</td><td>Sons of Michael, He Approaches</td><td>A</td><td><code>song-f044f99a-89d3-4e15-8b75-417be0ba3729</code></td></tr>
+<tr><td>52</td><td>The Day Dawn Is Breaking</td><td>A</td><td><code>song-3bf93f00-922d-488b-9a10-9af10ffefdac</code></td></tr>
+<tr><td>53</td><td>Let Earth’s Inhabitants Rejoice</td><td>A</td><td><code>song-304bfc2f-cdb8-4ab3-901f-d051217fca89</code></td></tr>
+<tr><td>54</td><td>Behold, the Mountain of the Lord</td><td>C</td><td><code>song-27a8c59a-533c-49c7-afad-38235c3dc986</code></td></tr>
+<tr><td>55</td><td>Lo, the Mighty God Appearing!</td><td>A</td><td><code>song-14c4606f-00f7-4fac-80c9-33c49d5a945c</code></td></tr>
+<tr><td>56</td><td>Softly Beams the Sacred Dawning</td><td>A</td><td><code>song-0f33c621-9f0e-4bf3-9a91-65996d45de52</code></td></tr>
+<tr><td>57</td><td>We’re Not Ashamed to Own Our Lord</td><td>A</td><td><code>song-76edff04-df27-47ec-b40a-4ccab30bbdcb</code></td></tr>
+<tr><td>58</td><td>Come, Ye Children of the Lord</td><td>A</td><td><code>song-1c58db63-7ae0-4300-b271-9c472224d5cf</code></td></tr>
+<tr><td>59</td><td>Come, O Thou King of Kings</td><td>A</td><td><code>song-7a1eae9e-0913-4af9-bd9f-b2ae6615b197</code></td></tr>
+<tr><td>60</td><td>Battle Hymn of the Republic</td><td>A</td><td><code>song-f1f1c444-22ec-4703-a7ee-1f04d2bda224</code></td></tr>
+<tr><td>61</td><td>Raise Your Voices to the Lord</td><td>A</td><td><code>song-35c1d33c-fa24-4097-8b5f-dc9769654270</code></td></tr>
+<tr><td>62</td><td>All Creatures of Our God and King</td><td>A</td><td><code>song-93dfb488-c85f-4028-ab09-127470312f80</code></td></tr>
+<tr><td>63</td><td>Great King of Heaven</td><td>A</td><td><code>song-d4882737-c8ee-4d56-a9de-03285da10a68</code></td></tr>
+<tr><td>64</td><td>On This Day of Joy and Gladness</td><td>A</td><td><code>song-4bdf04d7-47b9-469b-a26d-28524ab2a778</code></td></tr>
+<tr><td>65</td><td>Come, All Ye Saints Who Dwell on Earth</td><td>A</td><td><code>song-d9056915-c14f-4fdb-bc3c-0fa5208a4c64</code></td></tr>
+<tr><td>66</td><td>Rejoice, the Lord Is King!</td><td>A</td><td><code>song-0d512ac4-4118-4073-8ecf-fd57d437634e</code></td></tr>
+<tr><td>67</td><td>Glory to God on High</td><td>A</td><td><code>song-0dabe0c3-ecb6-4812-ac00-51320858adf8</code></td></tr>
+<tr><td>68</td><td>A Mighty Fortress Is Our God</td><td>A</td><td><code>song-e3220a8e-7231-495a-9ad3-c8bf0d803897</code></td></tr>
+<tr><td>69</td><td>All Glory, Laud, and Honor</td><td>A</td><td><code>song-fd2626cc-7c9c-40ea-9ce1-abb1ac15ae22</code></td></tr>
+<tr><td>70</td><td>Sing Praise to Him</td><td>A</td><td><code>song-95273aa4-6219-4608-a682-8db1ff47c3eb</code></td></tr>
+<tr><td>71</td><td>With Songs of Praise</td><td>A</td><td><code>song-1b47066a-3316-48d8-8645-579371be37ca</code></td></tr>
+<tr><td>72</td><td>Praise to the Lord, the Almighty</td><td>A</td><td><code>song-074060f8-de63-439b-97aa-3532a95ac2ff</code></td></tr>
+<tr><td>73</td><td>Praise the Lord with Heart and Voice</td><td>A</td><td><code>song-3a815a03-f756-4846-893b-426459b114e1</code></td></tr>
+<tr><td>74</td><td>Praise Ye the Lord</td><td>A</td><td><code>song-b0df93f6-45fa-4f22-92e0-8b3beec028eb</code></td></tr>
+<tr><td>75</td><td>In Hymns of Praise</td><td>A</td><td><code>song-795bf192-9729-4769-b182-bd606a04d277</code></td></tr>
+<tr><td>76</td><td>God of Our Fathers, We Come unto Thee</td><td>A</td><td><code>song-5260cbb6-62fc-472a-ba72-3b2e8ae28391</code></td></tr>
+<tr><td>77</td><td>Great Is the Lord</td><td>A</td><td><code>song-c2a355f3-f48b-4485-beb1-d93fc6c9f846</code></td></tr>
+<tr><td>78</td><td>God of Our Fathers, Whose Almighty Hand</td><td>A</td><td><code>song-6a585b0f-afc8-48e1-9f15-8579d1e09eed</code></td></tr>
+<tr><td>79</td><td>With All the Power of Heart and Tongue</td><td>A</td><td><code>song-4b4527e2-f878-4fc0-ab9a-543ec3fd2b54</code></td></tr>
+<tr><td>80</td><td>God of Our Fathers, Known of Old</td><td>A</td><td><code>song-0b9ad58e-c56e-4c3d-8632-05a2f30a6dbf</code></td></tr>
+<tr><td>81</td><td>Press Forward, Saints</td><td>A</td><td><code>song-61e6163a-dc48-4728-8207-4870522f144b</code></td></tr>
+<tr><td>82</td><td>For All the Saints</td><td>A</td><td><code>song-99149a84-9950-4fc0-b34d-dd0bae0166c3</code></td></tr>
+<tr><td>83</td><td>Guide Us, O Thou Great Jehovah</td><td>A</td><td><code>song-85824e7f-8c1e-4876-9f3f-b06143e42248</code></td></tr>
+<tr><td>84</td><td>Faith of Our Fathers</td><td>A</td><td><code>song-9f2a063d-1180-4f63-a580-0227046d15cf</code></td></tr>
+<tr><td>85</td><td>How Firm a Foundation</td><td>A</td><td><code>song-41d7a6e2-b770-49c9-b48b-82a070d520cc</code></td></tr>
+<tr><td>86</td><td>How Great Thou Art</td><td>C</td><td><code>song-fc881a78-59ce-46b5-bb56-a5ab0e0cf947</code></td></tr>
+<tr><td>87</td><td>God Is Love</td><td>A</td><td><code>song-275ccb42-e6a0-4cb7-b1ee-2fcf952ee1de</code></td></tr>
+<tr><td>88</td><td>Great God, Attend While Zion Sings</td><td>A</td><td><code>song-f2764211-707a-409a-bf14-d0a4c5488535</code></td></tr>
+<tr><td>89</td><td>The Lord Is My Light</td><td>A</td><td><code>song-8b09b308-9dc7-4948-98a9-87174a580235</code></td></tr>
+<tr><td>90</td><td>From All That Dwell below the Skies</td><td>A</td><td><code>song-bd2235e9-00fe-477d-a1f3-3c2c6b2fa4e5</code></td></tr>
+<tr><td>91</td><td>Father, Thy Children to Thee Now Raise</td><td>A</td><td><code>song-a3074538-3191-4f39-b4fe-7c3f43deb06f</code></td></tr>
+<tr><td>92</td><td>For the Beauty of the Earth</td><td>A</td><td><code>song-deb16777-4998-4df2-af47-ebe4dd8b0c1f</code></td></tr>
+<tr><td>93</td><td>Prayer of Thanksgiving</td><td>A</td><td><code>song-90466a8a-1acc-4bc1-b16c-04a15b36fb08</code></td></tr>
+<tr><td>94</td><td>Come, Ye Thankful People</td><td>A</td><td><code>song-20e5012e-d35a-4100-9d85-b8aca2256aca</code></td></tr>
+<tr><td>95</td><td>Now Thank We All Our God</td><td>A</td><td><code>song-89004405-751f-44e8-9ec7-4c5a2ff9cee1</code></td></tr>
+<tr><td>96</td><td>Dearest Children, God Is Near You</td><td>A</td><td><code>song-44d6f635-2cbd-42bb-8de9-0e8844e83b92</code></td></tr>
+<tr><td>97</td><td>Lead, Kindly Light</td><td>A</td><td><code>song-81729459-26a5-4009-be58-ad263d0a35ad</code></td></tr>
+<tr><td>98</td><td>I Need Thee Every Hour</td><td>A</td><td><code>song-2aff8662-2b9d-4a85-a4dd-84c4adc0d54c</code></td></tr>
+<tr><td>99</td><td>Nearer, Dear Savior, to Thee</td><td>A</td><td><code>song-6f07e565-f3c0-4bb4-a033-59e8d9811e12</code></td></tr>
+<tr><td>100</td><td>Nearer, My God, to Thee</td><td>A</td><td><code>song-00dbf08d-281a-4a99-9a9a-77815f9d9d14</code></td></tr>
+<tr><td>101</td><td>Guide Me to Thee</td><td>A</td><td><code>song-2e7ec547-be97-4ce4-b46c-b7abb64cd311</code></td></tr>
+<tr><td>102</td><td>Jesus, Lover of My Soul</td><td>A</td><td><code>song-f39c600b-865c-4ca4-8a56-b25c0c8db336</code></td></tr>
+<tr><td>103</td><td>Precious Savior, Dear Redeemer</td><td>A</td><td><code>song-d9f06daa-b5ab-4ea1-9fd1-00ff11fb9083</code></td></tr>
+<tr><td>104</td><td>Jesus, Savior, Pilot Me</td><td>A</td><td><code>song-cdb2aac0-b3cf-4816-8399-f0e567237140</code></td></tr>
+<tr><td>105</td><td>Master, the Tempest Is Raging</td><td>A</td><td><code>song-3c0fdae2-06a6-4b1e-af91-18b4b51c9d38</code></td></tr>
+<tr><td>106</td><td>God Speed the Right</td><td>A</td><td><code>song-a4cd3587-5ed6-49b3-8997-511f3320a724</code></td></tr>
+<tr><td>107</td><td>Lord, Accept Our True Devotion</td><td>A</td><td><code>song-df3fbc2c-aa62-47e9-9479-97806f1da60f</code></td></tr>
+<tr><td>108</td><td>The Lord Is My Shepherd</td><td>A</td><td><code>song-dea11113-d74a-48fb-a683-976303a87d10</code></td></tr>
+<tr><td>109</td><td>The Lord My Pasture Will Prepare</td><td>A</td><td><code>song-16e918cc-7f28-4245-94a0-7b3c6130289a</code></td></tr>
+<tr><td>110</td><td>Cast Thy Burden upon the Lord</td><td>A</td><td><code>song-07309f2c-ff75-4f28-8132-0a3820284b8a</code></td></tr>
+<tr><td>111</td><td>Rock of Ages</td><td>A</td><td><code>song-3e6851de-71d8-4c7f-b8a6-2d4430ab14d0</code></td></tr>
+<tr><td>112</td><td>Savior, Redeemer of My Soul</td><td>A</td><td><code>song-4a03fe87-60f1-4aff-a6f1-1cbb2134dc8f</code></td></tr>
+<tr><td>113</td><td>Our Savior’s Love</td><td>A</td><td><code>song-d74a3637-cbf2-49e6-910e-c58b6a3ebda5</code></td></tr>
+<tr><td>114</td><td>Come unto Him</td><td>A</td><td><code>song-25f1610b-9af9-4a10-a248-9eeb0dddd728</code></td></tr>
+<tr><td>115</td><td>Come, Ye Disconsolate</td><td>A</td><td><code>song-f16ad9c5-0f1c-4829-a588-69a6898ac86b</code></td></tr>
+<tr><td>116</td><td>Come, Follow Me</td><td>A</td><td><code>song-f603bb13-3881-43c0-9d98-333568a2e757</code></td></tr>
+<tr><td>117</td><td>Come unto Jesus</td><td>A</td><td><code>song-6b2e4b0d-14ab-45b8-88f2-2920e489aad8</code></td></tr>
+<tr><td>118</td><td>Ye Simple Souls Who Stray</td><td>A</td><td><code>song-44c2d21e-c24c-4e9e-8eef-bd4336712d25</code></td></tr>
+<tr><td>119</td><td>Come, We That Love the Lord</td><td>A</td><td><code>song-ef087bb5-0a02-4298-90c7-b4c96c88ab85</code></td></tr>
+<tr><td>120</td><td>Lean on My Ample Arm</td><td>A</td><td><code>song-18bca7ba-c893-4ab3-b780-988a271b95f4</code></td></tr>
+<tr><td>121</td><td>I’m a Pilgrim, I’m a Stranger</td><td>A</td><td><code>song-3537dbd2-afda-48ea-a9a8-5f647b712ad5</code></td></tr>
+<tr><td>122</td><td>Though Deepening Trials</td><td>A</td><td><code>song-af8cc3c9-0ae1-4878-9a60-9c5a37a19918</code></td></tr>
+<tr><td>123</td><td>Oh, May My Soul Commune with Thee</td><td>A</td><td><code>song-1cc93307-4486-4c99-b32b-013eaddf8d79</code></td></tr>
+<tr><td>124</td><td>Be Still, My Soul</td><td>C</td><td><code>song-dcef334a-5a90-4472-9041-ad8148988b89</code></td></tr>
+<tr><td>125</td><td>How Gentle God’s Commands</td><td>A</td><td><code>song-b5834e14-4342-46b2-a2d7-58babed1c682</code></td></tr>
+<tr><td>126</td><td>How Long, O Lord Most Holy and True</td><td>A</td><td><code>song-6084e096-1426-4424-8793-93148c0759fe</code></td></tr>
+<tr><td>127</td><td>Does the Journey Seem Long?</td><td>A</td><td><code>song-1e4ccb84-3de4-4ed7-9157-e61ef70e76fb</code></td></tr>
+<tr><td>128</td><td>When Faith Endures</td><td>A</td><td><code>song-58520545-1525-4e0f-abb1-bf74e9f97863</code></td></tr>
+<tr><td>129</td><td>Where Can I Turn for Peace?</td><td>A</td><td><code>song-919219ad-9b5c-4d45-a0c4-36e043b737c8</code></td></tr>
+<tr><td>130</td><td>Be Thou Humble</td><td>A</td><td><code>song-5c566362-6161-406e-aa61-c9f115e778bc</code></td></tr>
+<tr><td>131</td><td>More Holiness Give Me</td><td>A</td><td><code>song-0db210da-7549-4377-adf7-9cf11bdd8356</code></td></tr>
+<tr><td>132</td><td>God Is in His Holy Temple</td><td>A</td><td><code>song-3718f056-0eeb-459e-b03b-9455f7165edd</code></td></tr>
+<tr><td>133</td><td>Father in Heaven</td><td>A</td><td><code>song-ff10598c-cbc9-4d5f-8d8f-b2ec7a12bffb</code></td></tr>
+<tr><td>134</td><td>I Believe in Christ</td><td>A</td><td><code>song-382cbc91-e68b-4945-b1c2-3ade4f9aeacf</code></td></tr>
+<tr><td>135</td><td>My Redeemer Lives</td><td>A</td><td><code>song-799da58b-def1-4487-9d63-88453408fb44</code></td></tr>
+<tr><td>136</td><td>I Know That My Redeemer Lives</td><td>A</td><td><code>song-14959cda-04e8-4b5c-aec4-f52c1d275702</code></td></tr>
+<tr><td>137</td><td>Testimony</td><td>A</td><td><code>song-136ed484-94e2-4484-8ad2-9f5710dc74ce</code></td></tr>
+<tr><td>138</td><td>Bless Our Fast, We Pray</td><td>A</td><td><code>song-15580063-2fdb-4449-a5fc-48b0d74d84fa</code></td></tr>
+<tr><td>139</td><td>In Fasting We Approach Thee</td><td>A</td><td><code>song-d825ccb7-4b12-46c1-adf7-827b256fcb8b</code></td></tr>
+<tr><td>140</td><td>Did You Think to Pray?</td><td>A</td><td><code>song-f95d20b9-85e1-4867-baf4-de8f61e9ad24</code></td></tr>
+<tr><td>141</td><td>Jesus, the Very Thought of Thee</td><td>A</td><td><code>song-bed74172-dcd0-452f-ad71-f50bed6396df</code></td></tr>
+<tr><td>142</td><td>Sweet Hour of Prayer</td><td>A</td><td><code>song-8f14b472-7feb-4ab0-8bc3-73587e9009df</code></td></tr>
+<tr><td>143</td><td>Let the Holy Spirit Guide</td><td>A</td><td><code>song-61fd2221-1cdd-4463-a6e1-8954882f29b6</code></td></tr>
+<tr><td>144</td><td>Secret Prayer</td><td>A</td><td><code>song-871573d0-1157-4bec-9ab4-c4155f9ba449</code></td></tr>
+<tr><td>145</td><td>Prayer Is the Soul’s Sincere Desire</td><td>A</td><td><code>song-2a8dce03-f1ae-4c0e-9557-9ce18a86d1e4</code></td></tr>
+<tr><td>146</td><td>Gently Raise the Sacred Strain</td><td>A</td><td><code>song-10666d31-f264-4151-a6b6-25360274b1b7</code></td></tr>
+<tr><td>147</td><td>Sweet Is the Work</td><td>A</td><td><code>song-996b318c-6edc-469d-9106-400442e2bb87</code></td></tr>
+<tr><td>148</td><td>Sabbath Day</td><td>A</td><td><code>song-407bf084-d7d4-4242-b2d4-8c1130f34da9</code></td></tr>
+<tr><td>149</td><td>As the Dew from Heaven Distilling</td><td>A</td><td><code>song-0e7388b8-b436-489b-8160-ef52d4e30d09</code></td></tr>
+<tr><td>150</td><td>O Thou Kind and Gracious Father</td><td>A</td><td><code>song-09d85576-1d34-4fc7-941a-716c41442cc3</code></td></tr>
+<tr><td>151</td><td>We Meet, Dear Lord</td><td>A</td><td><code>song-f3cd8413-290b-4feb-b2df-d1e39df4ec91</code></td></tr>
+<tr><td>152</td><td>God Be with You Till We Meet Again</td><td>A</td><td><code>song-e8873d16-0ab4-40cd-9dd6-4f0df8e66e5e</code></td></tr>
+<tr><td>153</td><td>Lord, We Ask Thee Ere We Part</td><td>A</td><td><code>song-45cf2148-72b0-45c1-8d7c-708f6f160952</code></td></tr>
+<tr><td>154</td><td>Father, This Hour Has Been One of Joy</td><td>A</td><td><code>song-eff4a86d-ff65-4bcf-b614-71e2c31269b9</code></td></tr>
+<tr><td>155</td><td>We Have Partaken of Thy Love</td><td>A</td><td><code>song-55febf0b-26b2-4327-a640-a6401b65ce62</code></td></tr>
+<tr><td>156</td><td>Sing We Now at Parting</td><td>A</td><td><code>song-5aa7afaf-7501-4906-be60-d74529e814c9</code></td></tr>
+<tr><td>157</td><td>Thy Spirit, Lord, Has Stirred Our Souls</td><td>A</td><td><code>song-3b0b2c47-c196-46d5-ac54-204ac0da91e3</code></td></tr>
+<tr><td>158</td><td>Before Thee, Lord, I Bow My Head</td><td>A</td><td><code>song-60037a98-4847-429d-ae66-8296e5472aa0</code></td></tr>
+<tr><td>159</td><td>Now the Day Is Over</td><td>A</td><td><code>song-85ec02ed-7df1-425c-a214-483639e78fad</code></td></tr>
+<tr><td>160</td><td>Softly Now the Light of Day</td><td>A</td><td><code>song-b2cbfc3e-9a20-48e6-b072-88496c5c932c</code></td></tr>
+<tr><td>161</td><td>The Lord Be with Us</td><td>A</td><td><code>song-c6810178-0f12-4db6-833a-fd402902f3c5</code></td></tr>
+<tr><td>162</td><td>Lord, We Come before Thee Now</td><td>A</td><td><code>song-afa8b3be-7502-4a2e-a593-9c931366e7d8</code></td></tr>
+<tr><td>163</td><td>Lord, Dismiss Us with Thy Blessing</td><td>A</td><td><code>song-b8d1b6eb-1557-4028-bfeb-26de1bf91d81</code></td></tr>
+<tr><td>164</td><td>Great God, to Thee My Evening Song</td><td>A</td><td><code>song-43d20025-1500-4661-ba0d-15a2a3b6b190</code></td></tr>
+<tr><td>165</td><td>Abide with Me; ’Tis Eventide</td><td>A</td><td><code>song-a7939082-9b28-46e5-9738-b91a94d606de</code></td></tr>
+<tr><td>166</td><td>Abide with Me!</td><td>A</td><td><code>song-082dec32-d317-42cd-86da-a44af8647d83</code></td></tr>
+<tr><td>167</td><td>Come, Let Us Sing an Evening Hymn</td><td>A</td><td><code>song-28aa9c01-91bf-42e3-a0e7-84ca29d72bd5</code></td></tr>
+<tr><td>168</td><td>As the Shadows Fall</td><td>A</td><td><code>song-67932407-2f82-46a3-80d1-94a4b873e3a2</code></td></tr>
+<tr><td>169</td><td>As Now We Take the Sacrament</td><td>A</td><td><code>song-9b6801af-10d6-4840-876a-56b8c52d2a8e</code></td></tr>
+<tr><td>170</td><td>God, Our Father, Hear Us Pray</td><td>A</td><td><code>song-a47ece80-fd65-440d-be9b-7be355ed59f2</code></td></tr>
+<tr><td>171</td><td>With Humble Heart</td><td>A</td><td><code>song-59e36b81-bc02-4475-b6bf-0bea9ee96e99</code></td></tr>
+<tr><td>172</td><td>In Humility, Our Savior</td><td>A</td><td><code>song-b6f97276-963c-40de-928a-4eb66cccc694</code></td></tr>
+<tr><td>173</td><td>While of These Emblems We Partake</td><td>A</td><td><code>song-eb2f61bb-b8f9-40e9-b545-daf6f477b72b</code></td></tr>
+<tr><td>174</td><td>While of These Emblems We Partake</td><td>A</td><td><code>song-20acbafe-d231-40a7-b91e-4f9a04640393</code></td></tr>
+<tr><td>175</td><td>O God, the Eternal Father</td><td>A</td><td><code>song-9744d4ba-2243-422c-91c6-b5788b2c9c56</code></td></tr>
+<tr><td>176</td><td>’Tis Sweet to Sing the Matchless Love</td><td>A</td><td><code>song-67e562b7-551a-4a3c-8361-1fce2441d0dd</code></td></tr>
+<tr><td>177</td><td>’Tis Sweet to Sing the Matchless Love</td><td>A</td><td><code>song-ee57fc34-e922-4573-a2d5-cfe1410ef492</code></td></tr>
+<tr><td>178</td><td>O Lord of Hosts</td><td>A</td><td><code>song-d589ffd1-b19e-4b30-94e1-331895368ab2</code></td></tr>
+<tr><td>179</td><td>Again, Our Dear Redeeming Lord</td><td>A</td><td><code>song-5ef41a29-c662-4baf-9885-b4b7cbfe185d</code></td></tr>
+<tr><td>180</td><td>Father in Heaven, We Do Believe</td><td>A</td><td><code>song-7960a3a2-6bbe-434a-9f8f-b9e058ea6bfe</code></td></tr>
+<tr><td>181</td><td>Jesus of Nazareth, Savior and King</td><td>A</td><td><code>song-7f35443e-000c-4aa3-ad43-bd434d8a1599</code></td></tr>
+<tr><td>182</td><td>We’ll Sing All Hail to Jesus’ Name</td><td>A</td><td><code>song-e7d28bd6-859b-47ed-9404-1b7980d69159</code></td></tr>
+<tr><td>183</td><td>In Remembrance of Thy Suffering</td><td>A</td><td><code>song-b1c61173-9938-4245-a727-35ed8454815f</code></td></tr>
+<tr><td>184</td><td>Upon the Cross of Calvary</td><td>A</td><td><code>song-5430f91e-00a4-4627-abc7-ec95f70f2329</code></td></tr>
+<tr><td>185</td><td>Reverently and Meekly Now</td><td>A</td><td><code>song-1ec6da3b-caa0-44a2-95e4-ec033a740937</code></td></tr>
+<tr><td>186</td><td>Again We Meet around the Board</td><td>A</td><td><code>song-3dd5aff4-acfa-4f64-8caf-584773695f57</code></td></tr>
+<tr><td>187</td><td>God Loved Us, So He Sent His Son</td><td>A</td><td><code>song-0b39caae-1bee-4933-8309-1a366f120ea0</code></td></tr>
+<tr><td>188</td><td>Thy Will, O Lord, Be Done</td><td>A</td><td><code>song-5a2b2f3b-b58d-47a7-a999-a30b8dd6db59</code></td></tr>
+<tr><td>189</td><td>O Thou, Before the World Began</td><td>A</td><td><code>song-5c2ab76f-d95b-47b2-8d43-b13cf1731b4c</code></td></tr>
+<tr><td>190</td><td>In Memory of the Crucified</td><td>A</td><td><code>song-44d1fc5b-6cca-4c61-8cad-698f05accbed</code></td></tr>
+<tr><td>191</td><td>Behold the Great Redeemer Die</td><td>A</td><td><code>song-d62fc11a-4646-4563-a34b-896ed923a44b</code></td></tr>
+<tr><td>192</td><td>He Died! The Great Redeemer Died</td><td>A</td><td><code>song-6d5c2f83-8c10-45a1-b6bd-51d1ea3be044</code></td></tr>
+<tr><td>193</td><td>I Stand All Amazed</td><td>A</td><td><code>song-a66f2976-c2a3-4edd-9651-fa5e829b053a</code></td></tr>
+<tr><td>194</td><td>There Is a Green Hill Far Away</td><td>A</td><td><code>song-f76de71c-a9f3-4b94-81f5-7e55ff447f94</code></td></tr>
+<tr><td>195</td><td>How Great the Wisdom and the Love</td><td>A</td><td><code>song-9c6985e6-c862-404c-8ac4-f90524a797de</code></td></tr>
+<tr><td>196</td><td>Jesus, Once of Humble Birth</td><td>A</td><td><code>song-d112df90-a0be-48a5-9310-75d6796aca61</code></td></tr>
+<tr><td>197</td><td>O Savior, Thou Who Wearest a Crown</td><td>A</td><td><code>song-aba725bb-369b-4210-9cee-f0f762f94a7a</code></td></tr>
+<tr><td>198</td><td>That Easter Morn</td><td>A</td><td><code>song-98cbb293-33a5-4fcd-9fd9-4dc668ff7bb3</code></td></tr>
+<tr><td>199</td><td>He Is Risen!</td><td>A</td><td><code>song-5e5bc70a-2e08-4411-999d-628bf6079d88</code></td></tr>
+<tr><td>200</td><td>Christ the Lord Is Risen Today</td><td>A</td><td><code>song-cb87dc92-579f-42f4-b83f-03ccaf28e602</code></td></tr>
+<tr><td>201</td><td>Joy to the World</td><td>A</td><td><code>song-b84d63a6-cb12-4f44-a1b5-c83641a234f9</code></td></tr>
+<tr><td>202</td><td>Oh, Come, All Ye Faithful</td><td>A</td><td><code>faithful</code></td></tr>
+<tr><td>203</td><td>Angels We Have Heard on High</td><td>A</td><td><code>song-c8c15b83-e038-4dc7-9901-c015de754fb4</code></td></tr>
+<tr><td>204</td><td>Silent Night</td><td>A</td><td><code>silent-night</code></td></tr>
+<tr><td>205</td><td>Once in Royal David’s City</td><td>A</td><td><code>song-e0466d19-0b02-43a0-a730-6bbb9bf06ed5</code></td></tr>
+<tr><td>206</td><td>Away in a Manger</td><td>A</td><td><code>song-fafcb319-245b-4305-b2f1-f97fad331d5e</code></td></tr>
+<tr><td>207</td><td>It Came upon the Midnight Clear</td><td>A</td><td><code>song-18eaf9c0-8eb0-47e8-87d0-1e1e632e47fc</code></td></tr>
+<tr><td>208</td><td>O Little Town of Bethlehem</td><td>A</td><td><code>song-971ceab4-9411-4127-8118-db8dd12e1816</code></td></tr>
+<tr><td>209</td><td>Hark! The Herald Angels Sing</td><td>A</td><td><code>song-53c57be6-2733-45c7-94ad-773835a4fd19</code></td></tr>
+<tr><td>210</td><td>With Wondering Awe</td><td>A</td><td><code>song-10325904-fe2e-47d7-8693-95dc83af7702</code></td></tr>
+<tr><td>211</td><td>While Shepherds Watched Their Flocks</td><td>A</td><td><code>song-e9b41466-3dfd-4d38-8c29-7723246ec090</code></td></tr>
+<tr><td>212</td><td>Far, Far Away on Judea’s Plains</td><td>A</td><td><code>song-9be03820-2e2a-453e-9270-2138bf79d9c2</code></td></tr>
+<tr><td>213</td><td>The First Noel</td><td>A</td><td><code>song-8aaafadd-0290-4b8f-aa76-a7b167782212</code></td></tr>
+<tr><td>214</td><td>I Heard the Bells on Christmas Day</td><td>A</td><td><code>song-0cb749cd-a76b-4468-874d-5db8248e25ec</code></td></tr>
+<tr><td>215</td><td>Ring Out, Wild Bells</td><td>A</td><td><code>song-a5d8ad72-20f6-4adb-86ad-1ca300b93804</code></td></tr>
+<tr><td>216</td><td>We Are Sowing</td><td>A</td><td><code>song-edae2ad8-a4c0-4132-935c-8895ee40b381</code></td></tr>
+<tr><td>217</td><td>Come, Let Us Anew</td><td>A</td><td><code>song-f29c2c26-210a-4810-86c9-16b1f7d52118</code></td></tr>
+<tr><td>218</td><td>We Give Thee But Thine Own</td><td>A</td><td><code>song-851c75bb-54b3-4b76-b678-38c856d0d879</code></td></tr>
+<tr><td>219</td><td>Because I Have Been Given Much</td><td>C</td><td><code>song-5e185796-f0eb-4008-96cd-02604f6d3605</code></td></tr>
+<tr><td>220</td><td>Lord, I Would Follow Thee</td><td>A</td><td><code>song-2af92b23-6596-4623-a644-d480cb1a89fa</code></td></tr>
+<tr><td>221</td><td>Dear to the Heart of the Shepherd</td><td>A</td><td><code>song-c9add785-5429-47ec-bf7d-afc5581a87d6</code></td></tr>
+<tr><td>222</td><td>Hear Thou Our Hymn, O Lord</td><td>A</td><td><code>song-b82e980c-4b96-42bd-813a-8e700ea468f5</code></td></tr>
+<tr><td>223</td><td>Have I Done Any Good?</td><td>A</td><td><code>song-138d4697-d2d9-414a-885c-82b760f1f371</code></td></tr>
+<tr><td>224</td><td>I Have Work Enough to Do</td><td>A</td><td><code>song-7bd903aa-341b-4d81-bc43-a16424ab1800</code></td></tr>
+<tr><td>225</td><td>We Are Marching On to Glory</td><td>A</td><td><code>song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f</code></td></tr>
+<tr><td>226</td><td>Improve the Shining Moments</td><td>A</td><td><code>song-d0fcb69f-564a-4f27-951d-c08fc1a468e9</code></td></tr>
+<tr><td>227</td><td>There Is Sunshine in My Soul Today</td><td>A</td><td><code>song-6b45d05c-f74c-4d69-a12a-40069311541a</code></td></tr>
+<tr><td>228</td><td>You Can Make the Pathway Bright</td><td>A</td><td><code>song-54db47df-6f16-441c-ac53-df09cfdb294c</code></td></tr>
+<tr><td>229</td><td>Today, While the Sun Shines</td><td>A</td><td><code>song-22197efd-635b-4f62-b650-354c6c281624</code></td></tr>
+<tr><td>230</td><td>Scatter Sunshine</td><td>A</td><td><code>song-dac6f94b-6a48-40de-993c-82bb543bf96d</code></td></tr>
+<tr><td>231</td><td>Father, Cheer Our Souls Tonight</td><td>A</td><td><code>song-88bb06ac-53f3-47c3-808d-8a8746388aeb</code></td></tr>
+<tr><td>232</td><td>Let Us Oft Speak Kind Words</td><td>A</td><td><code>song-37a6936e-9bb3-4081-b2e4-996ee9121150</code></td></tr>
+<tr><td>233</td><td>Nay, Speak No Ill</td><td>A</td><td><code>song-3ddb41e2-934a-401e-bedf-d04cb65f51cb</code></td></tr>
+<tr><td>234</td><td>Jesus, Mighty King in Zion</td><td>A</td><td><code>song-fdf856f8-4499-4b62-aff7-a98813ac9acc</code></td></tr>
+<tr><td>235</td><td>Should You Feel Inclined to Censure</td><td>A</td><td><code>song-7be9095f-771f-4363-b683-c55d9e72292d</code></td></tr>
+<tr><td>236</td><td>Lord, Accept into Thy Kingdom</td><td>A</td><td><code>song-7dfcca8f-4639-438f-b2be-65c4e53cd8d1</code></td></tr>
+<tr><td>237</td><td>Do What Is Right</td><td>A</td><td><code>song-1a7e3e3b-47c5-4986-963e-4bc8b80cdf9a</code></td></tr>
+<tr><td>238</td><td>Behold Thy Sons and Daughters, Lord</td><td>A</td><td><code>song-7687c95c-ed20-430a-b80d-014b17427810</code></td></tr>
+<tr><td>239</td><td>Choose the Right</td><td>A</td><td><code>song-05f40854-1219-4052-8766-6a3a6935146e</code></td></tr>
+<tr><td>240</td><td>Know This, That Every Soul Is Free</td><td>A</td><td><code>song-e545829c-78bd-4c90-9a14-c706bbc0ed4b</code></td></tr>
+<tr><td>241</td><td>Count Your Blessings</td><td>A</td><td><code>song-2afc0981-e463-470e-8cab-632d0b0b57e6</code></td></tr>
+<tr><td>242</td><td>Praise God, from Whom All Blessings Flow</td><td>A</td><td><code>song-d5aeab67-a5b8-40e7-8770-9fb1d42000e5</code></td></tr>
+<tr><td>243</td><td>Let Us All Press On</td><td>A</td><td><code>song-47443947-36d1-4509-8639-866143aa7468</code></td></tr>
+<tr><td>244</td><td>Come Along, Come Along</td><td>A</td><td><code>song-3c37c435-a330-47e2-a169-d83522595cc0</code></td></tr>
+<tr><td>245</td><td>This House We Dedicate to Thee</td><td>A</td><td><code>song-77e2a9c5-defe-402d-947f-13ccb518d875</code></td></tr>
+<tr><td>246</td><td>Onward, Christian Soldiers</td><td>A</td><td><code>song-95e908ac-a3bd-4000-a45b-6ee588196bdf</code></td></tr>
+<tr><td>247</td><td>We Love Thy House, O God</td><td>A</td><td><code>song-594050fa-1cd4-4509-8c3a-54dc9cf5de24</code></td></tr>
+<tr><td>248</td><td>Up, Awake, Ye Defenders of Zion</td><td>A</td><td><code>song-b40f33d6-d5af-46c8-95c3-e1917a951460</code></td></tr>
+<tr><td>249</td><td>Called to Serve</td><td>A</td><td><code>song-d92bb26c-6a08-4beb-a917-b787102678da</code></td></tr>
+<tr><td>250</td><td>We Are All Enlisted</td><td>A</td><td><code>song-6865def7-4ef7-4fac-ad57-27e468446e98</code></td></tr>
+<tr><td>251</td><td>Behold! A Royal Army</td><td>A</td><td><code>song-630410cd-be22-4d5a-9445-0568b51e397c</code></td></tr>
+<tr><td>252</td><td>Put Your Shoulder to the Wheel</td><td>A</td><td><code>song-ed92d57f-c9cb-402d-852c-f77ae768aa3d</code></td></tr>
+<tr><td>253</td><td>Like Ten Thousand Legions Marching</td><td>A</td><td><code>song-bbb8e898-903e-41ed-98d0-3e7cd5ff33fe</code></td></tr>
+<tr><td>254</td><td>True to the Faith</td><td>A</td><td><code>song-c25734b4-ba49-4c88-ba90-4927ede707c4</code></td></tr>
+<tr><td>255</td><td>Carry On</td><td>A</td><td><code>song-29ddec61-4020-4ab9-8400-7cc2acf115e4</code></td></tr>
+<tr><td>256</td><td>As Zion’s Youth in Latter Days</td><td>A</td><td><code>song-4a9720ac-e510-495e-806e-39e851843c73</code></td></tr>
+<tr><td>257</td><td>Rejoice! A Glorious Sound Is Heard</td><td>A</td><td><code>song-550fb578-d377-4dc9-bb00-9e9639a49c71</code></td></tr>
+<tr><td>258</td><td>O Thou Rock of Our Salvation</td><td>A</td><td><code>song-c2019d89-bd53-4f00-a653-d863b711aa15</code></td></tr>
+<tr><td>259</td><td>Hope of Israel</td><td>A</td><td><code>song-9e9db675-111d-48ee-91ed-23dd17b35d0d</code></td></tr>
+<tr><td>260</td><td>Who’s on the Lord’s Side?</td><td>A</td><td><code>song-af8d66bd-9206-4235-934d-6070c186050a</code></td></tr>
+<tr><td>261</td><td>Thy Servants Are Prepared</td><td>A</td><td><code>song-da061743-f23c-4f29-8abe-9d2665cc28d4</code></td></tr>
+<tr><td>262</td><td>Go, Ye Messengers of Glory</td><td>A</td><td><code>song-5da6b83a-d1e1-452a-a50d-950d320260b2</code></td></tr>
+<tr><td>263</td><td>Go Forth with Faith</td><td>A</td><td><code>song-52bb81df-191d-4f69-9e80-6c003b5260cd</code></td></tr>
+<tr><td>264</td><td>Hark, All Ye Nations!</td><td>A</td><td><code>song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb</code></td></tr>
+<tr><td>265</td><td>Arise, O God, and Shine</td><td>A</td><td><code>song-c6123147-4784-40ce-b463-c4282a445eb9</code></td></tr>
+<tr><td>266</td><td>The Time Is Far Spent</td><td>A</td><td><code>song-f2965762-2cb1-43a5-b5c3-b5395e5de292</code></td></tr>
+<tr><td>267</td><td>How Wondrous and Great</td><td>A</td><td><code>song-5847f4b8-6bab-4477-abb9-048d4bf80fdb</code></td></tr>
+<tr><td>268</td><td>Come, All Whose Souls Are Lighted</td><td>A</td><td><code>song-e4ed1590-1b82-45da-b562-ffad9b124282</code></td></tr>
+<tr><td>269</td><td>Jehovah, Lord of Heaven and Earth</td><td>A</td><td><code>song-7c922983-6513-4e23-9177-87fed5d1c786</code></td></tr>
+<tr><td>270</td><td>I’ll Go Where You Want Me to Go</td><td>A</td><td><code>song-5171114c-7b99-40f8-9040-5186973263b3</code></td></tr>
+<tr><td>271</td><td>Oh, Holy Words of Truth and Love</td><td>A</td><td><code>song-af2e3f69-c0f9-4f65-9333-d8aca67ebdfc</code></td></tr>
+<tr><td>272</td><td>Oh Say, What Is Truth?</td><td>A</td><td><code>song-c6a64145-1133-4688-8009-e1619839194d</code></td></tr>
+<tr><td>273</td><td>Truth Reflects upon Our Senses</td><td>A</td><td><code>song-bfb6a184-1d9c-4e05-bc9e-71efae11eea1</code></td></tr>
+<tr><td>274</td><td>The Iron Rod</td><td>A</td><td><code>song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0</code></td></tr>
+<tr><td>275</td><td>Men Are That They Might Have Joy</td><td>A</td><td><code>song-ca897b7e-edc4-4afb-b834-b86f1cfb960f</code></td></tr>
+<tr><td>276</td><td>Come Away to the Sunday School</td><td>A</td><td><code>song-e8477f1f-83e0-4af5-826a-a3ad4a1079d6</code></td></tr>
+<tr><td>277</td><td>As I Search the Holy Scriptures</td><td>A</td><td><code>song-4597aa28-e4f1-4060-8f51-e8374865a3ef</code></td></tr>
+<tr><td>278</td><td>Thanks for the Sabbath School</td><td>A</td><td><code>song-127eea0f-8f0f-436a-996d-e0d381ad173f</code></td></tr>
+<tr><td>279</td><td>Thy Holy Word</td><td>A</td><td><code>song-6ac17760-c92c-4964-a01a-c9a7a26521c6</code></td></tr>
+<tr><td>280</td><td>Welcome, Welcome, Sabbath Morning</td><td>A</td><td><code>song-00c582e3-baa8-410b-940c-9fd52aa166a9</code></td></tr>
+<tr><td>281</td><td>Help Me Teach with Inspiration</td><td>A</td><td><code>song-27f07185-eeeb-4ab8-a3d7-a1d3d9b923d7</code></td></tr>
+<tr><td>282</td><td>We Meet Again in Sabbath School</td><td>A</td><td><code>song-8182bd34-06bc-4948-8549-1fa8c8ae7ced</code></td></tr>
+<tr><td>283</td><td>The Glorious Gospel Light Has Shone</td><td>A</td><td><code>song-07d3c84d-19f0-4fdd-8473-e5240ce09e9b</code></td></tr>
+<tr><td>284</td><td>If You Could Hie to Kolob</td><td>A</td><td><code>song-5f538e3b-37de-4a1b-bbd0-44a0f13e25da</code></td></tr>
+<tr><td>285</td><td>God Moves in a Mysterious Way</td><td>A</td><td><code>song-3a137ead-fbe7-46fb-b00d-74fcb4473424</code></td></tr>
+<tr><td>286</td><td>Oh, What Songs of the Heart</td><td>A</td><td><code>song-9658fc70-34ec-41a0-97b2-06bd052d842f</code></td></tr>
+<tr><td>287</td><td>Rise, Ye Saints, and Temples Enter</td><td>A</td><td><code>song-867279ef-afe3-493f-a894-09131e17fb12</code></td></tr>
+<tr><td>288</td><td>How Beautiful Thy Temples, Lord</td><td>A</td><td><code>song-7193f145-5d8c-4e0b-9963-2dec42ce3237</code></td></tr>
+<tr><td>289</td><td>Holy Temples on Mount Zion</td><td>A</td><td><code>song-46c851eb-32c2-49d7-9b0d-3276df8c83e2</code></td></tr>
+<tr><td>290</td><td>Rejoice, Ye Saints of Latter Days</td><td>A</td><td><code>song-696b206a-44c1-4d87-9619-29b0c8613c7a</code></td></tr>
+<tr><td>291</td><td>Turn Your Hearts</td><td>A</td><td><code>song-54558001-8653-4c01-bbd9-6f4e2341a8ea</code></td></tr>
+<tr><td>292</td><td>O My Father</td><td>A</td><td><code>song-b61a15f7-c918-4320-9a79-03eef62b9f62</code></td></tr>
+<tr><td>293</td><td>Each Life That Touches Ours for Good</td><td>A</td><td><code>song-0ee49c88-a255-46aa-846b-eca80c0d1056</code></td></tr>
+<tr><td>294</td><td>Love at Home</td><td>A</td><td><code>song-89b0379c-c1f8-41dd-a837-77870bcb3bd7</code></td></tr>
+<tr><td>295</td><td>O Love That Glorifies the Son</td><td>A</td><td><code>song-f119e442-cf72-43d4-8621-d208ec445397</code></td></tr>
+<tr><td>296</td><td>Our Father, by Whose Name</td><td>A</td><td><code>song-8aafccd0-12a9-4d8a-a2a2-15810fabb0a4</code></td></tr>
+<tr><td>297</td><td>From Homes of Saints Glad Songs Arise</td><td>A</td><td><code>song-5c596b17-dfb4-4993-9557-f92edda38b49</code></td></tr>
+<tr><td>298</td><td>Home Can Be a Heaven on Earth</td><td>A</td><td><code>song-76322083-0fe9-410e-aa73-e16acf321ca9</code></td></tr>
+<tr><td>299</td><td>Children of Our Heavenly Father</td><td>C</td><td><code>song-1d10d95d-cf62-4263-912d-741f38e1b7b0</code></td></tr>
+<tr><td>300</td><td>Families Can Be Together Forever</td><td>A</td><td><code>song-47813d41-1317-4ca0-9a32-a520b47c97d2</code></td></tr>
+<tr><td>301</td><td>I Am a Child of God</td><td>A</td><td><code>song-7076bf3f-727e-4280-90f1-60faf9796937</code></td></tr>
+<tr><td>302</td><td>I Know My Father Lives</td><td>A</td><td><code>song-094d3a6c-43e1-497f-80c3-24cb36f444de</code></td></tr>
+<tr><td>303</td><td>Keep the Commandments</td><td>A</td><td><code>song-4a701cbd-1db3-463c-babd-4e2714b55713</code></td></tr>
+<tr><td>304</td><td>Teach Me to Walk in the Light</td><td>A</td><td><code>song-be6f6e17-ff47-442d-b2cf-cddfe767da67</code></td></tr>
+<tr><td>305</td><td>The Light Divine</td><td>A</td><td><code>song-7ffc2a79-7ac6-4a84-ace8-ff99f47faa00</code></td></tr>
+<tr><td>306</td><td>God’s Daily Care</td><td>A</td><td><code>song-3c43fab0-0fef-4e0f-a4d7-5f0eec562b92</code></td></tr>
+<tr><td>307</td><td>In Our Lovely Deseret</td><td>A</td><td><code>song-af85e05e-8681-406e-a412-22338e4fd595</code></td></tr>
+<tr><td>308</td><td>Love One Another</td><td>A</td><td><code>song-f182d927-0ec9-4aaa-8af8-b49268cd96b0</code></td></tr>
+<tr><td>309</td><td>As Sisters in Zion</td><td>A</td><td><code>song-74bac8a9-6455-4706-8fc8-2be43e51eab3</code></td></tr>
+<tr><td>310</td><td>A Key Was Turned in Latter Days</td><td>A</td><td><code>song-c0a8cbd7-2188-43d3-9840-19faa722e6ca</code></td></tr>
+<tr><td>311</td><td>We Meet Again as Sisters</td><td>A</td><td><code>song-89b00dd7-73b9-42f3-9065-e743962094d2</code></td></tr>
+<tr><td>312</td><td>We Ever Pray for Thee</td><td>A</td><td><code>song-7e7e0440-5d08-4272-8abc-1a3c04020bc6</code></td></tr>
+<tr><td>313</td><td>God Is Love</td><td>A</td><td><code>song-5aa8b88e-ca6a-47f2-ac73-a673f5f2bb2f</code></td></tr>
+<tr><td>314</td><td>How Gentle God’s Commands</td><td>A</td><td><code>song-158c3860-bb73-4e53-bc69-1ee81afe1a2b</code></td></tr>
+<tr><td>315</td><td>Jesus, the Very Thought of Thee</td><td>A</td><td><code>song-f2a1cdf0-3858-4822-a2a1-8a4d69e96aae</code></td></tr>
+<tr><td>316</td><td>The Lord Is My Shepherd</td><td>A</td><td><code>song-d4565aed-b6f7-4f72-9b71-a64bb29cc483</code></td></tr>
+<tr><td>317</td><td>Sweet Is the Work</td><td>A</td><td><code>song-4276e01d-13dc-41dd-ad96-5ad2ba4aa2ea</code></td></tr>
+<tr><td>318</td><td>Love at Home</td><td>A</td><td><code>song-91e16b0e-3921-430f-8e14-fa25fffb72b1</code></td></tr>
+<tr><td>319</td><td>Ye Elders of Israel</td><td>A</td><td><code>song-7f407f0f-8d10-4bc4-9d74-03806c7e0969</code></td></tr>
+<tr><td>320</td><td>The Priesthood of Our Lord</td><td>A</td><td><code>song-c7318efd-a15a-401b-ad22-ed8d1e6f4b56</code></td></tr>
+<tr><td>321</td><td>Ye Who Are Called to Labor</td><td>A</td><td><code>song-d5b6a45a-c463-41fc-bda3-192d8c384d5f</code></td></tr>
+<tr><td>322</td><td>Come, All Ye Sons of God</td><td>A</td><td><code>song-83d1a9d7-b2c9-47c3-b5c7-3f3dcf881a33</code></td></tr>
+<tr><td>323</td><td>Rise Up, O Men of God</td><td>A</td><td><code>song-2366be25-4e18-4d79-813c-18963c47e9a2</code></td></tr>
+<tr><td>324</td><td>Rise Up, O Men of God</td><td>A</td><td><code>song-dc5448e4-122e-455e-828e-c6056f664c12</code></td></tr>
+<tr><td>325</td><td>See the Mighty Priesthood Gathered</td><td>A</td><td><code>song-3944bc27-59d4-48a7-86e6-e33d5c6d0fe9</code></td></tr>
+<tr><td>326</td><td>Come, Come, Ye Saints</td><td>A</td><td><code>song-7221717c-6d2e-4d66-a718-24ec2a18b12a</code></td></tr>
+<tr><td>327</td><td>Go, Ye Messengers of Heaven</td><td>A</td><td><code>song-be12fa93-1d5a-4e10-8331-3cbe87ddf1c3</code></td></tr>
+<tr><td>328</td><td>An Angel from on High</td><td>A</td><td><code>song-52171af8-d04b-41b8-bceb-c67ce28593a3</code></td></tr>
+<tr><td>329</td><td>Thy Servants Are Prepared</td><td>A</td><td><code>song-b8f1eda1-04f1-4732-a74d-0fdbbff8453d</code></td></tr>
+<tr><td>330</td><td>See, the Mighty Angel Flying</td><td>A</td><td><code>song-ca068c43-7101-4edd-82bf-488cc7fb8d5b</code></td></tr>
+<tr><td>331</td><td>Oh Say, What Is Truth?</td><td>A</td><td><code>song-f37a758e-c510-4a14-967b-b30bc2120150</code></td></tr>
+<tr><td>332</td><td>Come, O Thou King of Kings</td><td>A</td><td><code>song-c0ec9f6d-423b-4e75-8f86-e1fe4567bbcd</code></td></tr>
+<tr><td>333</td><td>High on the Mountain Top</td><td>A</td><td><code>song-9255dd3d-d782-45fd-8ec1-98821f1cd0e9</code></td></tr>
+<tr><td>334</td><td>I Need Thee Every Hour</td><td>A</td><td><code>song-a874f72f-0d1e-4407-a7a8-2ff61609539f</code></td></tr>
+<tr><td>335</td><td>Brightly Beams Our Father’s Mercy</td><td>A</td><td><code>song-6a40d4f6-2fcf-45df-96c9-dfe52aa91728</code></td></tr>
+<tr><td>336</td><td>School Thy Feelings</td><td>A</td><td><code>song-c30e5c84-a1bb-431d-b093-a2761eba0f82</code></td></tr>
+<tr><td>337</td><td>O Home Beloved</td><td>A</td><td><code>song-01888570-7ed7-47b4-aa67-89bd2a6e4317</code></td></tr>
+<tr><td>338</td><td>America the Beautiful</td><td>A</td><td><code>song-49b12b3e-0ca7-4364-bc94-0ff16d27ef18</code></td></tr>
+<tr><td>339</td><td>My Country, ’Tis of Thee</td><td>A</td><td><code>song-eb901b55-ffbe-4f14-a2da-f553cf7ac8e0</code></td></tr>
+<tr><td>340</td><td>The Star-Spangled Banner</td><td>A</td><td><code>song-fad48ddd-270a-4a5d-8a29-5b0d331d7b97</code></td></tr>
+<tr><td>341</td><td>God Save the King</td><td>A</td><td><code>song-74542232-448b-4795-8db7-45a579191b25</code></td></tr>
+</table><p><a href="hymnal-catalog-completeness.json">Machine-readable audit</a></p></html>

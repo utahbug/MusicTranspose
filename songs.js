@@ -1,4 +1,5 @@
 import {pdfFallbacks} from './pdf-fallbacks.js';
+import {unavailableSongs} from './unavailable-songs.js';
 import {importedSongs} from './imported-songs.js';
 // IDs are immutable opaque keys, including legacy title/number-shaped IDs.
 // Never regenerate an ID when title, page, collection, edition or order changes.
@@ -10,7 +11,8 @@ export const songs = [
  {id:'silent-night',title:'Silent Night',collection:'Hymns (1985)',page:'204',tags:['Christmas'],aliases:[],collectionMemberships:[],asset:'./assets/silent-night.mxl',tonic:'B♭',mode:'major',fifths:-2},
  {id:'scripture-power',title:'Scripture Power',collection:'Music from the Friend',page:'',scoreType:'pdf',transpositionAvailable:false,asset:'./assets/pdfs/scripture-power.pdf',tags:['Primary'],aliases:[],collectionMemberships:[]},
  {id:'choose-to-serve-the-lord',title:'Choose to Serve the Lord',collection:'Primary-use music',page:'',scoreType:'pdf',transpositionAvailable:false,asset:'./assets/pdfs/choose-to-serve-the-lord.pdf',tags:['Primary'],aliases:[],collectionMemberships:[]},
- ...importedSongs
+ ...importedSongs,
+ ...unavailableSongs
 ];
 
 // Collection membership is factual metadata, separate from personal lists.

@@ -1,3 +1,4 @@
+import {canOpenScore} from './score-availability.js';
 import {isFileSong} from './library-query.js';
 import {bundledLeadIds} from './lead-availability.js';
 import {createLeadXML} from './lead-view.js';
@@ -5,7 +6,7 @@ import {songs as bundled} from './songs.js';
 import {localMetadata,localRecord,fileDetails,bundledFileDetails} from './local-music-store.js';
 export const songs=[...bundled];
 // Bundled capability metadata and imported-source checks share one filter predicate.
-export const supportsLead=song=>!song.missing&&song.scoreType!=='pdf'&&(song.local?song.leadAvailable===true:bundledLeadIds.has(song.id));
+export const supportsLead=song=>canOpenScore(song)&&song.scoreType!=='pdf'&&(song.local?song.leadAvailable===true:bundledLeadIds.has(song.id));
 const urls=new Map();
 export async function refreshLocalMusic(){
  const records=await localMetadata();
