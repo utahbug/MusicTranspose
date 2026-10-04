@@ -1471,3 +1471,15 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .pdf-footer-segment[hidden]{display:none}
 @media screen{.pdf-score-open .score-page-dark .pdf-footer-segment{filter:invert(1) hue-rotate(180deg)}}
 @media print{.pdf-footer-segment{display:none!important}}
+
+/* Add-songs source checklist only; source identities and Library controls are shared. */
+.list-picker-source-control{min-width:0}
+#list-picker-source{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:44px;font-size:13px;text-align:left}
+#list-picker-source>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#list-picker-sources{position:fixed;z-index:20;overflow:auto;overscroll-behavior:contain;box-sizing:border-box;padding:6px;background:#f8fafb;color:#233331;border:1px solid #a9bcc7;border-radius:8px;box-shadow:0 5px 18px #182f4026}
+#list-picker-sources[hidden]{display:none}
+#list-picker-sources label{display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 8px;font-size:14px;cursor:pointer}
+#list-picker-sources input{width:22px;height:22px;flex:none;accent-color:#536b7a}
+#list-picker-sources label:hover{background:#e8eef2}
+#list-picker-sources label:focus-within{outline:2px solid #536b7a;outline-offset:-2px}
+#list-picker-source-status{margin:4px 8px;font-size:13px}
