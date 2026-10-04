@@ -52,7 +52,7 @@
  .score-heading h1{margin:0}
  .score-heading .subtitle{margin:0}
  @media(max-width:850px){.score-heading{display:block}.score-heading .subtitle{margin-top:2px}}
- @media(max-width:600px){.masthead .toolbar{gap:5px}.masthead .quiet{padding:7px 8px}#key{min-width:135px;gap:7px}}
+ @media(max-width:600px){.masthead .quiet{padding:7px 8px}#key{min-width:135px;gap:7px}}
 }
 
 #print{width:44px;min-width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#173e3b}
@@ -66,7 +66,6 @@
  html{scroll-padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 12px)}
  .state:has(.visible-error){top:auto;bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px)}
  @media(max-width:600px){
-  .masthead .toolbar{gap:4px;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
   .masthead .reset{flex:0 0 44px}
   .masthead #key{flex:1;min-width:0;padding:0 3px;flex-direction:column;gap:0}
   .masthead #key-name{font-size:18px;line-height:22px;white-space:nowrap}
@@ -81,12 +80,6 @@
  .utility-controls{display:flex;align-items:center;gap:6px;justify-self:start}
 
  .masthead #reset{justify-self:end;width:44px;min-width:44px}
- @media(max-width:600px){
-
-  .utility-controls{gap:2px}
-  .masthead .utility-controls .quiet{padding:7px 5px}
-
- }
 }
 
 /* Settings and optional navigation controls do not participate in print layout. */
@@ -112,9 +105,6 @@
  @media(max-width:600px){
   .score-heading{grid-template-columns:minmax(0,1fr) minmax(75px,34%);gap:8px}
   .score-heading .subtitle{font-size:10px;margin:0}
-
-  .utility-controls{grid-column:1;grid-row:1}
-  .masthead #reset{grid-column:2;grid-row:1}
 
   .masthead #key-name{font-size:0}
   .masthead #key-name::after{content:attr(data-compact);font-size:18px}
@@ -185,19 +175,13 @@
 #library .library-row:not(.reordering){grid-template-columns:46px minmax(0,1fr) 32px}
 #library .library-row .song-actions{width:44px;min-height:44px;margin-inline:-6px;padding:0;border:0;background:transparent;color:#536B7A;font-size:22px;line-height:1;border-radius:3px}
 
-@media print{}
-
 /* App dialogs use compact interface typography, separate from engraved score text. */
 dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 
 /* Compact key labels and single-row playing controls. */
 @media screen{
  .masthead #key-name{white-space:nowrap}
- @media(min-width:601px) and (max-width:1100px){}
  @media(max-width:600px){
-  .masthead .toolbar{overflow-x:auto}
-  .masthead .utility-controls{grid-column:1;grid-row:1;gap:0}.masthead .utility-controls .quiet{width:44px;min-width:44px;padding:0;font-size:11px}
-  .masthead #reset{grid-column:3;grid-row:1}
   .masthead #key{min-width:76px;flex:1;gap:0;padding:0 2px}.masthead #key-name{font-size:16px;line-height:21px}.masthead #key-name::after{content:none}.masthead #key-signature{font-size:11px;line-height:13px}
  }
 }
@@ -210,18 +194,14 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead #octave-toggle:not([data-state="0"]){background:#e0e8ec;box-shadow:inset 0 -3px #536B7A}
  .masthead #reset{grid-column:4;grid-row:1}
  @media(max-width:600px){
-  .masthead .toolbar{overflow-x:visible}
-  .masthead #print,.masthead #settings,.masthead #octave-toggle,.masthead #reset{width:40px;min-width:40px;min-height:44px;flex-basis:40px}
   .masthead #key{min-width:68px}
  }
 }
 
-@media screen and (min-width:601px) and (max-width:740px){}
-
 /* MXL size control triggers OSMD layout at every screen width. */
 #score-size{display:none}
 @media screen{
- body:not(.pdf-score-open) #score-size{display:flex;align-items:center;justify-content:center;grid-column:2;grid-row:2;justify-self:end;width:44px;height:44px;padding:0;margin-top:2px;color:#536B7A}
+ body:not(.pdf-score-open) #score-size{display:flex;align-items:center;justify-content:center;justify-self:end;width:44px;height:44px;padding:0;margin-top:2px;color:#536B7A}
 }
 @media screen and (max-width:600px){
  body:not(.pdf-score-open) .score-heading{row-gap:0}
@@ -274,7 +254,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 
 
   .masthead #key{flex:none}
-  .masthead #reset{width:40px;min-width:40px}
   .score-heading .subtitle{font-size:10px}
  }
  body.page-navigation #score>.pdf-page-frame:not(.current-page){display:none}
@@ -327,8 +306,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead #key-signature{font-size:13px;line-height:16px}
  .masthead #key .chevron{display:none}
  @media(max-width:600px){
-
-  .masthead #reset{width:44px;min-width:44px}
   .masthead #key-name{font-size:18px;line-height:23px}
  }
 }
@@ -396,13 +373,9 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  #page-position{font-size:12px;line-height:1.2;color:#53675d;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:4ch;text-align:right}
  .pdf-score-open .toolbar-position{margin-inline-start:auto}
  @media(max-width:600px){
-
-  .masthead .toolbar-position{gap:4px}
   #page-position{font-size:11px}
  }
  @media(max-width:360px){
-  .masthead .toolbar:has(#page-position:not([hidden])) .utility-controls{gap:0}
-  .masthead .toolbar-position{gap:2px}
   #page-position{font-size:10px}
  }
 }
@@ -431,7 +404,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead #key:focus-visible{outline:2px solid #536B7A;outline-offset:2px}
  .masthead #key:disabled{opacity:.38}
  .masthead .toolbar-position{margin-inline-start:auto;flex:none}
- @media(max-width:600px){.masthead .utility-controls{gap:4px}.masthead #key{padding-inline:8px;min-width:80px}}
+ @media(max-width:600px){.masthead #key{padding-inline:8px;min-width:80px}}
 }
 
 /* Text-first Library discovery; list management and saved ordering remain separate. */
@@ -460,8 +433,6 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
  .masthead .toolbar-position{grid-column:2;grid-row:1;justify-self:center;margin:0;min-width:0}
  .masthead .utility-controls{grid-column:3;grid-row:1;justify-self:end}
  #page-position{text-align:center}
- @media(max-width:600px){.masthead .toolbar{column-gap:6px}.masthead .playing-controls{gap:4px}}
- @media(max-width:360px){.masthead .toolbar{column-gap:4px}.masthead .playing-controls{gap:2px}}
 }
 
 /* Compact Settings with optional visual navigation help. */
@@ -579,20 +550,12 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  @media(max-width:600px){
   .score-heading .score-actions{display:flex;gap:6px;flex-wrap:nowrap}
   .score-heading{grid-template-columns:minmax(0,1fr) auto}
-  .masthead .toolbar,.pdf-score-open .masthead .toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:4px;row-gap:0;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
-  .masthead .playing-controls{grid-column:1;grid-row:2;gap:2px;min-width:0}
-  .masthead .utility-controls{grid-column:2;grid-row:2;gap:2px}
-  .masthead #songs{margin-inline-end:4px}
   .masthead #key{min-width:0;padding-inline:4px;gap:2px}
   .masthead #key-name{font-size:16px;line-height:22px}
   .masthead #key-name::after{content:none}
   .masthead #key-signature{font-size:14px;line-height:22px}
-  .masthead .toolbar-position{display:none;grid-column:1 / -1;grid-row:1;justify-self:center;font-size:12px;line-height:16px}
-  .masthead .toolbar-position:has(#page-position:not([hidden])){display:flex}
-  .masthead :is(#songs,#reset,#print,#settings),body:not(.pdf-score-open) .masthead #score-size{width:44px;min-width:44px;height:44px;min-height:44px;flex-basis:44px}
  }
  @media(max-width:360px){
-  .masthead :is(#songs,#reset,#print,#settings),body:not(.pdf-score-open) .masthead #score-size{width:40px;min-width:40px;flex-basis:40px}
   .masthead #key-name{font-size:14px}.masthead #key-signature{font-size:12px}
   .masthead #key{padding-inline:2px}
  }
@@ -921,12 +884,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .view-switch:focus-visible,.lyrics-tools button:focus-visible,#show-tap-zones:focus-visible{outline:2px solid currentColor;outline-offset:2px}
  .score-actions #show-tap-zones{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;margin:0;padding:0;border:1px solid #b7cce0;border-radius:9px;color:#365f7d;background:transparent;text-decoration:none}
  .score-page-dark #show-tap-zones{color:#d7e0e6}
- /* At narrow widths only, keep the existing key controls above the corner row. */
- @media(max-width:380px){
-  .masthead .toolbar:has(#show-lyrics:not([hidden])) .playing-controls{grid-column:1 / -1;grid-row:2;justify-self:center}
-  .masthead .toolbar:has(#show-lyrics:not([hidden])) .utility-controls{grid-column:2;grid-row:3}
-  .masthead .toolbar:has(#show-lyrics:not([hidden])) #songs{position:absolute;left:max(4px,env(safe-area-inset-left,0px));bottom:calc(4px + var(--playing-safe-bottom))}
- }
 }
 
 /* Compact song identity; the title's existing playback button stays beside it. */
@@ -988,13 +945,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #score-size-options button[aria-checked=true]:not(:disabled){color:#243e4c;background:#e5edf2;border-color:transparent;box-shadow:none}
  #score-size-options button[aria-checked=true]:not(:disabled)::after{visibility:visible}
  #score-size-options button:disabled{opacity:1;color:#737373;background:#fafafa;border-color:transparent;box-shadow:none;cursor:default}
- @media(max-width:600px){
-  .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px minmax(0,1fr);row-gap:3px}
-  .masthead .playing-controls{grid-column:1 / -1;grid-row:2;justify-self:center}
-  .masthead #songs{position:absolute;left:max(4px,env(safe-area-inset-left,0px));bottom:calc(4px + var(--playing-safe-bottom));margin:0;width:44px;min-width:44px}
-  .masthead .utility-controls{grid-column:2;grid-row:3;justify-self:end;gap:2px}
-  body .masthead .utility-controls #score-size{min-width:0;padding-inline:6px;font-size:12px}
- }
 }
 
 /* Two control clusters; page status remains accessible outside the toolbar grid. */
@@ -1003,21 +953,17 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
   .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:auto minmax(0,1fr)}
   .masthead .utility-controls{grid-column:2}
  }
- @media(max-width:600px){
-  .masthead .toolbar .playing-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .playing-controls{grid-row:1}
-  .masthead .toolbar .utility-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .utility-controls{grid-row:2}
- }
 }
 
 /* Slim Score identity shares app chrome; opening directions stay on the paper. */
 @media screen{
  .score-heading,.pdf-score-open .score-heading{display:block;padding:0 0 2px}
- .score-identity-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;min-height:48px;padding:2px 8px}
+ .score-identity-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;min-height:48px;padding:2px 8px}
  .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{display:block;min-width:0}
  .score-identity-header .score-title-block h1{display:block;font:600 17px/1.2 system-ui,sans-serif;letter-spacing:-.025em;color:#fff;overflow-wrap:anywhere}
  .score-identity-header #score-source{display:block;font:400 11px/1.25 system-ui,sans-serif;color:#fff;max-width:none;margin:2px 0 0;text-align:left;overflow:visible;white-space:normal;overflow-wrap:anywhere}
  .score-identity-header #score-source::after{content:none}
- .score-identity-header .score-actions,.pdf-score-open .score-identity-header .score-actions{float:none;display:flex;flex-wrap:nowrap;align-self:center;align-items:center;gap:4px;margin:0;grid-column:2;grid-row:1}
+ .score-identity-header .score-actions,.pdf-score-open .score-identity-header .score-actions{float:none;display:flex;flex-wrap:nowrap;align-self:center;align-items:center;gap:4px;margin:0;grid-column:3;grid-row:1;justify-self:end}
  .score-identity-header .song-playback,.score-identity-header #show-tap-zones{flex:0 0 44px;width:44px;height:44px;margin:0;color:#fff}
  .score-identity-header #show-tap-zones{border-color:#ffffff80}
  .score-identity-header .score-actions > button:not(:disabled):hover{background:#ffffff1f}
@@ -1038,10 +984,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #page-turn-feedback.visible{opacity:1}
  #page-position[hidden],#page-turn-feedback[hidden],body.library-open :is(#page-position,#page-turn-feedback),body.lyrics-open :is(#page-position,#page-turn-feedback){display:none}
  @media(max-width:600px){
-  .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:minmax(0,1fr) auto;row-gap:3px;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
-  .masthead .toolbar .playing-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .playing-controls{grid-column:1;grid-row:1;justify-self:start}
-  .masthead .toolbar #songs,.masthead .toolbar:has(#show-lyrics:not([hidden])) #songs{position:static;margin:0}
-  .masthead .toolbar .utility-controls,.masthead .toolbar:has(#show-lyrics:not([hidden])) .utility-controls{grid-column:1 / -1;grid-row:2;justify-self:center}
   #page-position{grid-column:2;grid-row:1;font-size:13px;padding-right:4px}
  }
 }
@@ -1067,14 +1009,14 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;align-items:center}
  body .score-identity-header .score-title-block h1{grid-column:1;grid-row:1;align-self:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  .score-identity-header #score-source{grid-column:1;grid-row:2;align-self:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
- .score-song-navigation{grid-column:2;grid-row:1 / span 2;display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
+ .score-song-navigation{grid-column:2;grid-row:1;justify-self:center;display:flex;align-items:center;gap:2px;width:max-content;color:#fff;font:500 11px/1 system-ui,sans-serif}
  .score-song-navigation button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0;color:inherit;border:1px solid transparent;background:transparent}
  .score-song-navigation button:not(:disabled):hover{background:#ffffff1f}
  .score-song-navigation button:focus-visible{outline:2px solid #fff;outline-offset:-3px}
  .score-song-navigation button:disabled{opacity:.4;cursor:default;background:transparent}
 }
 @media screen and (max-width:600px){
- .score-song-navigation > span{display:none}
+ .score-song-navigation > span{display:block}
  .score-song-navigation{gap:0}
  .score-identity-header,.score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{column-gap:4px}
 }
@@ -1112,7 +1054,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset,#score-size):disabled{opacity:.4;cursor:default;background:transparent;border-color:#b7c8d5}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#settings,#show-lyrics,#reset,#score-size):focus-visible{outline:2px solid #245a9a;outline-offset:2px}
  .score-identity-header .song-playback,.score-identity-header #show-tap-zones{border-radius:8px}
- @media(max-width:600px){body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:4px}}
 }
 
 /* Lyrics: persistent Library left, controls centered in equal outer tracks. */
@@ -1262,18 +1203,19 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #files-view #add-music:hover{background:#dce8ee}
 @media print{.workspace-return{display:none!important}}
 
-/* Phone score controls occupy explicit rows; page feedback never joins the flow. */
+/* One-row phone Score toolbar. Existing controls keep their DOM/keyboard order. */
+.score-view-icon{display:none}
 @media screen and (max-width:600px){
- .masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px 104px minmax(0,1fr);grid-template-rows:44px 44px;gap:4px}
+ .masthead .toolbar,.pdf-score-open .masthead .toolbar{display:flex;flex-wrap:nowrap;overflow:visible;justify-content:space-between;gap:2px;padding:4px max(4px,env(safe-area-inset-right,0px)) calc(4px + var(--playing-safe-bottom)) max(4px,env(safe-area-inset-left,0px))}
  .masthead .toolbar .playing-controls,.masthead .toolbar .utility-controls{display:contents}
- .masthead .toolbar #songs{grid-column:1;grid-row:1}
- .masthead .toolbar #reset{grid-column:2;grid-row:1}
- body .masthead .toolbar #score-size{grid-column:3;grid-row:1;justify-self:start;width:104px}
- .masthead .toolbar #key{grid-column:4;grid-row:1;justify-self:start;margin:0;min-width:44px}
- .masthead .toolbar .pdf-footer-tools-wrap{grid-column:1;grid-row:2}
- .masthead .toolbar #settings{grid-column:2;grid-row:2}
- .masthead .toolbar #show-lyrics{grid-column:3;grid-row:2;justify-self:start;margin:0}
- #page-position{position:absolute;right:max(8px,env(safe-area-inset-right,0px));bottom:calc(4px + var(--playing-safe-bottom));height:44px;display:flex;align-items:center;padding:0;font-size:13px}
+ body .masthead .toolbar :is(#songs,#reset,#score-size,#settings,#show-lyrics,#score-tools){position:static;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;justify-self:auto}
+ .masthead .toolbar .pdf-footer-tools-wrap{flex:0 0 44px;width:44px}
+ body .masthead .toolbar #key{flex:0 1 auto;min-width:64px;width:auto;height:44px;margin:0;padding:0 3px;flex-direction:column;gap:0}
+ .masthead #key-name{font-size:15px;line-height:20px}
+ .masthead #key-signature{font-size:11px;line-height:13px;letter-spacing:0}
+ .masthead #key .current-key-label{display:none}
+ body .masthead .toolbar #score-size .score-view-icon{display:block;flex:none}
+ #score-view-label,.masthead #score-size>svg:not(.score-view-icon){display:none}
 }
 
 /* Library navigation above a wide search with independent field preferences. */
@@ -1387,7 +1329,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #score-navigation-menu button[aria-checked=true]::before{background:#536b7a;box-shadow:inset 0 0 0 3px #e6eef0}
  #score-navigation-menu button:hover:not(:disabled){background:#eaf0f1}
  #page-navigation-hint{position:absolute;right:0;bottom:calc(100% + 8px);width:280px;max-width:calc(100vw - 32px);padding:10px 12px;margin:0;background:#f5f7f4f5;border:1px solid #c4cecd;border-radius:8px;color:#344b58;font:400 13px/1.4 system-ui,sans-serif;pointer-events:none;box-shadow:0 3px 12px #182d341a}
- @media(max-width:600px){.masthead .toolbar,.pdf-score-open .masthead .toolbar{grid-template-columns:44px 44px 104px minmax(0,1fr)}}
+
 }
 @media print{#score-navigation{display:none!important}}
 
@@ -1466,4 +1408,37 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  [data-library-theme=dark] #library .library-filter-row #view-favorites[aria-pressed=true]{color:#9acded;background:var(--library-dark-active)}
  [data-library-theme=dark] #library .library-filter-row .sort-choice::after{color:var(--library-dark-muted)}
  [data-library-theme=dark] #library :disabled{opacity:.45;cursor:default}
+}
+
+/* Playback is attached to the identity, independently of centered song navigation. */
+@media screen{
+ .score-identity-header .score-title-block{width:max-content;max-width:100%;justify-self:start}
+ .score-identity-header .score-title-block .song-playback{grid-column:2;grid-row:1 / span 2;align-self:center;margin:0;justify-self:start}
+ .score-identity-header .score-title-block:has(.song-playback){grid-template-columns:minmax(0,1fr) 44px}
+ .score-identity-header .score-title-block h1{margin:0}
+ .score-song-navigation>span{min-width:32px;text-align:center;font:500 13px system-ui,sans-serif;font-variant-numeric:tabular-nums}
+ .score-identity-header .song-playback:not(:disabled):hover{background:#ffffff1f}
+ .score-identity-header .song-playback:focus-visible{outline:2px solid white;outline-offset:-3px}
+}
+
+@media screen and (max-width:600px){
+ .score-identity-header{position:relative;padding-bottom:17px}
+ .score-identity-header .score-title-block{grid-template-rows:44px}
+ body .score-identity-header .score-title-block h1{align-self:center}
+ .score-identity-header .score-title-block .song-playback{grid-row:1}
+ .score-identity-header #score-source{position:absolute;left:8px;right:8px;bottom:3px;margin:0;font-size:10px}
+}
+
+/* Phone-only status lane: sheet ink ends above the chip, never behind it. */
+@media screen and (max-width:600px){
+ #playing-view .score-paper{clip-path:inset(0 0 var(--phone-paper-clip,0px) 0)}
+ #playing-view .score-paper::after{bottom:calc(var(--phone-paper-clip,0px) + var(--score-frame-gap))}
+ #playing-view .score-paper::before{content:"";position:absolute;left:0;right:0;bottom:var(--phone-paper-clip,0px);border-bottom:var(--score-frame-outer-width) solid var(--score-frame-outer);pointer-events:none}
+ #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 66px)}
+ body.continuous-return-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 66px + var(--return-clearance))}
+ #score-navigation-button{align-items:center}
+ #return-start{left:60px;right:auto}
+ body.pdf-score-open #return-start{left:12px}
+ #page-turn-feedback{position:fixed;padding:5px 8px;font-size:16px;height:44px;display:flex;align-items:center;background:transparent;color:#365f7d}
+ #page-turn-feedback[hidden]{display:none}
 }

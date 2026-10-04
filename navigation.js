@@ -1,6 +1,6 @@
 import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
-import {setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
+import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
 const $=id=>document.getElementById(id),panel=$('settings-dialog'),pagePosition=$('score-navigation-button'),modeMenu=$('score-navigation-menu'),navCorner=$('score-navigation'),hint=$('page-navigation-hint');
 // v1 could contain automatically saved defaults; only v2 explicitly chosen
@@ -24,12 +24,28 @@ try{hintSeen=localStorage.getItem(hintKey)==='seen';}catch{}
 function hideHint(){clearTimeout(hintTimer);hint.hidden=true;}
 function showHint(){if(hintSeen)return;hintSeen=true;try{localStorage.setItem(hintKey,'seen');}catch{}hint.hidden=false;hintTimer=setTimeout(hideHint,6000);}
 function positionIndicator(){
- if(navCorner.hidden)return;
- const paper=document.querySelector('.score-paper').getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
- const bottom=Math.min(paper.bottom-6,bar.top-8,innerHeight-8);
- navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
- navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
+ const paperElement=document.querySelector('.score-paper');
+ if(navCorner.hidden){paperElement.style.removeProperty('--phone-paper-clip');return;}
+ const paper=paperElement.getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
+ if(phoneScreen.matches){
+  // Keep the same control outside the visible sheet. Long Continuous scores
+  // retain document scrolling; only ink under the reserved status strip is clipped.
+  const top=Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight);
+  paperElement.style.setProperty('--phone-paper-clip',Math.max(0,paper.bottom-(top-5))+'px');
+  navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
+  navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
+  pageFeedback.style.right=(Math.max(0,innerWidth-paper.right)+navCorner.offsetWidth+8)+'px';
+  pageFeedback.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
+ }else{
+  paperElement.style.removeProperty('--phone-paper-clip');pageFeedback.style.removeProperty('right');pageFeedback.style.removeProperty('bottom');
+  const bottom=Math.min(paper.bottom-6,bar.top-8,innerHeight-8);
+  navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
+  navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
+ }
 }
+// Outside the clipped phone sheet, but still within the existing playing view.
+// Desktop keeps precisely the same fixed positioning and interaction.
+document.querySelector('.score-paper').after(navCorner);
 new ResizeObserver(positionIndicator).observe(document.querySelector('.score-paper'));
 function closeModeMenu(focus=false){modeMenu.hidden=true;pagePosition.setAttribute('aria-expanded','false');if(focus&&!navCorner.hidden)pagePosition.focus({preventScroll:true});}
 pagePosition.onclick=()=>{if(!modeMenu.hidden){closeModeMenu(true);return;}pause();hideHint();modeMenu.hidden=false;pagePosition.setAttribute('aria-expanded','true');positionIndicator();(modeMenu.querySelector('[aria-checked=true]')||modeMenu.querySelector('button')).focus();};
@@ -86,7 +102,7 @@ document.addEventListener('keydown',e=>{
 for(const name of ['blur','resize','beforeprint'])window.addEventListener(name,()=>pause());
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 new MutationObserver(()=>{pause();sync();}).observe($('score'),{childList:true,attributes:true,attributeFilter:['aria-busy']});
-// Clearance tracks one/two-row phone toolbars and the optional navigation strip.
+// Clearance tracks the actual toolbar and optional navigation strip.
 function measureFooter(){
  const bounds=document.querySelector('.masthead').getBoundingClientRect(),height=bounds.height;
  if(!height)return; // Lyrics/Library hide the Score footer; retain its last reservation.
@@ -105,7 +121,7 @@ installFooterViewport();
 // Real PDF pages and complete-system virtual MXL pages share the same navigation.
 function pages(){return document.body.classList.contains('pdf-score-open')?[...$('score').querySelectorAll(':scope > .pdf-page-frame')]:virtualFrames();}
 function playing(){return !document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open');}
-function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bottom=scoreFooterTop();for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,bottom-80)*ratio+'px');}}}
+function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bottom=scoreFooterTop();for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,phoneScreen.matches?bottom-$('score').getBoundingClientRect().top-scrollY-phoneNavigationClearance()-24:bottom-80)*ratio+'px');}}}
 function hideStart(){
  for(const button of document.querySelectorAll('.return-start'))button.hidden=true;
  document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
@@ -122,12 +138,14 @@ function syncStart(){
 }
 // Primary-style confirmation follows successful turns, never layout synchronization.
 const pageFeedback=$('page-turn-feedback');
+function placeFeedback(){(phoneScreen.matches?$('playing-view'):document.querySelector('.masthead .toolbar')).append(pageFeedback);}
+phoneScreen.addEventListener('change',placeFeedback);placeFeedback();
 let feedbackTimer,feedbackHideTimer;
 function hidePageFeedback(){clearTimeout(feedbackTimer);clearTimeout(feedbackHideTimer);pageFeedback.classList.remove('visible');pageFeedback.hidden=true;}
 function showPageFeedback(){
  hidePageFeedback();if(navCorner.hidden)return;
  pageFeedback.textContent=`${pageIndex+1} / ${pages().length}`;
- pageFeedback.hidden=false;pageFeedback.classList.add('visible');
+ pageFeedback.hidden=false;pageFeedback.classList.add('visible');positionIndicator();
  feedbackTimer=setTimeout(()=>{pageFeedback.classList.remove('visible');feedbackHideTimer=setTimeout(()=>{pageFeedback.hidden=true;},180);},1200);
 }
 window.addEventListener('beforeprint',hidePageFeedback);

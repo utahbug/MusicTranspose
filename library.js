@@ -249,6 +249,11 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   return {currentSongId:current,activeSongId:api?.song,hymnNumber:songs.find(s=>s.id===current)?.page,origin:songSet?.origin||null,count:captured.length,playableCount:ids.length,index,capturedIndex:captured.indexOf(current),ids:[...captured],previous:candidate(index>=0?ids[index-1]:null,'previous-song'),next:candidate(index>=0?ids[index+1]:null,'next-song'),busy,loading,bodySongLoading:bodyLoading,scoreBusy:$('score').getAttribute('aria-busy'),isBusy:!!isBusy(),lastSync:lastNavigationSync,route:navigation?.current,context:{source,sort,query:$('library-search').value,favoritesOnly,activeList},entry:songSet?.entry||null,orderedSongs:[...orderedSongs],pendingSongSet:pendingSongSet?{...pendingSongSet,ids:[...pendingSongSet.ids]}:null};
  }
  function syncSongNavigation(){
+  // current changes only in opened(), after the destination has successfully rendered.
+  const song=songs.find(s=>s.id===current),shown=song&&songForSource(song,songSet?.origin==='library'?songSet.entry?.source||source:songSet?.source||'all');
+  const label=[shown?.songNumber,shown?.page].map(value=>String(value??'').trim()).find(value=>/^\d+[a-z]?$/i.test(value)&&Number.parseInt(value,10)>0)||'Song';
+  $('score-song-number').textContent=label;
+  document.querySelector('.score-song-navigation').setAttribute('aria-label','Song navigation, current '+(label==='Song'?'song':`song ${label}`));
   const adjacent=neighbors();for(const [i,id] of ['previous-song','next-song'].entries())$(id).disabled=isBusy()||document.body.classList.contains('song-loading')||!adjacent[i];
   lastNavigationSync={at:Math.round(performance.now()),current,isBusy:!!isBusy(),busy:!!window.prototype?.busy,loading:!!window.prototype?.loading,bodySongLoading:document.body.classList.contains('song-loading'),scoreBusy:$('score').getAttribute('aria-busy'),previous:adjacent[0]||null,next:adjacent[1]||null,previousDisabled:$('previous-song').disabled,nextDisabled:$('next-song').disabled};
  }

@@ -22,10 +22,11 @@ export function virtualAvailable(){return !!source?.systems?.length;}
 export function virtualFrames(){return frames;}
 export function virtualAnchor(){return anchor;}
 export function seekVirtualMeasure(measure){anchor=measure;active=Math.max(0,frames.findIndex(f=>Number(f.dataset.end)>=anchor));}
+export function phoneNavigationClearance(){return matchMedia('(max-width:600px)').matches?parseFloat(getComputedStyle(document.getElementById('score-navigation-button')).height)+10:0;}
 export function availableScoreHeight(score){
  const top=score.getBoundingClientRect().top+scrollY;
  // Keep toolbar/safe-area clearance and the passive Original-key inset.
- return Math.max(80,scoreFooterTop()-top-32-(parseFloat(getComputedStyle(score).paddingTop)||0));
+ return Math.max(80,scoreFooterTop()-top-32-phoneNavigationClearance()-(parseFloat(getComputedStyle(score).paddingTop)||0));
 }
 export function prepareVirtualPages(force=false){
  if(!source)return 0;const score=document.getElementById('score');

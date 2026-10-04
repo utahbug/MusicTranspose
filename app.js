@@ -73,7 +73,7 @@ const playback=createPlayback(async()=>{
 });
 initPlaybackSettings(playback);
 metronome=createMetronome(playback,()=>({standalone:!hasTiming(activeSong),available:ready&&!busy&&!loading&&!!activeSong&&!activeSong.missing&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
-function playbackControls(){const actions=document.querySelector('.score-heading .score-actions');if(ready&&hasTiming(activeSong)){playback.attach(actions);const button=actions.querySelector('.song-playback');if(actions.firstElementChild!==button)actions.prepend(button);}else actions.querySelector('.song-playback')?.remove();}
+function playbackControls(){const actions=document.querySelector('.score-heading .score-title-block');if(ready&&hasTiming(activeSong)){playback.attach(actions);}else actions.querySelector('.song-playback')?.remove();}
 const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
 async function showScoreView(id){
@@ -209,6 +209,8 @@ function syncScoreView(){
  for(const option of $('score-size-options').querySelectorAll('[data-size]')){option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
 const sizeOptions=$('score-size-options');
+// A fixed popup must not inherit the phone sheet's viewport clipping.
+document.body.append(sizeOptions);
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
 $('score-size').onclick=()=>{if(busy||loading||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
 for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=async()=>{
@@ -253,10 +255,8 @@ document.querySelector('.playing-controls').prepend($('songs'));
 document.querySelector('.utility-controls').prepend($('score-size'));
 document.querySelector('.utility-controls').append($('settings'));
 document.querySelector('.utility-controls').append($('show-lyrics'));
-// Reuse the same key node; narrow phones retain their safe Reset/Key row.
-const phoneToolbar=matchMedia('(max-width:600px)');
-function placeKeyControl(){if(phoneToolbar.matches)document.querySelector('.playing-controls').append($('key'));else $('score-size').after($('key'));}
-phoneToolbar.addEventListener('change',placeKeyControl);placeKeyControl();
+// Keep DOM/keyboard order identical to the visual Score View and Key order.
+$('score-size').after($('key'));
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>closeSizeOptions());
 document.addEventListener('library-open',()=>closeSizeOptions());
