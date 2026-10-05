@@ -1143,7 +1143,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #lists-view .workspace-list-actions button{font-size:12px;font-weight:500}
 .workspace-delete{margin-left:auto}
 .workspace-song-row{position:relative;overflow:hidden;border-top:1px solid #d1dadd}
-.workspace-song-front{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px 44px 44px;align-items:center;background:#fafbf8;transform:translateX(var(--list-swipe-x,0px));transition:transform .16s ease;touch-action:pan-y pinch-zoom}
+.workspace-song-front{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) 44px 44px;align-items:center;background:#fafbf8;transform:translateX(var(--list-swipe-x,0px));transition:transform .16s ease;touch-action:pan-y pinch-zoom}
 .swiping .workspace-song-front{transition:none}
 #lists-view .list-song-remove{position:absolute;right:0;top:0;bottom:0;width:80px;min-height:44px;border:0;border-radius:0;background:#a7373e;color:white;font-size:14px}
 #lists-view .list-song-remove:hover{background:#8c2930}
@@ -1334,11 +1334,11 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #lists-view .list-workspace-section.is-open>.list-overview-row{background:#d5e3e6}
 #lists-view .list-overview-entry[aria-expanded=true]{background:transparent}
 #lists-view .list-overview-entry[aria-expanded=true]:hover{background:#cbdce1}
-#lists-view .workspace-song-entry{padding-left:60px}
+#lists-view .workspace-song-entry{padding-left:16px}
 .workspace-song-entry strong,.workspace-song-entry .song-meta{white-space:normal;overflow-wrap:anywhere;text-overflow:clip}
 .workspace-song-row.dragging{position:relative;z-index:4;opacity:.95;background:#e1edf0;box-shadow:0 4px 14px #23333130;pointer-events:none}
 .workspace-song-row.dragging .order-song{pointer-events:auto}
-@media(max-width:600px){#lists-view .workspace-song-entry{padding-left:52px}.workspace-list-actions{gap:0}#lists-view .workspace-list-actions button{padding:8px}}
+@media(max-width:600px){#lists-view .workspace-song-entry{padding-left:8px}.workspace-list-actions{gap:0}#lists-view .workspace-list-actions button{padding:8px}}
 
 /* Library-only quick access; Score and Lyrics footer geometry is independent. */
 #library{--library-quick-inset:0px;--library-quick-safe-bottom:env(safe-area-inset-bottom,0px);padding-bottom:calc(80px + var(--library-quick-safe-bottom) + var(--library-quick-inset))}
@@ -1494,7 +1494,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Expanded Lists: one light command row; secondary actions live in a menu. */
 #lists-view .workspace-list-actions{align-items:center;flex-wrap:nowrap;gap:4px;padding:0 4px;min-height:44px}
-#lists-view .workspace-list-actions .list-actions-toggle{width:44px;height:44px;flex:0 0 44px;color:#61716f}
+#lists-view .workspace-list-actions .list-actions-toggle{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;width:auto;min-width:76px;height:44px;flex:0 0 auto;padding:0 12px;border:1px solid #c2cdc6;border-radius:6px;background:#f4f7f7;color:#365f7d}
 .list-actions-toggle svg{width:22px;height:22px;fill:currentColor;vertical-align:middle}
 #lists-view .workspace-list-actions .workspace-add{flex-shrink:0;white-space:nowrap;font-size:13px;font-weight:600}
 .workspace-list-actions .list-offline-status{margin-left:auto;padding:0 4px;color:#61716f;font-size:12px;white-space:nowrap}
