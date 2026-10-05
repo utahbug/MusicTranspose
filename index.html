@@ -12,7 +12,15 @@
  <button type="button" id="home-lists" aria-label="Lists"><span><strong>Lists</strong><small>Your song collections</small></span><span aria-hidden="true">›</span></button>
  <button type="button" id="home-files" aria-label="Files"><span><strong>Files</strong><small>Your added music</small></span><span aria-hidden="true">›</span></button>
  </nav>
+ <button type="button" id="home-about" class="quiet" aria-haspopup="dialog" aria-controls="about-dialog">About</button>
 </section>
+<dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-heading"><h2 id="about-title" tabindex="-1">About MusicTranspose</h2><button type="button" id="about-close" class="close" aria-label="Close About">×</button></div>
+<h3>About</h3><p>MusicTranspose is a music workspace for viewing, transposing, organizing, and preparing music for rehearsal and performance. It is designed especially for musicians who want practical tools for working with music they are authorized to use, including music they add to the app themselves.</p>
+<h3>Unofficial app</h3><p>MusicTranspose is an independent application and is not affiliated with, sponsored by, or endorsed by The Church of Jesus Christ of Latter-day Saints.</p>
+<h3>Copyright and attribution</h3><p>© 2026 Kenneth S. Roberts.</p><p>Copyright applies to original MusicTranspose application code, design, and original app content, not to music, scores, arrangements, lyrics, trademarks, or other third-party material.</p>
+<p>Transpositions, generated chord symbols, melody reductions, annotations, and other transformations created within MusicTranspose are not official editions from the original publisher or rights holder.</p>
+<p>Music, scores, arrangements, lyrics, trademarks, and other third-party content remain the property of their respective owners and are subject to applicable rights and permissions.</p>
+<p>Users are responsible for ensuring that music and other material they add to MusicTranspose may be used under the applicable rights and permissions.</p></dialog>
 <section id="library" aria-label="Music library" hidden>
  <header class="library-heading"><h1><button type="button" class="header-home" aria-label="Library Home">MusicTranspose <span id="library-context">Library</span></button></h1><span id="library-count" role="status" aria-live="polite"></span><button type="button" class="library-theme-toggle" aria-label="Use dark Library theme" title="Use dark Library theme" aria-pressed="false"><span class="pdf-mobile-theme-swatch" aria-hidden="true"></span></button></header>
  <div class="library-header-panel">
