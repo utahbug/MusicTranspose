@@ -1504,3 +1504,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .list-command-menu button:hover,.list-command-menu button:focus-visible{background:#edf1f3}
 .list-command-menu hr{border:0;border-top:1px solid #d1dadd;margin:4px}
 .list-command-menu .workspace-delete{color:#a12e36;margin:0}
+
+/* Contextual List return uses the ordinary Score footer scale and touch target. */
+.masthead #score-lists{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid #b7c8d5;border-radius:8px;background:transparent;color:#365b72}
+.masthead #score-lists[hidden]{display:none}
+.masthead #score-lists svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.masthead #score-lists:hover:not(:disabled){background:#eaf2f8;border-color:#8da8bd}
+.masthead #score-lists:focus-visible{outline:2px solid #245a9a;outline-offset:2px}

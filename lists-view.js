@@ -69,6 +69,7 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  function hide(){closeListMenu();swipe.close();pickerSources.close();remember();$('lists-view').hidden=true;document.body.classList.remove('list-picker-open');syncPickerViewport();}
  function show(){document.body.classList.add('library-open');$('library').hidden=true;$('lists-view').hidden=false;render();window.scrollTo({top:0,behavior:'instant'});heading();}
  function open(){pickerSources.close();refreshOffline();picking=null;show();window.scrollTo({top:workspaceScroll,behavior:'instant'});}
+ function openList(id,{restoreScroll=false}={}){if(!group(id)){open();return;}expand(id);open();if(!restoreScroll)section(id)?.scrollIntoView({block:'nearest'});remember();}
  function pick(id,reset=true){remember();if(!group(id)){onLibrary();return;}if(reset||picking!==id){selected.clear();$('list-picker-search').value='';pickerSources.load(id);$('list-picker-favorites').checked=false;}picking=id;show();}
  function name(id=null){naming=id;const origin=document.activeElement;nameReturn=()=>{const target=id?($('lists-view').hidden?$('active-list-options'):$('lists-overview').querySelector(`[data-list="${CSS.escape(id)}"] .edit-list`)):origin;if(target?.isConnected)target.focus({preventScroll:true});};$('list-description-input').value=group(id)?.description||'';$('list-name-heading').textContent=id?'Edit List':'New list';$('list-name-input').value=group(id)?.name||'';$('list-name-error').textContent='';$('list-name-dialog').showModal();$('list-name-input').focus();}
  function remove(id){const g=group(id);if(!g||!confirm('Delete “'+g.name+'”? Songs remain in the Library.'))return;const exitOrder=orderingLists&&getState().groups.length===2;getState().groups=getState().groups.filter(g=>g.id!==id);expanded.delete(id);persist();const saved=save();onChanged();render();if(exitOrder)$('lists-overview').querySelector('.list-overview-entry')?.focus({preventScroll:true});announce(saved?'List deleted. Songs remain in the Library.':'Changes last only while this page is open.');}
@@ -141,5 +142,5 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  $('lists-back').onclick=cancel;$('list-picker-cancel').onclick=cancel;
  for(const id of ['list-picker-search','list-picker-favorites'])$(id).addEventListener(id==='list-picker-search'?'input':'change',renderPicker);
  $('list-picker-done').onclick=()=>{pickerSources.close();const g=group(picking);if(!g)return;const valid=new Set(songs.filter(canOpenScore).map(s=>s.id)),added=[...selected].filter(id=>valid.has(id)&&!g.songs.includes(id));if(!added.length)return;g.songs.push(...added);const saved=save(),id=picking;picking=null;selected.clear();onChanged();onAdded(id,added,saved);};
- return {open,pick,hide,render,name,remove,editEntry,finishAdded,remember};
+ return {open,openList,pick,hide,render,name,remove,editEntry,finishAdded,remember};
 }
