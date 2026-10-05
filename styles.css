@@ -1518,3 +1518,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #list-picker-count{grid-column:3}
 #list-picker-sort{min-height:44px;min-width:110px;padding:6px;border:1px solid #c2cdc6;border-radius:6px;background:#fff;color:#365f7d}
 @media(max-width:600px){.list-picker-controls #list-picker-sort{font-size:16px!important;min-width:122px}}
+
+#score-size-options button[hidden]{display:none}
+@media screen and (min-width:601px){body.pdf-score-open.pdf-key-available .masthead #key{display:flex!important}}

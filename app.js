@@ -1,3 +1,4 @@
+import {parseChordSymbol} from './chord-symbol.js';
 import {initOfflineScore} from './offline-score-ui.js';
 import {refreshOffline} from './offline-manager.js';
 import {showUnavailableScore} from './score-availability.js';
@@ -49,6 +50,9 @@ let leadSource=null,leadState=null,lastViewXML='';
 let readingPosition=null,handLayout={ok:false},octaveScope='both';
 let KEYS=[],original='',current=0,wanted=0,currentOctave=normalOctaves(),wantedOctave=currentOctave,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
+let preparedHasChords=false;
+const wideScore=()=>matchMedia('(min-width:601px)').matches;
+const keyFromPdf=()=>wideScore()&&pdfFallback&&!!original&&KEYS.length>0&&!viewOnly();
 const isPdf=()=>activeSong.scoreType==='pdf'||pdfFallback;
 const hasTiming=song=>!!song&&!song.missing&&song.scoreType!=='pdf'&&song.playbackAvailable!==false;
 const viewOnly=()=>activeSong.transpositionAvailable===false;
@@ -112,9 +116,9 @@ const scoreExport=createScoreExport({originalPdfData,preparePrint,getState:()=>{
   key:key?key.name+' '+(key.mode==='minor'?'Minor':'Major'):''};
 }});
 function width(){return Math.round(score.clientWidth);}
-function setControls(){scoreExport.sync();annotations.sync();metronome?.sync();document.body.classList.toggle('lead-score-open',!isPdf()&&scoreSize==='large'&&!!leadState?.ok);$('score-source').textContent=activeSong.collection+(activeSong.page?' · '+activeSong.page:'');$('score-source').title=$('score-source').textContent;$('score-source').dataset.compact=({'Children’s Songbook':'CS',"Children's Songbook":"CS",'Hymns (1985)':'Hymns','Hymns for Home and Church':'HHC'}[activeSong.collection]||activeSong.collection)+(activeSong.page?' · '+activeSong.page:'');const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(!hasTiming(activeSong)||busy||loading||!isPdf()&&(wanted!==current||wantedOctave!==currentOctave));playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; syncScoreView(); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=isPdf()||viewOnly()||!ready;$('print').disabled=!ready||busy;
+function setControls(){scoreExport.sync();annotations.sync();metronome?.sync();document.body.classList.toggle('lead-score-open',!isPdf()&&scoreSize==='large'&&!!leadState?.ok);$('score-source').textContent=activeSong.collection+(activeSong.page?' · '+activeSong.page:'');$('score-source').title=$('score-source').textContent;$('score-source').dataset.compact=({'Children’s Songbook':'CS',"Children's Songbook":"CS",'Hymns (1985)':'Hymns','Hymns for Home and Church':'HHC'}[activeSong.collection]||activeSong.collection)+(activeSong.page?' · '+activeSong.page:'');const sourceKey=!isPdf()&&KEYS.find(k=>k.shift===0);$('original-key-reference').hidden=!sourceKey;$('original-key-reference').textContent=sourceKey?'Original: '+sourceKey.name+' '+(sourceKey.mode==='minor'?'Min':'Maj'):''; requestAnimationFrame(alignTitleSubtitles); const concert=KEYS.find(k=>k.shift===current);if(concert&&!isPdf()&&!viewOnly())showInstrumentKeys(concert,KEYS); playback.setBlocked(!hasTiming(activeSong)||busy||loading||!isPdf()&&(wanted!==current||wantedOctave!==currentOctave));playbackControls(); $('show-lyrics').hidden=!lyricIds.has(activeSong.id);$('show-lyrics').disabled=!ready||busy||loading; syncScoreView(); $('songs').disabled=busy||loading;$('reset').disabled=isPdf()||viewOnly()||!ready;$('key').disabled=(isPdf()&&!keyFromPdf())||viewOnly()||!ready||(keyFromPdf()&&(busy||loading));document.body.classList.toggle('pdf-key-available',keyFromPdf());if(keyFromPdf()){const k=KEYS.find(k=>k.shift===0);$('key-name').textContent=k.name+' '+(k.mode==='minor'?'Min':'Maj');$('key-signature').textContent=k.fifths?'('+signature(k)+')':'';$('key').setAttribute('aria-label',`PDF key ${k.name} ${k.mode}. Choose key`);showInstrumentKeys(k,KEYS);}$('print').disabled=!ready||busy;
  syncOctaveControls();
- for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===current));b.querySelector('.marker').textContent=n===current?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
+ for(const b of dialog.querySelectorAll('[data-shift]')){const n=Number(b.dataset.shift);b.setAttribute('aria-pressed',String(n===(keyFromPdf()?0:current)));b.querySelector('.marker').textContent=n===(keyFromPdf()?0:current)?(n===0?'Original · Current':'Current'):n===0?'Original · 0':'';}
 }
 // Screen-only framing: keep every SVG node and an 8-unit safety margin above its ink.
 // Print uses a separate engraver and never calls this function.
@@ -175,7 +179,7 @@ async function renderScore(){
  }}catch(e){if(token!==selectionVersion)return;if(scoreSize==='large'&&leadSource?.ok){console.warn('Lead engraving fallback',activeSong.id,e);leadSource={ok:false,xml:original,reason:'rendering',message:leadReasons.rendering,detail:e.message};scoreSize='normal';saveScoreSize(scoreSize);engravedXML='';cache.clear();busy=false;return await renderScore();}console.error(e);wanted=current;wantedOctave=currentOctave;$('status').textContent='Could not change the score. Please reload to try again.';score.setAttribute('aria-busy','false');}
  finally{busy=false;if(token===selectionVersion)ready=!!score.querySelector('svg');setControls();}
 }
-export function changeKey(n){playback.stop();if(isPdf()||viewOnly())return;if(!Number.isInteger(n)||n< -6||n>6)return;wanted=n;score.setAttribute('aria-busy','true');$('status').textContent='Changing to '+KEYS.find(k=>k.shift===n).name+' '+KEYS.find(k=>k.shift===n).mode+'…';setControls();clearTimeout(timer);timer=setTimeout(pump,20);}
+export function changeKey(n){playback.stop();if((isPdf()&&!keyFromPdf())||viewOnly())return;if(!Number.isInteger(n)||n< -6||n>6)return;if(keyFromPdf()){leavePdfView();scoreSize='auto';saveScoreSize(scoreSize);autoChoice=null;cache.clear();}wanted=n;score.setAttribute('aria-busy','true');$('status').textContent='Changing to '+KEYS.find(k=>k.shift===n).name+' '+KEYS.find(k=>k.shift===n).mode+'…';setControls();clearTimeout(timer);timer=setTimeout(pump,20);}
 function syncOctaveControls(){
  const lead=scoreSize==='large'&&leadSource?.ok,split=handLayout.ok&&!lead,disabled=isPdf()||viewOnly()||!ready||busy||loading;
  $('key-octave').hidden=isPdf()||viewOnly();
@@ -211,18 +215,19 @@ $('lower').replaceChildren(...[...$('lower').children].reverse());
 }
 $('reset').onclick=()=>{wantedOctave=normalOctaves();changeKey(0);};
 function syncScoreView(){
+ const wide=wideScore();
  const view=isPdf()?'pdf':scoreSize==='large'?'large':'auto',label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view];
  $('score-size').disabled=!ready||busy||loading;$('score-size').dataset.size=scoreSize;$('score-size').dataset.view=view;
- $('score-view-label').textContent=label;$('score-size').setAttribute('aria-label','Score View: '+label);$('score-size').title='Score View: '+label;
- const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf',large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
+ $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label',wide?'Score':'Score View: '+label);$('score-size').title=wide?'Score':'Score View: '+label;
+ const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&(!wide||!!original&&preparedHasChords),large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
  const explanations={pdf:'Original PDF is not available for this song.',auto:'Transpose is not available for this score.',large:'Melody only is not available for this score.'};
- for(const option of $('score-size-options').querySelectorAll('[data-size]')){option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
+ for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent=wide?{pdf:'View PDF',auto:'Show chords',large:preparedHasChords&&original?'Melody only (lead sheet)':'Melody only'}[type]:{pdf:'Original',auto:'Transpose',large:'Melody only'}[type];option.hidden=wide&&!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
 const sizeOptions=$('score-size-options');
 // A fixed popup must not inherit the phone sheet's viewport clipping.
 document.body.append(sizeOptions);
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
-$('score-size').onclick=()=>{if(busy||loading||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';sizeOptions.querySelector('[aria-pressed=true]').focus({preventScroll:true});};
+$('score-size').onclick=()=>{if(busy||loading||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';(sizeOptions.querySelector('[aria-pressed=true]:not([hidden])')||sizeOptions.querySelector('button:not([hidden]):not(:disabled)'))?.focus({preventScroll:true});};
 for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=async()=>{
  if(option.disabled)return;
  playback.stop();
@@ -237,11 +242,12 @@ for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=a
  }
  if(next==='large'&&!leadSource)leadSource=createLeadXML(original,activeSong);
  if(next==='large'&&!leadSource?.ok){$('status').textContent='Unable to prepare Melody only. '+(leadSource?.message||'Melody only is unavailable for this score.');ready=true;score.setAttribute('aria-busy','false');setControls();restoreFocus();return;}
- if(pdfFallback){pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open');$('pdf-notice').hidden=true;document.dispatchEvent(new Event('score-session-reset'));readingPosition=null;}
+ if(pdfFallback){if(wideScore())wanted=0;leavePdfView();}
  else readingPosition=rememberReadingPosition();
  scoreSize=next;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}
  score.setAttribute('aria-label',activeSong.title+' sheet music');score.setAttribute('aria-busy','true');await pump();restoreFocus();
 };
+function leavePdfView(){pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open','pdf-key-available');$('pdf-notice').hidden=true;$('pdf-offline-message').hidden=true;document.dispatchEvent(new Event('score-session-reset'));readingPosition=null;}
 // Legacy helper also serves the normal Original PDF presentation (not an error).
 async function showPdfFallback(selectionToken){
  if(!activeSong.pdfAsset||busy||(loading&&selectionToken!==selectionVersion))return;
@@ -267,7 +273,7 @@ document.querySelector('.utility-controls').append($('show-lyrics'));
 // Keep DOM/keyboard order identical to the visual Score View and Key order.
 $('score-size').after($('key'));
 $('show-lyrics').classList.add('view-switch');
-window.addEventListener('resize',()=>closeSizeOptions());
+window.addEventListener('resize',()=>{closeSizeOptions();setControls();});
 document.addEventListener('library-open',()=>closeSizeOptions());
 for(const button of $('octave-scopes').querySelectorAll('button'))button.onclick=()=>{octaveScope=button.dataset.scope;syncOctaveControls();};
 for(const input of document.querySelectorAll('input[name=octave]'))input.onchange=()=>changeOctave(Number(input.value));
@@ -303,6 +309,7 @@ window.visualViewport?.addEventListener('resize',()=>{if(matchMedia('(max-width:
 async function loadScore(xml,override,token=selectionVersion,engrave=true,deriveLead=true){
  if(rendering)await rendering;if(token!==selectionVersion)return;
  xml=await withGeneratedHarmony(xml,activeSong.id);if(token!==selectionVersion)return;
+ const chordDoc=parseXML(xml);preparedHasChords=!!chordDoc.querySelector('harmony')||[...chordDoc.querySelectorAll('direction > direction-type')].some(type=>{const words=[...type.children].filter(e=>e.localName==='words');return words.length&&!words.some(w=>w.children.length)&&!!parseChordSymbol(words.map(w=>w.textContent).join(''));});
  const source=viewOnly()?null:originalKey(xml,override),keys=source?buildKeys(source):[];modeOverride=override;
  clearTimeout(timer);autoChoice=null;leadSource=deriveLead?createLeadXML(xml,activeSong):null;leadState=null;lastViewXML='';if(scoreSize==='large'&&leadSource&&!leadSource.ok){scoreSize='normal';saveScoreSize(scoreSize);}original=xml;handLayout=pianoHands(xml);KEYS=keys;current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;cache.clear();
  showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+' · '+activeSong.page,xml,$('score-source'));
