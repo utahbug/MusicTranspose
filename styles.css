@@ -1142,7 +1142,15 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .workspace-list-actions{display:flex;gap:4px;border-top:1px solid #d1dadd;padding:0 4px}
 #lists-view .workspace-list-actions button{font-size:12px;font-weight:500}
 .workspace-delete{margin-left:auto}
-.workspace-song-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px 44px;align-items:center;border-top:1px solid #d1dadd}
+.workspace-song-row{position:relative;overflow:hidden;border-top:1px solid #d1dadd}
+.workspace-song-front{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px 44px 44px;align-items:center;background:#fafbf8;transform:translateX(var(--list-swipe-x,0px));transition:transform .16s ease;touch-action:pan-y pinch-zoom}
+.swiping .workspace-song-front{transition:none}
+#lists-view .list-song-remove{position:absolute;right:0;top:0;bottom:0;width:80px;min-height:44px;border:0;border-radius:0;background:#a7373e;color:white;font-size:14px}
+#lists-view .list-song-remove:hover{background:#8c2930}
+#list-entry-dialog #list-entry-remove{display:block;margin-top:16px;border-top:1px solid #d1dadd;border-radius:0;color:#a12e36;min-height:44px}
+#list-removal-undo:not([hidden]){position:fixed;z-index:75;bottom:calc(76px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);box-sizing:border-box;display:flex;align-items:center;gap:12px;padding:8px 12px;background:#263b3d;color:#fff;border-radius:6px;box-shadow:0 3px 16px #0003;font-size:14px}
+#lists-view #list-removal-restore{color:#fff;min-height:44px;flex-shrink:0;text-decoration:underline}
+@media(prefers-reduced-motion:reduce){.workspace-song-front{transition:none}}
 #lists-view .workspace-song-entry{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;min-height:60px;padding:10px 12px;text-align:left;color:#233331}
 .workspace-song-entry strong,.workspace-song-entry .song-meta{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .workspace-song-entry strong{font-size:16px;font-weight:600;line-height:1.3}
