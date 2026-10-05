@@ -1491,3 +1491,16 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #list-picker-sources label:hover{background:#e8eef2}
 #list-picker-sources label:focus-within{outline:2px solid #536b7a;outline-offset:-2px}
 #list-picker-source-status{margin:4px 8px;font-size:13px}
+
+/* Expanded Lists: one light command row; secondary actions live in a menu. */
+#lists-view .workspace-list-actions{align-items:center;flex-wrap:nowrap;gap:4px;padding:0 4px;min-height:44px}
+#lists-view .workspace-list-actions .list-actions-toggle{width:44px;height:44px;flex:0 0 44px;color:#61716f}
+.list-actions-toggle svg{width:22px;height:22px;fill:currentColor;vertical-align:middle}
+#lists-view .workspace-list-actions .workspace-add{flex-shrink:0;white-space:nowrap;font-size:13px;font-weight:600}
+.workspace-list-actions .list-offline-status{margin-left:auto;padding:0 4px;color:#61716f;font-size:12px;white-space:nowrap}
+.list-command-menu{position:fixed;z-index:80;width:250px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;padding:4px;background:#fff;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
+.list-command-menu button{display:block;width:100%;min-height:44px;border:0;border-radius:3px;padding:8px 12px;text-align:left;font-size:14px;color:#365867}
+.list-command-menu button[hidden]{display:none}
+.list-command-menu button:hover,.list-command-menu button:focus-visible{background:#edf1f3}
+.list-command-menu hr{border:0;border-top:1px solid #d1dadd;margin:4px}
+.list-command-menu .workspace-delete{color:#a12e36;margin:0}
