@@ -1089,9 +1089,9 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library-home nav>button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:72px;text-align:left;padding:12px 16px;border:0;border-bottom:1px solid #c4cfd3;background:#fafbf8;color:#233331;font:inherit;cursor:pointer;border-radius:4px}
 #library-home strong,#library-home small{display:block}#library-home strong{font-size:16px;font-weight:500}#library-home small{font-size:13px;color:#536b7a;margin-top:4px}
 #library-home nav>button:hover{background:#eaf0f3}#library-home nav>button:focus-visible{outline:2px solid #536b7a;outline-offset:-2px}
-#library-home nav{--home-blue:color-mix(in srgb,#245a9a 8%,white);--home-teal:color-mix(in srgb,#237c7a 8%,white);--home-green:color-mix(in srgb,#2f8b61 8%,white)}
+#library-home nav{--home-blue:color-mix(in srgb,#245a9a 15%,white);--home-teal:color-mix(in srgb,#237c7a 15%,white);--home-green:color-mix(in srgb,#2f8b61 15%,white)}
 #library-home nav>button[data-home-source]:not([data-home-source=all]){background:linear-gradient(90deg,var(--home-blue) 0%,var(--home-teal) 60%,var(--home-green) 100%)}
-#library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,#f0eef5,#eceaf2)}
+#library-home nav>:is(#home-files,#home-lists){background:linear-gradient(90deg,#e4e0ed,#ddd8e8)}
 @media(hover:hover){#library-home nav>button:hover{filter:brightness(.98)}}
 #library-home nav>button:active{filter:brightness(.96)}
 @media(max-width:600px){#library-home{padding:10px 8px 24px}}
@@ -1538,3 +1538,12 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 .file-columns>span{padding-left:8px}
 @media(max-width:600px){#files-search-fields>div{left:0;right:auto}}
+
+#home-search-form{display:flex;gap:8px;margin-top:12px}
+#home-search{flex:1;min-width:0;min-height:44px;padding:10px 12px;font:16px system-ui,sans-serif;border:1px solid #b5c3c5;border-radius:6px;background:#fff;color:#233331}
+#home-search-form button{min-height:44px;padding:8px 12px}
+#home-search-form :focus-visible{outline:2px solid #536b7a;outline-offset:2px}
+[data-library-theme=dark] #home-search{background:var(--library-dark-row);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+[data-library-theme=dark] #home-search-form button{color:var(--library-dark-text)}
+[data-library-theme=dark] #home-search-form :focus-visible{outline-color:#83baf0}
+[data-library-theme=dark] #home-search::placeholder{color:#afbecb;opacity:1}
