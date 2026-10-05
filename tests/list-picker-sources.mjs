@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import fs from 'node:fs/promises';
 const engines=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
-const engine=process.env.PICKER_ENGINE||'chromium',b=await engines[engine].launch(engine==='chromium'?{channel:'msedge'}:{}),key='music-transpose-list-picker-sources-v1',stateKey='music-transpose-library-v1';
+const engine=process.env.PICKER_ENGINE||'chromium',b=await engines[engine].launch(engine==='chromium'?{channel:'msedge'}:{}),key='music-transpose-list-picker-preferences-v2',stateKey='music-transpose-library-v1';
 await fs.mkdir('test-results/list-picker-sources',{recursive:true});
 try{for(const width of [390,430,820,1024,1440]){
  const c=await b.newContext({viewport:{width,height:width===390?844:width===430?932:1180},serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));

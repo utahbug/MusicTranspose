@@ -1,13 +1,14 @@
-import {sourceChoices,matchesSource} from './library-query.js';
-const storageKey='music-transpose-list-picker-sources-v1';
+import {sourceChoices,matchesSource,compareAlphabeticalTitles} from './library-query.js';
+const storageKey='music-transpose-list-picker-preferences-v2',legacyKey='music-transpose-list-picker-sources-v1';
 const choices=sourceChoices.filter(([id])=>id!=='all'),ids=choices.map(([id])=>id);
 // UI preferences only: never write List membership, order, aliases or Favorites.
 export function createPickerSources({onChange,getListIds}){
  const button=document.getElementById('list-picker-source'),panel=document.getElementById('list-picker-sources'),status=document.getElementById('list-picker-source-status');
+ const sort=document.getElementById('list-picker-sort');
  let selected=new Set(ids),listId=null,scheduled=0;
- function read(){try{const value=JSON.parse(localStorage.getItem(storageKey)||'{}');return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}catch{return {};}}
+ function read(){try{const current=localStorage.getItem(storageKey);if(current!==null){const value=JSON.parse(current);return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}const old=JSON.parse(localStorage.getItem(legacyKey)||'{}'),value=Object.fromEntries(Object.entries(old||{}).filter(([,sources])=>Array.isArray(sources)).map(([id,sources])=>[id,{sources,sort:'default'}]));try{localStorage.setItem(storageKey,JSON.stringify(value));localStorage.removeItem(legacyKey);}catch{}return value;}catch{return {};}}
  function prune(){const value=read(),valid=new Set(getListIds()),entries=Object.entries(value).filter(([id])=>valid.has(id));if(entries.length!==Object.keys(value).length)try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(entries)));}catch{}}
- function save(){const entries=Object.entries(read()).filter(([id])=>id!==listId);entries.push([listId,ids.filter(id=>selected.has(id))]);try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(entries)));}catch{status.hidden=false;status.textContent='Could not save these source preferences on this device.';}}
+ function save(){const entries=Object.entries(read()).filter(([id])=>id!==listId);entries.push([listId,{sources:ids.filter(id=>selected.has(id)),sort:sort.value==='title'?'title':'default'}]);try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(entries)));}catch{status.hidden=false;status.textContent='Could not save these picker preferences on this device.';}}
  const checks=new Map();
  for(const [id,label] of sourceChoices){const row=document.createElement('label'),check=document.createElement('input'),text=document.createElement('span');check.type='checkbox';check.dataset.source=id;text.textContent=label;row.append(check,text);panel.insertBefore(row,status);checks.set(id,check);
   check.onchange=()=>{
@@ -40,7 +41,8 @@ export function createPickerSources({onChange,getListIds}){
  document.addEventListener('focusin',e=>{if(!panel.hidden&&!panel.contains(e.target)&&e.target!==button)close();});
  const schedule=()=>{if(!scheduled&&!panel.hidden)scheduled=requestAnimationFrame(()=>{scheduled=0;position();});};
  window.addEventListener('resize',schedule);window.addEventListener('scroll',schedule,{passive:true});window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
- function load(id){close();listId=id;const saved=read()[id],valid=Array.isArray(saved)?saved.filter(id=>ids.includes(id)):[];selected=new Set(valid.length?valid:ids);status.textContent='';status.hidden=true;sync();}
+ function load(id){close();listId=id;const saved=read()[id],valid=Array.isArray(saved?.sources)?saved.sources.filter(id=>ids.includes(id)):[];sort.value=saved?.sort==='title'?'title':'default';selected=new Set(valid.length?valid:ids);status.textContent='';status.hidden=true;sync();}
+ sort.onchange=()=>{save();onChange();};
  prune();sync();
- return {load,close,prune,matches:song=>[...selected].some(source=>matchesSource(song,source))};
+ return {load,close,prune,sortResults:results=>sort.value==='title'?results.sort(compareAlphabeticalTitles):results,matches:song=>[...selected].some(source=>matchesSource(song,source))};
 }

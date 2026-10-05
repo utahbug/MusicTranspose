@@ -1511,3 +1511,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .masthead #score-lists svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .masthead #score-lists:hover:not(:disabled){background:#eaf2f8;border-color:#8da8bd}
 .masthead #score-lists:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
+
+/* Candidate ordering is separate from the saved List's manual order. */
+.list-picker-controls{grid-template-columns:minmax(0,1fr) auto auto}
+#list-picker-target{grid-column:1/3}
+#list-picker-count{grid-column:3}
+#list-picker-sort{min-height:44px;min-width:110px;padding:6px;border:1px solid #c2cdc6;border-radius:6px;background:#fff;color:#365f7d}
+@media(max-width:600px){.list-picker-controls #list-picker-sort{font-size:16px!important;min-width:122px}}
