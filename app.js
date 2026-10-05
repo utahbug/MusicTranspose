@@ -52,7 +52,7 @@ let KEYS=[],original='',current=0,wanted=0,currentOctave=normalOctaves(),wantedO
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
 let preparedHasChords=false;
 const wideScore=()=>matchMedia('(min-width:601px)').matches;
-const keyFromPdf=()=>wideScore()&&pdfFallback&&!!original&&KEYS.length>0&&!viewOnly();
+const keyFromPdf=()=>pdfFallback&&!!original&&KEYS.length>0&&!viewOnly();
 const isPdf=()=>activeSong.scoreType==='pdf'||pdfFallback;
 const hasTiming=song=>!!song&&!song.missing&&song.scoreType!=='pdf'&&song.playbackAvailable!==false;
 const viewOnly=()=>activeSong.transpositionAvailable===false;
@@ -219,9 +219,9 @@ function syncScoreView(){
  const view=isPdf()?'pdf':scoreSize==='large'?'large':'auto',label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view];
  $('score-size').disabled=!ready||busy||loading;$('score-size').dataset.size=scoreSize;$('score-size').dataset.view=view;
  $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label',wide?'Score':'Score View: '+label);$('score-size').title=wide?'Score':'Score View: '+label;
- const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&(!wide||!!original&&preparedHasChords),large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
+ const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&!!original&&preparedHasChords,large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
  const explanations={pdf:'Original PDF is not available for this song.',auto:'Transpose is not available for this score.',large:'Melody only is not available for this score.'};
- for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent=wide?{pdf:'View PDF',auto:'Show chords',large:preparedHasChords&&original?'Melody only (lead sheet)':'Melody only'}[type]:{pdf:'Original',auto:'Transpose',large:'Melody only'}[type];option.hidden=wide&&!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
+ for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent={pdf:'View PDF',auto:'Show chords',large:preparedHasChords&&original?'Melody only (lead sheet)':'Melody only'}[type];option.hidden=!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
 const sizeOptions=$('score-size-options');
 // A fixed popup must not inherit the phone sheet's viewport clipping.
@@ -242,7 +242,7 @@ for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=a
  }
  if(next==='large'&&!leadSource)leadSource=createLeadXML(original,activeSong);
  if(next==='large'&&!leadSource?.ok){$('status').textContent='Unable to prepare Melody only. '+(leadSource?.message||'Melody only is unavailable for this score.');ready=true;score.setAttribute('aria-busy','false');setControls();restoreFocus();return;}
- if(pdfFallback){if(wideScore())wanted=0;leavePdfView();}
+ if(pdfFallback){wanted=0;leavePdfView();}
  else readingPosition=rememberReadingPosition();
  scoreSize=next;saveScoreSize(scoreSize);if(scoreSize==='auto'){autoChoice=null;cache.clear();}
  score.setAttribute('aria-label',activeSong.title+' sheet music');score.setAttribute('aria-busy','true');await pump();restoreFocus();
