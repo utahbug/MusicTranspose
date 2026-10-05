@@ -13,7 +13,10 @@ export const removeRecord=id=>transaction('readwrite',(s,t)=>{t.objectStore('met
 export function storageMessage(error){return error?.name==='ConstraintError'?'This exact file is already in Files.':error?.name==='QuotaExceededError'?'Not enough browser storage. Free some space and try again.':'Unable to save on this device. Check browser storage permissions and try again.';}
 
 // Optional metadata is additive: older records need no database migration.
-export function fileDetails(metadata){return {displayName:metadata.displayName?.trim()||metadata.title||metadata.originalFilename||'Untitled',description:metadata.description||'',category:metadata.category||''};}
+export function fileDetails(metadata){return {displayName:metadata.displayName?.trim()||metadata.title||metadata.name||metadata.originalFilename||'Untitled',description:metadata.description||'',category:metadata.category||'',composer:metadata.composer||'',arranger:metadata.arranger||'',tags:normalizeFileTags(metadata.tags)};}
 const fileOverridesKey='music-transpose-bundled-file-details-v1';
 export function bundledFileDetails(){try{return JSON.parse(localStorage.getItem(fileOverridesKey)||'{}')||{};}catch{return {};}}
-export function saveBundledFileDetails(id,details){localStorage.setItem(fileOverridesKey,JSON.stringify({...bundledFileDetails(),[id]:details}));}
+export function saveBundledFileDetails(id,details){localStorage.setItem(fileOverridesKey,JSON.stringify({...bundledFileDetails(),[id]:{...bundledFileDetails()[id],...details}}));}
+
+export function normalizeFileTags(value){const seen=new Set();return (Array.isArray(value)?value:String(value||'').split(',')).map(v=>String(v).trim()).filter(v=>v&&!seen.has(v.toLocaleLowerCase())&&seen.add(v.toLocaleLowerCase()));}
+export function fileTypeLabel(file){const type=String(file.fileType||file.scoreType||'').toLowerCase();if(type==='mxl')return 'MXL';if(['xml','musicxml'].includes(type))return 'MusicXML';if(type==='pdf')return 'PDF';return type.toUpperCase()||'Unknown';}

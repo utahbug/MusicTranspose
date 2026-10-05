@@ -1252,7 +1252,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .files-heading h1{font-size:22px}
 .files-heading .eyebrow{margin-bottom:2px}
 #files-count{margin:10px 0 0;color:#536b7a;font-size:13px}
-#import-description,#import-category{display:block;width:100%;box-sizing:border-box;font:16px system-ui,sans-serif;min-height:44px;padding:8px;border:1px solid #b5c3c5;border-radius:4px;background:#fff;color:#233331;margin-bottom:12px}
+#import-description,#import-category,#import-composer,#import-arranger,#import-tags{display:block;width:100%;box-sizing:border-box;font:16px system-ui,sans-serif;min-height:44px;padding:8px;border:1px solid #b5c3c5;border-radius:4px;background:#fff;color:#233331;margin-bottom:12px}
 #import-description{resize:vertical}
 #import-details label{display:block;margin-bottom:5px}
 #import-details #import-memberships label{display:flex;min-height:44px;gap:8px;align-items:center;font-weight:400}
@@ -1521,3 +1521,20 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 #score-size-options button[hidden]{display:none}
 @media screen and (min-width:601px){body.pdf-score-open.pdf-key-available .masthead #key{display:flex!important}}
+
+/* Files metadata stays in the editor; browsing shows only identity and format. */
+.files-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0}
+#files-search{flex:1 1 220px;min-width:0;min-height:44px;font-size:16px}
+.files-controls select{min-height:44px;font-size:16px;max-width:160px}
+#files-search-fields{position:relative}
+#files-search-fields summary{cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 10px}
+#files-search-fields>div{position:absolute;z-index:10;top:100%;right:0;width:200px;max-height:50vh;overflow:auto;background:var(--paper,#fafbf8);border:1px solid #aabbbb;border-radius:6px;box-shadow:0 4px 12px #0002;padding:4px}
+#files-search-fields label{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 8px}
+.file-row,.file-columns{grid-template-columns:minmax(0,1fr) 110px 44px}
+.file-columns{display:grid;padding:8px 0;color:#53675d;font-size:13px}
+.file-type{font-size:13px;padding:8px}
+#lists-view .edit-list-entry svg,#lists-view .edit-list svg{width:20px;height:20px}
+@media(max-width:600px){.file-columns{display:none}.file-row{grid-template-columns:minmax(0,1fr) 44px}.file-entry{grid-column:1;grid-row:1}.file-type{grid-column:1;grid-row:2;padding-top:0}.file-edit{grid-column:2;grid-row:1/3}#files-search{flex-basis:100%}}
+
+.file-columns>span{padding-left:8px}
+@media(max-width:600px){#files-search-fields>div{left:0;right:auto}}
