@@ -4,6 +4,20 @@ import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
 const $=id=>document.getElementById(id),pagePosition=$('score-navigation-button'),modeMenu=$('score-navigation-menu'),navCorner=$('score-navigation'),hint=$('page-navigation-hint');
+// Visibility only: retain the measured footer and all score geometry.
+const footer=document.querySelector('.masthead'),footerToolbar=footer.querySelector('.toolbar');
+const focusHide=document.createElement('button'),focusShow=document.createElement('button');
+for(const [button,id,label,path] of [[focusHide,'score-hide-controls','Hide controls','m6 9 6 6 6-6'],[focusShow,'score-show-controls','Show controls','m6 15 6-6 6 6']]){
+ button.id=id;button.type='button';button.className='score-focus-control';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-controls','score-footer-controls');
+ button.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+}
+footerToolbar.id='score-footer-controls';footerToolbar.querySelector('.utility-controls').append(focusHide);footer.append(focusShow);focusShow.hidden=true;
+function setFooterFocus(hidden,moveFocus=true){
+ footer.classList.toggle('controls-hidden',hidden);footerToolbar.inert=hidden;focusShow.hidden=!hidden;
+ if(moveFocus)(hidden?focusShow:focusHide).focus({preventScroll:true});
+}
+focusHide.onclick=()=>setFooterFocus(true);focusShow.onclick=()=>setFooterFocus(false);
+document.addEventListener('score-session-reset',()=>setFooterFocus(false,false));
 // v1 could contain automatically saved defaults; only v2 explicitly chosen
 // values override the device rule. Leave legacy data intact for compatibility.
 const storageKey='music-transpose-navigation-v2';
@@ -102,11 +116,11 @@ $('scroll-speed').oninput=e=>{speed=Number(e.target.value);persist();sync();};
 $('auto-toggle').onclick=()=>{toggle();if(running)closeModeMenu(true);};$('screenful-next').onclick=advance;
 // Only deliberate user inputs pause scrolling; our own scroll events do not.
 document.addEventListener('wheel',()=>pause(),{passive:true});
-document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle'))pause();},{passive:true});
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('#auto-toggle,.score-focus-control'))pause();},{passive:true});
 document.addEventListener('touchstart',e=>{if(e.target.closest('main'))pause();},{passive:true});
 window.addEventListener('scroll',()=>{if(running&&Math.abs(scrollY-expected)>2)pause();},{passive:true});
 document.addEventListener('keydown',e=>{
- if(document.body.classList.contains('pdf-annotation-active')||document.body.classList.contains('library-open')||document.body.classList.contains('lyrics-open')||document.querySelector('dialog[open]')||!modeMenu.hidden||e.target.closest('input,select,textarea,[contenteditable]'))return;
+ if((e.target.closest('.score-focus-control')&&[' ','Enter'].includes(e.key))||document.body.classList.contains('pdf-annotation-active')||document.body.classList.contains('library-open')||document.body.classList.contains('lyrics-open')||document.querySelector('dialog[open]')||!modeMenu.hidden||e.target.closest('input,select,textarea,[contenteditable]'))return;
  if(mode==='pages'&&['PageDown','ArrowRight','PageUp','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();if(e.repeat)return;turn(e.key==='Home'?-Infinity:e.key==='End'?Infinity:['PageDown','ArrowRight'].includes(e.key)?1:-1);return;}
  if(mode==='hybrid'&&['PageDown','ArrowRight'].includes(e.key)){e.preventDefault();advance();return;}
  if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))pause();

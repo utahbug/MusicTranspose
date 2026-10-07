@@ -1661,3 +1661,16 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #home-about[aria-expanded=true]{background:#ffffff25}
 [data-library-theme=dark] #home-info-menu{background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
 [data-library-theme=dark] #home-info-menu button:is(:hover,:focus-visible){background:#354d57;outline-color:#83baf0}
+
+/* Explicit performance focus; visibility preserves pagination and footer reservation. */
+@media screen{
+ body .masthead .score-focus-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border:1px solid #b7c8d5;border-radius:8px;background:#f7f9fb;color:#365b72}
+ .score-focus-control svg{width:24px;height:24px}
+ body .masthead .score-focus-control:hover{background:#eaf2f8;border-color:#8da8bd}
+ .score-focus-control:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
+ .masthead.controls-hidden .toolbar{visibility:hidden;pointer-events:none}
+ body .masthead.controls-hidden{background:transparent;border-color:transparent;box-shadow:none}
+ #score-show-controls{position:absolute;right:max(4px,env(safe-area-inset-right,0px));bottom:calc(4px + var(--playing-safe-bottom))}
+ body .masthead #score-show-controls[hidden]{display:none}
+}
+@media print{.score-focus-control{display:none!important}}
