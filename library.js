@@ -1,4 +1,4 @@
-import {listSongIds} from './list-items.js';
+import {listSongIds,initializeTextItems} from './list-items.js';
 import {offlineSongState,offlineBadge,refreshOffline,reconcileOfflineLists} from './offline-manager.js';
 import {initLibraryTheme} from './library-theme.js';
 import {installLibraryQuickAccess} from './library-quick-access.js';
@@ -66,15 +66,16 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const group=()=>state.groups.find(g=>g.id===activeList);
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved&&typeof saved==='object'){
   const ids=a=>Array.isArray(a)?[...new Set(a.filter(x=>typeof x==='string'))]:[];
-  state.orderingVersion=saved.orderingVersion;state.favorites=ids(saved.favorites);state.recent=ids(saved.recent).slice(0,30);
+  state.textItems=saved.textItems;state.orderingVersion=saved.orderingVersion;state.favorites=ids(saved.favorites);state.recent=ids(saved.recent).slice(0,30);
   state.groups=Array.isArray(saved.groups)?saved.groups.filter(g=>g&&typeof g.id==='string'&&typeof g.name==='string').map(g=>({...g,id:g.id,name:g.name.slice(0,80),songs:ids(g.songs),description:typeof g.description==='string'?g.description.slice(0,2000):'',displayNames:Object.fromEntries(Object.entries(g.displayNames||{}).filter(([id,value])=>ids(g.songs).includes(id)&&typeof value==='string'&&value.trim()).map(([id,value])=>[id,value.trim().slice(0,200)]))})):[];
  }}catch{}
+ const textMigrated=initializeTextItems(state);
  const preferencesKey='music-transpose-library-preferences-v1';
  try{const prefs=JSON.parse(localStorage.getItem(preferencesKey)||'null');if(prefs){globalSort=prefs.order==='number'?'number':'title';sort=globalSort;source='all';}}catch{}
  function savePreferences(){if(activeList){remember();persistWorkspace();return;}try{localStorage.setItem(preferencesKey,JSON.stringify({order:globalSort}));}catch{}}
  function save(){try{localStorage.setItem(storageKey,JSON.stringify(state));reconcileOfflineLists(state.groups);return true;}catch{$('library-message').textContent='Browser storage is unavailable. Changes will last only while this page is open.';return false;}}
  // Preserve every existing sequence, including older stores without a version marker.
- if(state.orderingVersion!==1){state.orderingVersion=1;save();}
+ if(state.orderingVersion!==1||textMigrated){state.orderingVersion=1;save();}
  const browse=()=>({query:$('library-search').value,source,sort,searchFields:[...enabledFields],searchFieldsVersion:2,favoritesOnly,savedOnly,scroll:($('library').hidden?libraryScroll:scrollY)});
  // Filters travel with score history, but remain session-only workspace preferences.
 

@@ -1,3 +1,4 @@
+import {textBulletsIcon,textNumberedIcon,textImageIcon} from './icons.js';
 // Accept only the editor's formatting and embedded raster images, including on reload.
 export function cleanTextHTML(html){
  const source=document.createElement('template');source.innerHTML=String(html||'');
@@ -12,8 +13,11 @@ export function cleanTextHTML(html){
  }
  for(const child of source.content.childNodes)copy(child,output);return output.innerHTML;
 }
-export function createTextEditor({commit,remove}){
+export function createTextEditor({commit,remove,usage=()=>0}){
  const $=id=>document.getElementById(id),dialog=$('list-text-dialog'),editor=$('list-text-content');let current=null,origin=null,range=null,pending=0,generation=0;
+ dialog.querySelector('[data-command="insertUnorderedList"]').innerHTML=textBulletsIcon;
+ dialog.querySelector('[data-command="insertOrderedList"]').innerHTML=textNumberedIcon;
+ $('list-image-icon').innerHTML=textImageIcon;
  const error=text=>$('list-text-error').textContent=text;
  function remember(){const selection=getSelection();if(selection.rangeCount&&editor.contains(selection.anchorNode))range=selection.getRangeAt(0).cloneRange();}
  function restore(){editor.focus();if(range&&editor.contains(range.commonAncestorContainer)){const selection=getSelection();selection.removeAllRanges();selection.addRange(range);}}
@@ -35,5 +39,5 @@ export function createTextEditor({commit,remove}){
  $('list-text-form').onsubmit=e=>{e.preventDefault();if(pending)return;const title=$('list-text-title').value.trim();if(!title){error('Enter a title.');return;}const html=cleanTextHTML(editor.innerHTML);if(html.length>1800000){error('This Text item is too large. Remove an image or split it into two items.');return;}if(commit(current,{type:'text',title,html}))dialog.close();else error('Could not save to device storage. Your draft is still open. Free storage or use fewer images, then retry.');};
  $('list-text-cancel').onclick=()=>dialog.close();$('list-text-remove').onclick=()=>{const item=current;dialog.close();remove(item);};
  dialog.addEventListener('close',()=>{generation++;range=null;origin?.isConnected&&origin.focus({preventScroll:true});});
- return {open(list,id,item){generation++;current={list,id};origin=document.activeElement;range=null;error('');$('list-text-heading').textContent=item?'Edit Text':'Add Text';$('list-text-title').value=item?.title||'';editor.innerHTML=cleanTextHTML(item?.html);$('list-text-size').value='3';$('list-text-remove').hidden=!item;dialog.showModal();$('list-text-title').focus();}};
+ return {open(list,id,item){generation++;current={list,id};origin=document.activeElement;range=null;error('');const count=usage(id);$('list-text-shared').hidden=count<2;$('list-text-shared').textContent='Used in '+count+' Lists. Edits update all of them.';$('list-text-heading').textContent=item?'Edit Text':'Add Text';$('list-text-title').value=item?.title||'';editor.innerHTML=cleanTextHTML(item?.html);$('list-text-size').value='3';$('list-text-remove').hidden=!item;dialog.showModal();$('list-text-title').focus();}};
 }

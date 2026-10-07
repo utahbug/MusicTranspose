@@ -17,7 +17,16 @@ const button=(text,label,action)=>{const e=el('button',text,'quiet');e.type='but
 // Membership/order/aliases remain in the Library store.
 export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChanged,onPick,onSong,freshLaunch=false}){
  const swipe=createListRowSwipe();
- const textEditor=createTextEditor({commit:({list,id},item)=>{const g=group(list);if(!g)return false;const key=id||'text:'+crypto.randomUUID(),old=g.textItems,order=[...g.songs];g.textItems={...old,[key]:item};if(!id)g.songs.push(key);if(!save()){g.textItems=old;g.songs=order;return false;}onChanged();render();return true;},remove:({list,id})=>removeSong(list,id)});
+ const textEditor=createTextEditor({usage:id=>getState().groups.filter(g=>g.songs.includes(id)).length,commit:({list,id},item)=>{const g=group(list);if(!g)return false;const key=id||'text:'+crypto.randomUUID(),store=getState().textItems,old=store[key],order=[...g.songs];store[key]={...old,...item};if(!id)g.songs.push(key);if(!save()){if(old===undefined)delete store[key];else store[key]=old;g.songs=order;return false;}onChanged();render();return true;},remove:({list,id})=>removeSong(list,id)});
+ let textTarget=null,textChoiceOrigin=null;
+ function chooseText(list){textTarget=list;textChoiceOrigin=document.activeElement;const host=$('list-existing-items');host.replaceChildren();$('list-existing-error').textContent='';
+  const items=Object.entries(getState().textItems).filter(([,item])=>item?.type==='text').sort((a,b)=>a[1].title.localeCompare(b[1].title));
+  for(const [id,item] of items){const exists=group(list).songs.includes(id),choice=button(item.title+(exists?' — Already in list':''),'Add existing Text: '+item.title,()=>{const g=group(textTarget);if(!g||g.songs.includes(id))return;g.songs.push(id);if(!save()){g.songs.pop();$('list-existing-error').textContent='Could not save to device storage. Please retry.';return;}$('list-text-choice').close();onChanged();render();focusRow(g.id,id,'.edit-list-entry');});choice.disabled=exists;host.append(choice);}
+  if(!items.length)host.append(el('p','No saved Text items yet. Create New Text to get started.'));$('list-text-choice').showModal();
+ }
+ $('list-text-new').onclick=()=>{const id=textTarget;$('list-text-choice').close();textEditor.open(id,null,null);};
+ $('list-text-choice-close').onclick=()=>$('list-text-choice').close();
+ $('list-text-choice').addEventListener('close',()=>{if(!$('list-text-dialog').open&&textChoiceOrigin?.isConnected)textChoiceOrigin.focus({preventScroll:true});});
  let reading=null,readerOrigin=null;
  function readText(g,id){reading={list:g.id,id};readerOrigin=document.activeElement;$('list-text-reader-title').textContent=textItem(g,id).title;$('list-text-reader-content').innerHTML=cleanTextHTML(textItem(g,id).html);$('list-text-reader').showModal();}
  $('list-text-reader-close').onclick=()=>$('list-text-reader').close();
@@ -89,14 +98,14 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  function focusAfterRemoval(list,index){const g=group(list),id=g?.songs[Math.min(index,g.songs.length-1)];if(id)focusRow(list,id,'.edit-list-entry');else section(list)?.querySelector('.list-actions-toggle')?.focus({preventScroll:true});}
  function clearUndo(){clearTimeout(undoTimer);undo=null;$('list-removal-undo').hidden=true;}
  function stageRemoval(g,ids){
-  clearUndo();const removed=g.songs.map((id,index)=>({id,index,alias:g.displayNames?.[id],text:g.textItems?.[id]})).filter(item=>ids.includes(item.id));undo={list:g.id,items:removed};
-  g.songs=g.songs.filter(id=>!ids.includes(id));for(const id of ids){if(g.displayNames)delete g.displayNames[id];if(g.textItems)delete g.textItems[id];}
+  clearUndo();const removed=g.songs.map((id,index)=>({id,index,alias:g.displayNames?.[id],text:textItem(g,id)})).filter(item=>ids.includes(item.id));undo={list:g.id,items:removed};
+  g.songs=g.songs.filter(id=>!ids.includes(id));for(const id of ids){if(g.displayNames)delete g.displayNames[id];}
   $('list-removal-message').textContent=removed.length===1?'Removed “'+(removed[0].text?.title||removed[0].alias||songs.find(s=>s.id===removed[0].id)?.title||'Unavailable song')+'” from '+g.name+'.':'Removed '+removed.length+' items from '+g.name+'.';$('list-removal-undo').hidden=false;undoTimer=setTimeout(clearUndo,7000);
  }
  function removeSong(list,id){const g=group(list),index=g?.songs.indexOf(id);if(!g||index<0)return;const y=scrollY;stageRemoval(g,[id]);const saved=save();onChanged();render();window.scrollTo({top:y,behavior:'instant'});focusAfterRemoval(list,index);if(!saved)$('list-removal-message').textContent+=' Changes last only while this page is open.';}
  $('list-removal-restore').onclick=()=>{
   const batch=undo,g=group(batch?.list);if(!batch)return;clearUndo();if(!g){announce('The List no longer exists.');return;}
-  for(const item of batch.items){if(g.songs.includes(item.id))continue;g.songs.splice(Math.min(item.index,g.songs.length),0,item.id);if(item.alias!==undefined){g.displayNames||={};Object.defineProperty(g.displayNames,item.id,{value:item.alias,writable:true,enumerable:true,configurable:true});}if(item.text!==undefined){g.textItems||={};Object.defineProperty(g.textItems,item.id,{value:item.text,writable:true,enumerable:true,configurable:true});}}
+  for(const item of batch.items){if(g.songs.includes(item.id))continue;g.songs.splice(Math.min(item.index,g.songs.length),0,item.id);if(item.alias!==undefined){g.displayNames||={};Object.defineProperty(g.displayNames,item.id,{value:item.alias,writable:true,enumerable:true,configurable:true});}}
   const y=scrollY,saved=save();onChanged();render();window.scrollTo({top:y,behavior:'instant'});focusRow(batch.list,batch.items[0].id,'.edit-list-entry');announce(saved?'Items restored to '+g.name+'.':'Items restored. Changes last only while this page is open.');
  };
  $('list-entry-remove').onclick=()=>{const item=editingEntry;if(!item)return;const index=group(item.id)?.songs.indexOf(item.songId);entryReturn=()=>focusAfterRemoval(item.id,index);$('list-entry-dialog').close();removeSong(item.id,item.songId);};
@@ -119,7 +128,7 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
   if(listMenuOrigin===origin){closeListMenu(true);return;}closeListMenu();closeSongOrder();swipe.close();
   const menu=el('div',null,'list-command-menu');menu.id='list-command-menu';menu.setAttribute('role','menu');menu.setAttribute('aria-label','List actions: '+g.name);listMenu=menu;listMenuOrigin=origin;listMenuId=g.id;origin.setAttribute('aria-expanded','true');
   const add=button('Add songs','Add songs',()=>{closeListMenu();startPick(g.id);});add.classList.add('workspace-add');
-  const addText=button('Add Text','Add Text',()=>{closeListMenu(true);textEditor.open(g.id,null,null);});
+  const addText=button('Add Text','Add Text',()=>{closeListMenu(true);chooseText(g.id);});
   const copy=button('Copy list','Copy list',async()=>{closeListMenu(true);const copied=await copyListText(listClipboardText(g,songs));announce(copied?'Copied '+listCount(g)+'.':'Unable to copy list. Try again.');});copy.classList.add('workspace-copy');
   const offline=async action=>{try{await action(g);}catch{}finally{if(listMenu===menu)closeListMenu(true);}};
   const save=button('Save list on this device','Save list on this device',()=>offline(saveOfflineList)),removeDownloads=button('Remove list downloads','Remove list downloads',()=>offline(removeOfflineList));save.classList.add('offline-list-save');removeDownloads.classList.add('offline-list-remove');

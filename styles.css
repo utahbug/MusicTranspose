@@ -1580,3 +1580,11 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #list-text-content{min-height:180px;max-height:40vh;overflow:auto;padding:12px;border:1px solid #b5c3c5;border-radius:4px}#list-text-error{color:#a12e36}#list-text-remove{color:#a12e36!important;margin-top:12px}
 #list-text-dialog :focus-visible,#list-text-reader :focus-visible{outline:2px solid #536b7a;outline-offset:2px}
 @media print{#list-text-dialog,#list-text-reader{display:none!important}}
+
+/* Compact artwork with full-size touch targets. */
+.list-text-toolbar{gap:4px}.list-text-toolbar button,.list-image-upload{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px}
+.list-text-toolbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.list-text-toolbar b{font-size:21px}.list-text-toolbar select{width:60px}
+#list-text-choice{width:420px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);overflow:auto;box-sizing:border-box;font-family:system-ui,sans-serif}
+#list-text-choice h2{font-size:20px}#list-text-choice h3{font-size:16px;margin-bottom:8px}#list-text-choice button{min-height:44px;font:inherit;padding:8px;color:#365f7d;background:transparent;border:1px solid #ccd6da;border-radius:4px}
+#list-existing-items{max-height:45vh;overflow:auto}#list-existing-items button{display:block;width:100%;text-align:left;overflow-wrap:anywhere;margin-bottom:4px}#list-existing-items button:disabled{opacity:.55}#list-existing-error{color:#a12e36}
+@media print{#list-text-choice{display:none!important}}
