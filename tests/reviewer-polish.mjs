@@ -8,9 +8,9 @@ const {chromium}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-prima
 try{
  for(const width of [390,820,1440]){
   const c=await b.newContext({viewport:{width,height:1000},serviceWorkers:'block'}),p=await c.newPage();await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
-  const cards=p.locator('#library-home nav>button'),count=await cards.count();assert.equal(count,7);
+  const cards=p.locator('#library-home nav>button'),count=await cards.count();assert.equal(count,6);
   const shape=await cards.evaluateAll(es=>es.map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:r.height,radius:parseFloat(s.borderRadius),border:s.borderTopWidth,shadow:s.boxShadow};}));
-  for(let i=0;i<count;i++){assert(shape[i].height>=72);assert(shape[i].radius>=10);assert.equal(shape[i].border,'1px');assert.notEqual(shape[i].shadow,'none');if(i)assert(shape[i].top-shape[i-1].bottom>=8);}
+  for(let i=0;i<count;i++){assert(shape[i].height>=68);assert(shape[i].radius>=10);assert.equal(shape[i].border,'1px');assert.notEqual(shape[i].shadow,'none');if(i)assert(shape[i].top-shape[i-1].bottom>=6);}
   const first=cards.first();await first.focus();assert.equal(await first.evaluate(e=>getComputedStyle(e).outlineStyle),'solid');await first.hover();await p.mouse.down();assert(await first.evaluate(e=>e.matches(':active')));await p.mouse.move(1,1);await p.mouse.up();
   for(let i=0;i<count;i++){
    await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);const card=p.locator('#library-home nav>button').nth(i),source=await card.getAttribute('data-home-source'),id=await card.getAttribute('id');await card.click();

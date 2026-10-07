@@ -29,6 +29,9 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  initLibraryTheme();
  installLibraryQuickAccess();
  for(const [id,icon] of [['library-quick-lists',listsIcon],['library-quick-files',filesIcon]])$(id).insertAdjacentHTML('afterbegin',icon);
+ for(const [id,icon] of [['home-footer-lists',listsIcon],['home-footer-files',filesIcon],['home-text',textIcon]])$(id).innerHTML=icon;
+ $('home-current').innerHTML=$('songs').innerHTML;
+ $('home-current').onclick=showHome;$('home-footer-lists').onclick=()=>showLists();$('home-footer-files').onclick=()=>showFiles();
  for(const id of ['files-library','lists-library'])$(id).innerHTML=$('songs').innerHTML;
  $('lists-library').onclick=showHome;
  for(const [workspace,destination,icon,open] of [['lists','Files',filesIcon,showFiles],['files','Lists',listsIcon,showLists]]){
