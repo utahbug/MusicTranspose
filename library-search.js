@@ -22,9 +22,9 @@ export function createSongSearch(load=async()=>{const response=await fetch(new U
  function fields(song){if(!metadata.has(song))metadata.set(song,{title:normalizeSearch(song.title||''),pages:[song.page,song.songNumber,...(song.collectionMemberships||[]).flatMap(m=>[m.page,m.songNumber])].filter(v=>v!=null).map(pageSearchKey)});return metadata.get(song);}
  async function prepare(){if(lyrics)return;if(!pending)pending=load().then(data=>{lyrics=new Map(data.songs.map(record=>[record.id,normalizeSearch(lyricText(record))]));}).catch(error=>{pending=null;throw error;});return pending;}
  function match(song,query,enabled=searchFields){
-  const text=normalizeSearch(query),base=fields(song),words=text.split(/\s+/).filter(Boolean);
+  const text=normalizeSearch(query),pageKey=pageSearchKey(query),base=fields(song),words=text.split(/\s+/).filter(Boolean);
   if(!text)return {matched:true};
-  if(enabled.includes('page')&&/^\d+[a-z]?$/.test(pageSearchKey(query))&&base.pages.includes(pageSearchKey(query)))return {matched:true,reason:'Matched page',pageMatch:true};
+  if(enabled.includes('page')&&/^\d+[a-z]?$/.test(pageKey)&&base.pages.some(page=>page===pageKey||(/^\d+$/.test(pageKey)&&page.replace(/[a-z]$/,'')===pageKey)))return {matched:true,reason:'Matched page',pageMatch:true};
   if(enabled.includes('title')&&words.every(word=>base.title.includes(word)))return {matched:true};
   if(enabled.includes('lyrics')&&(lyrics?.get(song.id)||'').includes(text))return {matched:true,reason:'Matched lyrics'};
   return {matched:false};

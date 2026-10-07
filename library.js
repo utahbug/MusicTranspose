@@ -99,8 +99,15 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   if(!$('library').hidden){
    libraryScroll=scrollY;remember();persistWorkspace();
    const query=$('library-search').value,singleSearch=!!normalizeSearch(query)&&orderedSongs.length===1&&orderedSongs[0]===id;
-   const ids=singleSearch?findSongs('').filter(canOpenScore).map(s=>s.id):[...orderedSongs];
-   pendingSongSet={ids,origin:'library',entry:{path:normalizeSearch(query)?'Search':'Library direct',query,resultCount:$('library-results').querySelectorAll('.library-row').length,playableResultCount:orderedSongs.length,displayedPlayableIds:[...orderedSongs],singleResultFallback:singleSearch,source,sort,favoritesOnly,list:activeList}};
+   // Page and exact-title hits locate an identity; multi-book result counts are not boundaries.
+   // Explicit Lists, Favorites/saved subsets and broad keyword searches retain their scope.
+   const selected=songs.find(song=>song.id===id),hit=selected&&search.match(selected,query,enabledFields);
+   const locator=!!selected&&!!normalizeSearch(query)&&!activeList&&!favoritesOnly&&!savedOnly&&!isFileSong(selected)&&(hit?.pageMatch||enabledFields.includes('title')&&normalizeSearch(songForSource(selected,source).title)===normalizeSearch(query));
+   const bookSources={'Hymns (1985)':'hymnal','Children’s Songbook':'children','Hymns for Home and Church':'home-church'};
+   const locatorSource=locator?(source==='all'?bookSources[selected.collection]:source):null;
+   const bookFallback=locatorSource&&source==='all';
+   const ids=bookFallback?songs.filter(song=>canOpenScore(song)&&matchesSource(song,locatorSource)).map(song=>songForSource(song,locatorSource)).sort(compareNumbers).map(song=>song.id):(locatorSource||singleSearch)?findSongs('').filter(canOpenScore).map(s=>s.id):[...orderedSongs];
+   pendingSongSet={ids,origin:'library',entry:{path:normalizeSearch(query)?'Search':'Library direct',query,resultCount:$('library-results').querySelectorAll('.library-row').length,playableResultCount:orderedSongs.length,displayedPlayableIds:[...orderedSongs],singleResultFallback:singleSearch,locatorSource:locatorSource||null,source,sort,favoritesOnly,list:activeList}};
    document.dispatchEvent(new CustomEvent('score-entry',{detail:{phase:'before-search-blur',entry:pendingSongSet.entry}}));
    // Dismiss text-entry focus before selection changes or any score layout starts.
    blurSearch();
@@ -274,7 +281,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function syncSongNavigation(){
   scoreLists.hidden=!originatingList();scoreLists.disabled=!!isBusy();
   // current changes only in opened(), after the destination has successfully rendered.
-  const song=songs.find(s=>s.id===current),shown=song&&songForSource(song,songSet?.origin==='library'?songSet.entry?.source||source:songSet?.source||'all');
+  const song=songs.find(s=>s.id===current),shown=song&&songForSource(song,songSet?.origin==='library'?songSet.entry?.locatorSource||songSet.entry?.source||source:songSet?.source||'all');
   const label=[shown?.songNumber,shown?.page].map(value=>String(value??'').trim()).find(value=>/^\d+[a-z]?$/i.test(value)&&Number.parseInt(value,10)>0)||'Song';
   $('score-song-number').textContent=label;
   document.querySelector('.score-song-navigation').setAttribute('aria-label','Song navigation, current '+(label==='Song'?'song':`song ${label}`));
