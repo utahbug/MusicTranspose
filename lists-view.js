@@ -6,7 +6,7 @@ import {offlineBadge,offlineListState,offlineSummary,refreshOffline,saveOfflineL
 import {canOpenScore} from './score-availability.js';
 import {listClipboardText,copyListText} from './list-copy.js';
 import {attachReorderHandle} from './list-reorder.js';
-import {editIcon,favoriteIcon,orderIcon} from './icons.js';
+import {editIcon,favoriteIcon,orderIcon,musicItemIcon} from './icons.js';
 import {songs} from './catalog.js';
 import {songSearchText,normalizeSearch} from './songs.js';
 import {isFileSong} from './library-query.js';
@@ -66,14 +66,14 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  function updateSongBadge(entry,song){
   entry.querySelector('.offline-saved-badge')?.remove();entry.removeAttribute('aria-description');
   if(!song||isFileSong(song))return;
-  const badge=offlineBadge(song);if(badge){entry.querySelector('strong').append(badge);entry.setAttribute('aria-description',badge.title);}
+  const badge=offlineBadge(song);if(badge){badge.textContent='Offline';entry.querySelector('.song-meta').append(badge);entry.setAttribute('aria-description',badge.title);}
  }
  function songRows(g,host){
   for(const id of g.songs){if(favoriteLists.has(g.id)&&!getState().favorites.includes(id))continue;const text=textItem(g,id),s=songs.find(s=>s.id===id),title=itemTitle(g,id,songs),row=el('div',null,'workspace-song-row');row.dataset.song=id;const front=el('div',null,'workspace-song-front'),remove=button('Remove','Remove from list: '+title,()=>removeSong(g.id,id));remove.classList.add('list-song-remove');row.append(remove,front);
    const entry=button('','Open '+title,()=>{remember();if(text){readText(g,id);return;}onSong(g.id,id,g.songs.filter(id=>songs.some(s=>s.id===id&&canOpenScore(s))));});entry.classList.add('workspace-song-entry');entry.title=title;entry.append(el('strong',title),el('span',text?'Text':s?[s.collection,s.songNumber??s.page].filter(Boolean).join(' · '):'Source unavailable · retained in saved order','song-meta'));entry.disabled=!s&&!text;updateSongBadge(entry,text?null:s);
    const pencil=button('',(text?'Edit Text: ':'Edit song in list: ')+title,()=>text?textEditor.open(g.id,id,text):editEntry(g.id,s||{id,title:'Unavailable song'},()=>focusRow(g.id,id,'.edit-list-entry')));pencil.classList.add('list-icon','edit-list-entry');pencil.innerHTML=editIcon;pencil.title=text?'Edit Text':'Edit song in list';
    const favored=getState().favorites.includes(id),star=button('',(favored?'Remove from Favorites: ':'Add to Favorites: ')+title,()=>{const state=getState();state.favorites=favored?state.favorites.filter(s=>s!==id):[...state.favorites,id];save();onChanged();render();focusRow(g.id,id,'.favorite');});star.classList.add('list-icon','favorite');star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));star.disabled=!s&&!text;
-   entry.append(el('span',text?'Text':'Music','list-item-badge'));front.append(star,entry,el('span',text?'Text':'Music','list-item-type'),pencil);host.append(row);swipe.attach(row,front);
+   entry.append(el('span',text?'Text':'Music','list-item-badge'));const type=el('span',text?'Text':null,'list-item-type');if(!text){type.innerHTML=musicItemIcon;type.setAttribute('role','img');type.setAttribute('aria-label','Music item');type.title='Music item';}front.append(star,entry,type,pencil);host.append(row);swipe.attach(row,front);
    if(g.songs.length>1&&!favoriteLists.has(g.id)){const order=button('','Reorder '+title,()=>{});order.classList.add('list-icon','order-song','reorder-grip');order.innerHTML=orderIcon;order.title='Drag to reorder or open movement actions';order.setAttribute('aria-haspopup','menu');order.setAttribute('aria-expanded','false');front.append(order);attachReorderHandle(order,row,host,(to,before)=>move(g.id,id,to,before),{visualMove:true,onActivate:()=>openSongOrder(g.id,id,order)});}
 
   }

@@ -1708,3 +1708,54 @@ body :is(#lists-view,#files-view) .toolbar-selector:focus-visible{outline:2px so
  body .score-identity-header .score-title-block h1{padding-top:14px}
  .score-identity-header .score-header-home:focus-visible{outline:2px solid #fff;outline-offset:2px}
 }
+
+/* List status is text, not a checkbox or an action. Phone Music badges stay explicit. */
+.workspace-song-entry .song-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px}
+.workspace-song-entry .song-meta .offline-saved-badge{display:inline-block;margin:0;padding:1px 6px;border:0;border-radius:4px;background:#e5f0ed;color:#27675f;font:500 11px/1.4 system-ui,sans-serif;white-space:nowrap;cursor:default}
+[data-library-theme=dark] .workspace-song-entry .song-meta .offline-saved-badge{background:#28463f;color:#bce1d6}
+.list-item-type svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lyric-lines{max-inline-size:58ch;text-wrap:pretty}
+.lyric-phrase{display:block;white-space:pre-line}
+/* Search fields use the existing restrained workspace control palette. */
+:is(#files-search,#texts-search){border:1px solid #b7cbd5;border-radius:8px;padding:10px 12px;background:#fafcfd;color:#284f66;font:16px/1.4 system-ui,sans-serif;min-height:44px}
+:is(#files-search,#texts-search):focus-visible{outline:2px solid #365f7d;outline-offset:2px}
+[data-library-theme=dark] :is(#files-search,#texts-search){background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+[data-library-theme=dark] :is(#files-search,#texts-search):focus-visible{outline-color:#83baf0}
+
+/* Carry the existing Library palette through its three companion workspaces. */
+#texts-view .lists-heading{background:var(--app-header-background);color:white}
+dialog.app-dialog>h2{margin:-24px -24px 18px;padding:18px 24px;border-top:3px solid #237c7a;border-bottom:1px solid var(--popup-border);background:var(--popup-heading)}
+#list-text-title{padding:10px 12px;border:1px solid var(--popup-border);border-radius:8px;background:var(--popup-surface);color:var(--popup-ink)}
+#list-text-dialog #list-text-save{background:#276e70;color:white;border-color:#237c7a;font-weight:600}
+@media screen{
+ [data-library-theme=dark]:has(:is(#lists-view,#files-view,#texts-view):not([hidden])),[data-library-theme=dark] body:has(:is(#lists-view,#files-view,#texts-view):not([hidden])){background:var(--library-dark-page)}
+ [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view){color:var(--library-dark-text);color-scheme:dark}
+ [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view) :is(.workspace-song-front,.workspace-list-actions,.text-library-row,.file-row){background:var(--library-dark-row);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view) :is(button,.list-item-type,.song-meta,.file-type,.texts-purpose,.file-columns,.list-item-columns,.list-offline-status){color:var(--library-dark-muted);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view) :is(.workspace-song-entry,.text-library-entry,.file-entry){color:var(--library-dark-text)}
+ [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view) .workspace-return{background:var(--library-dark-panel);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #lists-view .list-overview-row{background:var(--library-dark-active);color:var(--library-dark-text)}
+ [data-library-theme=dark] #lists-view .list-overview-entry{background:transparent;color:var(--library-dark-text)}
+ [data-library-theme=dark] #texts-new{background:var(--library-dark-active)!important;color:var(--library-dark-text)}
+ [data-library-theme=dark] :is(#list-command-menu,#files-search-fields>div){background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #list-command-menu button{color:var(--library-dark-text)}
+ [data-library-theme=dark] #list-text-content{background:var(--library-dark-page);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #list-text-dialog :is(button,.rich-toolbar button){background:var(--library-dark-active);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #list-text-dialog .rich-toolbar button[aria-pressed=true]{background:#245a9a;color:white}
+}
+
+@media screen{
+ html[data-library-theme=dark] #lists-view .list-workspace-section .list-overview-row{background:var(--library-dark-active)}
+ [data-library-theme=dark] #lists-view .list-overview-entry>span{color:var(--library-dark-text)}
+ [data-library-theme=dark] #lists-view :is(.list-workspace-section,.list-item-columns){background:var(--library-dark-row);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #lists-actions>button{background:var(--library-dark-active);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+ [data-library-theme=dark] #lists-view .list-overview-entry[aria-expanded=true]:hover{background:var(--library-dark-panel)}
+}
+
+@media screen{
+ [data-library-theme=dark] #files-view :is(#files-count,.files-note,.files-empty){color:var(--library-dark-muted)}
+ [data-library-theme=dark] :is(#files-search,#texts-search)::placeholder{color:var(--library-dark-muted);opacity:1}
+ [data-library-theme=dark] #files-view #add-music{background:var(--library-dark-active);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+}
+
+[data-library-theme=dark] #lists-view .list-count{color:var(--library-dark-muted)}
