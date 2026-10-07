@@ -1,6 +1,8 @@
+import {textItem,listCount} from './list-items.js';
 // Plain text only; copying never changes List membership, order or navigation.
 export function listClipboardText(list,songs){
  const rows=list.songs.map(id=>{
+  const text=textItem(list,id);if(text)return text.title+' — Text';
   const song=songs.find(s=>s.id===id);if(!song)return 'Unavailable song';
   const alias=list.displayNames?.[id]?.trim(),title=song.title||'Untitled music';
   const number=String(song.songNumber??song.page??'').trim();
@@ -10,7 +12,7 @@ export function listClipboardText(list,songs){
   // An alias may already begin with its page number; avoid duplicating it.
   return [number&&!(alias&&!same&&(alias===number||alias.startsWith(number+' ')))?number:null,label,collection].filter(Boolean).join(' — ');
  });
- return [list.name,list.songs.length+' '+(list.songs.length===1?'song':'songs'),'',...rows].join('\n');
+ return [list.name,listCount(list),'',...rows].join('\n');
 }
 export async function copyListText(text){
  try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true;}}catch{}

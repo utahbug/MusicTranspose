@@ -1,3 +1,4 @@
+import {listSongIds} from './list-items.js';
 import {offlineSongState,offlineBadge,refreshOffline,reconcileOfflineLists} from './offline-manager.js';
 import {initLibraryTheme} from './library-theme.js';
 import {installLibraryQuickAccess} from './library-quick-access.js';
@@ -66,7 +67,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved&&typeof saved==='object'){
   const ids=a=>Array.isArray(a)?[...new Set(a.filter(x=>typeof x==='string'))]:[];
   state.orderingVersion=saved.orderingVersion;state.favorites=ids(saved.favorites);state.recent=ids(saved.recent).slice(0,30);
-  state.groups=Array.isArray(saved.groups)?saved.groups.filter(g=>g&&typeof g.id==='string'&&typeof g.name==='string').map(g=>({id:g.id,name:g.name.slice(0,80),songs:ids(g.songs),description:typeof g.description==='string'?g.description.slice(0,2000):'',displayNames:Object.fromEntries(Object.entries(g.displayNames||{}).filter(([id,value])=>ids(g.songs).includes(id)&&typeof value==='string'&&value.trim()).map(([id,value])=>[id,value.trim().slice(0,200)]))})):[];
+  state.groups=Array.isArray(saved.groups)?saved.groups.filter(g=>g&&typeof g.id==='string'&&typeof g.name==='string').map(g=>({...g,id:g.id,name:g.name.slice(0,80),songs:ids(g.songs),description:typeof g.description==='string'?g.description.slice(0,2000):'',displayNames:Object.fromEntries(Object.entries(g.displayNames||{}).filter(([id,value])=>ids(g.songs).includes(id)&&typeof value==='string'&&value.trim()).map(([id,value])=>[id,value.trim().slice(0,200)]))})):[];
  }}catch{}
  const preferencesKey='music-transpose-library-preferences-v1';
  try{const prefs=JSON.parse(localStorage.getItem(preferencesKey)||'null');if(prefs){globalSort=prefs.order==='number'?'number':'title';sort=globalSort;source='all';}}catch{}
@@ -155,7 +156,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};
  // One query/filter/order path serves both visible results and locator fallback.
  function findSongs(query){
-  const g=group(),pool=g?g.songs.map(id=>songs.find(s=>s.id===id)||{id,title:'Unavailable song',missing:true}):songs;
+  const g=group(),pool=g?listSongIds(g).map(id=>songs.find(s=>s.id===id)||{id,title:'Unavailable song',missing:true}):songs;
   let found=pool.filter(s=>(!savedOnly||offlineSongState(s).saved)&&(!query||search.match(s,query,enabledFields).matched)&&matchesSource(s,source)&&(reordering||!favoritesOnly||state.favorites.includes(s.id))).map(s=>songForSource(s,source));
   const title=(a,b)=>collator.compare(a.title,b.title);
   if(sort!=='manual')found.sort((a,b)=>(sort==='manual'?g.songs.indexOf(a.id)-g.songs.indexOf(b.id):0)||(query?Number(!!search.match(b,query,enabledFields).pageMatch)-Number(!!search.match(a,query,enabledFields).pageMatch):0)||(sort==='number'?(compareNumbers(a,b)||title(a,b)):compareAlphabeticalTitles(a,b)));
@@ -191,7 +192,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
    fragment.append(row);
   }
   if(!found.length)fragment.append(node('p',g&&!g.songs.length?'No songs yet. Choose Add songs.':source==='legacy'?'No Legacy songs.':'No songs match. Try another search or source.','empty-library'));
-  $('library-results').replaceChildren(fragment);$('library-count').textContent=searchLoading?'Loading lyrics…':`${found.length}${g?' / '+g.songs.length:''} ${(g?g.songs.length:found.length)===1?'song':'songs'}${savedOnly?' · Saved on this device':''}`;
+  $('library-results').replaceChildren(fragment);$('library-count').textContent=searchLoading?'Loading lyrics…':`${found.length}${g?' / '+listSongIds(g).length:''} ${(g?listSongIds(g).length:found.length)===1?'song':'songs'}${savedOnly?' · Saved on this device':''}`;
   $('order-toggle').replaceChildren(...[...(g?[['manual','Manual order']]:[]),['title','Title (A–Z)'],['number','Page number']].map(([value,label])=>new Option(label,value)));$('order-toggle').value=sort;
   $('library-sort-label').replaceChildren(node('span','Sort by: ','desktop-prefix'),node('span',sort==='manual'?'Manual':sort==='number'?'Page number':'Title','desktop-sort'),node('span',sort==='manual'?'Manual':sort==='number'?'Page number':'Title','phone-sort'));
   $('library-clear').setAttribute('aria-label','Clear search');$('library-clear').title='Clear search';
