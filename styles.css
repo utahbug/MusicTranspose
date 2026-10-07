@@ -809,8 +809,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #view-favorites:focus-visible{outline:2px solid #365867;outline-offset:-2px}
 @media(max-width:600px){#library .library-filter-row #library-source{max-width:calc(100% - 144px)}}
 
-#home-screen-dialog{width: min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:16px;border:1px solid #c2ced3;border-radius:8px}
-#home-screen-dialog h2{font-size:18px;margin:0}
 #home-screen-dialog button{min-height:44px}
 #home-screen-dialog li{margin:8px 0;line-height:1.4}
 #home-screen-status:empty{display:none}
@@ -1283,12 +1281,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 @media(max-width:600px){#files-info-dialog{padding:16px;max-width:calc(100vw - 24px)}}
 
 :root{--app-header-background:linear-gradient(110deg,#245A9A 0%,#3667A8 34%,#2D768A 61%,#237C7A 82%,#2F8B61 100%);}
-/* Shared Library surface; artwork, sizing, borders and focus stay with existing controls. */
-@media screen{
- body :is(.masthead,.lyrics-footer,#files-view,#lists-view) :is(#songs,.workspace-library){background:var(--app-header-background);color:var(--primary-blue-text)}
- @media(hover:hover){body :is(.masthead,.lyrics-footer,#files-view,#lists-view) :is(#songs,.workspace-library):not(:disabled):hover{filter:brightness(1.07)}}
- body :is(.masthead,.lyrics-footer,#files-view,#lists-view) :is(#songs,.workspace-library):not(:disabled):active{filter:brightness(.9)}
-}
 
 #offline-music-dialog{width:420px;max-width:calc(100vw - 24px);padding:20px;border-radius:12px}
 #offline-music-dialog h3{font-family:inherit;font-size:14px;font-weight:600;margin:16px 0 4px}
@@ -1550,17 +1542,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #home-about{display:block;min-height:44px;min-width:44px;margin:8px 0 0 auto;padding:8px 12px;font-size:14px;border:0;border-radius:0;background:transparent;box-shadow:none;text-decoration:none;text-underline-offset:3px}
 #home-about:hover,#home-about:focus-visible{background:transparent;text-decoration:underline}
 #home-about:focus-visible{outline:none;text-decoration-thickness:2px}
-#about-dialog{width:520px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);box-sizing:border-box;overflow:auto;padding:20px;border-radius:12px}
-#about-dialog h2{font-size:20px;font-weight:600}
-#about-dialog h3{font:600 15px system-ui,sans-serif;margin:16px 0 4px}
-#about-dialog p{font-size:14px;line-height:1.5;margin:6px 0 12px}
-#about-close{min-width:44px;min-height:44px;flex-shrink:0}
-#about-close:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
-[data-library-theme=dark] #about-dialog{background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border);color-scheme:dark}
-[data-library-theme=dark] :is(#home-about,#about-close){color:var(--library-dark-text)}
-[data-library-theme=dark] :is(#home-about,#about-close):focus-visible{outline-color:#83baf0}
-[data-library-theme=dark] #about-dialog h3{color:var(--library-dark-text)}
-[data-library-theme=dark] #about-close{background:var(--library-dark-row);border-color:var(--library-dark-border)}
 
 /* Text items share List rows and reorder handles. */
 #list-membership{border:0;border-top:1px solid #ccd6da;padding:12px 0 0;margin:12px 0;min-width:0}
@@ -1602,21 +1583,8 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .library-home-footer{display:flex;justify-content:flex-end;border-top:1px solid #d6e0e3;margin-top:18px;padding-top:4px}
 #home-about{margin:0;border-radius:6px;color:#536b7a}
 #home-about:focus-visible{outline:2px solid #365f7d;outline-offset:1px}
-#about-dialog{border:1px solid #b9ccd4;box-shadow:0 12px 40px #173e3b26;padding:24px}
-#about-dialog .dialog-heading{margin:-24px -24px 18px;padding:14px 20px;border-top:3px solid #237c7a;border-bottom:1px solid #d6e3e7;background:#f1f6f7;gap:12px}
-#about-dialog h2{color:#284f66;line-height:1.3;margin:0}
-#about-dialog h3{color:#276e70;margin-top:20px;padding-top:12px;border-top:1px solid #e0e8eb}
-#about-dialog .dialog-heading+h3{border-top:0;padding-top:0;margin-top:0}
-#about-dialog p{line-height:1.6}
-#about-close{border:1px solid #b9ccd4;border-radius:8px;background:#ffffffb3;color:#365f7d}
-#about-close:hover{background:#e1edef;border-color:#7295a5}
-#about-close:focus-visible{outline:3px solid #365f7d;outline-offset:2px}
 [data-library-theme=dark] #library-home nav>button[data-home-source=all]{background:#293640}
 [data-library-theme=dark] .library-home-footer{border-color:var(--library-dark-border)}
-[data-library-theme=dark] #about-dialog .dialog-heading{background:#223b42;border-color:#446570}
-[data-library-theme=dark] #about-dialog h2{color:#d8edf5}
-[data-library-theme=dark] #about-dialog h3{color:#98d1cf;border-color:var(--library-dark-border)}
-[data-library-theme=dark] #about-close:hover{background:#354d57}
 @media(prefers-reduced-motion:reduce){#library-home nav>button{transition:none}}
 
 /* Home composition: source cards above the shared workspace navigation family. */
@@ -1637,17 +1605,14 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .home-toolbar{display:flex;gap:10px;align-items:center;width:100%;max-width:1032px;margin:auto}
 #library-home .home-toolbar button{position:static;display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border:1px solid #adc3d0;border-radius:8px;background:#f8fbfc;color:#365f7d}
 .home-toolbar button svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-#library-home .home-toolbar button[aria-current=page]{background:#365f7d;color:white;border-color:#365f7d}
 #library-home .home-toolbar .library-theme-toggle{margin-left:auto}
 #library-home .home-toolbar button:hover{background:#dbe8ef}
-#library-home .home-toolbar button[aria-current=page]:hover{background:#284c66}
 #library-home .home-toolbar button:active{box-shadow:inset 0 1px 3px #23465430}
 #library-home .home-toolbar button:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
 [data-library-theme=dark] #library-home nav>button{border-color:#526873;box-shadow:0 2px 4px #0002}
 [data-library-theme=dark] #library-home nav>:is(#home-lists,#home-files){background:linear-gradient(90deg,#3d374d,#343248);border-color:#675d7a}
 [data-library-theme=dark] #library-home .library-home-footer{background:var(--library-dark-panel);border-color:var(--library-dark-border)}
 [data-library-theme=dark] #library-home .home-toolbar button{background:#233642;color:#d4e8f2;border-color:#526873}
-[data-library-theme=dark] #library-home .home-toolbar button[aria-current=page]{background:#426e8b;color:white}
 [data-library-theme=dark] #library-home .home-toolbar button:hover{background:#375568}
 [data-library-theme=dark] #library-home .home-toolbar button:focus-visible{outline-color:#83baf0}
 
@@ -1674,3 +1639,32 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  body .masthead #score-show-controls[hidden]{display:none}
 }
 @media print{.score-focus-control{display:none!important}}
+
+/* One Library destination treatment across every shared navigation surface.
+   Override legacy workspace/theme button surfaces, including hover states. */
+body button.library-nav{background:var(--app-header-background)!important;color:#fff!important}
+@media(hover:hover){body button.library-nav:not(:disabled):hover{filter:brightness(1.07)}}
+body button.library-nav:not(:disabled):active{filter:brightness(.9)}
+body button.library-nav:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
+[data-library-theme=dark] body button.library-nav:focus-visible{outline-color:#83baf0}
+
+/* Reusable quiet dialog/menu palette; body/legal copy stays on a plain surface. */
+:root{--popup-surface:#fafcfd;--popup-ink:#284f66;--popup-border:#b9ccd4;--popup-heading:#f1f6f7;--popup-hover:#e1edef;--popup-focus:#365f7d;--popup-muted:#536b7a}
+[data-library-theme=dark]{--popup-surface:var(--library-dark-panel);--popup-ink:var(--library-dark-text);--popup-border:var(--library-dark-border);--popup-heading:#223b42;--popup-hover:#354d57;--popup-focus:#83baf0;--popup-muted:#bbced7}
+dialog.app-dialog{width:520px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);overflow:auto;padding:24px;border:1px solid var(--popup-border);border-radius:12px;background:var(--popup-surface);color:var(--popup-ink);box-shadow:0 12px 40px #173e3b26}
+#home-screen-dialog{width:420px}
+dialog.app-dialog .dialog-heading{align-items:center;margin:-24px -24px 18px;padding:14px 20px;border-top:3px solid #237c7a;border-bottom:1px solid var(--popup-border);background:var(--popup-heading);gap:12px}
+dialog.app-dialog h2{font:600 20px/1.3 system-ui,sans-serif;margin:0;color:var(--popup-ink)}
+dialog.app-dialog h3{font:600 15px/1.4 system-ui,sans-serif;color:var(--popup-ink);margin:20px 0 4px;padding-top:12px;border-top:1px solid var(--popup-border)}
+dialog.app-dialog .dialog-heading+h3{border-top:0;padding-top:0;margin-top:0}
+dialog.app-dialog p,dialog.app-dialog li{font-size:14px;line-height:1.6}
+dialog.app-dialog p{margin:6px 0 12px}
+dialog.app-dialog .setting-note{color:var(--popup-muted)}
+dialog.app-dialog .close{flex:none;min-width:44px;min-height:44px;border:1px solid var(--popup-border);border-radius:8px;background:var(--popup-surface);color:var(--popup-ink)}
+dialog.app-dialog .close:hover{background:var(--popup-hover);border-color:var(--popup-focus)}
+dialog.app-dialog :focus-visible{outline:2px solid var(--popup-focus);outline-offset:2px}
+dialog.app-dialog .dialog-primary{min-height:44px;padding:10px 16px;border:1px solid #237c7a;border-radius:8px;background:#276e70;color:#fff;font:600 14px/1.4 system-ui,sans-serif}
+dialog.app-dialog .dialog-primary:hover{background:#205f61}
+[data-library-theme=dark] dialog.app-dialog{color-scheme:dark}
+#home-info-menu{background:var(--popup-surface);color:var(--popup-ink);border-color:var(--popup-border);box-shadow:0 8px 24px #173e3b26;padding:6px}
+#home-info-menu button:is(:hover,:focus-visible){background:var(--popup-hover);outline-color:var(--popup-focus)}
