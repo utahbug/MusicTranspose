@@ -1,6 +1,6 @@
 // Same-document routes: never ask the static host to serve virtual paths.
 const key='musicTransposeNavigation';
-const views=new Set(['home','library','lists','files','import','score','lyrics']);
+const views=new Set(['text','home','library','lists','files','import','score','lyrics']);
 const valid=r=>r&&views.has(r.view);
 export function createViewHistory({capture,restore,isBusy,onTravel,initialView='library',restoreHistory=true}){
  let current={view:initialView},restoring=false,pending=null,running=false,revision=0;
@@ -10,7 +10,7 @@ export function createViewHistory({capture,restore,isBusy,onTravel,initialView='
  function visit(route){
   if(restoring)return;
   snapshot();
-  if(current.view===route.view&&(!['score','lyrics'].includes(route.view)||current.song===route.song)&&(!['lists','library'].includes(route.view)||current.list===route.list)&&(route.view!=='lists'||!!current.picking===!!route.picking))return;
+  if(current.view===route.view&&(!['score','lyrics'].includes(route.view)||current.song===route.song)&&(!['lists','library','text'].includes(route.view)||current.list===route.list)&&(route.view!=='lists'||!!current.picking===!!route.picking))return;
   current={...current,...route,scroll:0};write(current,true);
  }
  async function drain(){

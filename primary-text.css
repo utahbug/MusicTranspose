@@ -1,0 +1,45 @@
+/* Adapted from PrimarySongs styles-v528.css / script-v528.js (local commit 610a1eb).
+   Text stays in MusicTranspose's existing shared store; binary Files remain separate. */
+.rich-toolbar { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.rich-toolbar button { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-weight: 750; min-height: 32px; min-width: 34px; padding: 4px 8px; }
+
+.rich-toolbar button:hover, .rich-toolbar button:focus-visible { background: var(--accent-hover); color: var(--accent-strong); }
+
+.rich-toolbar button.is-active, .rich-toolbar button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+
+.rich-toolbar button.is-active:hover, .rich-toolbar button.is-active:focus-visible, .rich-toolbar button[aria-pressed="true"]:hover, .rich-toolbar button[aria-pressed="true"]:focus-visible { background: var(--accent-strong); border-color: var(--accent-strong); color: #FFFFFF; }
+.card-photo-icon { fill: none; height: 20px; stroke: currentcolor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; width: 20px; }
+
+.rich-toolbar-separator { align-self: stretch; border-left: 1px solid var(--line); margin: 2px; }
+
+
+
+
+.toolbar-icon { display: inline-block; height: 18px; position: relative; width: 22px; }
+
+.bullet-list-icon::before { background: currentcolor; border-radius: 999px; box-shadow: 0 7px 0 currentcolor, 0 14px 0 currentcolor; content: ""; height: 4px; left: 2px; position: absolute; top: 2px; width: 4px; }
+
+.bullet-list-icon::after, .numbered-list-icon::after { background: currentcolor; box-shadow: 0 7px 0 currentcolor, 0 14px 0 currentcolor; content: ""; height: 2px; left: 11px; position: absolute; top: 3px; width: 12px; }
+
+.numbered-list-icon::before { content: "1\A 2\A 3"; font-size: 0.48rem; font-weight: 850; left: 1px; line-height: 0.95; position: absolute; top: 1px; white-space: pre; }
+
+
+#list-text-dialog .rich-toolbar button{min-width:44px;min-height:44px;width:44px;padding:4px;flex:0 0 44px;background:#e5eef2;border-color:#b7cbd5;color:#244f6a;font-weight:750;border-radius:6px}
+#list-text-dialog .rich-toolbar button[aria-pressed=true]{background:#245a9a;color:white;border-color:#245a9a}
+#list-text-dialog .rich-toolbar button:hover{background:#d4e4ec}#list-text-dialog .rich-toolbar button[aria-pressed=true]:hover{background:#1e4e86}
+#list-text-toolbar .toolbar-icon{height:22px;width:24px}#list-text-toolbar .numbered-list-icon::before{font-size:8px;line-height:7px;top:0}
+#list-text-content{min-height:220px;line-height:1.65;background:var(--app-surface,#fff);border-radius:8px}#list-text-content:focus{outline:2px solid #b7cbd5;border-color:#245a9a}
+#texts-view{max-width:900px;margin:0 auto;padding:16px;font-family:system-ui,sans-serif}#texts-view[hidden]{display:none}
+.texts-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}.texts-actions input[type=search]{font:16px system-ui;min-height:44px;min-width:0;flex:1;padding:8px}.texts-actions label{display:flex;align-items:center;gap:6px;min-height:44px}
+#texts-view button,#text-memberships button{min-height:44px;min-width:44px;font:inherit;color:#365f7d;background:transparent;border:1px solid #ccd6da;border-radius:6px;padding:8px}#texts-new{background:#e5eef2!important;font-weight:600!important}
+.text-library-row{display:flex;align-items:center;gap:6px;border-bottom:1px solid #d4dfe3;min-height:60px}.text-library-row>input{width:20px;height:20px;flex:0 0 20px}.text-library-row .text-library-entry{flex:1;min-width:0;text-align:left;border:0!important;overflow-wrap:anywhere}.text-library-entry strong,.text-library-entry .song-meta{display:block}.text-library-row .list-icon{flex:0 0 44px;width:44px;border:0!important}.text-library-row svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}.text-library-row .favorite[aria-pressed=true] svg{fill:#c99721;stroke:#a87913}
+.texts-purpose{font-size:14px;line-height:1.5;color:#526560;margin-top:22px}#texts-picker-actions{position:sticky;bottom:0;padding:12px;background:#fff;display:flex;justify-content:space-between;gap:10px}#texts-picker-actions[hidden]{display:none}
+#text-memberships{width:420px;max-width:calc(100vw - 24px);max-height:80dvh;overflow:auto;box-sizing:border-box;font-family:system-ui,sans-serif}
+.list-favorites-filter{display:flex;align-items:center;gap:4px;font-size:14px;min-height:44px}.workspace-list-actions{flex-wrap:wrap}
+#list-text-delete{color:#a12e36!important;margin-top:12px}#home-text{background:linear-gradient(90deg,#E4E0ED,#DDD8E8)}
+@media print{#texts-view,#text-memberships{display:none!important}}
+
+.list-item-type{font-size:13px;color:#365f7d}.list-item-columns{display:grid;grid-template-columns:44px minmax(0,1fr) 64px 44px 44px;padding:8px 0;font:12px system-ui,sans-serif;color:#526560;border-bottom:1px solid #ccd6da}.list-item-columns span:nth-child(2){padding-left:16px}
+.workspace-song-front{grid-template-columns:44px minmax(0,1fr) 64px 44px 44px}.list-item-badge{display:none}
+@media(max-width:600px){.list-item-columns,.list-item-type{display:none}.workspace-song-front{grid-template-columns:44px minmax(0,1fr) 44px 44px}.list-item-badge{display:inline-block;align-self:flex-start;padding:2px 7px;border:1px solid #c1d2da;border-radius:4px;background:#e5eef2;color:#244f6a;font-size:11px;font-weight:600;line-height:1.4}}

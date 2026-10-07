@@ -21,4 +21,4 @@ export function initializeTextItems(state){
 export const textItem=(list,id)=>Object.hasOwn(sharedItems,id)&&sharedItems[id]?.type==='text'?sharedItems[id]:null;
 export const listSongIds=list=>list.songs.filter(id=>!textItem(list,id));
 export const itemTitle=(list,id,songs)=>textItem(list,id)?.title||list.displayNames?.[id]||songs.find(s=>s.id===id)?.title||'Unavailable song';
-export function listCount(list){const texts=list.songs.filter(id=>textItem(list,id)).length;return texts?list.songs.length+' items':list.songs.length+' '+(list.songs.length===1?'song':'songs');}
+export function listCount(list){const texts=list.songs.filter(id=>textItem(list,id)).length;return texts?list.songs.length+' '+(list.songs.length===1?'item':'items'):list.songs.length+' '+(list.songs.length===1?'song':'songs');}

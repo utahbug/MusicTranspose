@@ -15,24 +15,15 @@ const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textCont
 const button=(text,label,action)=>{const e=el('button',text,'quiet');e.type='button';e.setAttribute('aria-label',label);e.onclick=action;return e;};
 // Workspace expansion is session-only; picker source preferences are separate.
 // Membership/order/aliases remain in the Library store.
-export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChanged,onPick,onSong,freshLaunch=false}){
+export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChanged,onPick,onSong,onText,onDeleteText,freshLaunch=false}){
  const swipe=createListRowSwipe();
- const textEditor=createTextEditor({usage:id=>getState().groups.filter(g=>g.songs.includes(id)).length,commit:({list,id},item)=>{const g=group(list);if(!g)return false;const key=id||'text:'+crypto.randomUUID(),store=getState().textItems,old=store[key],order=[...g.songs];store[key]={...old,...item};if(!id)g.songs.push(key);if(!save()){if(old===undefined)delete store[key];else store[key]=old;g.songs=order;return false;}onChanged();render();return true;},remove:({list,id})=>removeSong(list,id)});
- let textTarget=null,textChoiceOrigin=null;
- function chooseText(list){textTarget=list;textChoiceOrigin=document.activeElement;const host=$('list-existing-items');host.replaceChildren();$('list-existing-error').textContent='';
-  const items=Object.entries(getState().textItems).filter(([,item])=>item?.type==='text').sort((a,b)=>a[1].title.localeCompare(b[1].title));
-  for(const [id,item] of items){const exists=group(list).songs.includes(id),choice=button(item.title+(exists?' — Already in list':''),'Add existing Text: '+item.title,()=>{const g=group(textTarget);if(!g||g.songs.includes(id))return;g.songs.push(id);if(!save()){g.songs.pop();$('list-existing-error').textContent='Could not save to device storage. Please retry.';return;}$('list-text-choice').close();onChanged();render();focusRow(g.id,id,'.edit-list-entry');});choice.disabled=exists;host.append(choice);}
-  if(!items.length)host.append(el('p','No saved Text items yet. Create New Text to get started.'));$('list-text-choice').showModal();
- }
- $('list-text-new').onclick=()=>{const id=textTarget;$('list-text-choice').close();textEditor.open(id,null,null);};
- $('list-text-choice-close').onclick=()=>$('list-text-choice').close();
- $('list-text-choice').addEventListener('close',()=>{if(!$('list-text-dialog').open&&textChoiceOrigin?.isConnected)textChoiceOrigin.focus({preventScroll:true});});
+ const textEditor=createTextEditor({deleteItem:id=>onDeleteText(id),usage:id=>getState().groups.filter(g=>g.songs.includes(id)).length,commit:({list,id},item)=>{const g=group(list);if(list&&!g)return false;const key=id||'text:'+crypto.randomUUID(),store=getState().textItems,old=store[key],order=g?[...g.songs]:null;store[key]={...old,...item};if(!id&&g)g.songs.push(key);if(!save()){if(old===undefined)delete store[key];else store[key]=old;if(g)g.songs=order;return false;}onChanged();render();document.dispatchEvent(new Event('text-items-changed'));return true;},remove:({list,id})=>removeSong(list,id)});
  let reading=null,readerOrigin=null;
- function readText(g,id){reading={list:g.id,id};readerOrigin=document.activeElement;$('list-text-reader-title').textContent=textItem(g,id).title;$('list-text-reader-content').innerHTML=cleanTextHTML(textItem(g,id).html);$('list-text-reader').showModal();}
+ function readText(g,id){reading={list:g?.id||null,id};readerOrigin=document.activeElement;$('list-text-reader-close').textContent=g?'Back to list':'Back to Text';$('list-text-reader-title').textContent=textItem(g,id).title;$('list-text-reader-content').innerHTML=cleanTextHTML(textItem(g,id).html);$('list-text-reader').showModal();}
  $('list-text-reader-close').onclick=()=>$('list-text-reader').close();
  $('list-text-reader').addEventListener('close',()=>readerOrigin?.isConnected&&readerOrigin.focus({preventScroll:true}));
  $('list-text-reader-edit').onclick=()=>{const {list,id}=reading;$('list-text-reader').close();textEditor.open(list,id,textItem(group(list),id));};
- let undo=null,undoTimer=0;
+ let undo=null,undoTimer=0;const favoriteLists=new Set();
  let picking=null,selected=new Set(),naming=null,editingEntry=null;
  const pickerSources=createPickerSources({onChange:()=>{if(picking)renderPicker();},getListIds:()=>getState().groups.map(g=>g.id)});
  let nameReturn=null,entryReturn=null,orderingLists=false;
@@ -64,15 +55,15 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  document.addEventListener('pointerdown',e=>{if(songOrderMenu&&!songOrderMenu.contains(e.target)&&!songOrderOrigin?.contains(e.target))closeSongOrder();});
  window.addEventListener('resize',()=>closeSongOrder());window.addEventListener('scroll',()=>closeSongOrder(),{passive:true});
  function songRows(g,host){
-  for(const id of g.songs){const text=textItem(g,id),s=songs.find(s=>s.id===id),title=itemTitle(g,id,songs),row=el('div',null,'workspace-song-row');row.dataset.song=id;const front=el('div',null,'workspace-song-front'),remove=button('Remove','Remove from list: '+title,()=>removeSong(g.id,id));remove.classList.add('list-song-remove');row.append(remove,front);
+  for(const id of g.songs){if(favoriteLists.has(g.id)&&!getState().favorites.includes(id))continue;const text=textItem(g,id),s=songs.find(s=>s.id===id),title=itemTitle(g,id,songs),row=el('div',null,'workspace-song-row');row.dataset.song=id;const front=el('div',null,'workspace-song-front'),remove=button('Remove','Remove from list: '+title,()=>removeSong(g.id,id));remove.classList.add('list-song-remove');row.append(remove,front);
    const entry=button('','Open '+title,()=>{remember();if(text){readText(g,id);return;}onSong(g.id,id,g.songs.filter(id=>songs.some(s=>s.id===id&&canOpenScore(s))));});entry.classList.add('workspace-song-entry');entry.title=title;entry.append(el('strong',title),el('span',text?'Text':s?[s.collection,s.songNumber??s.page].filter(Boolean).join(' · '):'Source unavailable · retained in saved order','song-meta'));entry.disabled=!s&&!text;
    const pencil=button('',(text?'Edit Text: ':'Edit song in list: ')+title,()=>text?textEditor.open(g.id,id,text):editEntry(g.id,s||{id,title:'Unavailable song'},()=>focusRow(g.id,id,'.edit-list-entry')));pencil.classList.add('list-icon','edit-list-entry');pencil.innerHTML=editIcon;pencil.title=text?'Edit Text':'Edit song in list';
-   const favored=getState().favorites.includes(id),star=button('',(favored?'Remove from Favorites: ':'Add to Favorites: ')+title,()=>{const state=getState();state.favorites=favored?state.favorites.filter(s=>s!==id):[...state.favorites,id];save();onChanged();render();focusRow(g.id,id,'.favorite');});star.classList.add('list-icon','favorite');star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));star.disabled=!s;
-   front.append(text?el('span','T','list-text-mark'):star,entry,pencil);host.append(row);swipe.attach(row,front);
-   if(g.songs.length>1){const order=button('','Reorder '+title,()=>{});order.classList.add('list-icon','order-song','reorder-grip');order.innerHTML=orderIcon;order.title='Drag to reorder or open movement actions';order.setAttribute('aria-haspopup','menu');order.setAttribute('aria-expanded','false');front.append(order);attachReorderHandle(order,row,host,(to,before)=>move(g.id,id,to,before),{visualMove:true,onActivate:()=>openSongOrder(g.id,id,order)});}
+   const favored=getState().favorites.includes(id),star=button('',(favored?'Remove from Favorites: ':'Add to Favorites: ')+title,()=>{const state=getState();state.favorites=favored?state.favorites.filter(s=>s!==id):[...state.favorites,id];save();onChanged();render();focusRow(g.id,id,'.favorite');});star.classList.add('list-icon','favorite');star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));star.disabled=!s&&!text;
+   entry.append(el('span',text?'Text':'Music','list-item-badge'));front.append(star,entry,el('span',text?'Text':'Music','list-item-type'),pencil);host.append(row);swipe.attach(row,front);
+   if(g.songs.length>1&&!favoriteLists.has(g.id)){const order=button('','Reorder '+title,()=>{});order.classList.add('list-icon','order-song','reorder-grip');order.innerHTML=orderIcon;order.title='Drag to reorder or open movement actions';order.setAttribute('aria-haspopup','menu');order.setAttribute('aria-expanded','false');front.append(order);attachReorderHandle(order,row,host,(to,before)=>move(g.id,id,to,before),{visualMove:true,onActivate:()=>openSongOrder(g.id,id,order)});}
 
   }
-  if(!g.songs.length)host.append(el('p','This list is empty.','workspace-empty'));
+  if(!host.children.length)host.append(el('p',favoriteLists.has(g.id)?'No Favorites in this list.':'This list is empty.','workspace-empty'));
  }
  for(const id of ['list-name-dialog','list-entry-dialog']){$(id).addEventListener('click',e=>{if(e.target!==$(id))return;const r=$(id).getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$(id).close();});}
  $('list-name-dialog').addEventListener('close',()=>nameReturn?.());
@@ -128,7 +119,7 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
   if(listMenuOrigin===origin){closeListMenu(true);return;}closeListMenu();closeSongOrder();swipe.close();
   const menu=el('div',null,'list-command-menu');menu.id='list-command-menu';menu.setAttribute('role','menu');menu.setAttribute('aria-label','List actions: '+g.name);listMenu=menu;listMenuOrigin=origin;listMenuId=g.id;origin.setAttribute('aria-expanded','true');
   const add=button('Add songs','Add songs',()=>{closeListMenu();startPick(g.id);});add.classList.add('workspace-add');
-  const addText=button('Add Text','Add Text',()=>{closeListMenu(true);chooseText(g.id);});
+  const addText=button('Add Text','Add Text',()=>{closeListMenu(true);onText(g.id);});
   const copy=button('Copy list','Copy list',async()=>{closeListMenu(true);const copied=await copyListText(listClipboardText(g,songs));announce(copied?'Copied '+listCount(g)+'.':'Unable to copy list. Try again.');});copy.classList.add('workspace-copy');
   const offline=async action=>{try{await action(g);}catch{}finally{if(listMenu===menu)closeListMenu(true);}};
   const save=button('Save list on this device','Save list on this device',()=>offline(saveOfflineList)),removeDownloads=button('Remove list downloads','Remove list downloads',()=>offline(removeOfflineList));save.classList.add('offline-list-save');removeDownloads.classList.add('offline-list-remove');
@@ -142,7 +133,7 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  window.addEventListener('scroll',()=>closeListMenu(),{passive:true});window.addEventListener('resize',()=>closeListMenu());window.addEventListener('orientationchange',()=>closeListMenu());
  function commandRow(g){const box=el('div',null,'workspace-list-actions');box.dataset.offlineList=g.id;
   const menu=button('','List actions',()=>openListMenu(g,menu));menu.classList.add('list-actions-toggle');menu.innerHTML='<span>List</span><span aria-hidden="true">▾</span>';menu.setAttribute('aria-haspopup','menu');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-controls','list-command-menu');
-  const status=el('span',null,'list-offline-status');status.setAttribute('role','status');box.append(menu,status);updateOfflineBox(box,g);return box;
+  const status=el('span',null,'list-offline-status');status.setAttribute('role','status');const label=el('label',null,'list-favorites-filter'),check=document.createElement('input');check.type='checkbox';check.checked=favoriteLists.has(g.id);check.setAttribute('aria-label','Favorites in '+g.name);check.onchange=()=>{check.checked?favoriteLists.add(g.id):favoriteLists.delete(g.id);render();};label.append(check,document.createTextNode('Favorites'));box.append(menu,label,status);updateOfflineBox(box,g);return box;
  }
  function updateOfflineBox(box,g){const state=offlineListState(g),summary=offlineSummary(),progress=summary.progress?.listId===g.id?summary.progress:null,status=box.querySelector('.list-offline-status');status.textContent=progress?`Saving ${progress.processed} of ${progress.total}…`:`Offline: ${state.saved} of ${state.total} saved`;status.title=state.excluded?`${state.excluded} unavailable songs excluded`:'';status.setAttribute('aria-label',status.textContent+(state.excluded?`; ${state.excluded} unavailable songs excluded`:''));}
  document.addEventListener('offline-state-changed',()=>{for(const box of $('lists-overview').querySelectorAll('[data-offline-list]')){const g=group(box.dataset.offlineList);if(g)updateOfflineBox(box,g);}updateListMenu();if(offlineSummary().error&&!$('lists-view').hidden)announce(offlineSummary().error);});
@@ -152,7 +143,7 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
    const pencil=button('','Edit list: '+g.name,()=>name(g.id));pencil.classList.add('list-icon','edit-list');pencil.innerHTML=editIcon;pencil.title='Edit List';const order=button('','Order list: '+g.name,()=>{if(!orderingLists)startListOrder(g.id);});order.classList.add('list-icon','order-list');order.innerHTML=orderIcon;order.title=orderingLists?'Drag List; Arrow Up / Down moves one place':'Order Lists';order.setAttribute('aria-pressed',String(orderingLists));row.append(entry,pencil);if(canOrderLists)row.append(order);card.append(row,content);$('lists-overview').append(card);
    if(orderingLists){const groups=getState().groups,index=groups.indexOf(g);order.classList.add('reorder-grip');attachReorderHandle(order,card,$('lists-overview'),(to,before)=>moveList(g.id,to,before),{selector:'.list-workspace-section',idKey:'list',targetSelector:'.list-overview-row'});order.onkeydown=e=>{if(['ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();moveList(g.id,groups[index+(e.key==='ArrowUp'?-1:1)]?.id,e.key==='ArrowUp');}};const tools=el('div',null,'list-order-actions'),up=button('Move Up','Move list up: '+g.name,()=>moveList(g.id,groups[index-1]?.id,true)),down=button('Move Down','Move list down: '+g.name,()=>moveList(g.id,groups[index+1]?.id,false));up.disabled=index===0;down.disabled=index===groups.length-1;tools.append(el('span',(index+1)+' of '+groups.length),up,down);card.insertBefore(tools,content);}
 
-   if(!content.hidden){const rows=el('div',null,'workspace-songs');content.append(commandRow(g),rows);songRows(g,rows);}
+   if(!content.hidden){const rows=el('div',null,'workspace-songs');const columns=el('div',null,'list-item-columns');columns.setAttribute('aria-hidden','true');columns.append(el('span'),el('span','Name'),el('span','Type'),el('span','Edit'),el('span'));content.append(commandRow(g),columns,rows);songRows(g,rows);}
   }
   if(!getState().groups.length)$('lists-overview').append(el('p','No lists yet. Create a list to organize your music.'));
  }
@@ -160,5 +151,5 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  $('lists-back').onclick=cancel;$('list-picker-cancel').onclick=cancel;
  for(const id of ['list-picker-search','list-picker-favorites'])$(id).addEventListener(id==='list-picker-search'?'input':'change',renderPicker);
  $('list-picker-done').onclick=()=>{pickerSources.close();const g=group(picking);if(!g)return;const valid=new Set(songs.filter(canOpenScore).map(s=>s.id)),added=[...selected].filter(id=>valid.has(id)&&!g.songs.includes(id));if(!added.length)return;g.songs.push(...added);const saved=save(),id=picking;picking=null;selected.clear();onChanged();onAdded(id,added,saved);};
- return {open,openList,pick,hide,render,name,remove,editEntry,finishAdded,remember};
+ return {open,openList,pick,hide,render,name,remove,editEntry,finishAdded,remember,clearUndo,editText:(list,id)=>textEditor.open(list,id,textItem(group(list),id)),readText:id=>readText(null,id)};
 }

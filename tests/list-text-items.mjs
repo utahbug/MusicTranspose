@@ -10,14 +10,14 @@ try{
  const card=p.locator('[data-list="a"]'),state=()=>p.evaluate(()=>(()=>{const s=JSON.parse(localStorage.getItem('music-transpose-library-v1'));return {...s.groups[0],textItems:s.textItems};})());
  const expand=async()=>{if(await card.locator('.list-overview-entry').getAttribute('aria-expanded')!=='true')await card.locator('.list-overview-entry').click();};await expand();
  assert.deepEqual((await state()).songs,['silent-night','nativity','faithful']);
- await card.locator('.list-actions-toggle').click();await p.getByRole('menuitem',{name:'Add Text',exact:true}).click();await p.locator('#list-text-new').click();
+ await card.locator('.list-actions-toggle').click();await p.getByRole('menuitem',{name:'Add Text',exact:true}).click();await p.locator('#texts-new').click();
  await p.locator('#list-text-title').fill('Welcome');await p.locator('#list-text-content').fill('Please stand');
- await p.locator('#list-text-content').focus();await p.keyboard.press('Control+a');await p.getByRole('button',{name:'Bold',exact:true}).click();await p.locator('#list-text-size').selectOption('5');
- await p.locator('#list-text-content').focus();await p.keyboard.press('Control+End');await p.keyboard.press('Enter');await p.getByRole('button',{name:'Bullets',exact:true}).click();await p.keyboard.type('First instruction');
+ await p.locator('#list-text-content').focus();await p.keyboard.press('Control+a');await p.getByRole('button',{name:'Bold',exact:true}).click();await p.getByRole('button',{name:'Enlarge selected text',exact:true}).click();await p.getByRole('button',{name:'Enlarge selected text',exact:true}).click();
+ await p.locator('#list-text-content').focus();await p.keyboard.press('Control+End');await p.keyboard.press('Enter');await p.getByRole('button',{name:'Bulleted list',exact:true}).click();await p.keyboard.type('First instruction');
  await p.keyboard.press('Enter');await p.keyboard.press('Enter');await p.getByRole('button',{name:'Numbered list',exact:true}).click();await p.keyboard.type('Second instruction');await p.keyboard.press('Enter');await p.keyboard.press('Enter');
  const image=await p.evaluate(()=>{const c=document.createElement('canvas');c.width=100;c.height=60;c.getContext('2d').fillRect(0,0,100,60);return c.toDataURL('image/png').split(',')[1];});
  await p.locator('#list-text-image').setInputFiles({name:'program.png',mimeType:'image/png',buffer:Buffer.from(image,'base64')});await p.waitForFunction(()=>document.querySelector('#list-text-content img')?.complete);
- await p.locator('#list-text-save').click();let g=await state(),id=g.songs.at(-1);assert.equal(g.textItems[id].title,'Welcome');assert.match(g.textItems[id].html,/<(b|strong)[ >]/);assert.match(g.textItems[id].html,/24px/);assert.match(g.textItems[id].html,/<ul>/);assert.match(g.textItems[id].html,/<ol>/);assert.match(g.textItems[id].html,/<img/);
+ await p.locator('#list-text-save').click();await p.locator('#texts-picker-cancel').click();let g=await state(),id=g.songs.at(-1);assert.equal(g.textItems[id].title,'Welcome');assert.match(g.textItems[id].html,/<(b|strong)[ >]/);assert.match(g.textItems[id].html,/24px/);assert.match(g.textItems[id].html,/<ul>/);assert.match(g.textItems[id].html,/<ol>/);assert.match(g.textItems[id].html,/<img/);
  const row=()=>card.locator(`[data-song="${id}"]`);
  await row().locator('.order-song').click();await p.getByRole('menuitem',{name:'Move to top',exact:true}).click();assert.equal((await state()).songs[0],id);
  // Native drag through the existing reorder handle moves mixed rows too.

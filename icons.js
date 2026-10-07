@@ -29,8 +29,3 @@ export const favoriteIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusab
 // Saved collections and added files: distinct silhouettes in the 24px outline family.
 export const listsIcon=outline('<path d="M3 17V3h14"/><rect x="6" y="6" width="15" height="15" rx="2"/><path d="M13 11h4M13 16h4M10 11h.01M10 16h.01"/>');
 export const filesIcon=outline('<path d="M3 19V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2ZM15 16v-6l3 1"/><ellipse cx="13" cy="16" rx="2" ry="1.5"/>');
-
-// Text editor controls use the same outline family and 24px view box.
-export const textBulletsIcon=outline('<path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>');
-export const textNumberedIcon=outline('<path d="M10 6h11M10 12h11M10 18h11M3 3h1v5M2 8h4M2 12c0-3 4-3 4-1 0 2-4 2-4 5h4M2 19h3l-2 2h2c2 0 1 3-1 2"/>');
-export const textImageIcon=outline('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/>');
