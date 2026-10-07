@@ -5,6 +5,10 @@ const data=JSON.parse(fs.readFileSync(new URL('../assets/lyrics.json',import.met
 const id='song-c9add785-5429-47ec-bf7d-afc5581a87d6',song=data.find(s=>s.id===id);
 assert.deepEqual(song.verses.map(v=>v.number),['1','2','3','4']);assert.equal(song.refrains.length,1);assert(song.refrains[0].text.startsWith('Out in the desert'));
 assert(song.verses.every(v=>!v.text.includes('Out in the desert they wander')&&!v.text.includes('we’ll hasten')));assert(song.alternateLyrics.some(v=>v.text==='we’ll hasten,'));
+const hymn243='song-47443947-36d1-4509-8639-866143aa7468',hymn301='song-7076bf3f-727e-4280-90f1-60faf9796937',hymn242='song-d5aeab67-a5b8-40e7-8770-9fb1d42000e5',hymn244='song-3c37c435-a330-47e2-a169-d83522595cc0';
+const restored=data.find(s=>s.id===hymn243);assert(restored.available);assert.deepEqual(restored.verses.map(v=>v.number),['1','2','3']);assert.equal(restored.refrains.length,1);assert.equal(restored.alternateLyrics.length,1);
+const {lyricIds}=await import('../lyrics-index.js');assert(lyricIds.has(hymn243));
+assert.equal(data.find(s=>s.id===hymn301).verses.length,3);assert.equal(data.find(s=>s.id==='cs-2').verses.length,4);
 const {chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE||'C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
 const browser=await chromium.launch({channel:'msedge'});
 try{for(const width of (process.env.TEST_WIDTH?[Number(process.env.TEST_WIDTH)]:[390,820,1440])){
@@ -12,9 +16,9 @@ try{for(const width of (process.env.TEST_WIDTH?[Number(process.env.TEST_WIDTH)]:
  await c.addInitScript(id=>localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[id],groups:[{id:'chorus-test',name:'Chorus test',songs:[id,'silent-night']}]})),id);
  await p.goto(process.env.TEST_URL||'http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);await p.locator('[data-home-source=all]').click();
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);
- for(const [target,count] of [[id,4],['hhc-1005',3],['cs-2',4],['silent-night',0]]){
+ for(const [target,count] of [[id,4],['hhc-1005',3],['cs-2',4],['silent-night',0],[hymn301,3],[hymn243,3],[hymn242,0],[hymn244,0]]){
   await p.locator(`[data-song="${target}"] .song-entry`).click();await ready();await p.locator('#show-lyrics').click();await p.locator('#lyrics-view').waitFor({state:'visible'});
-  const details=p.locator('.lyrics-chorus');if(target===id)await p.screenshot({path:`test-results/chorus-collapsed-${width}.png`});assert.equal(await details.count(),count);assert.equal(await p.locator('.lyrics-chorus[open]').count(),0);
+  if(target===hymn301||target===hymn243)assert.equal(await p.locator('.lyrics-notice').count(),0);const details=p.locator('.lyrics-chorus');if(target===id)await p.screenshot({path:`test-results/chorus-collapsed-${width}.png`});assert.equal(await details.count(),count);assert.equal(await p.locator('.lyrics-chorus[open]').count(),0);
   if(count){assert.equal(await details.first().locator('summary').textContent(),'Chorus');assert((await details.first().locator('summary').boundingBox()).height>=44);
    await details.first().locator('summary')[width<1000?'tap':'click']();assert.equal(await p.locator('.lyrics-chorus[open]').count(),1);await details.nth(1).locator('summary').click();assert.equal(await p.locator('.lyrics-chorus[open]').count(),2);await details.first().locator('summary').click();assert.equal(await p.locator('.lyrics-chorus[open]').count(),1);
    await details.first().locator('summary').focus();await p.keyboard.press('Enter');assert.equal(await p.locator('.lyrics-chorus[open]').count(),2);
@@ -31,6 +35,7 @@ try{for(const width of (process.env.TEST_WIDTH?[Number(process.env.TEST_WIDTH)]:
   }
   await p.locator('.lyrics-header-home').click();await p.locator('#library').waitFor({state:'visible'});
  }
+ await p.locator('#library-source').click();await p.locator('button[data-source=hymnal]').click();await p.locator('#order-toggle').selectOption('number');await p.locator('#library-search').fill('243');await p.locator(`[data-song="${hymn243}"] .song-entry`).click();await ready();assert(await p.locator('#show-lyrics').isVisible());await p.locator('#next-song').click();await ready();assert.equal(await p.evaluate(()=>prototype.song),hymn244);await p.locator('#previous-song').click();await ready();assert.equal(await p.evaluate(()=>prototype.song),hymn243);await p.locator('#show-lyrics').click();await p.locator('#lyrics-view').waitFor({state:'visible'});await p.locator('.lyrics-header-home').click();await p.locator('#library').waitFor({state:'visible'});assert.equal(await p.locator('#order-toggle').inputValue(),'number');await p.locator('#library-search').fill('');
  // Preserve intentional Library contexts across Lyrics and Score round trips.
  for(const scope of ['list:chorus-test','favorites']){
   if(scope==='favorites')await p.locator('#view-favorites').evaluate(e=>e.click());else{await p.locator('#library-source').click();await p.locator(`[data-source="${scope}"]`).click();}

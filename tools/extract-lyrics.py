@@ -34,7 +34,8 @@ for song in catalog:
  r['alternateLyrics']=[];r['extractionDecisions']=[]
  for part in root.findall('part'):
   section='verse';note_index=0
-  for measure in part.findall('measure'):
+  previous_double=False
+  for measure_index,measure in enumerate(part.findall('measure')):
    for element in measure:
     if element.tag=='direction':
      for w in element.findall('.//words'):
@@ -45,11 +46,29 @@ for song in catalog:
      for l in element.findall('lyric'):
       if any(clean(t.text or '') and not re.fullmatch(r'[—–-]+',clean(t.text or '')) for t in l.findall('text')):
        l.set('data-measure',str(note_index))
+       l.set('data-bar',str(measure_index))
+       l.set('data-after-double',str(previous_double))
        # A named chorus is structural metadata, even when number=1/2 is present.
        name=(l.get('name') or '').strip().lower()
        lyric_section=name if name in ('verse','chorus','refrain') else section
        number=l.get('number') or (name if name.isdigit() else '1')
        streams[(lyric_section,number,part.get('id'),element.findtext('voice','1'))].append(l)
+   previous_double=measure.findtext('barline/bar-style')=='light-light'
+ # Conservative unlabelled chorus: simultaneous printed numbered verses end
+ # together, then a new unnumbered lyric row starts beyond a double bar.
+ # A continuing row or a printed new verse number is not enough evidence.
+ for key,nodes in list(streams.items()):
+  if key[0]!='verse' or key[2] in descants:continue
+  # Syllabic metadata precedes text in XML; inspect only the printed text.
+  numbered=[(k,ns) for k,ns in streams.items() if k[0]=='verse' and k[2:]==key[2:] and re.match(r'^\s*\d+\.', ''.join(t.text or '' for t in ns[0].findall('text')))]
+  if len(numbered)<2 or any(k==key for k,ns in numbered):continue
+  starts={ns[0].get('data-bar') for k,ns in numbered};ends={ns[-1].get('data-bar') for k,ns in numbered}
+  start=int(nodes[0].get('data-bar'))
+  if len(starts)!=1 or len(ends)!=1 or start!=int(next(iter(ends)))+1 or nodes[0].get('data-after-double')!='True' or len(stitch(nodes).split())<8:continue
+  for candidate,lyrics in list(streams.items()):
+   if candidate[0]=='verse' and int(lyrics[0].get('data-bar'))==start and not re.match(r'^\s*\d+\.', ''.join(t.text or '' for t in lyrics[0].findall('text'))):
+    streams[('chorus',*candidate[1:])]=streams.pop(candidate)
+  r['extractionDecisions'].append('Unnumbered section after a double bar follows coextensive printed verses; principal chorus and alternate vocal streams separated.')
  # Isolate a substantial unlabelled tail carried only on the first lyric row.
  # This is retained as a shared ending candidate, never silently called a chorus.
  for key,nodes in list(streams.items()):

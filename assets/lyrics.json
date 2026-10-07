@@ -17890,38 +17890,40 @@
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 3"
-        },
+        }
+      ],
+      "refrains": [
         {
           "number": "4",
           "text": "Fear not, though the enemy deride; Courage, for the Lord is on our side. We will heed not what the wicked may say, But the Lord alone we will obey.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Verse 4"
-        },
-        {
-          "number": "5",
-          "text": "Fear not, courage, though the enemy deride; We must be victorious, for the Lord is on our side. We’ll not fear the wicked nor give heed to what they say, But the Lord, our Heav’nly Father, him alone we will obey.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 5"
+          "label": "Chorus"
         }
       ],
-      "refrains": [],
-      "notes": [
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "5",
+          "label": "Alternate chorus",
+          "text": "Fear not, courage, though the enemy deride; We must be victorious, for the Lord is on our side. We’ll not fear the wicked nor give heed to what they say, But the Lord, our Heav’nly Father, him alone we will obey."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Unnumbered section after a double bar follows coextensive printed verses; principal chorus and alternate vocal streams separated.",
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text."
+      ],
       "sourceTextBlocks": [
         "Let Us All Press On",
         "243",
         "Text and music: \n Evan Stephens, 1854–1930",
         "Doctrine and Covenants 6:33–37\n1 Nephi 22:15–17"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-3c37c435-a330-47e2-a169-d83522595cc0",
@@ -20936,13 +20938,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
