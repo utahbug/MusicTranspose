@@ -167,7 +167,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('library-saved-filter').onclick=()=>{savedOnly=!savedOnly;closeMore();render();refreshOffline();};
  document.addEventListener('offline-state-changed',()=>{render();});
  document.addEventListener('library-open',()=>refreshOffline());
- initHomeScreen({closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true})});
+ initHomeScreen({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{render();closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};
  // One query/filter/order path serves both visible results and locator fallback.
@@ -223,7 +223,15 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
 
  function showHome(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'home',list:null,song:null});files.hide();lists.hide();texts.hide();leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library').hidden=true;$('library-home').hidden=false;document.title='Library · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});$('library-home-title').focus({preventScroll:true});}
  for(const control of document.querySelectorAll('[data-home-source]'))control.onclick=()=>{activeList=null;reordering=false;applyContext({source:control.dataset.homeSource,sort:globalSort});showLibrary();};
- const about=$('about-dialog');$('home-about').onclick=()=>{about.showModal();$('about-title').focus();};$('about-close').onclick=()=>about.close();about.addEventListener('close',()=>$('home-about').focus({preventScroll:true}));about.addEventListener('click',e=>{if(e.target!==about)return;const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();});
+ const infoButton=$('home-about'),infoMenu=$('home-info-menu');
+ function closeHomeInfo(focus=false){infoMenu.hidden=true;infoButton.setAttribute('aria-expanded','false');if(focus)infoButton.focus({preventScroll:true});}
+ function openHomeInfo(){infoMenu.hidden=false;infoButton.setAttribute('aria-expanded','true');infoMenu.querySelector('button:not([hidden])').focus({preventScroll:true});}
+ infoButton.onclick=()=>infoMenu.hidden?openHomeInfo():closeHomeInfo(true);
+ infoButton.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openHomeInfo();if(e.key==='ArrowUp')[...infoMenu.querySelectorAll('button:not([hidden])')].at(-1).focus();}};
+ infoMenu.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeHomeInfo(true);}else if(e.key==='Tab')closeHomeInfo(true);else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...infoMenu.querySelectorAll('button:not([hidden]):not(:disabled)')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}};
+ document.addEventListener('pointerdown',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});
+ document.addEventListener('focusin',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});
+ const about=$('about-dialog');$('home-info-about').onclick=()=>{closeHomeInfo();about.showModal();$('about-title').focus();};$('about-close').onclick=()=>about.close();about.addEventListener('close',()=>$('home-about').focus({preventScroll:true}));about.addEventListener('click',e=>{if(e.target!==about)return;const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();});
  $('home-search-form').onsubmit=e=>{e.preventDefault();if(isBusy())return;const query=$('home-search').value;$('home-search').blur();activeList=null;reordering=false;applyContext({source:'all',sort:globalSort,query});showLibrary();$('home-search').value='';};
  $('home-files').onclick=()=>showFiles();$('home-lists').onclick=()=>showLists();
  function showFiles(){clearLeavingSearch();$('library-home').hidden=true;closeMore();blurSearch();navigation?.visit({view:'files'});if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}lists.hide();texts.hide();files.open();}

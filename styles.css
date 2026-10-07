@@ -1650,3 +1650,14 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 [data-library-theme=dark] #library-home .home-toolbar button[aria-current=page]{background:#426e8b;color:white}
 [data-library-theme=dark] #library-home .home-toolbar button:hover{background:#375568}
 [data-library-theme=dark] #library-home .home-toolbar button:focus-visible{outline-color:#83baf0}
+
+/* Home Info: two existing help destinations, using the Library menu treatment. */
+#home-info-menu{position:absolute;right:12px;top:calc(100% - 4px);z-index:20;width:244px;max-width:calc(100vw - 40px);padding:5px;background:#fafcfd;color:#284f66;border:1px solid #b6cbd5;border-radius:10px;box-shadow:0 6px 20px #23465426}
+#home-info-menu[hidden]{display:none}
+#home-info-menu button{display:block;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:6px;text-align:left;background:transparent;color:inherit;font:500 14px/1.4 system-ui}
+#home-info-menu button[hidden]{display:none}
+#home-info-menu button:hover{background:#e5eff3}
+#home-info-menu button:focus-visible{background:#e5eff3;outline:2px solid #365f7d;outline-offset:-2px}
+#home-about[aria-expanded=true]{background:#ffffff25}
+[data-library-theme=dark] #home-info-menu{background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+[data-library-theme=dark] #home-info-menu button:is(:hover,:focus-visible){background:#354d57;outline-color:#83baf0}
