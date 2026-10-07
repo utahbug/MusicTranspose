@@ -50,7 +50,7 @@ let leadSource=null,leadState=null,lastViewXML='';
 let readingPosition=null,handLayout={ok:false},octaveScope='both';
 let KEYS=[],original='',current=0,wanted=0,currentOctave=normalOctaves(),wantedOctave=currentOctave,busy=false,ready=false,renderWidth=0,timer,osmd;
 new MutationObserver(()=>{$('status').classList.toggle('visible-error',/Unable|Could not/.test($('status').textContent));}).observe($('status'),{childList:true});
-let preparedHasChords=false;
+let preparedHasChords=false,preparedHasSourceChords=false;
 const wideScore=()=>matchMedia('(min-width:601px)').matches;
 const keyFromPdf=()=>pdfFallback&&!!original&&KEYS.length>0&&!viewOnly();
 const isPdf=()=>activeSong.scoreType==='pdf'||pdfFallback;
@@ -219,7 +219,7 @@ function syncScoreView(){
  const view=isPdf()?'pdf':scoreSize==='large'?'large':'auto',label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view];
  $('score-size').disabled=!ready||busy||loading;$('score-size').dataset.size=scoreSize;$('score-size').dataset.view=view;
  $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label',wide?'Score':'Score View: '+label);$('score-size').title=wide?'Score':'Score View: '+label;
- const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&!!original&&preparedHasChords,large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
+ const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&!!original&&preparedHasChords&&!(keyFromPdf()&&preparedHasSourceChords&&!activeSong.local),large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
  const explanations={pdf:'Original PDF is not available for this song.',auto:'Transpose is not available for this score.',large:'Melody only is not available for this score.'};
  for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent={pdf:'View PDF',auto:'Show chords',large:preparedHasChords&&original?'Melody only (lead sheet)':'Melody only'}[type];option.hidden=!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
@@ -310,6 +310,9 @@ async function loadScore(xml,override,token=selectionVersion,engrave=true,derive
  if(rendering)await rendering;if(token!==selectionVersion)return;
  xml=await withGeneratedHarmony(xml,activeSong.id);if(token!==selectionVersion)return;
  const chordDoc=parseXML(xml);preparedHasChords=!!chordDoc.querySelector('harmony')||[...chordDoc.querySelectorAll('direction > direction-type')].some(type=>{const words=[...type.children].filter(e=>e.localName==='words');return words.length&&!words.some(w=>w.children.length)&&!!parseChordSymbol(words.map(w=>w.textContent).join(''));});
+ // Bundled PDFs preserve source chords; generated overlays add information absent from them.
+ // Local PDF/XML pairings are not assumed to share the same chord content.
+ preparedHasSourceChords=preparedHasChords&&(!chordDoc.querySelector('harmony[id^="mt-generated-"]'));
  const source=viewOnly()?null:originalKey(xml,override),keys=source?buildKeys(source):[];modeOverride=override;
  clearTimeout(timer);autoChoice=null;leadSource=deriveLead?createLeadXML(xml,activeSong):null;leadState=null;lastViewXML='';if(scoreSize==='large'&&leadSource&&!leadSource.ok){scoreSize='normal';saveScoreSize(scoreSize);}original=xml;handLayout=pianoHands(xml);KEYS=keys;current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;cache.clear();
  showOpeningMetadata(document.querySelector('.score-heading .subtitle'),activeSong.collection+' · '+activeSong.page,xml,$('score-source'));
