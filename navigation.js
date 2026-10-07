@@ -45,6 +45,12 @@ function positionIndicator(){
   navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
   navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
  }
+ // Keep both shortcuts above the status lane, never in place of its label.
+ if(!$('return-start').hidden){
+  const bottom=Math.min(bar.top-8,pagePosition.getBoundingClientRect().top-8);
+  for(const button of document.querySelectorAll('.return-start'))button.style.bottom=Math.max(8,innerHeight-bottom)+'px';
+  document.documentElement.style.setProperty('--return-clearance',Math.max(60,bar.top-bottom+52)+'px');
+ }
 }
 // Outside the clipped phone sheet, but still within the existing playing view.
 // Desktop keeps precisely the same fixed positioning and interaction.
@@ -133,13 +139,14 @@ function hideStart(){
  document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
 }
 function syncStart(){
- const visible=mode==='continuous'&&playing()&&scrollY>=100,pdf=document.body.classList.contains('pdf-score-open');
- $('return-start').hidden=!visible;$('return-start-left').hidden=!visible||pdf;
- // Preserve the existing PDF right-side shortcut; paired controls apply to MXL.
- const entering=visible&&!pdf&&!document.body.classList.contains('continuous-return-visible'),atEnd=scrollY+innerHeight>=document.documentElement.scrollHeight-1;
- document.body.classList.toggle('continuous-return-visible',visible&&!pdf);
+ const visible=['continuous','auto'].includes(mode)&&playing()&&scrollY>=($('return-start').hidden?100:80);
+ $('return-start').hidden=!visible;$('return-start-left').hidden=!visible;
+ // Shared visibility and clearance for both score formats; a small deadband avoids flicker.
+ const entering=visible&&!document.body.classList.contains('continuous-return-visible'),atEnd=scrollY+innerHeight>=document.documentElement.scrollHeight-1;
+ document.body.classList.toggle('continuous-return-visible',visible);
+ positionIndicator();
  if(entering&&atEnd)window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'});
- if(visible&&!pdf){const bottom=scoreVisibleBottom();for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.setProperty('--return-clip',Math.max(0,e.getBoundingClientRect().bottom-bottom)+'px');}
+ if(visible){const bottom=scoreVisibleBottom();for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.setProperty('--return-clip',Math.max(0,e.getBoundingClientRect().bottom-bottom)+'px');}
  else for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
 }
 // Primary-style confirmation follows successful turns, never layout synchronization.

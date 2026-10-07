@@ -708,7 +708,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
  body:has(#score-tap-overlay[open]) #original-key-reference{visibility:hidden}
 }
 
-/* Continuous-only button clearance is viewport space, not score engraving. */
+/* Scrolling-mode button clearance is viewport space, not score engraving. */
 :root{--return-clearance:60px}
 #return-start{right:max(12px,env(safe-area-inset-right,0px))}
 #return-start-left{left:max(12px,env(safe-area-inset-left,0px))}
@@ -1428,8 +1428,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 66px)}
  body.continuous-return-visible #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 66px + var(--return-clearance))}
  #score-navigation-button{align-items:center}
- #return-start{left:60px;right:auto}
- body.pdf-score-open #return-start{left:12px}
+ #return-start{left:auto;right:max(12px,env(safe-area-inset-right,0px))}
  #page-turn-feedback{position:fixed;padding:5px 8px;font-size:16px;height:44px;display:flex;align-items:center;background:transparent;color:#365f7d}
  #page-turn-feedback[hidden]{display:none}
 }
