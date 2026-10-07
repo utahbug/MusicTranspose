@@ -1064,7 +1064,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .home-identity{position:relative}
 .identity-home{position:absolute;inset:0;z-index:1}
 .lyrics-header-home{position:absolute;inset:0 60px 0 0;z-index:1}
-:is(.library-heading,.score-identity-header,.lyrics-identity-header,.files-heading,.lists-heading):has(.header-home:focus-visible) h1{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+:is(.library-heading,.lyrics-identity-header,.files-heading,.lists-heading):has(.header-home:focus-visible) h1{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
 #library .library-heading h1:focus,.score-heading h1:focus,#lyrics-view .lyrics-identity-header h1:focus,#files-heading:focus,#lists-heading:focus{outline:none;box-shadow:none}
 @media print{.header-home{display:none!important}}
 
@@ -1485,7 +1485,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Expanded Lists: one light command row; secondary actions live in a menu. */
 #lists-view .workspace-list-actions{align-items:center;flex-wrap:nowrap;gap:4px;padding:0 4px;min-height:44px}
-#lists-view .workspace-list-actions .list-actions-toggle{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;width:auto;min-width:76px;height:44px;flex:0 0 auto;padding:0 12px;border:1px solid #c2cdc6;border-radius:6px;background:#f4f7f7;color:#365f7d}
+#lists-view .workspace-list-actions .list-actions-toggle{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;width:auto;min-width:76px;height:44px;flex:0 0 auto;padding:0 12px}
 .list-actions-toggle svg{width:22px;height:22px;fill:currentColor;vertical-align:middle}
 #lists-view .workspace-list-actions .workspace-add{flex-shrink:0;white-space:nowrap;font-size:13px;font-weight:600}
 .workspace-list-actions .list-offline-status{margin-left:auto;padding:0 4px;color:#61716f;font-size:12px;white-space:nowrap}
@@ -1691,4 +1691,20 @@ dialog.app-dialog .dialog-primary:hover{background:#205f61}
  body #score-navigation.auto-return-status{left:50%;right:auto!important;transform:translateX(-50%);bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px)!important}
  body.focus-scroll-viewport #score-navigation.auto-return-status{bottom:calc(4px + var(--playing-safe-bottom) + var(--footer-viewport-inset))!important}
  body #score-navigation.auto-return-status #score-navigation-menu{right:auto;left:50%;transform:translateX(-50%)}
+}
+
+/* Lightweight toolbar selectors, shared by Lists and Files (native select retained). */
+body :is(#lists-view,#files-view) .toolbar-selector{min-height:44px;min-width:44px;border:1px solid transparent;border-radius:6px;background:transparent;color:inherit;padding:0 12px;font:500 14px/1.4 system-ui,sans-serif;box-shadow:none;cursor:pointer}
+body :is(#lists-view,#files-view) .toolbar-selector:hover{background:#365f7d0d}
+body :is(#lists-view,#files-view) .toolbar-selector:is(:active,[aria-expanded=true]){background:#365f7d1c}
+body :is(#lists-view,#files-view) .toolbar-selector:focus-visible{outline:2px solid #365f7d;outline-offset:2px}
+[data-library-theme=dark] body :is(#lists-view,#files-view) .toolbar-selector:is(:hover,:active,[aria-expanded=true]){background:#ffffff14}
+[data-library-theme=dark] body :is(#lists-view,#files-view) .toolbar-selector:focus-visible{outline-color:#83baf0}
+.workspace-song-entry strong .offline-saved-badge{color:#38776f;vertical-align:baseline;white-space:nowrap}
+[data-library-theme=dark] .workspace-song-entry strong .offline-saved-badge{color:#98d1cf}
+@media screen{
+ .score-header-home{display:flex;align-items:flex-start}
+ .score-library-cue{font:500 10px/12px system-ui,sans-serif;letter-spacing:.01em;color:#e0eef5;white-space:nowrap}
+ body .score-identity-header .score-title-block h1{padding-top:14px}
+ .score-identity-header .score-header-home:focus-visible{outline:2px solid #fff;outline-offset:2px}
 }
