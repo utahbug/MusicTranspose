@@ -6,7 +6,7 @@ const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textCont
 const button=(label,action,cls)=>{const b=el('button',label,cls);b.type='button';b.onclick=action;return b;};
 export function createTextsView({getState,save,edit,read,onHome,onFiles,onLists,onChanged,clearUndo}){
  let membership=null;
- for(const [id,label,icon] of [['texts-home','Library',$('songs').innerHTML],['texts-files','Files',filesIcon],['texts-lists','Lists',listsIcon]]){const control=$(id);control.innerHTML=icon;control.setAttribute('aria-label',label);control.title=label;control.classList.add('text-navigation-icon');}
+ for(const [id,label,icon] of [['texts-home','Library',$('songs').innerHTML],['texts-files','Files',filesIcon],['texts-lists','Lists',listsIcon]]){const control=$(id);control.innerHTML=icon;control.setAttribute('aria-label',label);control.title=label;control.classList.add('text-navigation-icon');if(id!=='texts-home'){control.classList.add('workspace-sibling');control.setAttribute('aria-controls',id==='texts-files'?'files-view':'lists-view');}}
  const item=id=>getState().textItems[id];
  function changed(){onChanged();render();}
  function favorite(id){const state=getState(),previous=state.favorites;state.favorites=previous.includes(id)?previous.filter(x=>x!==id):[...previous,id];if(!save()){state.favorites=previous;$('texts-status').textContent='Could not save Favorite. Please retry.';return;}changed();}

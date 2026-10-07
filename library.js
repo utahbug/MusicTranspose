@@ -4,7 +4,7 @@ import {offlineSongState,offlineBadge,refreshOffline,reconcileOfflineLists} from
 import {initLibraryTheme} from './library-theme.js';
 import {installLibraryQuickAccess} from './library-quick-access.js';
 import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-availability.js';
-import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon} from './icons.js';
+import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon,textIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
 import {initOfflineMusic} from './offline-music.js';
 import {initHomeScreen} from './home-screen.js';
@@ -87,7 +87,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const files=createFilesView({onLibrary:showHome,onSong:(id,ids)=>{pendingSongSet={ids,origin:'files'};open(id);}});
  const texts=createTextsView({getState:()=>state,save,edit:lists.editText,read:lists.readText,onHome:showHome,onFiles:showFiles,onLists:showLists,clearUndo:lists.clearUndo,onChanged:()=>{lists.render();render();}});
  $('home-text').onclick=()=>showTexts();
- for(const workspace of ['files','lists']){const control=button('Text','Text',()=>showTexts());control.classList.add('workspace-sibling');$(workspace+'-library').parentElement.append(control);}
+ for(const workspace of ['files','lists']){const control=button('','Text',()=>showTexts());control.innerHTML=textIcon;control.title='Text';control.setAttribute('aria-controls','texts-view');control.classList.add('workspace-sibling');$(workspace+'-library').parentElement.append(control);}
  function showTexts(){if(isBusy())return;clearLeavingSearch();$('library-home').hidden=true;$('library').hidden=true;closeMore();closeSource();blurSearch();files.hide();lists.hide();texts.hide();document.body.classList.add('library-open');navigation?.visit({view:'text',list:null});texts.open();}
  function returnLabels(){for(const id of ['songs','files-library','lists-library']){$(id).setAttribute('aria-label','Library Home');$(id).title='Library Home';$(id).setAttribute('aria-controls','library-home');}}
  returnLabels();
