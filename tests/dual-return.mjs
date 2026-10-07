@@ -3,7 +3,7 @@ const {chromium}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-prima
 try{for(const width of [390,820,1440]){
  const c=await b.newContext({viewport:{width,height:width===390?740:1000},hasTouch:width<1000,serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
  const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading&&document.querySelector('#score').getAttribute('aria-busy')==='false');
- const mode=async name=>{await p.locator('#score-navigation-button').click();await p.locator(`[data-navigation=${name}]`).click();if(name==='auto')await p.keyboard.press('Escape');};
+ const mode=async name=>{await p.evaluate(()=>scrollTo({top:0,behavior:'instant'}));await p.waitForTimeout(100);await p.locator('#score-navigation-button').click();await p.locator(`[data-navigation=${name}]`).click();if(name==='auto')await p.keyboard.press('Escape');};
  const scroll=async y=>{await p.evaluate(y=>window.scrollTo({top:y,behavior:'instant'}),y);await p.waitForTimeout(100);};
  const visible=()=>p.locator('.return-start:visible').count();
  const running=()=>p.locator('#auto-toggle').getAttribute('aria-pressed');
@@ -18,7 +18,7 @@ try{for(const width of [390,820,1440]){
    for(const side of ['return-start-left','return-start']){
     await scroll(400);assert.equal(await visible(),2);if(kind==='auto')await start();
     const layout=await p.evaluate(()=>{const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};};return {buttons:[...document.querySelectorAll('.return-start')].map(rect),status:rect(document.querySelector('#score-navigation-button')),footer:rect(document.querySelector('.masthead')),label:document.querySelector('#score-navigation-label').textContent};});
-    const [left,right]=layout.buttons;assert.equal(left.width,44);assert.equal(right.height,44);assert.equal(left.top,right.top);assert(left.left<width/2&&right.right>width/2);assert(right.bottom<=layout.status.top-7);assert(left.bottom<layout.footer.top);assert.equal(layout.label,kind==='auto'?'Auto-scroll':'Scroll');assert(await p.locator('#score-navigation-button').isVisible());
+    const [left,right]=layout.buttons;assert.equal(left.width,44);assert.equal(right.height,44);assert.equal(left.top,right.top);assert(left.left<width/2&&right.right>width/2);assert(right.bottom<=layout.footer.top-8);assert(left.bottom<layout.footer.top);assert.equal(layout.label,kind==='auto'?'Auto: Running':'Scroll');assert.equal(await p.locator('#score-navigation-button').isVisible(),kind==='auto');
     await p.locator('#'+side)[width<1000?'tap':'click']();assert.equal(await p.evaluate(()=>scrollY),0);assert.equal(await visible(),0);assert.equal(await running(),'false');await p.waitForTimeout(250);assert.equal(await p.evaluate(()=>scrollY),0);
    }
    if(kind==='auto'){await scroll(350);await start();await p.waitForTimeout(250);assert.equal(await running(),'true');await p.locator('#score').dispatchEvent('wheel',{deltaY:40});assert.equal(await running(),'false');await start();await p.touchscreen?.tap?.(100,160).catch(()=>p.mouse.click(100,160));assert.equal(await running(),'false');}

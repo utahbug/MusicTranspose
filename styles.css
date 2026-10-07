@@ -1668,3 +1668,27 @@ dialog.app-dialog .dialog-primary:hover{background:#205f61}
 [data-library-theme=dark] dialog.app-dialog{color-scheme:dark}
 #home-info-menu{background:var(--popup-surface);color:var(--popup-ink);border-color:var(--popup-border);box-shadow:0 8px 24px #173e3b26;padding:6px}
 #home-info-menu button:is(:hover,:focus-visible){background:var(--popup-hover);outline-color:var(--popup-focus)}
+
+/* A stable edge anchor in both focus states; the toolbar reserves its target. */
+@media screen{
+ body .masthead .toolbar{padding-right:calc(52px + env(safe-area-inset-right,0px))}
+ body .masthead .score-focus-control{position:absolute;right:max(4px,env(safe-area-inset-right,0px));bottom:calc(4px + var(--playing-safe-bottom))}
+ body .masthead .score-focus-control[hidden]{display:none}
+ body.focus-scroll-viewport .masthead{pointer-events:none}
+ body.focus-scroll-viewport #score-show-controls{pointer-events:auto}
+ /* Expose already rendered content. Keep DOM sizes, scroll extent and engraving budgets. */
+ body.focus-scroll-viewport :is(#score,#source-credits,#original-key-reference),body.focus-scroll-viewport #playing-view .score-paper{clip-path:none}
+ body.focus-scroll-viewport .return-start{width:44px;height:44px;border:0;border-radius:0;background:transparent;box-shadow:none}
+ body.focus-scroll-viewport #return-start{right:0}
+ body.focus-scroll-viewport #return-start-left{left:0}
+ body.focus-scroll-viewport .return-start::before{content:"";position:absolute;top:4px;bottom:4px;width:18px;background:#f7f9fbe6;border:1px solid #9cb3bf}
+ body.focus-scroll-viewport #return-start::before{right:0;border-right:0;border-radius:6px 0 0 6px}
+ body.focus-scroll-viewport #return-start-left::before{left:0;border-left:0;border-radius:0 6px 6px 0}
+ body.focus-scroll-viewport .return-start svg{position:absolute;top:15px;width:14px;height:14px}
+ body.focus-scroll-viewport #return-start svg{right:2px}
+ body.focus-scroll-viewport #return-start-left svg{left:2px}
+ body.scroll-status-redundant #score-navigation{visibility:hidden;pointer-events:none}
+ body #score-navigation.auto-return-status{left:50%;right:auto!important;transform:translateX(-50%);bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 8px)!important}
+ body.focus-scroll-viewport #score-navigation.auto-return-status{bottom:calc(4px + var(--playing-safe-bottom) + var(--footer-viewport-inset))!important}
+ body #score-navigation.auto-return-status #score-navigation-menu{right:auto;left:50%;transform:translateX(-50%)}
+}

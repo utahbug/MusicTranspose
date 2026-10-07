@@ -4,16 +4,17 @@ import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
 const $=id=>document.getElementById(id),pagePosition=$('score-navigation-button'),modeMenu=$('score-navigation-menu'),navCorner=$('score-navigation'),hint=$('page-navigation-hint');
-// Visibility only: retain the measured footer and all score geometry.
+// Retain engraving geometry; scrolling focus only removes viewport clipping.
 const footer=document.querySelector('.masthead'),footerToolbar=footer.querySelector('.toolbar');
 const focusHide=document.createElement('button'),focusShow=document.createElement('button');
 for(const [button,id,label,path] of [[focusHide,'score-hide-controls','Hide controls','m6 9 6 6 6-6'],[focusShow,'score-show-controls','Show controls','m6 15 6-6 6 6']]){
  button.id=id;button.type='button';button.className='score-focus-control';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-controls','score-footer-controls');
  button.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
 }
-footerToolbar.id='score-footer-controls';footerToolbar.querySelector('.utility-controls').append(focusHide);footer.append(focusShow);focusShow.hidden=true;
+footerToolbar.id='score-footer-controls';footer.append(focusHide,focusShow);focusShow.hidden=true;
 function setFooterFocus(hidden,moveFocus=true){
- footer.classList.toggle('controls-hidden',hidden);footerToolbar.inert=hidden;focusShow.hidden=!hidden;
+ footer.classList.toggle('controls-hidden',hidden);footerToolbar.inert=hidden;focusShow.hidden=!hidden;focusHide.hidden=hidden;
+ syncStart();
  if(moveFocus)(hidden?focusShow:focusHide).focus({preventScroll:true});
 }
 focusHide.onclick=()=>setFooterFocus(true);focusShow.onclick=()=>setFooterFocus(false);
@@ -40,14 +41,20 @@ function hideHint(){clearTimeout(hintTimer);hint.hidden=true;}
 function showHint(){if(hintSeen)return;hintSeen=true;try{localStorage.setItem(hintKey,'seen');}catch{}hint.hidden=false;hintTimer=setTimeout(hideHint,6000);}
 function positionIndicator(){
  const paperElement=document.querySelector('.score-paper');
- phoneStatus.hidden=!phoneScreen.matches||navCorner.hidden;
+ const reclaim=mode!=='pages'&&footer.classList.contains('controls-hidden');
+ const returning=!$('return-start').hidden;
+ document.body.classList.toggle('focus-scroll-viewport',reclaim);
+ document.body.classList.toggle('scroll-status-redundant',returning&&mode==='continuous');
+ navCorner.classList.toggle('auto-return-status',returning&&mode==='auto');
+ if(mode==='auto')$('score-navigation-label').textContent=returning?(running?'Auto: Running':'Auto: Paused'):'Auto-scroll';
+ phoneStatus.hidden=!phoneScreen.matches||navCorner.hidden||reclaim;
  if(navCorner.hidden){paperElement.style.removeProperty('--phone-paper-clip');return;}
  const paper=paperElement.getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
  if(phoneScreen.matches){
   // Keep the same control outside the visible sheet. Long Continuous scores
   // retain document scrolling; only ink under the reserved status strip is clipped.
   const top=Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight);
-  paperElement.style.setProperty('--phone-paper-clip',Math.max(0,paper.bottom-(top-5))+'px');
+  paperElement.style.setProperty('--phone-paper-clip',(reclaim?0:Math.max(0,paper.bottom-(top-5)))+'px');
   phoneStatus.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
   navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
   navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
@@ -59,9 +66,9 @@ function positionIndicator(){
   navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
   navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
  }
- // Keep both shortcuts above the status lane, never in place of its label.
+ // Edge tabs clear the restore target; expanded shortcuts clear the footer.
  if(!$('return-start').hidden){
-  const bottom=Math.min(bar.top-8,pagePosition.getBoundingClientRect().top-8);
+  const bottom=reclaim?focusShow.getBoundingClientRect().top-8:bar.top-8;
   for(const button of document.querySelectorAll('.return-start'))button.style.bottom=Math.max(8,innerHeight-bottom)+'px';
   document.documentElement.style.setProperty('--return-clearance',Math.max(60,bar.top-bottom+52)+'px');
  }
@@ -189,7 +196,7 @@ function syncPages(){
  pagePosition.disabled=document.body.classList.contains('pdf-annotation-active');
  for(const option of modeMenu.querySelectorAll('[data-navigation]')){option.setAttribute('aria-checked',String(option.dataset.navigation===mode));option.disabled=option.dataset.navigation==='pages'&&!available;}
  if(navCorner.hidden){closeModeMenu();hidePageFeedback();}
- if(!paged||navCorner.hidden)hideHint();else if(frames.length>1&&window.prototype?.ready&&!prototype.busy)showHint();
+ if(!paged||navCorner.hidden){hideHint();hidePageFeedback();}else if(frames.length>1&&window.prototype?.ready&&!prototype.busy)showHint();
  if(pdf)syncPdfPresentation();
  fitPage();syncStart();positionIndicator();
 }
