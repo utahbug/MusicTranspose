@@ -40,10 +40,20 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const footer=make('div',null,'lyrics-footer');
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,tools);host.append(footer);
  const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');header.append(home,make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
- if(current.notes.length)paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
+ if(current.refrains.some(r=>r.label==='Shared ending'))paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
  const body=make('div',null,'lyrics-body');
- for(const verse of current.verses){const block=make('section');block.append(make('h2','Verse '+verse.number),make('p',verse.text));body.append(block);}
- for(const refrain of current.refrains){const block=make('section',null,'lyrics-refrain');block.append(make('h2',refrain.label||'Refrain'),make('p',refrain.text));body.append(block);}
+ const repeated=current.refrains.filter(r=>/^(chorus|refrain)$/i.test(r.label||''));
+ for(const verse of current.verses){
+  const block=make('section');block.append(make('h2','Verse '+verse.number),make('p',verse.text));
+  for(const refrain of repeated){
+   if(refrain.verses&&!refrain.verses.map(String).includes(String(verse.number)))continue;
+   const disclosure=make('details',null,'lyrics-chorus'),summary=make('summary',refrain.label||'Chorus');
+   summary.setAttribute('aria-label',(refrain.label||'Chorus')+' after verse '+verse.number);
+   disclosure.append(summary,make('p',refrain.text));block.append(disclosure);
+  }
+  body.append(block);
+ }
+ for(const refrain of current.refrains.filter(r=>!current.verses.length||!repeated.includes(r))){const block=make('section',null,'lyrics-refrain');block.append(make('h2',refrain.label||'Refrain'),make('p',refrain.text));body.append(block);}
  paper.append(body);
  const heading=header.querySelector('h1');heading.tabIndex=-1;
  }

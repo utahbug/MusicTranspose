@@ -495,13 +495,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -5335,7 +5333,7 @@
           "sourcePart": "P2",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Refrain"
+          "label": "Chorus"
         }
       ],
       "notes": [],
@@ -16712,7 +16710,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "Dear to the heart of the Shepherd, Dear are the sheep of his fold; Dear is the love that he gives them, Dearer than silver or gold. Dear to the heart of the Shepherd, Dear are his “other” lost sheep; Over the mountains he follows, Over the waters so deep. Out in the desert they wander, Hungry and helpless and cold; Off to the rescue he hastens, Bringing them back to the fold.",
+          "text": "Dear to the heart of the Shepherd, Dear are the sheep of his fold; Dear is the love that he gives them, Dearer than silver or gold. Dear to the heart of the Shepherd, Dear are his “other” lost sheep; Over the mountains he follows, Over the waters so deep.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -16720,7 +16718,7 @@
         },
         {
           "number": "2",
-          "text": "Dear to the heart of the Shepherd, Dear are the lambs of his fold; Some from the pastures are straying, Hungry and helpless and cold. See, the Good Shepherd is seeking, Seeking the lambs that are lost, Bringing them in with rejoicing, Saved at such infinite cost. we’ll hasten,",
+          "text": "Dear to the heart of the Shepherd, Dear are the lambs of his fold; Some from the pastures are straying, Hungry and helpless and cold. See, the Good Shepherd is seeking, Seeking the lambs that are lost, Bringing them in with rejoicing, Saved at such infinite cost.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -16743,11 +16741,30 @@
           "label": "Verse 4"
         }
       ],
-      "refrains": [],
+      "refrains": [
+        {
+          "number": "1",
+          "text": "Out in the desert they wander, Hungry and helpless and cold; Off to the rescue he hastens, Bringing them back to the fold.",
+          "sourcePart": "P1",
+          "sourceVoice": "1",
+          "kind": "note-lyrics",
+          "label": "Chorus"
+        }
+      ],
       "notes": [],
       "status": "extracted",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "alternateLyrics": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "we’ll hasten,"
+        }
+      ],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text."
+      ],
       "sourceTextBlocks": [
         "Dear to the Heart of the Shepherd",
         "221",

@@ -1582,3 +1582,13 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 /* Compact artwork with full-size touch targets. */
 .list-text-toolbar{gap:4px}.list-text-toolbar button{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px}
 .list-text-toolbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.list-text-toolbar b{font-size:21px}
+
+/* Repeated lyrics stay close to each verse without competing with its text. */
+.lyrics-chorus{margin-top:4px}
+.lyrics-chorus summary{display:flex;align-items:center;gap:9px;min-height:44px;width:fit-content;padding:0 8px 0 0;cursor:pointer;list-style:none;font:600 14px/1.4 system-ui;color:var(--lyrics-muted);border-radius:4px}
+.lyrics-chorus summary::-webkit-details-marker{display:none}
+.lyrics-chorus summary::before{content:"";width:7px;height:7px;border-right:1.75px solid currentColor;border-bottom:1.75px solid currentColor;transform:rotate(-45deg);margin:0 4px;flex:none}
+.lyrics-chorus[open]>summary::before{transform:rotate(45deg)}
+.lyrics-chorus summary:hover{color:var(--lyrics-ink)}
+.lyrics-chorus summary:focus-visible{outline:2px solid var(--lyrics-frame-outer);outline-offset:2px}
+.lyrics-chorus>p{padding:0 0 4px 24px}
