@@ -20,7 +20,7 @@ try{for(const [width,height] of [[390,844],[744,1133],[768,1024],[820,1180],[900
  await page.waitForFunction(()=>prototype.ready&&!prototype.busy&&document.getElementById('score').getAttribute('aria-busy')==='false');
  const geometry=()=>page.evaluate(()=>({paper:document.querySelector('.score-paper').getBoundingClientRect().toJSON(),score:document.querySelector('#score').getBoundingClientRect().toJSON(),footer:document.querySelector('.masthead').getBoundingClientRect().height}));
  assert.equal(await page.locator('#mt-icon-blue-teal').getAttribute('gradientUnits'),'userSpaceOnUse');
- assert.equal(await page.locator('#score-size svg.ui-icon').evaluate(e=>getComputedStyle(e).stroke),'rgb(255, 255, 255)');
+ assert.match(await page.locator('#score-size svg.ui-icon').evaluate(e=>getComputedStyle(e).stroke),/mt-icon-blue-teal-dark/);
  assert.match(await page.locator('#show-lyrics svg').evaluate(e=>getComputedStyle(e).stroke),/mt-icon-blue-teal-dark/);
  const initial=await geometry();assert.equal(initial.footer,54);assert.equal(initial.paper.width,Math.min(width-(width<=600?12:width<=850?24:48),1140));
  // Conditional visibility isolates layout from score availability/transposition behavior.
