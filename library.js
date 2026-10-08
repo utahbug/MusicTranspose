@@ -299,7 +299,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   const label=meaningfulNumber(shown);
   $('score-song-number').textContent=label;
   document.querySelector('.score-song-navigation').setAttribute('aria-label','Song navigation, current '+(label?`song ${label}`:'song'));
-  const adjacent=neighbors();document.querySelector('.score-song-navigation').hidden=!adjacent.some(Boolean);for(const [i,id] of ['previous-song','next-song'].entries()){$(id).hidden=!adjacent[i];$(id).disabled=isBusy()||document.body.classList.contains('song-loading')||!adjacent[i];}
+  const adjacent=neighbors();document.querySelector('.score-song-navigation').hidden=!label||!adjacent.some(Boolean);for(const [i,id] of ['previous-song','next-song'].entries()){$(id).hidden=!adjacent[i];$(id).disabled=isBusy()||document.body.classList.contains('song-loading')||!adjacent[i];}
   lastNavigationSync={at:Math.round(performance.now()),current,isBusy:!!isBusy(),busy:!!window.prototype?.busy,loading:!!window.prototype?.loading,bodySongLoading:document.body.classList.contains('song-loading'),scoreBusy:$('score').getAttribute('aria-busy'),previous:adjacent[0]||null,next:adjacent[1]||null,previousDisabled:$('previous-song').disabled,nextDisabled:$('next-song').disabled};
  }
  async function stepSong(direction){

@@ -940,7 +940,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 /* Slim Score identity shares app chrome; opening directions stay on the paper. */
 @media screen{
  .score-heading,.pdf-score-open .score-heading{display:block;padding:0 0 2px}
- .score-identity-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;min-height:48px;padding:2px 8px}
+ .score-identity-header{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;min-height:48px;padding:2px 8px}
  .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block{display:block;min-width:0}
  .score-identity-header .score-title-block h1{display:block;font:600 17px/1.2 system-ui,sans-serif;letter-spacing:-.025em;color:#fff;overflow-wrap:anywhere}
  .score-identity-header #score-source{display:block;font:400 11px/1.25 system-ui,sans-serif;color:#fff;max-width:none;margin:2px 0 0;text-align:left;overflow:visible;white-space:normal;overflow-wrap:anywhere}
@@ -1395,7 +1395,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Playback is attached to the identity, independently of centered song navigation. */
 @media screen{
- .score-identity-header .score-title-block{width:max-content;max-width:100%;justify-self:start}
+ .score-identity-header .score-title-block{width:100%;max-width:100%;justify-self:stretch}
  .score-identity-header .score-title-block .song-playback{grid-column:2;grid-row:1 / span 2;align-self:center;margin:0;justify-self:start}
  .score-identity-header .score-title-block:has(.song-playback){grid-template-columns:minmax(0,1fr) 44px}
  .score-identity-header .score-title-block h1{margin:0}
@@ -1405,11 +1405,11 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 }
 
 @media screen and (max-width:600px){
- .score-identity-header{position:relative;padding-bottom:17px}
- .score-identity-header .score-title-block{grid-template-rows:44px}
- body .score-identity-header .score-title-block h1{align-self:center}
- .score-identity-header .score-title-block .song-playback{grid-row:1}
- .score-identity-header #score-source{position:absolute;left:8px;right:8px;bottom:3px;margin:0;font-size:10px}
+ .score-identity-header{padding-bottom:3px}
+ .score-identity-header .score-title-block{grid-template-rows:minmax(32px,auto) auto}
+ body .score-identity-header .score-title-block h1{align-self:end}
+ .score-identity-header .score-title-block .song-playback{grid-row:1 / span 2}
+ .score-identity-header #score-source{position:static;min-width:0;margin:0;font-size:10px}
 }
 
 /* Phone-only status lane: sheet ink ends above the chip, never behind it. */
@@ -1781,13 +1781,7 @@ body button.catalog-offline:focus-visible{outline:2px solid #365f7d;outline-offs
 #library.saved-device-view .library-row>.catalog-offline{grid-column:2;grid-row:1}
 #library.saved-device-view .library-row>.favorite{grid-column:3;grid-row:1}
 #library.saved-device-view .library-column-headings{grid-template-columns:minmax(0,1fr) 88px}
-@media screen{
- .score-identity-header .score-title-block:has(#score-offline-control:not([hidden])){grid-template-columns:minmax(0,1fr) 44px 44px}
- .score-identity-header #score-offline-control{grid-column:3;grid-row:1 / span 2;align-self:end;z-index:2;color:#fff;background:transparent}
- .score-identity-header #score-offline-control[aria-pressed=true]{color:#fff;background:#ffffff24}
- .score-identity-header #score-offline-control:focus-visible{outline-color:#fff}
-}
-@media(max-width:600px){.workspace-song-front{grid-template-columns:44px minmax(0,1fr) 44px 44px 44px}.score-identity-header #score-offline-control{grid-row:1}}
+@media(max-width:600px){.workspace-song-front{grid-template-columns:44px minmax(0,1fr) 44px 44px 44px}}
 @media print{.catalog-offline{display:none!important}}
 
 #lists-view button.catalog-offline{padding:0;border:0;border-radius:8px;background:transparent;color:#536b7a}

@@ -29,7 +29,7 @@ let saved={},local={};try{saved=readPreference(sessionStorage);}catch{}try{local
 if(!Number.isFinite(saved.speed))try{saved.speed=JSON.parse(sessionStorage.getItem('music-transpose-navigation-v1')||'{}')?.speed;}catch{}
 const preferred=local.explicit&&validMode(local.mode)?local.mode:saved.explicit&&validMode(saved.mode)?saved.mode:null;
 let hasChoice=preferred!==null;
-const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>phoneScreen.matches?'continuous':'pages';
+const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>/iPhone/i.test(navigator.userAgent)?'pages':phoneScreen.matches?'continuous':'pages';
 let mode=preferred||defaultMode();
 let speed=Number.isFinite(saved.speed)?Math.max(1,Math.min(60,saved.speed)):12;
 let pageIndex=0;
