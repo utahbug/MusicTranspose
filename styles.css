@@ -918,7 +918,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Musician-facing Score View; internal density choices stay in the renderer. */
 @media screen{
- body .masthead .utility-controls #score-size{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:auto;min-width:100px;flex:0 0 auto;height:44px;padding:0 8px;margin:0;color:#536b7a;font:13px system-ui,sans-serif;white-space:nowrap}
+ body .masthead #score-size{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:auto;min-width:100px;flex:0 0 auto;height:44px;padding:0 8px;margin:0;color:#536b7a;font:13px system-ui,sans-serif;white-space:nowrap}
  #score-size-options{flex-direction:column;align-items:stretch;gap:2px;min-width:160px;max-width:calc(100vw - 16px)}
  #score-size-options button{position:relative;justify-content:flex-start;width:100%;height:44px;min-height:44px;padding:0 36px 0 12px;margin:0;border:1px solid transparent;font-size:14px;color:#243e4c}
  #score-size-options button:not(:disabled):hover{background:#f0f4f6}
@@ -1022,7 +1022,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#show-lyrics,#reset){display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:8px;box-shadow:none;color:#365b72;border-color:#b7c8d5}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#show-lyrics,#reset) > svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
  body:not(.lyrics-open):not(.library-open) .masthead .utility-controls{gap:6px}
- body .masthead .utility-controls #score-size{font-weight:500}
+ body .masthead #score-size{font-weight:500}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#show-lyrics,#reset,#score-size):not(:disabled):hover{background:#eaf2f8;border-color:#8da8bd}
  body:not(.lyrics-open):not(.library-open) .masthead :is(#score-tools,#score-size)[aria-expanded=true]:not(:disabled),
 
@@ -1788,7 +1788,7 @@ body button.catalog-offline:focus-visible{outline:2px solid #365f7d;outline-offs
 }
 @media screen and (max-width:600px){
  body.iphone-score-ui .masthead .toolbar{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:2px}
- body.iphone-score-ui .masthead .toolbar .utility-controls #score-size{width:44px;min-width:44px;padding:0}
+ body.iphone-score-ui .masthead .toolbar #score-size{width:44px;min-width:44px;padding:0}
  body.iphone-score-ui .masthead .toolbar #key{flex:0 1 auto;width:auto;min-width:44px;max-width:80px}
  body.iphone-score-ui .masthead #key-name{font-size:14px}
 }

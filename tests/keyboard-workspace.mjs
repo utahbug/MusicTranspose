@@ -3,7 +3,7 @@ import {createRequire} from 'node:module';
 const {chromium}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
 const browser=await chromium.launch({channel:'msedge'});
 try {
- for(const [width,height] of [[320,740],[390,844],[768,1024],[820,1180],[1024,768],[1440,1000]]) {
+ for(const [width,height] of [[320,740],[390,844],[768,1024],[820,1180],[1024,768],[1440,1000]].filter(([w])=>!process.env.KEYBOARD_WIDTHS||process.env.KEYBOARD_WIDTHS.split(',').map(Number).includes(w))) {
   const context=await browser.newContext({viewport:{width,height},hasTouch:width<1100,isMobile:width<600,...(width<600?{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Version/17.0 Mobile/15E148 Safari/604.1'}:{})});
   await context.addInitScript(()=>{
    window.audioProbe={contexts:[],notes:[],gains:[]};

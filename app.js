@@ -270,12 +270,9 @@ document.addEventListener('keydown',e=>{if(!sizeOptions.hidden&&e.key==='Escape'
 document.addEventListener('focusin',e=>{if(!sizeOptions.hidden&&!sizeOptions.contains(e.target)&&e.target!==$('score-size'))closeSizeOptions();});
 // One control map at every viewport; move existing buttons, preserving handlers/focus.
 document.querySelector('.playing-controls').prepend($('songs'));
-document.querySelector('.utility-controls').prepend($('score-size'));
-document.querySelector('.utility-controls').append($('show-lyrics'));
-// Keep DOM/keyboard order identical to the visual Score View and Key order.
-$('score-size').after($('key'));
-$('key').after($('reset'));
-$('reset').after($('show-lyrics'));
+// True left/right footer zones; phone CSS still flattens these into its existing row.
+document.querySelector('.playing-controls').append($('score-size'),$('key'),$('reset'));
+document.querySelector('.utility-controls').prepend($('show-lyrics'));
 $('score-size').querySelector('.score-view-icon').outerHTML=scoreIcon.replace('class="ui-icon', 'class="score-view-icon ui-icon');
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>{closeSizeOptions();setControls();});

@@ -30,8 +30,6 @@
 #keyboard-view .chord-tips summary::before { content: "›"; font-size: 1.35rem; line-height: 1; transition: transform 140ms ease; }
 #keyboard-view .chord-tips[open] summary::before { transform: rotate(90deg); }
 #keyboard-view .chord-tips-content { padding: 0 10px 2px; }
-#keyboard-view .key-change-tips { margin: 10px 0 0; }
-#keyboard-view .key-change-tips .chord-tips-content p { color: var(--accent-strong); margin: 10px 2px 12px; }
 #keyboard-view .chord-choice-tip { background: color-mix(in srgb, var(--accent-soft) 38%, var(--surface)); border-left: 4px solid color-mix(in srgb, var(--accent) 58%, var(--line)); border-radius: 0 8px 8px 0; margin: 8px 0 10px; padding: 8px 10px; }
 #keyboard-view .chord-choice-tip h4 { color: var(--accent-strong); font-size: 0.88rem; margin: 0 0 4px; }
 #keyboard-view .chord-choice-tip p { color: var(--muted); font-size: 0.82rem; line-height: 1.45; margin: 0; }
@@ -84,10 +82,10 @@
 #keyboard-view .piano-style-chords button span { color: var(--muted); font-size: 0.7rem; }
 #keyboard-view .keyboard-chord-controls { border-bottom: 1px solid var(--line); grid-template-columns: auto 132px minmax(180px, 240px) auto; justify-content: start; padding: 0 0 10px; }
 #keyboard-view .keyboard-guide-tabs { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 auto; max-width: 820px; }
-#keyboard-view .keyboard-guide-tabs button { background: linear-gradient(150deg, color-mix(in srgb, #9B8EEA 19%, var(--surface)), color-mix(in srgb, #78BCEF 17%, var(--surface))); border: 1px solid color-mix(in srgb, var(--accent) 52%, var(--line)); border-bottom: 0; border-radius: 12px 12px 0 0; box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent-strong); font-weight: 800; min-height: 48px; padding: 9px 14px; }
+#keyboard-view .keyboard-guide-tabs button { background: var(--surface); border: 1px solid color-mix(in srgb, var(--accent) 52%, var(--line)); border-bottom: 0; border-radius: 12px 12px 0 0; box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent-strong); font-weight: 800; min-height: 48px; padding: 9px 14px; }
 #keyboard-view .keyboard-guide-tabs button + button { border-left: 0; }
-#keyboard-view .keyboard-guide-tabs button:hover { background: linear-gradient(150deg, color-mix(in srgb, #DDD2F1 76%, var(--surface)), color-mix(in srgb, #CFE2F5 72%, var(--surface))); }
-#keyboard-view .keyboard-guide-tabs button.selected { background: linear-gradient(110deg, #237C7A 0%, #3667A8 82%); border-color: #2F678F; box-shadow: inset 0 -3px 0 rgba(255,255,255,0.28), 0 -2px 8px rgba(45,91,132,0.16); color: #FFFFFF; }
+#keyboard-view .keyboard-guide-tabs button:hover { background: color-mix(in srgb, var(--surface) 94%, var(--text)); }
+#keyboard-view .keyboard-guide-tabs button.selected { background: linear-gradient(110deg, #265CA2 0%, #14796F 100%); border-color: #2F678F; box-shadow: inset 0 -3px 0 rgba(255,255,255,0.28), 0 -2px 8px rgba(45,91,132,0.16); color: #FFFFFF; }
 #keyboard-view .keyboard-chord-guide { border-radius: 0 0 12px 12px; }
 #keyboard-view .keyboard-key-change { background: color-mix(in srgb, var(--surface) 90%, #69C7B1 6%); border: 1px solid var(--line); border-radius: 0 0 12px 12px; margin: 0 auto; max-width: 820px; padding: 13px; }
 #keyboard-view .keyboard-key-change[hidden] { display: none; }
@@ -114,7 +112,6 @@
 #keyboard-view .key-change-stepper button:last-child { border-radius: 0 9px 9px 0; }
 #keyboard-view .key-change-stepper button:disabled { color: var(--muted); opacity: 0.45; }
 #keyboard-view .key-change-stepper output { align-items: center; background: var(--surface); border-block: 1px solid var(--line); display: flex; font-size: 1.08rem; font-weight: 800; justify-content: center; }
-#keyboard-view .key-change-hint { color: var(--muted); font-size: 0.82rem; margin: 9px 0; }
 #keyboard-view .key-change-result { align-items: center; background: linear-gradient(135deg, color-mix(in srgb, #237C7A 12%, var(--surface)), color-mix(in srgb, #3667A8 10%, var(--surface))); border: 1px solid var(--line); border-radius: 11px; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr) minmax(190px, 0.72fr); margin: 11px 0; padding: 11px 14px; }
 #keyboard-view .key-change-summary { display: grid; gap: 3px; }
 #keyboard-view .key-change-summary strong { color: var(--accent-strong); font-size: clamp(1.35rem, 4vw, 1.75rem); }
@@ -175,3 +172,6 @@
  #keyboard-view .chord-answer-grid {grid-template-columns:1fr;}
 }
 @media(max-width:360px) {#library-home .home-toolbar {gap:6px;}}
+
+#keyboard-view .key-change-reminders {display:grid;gap:5px;margin:12px 0 0;color:var(--muted);font-size:.84rem;line-height:1.45;}
+#keyboard-view .key-change-reminders p {margin:0;}

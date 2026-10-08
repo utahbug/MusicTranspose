@@ -17,7 +17,7 @@ export const scoreIcon=destinationIcon('score','<rect x="4" y="3" width="16" hei
 export const themeIcon=uiIcon('sun-moon');
 export const fontSizeIcon=uiIcon('type');
 // Primary app Tap Zones artwork, reused with the existing guide.
-export const tapZonesIcon=uiIcon('hand');
+export const tapZonesIcon=destinationIcon('tap-zones','<path d="M12 2v3M5.7 4.7l2.1 2.1M18.3 4.7l-2.1 2.1M10.2 13V8.8a1.8 1.8 0 0 1 3.6 0v4.1l1.1-.8a1.7 1.7 0 0 1 2.4.4l1.2 1.8a3 3 0 0 1 .3 2.7l-1.1 3H10l-3.3-4.1a1.6 1.6 0 0 1 2.3-2.2l1.2.9V13Z"/>');
 
 // Lyrics return-to-score control: compact notation, without a document outline.
 export const musicIcon=uiIcon('music');
@@ -33,7 +33,7 @@ export const listsIcon=destinationIcon('lists','<path d="M3 17V3h14"/><rect x="6
 export const filesIcon=destinationIcon('files','<path d="M3 19V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2ZM15 16v-6l3 1"/><ellipse cx="13" cy="16" rx="2" ry="1.5"/>');
 
 // Spiral notepad in the shared outline family; internal export name is retained.
-export const textIcon=uiIcon('notebook-pen');
+export const textIcon=destinationIcon('notes','<rect x="5" y="4" width="15" height="17" rx="2"/><path d="M9 2v4M16 2v4M3 9h4M3 14h4M3 19h4M10 10h6M10 14h6M10 18h4"/>');
 
 // Paired eighth notes for the List Type column only.
 export const musicItemIcon=uiIcon('music');

@@ -1,3 +1,4 @@
+import './icon-paint.js';
 // Local Lucide subset; source revision a04f228cd01185e09c188b7227b9600c08c565ec.
 // ISC + Feather-derived MIT notices: vendor/lucide/LICENSE. No runtime fetch.
 const paths={
