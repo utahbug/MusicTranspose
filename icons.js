@@ -33,11 +33,11 @@ export const favoriteIcon=uiIcon('star');
 export const listsIcon=destinationIcon('lists','<path d="M3 17V3h14"/><rect x="6" y="6" width="15" height="15" rx="2"/><path d="M13 11h4M13 16h4M10 11h.01M10 16h.01"/>');
 export const filesIcon=destinationIcon('files','<path d="M3 19V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2ZM15 16v-6l3 1"/><ellipse cx="13" cy="16" rx="2" ry="1.5"/>');
 
-// Spiral notepad in the shared outline family; internal export name is retained.
-export const textIcon=destinationIcon('notes','<rect x="5" y="4" width="15" height="17" rx="2"/><path d="M9 2v4M16 2v4M3 9h4M3 14h4M3 19h4M10 10h6M10 14h6M10 18h4"/>');
+// Simple top-bound notepad; internal export name is retained.
+export const textIcon=destinationIcon('notes','<rect x="5" y="4" width="15" height="17" rx="2"/><path d="M9 2v4M16 2v4M10 10h6M10 14h6M10 18h4"/>');
 
 // Paired eighth notes for the List Type column only.
 export const musicItemIcon=uiIcon('music');
 
 // Tabler piano, MIT; source/license in vendor/tabler. Original paths, filled black keys.
-export const keyboardIcon=destinationIcon('keyboard-front','<path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /> <path d="M9 19v-6" /> <path d="M8 5v8h2v-8" fill="currentColor" /> <path d="M15 19v-6" /> <path d="M14 5v8h2v-8" fill="currentColor" />');
+export const keyboardIcon=destinationIcon('keyboard-front','<rect x="3" y="5" width="18" height="14" /> <path d="M9 19v-6" /> <path d="M8 5v8h2v-8" fill="currentColor" /> <path d="M15 19v-6" /> <path d="M14 5v8h2v-8" fill="currentColor" />');
