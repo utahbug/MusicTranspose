@@ -5,7 +5,7 @@ const choices=sourceChoices.filter(([id])=>id!=='all'),ids=choices.map(([id])=>i
 export function createPickerSources({onChange,getListIds}){
  const button=document.getElementById('list-picker-source'),panel=document.getElementById('list-picker-sources'),status=document.getElementById('list-picker-source-status');
  const sort=document.getElementById('list-picker-sort');
- let selected=new Set(ids),listId=null,scheduled=0;
+ let selected=new Set(),listId=null,scheduled=0;
  function read(){try{const current=localStorage.getItem(storageKey);if(current!==null){const value=JSON.parse(current);return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}const old=JSON.parse(localStorage.getItem(legacyKey)||'{}'),value=Object.fromEntries(Object.entries(old||{}).filter(([,sources])=>Array.isArray(sources)).map(([id,sources])=>[id,{sources,sort:'default'}]));try{localStorage.setItem(storageKey,JSON.stringify(value));localStorage.removeItem(legacyKey);}catch{}return value;}catch{return {};}}
  function prune(){const value=read(),valid=new Set(getListIds()),entries=Object.entries(value).filter(([id])=>valid.has(id));if(entries.length!==Object.keys(value).length)try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(entries)));}catch{}}
  function save(){const entries=Object.entries(read()).filter(([id])=>id!==listId);entries.push([listId,{sources:ids.filter(id=>selected.has(id)),sort:sort.value==='title'?'title':'default'}]);try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(entries)));}catch{status.hidden=false;status.textContent='Could not save these picker preferences on this device.';}}
@@ -13,17 +13,12 @@ export function createPickerSources({onChange,getListIds}){
  for(const [id,label] of sourceChoices){const row=document.createElement('label'),check=document.createElement('input'),text=document.createElement('span');check.type='checkbox';check.dataset.source=id;text.textContent=label;row.append(check,text);panel.insertBefore(row,status);checks.set(id,check);
   check.onchange=()=>{
    status.textContent='';status.hidden=true;
-   if(id==='all'){
-    selected=new Set(check.checked?ids:[ids[0]]);
-    if(!check.checked){status.textContent=`Keep at least one source selected. ${choices[0][1]} remains selected.`;status.hidden=false;}
-   }else if(check.checked)selected.add(id);
-   else if(selected.size>1)selected.delete(id);
-   else{status.textContent='Keep at least one source selected.';status.hidden=false;}
+   if(id==='all')selected.clear();else if(check.checked)selected.add(id);else selected.delete(id);
    sync();save();onChange();position();
   };
  }
- function sync(){const all=selected.size===ids.length,names=choices.filter(([id])=>selected.has(id)).map(([,name])=>name);button.querySelector('span').textContent=all?'All Sources':names.length===1?names[0]:`${names.length} Sources`;button.setAttribute('aria-label',`Sources: ${all?'All Sources':names.join(', ')}`);
-  for(const [id,check] of checks){check.checked=id==='all'?all:selected.has(id);check.indeterminate=id==='all'&&!all;}
+ function sync(){const all=selected.size===0||selected.size===ids.length,names=choices.filter(([id])=>selected.has(id)).map(([,name])=>name);button.querySelector('span').textContent=all?'All Sources':names.length===1?names[0]:`${names.length} Sources`;button.setAttribute('aria-label',`Sources: ${all?'All Sources':names.join(', ')}`);
+  for(const [id,check] of checks){check.checked=id==='all'?all:selected.has(id);check.indeterminate=false;}
  }
  function close(focus=false){panel.hidden=true;button.setAttribute('aria-expanded','false');if(focus)button.focus({preventScroll:true});}
  function position(){if(panel.hidden)return;const v=window.visualViewport,left=v?.offsetLeft||0,top=v?.offsetTop||0,width=v?.width||innerWidth,bottom=top+(v?.height||innerHeight),r=button.getBoundingClientRect(),completion=document.getElementById('list-picker-completion').getBoundingClientRect();
@@ -41,8 +36,8 @@ export function createPickerSources({onChange,getListIds}){
  document.addEventListener('focusin',e=>{if(!panel.hidden&&!panel.contains(e.target)&&e.target!==button)close();});
  const schedule=()=>{if(!scheduled&&!panel.hidden)scheduled=requestAnimationFrame(()=>{scheduled=0;position();});};
  window.addEventListener('resize',schedule);window.addEventListener('scroll',schedule,{passive:true});window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
- function load(id){close();listId=id;const saved=read()[id],valid=Array.isArray(saved?.sources)?saved.sources.filter(id=>ids.includes(id)):[];sort.value=saved?.sort==='title'?'title':'default';selected=new Set(valid.length?valid:ids);status.textContent='';status.hidden=true;sync();}
+ function load(id){close();listId=id;const saved=read()[id],valid=Array.isArray(saved?.sources)?saved.sources.filter(id=>ids.includes(id)):[];sort.value=saved?.sort==='title'?'title':'default';selected=new Set(valid.length===ids.length?[]:valid);status.textContent='';status.hidden=true;sync();}
  sort.onchange=()=>{save();onChange();};
  prune();sync();
- return {load,close,prune,sortResults:results=>sort.value==='title'?results.sort(compareAlphabeticalTitles):results,matches:song=>[...selected].some(source=>matchesSource(song,source))};
+ return {load,close,prune,sortResults:results=>sort.value==='title'?results.sort(compareAlphabeticalTitles):results,matches:song=>!selected.size||[...selected].some(source=>matchesSource(song,source))};
 }
