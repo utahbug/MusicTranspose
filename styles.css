@@ -1437,20 +1437,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #auto-options{padding:8px;font:400 13px system-ui}
 #auto-options label{display:block}
 #auto-options input{width:100%;min-height:44px}
-#phone-score-status{display:none}
-@media screen and (max-width:600px){
- #phone-score-status:not([hidden]){position:fixed;left:0;right:0;height:44px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;z-index:3;pointer-events:none}
- #phone-score-status .score-song-navigation{grid-column:2;pointer-events:auto;color:#365b72}
- #phone-score-status .score-song-navigation>span{min-width:0}
- #phone-score-status #previous-song{justify-content:flex-end;padding-right:4px}
- #phone-score-status #next-song{justify-content:flex-start;padding-left:4px}
- #phone-score-status button:focus-visible{outline-color:#365b72}
- #phone-score-status button:not(:disabled):hover{background:#e5eef2}
- .score-identity-header{grid-template-columns:minmax(0,1fr) auto}
- .score-identity-header .score-actions{grid-column:2}
- #playing-view .score-identity-header .score-title-block{max-width:100%}
-}
-
 #score-navigation-menu #navigation-strip{padding:0;background:transparent;flex-wrap:wrap;gap:4px}
 #score-navigation-menu #auto-toggle{width:100%;min-height:44px}
 #score-navigation-menu #speed-summary{display:none}
@@ -1788,3 +1774,24 @@ body button.catalog-offline:focus-visible{outline:2px solid #365f7d;outline-offs
 #lists-view button.catalog-offline[aria-pressed=true]{background:#e0efea;color:#23695a}
 [data-library-theme=dark] #lists-view button.catalog-offline{color:var(--library-dark-muted)}
 [data-library-theme=dark] #lists-view button.catalog-offline[aria-pressed=true]{background:#28463f;color:#bce1d6}
+
+/* Keep numbered navigation in the phone header without reducing touch targets. */
+@media screen and (max-width:600px){
+ .score-song-navigation>span{min-width:24px}
+ .score-identity-header{column-gap:0}
+ .score-identity-header .score-title-block{column-gap:2px}
+}
+/* iPhone prioritizes core controls; optional List/Lyrics retain their slots. */
+@media screen{
+ body.iphone-score-ui .masthead .score-focus-control{display:none!important}
+ body.iphone-score-ui .masthead .toolbar{padding-right:max(4px,env(safe-area-inset-right,0px))}
+}
+@media screen and (max-width:600px){
+ body.iphone-score-ui .masthead .toolbar{display:grid;grid-template-columns:44px 44px 44px minmax(64px,1fr) 44px 44px;column-gap:2px;justify-content:stretch}
+ body.iphone-score-ui .masthead .toolbar #songs{grid-column:1;grid-row:1}
+ body.iphone-score-ui .masthead #score-lists{grid-column:2;grid-row:1}
+ body.iphone-score-ui .masthead .toolbar .utility-controls #score-size{grid-column:3;grid-row:1;width:44px;min-width:44px;padding:0}
+ body.iphone-score-ui .masthead .toolbar #key{grid-column:4;grid-row:1;width:100%;min-width:64px}
+ body.iphone-score-ui .masthead .toolbar .pdf-footer-tools-wrap{grid-column:5;grid-row:1}
+ body.iphone-score-ui .masthead .toolbar #show-lyrics{grid-column:6;grid-row:1}
+}

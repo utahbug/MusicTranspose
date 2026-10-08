@@ -29,7 +29,9 @@ let saved={},local={};try{saved=readPreference(sessionStorage);}catch{}try{local
 if(!Number.isFinite(saved.speed))try{saved.speed=JSON.parse(sessionStorage.getItem('music-transpose-navigation-v1')||'{}')?.speed;}catch{}
 const preferred=local.explicit&&validMode(local.mode)?local.mode:saved.explicit&&validMode(saved.mode)?saved.mode:null;
 let hasChoice=preferred!==null;
-const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>/iPhone/i.test(navigator.userAgent)?'pages':phoneScreen.matches?'continuous':'pages';
+const isIPhone=/iPhone/i.test(navigator.userAgent);
+document.body.classList.toggle('iphone-score-ui',isIPhone);
+const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>isIPhone?'pages':phoneScreen.matches?'continuous':'pages';
 let mode=preferred||defaultMode();
 let speed=Number.isFinite(saved.speed)?Math.max(1,Math.min(60,saved.speed)):12;
 let pageIndex=0;
@@ -47,7 +49,6 @@ function positionIndicator(){
  document.body.classList.toggle('scroll-status-redundant',returning&&mode==='continuous');
  navCorner.classList.toggle('auto-return-status',returning&&mode==='auto');
  if(mode==='auto')$('score-navigation-label').textContent=returning?(running?'Auto: Running':'Auto: Paused'):'Auto-scroll';
- phoneStatus.hidden=!phoneScreen.matches||navCorner.hidden||reclaim;
  if(navCorner.hidden){paperElement.style.removeProperty('--phone-paper-clip');return;}
  const paper=paperElement.getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
  if(phoneScreen.matches){
@@ -55,7 +56,6 @@ function positionIndicator(){
   // retain document scrolling; only ink under the reserved status strip is clipped.
   const top=Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight);
   paperElement.style.setProperty('--phone-paper-clip',(reclaim?0:Math.max(0,paper.bottom-(top-5)))+'px');
-  phoneStatus.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
   navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
   navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
   pageFeedback.style.right='auto';pageFeedback.style.left=Math.max(6,paper.left)+'px';
@@ -76,11 +76,6 @@ function positionIndicator(){
 // Outside the clipped phone sheet, but still within the existing playing view.
 // Desktop keeps precisely the same fixed positioning and interaction.
 document.querySelector('.score-paper').after(navCorner);
-const songNavigator=document.querySelector('.score-song-navigation'),songHeader=songNavigator.parentElement;
-const phoneStatus=document.createElement('div');phoneStatus.id='phone-score-status';$('playing-view').append(phoneStatus);
-function placeSongNavigation(){if(phoneScreen.matches)phoneStatus.append(songNavigator);else songHeader.insertBefore(songNavigator,songHeader.querySelector('.score-actions'));}
-phoneScreen.addEventListener('change',placeSongNavigation);placeSongNavigation();
-
 new ResizeObserver(positionIndicator).observe(document.querySelector('.score-paper'));
 function closeModeMenu(focus=false){modeMenu.hidden=true;pagePosition.setAttribute('aria-expanded','false');if(focus&&!navCorner.hidden)pagePosition.focus({preventScroll:true});}
 pagePosition.onclick=()=>{if(!modeMenu.hidden){closeModeMenu(true);return;}pause();hideHint();modeMenu.hidden=false;pagePosition.setAttribute('aria-expanded','true');positionIndicator();(modeMenu.querySelector('[aria-checked=true]')||modeMenu.querySelector('button')).focus();};
