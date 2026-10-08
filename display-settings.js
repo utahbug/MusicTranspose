@@ -1,8 +1,8 @@
-import {uiIcon} from './ui-icons.js';
+import {settingsIcon} from './icons.js';
 // Shared, nonmodal display-preferences popover. Native inputs retain their semantics.
 export function createDisplaySettings({id,label,controls}) {
  const element=document.createElement('div');element.className='display-settings';
- const button=document.createElement('button');button.id=id;button.type='button';button.className='display-settings-toggle';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',id+'-panel');button.innerHTML=uiIcon('settings');
+ const button=document.createElement('button');button.id=id;button.type='button';button.className='display-settings-toggle';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',id+'-panel');button.innerHTML=settingsIcon;
  const panel=document.createElement('div');panel.id=id+'-panel';panel.className='display-settings-menu';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label',label);
  const title=document.createElement('h2');title.textContent=label;panel.append(title,...controls);element.append(button,panel);
  const events=new AbortController(),options={signal:events.signal};

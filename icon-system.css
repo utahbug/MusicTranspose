@@ -10,7 +10,7 @@ body svg.icon-text-align-start {--ui-glyph:28px;}
 body svg.icon-mt-score,body svg.icon-mt-lyrics {--ui-glyph:28px;}
 body svg.icon-mt-lists,body svg.icon-mt-files {--ui-glyph:30px;stroke-width:1.7;}
 body svg.icon-mt-keyboard-front {--ui-glyph:34px;stroke-width:1.5;} /* Shallow horizontal keybed. */
-body svg.icon-settings {--ui-glyph:27px;}
+body svg.icon-settings,body svg.icon-mt-settings {--ui-glyph:27px;}
 body :is(.favorite,.text-favorite)[aria-pressed=true] svg.ui-icon {fill:currentColor;}
 :root {--nav-ink:#275f7b;--nav-surface:#fafbfd;--nav-border:#aac2cd;--nav-active:linear-gradient(115deg,#32639d,#237d79);--nav-focus:#276599;}
 [data-library-theme=dark] {--nav-ink:#c1e7f0;--nav-surface:#1e303a;--nav-border:#527985;--nav-focus:#9cd6f5;}
@@ -39,10 +39,12 @@ body .masthead .score-focus-control svg.ui-icon {width:16px;height:16px;}
  body:not(.iphone-score-ui) .masthead .score-focus-control::before {left:8px;right:auto;box-sizing:border-box;}
  body:not(.iphone-score-ui) .masthead .score-focus-control svg {left:14px;right:auto;}
 }
-/* Direct navigation at the left, secondary display settings at the far right. */
+/* Library at left; reciprocal Score switch immediately beside Settings at right. */
 body #lyrics-view .lyrics-footer {display:flex;justify-content:flex-start;gap:8px;}
 body .lyrics-footer :is(.lyrics-score-toggle,.display-settings-toggle),body .workspace-return .display-settings-toggle {display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;}
 .display-settings {margin-left:auto;flex:none;}
+body .lyrics-footer .lyrics-score-toggle {margin-left:auto;}
+body .lyrics-footer .display-settings {margin-left:0;}
 body .display-settings-menu {position:fixed;z-index:40;display:grid;gap:12px;width:250px;max-width:calc(100vw - 16px);overflow:auto;padding:14px;border:1px solid var(--popup-border);border-radius:10px;background:var(--popup-surface);color:var(--popup-ink);box-shadow:0 8px 28px #173e3b33;}
 body .display-settings-menu[hidden] {display:none;}
 body .display-settings-menu h2 {font:600 15px/1.4 system-ui,sans-serif;margin:0;padding-bottom:8px;border-bottom:1px solid var(--popup-border);}
