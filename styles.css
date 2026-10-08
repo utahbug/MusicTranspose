@@ -1795,3 +1795,9 @@ body button.catalog-offline:focus-visible{outline:2px solid #365f7d;outline-offs
  body.iphone-score-ui .masthead .toolbar .pdf-footer-tools-wrap{grid-column:5;grid-row:1}
  body.iphone-score-ui .masthead .toolbar #show-lyrics{grid-column:6;grid-row:1}
 }
+
+/* Workspace chrome follows the usable viewport without changing Score layout. */
+@media screen{
+ body :is(#library-home,#library,#lists-view,#files-view,#texts-view){padding-bottom:calc(var(--workspace-footer-height,64px) + var(--workspace-footer-inset,0px) + 16px)}
+ body :is(#library-home,#library,#lists-view,#files-view,#texts-view)>:is(.library-quick-access,.workspace-return,.library-home-footer){bottom:var(--workspace-footer-inset,0px)}
+}

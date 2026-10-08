@@ -4,7 +4,7 @@ import {createTextsView} from './texts-view.js';
 import {initializeTextItems,textItem} from './list-items.js';
 import {offlineSongState,offlineBadge,refreshOffline,reconcileOfflineLists} from './offline-manager.js';
 import {initLibraryTheme} from './library-theme.js';
-import {installLibraryQuickAccess} from './library-quick-access.js';
+import {installWorkspaceFooters} from './library-quick-access.js';
 import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-availability.js';
 import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon,textIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
@@ -29,7 +29,7 @@ function button(text,label,action){const b=node('button',text,'quiet');b.type='b
 export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPendingSelection,stopPlayback,showScoreView}){
  const freshLaunch=beginLibrarySession();
  initLibraryTheme();
- installLibraryQuickAccess();
+ installWorkspaceFooters();
  for(const [id,icon] of [['library-quick-lists',listsIcon],['library-quick-files',filesIcon]])$(id).insertAdjacentHTML('afterbegin',icon);
  for(const [id,icon] of [['home-footer-lists',listsIcon],['home-footer-files',filesIcon],['home-text',textIcon]])$(id).innerHTML=icon;
  $('home-current').innerHTML=$('songs').innerHTML;

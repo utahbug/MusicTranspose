@@ -1,21 +1,26 @@
-// Keep only Library quick links above a changing visual viewport. This does not
-// write the Score footer inset, page budget, or dispatch score layout events.
-export function installLibraryQuickAccess(){
- const library=document.getElementById('library'),footer=library.querySelector('.library-quick-access');
- let inset=0,frame=0;
+// Shared workspace chrome only. Score/Lyrics geometry and events stay separate.
+export function installWorkspaceFooters(){
+ const entries=[...document.querySelectorAll('.library-quick-access,.workspace-return,.library-home-footer')].map(footer=>({footer,owner:footer.parentElement,inset:0}));
+ let frame=0;
  function update(){
-  frame=0;if(!footer.getClientRects().length)return;
-  const v=window.visualViewport;
+  frame=0;const v=window.visualViewport;
+  // Do not chase the magnified viewport during pinch zoom.
   if(v&&Math.abs(v.scale-1)>.01)return;
   const visibleBottom=v?v.offsetTop+v.height:innerHeight;
-  // Undo our own shift before measuring any native fixed-position adjustment.
-  const next=Math.max(0,Math.round((footer.getBoundingClientRect().bottom+inset-visibleBottom)*100)/100);
-  if(next===inset)return;inset=next;library.style.setProperty('--library-quick-inset',inset+'px');
+  for(const entry of entries){
+   const {footer,owner}=entry;if(!footer.getClientRects().length)continue;
+   const rect=footer.getBoundingClientRect();
+   // Undo only our own offset: Safari may already move fixed chrome natively.
+   const next=Math.max(0,Math.round((rect.bottom+entry.inset-visibleBottom)*100)/100);
+   if(next!==entry.inset){entry.inset=next;owner.style.setProperty('--workspace-footer-inset',next+'px');}
+   const height=rect.height+'px';if(owner.style.getPropertyValue('--workspace-footer-height')!==height)owner.style.setProperty('--workspace-footer-height',height);
+  }
  }
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
- for(const type of ['resize','orientationchange'])window.addEventListener(type,schedule);
- for(const type of ['resize','scroll'])window.visualViewport?.addEventListener(type,schedule);
- new MutationObserver(schedule).observe(library,{attributes:true,attributeFilter:['hidden']});
- new ResizeObserver(schedule).observe(footer);
+ for(const type of ['resize','orientationchange','scroll','pageshow'])window.addEventListener(type,schedule,{passive:true});
+ for(const type of ['resize','scroll'])window.visualViewport?.addEventListener(type,schedule,{passive:true});
+ document.addEventListener('visibilitychange',schedule);
+ const visibility=new MutationObserver(schedule),size=new ResizeObserver(schedule);
+ for(const {footer,owner} of entries){visibility.observe(owner,{attributes:true,attributeFilter:['hidden']});visibility.observe(footer,{attributes:true,attributeFilter:['hidden']});size.observe(footer);}
  schedule();
 }
