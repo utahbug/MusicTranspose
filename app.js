@@ -112,7 +112,7 @@ async function structuredSource(song){
 const cache=new Map(),metrics=[];let lastXML='',engravedXML='';
 const scoreExport=createScoreExport({originalPdfData,preparePrint,getState:()=>{
  const pdf=isPdf(),melody=!pdf&&scoreSize==='large'&&!!leadState?.ok,key=KEYS.find(k=>k.shift===current);
- return {songId:activeSong.id,title:activeSong.title,view:pdf?'original':melody?'melody':'transpose',
+ return {songId:activeSong.id,local:!!activeSong.local,title:activeSong.title,view:pdf?'original':melody?'melody':'transpose',
   available:ready&&!busy&&!loading&&score.getAttribute('aria-busy')==='false'&&(pdf||wanted===current&&wantedOctave===currentOctave),
   xml:pdf?original:melody?lastViewXML:lastXML,pdfUrl:$('pdf-original').href,
   key:key?key.name+' '+(key.mode==='minor'?'Minor':'Major'):''};
