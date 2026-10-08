@@ -1426,11 +1426,11 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* Contextual Score preferences; no persistent Settings surface. */
 .masthead #score-tools-menu.sound-open > button{display:none}
-#score-tools-menu:is(.sound-open,.export-open) > #score-trim{display:none}
+#score-tools-menu:is(.sound-open,.export-open) > .score-tools-checkbox{display:none}
 #score-sound-options[hidden]{display:none}
-#score-tools-menu #score-trim{display:flex;align-items:center;gap:8px;min-height:44px;padding:7px 10px;color:inherit;font:500 14px system-ui;border-radius:7px;cursor:pointer}
-#score-tools-menu #score-trim[hidden]{display:none}
-#score-trim:focus-visible{outline:2px solid #245a9a;outline-offset:-2px}
+#score-tools-menu .score-tools-checkbox{display:flex;align-items:center;gap:8px;min-height:44px;padding:7px 10px;color:inherit;font:500 14px system-ui;border-radius:7px;cursor:pointer}
+#score-tools-menu .score-tools-checkbox[hidden]{display:none}
+.score-tools-checkbox:focus-visible{outline:2px solid #245a9a;outline-offset:-2px}
 #score-sound-options [aria-checked=true]{background:#e5eef2}
 #score-sound-options [aria-checked=true]::after{content:'✓';margin-left:auto}
 #auto-options{padding:8px;font:400 13px system-ui}
@@ -1889,3 +1889,6 @@ body #library .library-column-headings #library-count{white-space:normal;text-al
 .storage-values dd{font-size:15px;font-weight:600;flex:0 0 auto;margin:0;text-align:right}
 #app-info-dialog #app-info-title:focus{outline:none}
 @media(max-width:400px){.storage-values>div{flex-wrap:wrap;gap:4px}.storage-values dd{margin-left:auto}}
+
+/* Hide only decorative ink; keep all frame widths, padding and clipping geometry. */
+@media screen {#playing-view.score-frame-hidden .score-paper {--score-frame-outer:transparent;--score-frame-inner:transparent;}}

@@ -4,6 +4,12 @@ const button=document.getElementById('score-tools'),menu=document.getElementById
 button.innerHTML=settingsIcon;
 const exportButton=document.getElementById('score-export'),exportMenu=document.getElementById('score-export-options'),exportBack=document.getElementById('score-export-back');
 const soundButton=document.getElementById('score-sound'),soundMenu=document.getElementById('score-sound-options'),soundBack=document.getElementById('score-sound-back'),trim=document.getElementById('score-trim'),trimInput=document.getElementById('pdf-trim');
+const frame=document.getElementById('score-frame'),frameInput=document.getElementById('score-frame-input'),framePreference='music-transpose-score-frame-v1';
+let showFrame=true;try{showFrame=localStorage.getItem(framePreference)!=='false';}catch{}
+function applyFrame(){document.getElementById('playing-view').classList.toggle('score-frame-hidden',!showFrame);frameInput.checked=showFrame;frame.setAttribute('aria-checked',String(showFrame));}
+frameInput.addEventListener('change',()=>{showFrame=frameInput.checked;try{localStorage.setItem(framePreference,String(showFrame));}catch{}applyFrame();close(true);});
+frame.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();frameInput.click();}});
+applyFrame();
 const preference='music-transpose-score-dark-v1';let dark=false;
 try{dark=localStorage.getItem(preference)==='true';}catch{}
 function applyTheme(){document.getElementById('playing-view').classList.toggle('score-page-dark',dark);theme.setAttribute('aria-checked',String(dark));}
