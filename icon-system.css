@@ -1,4 +1,4 @@
-/* Lucide artwork has a common 24-unit grid; optical sizing is independent of targets. */
+/* Lucide and retained destination artwork share a 24-unit grid; optical sizing is independent of targets. */
 body svg.ui-icon {width:var(--ui-glyph,28px);height:var(--ui-glyph,28px);flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 body svg.icon-list-music {--ui-glyph:34px;stroke-width:1.5;} /* Short, wide artwork; keep the rendered stroke near 2px. */
 body svg.icon-folder-open {--ui-glyph:30px;} /* Wide silhouette needs more vertical presence. */
@@ -6,6 +6,10 @@ body svg.icon-notebook-pen {--ui-glyph:27px;} /* Dense full-height detail. */
 body svg.icon-piano {--ui-glyph:30px;}
 body svg.icon-file-music {--ui-glyph:28px;}
 body svg.icon-text-align-start {--ui-glyph:28px;}
+/* Destination paths restored without bringing back their former dimensions. */
+body svg.icon-mt-score,body svg.icon-mt-lyrics {--ui-glyph:28px;}
+body svg.icon-mt-lists,body svg.icon-mt-files {--ui-glyph:30px;stroke-width:1.7;}
+body svg.icon-mt-keyboard-front {--ui-glyph:34px;stroke-width:1.5;} /* Shallow horizontal keybed. */
 body svg.icon-settings {--ui-glyph:27px;}
 body :is(.favorite,.text-favorite)[aria-pressed=true] svg.ui-icon {fill:currentColor;}
 :root {--nav-ink:#275f7b;--nav-surface:linear-gradient(135deg,#f0f5fc,#e6f3ef);--nav-border:#aac2cd;--nav-active:linear-gradient(115deg,#32639d,#237d79);--nav-focus:#276599;}
@@ -48,3 +52,14 @@ body .display-settings-menu svg.ui-icon {width:22px;height:22px;}
 body .display-settings-menu :is(button,select):focus-visible {outline:2px solid var(--nav-focus);outline-offset:2px;}
 #lyrics-view {--popup-surface:var(--lyrics-bg);--popup-ink:var(--lyrics-ink);--popup-border:var(--lyrics-muted);}
 @media print {.display-settings {display:none!important;}}
+
+/* Visible, cohesive destination accents; Library's accepted identity stays untouched. */
+:root {--destination-surface:linear-gradient(115deg,#cbdff7,#afe0d3);--destination-ink:#194e70;--destination-border:#80aabd;--score-destination-surface:linear-gradient(115deg,#dce8f5,#c9e5de);}
+[data-library-theme=dark] {--destination-surface:linear-gradient(115deg,#294e7b,#246052);--destination-ink:#effaff;--destination-border:#629da6;--score-destination-surface:linear-gradient(115deg,#294961,#28534d);}
+#lyrics-view {--destination-surface:linear-gradient(115deg,#cbdff7,#afe0d3);--destination-ink:#194e70;--destination-border:#80aabd;}
+#lyrics-view.lyrics-dark {--destination-surface:linear-gradient(115deg,#294e7b,#246052);--destination-ink:#effaff;--destination-border:#629da6;}
+body :is(#library-home,#library,#lists-view,#files-view,#texts-view,#keyboard-view,#lyrics-view) :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer) button:has(>svg:is(.icon-mt-lists,.icon-mt-files,.icon-notebook-pen,.icon-mt-keyboard-front,.icon-mt-score,.icon-mt-lyrics)) {background:var(--destination-surface);color:var(--destination-ink);border-color:var(--destination-border);}
+body :is(#library-home,#library,#lists-view,#files-view,#texts-view,#keyboard-view,#lyrics-view) :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer) button:has(>svg:is(.icon-mt-lists,.icon-mt-files,.icon-notebook-pen,.icon-mt-keyboard-front,.icon-mt-score,.icon-mt-lyrics)):is([aria-current=page],[aria-expanded=true]) {background:var(--nav-active);color:white;box-shadow:inset 0 -3px 0 #ffffff55;}
+body .masthead #show-lyrics {background:var(--score-destination-surface);color:var(--destination-ink);border-color:var(--destination-border);}
+/* Score is the current workspace; restrained full-strength color identifies it. */
+body .masthead #score-size {background:linear-gradient(115deg,#38699c,#2b7b72);color:white;border-color:#387a86;box-shadow:inset 0 -3px 0 #ffffff55;}
