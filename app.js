@@ -1,4 +1,4 @@
-import {scoreIcon} from './icons.js';
+import {scoreViewIcon} from './icons.js';
 import {meaningfulSource,meaningfulNumber,scoreMetadata} from './score-labels.js';
 import {parseChordSymbol} from './chord-symbol.js';
 import {initOfflineScore} from './offline-score-ui.js';
@@ -220,10 +220,10 @@ function syncScoreView(){
  const wide=wideScore();
  const view=isPdf()?'pdf':scoreSize==='large'?'large':'auto',label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view];
  $('score-size').disabled=!ready||busy||loading;$('score-size').dataset.size=scoreSize;$('score-size').dataset.view=view;
- $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label',wide?'Score':'Score View: '+label);$('score-size').title=wide?'Score':'Score View: '+label;
+ $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label','Score View');$('score-size').title='Score View';
  const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&!!original&&preparedHasChords&&!(keyFromPdf()&&preparedHasSourceChords&&!activeSong.local),large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
  const explanations={pdf:'Original PDF is not available for this song.',auto:'Transpose is not available for this score.',large:'Melody only is not available for this score.'};
- for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent={pdf:'View PDF',auto:'Show chords',large:preparedHasChords&&original?'Melody only (lead sheet)':'Melody only'}[type];option.hidden=!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
+ for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent={pdf:'Original',auto:'Transpose',large:'Melody only'}[type];option.hidden=!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
 const sizeOptions=$('score-size-options');
 // A fixed popup must not inherit the phone sheet's viewport clipping.
@@ -273,7 +273,7 @@ document.querySelector('.playing-controls').prepend($('songs'));
 // True left/right footer zones; phone CSS still flattens these into its existing row.
 document.querySelector('.playing-controls').append($('score-size'),$('key'),$('reset'));
 document.querySelector('.utility-controls').prepend($('show-lyrics'));
-$('score-size').querySelector('.score-view-icon').outerHTML=scoreIcon.replace('class="ui-icon', 'class="score-view-icon ui-icon');
+$('score-size').querySelector('.score-view-icon').outerHTML=scoreViewIcon;
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>{closeSizeOptions();setControls();});
 document.addEventListener('library-open',()=>closeSizeOptions());

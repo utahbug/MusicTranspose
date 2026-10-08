@@ -14,6 +14,8 @@ export const leadSheetIcon = `<svg class="lead-sheet-icon" viewBox="-180 -1143 1
 
 // Corner controls share a 24px outline family; accessible names live on buttons.
 export const scoreIcon=destinationIcon('score','<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M7 7h10M7 10h5M7 13h3M16 17V10"/><ellipse cx="14" cy="17" rx="2" ry="1.5" fill="currentColor"/>');
+// Original side-by-side score-size artwork; now identifies Score View only.
+export const scoreViewIcon='<svg class="score-view-icon ui-icon icon-mt-score-view" data-icon="mt-score-view" width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="1" y="12" width="7" height="12" rx="1"/><rect x="12" y="4" width="11" height="20" rx="1.5"/><path d="M3 16h3M3 19h3M15 9h5M15 13h5M15 17h5M15 21h5"/></svg>';
 // Established diagonal light/dark swatch; styling is shared with Score Tools.
 export const themeIcon='<span class="pdf-mobile-theme-swatch" aria-hidden="true"></span>';
 export const fontSizeIcon=uiIcon('type');
