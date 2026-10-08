@@ -96,7 +96,7 @@ body:not(.lyrics-open):not(.library-open) .masthead .toolbar #score-tools:is(:ho
 body:not(.lyrics-open):not(.library-open) .masthead #score-tools>svg.icon-mt-settings {width:27px;height:27px;stroke-width:1.8;}
 
 /* Key is content-sized; fixed icon targets must never dictate its text width. */
-body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:max-content;min-width:64px;max-width:none;flex:0 0 auto;flex-direction:row;gap:4px;white-space:nowrap;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:84px;min-width:84px;max-width:84px;flex:0 0 auto;flex-direction:row;gap:4px;white-space:nowrap;}
 
 /* One pair gap and native-scrollbar reservation for Score and Lyrics.
    Subtract the currently occupied gutter so visible scrollbars are not counted twice. */
@@ -108,5 +108,13 @@ body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #
 }
 @media screen and (max-width:600px) {:root {--score-lyrics-edge:4px;}}
 
-/* Retain the earlier reserved-minimum approach on roomy footers, sized for seven accidentals in the unchanged fonts. */
-@media screen and (min-width:601px) {body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {min-width:128px;}}
+/* Signature details remain in the selector and accessible name/title. */
+body .masthead #key-signature {display:none;}
+
+/* Predictable iPhone groups: tonic and mode fit a stable Key target at every width. */
+@media screen {
+ body.iphone-score-ui .masthead .toolbar {display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;column-gap:2px;}
+ body.iphone-score-ui .masthead .toolbar .playing-controls {display:flex;grid-column:1;grid-row:1;align-items:center;gap:2px;min-width:0;}
+ body.iphone-score-ui .masthead .toolbar .utility-controls {grid-column:3;grid-row:1;justify-self:end;}
+ body.iphone-score-ui:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:64px;min-width:64px;max-width:64px;}
+}
