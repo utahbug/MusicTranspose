@@ -74,11 +74,14 @@ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-size,#show-lyrics
 /* Home display control: retain the target and focus ring without a destination tile. */
 body #library-home .home-toolbar .library-theme-toggle[aria-pressed]:not(:disabled) {background:transparent;border-color:transparent;box-shadow:none;}
 
-/* Musical controls share neutral surfaces; Library retains its navigation identity. */
-.masthead {--music-control-surface:#fafbfd;--music-control-hover:#f0f3f6;--music-control-pressed:#e5edf2;--music-control-ink:#264659;--music-control-border:#819eaf;--music-key-border:#3c7e94;}
-[data-library-theme=dark] .masthead {--music-control-surface:#1e303a;--music-control-hover:#293d48;--music-control-pressed:#344e5b;--music-control-ink:#e2edf2;--music-control-border:#67899a;--music-key-border:#80bcca;}
-body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset) {height:44px;min-height:44px;border:1px solid var(--music-control-border);border-radius:8px;background:var(--music-control-surface);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
-body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {border-color:var(--music-key-border);}
+/* Musical controls: quiet view selector, emphasized current Key, subordinate Reset. */
+.masthead {--music-control-surface:#f8f9fa;--music-control-hover:#edf0f3;--music-control-pressed:#e1e7ec;--music-control-ink:#253e50;--music-control-border:#a5b4be;--music-key-border:#347d94;--music-key-surface:#fff;--music-reset-ink:#587788;--music-reset-surface:transparent;}
+[data-library-theme=dark] .masthead {--music-control-surface:#292d32;--music-control-hover:#363c43;--music-control-pressed:#434b54;--music-control-ink:#f0f2f4;--music-control-border:#77848e;--music-key-border:#83c5d7;--music-key-surface:#30353b;--music-reset-ink:#99b3c0;--music-reset-surface:#292d32;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset) {height:44px;min-height:44px;border:1px solid var(--music-control-border);border-radius:6px;background:var(--music-control-surface);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {position:relative;border-color:var(--music-key-border);background:var(--music-key-surface);}
+/* Inset outline increases Key emphasis without changing its dimensions or text space. */
+body .masthead .playing-controls #key::after {content:"";position:absolute;inset:-1px;border:2px solid var(--music-key-border);border-radius:inherit;pointer-events:none;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #reset {background:var(--music-reset-surface);color:var(--music-reset-ink);--icon-paint:currentColor;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):hover {background:var(--music-control-hover);border-color:var(--music-key-border);filter:none;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):is(:active,[aria-expanded=true],[aria-pressed=true]),
 body:has(#key-dialog[open]) .masthead .toolbar .playing-controls #key {background:var(--music-control-pressed);border-color:var(--music-key-border);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
@@ -88,3 +91,11 @@ body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :
 #score-tools-menu #score-page-theme {background:transparent;color:var(--ink);box-shadow:none;}
 #score-tools-menu #score-page-theme::after {content:"";width:1em;margin-left:auto;color:var(--accent-strong);}
 #score-tools-menu #score-page-theme[aria-checked=true]::after {content:"\2713";}
+
+/* Shared accepted Settings artwork; utility launcher has no theme-state decoration. */
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar #score-tools {background:var(--music-control-surface);color:var(--music-control-ink);border-color:var(--music-control-border);box-shadow:none;--icon-paint:inherit;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar #score-tools:is(:hover,[aria-expanded=true]):not(:disabled) {background:var(--music-control-hover);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;filter:none;}
+body:not(.lyrics-open):not(.library-open) .masthead #score-tools>svg.icon-mt-settings {width:27px;height:27px;stroke-width:1.8;}
+
+/* Key is content-sized; fixed icon targets must never dictate its text width. */
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:max-content;min-width:64px;max-width:none;flex:0 0 auto;flex-direction:row;gap:4px;white-space:nowrap;}

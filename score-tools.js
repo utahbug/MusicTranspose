@@ -1,10 +1,12 @@
+import {settingsIcon} from './icons.js';
 // Tools appearance and toggle behavior adapted from PrimarySongs v528.
 const button=document.getElementById('score-tools'),menu=document.getElementById('score-tools-menu'),theme=document.getElementById('score-page-theme');
+button.innerHTML=settingsIcon;
 const exportButton=document.getElementById('score-export'),exportMenu=document.getElementById('score-export-options'),exportBack=document.getElementById('score-export-back');
 const soundButton=document.getElementById('score-sound'),soundMenu=document.getElementById('score-sound-options'),soundBack=document.getElementById('score-sound-back'),trim=document.getElementById('score-trim'),trimInput=document.getElementById('pdf-trim');
 const preference='music-transpose-score-dark-v1';let dark=false;
 try{dark=localStorage.getItem(preference)==='true';}catch{}
-function applyTheme(){document.getElementById('playing-view').classList.toggle('score-page-dark',dark);theme.setAttribute('aria-checked',String(dark));button.classList.toggle('has-active-tool',dark);}
+function applyTheme(){document.getElementById('playing-view').classList.toggle('score-page-dark',dark);theme.setAttribute('aria-checked',String(dark));}
 function mainMenu(){soundMenu.hidden=true;soundButton.setAttribute('aria-expanded','false');menu.classList.remove('sound-open');exportMenu.hidden=true;exportButton.setAttribute('aria-expanded','false');menu.classList.remove('export-open');}
 function close(focus=false){menu.hidden=true;mainMenu();button.setAttribute('aria-expanded','false');if(focus)button.focus();}
 const items=()=>[...(!soundMenu.hidden?soundMenu:exportMenu.hidden?menu:exportMenu).querySelectorAll(':scope > :is(button,[role=menuitemcheckbox]):not(:disabled):not([hidden])')];

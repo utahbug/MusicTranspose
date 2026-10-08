@@ -40,7 +40,7 @@ try{for(const [width,height] of [[390,844],[744,1133],[768,1024],[820,1180],[900
   assert.deepEqual(await geometry(),initial,'conditional controls and Focus round-trip retain score geometry');
  }
  await page.screenshot({path:`test-results/footer-polish-${width}.png`});
- await page.locator('#score-tools').click();assert(await page.locator('#score-tools-menu').isVisible());assert.equal(await page.locator('#score-tools svg').evaluate(e=>getComputedStyle(e).stroke),'rgb(255, 255, 255)');await page.keyboard.press('Escape');
+ await page.locator('#score-tools').click();assert(await page.locator('#score-tools-menu').isVisible());assert.match(await page.locator('#score-tools svg').evaluate(e=>getComputedStyle(e).stroke),/mt-icon-blue-teal-dark/);await page.keyboard.press('Escape');
  const tap=await page.locator('#show-tap-zones').boundingBox();assert(tap.width>=44&&tap.height>=44);await page.locator('#show-tap-zones').click();assert(await page.locator('#score-tap-overlay').isVisible());await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>document.activeElement.id),'show-tap-zones');
  await page.locator('#songs').click();assert(await page.locator('#library-home').isVisible());
  assert.deepEqual(errors,[]);console.log('PASS tabs/reminders, footer zones, all Reset/Lyrics combinations, Focus anchors, unchanged geometry',width);await context.close();
