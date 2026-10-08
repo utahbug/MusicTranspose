@@ -1428,7 +1428,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .masthead #score-tools-menu.sound-open > button{display:none}
 #score-tools-menu:is(.sound-open,.export-open) > .score-tools-checkbox{display:none}
 #score-sound-options[hidden]{display:none}
-#score-tools-menu .score-tools-checkbox{display:flex;align-items:center;gap:8px;min-height:44px;padding:7px 10px;color:inherit;font:500 14px system-ui;border-radius:7px;cursor:pointer}
+#score-tools-menu .score-tools-checkbox{display:flex;align-items:center;gap:8px;min-height:44px;padding:7px 10px;color:inherit;font:500 14px/1.4 system-ui;border-radius:7px;cursor:pointer}
 #score-tools-menu .score-tools-checkbox[hidden]{display:none}
 .score-tools-checkbox:focus-visible{outline:2px solid #245a9a;outline-offset:-2px}
 #score-sound-options [aria-checked=true]{background:#e5eef2}
@@ -1892,3 +1892,8 @@ body #library .library-column-headings #library-count{white-space:normal;text-al
 
 /* Hide only decorative ink; keep all frame widths, padding and clipping geometry. */
 @media screen {#playing-view.score-frame-hidden .score-paper {--score-frame-outer:transparent;--score-frame-inner:transparent;}}
+
+/* One native-checkbox row pattern for both Score appearance preferences. */
+#score-tools-menu .score-tools-checkbox > input {flex:none;width:16px;height:16px;margin:0;}
+#score-tools-menu .score-tools-checkbox > span {font:inherit;line-height:inherit;}
+#score-tools-menu .score-tools-checkbox:is(:hover,:focus-visible) {background:var(--popup-hover);}

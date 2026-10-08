@@ -80,7 +80,9 @@ body #library-home .home-toolbar .library-theme-toggle[aria-pressed]:not(:disabl
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset) {height:44px;min-height:44px;border:1px solid var(--music-control-border);border-radius:6px;background:var(--music-control-surface);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {position:relative;border-color:var(--music-control-border);background:var(--music-key-surface);}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #reset {background:var(--music-reset-surface);color:var(--music-reset-ink);--icon-paint:currentColor;}
+@media (hover:hover) and (pointer:fine) {
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):hover {background:var(--music-control-hover);border-color:var(--music-key-border);filter:none;}
+}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):is(:active,[aria-expanded=true],[aria-pressed=true]),
 body:has(#key-dialog[open]) .masthead .toolbar .playing-controls #key {background:var(--music-control-pressed);border-color:var(--music-key-border);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):focus-visible {outline:2px solid var(--nav-focus);outline-offset:2px;}
@@ -118,3 +120,17 @@ body .masthead #key-signature {display:none;}
  body.iphone-score-ui .masthead .toolbar .utility-controls {grid-column:3;grid-row:1;justify-self:end;}
  body.iphone-score-ui:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:64px;min-width:64px;max-width:64px;}
 }
+
+/* Lyrics uses compact peer rows and its original A/size menu, not a select field. */
+body #lyrics-settings-panel {gap:4px;padding:10px;--popup-hover:color-mix(in srgb,var(--popup-ink) 12%,var(--popup-surface));}
+body #lyrics-view #lyrics-settings-panel button {position:relative;min-height:44px;gap:8px;padding:8px 6px;border:1px solid transparent;background:transparent;color:var(--popup-ink);font:500 14px/1.4 system-ui,sans-serif;box-shadow:none;}
+body #lyrics-view #lyrics-settings-panel button:is(:hover,:active,:focus-visible) {background:var(--popup-hover);}
+body #lyrics-settings-panel .lyrics-font-art {width:20px;flex:none;font-size:19px;line-height:20px;text-align:center;}
+body #lyrics-settings-panel .lyrics-font-chevron {margin-left:auto;font-size:20px;line-height:20px;}
+body #lyrics-view #lyrics-settings-panel #lyrics-theme {padding-right:20px;}
+body #lyrics-settings-panel #lyrics-theme::after {content:"";position:absolute;right:4px;}
+body #lyrics-settings-panel #lyrics-theme[aria-checked=true]::after {content:"✓";}
+body #lyrics-settings-panel .lyrics-font-menu {z-index:41;width:176px;min-width:176px;background:var(--popup-surface);border-color:var(--popup-border);}
+body #lyrics-settings-panel .lyrics-font-menu[hidden] {display:none;}
+body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true] {background:transparent;}
+body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true]::after {content:"✓";margin-left:auto;}
