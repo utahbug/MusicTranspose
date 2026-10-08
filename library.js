@@ -9,6 +9,7 @@ import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-avai
 import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon,textIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
 import {initOfflineMusic} from './offline-music.js';
+import {initAppInfo} from './app-info.js';
 import {initHomeScreen} from './home-screen.js';
 import {createSongSearch,normalizeSearchFields,readSearchPreferences,searchPreferenceKey} from './library-search.js';
 import {attachReorderHandle} from './list-reorder.js';
@@ -92,7 +93,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const files=createFilesView({onLibrary:showHome,onSong:(id,ids)=>{pendingSongSet={ids,origin:'files'};open(id);}});
  const texts=createTextsView({getState:()=>state,save,edit:lists.editText,read:lists.readText,onHome:showHome,onFiles:showFiles,onLists:showLists,clearUndo:lists.clearUndo,onChanged:()=>{lists.render();render();}});
  $('home-text').onclick=()=>showTexts();
- for(const workspace of ['files','lists']){const control=button('','Text',()=>showTexts());control.innerHTML=textIcon;control.title='Text';control.setAttribute('aria-controls','texts-view');control.classList.add('workspace-sibling');$(workspace+'-library').parentElement.append(control);}
+ for(const workspace of ['files','lists']){const control=button('','Notes',()=>showTexts());control.innerHTML=textIcon;control.title='Notes';control.setAttribute('aria-controls','texts-view');control.classList.add('workspace-sibling');$(workspace+'-library').parentElement.append(control);}
  function showTexts(){if(isBusy())return;clearLeavingSearch();$('library-home').hidden=true;$('library').hidden=true;closeMore();closeSource();blurSearch();files.hide();lists.hide();texts.hide();document.body.classList.add('library-open');navigation?.visit({view:'text',list:null});texts.open();}
  function returnLabels(){for(const id of ['songs','files-library','lists-library']){$(id).setAttribute('aria-label','Library Home');$(id).title='Library Home';$(id).setAttribute('aria-controls','library-home');}}
  returnLabels();
@@ -169,6 +170,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('library-saved-filter').onclick=()=>{savedOnly=!savedOnly;closeMore();render();refreshOffline();};
  document.addEventListener('offline-state-changed',()=>{render();});
  document.addEventListener('library-open',()=>refreshOffline());
+ initAppInfo({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
  initHomeScreen({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{render();closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};
@@ -193,7 +195,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   orderedSongs=found.filter(canOpenScore).map(s=>s.id);
   const fragment=document.createDocumentFragment();
   for(const s of found){
-   if(s.text){const row=node('div',null,'library-row list-entry-row');row.dataset.song=s.id;const entry=button('', 'Open '+s.title,()=>lists.readText(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span','Text','song-meta'));const favored=state.favorites.includes(s.id),star=button('','Favorite Text: '+s.title,()=>{state.favorites=favored?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();});star.className='favorite';star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));const edit=button('','Edit Text: '+s.title,()=>lists.editText(g.id,s.id));edit.innerHTML=editIcon;edit.className='list-icon edit-list-entry';row.append(star,entry,edit);fragment.append(row);continue;}
+   if(s.text){const row=node('div',null,'library-row list-entry-row');row.dataset.song=s.id;const entry=button('', 'Open '+s.title,()=>lists.readText(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span','Note','song-meta'));const favored=state.favorites.includes(s.id),star=button('','Favorite Note: '+s.title,()=>{state.favorites=favored?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();});star.className='favorite';star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));const edit=button('','Edit Note: '+s.title,()=>lists.editText(g.id,s.id));edit.innerHTML=editIcon;edit.className='list-icon edit-list-entry';row.append(star,entry,edit);fragment.append(row);continue;}
 
    const row=node('div',null,'library-row');row.dataset.song=s.id;if(g)row.classList.add('list-entry-row');const displayName=g&&Object.hasOwn(g.displayNames||{},s.id)?g.displayNames[s.id]:s.title;
    if(source==='all'&&!g&&!isFileSong(s)){const tone=({'Children’s Songbook':'children',"Children's Songbook":'children','Hymns for Home and Church':'home-church','Hymns (1985)':'hymnal'})[s.collection];if(tone)row.dataset.sourceTone=tone;}
@@ -231,7 +233,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function closeHomeInfo(focus=false){infoMenu.hidden=true;infoButton.setAttribute('aria-expanded','false');if(focus)infoButton.focus({preventScroll:true});}
  function openHomeInfo(){infoMenu.hidden=false;infoButton.setAttribute('aria-expanded','true');infoMenu.querySelector('button:not([hidden])').focus({preventScroll:true});}
  infoButton.onclick=()=>infoMenu.hidden?openHomeInfo():closeHomeInfo(true);
- infoButton.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openHomeInfo();if(e.key==='ArrowUp')[...infoMenu.querySelectorAll('button:not([hidden])')].at(-1).focus();}};
+ infoButton.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openHomeInfo();if(e.key==='ArrowUp')[...infoMenu.querySelectorAll('button:not([hidden]):not(:disabled)')].at(-1).focus();}};
  infoMenu.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeHomeInfo(true);}else if(e.key==='Tab')closeHomeInfo(true);else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...infoMenu.querySelectorAll('button:not([hidden]):not(:disabled)')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}};
  document.addEventListener('pointerdown',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});
  document.addEventListener('focusin',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});

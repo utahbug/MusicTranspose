@@ -2,7 +2,7 @@ import {textItem,listCount} from './list-items.js';
 // Plain text only; copying never changes List membership, order or navigation.
 export function listClipboardText(list,songs){
  const rows=list.songs.map(id=>{
-  const text=textItem(list,id);if(text)return text.title+' — Text';
+  const text=textItem(list,id);if(text)return text.title+' — Note';
   const song=songs.find(s=>s.id===id);if(!song)return 'Unavailable song';
   const alias=list.displayNames?.[id]?.trim(),title=song.title||'Untitled music';
   const number=String(song.songNumber??song.page??'').trim();

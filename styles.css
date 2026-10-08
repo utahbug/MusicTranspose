@@ -1880,3 +1880,13 @@ body #library .library-column-headings #library-count{margin-left:auto;padding:0
 .workspace-action-row #lists-context{flex-shrink:1;min-width:0;overflow-wrap:anywhere}
 body #library .library-column-headings{flex-wrap:wrap}
 body #library .library-column-headings #library-count{white-space:normal;text-align:right}
+
+/* Info uses the existing shared dialog palette, including dark mode. */
+#home-info-menu hr{border:0;border-top:1px solid var(--popup-border);margin:6px}
+#home-info-menu #add-home-screen:disabled{opacity:1;color:var(--popup-muted);cursor:default;background:transparent}
+.storage-values{margin:0 0 16px;display:grid;gap:0}
+.storage-values>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--popup-border)}
+.storage-values dt{font-size:14px;min-width:0}
+.storage-values dd{font-size:15px;font-weight:600;flex:0 0 auto;margin:0;text-align:right}
+#app-info-dialog #app-info-title:focus{outline:none}
+@media(max-width:400px){.storage-values>div{flex-wrap:wrap;gap:4px}.storage-values dd{margin-left:auto}}

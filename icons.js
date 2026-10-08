@@ -30,8 +30,8 @@ export const favoriteIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusab
 export const listsIcon=outline('<path d="M3 17V3h14"/><rect x="6" y="6" width="15" height="15" rx="2"/><path d="M13 11h4M13 16h4M10 11h.01M10 16h.01"/>');
 export const filesIcon=outline('<path d="M3 19V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2ZM15 16v-6l3 1"/><ellipse cx="13" cy="16" rx="2" ry="1.5"/>');
 
-// Primary's framed Text mark, drawn in the shared outline family.
-export const textIcon=outline('<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M12 8v9M10 17h4"/>');
+// Spiral notepad in the shared outline family; internal export name is retained.
+export const textIcon=outline('<rect x="5" y="4" width="15" height="17" rx="2"/><path d="M9 2v4M16 2v4M3 9h4M3 14h4M3 19h4M10 10h6M10 14h6M10 18h4"/>');
 
 // Paired eighth notes for the List Type column only.
 export const musicItemIcon=outline('<path d="M9 17V5l11-2v12M9 8l11-2"/><ellipse cx="6.5" cy="17.5" rx="2.5" ry="1.8" fill="currentColor" stroke="none"/><ellipse cx="17.5" cy="15.5" rx="2.5" ry="1.8" fill="currentColor" stroke="none"/>');
