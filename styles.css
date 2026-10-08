@@ -1787,17 +1787,32 @@ body button.catalog-offline:focus-visible{outline:2px solid #365f7d;outline-offs
  body.iphone-score-ui .masthead .toolbar{padding-right:max(4px,env(safe-area-inset-right,0px))}
 }
 @media screen and (max-width:600px){
- body.iphone-score-ui .masthead .toolbar{display:grid;grid-template-columns:44px 44px 44px minmax(64px,1fr) 44px 44px;column-gap:2px;justify-content:stretch}
- body.iphone-score-ui .masthead .toolbar #songs{grid-column:1;grid-row:1}
- body.iphone-score-ui .masthead #score-lists{grid-column:2;grid-row:1}
- body.iphone-score-ui .masthead .toolbar .utility-controls #score-size{grid-column:3;grid-row:1;width:44px;min-width:44px;padding:0}
- body.iphone-score-ui .masthead .toolbar #key{grid-column:4;grid-row:1;width:100%;min-width:64px}
- body.iphone-score-ui .masthead .toolbar .pdf-footer-tools-wrap{grid-column:5;grid-row:1}
- body.iphone-score-ui .masthead .toolbar #show-lyrics{grid-column:6;grid-row:1}
+ body.iphone-score-ui .masthead .toolbar{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:2px}
+ body.iphone-score-ui .masthead .toolbar .utility-controls #score-size{width:44px;min-width:44px;padding:0}
+ body.iphone-score-ui .masthead .toolbar #key{flex:0 1 auto;width:auto;min-width:44px;max-width:80px}
+ body.iphone-score-ui .masthead #key-name{font-size:14px}
 }
+@media screen and (max-width:360px){body.iphone-score-ui .masthead .toolbar{gap:0}}
+
 
 /* Workspace chrome follows the usable viewport without changing Score layout. */
 @media screen{
  body :is(#library-home,#library,#lists-view,#files-view,#texts-view){padding-bottom:calc(var(--workspace-footer-height,64px) + var(--workspace-footer-inset,0px) + 16px)}
  body :is(#library-home,#library,#lists-view,#files-view,#texts-view)>:is(.library-quick-access,.workspace-return,.library-home-footer){bottom:var(--workspace-footer-inset,0px)}
 }
+
+/* Title-sized identity track keeps playback nearby; long titles may shrink. */
+@media screen{
+ .score-identity-header .score-title-block,.pdf-score-open .score-identity-header .score-title-block,.score-identity-header .score-title-block:has(.song-playback){grid-template-columns:minmax(0,max-content) 44px;justify-content:start;column-gap:4px}
+ body .score-identity-header .score-title-block h1{padding-top:0}
+ .score-identity-header #score-source{contain:inline-size;min-width:0}
+ body .masthead .score-focus-control{border:0;background:transparent;border-radius:0;box-shadow:none;isolation:isolate}
+ body .masthead .score-focus-control::before{content:"";position:absolute;right:2px;bottom:8px;width:28px;height:20px;border:1px solid #b7c8d5;border-radius:6px;background:#f7f9fb;z-index:-1}
+ body .masthead .score-focus-control svg{position:absolute;right:8px;bottom:10px;width:16px;height:16px}
+ body .masthead .score-focus-control:hover{background:transparent}
+ body .masthead .score-focus-control:hover::before{background:#eaf2f8;border-color:#8da8bd}
+}
+
+@media screen{.score-identity-header .score-title-block{position:relative}.score-identity-header .score-header-home{position:absolute;inset:0;width:100%;height:100%}.score-identity-header .score-title-block .song-playback{position:relative;z-index:2}}
+
+.masthead #score-size .score-view-icon{width:24px;height:24px}
