@@ -1,3 +1,4 @@
+import {uiIcon} from './ui-icons.js';
 import {syncPdfPresentation} from './pdf-score.js';
 import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
@@ -7,9 +8,9 @@ const $=id=>document.getElementById(id),pagePosition=$('score-navigation-button'
 // Retain engraving geometry; scrolling focus only removes viewport clipping.
 const footer=document.querySelector('.masthead'),footerToolbar=footer.querySelector('.toolbar');
 const focusHide=document.createElement('button'),focusShow=document.createElement('button');
-for(const [button,id,label,path] of [[focusHide,'score-hide-controls','Hide controls','m6 9 6 6 6-6'],[focusShow,'score-show-controls','Show controls','m6 15 6-6 6 6']]){
+for(const [button,id,label] of [[focusHide,'score-hide-controls','Hide controls'],[focusShow,'score-show-controls','Show controls']]){
  button.id=id;button.type='button';button.className='score-focus-control';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-controls','score-footer-controls');
- button.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+ button.innerHTML=uiIcon(id==='score-hide-controls'?'chevron-down':'chevron-up');
 }
 footerToolbar.id='score-footer-controls';footer.append(focusHide,focusShow);focusShow.hidden=true;
 function setFooterFocus(hidden,moveFocus=true){

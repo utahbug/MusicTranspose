@@ -1,0 +1,4 @@
+Lucide Icons, https://github.com/lucide-icons/lucide
+Revision: a04f228cd01185e09c188b7227b9600c08c565ec
+Unmodified SVG sources in this directory; ui-icons.js embeds only their artwork.
+License: ISC, with MIT notices for Feather-derived artwork; see LICENSE.

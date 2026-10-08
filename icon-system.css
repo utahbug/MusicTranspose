@@ -1,0 +1,50 @@
+/* Lucide artwork has a common 24-unit grid; optical sizing is independent of targets. */
+body svg.ui-icon {width:var(--ui-glyph,28px);height:var(--ui-glyph,28px);flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+body svg.icon-list-music {--ui-glyph:34px;stroke-width:1.5;} /* Short, wide artwork; keep the rendered stroke near 2px. */
+body svg.icon-folder-open {--ui-glyph:30px;} /* Wide silhouette needs more vertical presence. */
+body svg.icon-notebook-pen {--ui-glyph:27px;} /* Dense full-height detail. */
+body svg.icon-piano {--ui-glyph:30px;}
+body svg.icon-file-music {--ui-glyph:28px;}
+body svg.icon-text-align-start {--ui-glyph:28px;}
+body svg.icon-settings {--ui-glyph:27px;}
+body :is(.favorite,.text-favorite)[aria-pressed=true] svg.ui-icon {fill:currentColor;}
+:root {--nav-ink:#275f7b;--nav-surface:linear-gradient(135deg,#f0f5fc,#e6f3ef);--nav-border:#aac2cd;--nav-active:linear-gradient(115deg,#32639d,#237d79);--nav-focus:#276599;}
+[data-library-theme=dark] {--nav-ink:#c1e7f0;--nav-surface:linear-gradient(135deg,#263f58,#244842);--nav-border:#527985;--nav-focus:#9cd6f5;}
+#lyrics-view {--nav-ink:#275f7b;--nav-surface:linear-gradient(135deg,#f0f5fc,#e6f3ef);--nav-border:#aac2cd;--nav-focus:#276599;}
+#lyrics-view.lyrics-dark {--nav-ink:#c1e7f0;--nav-surface:linear-gradient(135deg,#263f58,#244842);--nav-border:#527985;--nav-focus:#9cd6f5;}
+body :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer) :is(button:not(.library-nav):not(#songs)),body .masthead :is(#score-size,#show-lyrics,#score-tools,#reset),body .display-settings-toggle {background:var(--nav-surface);color:var(--nav-ink);border:1px solid var(--nav-border);border-radius:8px;}
+body :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer,.masthead) button:is([aria-current=page],[aria-expanded=true],[aria-pressed=true]):not(.library-nav):not(#songs) {background:var(--nav-active);color:white;border-color:#307987;box-shadow:inset 0 -3px 0 #ffffff55;}
+body :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer) button:focus-visible,body .display-settings-toggle:focus-visible {outline:2px solid var(--nav-focus);outline-offset:2px;}
+body :is(.home-toolbar,.workspace-return,.library-quick-access,.lyrics-footer) button:hover:not(:disabled) {filter:brightness(.96);}
+/* Score glyph remains visible at every width; view choice is still in the same menu. */
+body .masthead .toolbar .utility-controls #score-size {width:44px;min-width:44px;flex:0 0 44px;padding:0;}
+body .masthead #score-size .score-view-icon {display:block;width:28px;height:28px;}
+body .masthead #score-view-label,body .masthead #score-size>svg:not(.score-view-icon) {display:none;}
+body .masthead #score-tools-menu svg.ui-icon {width:22px;height:22px;}
+body .masthead #score-tools-menu svg:is(.icon-chevron-right,.icon-chevron-left) {width:18px;height:18px;}
+body .masthead .score-focus-control svg.ui-icon {width:16px;height:16px;}
+/* Same footer height and hit targets; middle gap holds Focus on roomy viewports. */
+@media screen and (min-width:768px) {
+ body:not(.iphone-score-ui) .masthead .toolbar {display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;padding-right:max(12px,env(safe-area-inset-right,0px));}
+ body:not(.iphone-score-ui) .masthead .toolbar :is(.playing-controls,.utility-controls) {display:contents;}
+ body:not(.iphone-score-ui) .masthead .toolbar #key {max-width:140px;}
+ body:not(.iphone-score-ui) .masthead #show-lyrics {margin-left:auto;}
+ body:not(.iphone-score-ui) .masthead .toolbar:has(#show-lyrics[hidden]) .pdf-footer-tools-wrap {margin-left:auto;}
+ body:not(.iphone-score-ui) .masthead .score-focus-control {left:calc(50% - 22px);right:auto;}
+ body:not(.iphone-score-ui) .masthead .score-focus-control::before {right:8px;}
+ body:not(.iphone-score-ui) .masthead .score-focus-control svg {right:14px;}
+}
+/* Direct navigation at the left, secondary display settings at the far right. */
+body #lyrics-view .lyrics-footer {display:flex;justify-content:flex-start;gap:8px;}
+body .lyrics-footer :is(.lyrics-score-toggle,.display-settings-toggle),body .workspace-return .display-settings-toggle {display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;}
+.display-settings {margin-left:auto;flex:none;}
+body .display-settings-menu {position:fixed;z-index:40;display:grid;gap:12px;width:250px;max-width:calc(100vw - 16px);overflow:auto;padding:14px;border:1px solid var(--popup-border);border-radius:10px;background:var(--popup-surface);color:var(--popup-ink);box-shadow:0 8px 28px #173e3b33;}
+body .display-settings-menu[hidden] {display:none;}
+body .display-settings-menu h2 {font:600 15px/1.4 system-ui,sans-serif;margin:0;padding-bottom:8px;border-bottom:1px solid var(--popup-border);}
+body .display-settings-menu label {display:grid;gap:6px;font:500 14px/1.4 system-ui,sans-serif;}
+body .display-settings-menu select {width:100%;min-height:44px;font:16px system-ui,sans-serif;padding:8px;border:1px solid var(--popup-border);border-radius:7px;background:var(--popup-surface);color:var(--popup-ink);}
+body :is(#keyboard-view,#lyrics-view) .display-settings-menu button {display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;height:auto;min-height:44px;padding:8px 10px;font:500 14px/1.4 system-ui,sans-serif;background:var(--nav-surface);color:var(--nav-ink);border:1px solid var(--nav-border);border-radius:7px;}
+body .display-settings-menu svg.ui-icon {width:22px;height:22px;}
+body .display-settings-menu :is(button,select):focus-visible {outline:2px solid var(--nav-focus);outline-offset:2px;}
+#lyrics-view {--popup-surface:var(--lyrics-bg);--popup-ink:var(--lyrics-ink);--popup-border:var(--lyrics-muted);}
+@media print {.display-settings {display:none!important;}}

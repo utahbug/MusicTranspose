@@ -276,7 +276,7 @@ document.querySelector('.utility-controls').append($('show-lyrics'));
 $('score-size').after($('key'));
 $('key').after($('reset'));
 $('reset').after($('show-lyrics'));
-$('score-size').querySelector('.score-view-icon').outerHTML=scoreIcon.replace('<svg ','<svg class="score-view-icon" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" ');
+$('score-size').querySelector('.score-view-icon').outerHTML=scoreIcon.replace('class="ui-icon', 'class="score-view-icon ui-icon');
 $('show-lyrics').classList.add('view-switch');
 window.addEventListener('resize',()=>{closeSizeOptions();setControls();});
 document.addEventListener('library-open',()=>closeSizeOptions());

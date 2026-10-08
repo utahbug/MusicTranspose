@@ -1,3 +1,4 @@
+import {createDisplaySettings} from './display-settings.js';
 // Ported from utahbug/PrimarySongs, commit 610a1eb (script-v528.js).
 // Keyboard/guide algorithms and acoustic recipes stay separate from Score playback.
 export function createKeyboardWorkspace({onHome}) {
@@ -650,8 +651,10 @@ const tabs=[el.chordGuideTab,el.keyChangeTab,el.scaleGuideTab];
 tabs.forEach((tab,index)=>tab.addEventListener('keydown',event=>{const offset={ArrowRight:1,ArrowLeft:-1}[event.key];if(!offset&&!['Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?2:(index+offset+3)%3;tabs[next].click();tabs[next].focus();}));
 el['keyboard-home'].innerHTML=document.getElementById('songs').innerHTML;
 el['keyboard-home'].onclick=onHome;
+const theme=el['keyboard-theme'],settings=createDisplaySettings({id:'keyboard-settings',label:'Keyboard Settings',controls:[theme]});
+workspace.querySelector('.workspace-return').append(settings.element);
 window.addEventListener('blur',stopAllPianoVoices);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAllPianoVoices();});
 renderPiano();showKeyboardGuide('chord');
-return {open(){workspace.hidden=false;document.title='Keyboard · MusicTranspose';el.keyboardTitle.focus({preventScroll:true});},hide(){if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
+return {open(){workspace.hidden=false;document.title='Keyboard · MusicTranspose';el.keyboardTitle.focus({preventScroll:true});},hide(){settings.close();if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
 }
