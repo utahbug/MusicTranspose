@@ -10,6 +10,17 @@ export function scoreFooterTop(){
 let inset=0,frame=0,installed=false,lastGeometry='';
 export function installFooterViewport(){
  if(installed)return;installed=true;
+ // Reserve the native desktop scrollbar width only in the two footers.
+ // The score/document itself keeps its existing width and scrolling policy.
+ function reserveScrollbar(){
+  let width=0;
+  if(!phoneFooter()&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+   const probe=document.createElement('div');
+   probe.style.cssText='position:fixed;left:-10000px;top:0;width:100px;height:100px;overflow:scroll;visibility:hidden;contain:strict';
+   document.body.append(probe);width=probe.offsetWidth-probe.clientWidth;probe.remove();
+  }
+  document.documentElement.style.setProperty('--score-lyrics-scrollbar',width+'px');
+ }
  function update(){
   frame=0;const v=window.visualViewport;
   // Pinch zoom is a magnified/pannable view, not a new engraving size.
@@ -25,8 +36,8 @@ export function installFooterViewport(){
   document.dispatchEvent(new Event('footer-viewport-change'));
  }
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
- for(const type of ['resize','orientationchange'])window.addEventListener(type,schedule);
+ for(const type of ['resize','orientationchange'])window.addEventListener(type,()=>{reserveScrollbar();schedule();});
  for(const type of ['resize','scroll'])window.visualViewport?.addEventListener(type,schedule);
  for(const type of ['score-view-shown','library-open'])document.addEventListener(type,schedule);
- schedule();
+ reserveScrollbar();schedule();
 }

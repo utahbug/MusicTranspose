@@ -53,8 +53,8 @@ export function createLyricsView(host,{onScore,libraryControl}){
  settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontLabel,theme]});
  listeners=new AbortController();window.addEventListener('resize',rephrase,{signal:listeners.signal});
  const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.innerHTML=scoreIcon;
- const footer=make('div',null,'lyrics-footer');
- libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,scoreToggle,settings.element);host.append(footer);
+ const footer=make('div',null,'lyrics-footer'),pair=make('div',null,'footer-view-pair');pair.append(scoreToggle,settings.element);
+ libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,pair);host.append(footer);
  const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');header.append(home,make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
  if(current.refrains.some(r=>r.label==='Shared ending'))paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
  const body=make('div',null,'lyrics-body');

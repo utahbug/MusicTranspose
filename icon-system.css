@@ -99,3 +99,16 @@ body:not(.lyrics-open):not(.library-open) .masthead #score-tools>svg.icon-mt-set
 
 /* Key is content-sized; fixed icon targets must never dictate its text width. */
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:max-content;min-width:64px;max-width:none;flex:0 0 auto;flex-direction:row;gap:4px;white-space:nowrap;}
+
+/* One pair gap and native-scrollbar reservation for Score and Lyrics.
+   Subtract the currently occupied gutter so visible scrollbars are not counted twice. */
+:root {--score-lyrics-scrollbar:0px;--score-lyrics-edge:12px;--score-lyrics-gap:6px;--score-lyrics-right:max(var(--score-lyrics-edge),env(safe-area-inset-right,0px));}
+@media screen {
+ body:not(.lyrics-open):not(.library-open) .masthead .toolbar,body #lyrics-view .lyrics-footer {padding-right:calc(var(--score-lyrics-right) + max(0px,var(--score-lyrics-scrollbar) - (100vw - 100%)));}
+ body .masthead .toolbar .footer-view-pair,body #lyrics-view .footer-view-pair {display:flex;align-items:center;gap:var(--score-lyrics-gap);flex:none;}
+ body #lyrics-view .footer-view-pair {margin-left:auto;}
+}
+@media screen and (max-width:600px) {:root {--score-lyrics-edge:4px;}}
+
+/* Retain the earlier reserved-minimum approach on roomy footers, sized for seven accidentals in the unchanged fonts. */
+@media screen and (min-width:601px) {body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {min-width:128px;}}
