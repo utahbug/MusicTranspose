@@ -83,3 +83,8 @@ body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):is(:active,[aria-expanded=true],[aria-pressed=true]),
 body:has(#key-dialog[open]) .masthead .toolbar .playing-controls #key {background:var(--music-control-pressed);border-color:var(--music-key-border);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):focus-visible {outline:2px solid var(--nav-focus);outline-offset:2px;}
+
+/* Background mode is a neutral menu toggle, with a quiet state mark at the right. */
+#score-tools-menu #score-page-theme {background:transparent;color:var(--ink);box-shadow:none;}
+#score-tools-menu #score-page-theme::after {content:"";width:1em;margin-left:auto;color:var(--accent-strong);}
+#score-tools-menu #score-page-theme[aria-checked=true]::after {content:"\2713";}
