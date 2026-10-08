@@ -74,13 +74,11 @@ body:not(.lyrics-open):not(.library-open) .masthead :is(#score-size,#show-lyrics
 /* Home display control: retain the target and focus ring without a destination tile. */
 body #library-home .home-toolbar .library-theme-toggle[aria-pressed]:not(:disabled) {background:transparent;border-color:transparent;box-shadow:none;}
 
-/* Musical controls: quiet view selector, emphasized current Key, subordinate Reset. */
+/* Musical controls: quiet view selector and Key, subordinate Reset. */
 .masthead {--music-control-surface:#f8f9fa;--music-control-hover:#edf0f3;--music-control-pressed:#e1e7ec;--music-control-ink:#253e50;--music-control-border:#a5b4be;--music-key-border:#347d94;--music-key-surface:#fff;--music-reset-ink:#587788;--music-reset-surface:transparent;}
 [data-library-theme=dark] .masthead {--music-control-surface:#292d32;--music-control-hover:#363c43;--music-control-pressed:#434b54;--music-control-ink:#f0f2f4;--music-control-border:#77848e;--music-key-border:#83c5d7;--music-key-surface:#30353b;--music-reset-ink:#99b3c0;--music-reset-surface:#292d32;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset) {height:44px;min-height:44px;border:1px solid var(--music-control-border);border-radius:6px;background:var(--music-control-surface);color:var(--music-control-ink);box-shadow:none;--icon-paint:inherit;}
-body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {position:relative;border-color:var(--music-key-border);background:var(--music-key-surface);}
-/* Inset outline increases Key emphasis without changing its dimensions or text space. */
-body .masthead .playing-controls #key::after {content:"";position:absolute;inset:-1px;border:2px solid var(--music-key-border);border-radius:inherit;pointer-events:none;}
+body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {position:relative;border-color:var(--music-control-border);background:var(--music-key-surface);}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #reset {background:var(--music-reset-surface);color:var(--music-reset-ink);--icon-paint:currentColor;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):hover {background:var(--music-control-hover);border-color:var(--music-key-border);filter:none;}
 body:not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls :is(#score-size,#key,#reset):not(:disabled):is(:active,[aria-expanded=true],[aria-pressed=true]),

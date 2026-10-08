@@ -83,14 +83,14 @@ initPlaybackPreferences(playback);
 initOfflineScore();
 metronome=createMetronome(playback,()=>({standalone:!hasTiming(activeSong),available:ready&&!busy&&!loading&&!!activeSong&&!activeSong.missing&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
 function playbackControls(){$('score-sound').hidden=!hasTiming(activeSong);const actions=document.querySelector('.score-heading .score-title-block');if(ready&&hasTiming(activeSong)){playback.attach(actions);}else actions.querySelector('.song-playback')?.remove();}
-const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:()=>showScoreView(lyricsSong?.id)});
+const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:event=>showScoreView(lyricsSong?.id,{restoreLyricsFocus:event.detail===0})});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
-async function showScoreView(id){
+async function showScoreView(id,{restoreLyricsFocus=false}={}){
  if(!id)return;
  library?.navigating('score',id);
  document.body.classList.remove('lyrics-open');lyricsView.hide();
- if(ready&&activeSong.id===id){document.title=activeSong.title+' · Music Transpose';window.scrollTo({top:scoreScroll,behavior:'instant'});$('show-lyrics').focus({preventScroll:true});document.dispatchEvent(new Event('score-view-shown'));metronome?.sync();}
- else{await loadSong(id);if(ready&&activeSong.id===id)$('show-lyrics').focus({preventScroll:true});}
+ if(ready&&activeSong.id===id){document.title=activeSong.title+' · Music Transpose';window.scrollTo({top:scoreScroll,behavior:'instant'});if(restoreLyricsFocus)$('show-lyrics').focus({preventScroll:true});document.dispatchEvent(new Event('score-view-shown'));metronome?.sync();}
+ else{await loadSong(id);if(restoreLyricsFocus&&ready&&activeSong.id===id)$('show-lyrics').focus({preventScroll:true});}
 }
 async function openLyrics(id){
  const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id))return;
