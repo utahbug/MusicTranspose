@@ -14,7 +14,8 @@ export const leadSheetIcon = `<svg class="lead-sheet-icon" viewBox="-180 -1143 1
 
 // Corner controls share a 24px outline family; accessible names live on buttons.
 export const scoreIcon=destinationIcon('score','<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M7 7h10M7 10h5M7 13h3M16 17V10"/><ellipse cx="14" cy="17" rx="2" ry="1.5" fill="currentColor"/>');
-export const themeIcon=uiIcon('sun-moon');
+// Established diagonal light/dark swatch; styling is shared with Score Tools.
+export const themeIcon='<span class="pdf-mobile-theme-swatch" aria-hidden="true"></span>';
 export const fontSizeIcon=uiIcon('type');
 // Primary app Tap Zones artwork, reused with the existing guide.
 export const tapZonesIcon=destinationIcon('tap-zones','<path d="M12 2v3M5.7 4.7l2.1 2.1M18.3 4.7l-2.1 2.1M10.2 13V8.8a1.8 1.8 0 0 1 3.6 0v4.1l1.1-.8a1.7 1.7 0 0 1 2.4.4l1.2 1.8a3 3 0 0 1 .3 2.7l-1.1 3H10l-3.3-4.1a1.6 1.6 0 0 1 2.3-2.2l1.2.9V13Z"/>');
