@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#173e3b"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' blob:; object-src 'none'; base-uri 'self'"><title>MusicTranspose · Library</title><meta name="robots" content="noindex,nofollow"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Transpose"><link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="primary-text.css"><script defer src="vendor/pdf.min.js"></script><script defer src="vendor/fflate.min.js"></script><script defer src="vendor/opensheetmusicdisplay.min.js"></script><script type="module" src="app.js"></script><script type="module" src="navigation.js"></script><script type="module" src="settings-help.js"></script><script type="module" src="score-tools.js"></script><script type="module" src="layout-debug.js"></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#173e3b"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' blob:; object-src 'none'; base-uri 'self'"><title>MusicTranspose · Library</title><meta name="robots" content="noindex,nofollow"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Transpose"><link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="primary-text.css"><link rel="stylesheet" href="keyboard.css"><script defer src="vendor/pdf.min.js"></script><script defer src="vendor/fflate.min.js"></script><script defer src="vendor/opensheetmusicdisplay.min.js"></script><script type="module" src="app.js"></script><script type="module" src="navigation.js"></script><script type="module" src="settings-help.js"></script><script type="module" src="score-tools.js"></script><script type="module" src="layout-debug.js"></script></head>
 <body class="library-open">
 <section id="library-home" aria-labelledby="library-home-title">
  <header class="library-home-heading workspace-banner"><h1 id="library-home-title" tabindex="-1">MusicTranspose</h1><button type="button" id="home-about" aria-label="Info and help" title="Info and help" aria-haspopup="menu" aria-expanded="false" aria-controls="home-info-menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></svg></button><div id="home-info-menu" role="menu" aria-label="Info and help" hidden><button type="button" id="home-info-about" role="menuitem" aria-haspopup="dialog" aria-controls="about-dialog">About MusicTranspose</button><button type="button" id="home-info-storage" role="menuitem" aria-haspopup="dialog" aria-controls="app-info-dialog">App Info &amp; Storage</button><button type="button" id="home-info-saved" role="menuitem" aria-controls="library">Save songs to this device</button><hr role="separator"><button type="button" role="menuitem" class="quiet" id="add-home-screen" aria-haspopup="dialog" aria-controls="home-screen-dialog">Add app to your Home Screen</button></div></header>
@@ -12,7 +12,7 @@
  <button type="button" id="home-lists" aria-label="Lists"><span><strong>Lists</strong><small>Organize music and program items</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg></button>
  <button type="button" id="home-files" aria-label="Files"><span><strong>Files</strong><small>Add and manage your music</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg></button>
  </nav>
- <footer class="library-home-footer"><div class="home-toolbar" role="navigation" aria-label="Home navigation"><button type="button" id="home-current" class="library-nav" title="Library Home" aria-label="Library Home" aria-controls="library-home" aria-current="page"></button><button type="button" id="home-footer-lists" title="Lists" aria-label="Lists" aria-controls="lists-view"></button><button type="button" id="home-footer-files" title="Files" aria-label="Files" aria-controls="files-view"></button><button type="button" id="home-text" title="Notes" aria-label="Notes" aria-controls="texts-view"></button><button type="button" class="library-theme-toggle" aria-label="Use dark Library theme" title="Use dark Library theme" aria-pressed="false"><span class="pdf-mobile-theme-swatch" aria-hidden="true"></span></button></div></footer>
+ <footer class="library-home-footer"><div class="home-toolbar" role="navigation" aria-label="Home navigation"><button type="button" id="home-current" class="library-nav" title="Library Home" aria-label="Library Home" aria-controls="library-home" aria-current="page"></button><button type="button" id="home-footer-lists" title="Lists" aria-label="Lists" aria-controls="lists-view"></button><button type="button" id="home-footer-files" title="Files" aria-label="Files" aria-controls="files-view"></button><button type="button" id="home-text" title="Notes" aria-label="Notes" aria-controls="texts-view"></button><button type="button" id="home-keyboard" title="Keyboard" aria-label="Keyboard" aria-controls="keyboard-view"></button><button type="button" class="library-theme-toggle" aria-label="Use dark Library theme" title="Use dark Library theme" aria-pressed="false"><span class="pdf-mobile-theme-swatch" aria-hidden="true"></span></button></div></footer>
 </section>
 <dialog id="about-dialog" class="app-dialog" aria-labelledby="about-title"><div class="dialog-heading"><h2 id="about-title" tabindex="-1">About MusicTranspose</h2><button type="button" id="about-close" class="close" aria-label="Close About">×</button></div>
 <h3>About</h3><p>MusicTranspose is a music workspace for viewing, transposing, organizing, and preparing music for rehearsal and performance. It is designed especially for musicians who want practical tools for working with music they are authorized to use, including music they add to the app themselves.</p>
@@ -128,6 +128,152 @@
 <dialog id="list-text-reader" aria-labelledby="list-text-reader-title"><h2 id="list-text-reader-title"></h2><div id="list-text-reader-content" class="list-rich-text"></div><div class="list-edit-actions"><button id="list-text-reader-edit" type="button">Edit</button><button id="list-text-reader-close" type="button">Back to list</button></div></dialog>
 
 
+        <section id="keyboard-view" hidden aria-labelledby="keyboardTitle">
+          <header class="workspace-banner"><h1 id="keyboardTitle" tabindex="-1">MusicTranspose · Keyboard</h1></header>
+          <div class="keyboard-panel">
+            <div class="piano-sound-controls">
+              <label>
+                <span>Sound</span>
+                <select id="keyboardSound" aria-label="Keyboard sound"></select>
+              </label>
+              <div class="keyboard-transpose-control">
+                <span>Transpose</span>
+                <div>
+                  <button id="keyboardTransposeDown" type="button" aria-label="Transpose down one semitone">&minus;</button>
+                  <button id="keyboardTransposeReset" type="button" aria-label="Reset transposition"><output id="keyboardTransposeValue">0</output></button>
+                  <button id="keyboardTransposeUp" type="button" aria-label="Transpose up one semitone">+</button>
+                </div>
+              </div>
+              <label class="piano-volume-control keyboard-volume-control">
+                <span>Keyboard volume</span>
+                <input id="keyboardVolume" type="range" min="0" max="100" step="1" value="58" aria-label="Keyboard volume">
+              </label>
+            </div>
+            <p id="keyboardSoundStatus" class="keyboard-sound-status" aria-live="polite">Grand piano</p>
+            <div class="keyboard-scroll" aria-label="Scrollable piano keyboard">
+              <div id="realKeyboard" class="real-keyboard" aria-label="Playable two-octave keyboard"></div>
+            </div>
+            <div class="keyboard-guide-tabs" role="tablist" aria-label="Keyboard guides">
+              <button id="chordGuideTab" class="selected" type="button" role="tab" aria-selected="true" aria-controls="pianoChordGuide">Chord Guide</button>
+              <button id="keyChangeTab" type="button" role="tab" aria-selected="false" aria-controls="keyChangeGuide">Key Changes</button>
+              <button id="scaleGuideTab" type="button" role="tab" aria-selected="false" aria-controls="scaleGuide">Scales</button>
+            </div>
+            <section id="pianoChordGuide" class="keyboard-chord-guide" role="tabpanel" tabindex="0" aria-labelledby="chordGuideTab">
+              <div class="piano-chord-controls keyboard-chord-controls">
+                <h3 id="keyboardChordHeading">Chord</h3>
+                <label><span>Root</span>
+                  <select id="pianoChordRoot" aria-label="Chord root">
+                    <option value="0">C</option><option value="1">C♯ / D♭</option><option value="2">D</option><option value="3">D♯ / E♭</option>
+                    <option value="4">E</option><option value="5">F</option><option value="6">F♯ / G♭</option><option value="7">G</option>
+                    <option value="8">G♯ / A♭</option><option value="9">A</option><option value="10">A♯ / B♭</option><option value="11">B</option>
+                  </select>
+                </label>
+                <label><span>Type</span>
+                  <select id="pianoChordType" aria-label="Chord type">
+                    <option value="major">Major</option><option value="minor">Minor</option><option value="diminished">Diminished</option>
+                    <option value="dominant7">Dominant 7th</option><option value="major7">Major 7th</option><option value="minor7">Minor 7th</option>
+                    <option value="diminished7">Diminished 7th</option><option value="halfDiminished">Half-diminished</option>
+                    <option value="sus2">Suspended 2nd</option><option value="sus4">Suspended 4th</option>
+                    <option value="augmented">Augmented</option><option value="sixth">6th</option><option value="ninth">9th</option>
+                  </select>
+                </label>
+                <button id="pianoChordPlayButton" class="primary-button" type="button">Play chord</button>
+              </div>
+              <div class="chord-answer-grid">
+                <div id="pianoChordNotes" class="piano-chord-notes" aria-live="polite"></div>
+                <div id="pianoChordPartners" class="piano-chord-partners" aria-live="polite"></div>
+              </div>
+              <div class="piano-style-guide">
+                <label for="pianoStyle"><span>I want to play…</span>
+                  <select id="pianoStyle">
+                    <option value="manual">Choose manually</option>
+                    <option value="hymn">Hymn</option>
+                    <option value="country">Country</option>
+                    <option value="blues">Blues</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="pop">Pop</option>
+                  </select>
+                </label>
+                <div id="pianoStyleRecipe" class="piano-style-recipe" aria-live="polite" hidden></div>
+              </div>
+              <details class="chord-tips">
+                <summary>Chord tips</summary>
+                <div class="chord-tips-content">
+              <p id="pianoChordUse" class="piano-chord-use"></p>
+              <section class="chord-choice-tip">
+                <h4>Choosing chords</h4>
+                <p>The circle of fourths and the circle of fifths show the same chord relationships in opposite directions. Moving by a fifth often creates a strong pull back “home,” which is easy to hear in hymn endings. Moving by a fourth often feels like moving outward to another familiar chord and is common in pop, folk, and country. Both movements appear in many styles, so you do not need to memorize a circle—the recommendations above provide a practical starting point.</p>
+              </section>
+              <div class="piano-genre-guide">
+                <p><strong>Blues:</strong> Dominant 7ths with I–IV–V.</p>
+                <p><strong>Country:</strong> Major I–IV–V, V7, minor vi, and suspended chords.</p>
+                <p><strong>Jazz:</strong> Major 7ths, minor 7ths, dominant 7ths, diminished passing chords, and ii–V–I.</p>
+              </div>
+              <div id="pianoChordFamily" class="piano-chord-family"></div>
+                </div>
+              </details>
+            </section>
+            <section id="keyChangeGuide" class="keyboard-key-change" role="tabpanel" tabindex="0" aria-labelledby="keyChangeTab" hidden>
+              <div class="key-change-controls">
+                <h3 id="keyChangeHeading">Key Changes</h3>
+                <label><span>Starting key</span>
+                  <select id="keyChangeRoot" aria-label="Starting key">
+                    <option value="0">C</option><option value="1">D&#x266D;</option><option value="2">D</option><option value="3">E&#x266D;</option>
+                    <option value="4">E</option><option value="5">F</option><option value="6">G&#x266D;</option><option value="7">G</option>
+                    <option value="8">A&#x266D;</option><option value="9">A</option><option value="10">B&#x266D;</option><option value="11">B</option>
+                  </select>
+                </label>
+                <div class="key-change-stepper">
+                  <span>Semitones</span>
+                  <div><button id="keyChangeDown" type="button" aria-label="Lower one semitone">&#x2212;</button><output id="keyChangeSteps">0</output><button id="keyChangeUp" type="button" aria-label="Raise one semitone">+</button></div>
+                </div>
+              </div>
+              <p class="key-change-hint">One semitone equals one half step.</p>
+              <div id="keyChangeTable" class="key-change-table" aria-label="Keys from six semitones down through six semitones up"></div>
+              <div id="keyChangeResult" class="key-change-result" aria-live="polite"></div>
+              <details class="chord-tips key-change-tips">
+                <summary>Key change tips</summary>
+                <div class="chord-tips-content">
+                  <p>Remember: with flats, the second-to-last flat names the key.</p>
+                  <p>Remember: with sharps, the key is one half step above the last sharp.</p>
+                </div>
+              </details>
+            </section>
+            <section id="scaleGuide" class="keyboard-scale-guide" role="tabpanel" tabindex="0" aria-labelledby="scaleGuideTab" hidden>
+              <div class="scale-guide-controls">
+                <h3 id="scaleGuideHeading">Scales</h3>
+                <label><span>Root</span>
+                  <select id="scaleRoot" aria-label="Scale root">
+                    <option value="0">C</option><option value="1">C&#x266F; / D&#x266D;</option><option value="2">D</option><option value="3">D&#x266F; / E&#x266D;</option>
+                    <option value="4">E</option><option value="5">F</option><option value="6">F&#x266F; / G&#x266D;</option><option value="7">G</option>
+                    <option value="8">G&#x266F; / A&#x266D;</option><option value="9">A</option><option value="10">A&#x266F; / B&#x266D;</option><option value="11">B</option>
+                  </select>
+                </label>
+                <label><span>Type</span>
+                  <select id="scaleType" aria-label="Scale type">
+                    <option value="major">Major</option>
+                    <option value="naturalMinor">Natural minor</option>
+                    <option value="majorPentatonic">Major pentatonic</option>
+                    <option value="minorPentatonic">Minor pentatonic</option>
+                    <option value="blues">Blues</option>
+                    <option value="dorian">Dorian (jazz minor)</option>
+                    <option value="mixolydian">Mixolydian (dominant)</option>
+                    <option value="chromatic">Chromatic</option>
+                  </select>
+                </label>
+                <button id="scalePlayButton" class="primary-button" type="button">Play scale</button>
+              </div>
+              <div id="scaleResult" class="scale-result" aria-live="polite"></div>
+              <details class="chord-tips scale-tips">
+                <summary>Scale tips</summary>
+                <div class="chord-tips-content">
+                  <p id="scaleTipText"></p>
+                </div>
+              </details>
+            </section>
+          </div>
+        <footer class="workspace-return"><button id="keyboard-home" class="library-nav workspace-sibling" type="button" aria-label="Library Home" title="Library Home" aria-controls="library-home"></button><button type="button" class="library-theme-toggle workspace-sibling" aria-label="Use dark Library theme" title="Use dark Library theme" aria-pressed="false"><span class="pdf-mobile-theme-swatch" aria-hidden="true"></span></button></footer>
+</section>
 <section id="texts-view" hidden aria-labelledby="texts-heading"><header class="lists-heading workspace-banner"><h1 id="texts-heading" tabindex="-1">MusicTranspose · Notes</h1></header><p id="texts-context"></p><div class="texts-actions"><button id="texts-new" type="button">New Note +</button><input id="texts-search" type="search" placeholder="Search Notes" aria-label="Search Notes"><label><input id="texts-favorites" type="checkbox"> Favorites</label></div><p id="texts-status" role="status"></p><div id="texts-items"></div><p class="texts-purpose">Notes can be added to Favorites and reused across Lists.</p><footer class="workspace-return"><button id="texts-home" class="library-nav" type="button">Library</button><button id="texts-files" type="button">Files</button><button id="texts-lists" type="button">Lists</button></footer></section>
 <dialog id="text-memberships" aria-labelledby="text-memberships-title"><h2 id="text-memberships-title">Used in Lists</h2><form id="text-memberships-form"><div id="text-membership-rows"></div><p id="text-memberships-error" role="alert"></p><div class="list-edit-actions"><button type="button" id="text-memberships-cancel">Cancel</button><button type="submit">Save</button></div></form></dialog>
 <dialog id="list-text-picker" aria-labelledby="list-text-picker-title"><form id="list-text-picker-form"><h2 id="list-text-picker-title">Existing Notes</h2><p>Checked Notes will be included in this List.</p><div class="text-membership-tools"><button type="button" id="list-text-picker-new">New Note +</button><input id="list-text-picker-search" type="search" placeholder="Find Notes" aria-label="Find Notes"></div><div id="list-text-picker-items"></div><p id="list-text-picker-status" role="status"></p><div class="list-edit-actions"><button id="list-text-picker-cancel" type="button">Cancel</button><button type="submit">Apply</button></div></form></dialog>

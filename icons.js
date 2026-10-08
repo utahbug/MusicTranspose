@@ -35,3 +35,5 @@ export const textIcon=outline('<rect x="5" y="4" width="15" height="17" rx="2"/>
 
 // Paired eighth notes for the List Type column only.
 export const musicItemIcon=outline('<path d="M9 17V5l11-2v12M9 8l11-2"/><ellipse cx="6.5" cy="17.5" rx="2.5" ry="1.8" fill="currentColor" stroke="none"/><ellipse cx="17.5" cy="15.5" rx="2.5" ry="1.8" fill="currentColor" stroke="none"/>');
+
+export const keyboardIcon=outline('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 12v7M12 12v7M17 12v7"/><path d="M6 5h2v7H6zM11 5h2v7h-2zM16 5h2v7h-2z" fill="currentColor"/>');

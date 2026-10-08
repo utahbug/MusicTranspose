@@ -1,6 +1,6 @@
 // Same-document routes: never ask the static host to serve virtual paths.
 const key='musicTransposeNavigation';
-const views=new Set(['text','home','library','lists','files','import','score','lyrics']);
+const views=new Set(['keyboard','text','home','library','lists','files','import','score','lyrics']);
 const valid=r=>r&&views.has(r.view);
 export function createViewHistory({capture,restore,isBusy,onTravel,initialView='library',restoreHistory=true}){
  let current={view:initialView},restoring=false,pending=null,running=false,revision=0;
