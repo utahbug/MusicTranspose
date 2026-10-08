@@ -23,7 +23,7 @@ export const saveOfflineList=list=>change('explicit-offline-save',{owner:'list',
 export const removeOfflineList=list=>change('explicit-offline-remove',{owner:'list',listId:list.id});
 export const clearOfflineMusic=()=>change('explicit-offline-clear');
 export async function reconcileOfflineLists(lists){try{await accept(await request('explicit-offline-reconcile',{lists:lists.map(g=>({id:g.id,songs:listSongIds(g)}))}));}catch{await refreshOffline();}}
-export function offlineBadge(song){const state=offlineSongState(song);if(!state.saved)return null;const badge=document.createElement('span');badge.className='offline-saved-badge';badge.title=state.local?'On this device':'Saved on this device';badge.setAttribute('aria-label',badge.title);badge.setAttribute('role','img');badge.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="m8 12 3 3 5-6"/></svg>';return badge;}
+export function offlineBadge(song){const state=offlineSongState(song);if(!state.saved)return null;const badge=document.createElement('span');badge.className='offline-saved-badge';badge.title=state.local?'On this device':'Saved on this device';badge.setAttribute('aria-label',badge.title);badge.setAttribute('role','img');badge.textContent=state.local?'On device':'Offline';return badge;}
 navigator.serviceWorker?.addEventListener('message',e=>{if(e.data?.type!=='explicit-offline-changed')return;if(e.data.progress){progress=e.data.progress;emit();}else refreshOffline();});
 navigator.serviceWorker?.addEventListener('controllerchange',()=>refreshOffline());
 window.addEventListener('focus',()=>refreshOffline());
