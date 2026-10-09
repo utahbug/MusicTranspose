@@ -327,7 +327,7 @@ function renderKeySignatureDisplay(keyIndex) {
 }
 
 function renderKeyChangeGuide() {
-  if (!el.keyChangeRoot || !el.keyChangeResult || !el.keyChangeTable) return;
+  if (!el.keyChangeRoot || !el.keyChangeResult) return;
   const root = Number(el.keyChangeRoot.value) || 0;
   const steps = keyboardKeyChange.steps;
   const result = keyChangePitch(root, steps);
@@ -344,24 +344,6 @@ function renderKeyChangeGuide() {
     </div>
     ${renderKeySignatureDisplay(result)}
   `;
-  el.keyChangeTable.innerHTML = Array.from({ length: 13 }, (_, index) => index - 6).map((rowSteps) => {
-    const rowResult = keyChangePitch(root, rowSteps);
-    const active = rowSteps === steps;
-    return `
-      <button type="button" data-key-change-step="${rowSteps}" class="${active ? "selected" : ""}" aria-pressed="${active}">
-        <span>${formatKeyChangeSteps(rowSteps)}</span>
-        <strong>${KEY_CHANGE_NAMES[rowResult]}</strong>
-        <span>${KEY_SIGNATURES[rowResult].label}</span>
-      </button>
-    `;
-  }).join("");
-}
-
-function handleKeyChangeTableClick(event) {
-  const row = event.target.closest("[data-key-change-step]");
-  if (!row) return;
-  keyboardKeyChange.steps = Number(row.dataset.keyChangeStep);
-  renderKeyChangeGuide();
 }
 
 async function playPianoGuideChord() {
@@ -627,7 +609,6 @@ setupKeyboardUi();
   el.keyChangeRoot.addEventListener("change", renderKeyChangeGuide);
   el.keyChangeDown.addEventListener("click", () => adjustKeyChange(-1));
   el.keyChangeUp.addEventListener("click", () => adjustKeyChange(1));
-  el.keyChangeTable.addEventListener("click", handleKeyChangeTableClick);
   el.scaleRoot.addEventListener("change", renderPianoScaleGuide);
   el.scaleType.addEventListener("change", renderPianoScaleGuide);
   el.scalePlayButton.addEventListener("click", playPianoScale);
