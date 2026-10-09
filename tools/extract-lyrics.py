@@ -54,6 +54,25 @@ for song in catalog:
        number=l.get('number') or (name if name.isdigit() else '1')
        streams[(lyric_section,number,part.get('id'),element.findtext('voice','1'))].append(l)
    previous_double=measure.findtext('barline/bar-style')=='light-light'
+ # Reviewed HHC #1004: the three printed verses share measures 11–18;
+ # measures 19–20 (verses 1/2) and 21 (verse 3) are alternative endings.
+ # Both endings sing the same final word, not two consecutive words.
+ if song['id']=='hhc-1004':
+  part=root.find("part[@id='P1']")
+  measures={m.get('number'):m for m in part.findall('measure')}
+  first=measures['19'];last=measures['21']
+  assert first.find("barline/ending[@type='start']").get('number')=='1, 2'
+  assert last.find("barline/ending[@type='start']").get('number')=='3'
+  assert measures['3'].find("barline/repeat[@direction='forward']") is not None
+  assert measures['20'].find("barline/repeat[@direction='backward']") is not None
+  assert stitch(first.findall('.//lyric'))==stitch(last.findall('.//lyric'))=='me.'
+  key=('chorus','1','P1','1');nodes=streams[key]
+  ending_nodes={id(l) for l in last.findall('.//lyric')}
+  chorus=[n for n in nodes if id(n) not in ending_nodes]
+  assert stitch(chorus).startswith('As I walk with Jesus') and stitch(chorus).endswith('He will walk with me.')
+  assert all(('verse',n,'P1','1') in streams for n in ('1','2','3'))
+  streams[key]=chorus
+  r['extractionDecisions'].append('Reviewed HHC #1004 repeat structure: verses 1–3 each use the chorus in measures 11–18, with identical final lyric in alternative endings 19–20 (1/2) and 21 (3); final word included once. Notation endings remain unchanged.')
  # Conservative unlabelled chorus: simultaneous printed numbered verses end
  # together, then a new unnumbered lyric row starts beyond a double bar.
  # A continuing row or a printed new verse number is not enough evidence.

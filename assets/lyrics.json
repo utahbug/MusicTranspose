@@ -433,19 +433,19 @@
       "refrains": [
         {
           "number": "1",
-          "text": "As I walk with Jesus to my home above, He will bless me with His Spirit and fill me with His love, Change my heart forever and help me clearly see. I will walk with Jesus, and He will walk with me. me.",
+          "text": "As I walk with Jesus to my home above, He will bless me with His Spirit and fill me with His love, Change my heart forever and help me clearly see. I will walk with Jesus, and He will walk with me.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed HHC #1004 repeat structure: verses 1–3 each use the chorus in measures 11–18, with identical final lyric in alternative endings 19–20 (1/2) and 21 (3); final word included once. Notation endings remain unchanged."
+      ],
       "sourceTextBlocks": [
         "I Will Walk with Jesus",
         "Luke 2:52 | Moses 6:34",
