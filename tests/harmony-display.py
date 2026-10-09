@@ -54,7 +54,8 @@ class Display(unittest.TestCase):
   batch3b=json.loads((ROOT/'reports/harmony-batch3b.json').read_text(encoding='utf8'))
   batch3c=json.loads((ROOT/'reports/harmony-batch3c.json').read_text(encoding='utf8'))
   nine=json.loads((ROOT/'reports/chord-priority-nine.json').read_text(encoding='utf8'))['rows']
-  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3+batch3b+batch3c+nine if 'skipped' not in r})
+  batch2=json.loads((ROOT/'reports/chord-expansion-batch2.json').read_text(encoding='utf8'))['rows']
+  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3+batch3b+batch3c+nine+[r for r in batch2 if r['generatedSymbolCount']] if 'skipped' not in r})
  def test_batch3a_scope_and_events(self):
   batch=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
   self.assertEqual({r['number'] for r in batch},{3,6,19,21,26,27,29,34,35,36,58,60,68,85,89,92,94,96,97,98,103,104,105,111,125,131,134,136,140,141})

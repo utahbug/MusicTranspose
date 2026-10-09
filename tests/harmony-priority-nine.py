@@ -6,6 +6,7 @@ old=lambda f:subprocess.check_output(['git','show',BASE+':'+f],cwd=ROOT)
 class PriorityNine(unittest.TestCase):
  def test_exact_scope_and_101_unchanged(self):
   before=parse(old('generated-harmony-data.js').decode());after=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));rows=json.loads((ROOT/'reports/chord-priority-nine.json').read_text(encoding='utf8'))['rows']
+  after={k:v for k,v in after.items() if k in before or k in {r['id'] for r in rows}}
   self.assertEqual(len(before),101);self.assertEqual(len(after),110);self.assertEqual({k:after[k] for k in before},before);self.assertEqual(set(after)-set(before),{r['id'] for r in rows});self.assertEqual([r['number'] for r in rows],[7,62,100,108,246,270,292,301,307])
  def test_source_and_generated_evidence(self):
   report=json.loads((ROOT/'reports/chord-priority-nine.json').read_text(encoding='utf8'));data=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'))
@@ -24,5 +25,7 @@ class PriorityNine(unittest.TestCase):
   functions=lambda s:{n.name:ast.dump(n) for n in ast.parse(s).body if isinstance(n,ast.FunctionDef) and n.name!='main'}
   self.assertEqual(functions((ROOT/'tools/harmony-inference.py').read_text(encoding='utf8')),functions(old('tools/harmony-inference.py').decode()))
  def test_targeted_regeneration(self):
-  subprocess.run([__import__('sys').executable,str(ROOT/'tools/harmony-priority-nine.py'),'--check'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+  tool=runpy.run_path(str(ROOT/'tools/harmony-priority-nine.py'));before=parse(old('generated-harmony-data.js').decode());rows=tool['extend'](before)
+  self.assertEqual(rows,json.loads((ROOT/'reports/chord-priority-nine.json').read_text(encoding='utf8'))['rows'])
+  current=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));self.assertEqual(before,{k:current[k] for k in before})
 if __name__=='__main__':unittest.main()
