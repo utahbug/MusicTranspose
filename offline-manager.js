@@ -11,14 +11,14 @@ export function offlineListState(list){let excluded=0;const playable=listSongIds
 export const offlineError=e=>e?.message==='storage-full'?'Device storage prevented completion. Music already saved has been kept.':'Could not save all files. Try again while online. If this continues, check browser storage permissions.';
 async function request(type,extra={}){if(!navigator.serviceWorker)throw Error('unavailable');
  const registration=await Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>setTimeout(()=>reject(Error('unavailable')),5000))]);const worker=registration.active;if(!worker)throw Error('unavailable');
- return new Promise((resolve,reject)=>{const channel=new MessageChannel(),timer=setTimeout(()=>{channel.port1.close();reject(Error('unavailable'));},type==='explicit-offline-save'?600000:30000);channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();if(e.data.error||e.data.protocol!==1)reject(Error(e.data.error||'unavailable'));else resolve(e.data);};worker.postMessage({type,...extra},[channel.port2]);});
+ return new Promise((resolve,reject)=>{const channel=new MessageChannel(),timer=setTimeout(()=>{channel.port1.close();reject(Error('timeout'));},type==='explicit-offline-save'?600000:30000);channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();if(e.data.error||e.data.protocol!==1)reject(Error(e.data.error||'unavailable'));else resolve(e.data);};worker.postMessage({type,...extra},[channel.port2]);});
 }
 async function accept(value){snapshot=value;localReady=false;try{localIds=new Set((await localRecords()).filter(r=>r.file?.size&&(r.metadata.scoreType==='pdf'||r.xml)).map(r=>r.metadata.id));localReady=true;}catch{localIds=new Set();}emit();return value;}
 export function refreshOffline(){if(refreshing){refreshAgain=true;return refreshing;}refreshing=(async()=>{try{do{refreshAgain=false;try{const value=await request('explicit-offline-status');if(problem===unavailableMessage)problem='';await accept(value);}catch{problem=unavailableMessage;await accept({songs:{},listIds:[],savedCount:0,bytes:0,shellReady:false});}}while(refreshAgain);return snapshot;}finally{refreshing=null;}})();return refreshing;}
 
 async function change(type,extra){pending++;problem='';emit();try{if(type==='explicit-offline-save')await navigator.storage?.persist?.().catch(()=>false);const value=await request(type,extra);await accept(value);if(value.storageFull)problem=offlineError(Error('storage-full'));else if(value.failed)problem=offlineError();return value;}catch(e){problem=offlineError(e);await refreshOffline();problem=offlineError(e);throw e;}finally{pending--;progress=null;emit();}}
 export const saveOfflineSong=song=>change('explicit-offline-save',{owner:'individual',ids:[song.id]});
-export const removeOfflineSong=song=>change('explicit-offline-remove',{owner:'individual',id:song.id});
+export const removeOfflineSong=(song,guard={})=>change('explicit-offline-remove',{...guard,owner:'individual',id:song.id});
 export const saveOfflineList=list=>change('explicit-offline-save',{owner:'list',listId:list.id,ids:listSongIds(list)});
 export const removeOfflineList=list=>change('explicit-offline-remove',{owner:'list',listId:list.id});
 export const clearOfflineMusic=()=>change('explicit-offline-clear');

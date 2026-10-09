@@ -14,7 +14,7 @@ async function validAsset(cache,a){try{const r=await cache.match(assetURL(a));if
 async function savedStatus(){const pins=await readPins(),catalog=await offlineManifest('./offline-catalog.json'),cache=await caches.open(SAVED_CACHE),shell=await caches.open(CACHE),shellKeys=new Set((await shell.keys()).map(r=>r.url));const shellReady=ASSETS.every(a=>shellKeys.has(new URL(a,self.registration.scope).href));const songs={};let bytes=0;
  const verified=new Map();for(const id of retained(pins)){const assets=catalog[id]||pins.assets[id]||[];for(const a of assets){const url=assetURL(a);if(!verified.has(url)){const ok=await validAsset(cache,a);verified.set(url,ok);}}songs[id]={saved:shellReady&&assets.length>0&&assets.every(a=>verified.get(assetURL(a))),individual:pins.individual.includes(id),lists:Object.keys(pins.lists).filter(k=>pins.lists[k].includes(id))};}
  for(const request of await cache.keys())bytes+=(await(await cache.match(request)).arrayBuffer()).byteLength;
- return {protocol:1,songs,listIds:Object.keys(pins.lists),savedCount:Object.values(songs).filter(s=>s.saved).length,bytes,shellReady};
+ return {protocol:1,bulkRemoval:1,songs,listIds:Object.keys(pins.lists),savedCount:Object.values(songs).filter(s=>s.saved).length,bytes,shellReady};
 }
 async function collectUnused(pins){const keep=new Set([...retained(pins)].flatMap(id=>pins.assets[id]||[]).map(assetURL)),cache=await caches.open(SAVED_CACHE);for(const r of await cache.keys())if(!keep.has(r.url))await cache.delete(r);}
 async function notifyOffline(progress){for(const client of await self.clients.matchAll())client.postMessage({type:'explicit-offline-changed',...progress});}
@@ -27,6 +27,12 @@ async function offlineCommand(data){
  if(data.type==='explicit-offline-status')return savedStatus();
  if(data.type==='explicit-offline-save')return saveOffline(data);
  const pins=await readPins();
+ // Bulk guards are optional; existing single-song and List operations keep their contract.
+ // A cleanup retry must never release an individual save created since the failed attempt.
+ if(data.type==='explicit-offline-remove'&&data.owner==='individual'){
+  const individual=pins.individual.includes(data.id),lists=Object.keys(pins.lists).filter(id=>pins.lists[id].includes(data.id)).sort();
+  if(data.cleanupOnly&&individual||Array.isArray(data.expectedLists)&&(!individual||JSON.stringify(lists)!==JSON.stringify([...data.expectedLists].sort())))return {...await savedStatus(),skipped:true};
+ }
  if(data.type==='explicit-offline-remove'){if(data.owner==='individual')pins.individual=pins.individual.filter(id=>id!==data.id);else if(data.owner==='list')delete pins.lists[data.listId];else throw Error('Invalid retention request');}
  else if(data.type==='explicit-offline-clear'){await writePins(emptyPins());await caches.delete(SAVED_CACHE);return savedStatus();}
  else if(data.type==='explicit-offline-reconcile'){const catalog=await offlineManifest('./offline-catalog.json');for(const id of Object.keys(pins.lists)){const list=(data.lists||[]).find(g=>g.id===id);if(!list){delete pins.lists[id];continue;}pins.lists[id]=[...new Set(list.songs)].filter(song=>Object.hasOwn(catalog,song));for(const song of pins.lists[id])pins.assets[song]=catalog[song];}}

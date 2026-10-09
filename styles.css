@@ -1916,7 +1916,7 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 #device-songs-results{list-style:none;margin:12px 0 0;padding:0}
 #device-songs-results li{display:grid;gap:5px;padding:12px 0;border-top:1px solid var(--popup-border,#ccd6da);overflow-wrap:anywhere}
 #device-songs-results strong{font-size:16px}
-#device-songs-results .song-meta,#device-songs-results .device-song-retention{font-size:13px;line-height:1.45}
+#device-songs-results .song-meta,#device-songs-results .device-song-retention,#device-songs-results .device-song-protection{font-size:13px;line-height:1.45}
 
 /* Native sound picker adds no width to the existing playing controls. */
 .metronome-sound-wrap{display:flex;justify-content:center}
@@ -1930,3 +1930,18 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 .metronome-sound-control option{direction:ltr}
 
 .metronome-click-sound{display:flex;align-items:center;gap:6px}
+
+/* Keep bulk actions in view; only inventory content scrolls, including on short phones. */
+#offline-inventory[open]{display:flex;flex-direction:column;overflow:hidden;padding:0}
+#offline-inventory .dialog-heading{flex:none;margin:0;padding:14px 20px}
+#offline-inventory .device-songs-body{min-height:0;overflow:auto;padding:12px 20px;overscroll-behavior:contain}
+#offline-inventory .device-songs-actions{flex:none;padding:10px 20px max(12px,env(safe-area-inset-bottom,0px));border-top:1px solid var(--popup-border);background:var(--popup-surface)}
+#offline-inventory .device-songs-actions p:empty{display:none}
+#offline-inventory .device-songs-buttons{display:flex;flex-wrap:wrap;gap:8px}
+#offline-inventory .device-songs-buttons button{min-height:44px;white-space:normal;color:var(--popup-ink)}
+#offline-inventory .device-songs-buttons .dialog-primary{color:#fff}
+#offline-inventory [hidden]{display:none!important}
+#offline-inventory .device-song-select{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+#offline-inventory .device-song-select input{flex:none;width:24px;height:24px;margin:10px;accent-color:#276e70}
+#offline-inventory #device-songs-report ul{padding-left:20px}
+@media(max-height:550px){#offline-inventory .device-songs-actions{padding:6px 12px}#offline-inventory .device-songs-actions p{font-size:12px;line-height:1.3;margin-bottom:4px}#offline-inventory .dialog-heading{padding:6px 12px}}
