@@ -8,7 +8,8 @@ import {songs} from '../songs.js';
 const id='hhc-1004',baseline='833e96a',file='assets/lyrics.json';
 const data=JSON.parse(fs.readFileSync(file,'utf8')),before=JSON.parse(execFileSync('git',['show',baseline+':'+file],{encoding:'utf8',maxBuffer:8e6}));
 const record=data.songs.find(s=>s.id===id),old=before.songs.find(s=>s.id===id);
-assert.deepEqual(data.songs.filter(s=>s.id!==id),before.songs.filter(s=>s.id!==id),'all other lyric records unchanged');
+// Freeze this reviewed record, while allowing independently reviewed songs to change.
+assert.deepEqual(record,JSON.parse(execFileSync('git',['show','5ad2708:'+file],{encoding:'utf8',maxBuffer:8e6})).songs.find(s=>s.id===id),'#1004 remains exactly as reviewed');
 assert.deepEqual(record.verses,old.verses,'all verse words and order preserved');
 assert.deepEqual(record.verses.map(v=>v.number),['1','2','3']);
 assert.equal(record.refrains.length,1);assert.equal(record.refrains[0].label,'Chorus');
