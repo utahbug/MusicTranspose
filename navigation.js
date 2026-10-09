@@ -1,6 +1,6 @@
 import {uiIcon} from './ui-icons.js';
 import {syncPdfPresentation} from './pdf-score.js';
-import {installFooterViewport,phoneFooter,scoreFooterTop} from './footer-viewport.js';
+import {installFooterViewport,scoreFooterTop,onSettledFooterViewport} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
@@ -51,11 +51,14 @@ function positionIndicator(){
  navCorner.classList.toggle('auto-return-status',returning&&mode==='auto');
  if(mode==='auto')$('score-navigation-label').textContent=returning?(running?'Auto: Running':'Auto: Paused'):'Auto-scroll';
  if(navCorner.hidden){paperElement.style.removeProperty('--phone-paper-clip');return;}
- const paper=paperElement.getBoundingClientRect(),bar=document.querySelector('.masthead').getBoundingClientRect();
+ const paper=paperElement.getBoundingClientRect(),bar=footer.getBoundingClientRect();
+ // Scrolling overlays use committed footer geometry, never the moving paper edge.
+ const footerInset=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--footer-viewport-inset'))||0;
+ const footerBottom=footer.offsetHeight+footerInset;
  if(phoneScreen.matches){
   // Keep the same control outside the visible sheet. Long Continuous scores
   // retain document scrolling; only ink under the reserved status strip is clipped.
-  const top=Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight);
+  const top=mode==='pages'?Math.min(paper.bottom+5,bar.top-5-pagePosition.offsetHeight):innerHeight-footerBottom-5-pagePosition.offsetHeight;
   paperElement.style.setProperty('--phone-paper-clip',(reclaim?0:Math.max(0,paper.bottom-(top-5)))+'px');
   navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
   navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
@@ -63,15 +66,15 @@ function positionIndicator(){
   pageFeedback.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
  }else{
   paperElement.style.removeProperty('--phone-paper-clip');pageFeedback.style.removeProperty('left');pageFeedback.style.removeProperty('right');pageFeedback.style.removeProperty('bottom');
-  const bottom=Math.min(paper.bottom-6,bar.top-8,innerHeight-8);
+  const bottom=mode==='pages'?Math.min(paper.bottom-6,bar.top-8,innerHeight-8):innerHeight-footerBottom-8;
   navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
   navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
  }
  // Edge tabs clear the restore target; expanded shortcuts clear the footer.
  if(!$('return-start').hidden){
-  const bottom=reclaim?focusShow.getBoundingClientRect().top-8:bar.top-8;
-  for(const button of document.querySelectorAll('.return-start'))button.style.bottom=Math.max(8,innerHeight-bottom)+'px';
-  document.documentElement.style.setProperty('--return-clearance',Math.max(60,bar.top-bottom+52)+'px');
+  const bottom=footerBottom-(reclaim?focusShow.offsetTop:0)+8;
+  for(const button of document.querySelectorAll('.return-start'))button.style.bottom=Math.max(8,bottom)+'px';
+  document.documentElement.style.setProperty('--return-clearance',Math.max(60,bottom-footerBottom+52)+'px');
  }
 }
 // Outside the clipped phone sheet, but still within the existing playing view.
@@ -138,12 +141,12 @@ function measureFooter(){
  const root=document.documentElement,safe=parseFloat(getComputedStyle(root).getPropertyValue('--playing-safe-bottom'))||0;
  // Reserved layout footprint: physical toolbar plus browser obstruction, excluding
  // safe padding (existing consumers add that exactly once).
- const reserve=Math.max(54,height-safe)+(phoneFooter()?Math.max(0,innerHeight-bounds.bottom):0),value=reserve+'px';
+ const reserve=Math.max(54,height-safe)+Math.max(0,innerHeight-bounds.bottom),value=reserve+'px';
  if(root.style.getPropertyValue('--playing-bar-height')!==value){root.style.setProperty('--playing-bar-height',value);document.dispatchEvent(new Event('score-footer-geometry'));}
  syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}
 }
 new ResizeObserver(measureFooter).observe(document.querySelector('.masthead'));
-document.addEventListener('footer-viewport-change',()=>{measureFooter();scheduleVirtualResize();});
+document.addEventListener('footer-viewport-change',measureFooter);
 installFooterViewport();
 
 
@@ -205,10 +208,15 @@ const cancelScoreTap=installScoreTaps({
  navigate:delta=>{pause();turn(delta);}
 });
 let startFrame=0;window.addEventListener('scroll',()=>{if(!startFrame)startFrame=requestAnimationFrame(()=>{startFrame=0;syncStart();positionIndicator();});},{passive:true});
-let virtualResize;function scheduleVirtualResize(){clearTimeout(virtualResize);virtualResize=setTimeout(()=>{if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}fitPage();syncStart();positionIndicator();},180);}
-window.addEventListener('resize',scheduleVirtualResize);
-// Keep phone page frames in step with browser-chrome changes as well as engraving.
-window.visualViewport?.addEventListener('resize',()=>{if(phoneScreen.matches&&Math.abs(visualViewport.scale-1)<.01&&!document.body.classList.contains('pdf-score-open'))scheduleVirtualResize();});
+// Pagination follows committed viewport geometry, not scroll events or a second timer.
+let settledGeometry='';
+onSettledFooterViewport(()=>{
+ const v=window.visualViewport;if(v&&Math.abs(v.scale-1)>.01)return;
+ const geometry=[innerWidth,innerHeight,v?.height,v?.offsetTop,footer.offsetHeight,document.documentElement.style.getPropertyValue('--footer-viewport-inset')].join(':');
+ if(geometry===settledGeometry)return;settledGeometry=geometry;
+ if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}
+ fitPage();syncStart();positionIndicator();
+});
 document.addEventListener('score-session-reset',()=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages')pageIndex=prepareVirtualPages(true);sync();});});
 $('pdf-trim').addEventListener('change',fitPage);

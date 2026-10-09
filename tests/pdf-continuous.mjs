@@ -20,7 +20,7 @@ try{
  sparse:make([]),missing:make(['© 2025 Test Publisher','Unrecognized continuation'])};});
  assert(checks.legal.footer);for(const key of ['uncertain','credits','later','unrelated','missing'])assert.equal(checks[key].footer,null,key);assert(checks.sparse.bottom<320&&checks.sparse.top>90);await unit.close();console.log('PASS conservative detection, later music, credits, uncertain/missing text, sparse page');
  for(const width of [390,430,820,1024,1440]){
-  const height=width===390?844:width===430?932:1180,c=await browser.newContext({viewport:{width,height},serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+  const height=width===390?844:width===430?932:1180,c=await browser.newContext({viewport:{width,height},...(width<600?{userAgent:'iPhone',hasTouch:true,isMobile:true}:{}),serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
   await c.addInitScript(()=>localStorage.setItem('music-transpose-navigation-v2',JSON.stringify({mode:'pages',explicit:true})));
   await p.goto(base);await p.waitForFunction(()=>window.prototype?.navigation);
   await load(p,'cs-2');const authored=await geometry(p),before=await hashes(p);

@@ -1,19 +1,46 @@
-// Phone footer geometry only; navigation defaults and engraving policy are unchanged.
+// Shared viewport timing; playing and workspace geometry remain independent.
 export const phoneFooter = () => matchMedia('(max-width:600px), (max-height:600px) and (pointer:coarse)').matches;
 export function footerObstruction(layoutBottom, visibleBottom, unshiftedBottom=layoutBottom){
  return Math.max(0, unshiftedBottom-visibleBottom);
 }
 export function scoreFooterTop(){
  const bar=document.querySelector('.masthead').getBoundingClientRect();
- return phoneFooter()?bar.top:innerHeight-bar.height;
+ return bar.top;
 }
-let inset=0,frame=0,installed=false,lastGeometry='';
+// iPadOS can advertise a desktop Mac user agent, including on iPad mini.
+export const iosTouchViewport=()=>/iPhone|iPad|iPod/i.test(navigator.userAgent)||(/Mac/i.test(navigator.platform)&&navigator.maxTouchPoints>1);
+let viewportSchedule;
+export function onSettledFooterViewport(callback){
+ if(!viewportSchedule){
+  const callbacks=new Set(),ios=iosTouchViewport();
+  let touching=false,timer=0,frame=0;
+  const cancel=()=>{clearTimeout(timer);timer=0;if(frame){cancelAnimationFrame(frame);frame=0;}};
+  const publish=()=>{frame=0;if(touching||document.hidden)return;for(const run of callbacks)run();};
+  const schedule=()=>{
+   cancel();if(touching||document.hidden)return;
+   if(ios)timer=setTimeout(()=>{timer=0;frame=requestAnimationFrame(publish);},200);
+   else frame=requestAnimationFrame(publish);
+  };
+  if(ios){
+   document.addEventListener('touchstart',()=>{touching=true;cancel();},{passive:true,capture:true});
+   const end=e=>{if(e.touches.length)return;touching=false;schedule();};
+   for(const type of ['touchend','touchcancel'])document.addEventListener(type,end,{passive:true,capture:true});
+  }
+  // Capture nested scrolling too: momentum can outlive the final touch event.
+  window.addEventListener('scroll',schedule,{passive:true,capture:true});
+  for(const type of ['resize','scroll'])window.visualViewport?.addEventListener(type,schedule,{passive:true});
+  for(const type of ['resize','orientationchange'])window.addEventListener(type,schedule,{passive:true});
+  window.addEventListener('pageshow',()=>{touching=false;schedule();});
+  document.addEventListener('visibilitychange',()=>{touching=false;schedule();});
+  for(const type of ['focusin','focusout'])document.addEventListener(type,schedule);
+  viewportSchedule={callbacks,schedule};
+ }
+ viewportSchedule.callbacks.add(callback);viewportSchedule.schedule();
+ return viewportSchedule.schedule;
+}
+let inset=0,installed=false,lastGeometry='';
 export function installFooterViewport(){
  if(installed)return;installed=true;
- const isIPhone=/iPhone/i.test(navigator.userAgent);
- const playingIPhone=()=>isIPhone&&(document.body.classList.contains('lyrics-open')||!document.body.classList.contains('library-open'));
- let touching=false,settleTimer=0;
- const settleDelay=200;
  // Reserve the native desktop scrollbar width only in the two footers.
  // The score/document itself keeps its existing width and scrolling policy.
  function reserveScrollbar(){
@@ -26,38 +53,22 @@ export function installFooterViewport(){
   document.documentElement.style.setProperty('--score-lyrics-scrollbar',width+'px');
  }
  function update(){
-  frame=0;if(playingIPhone()&&touching)return;const v=window.visualViewport;
+  const v=window.visualViewport;
   // Pinch zoom is a magnified/pannable view, not a new engraving size.
-  if(phoneFooter()&&v&&Math.abs(v.scale-1)>.01)return;
+  if(v&&Math.abs(v.scale-1)>.01)return;
   const footer=[...document.querySelectorAll('.masthead,.lyrics-footer')].find(e=>e.getClientRects().length);
+  if(!footer)return;
   // Some browser states already move fixed elements. Undo only our own inset
   // to measure that native anchor and avoid lifting the footer twice.
-  const anchor=footer?footer.getBoundingClientRect().bottom+inset:innerHeight;
-  const next=phoneFooter()&&v?Math.round(footerObstruction(innerHeight,v.offsetTop+v.height,anchor)*100)/100:0;
+  const anchor=footer.getBoundingClientRect().bottom+inset;
+  const next=(phoneFooter()||iosTouchViewport())&&v?Math.round(footerObstruction(innerHeight,v.offsetTop+v.height,anchor)*100)/100:0;
   const geometry=[next,anchor,v?.height,v?.offsetTop,innerHeight].join(':');
   if(geometry===lastGeometry)return;lastGeometry=geometry;
-  inset=next;document.documentElement.style.setProperty('--footer-viewport-inset',inset+'px');
+  if(inset!==next){inset=next;document.documentElement.style.setProperty('--footer-viewport-inset',inset+'px');}
   document.dispatchEvent(new Event('footer-viewport-change'));
  }
- const queueUpdate=()=>{if(!frame)frame=requestAnimationFrame(update);};
- const cancelPending=()=>{clearTimeout(settleTimer);settleTimer=0;if(frame){cancelAnimationFrame(frame);frame=0;}};
- const schedule=()=>{
-  if(!playingIPhone()){clearTimeout(settleTimer);settleTimer=0;queueUpdate();return;}
-  // Safari's chrome animation and inertial scroll are not stable footer anchors.
-  // Preserve the committed inset while touching; publish once after quiet settles.
-  cancelPending();
-  if(!touching)settleTimer=setTimeout(()=>{settleTimer=0;queueUpdate();},settleDelay);
- };
- if(isIPhone){
-  document.addEventListener('touchstart',()=>{if(playingIPhone()){touching=true;cancelPending();}},{passive:true});
-  const endTouch=e=>{if(e.touches.length)return;touching=false;schedule();};
-  for(const type of ['touchend','touchcancel'])document.addEventListener(type,endTouch,{passive:true});
-  window.addEventListener('scroll',()=>{if(playingIPhone())schedule();},{passive:true});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)touching=false;schedule();});
- }
-
+ const schedule=onSettledFooterViewport(update);
  for(const type of ['resize','orientationchange'])window.addEventListener(type,()=>{reserveScrollbar();schedule();});
- for(const type of ['resize','scroll'])window.visualViewport?.addEventListener(type,schedule);
  for(const type of ['score-view-shown','library-open'])document.addEventListener(type,schedule);
  reserveScrollbar();schedule();
 }
