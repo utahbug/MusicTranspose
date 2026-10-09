@@ -1,0 +1,48 @@
+{
+  "description": "Preserved historical Batch 2 browser spacing observation for consolidated review; no new score analysis.",
+  "originalArtifact": "test-results/chord-batch2-spacing.json",
+  "originalSha256": "2d40051971c78df78a45fa2c4d1a0394fab845d40590809dad903a7dd6363d41",
+  "recordedRows": [
+    {
+      "number": 198,
+      "width": 390,
+      "mode": "auto",
+      "chords": 56,
+      "collisions": [],
+      "tight": [
+        [
+          "Dbdim",
+          "Dm",
+          1.59
+        ],
+        [
+          "Dbdim",
+          "Dm",
+          1.57
+        ],
+        [
+          "Dbdim",
+          "Dm",
+          1.57
+        ],
+        [
+          "Dbdim",
+          "Dm",
+          1.57
+        ]
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "number": 198,
+      "title": "That Easter Morn",
+      "batch": "Batch 2",
+      "sourceReport": "chord-expansion-batch2.json",
+      "evidenceFile": "chord-review-supplement.json",
+      "passage": "X10 +2 to X11 +0; Full view at 390 CSS px",
+      "observation": "Historical Dbdim to Dm label gaps: 1.57-1.59 CSS px; no detected collision. Repeated measurements arise from SVG instances, not distinct musical defects.",
+      "status": "Historical automated tight-spacing observation, not a confirmed defect"
+    }
+  ]
+}
