@@ -1,3 +1,4 @@
+import {isIPhoneDevice} from './footer-viewport.js';
 import {claimToolPanel,releaseToolPanel} from './tool-panel.js';
 // Peripheral score-edge pulses use the existing metronome/playback clock.
 // Visual and click share this clock and the source timeline; no second beat timer.
@@ -38,6 +39,7 @@ export function pulseState(timeline,seconds,rate=1){
 export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.28,interval*.6)};}
 export function createMetronome(playback,getState){
  const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
+ const iphone=isIPhoneDevice();let panelSong=null;
  let panelOpen=false,visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
  const enabled=()=>visual||click;
  const rails=['left','right'].map(side=>{const e=document.createElement('div');e.className='beat-rail beat-rail-'+side;e.setAttribute('aria-hidden','true');e.hidden=true;document.body.append(e);return e;});
@@ -73,7 +75,7 @@ export function createMetronome(playback,getState){
   if(visual){setVisible(true);place();}else{for(const rail of rails)rail.hidden=true;setVisible(false);}frame=requestAnimationFrame(tick);
  }
  async function sync(){
-  const state=getState();opener.hidden=!state.available;if(!state.available)suspendPanel();else if(panelOpen&&panel.hidden)openPanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
+  const state=getState();if(iphone&&panelOpen&&panelSong!==state.song)closePanel();opener.hidden=!state.available;if(!state.available)suspendPanel();else if(panelOpen&&panel.hidden)openPanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
   if(state.standalone){version++;pending='';prepared='';timeline=null;if(!frame)frame=requestAnimationFrame(tick);return;}
   if(prepared===state.xml&&timeline){if(!frame)frame=requestAnimationFrame(tick);return;}
   if(pending===state.xml)return;const token=++version;pending=state.xml;hide();
@@ -86,12 +88,13 @@ export function createMetronome(playback,getState){
   for(const [id,on] of [['metronome-visual',visual],['metronome-click',click]]){$(id).setAttribute('aria-pressed',String(on));$(id).querySelector('span').textContent=on?'On':'Off';}
   const t=tempo();$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;
  }
- // Session intent survives loading/navigation; the DOM panel is shown only on a ready Score.
+ // Tablet/desktop session intent survives navigation; iPhone keeps it only for the current Score.
+ // The DOM panel is shown only on a ready Score, never restored from browser storage.
  // Playback retains its existing per-song tempo rates; standalone BPM and visual choice stay here.
  function suspendPanel(){opening++;panel.hidden=true;opener.setAttribute('aria-expanded','false');releaseToolPanel('metronome');}
- function closePanel(focus=false){panelOpen=false;clickRequest++;suspendPanel();if(focus)$('score-tools').focus({preventScroll:true});}
+ function closePanel(focus=false){panelOpen=false;panelSong=null;clickRequest++;suspendPanel();if(focus)$('score-tools').focus({preventScroll:true});}
  async function openPanel(focus=false){
-  if(!getState().available)return;panelOpen=true;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
+  if(!getState().available)return;panelOpen=true;panelSong=getState().song;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
   for(const b of panel.querySelectorAll('button:not(#metronome-done)'))b.disabled=true;
   try{if(!getState().standalone)await playback.prepare();if(token!==opening||!panelOpen||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();if(focus)requestAnimationFrame(()=>{if(token===opening&&!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
   catch{if(token===opening){$('metronome-message').textContent='Unable to prepare metronome timing. Try again online.';}}
@@ -107,7 +110,7 @@ export function createMetronome(playback,getState){
  panel.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape'){e.preventDefault();closePanel(true);}});
  function reset(){version++;clickRequest++;prepared='';pending='';timeline=null;position=0;click=false;taps=[];hide();suspendPanel();controls();}
  document.addEventListener('visibilitychange',sync);
- document.addEventListener('library-open',reset);
+ document.addEventListener('library-open',()=>{if(iphone)closePanel();reset();});
  document.addEventListener('score-session-reset',reset);
  window.addEventListener('beforeprint',hide);window.addEventListener('afterprint',sync);
  return {sync};

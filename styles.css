@@ -1166,12 +1166,10 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 
 /* List order is independent of each List's song order. */
 #lists-view .list-workspace-section .list-overview-row:has(.order-list){grid-template-columns:minmax(0,1fr) 44px 44px}
-.list-order-actions{display:flex;align-items:center;justify-content:flex-end;gap:4px;padding:0 4px;border-top:1px dashed #d1dadd;background:#f0f4f5;font-size:12px}
-.list-order-actions>span{margin-right:auto;padding-left:8px;color:#61716f}
-#lists-view .list-order-actions button{font-size:12px}
-#lists-view .list-order-actions button:disabled{opacity:.4;background:transparent;cursor:default}
-#lists-view .order-list[aria-pressed=true]{background:#e5eef2}
-.list-workspace-section.dragging{opacity:.6}
+#lists-view .order-list{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#lists-view .order-list:disabled{opacity:.4;cursor:default}
+#lists-view .order-list:active{cursor:grabbing;background:#e5eef2}
+.list-workspace-section.dragging{position:relative;z-index:2;opacity:.8;box-shadow:0 4px 14px #23333130;user-select:none;-webkit-user-select:none}
 .list-workspace-section.drop-before{box-shadow:inset 0 3px #536b7a}
 .list-workspace-section.drop-after{box-shadow:inset 0 -3px #536b7a}
 

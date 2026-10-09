@@ -1,6 +1,6 @@
 import {uiIcon} from './ui-icons.js';
 import {syncPdfPresentation} from './pdf-score.js';
-import {installFooterViewport,scoreFooterTop,onSettledFooterViewport} from './footer-viewport.js';
+import {installFooterViewport,scoreFooterTop,onSettledFooterViewport,isIPhoneDevice} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
 // View navigation only. Score content and transposition remain owned by app.js.
@@ -30,7 +30,7 @@ let saved={},local={};try{saved=readPreference(sessionStorage);}catch{}try{local
 if(!Number.isFinite(saved.speed))try{saved.speed=JSON.parse(sessionStorage.getItem('music-transpose-navigation-v1')||'{}')?.speed;}catch{}
 const preferred=local.explicit&&validMode(local.mode)?local.mode:saved.explicit&&validMode(saved.mode)?saved.mode:null;
 let hasChoice=preferred!==null;
-const isIPhone=/iPhone/i.test(navigator.userAgent);
+const isIPhone=isIPhoneDevice();
 document.body.classList.toggle('iphone-score-ui',isIPhone);
 const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>isIPhone?'continuous':'pages';
 let mode=preferred||defaultMode();

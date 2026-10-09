@@ -7,6 +7,7 @@ export function scoreFooterTop(){
  const bar=document.querySelector('.masthead').getBoundingClientRect();
  return bar.top;
 }
+export const isIPhoneDevice=()=>/iPhone/i.test(navigator.userAgent);
 // iPadOS can advertise a desktop Mac user agent, including on iPad mini.
 export const iosTouchViewport=()=>/iPhone|iPad|iPod/i.test(navigator.userAgent)||(/Mac/i.test(navigator.platform)&&navigator.maxTouchPoints>1);
 let viewportSchedule;
