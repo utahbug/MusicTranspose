@@ -75,10 +75,6 @@ export function createLyricsView(host,{onScore,libraryControl}){
    const disclosure=make('details',null,'lyrics-chorus'),summary=make('summary',refrain.label||'Chorus');
    summary.setAttribute('aria-label',(refrain.label||'Chorus')+' after verse '+verse.number);
    disclosure.append(summary,lyricParagraph(refrain.text));
-   // #1003 P1 voice 2 responds alongside the principal chorus in measures 17–20.
-   if(current.id==='hhc-1003'&&refrain.label==='Chorus')for(const response of current.alternateLyrics||[]){
-    if(response.label==='Alternate chorus'&&response.part==='P1'&&response.voice==='2')disclosure.append(make('h3','Secondary chorus voice (measures 17–20)'),lyricParagraph(response.text));
-   }
    block.append(disclosure);
   }
   body.append(block);

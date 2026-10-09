@@ -365,11 +365,12 @@
       "refrains": [
         {
           "number": "1",
-          "text": "It is well, with my soul, It is well, it is well with my soul.",
+          "text": "It is well (it is well), with my soul (with my soul); It is well, it is well with my soul.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Chorus"
+          "label": "Chorus",
+          "principalText": "It is well, with my soul, It is well, it is well with my soul."
         }
       ],
       "notes": [],
@@ -384,7 +385,8 @@
         }
       ],
       "extractionDecisions": [
-        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text."
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed #1003 onset order: voice 2 echoes in measures 17–18 and 19–20 follow the corresponding main phrases; parenthesized inline. Literal principal and secondary source text retained separately."
       ],
       "sourceTextBlocks": [
         "It Is Well with My Soul",

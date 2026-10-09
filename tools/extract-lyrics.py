@@ -123,6 +123,19 @@ for song in catalog:
   r['refrains' if section!='verse' else 'verses'].append(item)
  if any(v['label']=='Descant' for v in r['alternateLyrics']):r['extractionDecisions'].append('Explicitly named Descant part retained separately from main verses; lyric row numbers in that part are not additional verses.')
  if any(v['label'].startswith('Alternate ') for v in r['alternateLyrics']):r['extractionDecisions'].append('Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.')
+ # #1003: voice 2 echoes each opening phrase before voice 1 begins the next.
+ # Preserve literal source streams as provenance; only display punctuation is combined.
+ if song['id']=='hhc-1003':
+  def chorus_phrase(voice,bars):
+   return stitch([l for m in root.find("part[@id='P1']").findall('measure') if m.get('number') in bars for n in m.findall('note') if n.findtext('voice','1')==voice for l in n.findall('lyric') if l.get('name')=='chorus'])
+  first=chorus_phrase('1',{'16','17'});second=chorus_phrase('1',{'18','19'});last=chorus_phrase('1',{'20','21','22','23'})
+  echo1=chorus_phrase('2',{'17','18'});echo2=chorus_phrase('2',{'19','20'})
+  assert (first,second,echo1,echo2)==('It is well,','with my soul,','it is well','with my soul;')
+  assert len(r['refrains'])==1 and r['refrains'][0]['text']==' '.join([first,second,last])
+  assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==echo1+' '+echo2
+  chorus=r['refrains'][0];chorus['principalText']=chorus['text']
+  chorus['text']=first.rstrip(',')+' ('+echo1+'), '+second.rstrip(',')+' ('+echo2.rstrip(';')+'); '+last
+  r['extractionDecisions'].append('Reviewed #1003 onset order: voice 2 echoes in measures 17–18 and 19–20 follow the corresponding main phrases; parenthesized inline. Literal principal and secondary source text retained separately.')
  r['sourceTextBlocks']=[clean(''.join(c.itertext())) for c in root.findall('credit')]
  for credit in root.findall('.//credit-words'):
   text=(credit.text or '').replace('\\n','\n')
