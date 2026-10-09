@@ -32,7 +32,7 @@ const preferred=local.explicit&&validMode(local.mode)?local.mode:saved.explicit&
 let hasChoice=preferred!==null;
 const isIPhone=/iPhone/i.test(navigator.userAgent);
 document.body.classList.toggle('iphone-score-ui',isIPhone);
-const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>isIPhone?'pages':phoneScreen.matches?'continuous':'pages';
+const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>isIPhone?'continuous':'pages';
 let mode=preferred||defaultMode();
 let speed=Number.isFinite(saved.speed)?Math.max(1,Math.min(60,saved.speed)):12;
 let pageIndex=0;

@@ -38,7 +38,7 @@ export function pulseState(timeline,seconds,rate=1){
 export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.28,interval*.6)};}
 export function createMetronome(playback,getState){
  const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
- let visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
+ let panelOpen=false,visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
  const enabled=()=>visual||click;
  const rails=['left','right'].map(side=>{const e=document.createElement('div');e.className='beat-rail beat-rail-'+side;e.setAttribute('aria-hidden','true');e.hidden=true;document.body.append(e);return e;});
  let version=0,prepared='',pending='',frame=0,last=0,position=0,previousPlayback='stopped',timeline=null;
@@ -73,7 +73,7 @@ export function createMetronome(playback,getState){
   if(visual){setVisible(true);place();}else{for(const rail of rails)rail.hidden=true;setVisible(false);}frame=requestAnimationFrame(tick);
  }
  async function sync(){
-  const state=getState();opener.hidden=!state.available;if(!state.available)closePanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
+  const state=getState();opener.hidden=!state.available;if(!state.available)suspendPanel();else if(panelOpen&&panel.hidden)openPanel();if(!enabled()||!state.available||document.hidden){version++;pending='';hide();return;}
   if(state.standalone){version++;pending='';prepared='';timeline=null;if(!frame)frame=requestAnimationFrame(tick);return;}
   if(prepared===state.xml&&timeline){if(!frame)frame=requestAnimationFrame(tick);return;}
   if(pending===state.xml)return;const token=++version;pending=state.xml;hide();
@@ -86,13 +86,17 @@ export function createMetronome(playback,getState){
   for(const [id,on] of [['metronome-visual',visual],['metronome-click',click]]){$(id).setAttribute('aria-pressed',String(on));$(id).querySelector('span').textContent=on?'On':'Off';}
   const t=tempo();$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;
  }
- function closePanel(focus=false){opening++;panel.hidden=true;opener.setAttribute('aria-expanded','false');releaseToolPanel('metronome');if(focus)$('score-tools').focus({preventScroll:true});}
- opener.addEventListener('click',async()=>{
-  if(!getState().available)return;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
+ // Session intent survives loading/navigation; the DOM panel is shown only on a ready Score.
+ // Playback retains its existing per-song tempo rates; standalone BPM and visual choice stay here.
+ function suspendPanel(){opening++;panel.hidden=true;opener.setAttribute('aria-expanded','false');releaseToolPanel('metronome');}
+ function closePanel(focus=false){panelOpen=false;clickRequest++;suspendPanel();if(focus)$('score-tools').focus({preventScroll:true});}
+ async function openPanel(focus=false){
+  if(!getState().available)return;panelOpen=true;claimToolPanel('metronome',()=>closePanel());const token=++opening;panel.hidden=false;opener.setAttribute('aria-expanded','true');$('metronome-message').textContent='';
   for(const b of panel.querySelectorAll('button:not(#metronome-done)'))b.disabled=true;
-  try{if(!getState().standalone)await playback.prepare();if(token!==opening||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();requestAnimationFrame(()=>{if(!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
+  try{if(!getState().standalone)await playback.prepare();if(token!==opening||!panelOpen||!getState().available)return;for(const b of panel.querySelectorAll('button'))b.disabled=false;controls();if(focus)requestAnimationFrame(()=>{if(token===opening&&!panel.hidden)$('metronome-visual').focus({preventScroll:true});});}
   catch{if(token===opening){$('metronome-message').textContent='Unable to prepare metronome timing. Try again online.';}}
- });
+ }
+ opener.addEventListener('click',()=>openPanel(true));
  $('metronome-visual').onclick=()=>{visual=!visual;controls();sync();};
  $('metronome-click').onclick=async()=>{const token=++clickRequest;if(click){click=false;playback.silenceClicks();controls();sync();return;}
   try{await playback.enableClick();if(token!==clickRequest||!getState().available)return;click=true;lastClick=-1;controls();sync();}catch{$('metronome-message').textContent='Click sound is unavailable.';}
@@ -101,7 +105,7 @@ export function createMetronome(playback,getState){
  $('tap-tempo').onclick=()=>{const now=performance.now();if(taps.length&&now-taps.at(-1)>2000)taps=[];taps.push(now);taps=taps.slice(-5);if(taps.length>1)setTempo(60000*(taps.length-1)/(now-taps[0]));controls();};
  $('metronome-done').onclick=()=>closePanel(true);
  panel.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape'){e.preventDefault();closePanel(true);}});
- function reset(){version++;clickRequest++;prepared='';pending='';timeline=null;position=0;visual=false;click=false;taps=[];hide();closePanel();controls();}
+ function reset(){version++;clickRequest++;prepared='';pending='';timeline=null;position=0;click=false;taps=[];hide();suspendPanel();controls();}
  document.addEventListener('visibilitychange',sync);
  document.addEventListener('library-open',reset);
  document.addEventListener('score-session-reset',reset);
