@@ -21,7 +21,7 @@ try{
  await p.goBack();await ready(ids[0]);await p.goBack();await p.locator('#library').waitFor({state:'visible'});await empty();assert.deepEqual(await prefs(),before);
  await p.goBack();await p.waitForFunction(()=>history.state.musicTransposeNavigation.route.library.query==='');await empty();
  await p.goForward();await p.locator('#library').waitFor({state:'visible'});
- await p.goForward();await ready(ids[0]);assert.deepEqual((await route()).songSet.ids,ids);await p.locator('#songs').press('Enter');await home();
+ await p.goForward();await ready(ids[0]);assert.deepEqual((await route()).songSet.ids,ids);await p.locator('#songs').press('Enter');await p.locator('#library').waitFor({state:'visible'});assert.equal(await p.locator('#library-search').inputValue(),'God');assert.deepEqual(await prefs(),before);await p.locator('#library .header-home').click();await home();
  await p.locator('[data-home-source=all]').click();await empty();assert(await p.locator('#library-results .library-row').count()>ids.length);assert.equal(await p.locator('#order-toggle').inputValue(),'number');
  console.log('PASS search snapshot, actual Next, Back/Forward without stale query, Home routing and preferences');
  for(const view of ['files','lists']){
@@ -34,7 +34,7 @@ try{
  console.log('PASS Files/Lists Home controls and search clearing/history');
  await p.locator('#library-search').fill('old search');await p.locator('#library .header-home').click();await home();await empty();await p.locator('#home-lists').click();await p.locator('[data-list=practice] .list-overview-entry').click();
  await p.locator('[data-song="silent-night"] .workspace-song-entry').click();await ready('silent-night');assert.deepEqual((await route()).songSet.ids,['silent-night','faithful']);
- await p.locator('#next-song').click();await ready('faithful');assert.deepEqual((await route()).songSet.ids,['silent-night','faithful']);await p.locator('#songs').click();await home();
+ await p.locator('#next-song').click();await ready('faithful');assert.deepEqual((await route()).songSet.ids,['silent-night','faithful']);await p.locator('#songs').click();await p.locator('#lists-view').waitFor({state:'visible'});assert.equal(await p.locator('.list-overview-entry[aria-expanded=true]').count(),0);
  await p.goBack();await ready('faithful');await p.locator('#show-lyrics').click();
  await p.waitForFunction(()=>history.state.musicTransposeNavigation.route.view==='lyrics');await p.locator('#songs').click();await home();await empty();
  assert.deepEqual(await p.evaluate(()=>JSON.parse(localStorage.getItem('music-transpose-library-v1')).groups[0].songs),['silent-night','faithful']);

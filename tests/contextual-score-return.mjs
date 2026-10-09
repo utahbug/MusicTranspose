@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {execFileSync} from 'node:child_process';
+const {webkit,chromium}=createRequire(process.env.PLAYWRIGHT_PACKAGE||'C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
+const base=process.env.APP_URL||'http://127.0.0.1:8780/';
+const groups=[{id:'a',name:'List A',songs:['faithful','silent-night'],description:'Keep A',displayNames:{}},{id:'b',name:'List B',songs:['nativity','faithful'],description:'Keep B',displayNames:{}},...Array.from({length:15},(_,i)=>({id:'extra-'+i,name:'Extra '+i,songs:i===14?['faithful']:[],description:'',displayNames:{}}))];
+const ready=(p,id)=>p.waitForFunction(id=>prototype.song===id&&prototype.ready&&!prototype.busy&&!prototype.loading&&document.querySelector('#score').getAttribute('aria-busy')==='false',id);
+const geometry=p=>p.evaluate(()=>Object.fromEntries(['.masthead','#songs','#score-size','#key','#reset','#score-hide-controls','#show-lyrics','#score-tools'].map(sel=>{const e=document.querySelector(sel),r=e.getBoundingClientRect(),s=getComputedStyle(e);return [sel,{x:r.x,y:r.y,width:r.width,height:r.height,radius:s.borderRadius,margin:s.margin}];})));
+for(const width of [390,820,1440]){
+ const engine=width<1000?webkit:chromium,b=await engine.launch(engine===chromium?{channel:'msedge'}:{});
+ const options={viewport:{width,height:1000},hasTouch:width<1000,isMobile:width<1000,serviceWorkers:'block',...(width<1000?{userAgent:width===390?'iPhone':'iPad'}:{})};
+ try{
+  // Compare every accepted footer control against the preceding stability commit.
+  const old=await b.newContext(options),op=await old.newPage();
+  for(const file of ['library.js','lists-view.js','styles.css'])await op.route('**/'+file,r=>r.fulfill({contentType:file.endsWith('.css')?'text/css':'application/javascript',body:execFileSync('git',['show','57328ea:'+file],{encoding:'utf8'})}));
+  await op.goto(base);await op.waitForFunction(()=>prototype?.navigation);await op.evaluate(()=>prototype.loadSong('faithful'));await ready(op,'faithful');await op.waitForTimeout(400);const baseline=await geometry(op);await old.close();
+  const c=await b.newContext(options);await c.addInitScript(groups=>{if(!localStorage.getItem('context-return-seeded')){localStorage.setItem('context-return-seeded','1');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups}));}},groups);
+  const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(base);await p.waitForFunction(()=>prototype?.navigation);
+  const homeBooks=await p.locator('#home-current').innerHTML(),listIcon=await p.locator('#home-footer-lists').innerHTML();
+  const globalListStyle=await p.locator('#home-footer-lists').evaluate(e=>getComputedStyle(e).backgroundImage);
+  const collapsed=async()=>{await p.locator('#lists-view').waitFor({state:'visible'});assert.equal(await p.locator('#lists-view .list-overview-entry[aria-expanded=true]').count(),0);assert.deepEqual(await p.evaluate(()=>JSON.parse(sessionStorage.getItem('music-transpose-lists-expanded-v1')).expanded),[]);};
+  const origin=async value=>{await p.waitForFunction(v=>document.getElementById('songs').dataset.scoreReturn===v,value);assert.equal(await p.locator('#songs').innerHTML(),value==='lists'?listIcon:homeBooks);assert.equal(await p.locator('#songs').getAttribute('aria-label'),value==='lists'?'Return to Lists':'Return to Library');assert.equal(await p.locator('#score-lists:visible').count(),0);};
+  const openList=async(list,id)=>{await p.locator(`[data-list=${list}] .list-overview-entry`).click();await p.locator(`[data-list=${list}] [data-song=${id}] .workspace-song-entry`).click();await ready(p,id);await origin('lists');};
+  const back=async view=>{const listScroll=view==='lists-view'?await p.evaluate(()=>JSON.parse(sessionStorage.getItem('music-transpose-lists-expanded-v1')).scroll):null;await p.evaluate(()=>{window.returnActions=0;const push=history.pushState.bind(history);window.restorePush=()=>history.pushState=push;history.pushState=(...a)=>{returnActions++;return push(...a);};});await p.locator('#songs')[width<1000?'tap':'click']();await p.locator('#'+view).waitFor({state:'visible'});assert.equal(await p.evaluate(()=>returnActions),1,'one tap, one route transition');await p.evaluate(()=>restorePush());await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));if(listScroll!==null)assert.equal(await p.evaluate(()=>scrollY),await p.evaluate(y=>Math.min(y,document.documentElement.scrollHeight-innerHeight),listScroll),'collapsed Lists retain/clamp scroll');};
+  await p.locator('#home-footer-lists').click();await openList('a','faithful');await p.waitForTimeout(400);assert.deepEqual(await geometry(p),baseline,'footer geometry is unchanged from 57328ea');
+  const listGradient=await p.locator('#songs').evaluate(e=>getComputedStyle(e).backgroundImage);assert.match(listGradient,/35, 124, 122.*36, 90, 154/);if(width===390)assert(await p.locator('#score-hide-controls').isHidden());
+  await p.screenshot({path:`test-results/context-return-${width}.png`});
+  await p.locator('#next-song').click();await ready(p,'silent-night');await origin('lists');await back('lists-view');await collapsed();assert.deepEqual(await p.evaluate(()=>JSON.parse(localStorage.getItem('music-transpose-library-v1')).groups),groups);
+  await openList('b','nativity');await p.locator('#show-lyrics').click();await p.locator('.lyrics-footer').waitFor();assert.equal(await p.locator('#songs').innerHTML(),homeBooks,'Lists artwork is Score-only');await p.locator('.lyrics-score-toggle').click();await ready(p,'nativity');await origin('lists');
+  await p.evaluate(()=>prototype.changeKey(1));await ready(p,'nativity');await p.waitForFunction(()=>prototype.current===1&&document.querySelector('#score svg'));
+  for(const view of ['auto','large','pdf']){await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size=${view}]`).click();await ready(p,'nativity');await origin('lists');}
+  for(const mode of ['continuous','pages']){await p.locator('#score-navigation-button').click();await p.locator(`[data-navigation=${mode}]`).click();assert.equal(await p.locator(`[data-navigation=${mode}]`).getAttribute('aria-checked'),'true');await origin('lists');}
+  await back('lists-view');await collapsed();await openList('a','faithful');await back('lists-view');await collapsed();
+  // Delete through the actual List UI, then restore the old Score history entry.
+  await p.locator('[data-list=a] .list-overview-entry').click();await p.locator('[data-list=a] .edit-list').click();p.once('dialog',d=>d.accept());await p.locator('#list-name-delete').click();await p.locator('[data-list=a]').waitFor({state:'detached'});await p.goBack();await ready(p,'faithful');await origin('library');await back('library');
+  await p.locator('#library-search').fill('Silent');await p.locator('#order-toggle').selectOption('number');await p.locator('[data-song=silent-night] .song-entry').click();await ready(p,'silent-night');await origin('library');await back('library');assert.equal(await p.locator('#library-search').inputValue(),'Silent');assert.equal(await p.locator('#order-toggle').inputValue(),'number');
+  await p.locator('#library-clear').click();await p.locator('[data-song=faithful] .song-entry').click();await ready(p,'faithful');await origin('library');await p.waitForTimeout(400);assert.deepEqual(await geometry(p),baseline);assert.notEqual(await p.locator('#songs').evaluate(e=>getComputedStyle(e).backgroundImage),listGradient);await back('library');
+  // A later visit to Lists does not leak origin into a new Library selection.
+  await p.locator('#library-lists').click();await collapsed();await p.locator('#lists-library').click();await p.locator('[data-home-source=all]').click();await p.locator('[data-song=nativity] .song-entry').click();await ready(p,'nativity');await origin('library');await back('library');
+  await p.locator('#library-lists').click();await collapsed();await openList('extra-14','faithful');await back('lists-view');await collapsed();assert(await p.evaluate(()=>scrollY>0),'long Lists page keeps useful scroll after collapse');await p.goBack();await ready(p,'faithful');await origin('lists');await p.goForward();await collapsed();
+  assert.equal(await p.locator('#home-footer-lists').evaluate(e=>getComputedStyle(e).backgroundImage),globalListStyle);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);
+  console.log('PASS',width,'List A/B, collapsed return, sequence, Lyrics, score modes, navigation modes, deletion fallback, Search restoration, stale-origin prevention, one-tap routing and exact prior footer geometry');await c.close();
+ }finally{await b.close();}
+}

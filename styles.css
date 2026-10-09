@@ -1481,13 +1481,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .list-command-menu hr{border:0;border-top:1px solid #d1dadd;margin:4px}
 .list-command-menu .workspace-delete{color:#a12e36;margin:0}
 
-/* Contextual List return uses the ordinary Score footer scale and touch target. */
-.masthead #score-lists{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid #b7c8d5;border-radius:8px;background:transparent;color:#365b72}
-.masthead #score-lists[hidden]{display:none}
-.masthead #score-lists svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.masthead #score-lists:hover:not(:disabled){background:#eaf2f8;border-color:#8da8bd}
-.masthead #score-lists:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
-
 /* Candidate ordering is separate from the saved List's manual order. */
 .list-picker-controls{grid-template-columns:minmax(0,1fr) auto auto}
 #list-picker-target{grid-column:1/3}
@@ -1909,3 +1902,6 @@ html[data-library-theme=dark] body #library-home #home-search-form button {backg
 body #lists-view .list-workspace-section[data-list-tint]>.list-overview-row {background:var(--list-tint);box-shadow:inset 3px 0 var(--list-accent);}
 html[data-library-theme=dark] body #lists-view .list-workspace-section[data-list-tint]>.list-overview-row {background:var(--list-tint-dark);}
 #lists-view .list-workspace-section[data-list-tint] .list-overview-entry:hover {background:color-mix(in srgb,currentColor 5%,transparent);}
+
+/* Contextual Score return changes only artwork and color, not the shared tile geometry. */
+body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lists]{background:linear-gradient(110deg,#237c7a,#245a9a)!important}
