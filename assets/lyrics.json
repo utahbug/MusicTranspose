@@ -1130,14 +1130,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Come home!",
-          "sourcePart": "P1",
-          "sourceVoice": "2",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Oh, for the wonderful love He has promised— Promised for you and for me! Though we have sinned, He has mercy and pardon— Pardon for you and for me!",
           "sourcePart": "P1",
@@ -1149,27 +1141,36 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Come home! Come home! Ye who are weary, come home! Earnestly, tenderly, Jesus is calling— Calling, O sinner, come home!",
+          "text": "Come home! Come home! Ye who are weary, come home! (Come home!) Earnestly, tenderly, Jesus is calling— Calling, O sinner, come home!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Come home! Come home! Ye who are weary, come home! Earnestly, tenderly, Jesus is calling— Calling, O sinner, come home!"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P1",
+          "voice": "2",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Come home!"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed #1020 onset order: voice 2 responds in measure 12 after the principal home and before Earnestly in measure 13; response parenthesized inline. Literal principal and secondary source text retained separately."
+      ],
       "sourceTextBlocks": [
         "Softly and Tenderly Jesus Is Calling",
         "3 Nephi 9:14–22 | Matthew 11:28–30",
         "Text:\n Will L. Thompson, 1880\n \nMusic:\n Will L. Thompson, 1880; arr. 2025 | \n THOMPSON",
         "Music arr. © 2025 IRI"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "hhc-1021",

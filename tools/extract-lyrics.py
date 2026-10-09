@@ -136,6 +136,16 @@ for song in catalog:
   chorus=r['refrains'][0];chorus['principalText']=chorus['text']
   chorus['text']=first.rstrip(',')+' ('+echo1+'), '+second.rstrip(',')+' ('+echo2.rstrip(';')+'); '+last
   r['extractionDecisions'].append('Reviewed #1003 onset order: voice 2 echoes in measures 17–18 and 19–20 follow the corresponding main phrases; parenthesized inline. Literal principal and secondary source text retained separately.')
+ # #1020 has one echo in measure 12, before the next principal phrase in 13.
+ if song['id']=='hhc-1020':
+  def response_phrase(voice,bars):
+   return stitch([l for m in root.find("part[@id='P1']").findall('measure') if m.get('number') in bars for n in m.findall('note') if n.findtext('voice','1')==voice for l in n.findall('lyric') if l.get('name')=='chorus'])
+  opening=response_phrase('1',{'8','9','10','11','12'});ending=response_phrase('1',{'13','14','15','16'});echo=response_phrase('2',{'12'})
+  assert opening=='Come home! Come home! Ye who are weary, come home!' and echo=='Come home!'
+  assert len(r['refrains'])==1 and r['refrains'][0]['text']==opening+' '+ending
+  assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==echo
+  chorus=r['refrains'][0];chorus['principalText']=chorus['text'];chorus['text']=opening+' ('+echo+') '+ending
+  r['extractionDecisions'].append('Reviewed #1020 onset order: voice 2 responds in measure 12 after the principal home and before Earnestly in measure 13; response parenthesized inline. Literal principal and secondary source text retained separately.')
  r['sourceTextBlocks']=[clean(''.join(c.itertext())) for c in root.findall('credit')]
  for credit in root.findall('.//credit-words'):
   text=(credit.text or '').replace('\\n','\n')
