@@ -1,3 +1,4 @@
+import {metronomeSounds} from './metronome-sounds.js';
 import {isIPhoneDevice} from './footer-viewport.js';
 import {claimToolPanel,releaseToolPanel} from './tool-panel.js';
 // Peripheral score-edge pulses use the existing metronome/playback clock.
@@ -39,6 +40,11 @@ export function pulseState(timeline,seconds,rate=1){
 export function standalonePulse(seconds,bpm){const interval=60/bpm,sequence=Math.floor(seconds/interval);return {sequence,side:sequence%2?'right':'left',index:0,count:0,downbeat:false,elapsed:seconds-sequence*interval,duration:Math.min(.28,interval*.6)};}
 export function createMetronome(playback,getState){
  const $=id=>document.getElementById(id),score=$('score'),panel=$('metronome-panel'),opener=$('score-metronome');
+ const soundKey='music-transpose-metronome-sound-v1',soundSelect=$('metronome-sound');let sound='original';
+ try{const saved=localStorage.getItem(soundKey);if(Object.hasOwn(metronomeSounds,saved))sound=saved;}catch{}
+ for(const [value,label] of Object.entries(metronomeSounds))soundSelect.add(new Option(label,value));
+ soundSelect.value=sound;soundSelect.disabled=true;
+ soundSelect.onchange=()=>{if(!Object.hasOwn(metronomeSounds,soundSelect.value))return;sound=soundSelect.value;try{localStorage.setItem(soundKey,sound);}catch{}controls();};
  const iphone=isIPhoneDevice();let panelSong=null;
  let panelOpen=false,visual=false,click=false,lastClick=-1,taps=[],opening=0,clickRequest=0,manualBpm=90;
  const enabled=()=>visual||click;
@@ -71,7 +77,7 @@ export function createMetronome(playback,getState){
   if(play==='playing'||play==='paused')position=Math.max(0,playback.position);
   else{if(previousPlayback!=='stopped')position=0;else if(last)position+=(now-last)/1000*(state.standalone?1:playback.tempo.rate);}
   last=now;previousPlayback=play;
-  const beat=state.standalone?standalonePulse(position,manualBpm):pulseState(timeline,position,playback.tempo.rate);if(beat){if(visual)draw(beat,play==='paused');if(click&&play!=='paused'&&beat.sequence!==lastClick){playback.clickBeat(beat.downbeat);lastClick=beat.sequence;}}
+  const beat=state.standalone?standalonePulse(position,manualBpm):pulseState(timeline,position,playback.tempo.rate);if(beat){if(visual)draw(beat,play==='paused');if(click&&play!=='paused'&&beat.sequence!==lastClick){playback.clickBeat(beat.downbeat,sound);lastClick=beat.sequence;}}
   if(visual){setVisible(true);place();}else{for(const rail of rails)rail.hidden=true;setVisible(false);}frame=requestAnimationFrame(tick);
  }
  async function sync(){
@@ -84,6 +90,7 @@ export function createMetronome(playback,getState){
  const tempo=()=>getState().standalone?{bpm:manualBpm,min:40,max:240}:playback.tempo;
  function setTempo(bpm){if(getState().standalone){manualBpm=Math.max(40,Math.min(240,bpm));position=0;last=0;lastClick=-1;}else playback.setTempo(bpm);}
  function controls(){
+  soundSelect.disabled=!click;soundSelect.value=sound;soundSelect.parentElement.title='Metronome sound: '+metronomeSounds[sound];
   $('metronome-mode').hidden=!getState().standalone;
   for(const [id,on] of [['metronome-visual',visual],['metronome-click',click]]){$(id).setAttribute('aria-pressed',String(on));$(id).querySelector('span').textContent=on?'On':'Off';}
   const t=tempo();$('tempo-value').textContent=Math.round(t.bpm)+' BPM';$('tempo-down').disabled=t.bpm<=t.min;$('tempo-up').disabled=t.bpm>=t.max;

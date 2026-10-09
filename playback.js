@@ -1,3 +1,4 @@
+import {primaryMetronomeTones,scheduleMetronomeTone} from './metronome-sounds.js';
 import {createScoreVoice,configurePlaybackOutput,playbackSounds} from './playback-voices.js';
 // MusicXML performance timeline: written-order measures, all pitched parts/voices.
 export function scoreTimeline(xml){
@@ -58,8 +59,9 @@ export function createPlayback(getSource){
   return context.resume();
  }
  function silenceClicks(){for(const v of clickVoices)v.dispose();clickVoices.clear();}
- function clickBeat(strong){
+ function clickBeat(strong,sound='original'){
   if(!context||context.state!=='running')return;
+  if(sound!=='original'){primaryMetronomeTones(sound,context.currentTime,strong,(time,options)=>scheduleMetronomeTone(context,clickVoices,time,options));return;}
   const oscillator=context.createOscillator(),gain=context.createGain(),now=context.currentTime;
   oscillator.frequency.value=strong?1200:850;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(strong?.075:.05,now+.002);gain.gain.exponentialRampToValueAtTime(.0001,now+.035);
   oscillator.connect(gain);gain.connect(context.destination);

@@ -1917,3 +1917,14 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 #device-songs-results li{display:grid;gap:5px;padding:12px 0;border-top:1px solid var(--popup-border,#ccd6da);overflow-wrap:anywhere}
 #device-songs-results strong{font-size:16px}
 #device-songs-results .song-meta,#device-songs-results .device-song-retention{font-size:13px;line-height:1.45}
+
+/* Native sound picker adds no width to the existing playing controls. */
+.metronome-sound-wrap{display:flex;justify-content:center}
+.metronome-sound-control{position:relative;display:flex;align-items:center;justify-content:center;gap:4px;min-width:58px;height:44px;box-sizing:border-box;border:1px solid #b7c8d5;border-radius:6px;background:white;color:#183e67}
+.metronome-sound-control select{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);opacity:0;cursor:pointer;direction:rtl;font:16px system-ui,sans-serif}
+.metronome-sound-control:has(select:disabled){opacity:.45}
+.metronome-sound-control:focus-within{outline:2px solid #245a9a;outline-offset:2px}
+.metronome-live-controls button[aria-pressed] span{display:inline-block;min-width:1.5em}
+
+/* Anchor the native popup to the trigger’s right edge so long options open inward. */
+.metronome-sound-control option{direction:ltr}
