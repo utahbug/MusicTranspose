@@ -1,17 +1,16 @@
-"""Batch 4 exact scope, immutable baseline/source assets, frozen policy and reproducibility."""
+"""Batch 5 exact scope, immutable baseline/source assets, frozen policy and reproducibility."""
 import ast,hashlib,json,pathlib,runpy,subprocess,unittest
-ROOT=pathlib.Path(__file__).resolve().parents[1];BASE='e4a8b89e4c0e01002d93763b2450b94112db05fe'
+ROOT=pathlib.Path(__file__).resolve().parents[1];BASE='7c25c0154f19a2a67fae233fede94dee47c853bf'
 parse=lambda s:json.loads(s.split('export const generatedHarmony = ')[1].strip().rstrip(';'))
 old=lambda f:subprocess.check_output(['git','show',BASE+':'+f.removeprefix('./')],cwd=ROOT)
-class Batch4(unittest.TestCase):
- def test_exact_scope_and_129_unchanged(self):
-  before=parse(old('generated-harmony-data.js').decode());after=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));rows=json.loads((ROOT/'reports/chord-expansion-batch4.json').read_text(encoding='utf8'))['rows']
-  after={k:v for k,v in after.items() if k in before or k in {r['id'] for r in rows}}
-  self.assertEqual(len(before),129);self.assertEqual(len(after),139);self.assertEqual({k:after[k] for k in before},before)
-  self.assertEqual(set(after)-set(before),{r['id'] for r in rows if r['generatedSymbolCount']});self.assertEqual([r['number'] for r in rows],[153,211,215,217,233,258,66,82,84,113])
-  self.assertEqual(sum(r['generatedSymbolCount'] for r in rows),193)
+class Batch5(unittest.TestCase):
+ def test_exact_scope_and_139_unchanged(self):
+  before=parse(old('generated-harmony-data.js').decode());after=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));rows=json.loads((ROOT/'reports/chord-expansion-batch5.json').read_text(encoding='utf8'))['rows']
+  self.assertEqual(len(before),139);self.assertEqual(len(after),149);self.assertEqual({k:after[k] for k in before},before)
+  self.assertEqual(set(after)-set(before),{r['id'] for r in rows if r['generatedSymbolCount']});self.assertEqual([r['number'] for r in rows],[114,185,197,200,242,263,284,298,13,87])
+  self.assertEqual(sum(r['generatedSymbolCount'] for r in rows),294)
  def test_source_and_generated_evidence(self):
-  rows=json.loads((ROOT/'reports/chord-expansion-batch4.json').read_text(encoding='utf8'))['rows'];data=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));h=runpy.run_path(str(ROOT/'tools/harmony-inference.py'))
+  rows=json.loads((ROOT/'reports/chord-expansion-batch5.json').read_text(encoding='utf8'))['rows'];data=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));h=runpy.run_path(str(ROOT/'tools/harmony-inference.py'))
   songs=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {songs} from './songs.js';console.log(JSON.stringify(songs))"],cwd=ROOT))
   for r in rows:
    song=next(s for s in songs if s['id']==r['id'])
@@ -25,12 +24,10 @@ class Batch4(unittest.TestCase):
    self.assertEqual(hashlib.sha256(x.encode()).hexdigest(),data[r['id']]['xmlSha256']);self.assertEqual(data[r['id']]['events'],[{k:e[k] for k in ['measure','offset','root','kind','bass']} for e in events])
   native=next(s for s in songs if s['collection']=='Hymns (1985)' and s['page']=='70');self.assertNotIn(native['id'],data);self.assertEqual((ROOT/native['asset']).read_bytes(),old(native['asset']))
  def test_policy_runtime_and_other_features_unchanged(self):
-  for f in ['tools/harmony-display.py','tools/harmony-priority-nine.py','tools/harmony-expansion-batch2.py','tools/harmony-expansion-batch3.py','reports/chord-expansion-batch3.json','reports/chord-expansion-batch2.json','metronome.js','metronome-sounds.js','reports/chord-priority-nine.json','generated-harmony.js','chord-symbol.js','music.js','score-export.js','app.js','lead-view.js','playback.js','styles.css','assets/lyrics.json','offline-bulk.js','offline-manager.js','offline-worker.js']:
+  for f in ['tools/harmony-display.py','tools/harmony-priority-nine.py','tools/harmony-expansion-batch2.py','tools/harmony-expansion-batch3.py','tools/harmony-expansion-batch4.py','reports/chord-expansion-batch4.json','reports/chord-expansion-batch3.json','reports/chord-expansion-batch2.json','metronome.js','metronome-sounds.js','reports/chord-priority-nine.json','generated-harmony.js','chord-symbol.js','music.js','score-export.js','app.js','lead-view.js','playback.js','styles.css','assets/lyrics.json','offline-bulk.js','offline-manager.js','offline-worker.js']:
    self.assertEqual((ROOT/f).read_bytes().replace(b'\r\n',b'\n'),old(f).replace(b'\r\n',b'\n'),f)
   functions=lambda s:{n.name:ast.dump(n) for n in ast.parse(s).body if isinstance(n,ast.FunctionDef) and n.name!='main'}
   self.assertEqual(functions((ROOT/'tools/harmony-inference.py').read_text(encoding='utf8')),functions(old('tools/harmony-inference.py').decode()))
  def test_targeted_reproducibility(self):
-  tool=runpy.run_path(str(ROOT/'tools/harmony-expansion-batch4.py'));data=parse(old('generated-harmony-data.js').decode());rows=tool['extend'](data)
-  self.assertEqual(rows,json.loads((ROOT/'reports/chord-expansion-batch4.json').read_text(encoding='utf8'))['rows'])
-  current=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));self.assertEqual(data,{k:current[k] for k in data})
+  subprocess.run([__import__('sys').executable,str(ROOT/'tools/harmony-expansion-batch5.py'),'--check'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
 if __name__=='__main__':unittest.main()

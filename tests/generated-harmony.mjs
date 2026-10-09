@@ -12,7 +12,7 @@ try{
   const check=(ok,msg)=>{if(!ok)throw Error(msg);},out=[];
   const pitch=n=>({C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n.firstElementChild.textContent]+Number(n.querySelector('root-alter,bass-alter')?.textContent||0)+120)%12;
   const bare=xml=>{const d=parseXML(xml);d.querySelectorAll('harmony').forEach(n=>n.remove());return new XMLSerializer().serializeToString(d);};
-  check(Object.keys(generatedHarmony).length===139,'exactly 129 prior overlays plus ten Batch 4 overlays');
+  check(Object.keys(generatedHarmony).length===149,'exactly 139 prior overlays plus ten Batch 5 overlays');
   for(const [id,data] of Object.entries(generatedHarmony)){
    if(unitIds&&!unitIds.includes(songs.find(s=>s.id===id)?.page))continue;
    const song=songs.find(s=>s.id===id),raw=unpackMXL(await(await fetch(song.asset)).arrayBuffer()),xml=await withGeneratedHarmony(raw,id),d=parseXML(xml),hs=[...d.querySelectorAll('harmony')];
@@ -34,7 +34,7 @@ try{
     const shifted=parseXML(transposeXML(source,2,song.modeOverride));check([...shifted.querySelectorAll('harmony kind')].map(n=>n.textContent).join('|')===[...parseXML(source).querySelectorAll('harmony kind')].map(n=>n.textContent).join('|'),'transposition preserves quality');check(!shifted.querySelector('harmony bass'),'transposed generated symbols remain root-only');
    }
    out.push({id,number:song.page,chords:hs.length});
-  }check(out.length===(unitIds?unitIds.length:139),'expected structural coverage');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
+  }check(out.length===(unitIds?unitIds.length:149),'expected structural coverage');check(await withGeneratedHarmony('<score-partwise/>','not-a-pilot')==='<score-partwise/>','nonpilot unchanged');return out;
  },process.env.HARMONY_UNIT_IDS?.split(','));console.log('PASS overlay, source guard, notation invariance, Melody preservation and +2 root/bass',unit);
  if(process.env.HARMONY_UNIT_ONLY){await b.close();process.exit(0);}
  if(process.env.HARMONY_NO_OVERLAY)await p.evaluate(()=>window.harmonyDiagnosticWithoutOverlay=true);
