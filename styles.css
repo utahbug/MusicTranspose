@@ -1903,3 +1903,17 @@ html[data-library-theme=dark] body #lists-view .list-workspace-section[data-list
 
 /* Contextual Score return changes only artwork and color, not the shared tile geometry. */
 body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lists]{background:linear-gradient(110deg,#237c7a,#245a9a)!important}
+
+/* Read-only device inventory uses the shared dialog and Library text styles. */
+#offline-inventory{width:680px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto}
+#offline-inventory .dialog-heading{align-items:center;position:sticky;top:0;z-index:1;background:var(--popup-surface,#fff)}
+#offline-inventory .close{flex:none}
+#offline-inventory h2{overflow-wrap:anywhere}
+.device-songs-controls{display:flex;flex-wrap:wrap;gap:12px}
+.device-songs-controls label{display:grid;gap:5px;min-width:0;font-size:14px}
+.device-songs-controls label:first-child{flex:1 1 220px}
+.device-songs-controls input,.device-songs-controls select{box-sizing:border-box;width:100%;min-width:0;min-height:44px;padding:8px;font:16px system-ui;border:1px solid var(--popup-border,#b5c3c5);border-radius:6px;background:var(--popup-surface,#fff);color:var(--popup-ink,#233331)}
+#device-songs-results{list-style:none;margin:12px 0 0;padding:0}
+#device-songs-results li{display:grid;gap:5px;padding:12px 0;border-top:1px solid var(--popup-border,#ccd6da);overflow-wrap:anywhere}
+#device-songs-results strong{font-size:16px}
+#device-songs-results .song-meta,#device-songs-results .device-song-retention{font-size:13px;line-height:1.45}

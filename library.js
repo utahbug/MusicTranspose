@@ -1,3 +1,4 @@
+import {initOfflineInventory} from './offline-inventory.js';
 import {createKeyboardWorkspace} from './keyboard.js';
 import {meaningfulNumber} from './score-labels.js';
 import {catalogOfflineSong,createOfflineControl} from './offline-control.js';
@@ -233,7 +234,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function showKeyboard(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'keyboard',list:null,song:null});files.hide();lists.hide();texts.hide();leaveScore?.();stopPlayback?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library-home').hidden=true;$('library').hidden=true;keyboard.open();window.scrollTo({top:0,behavior:'instant'});}
  function showHome(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'home',list:null,song:null});files.hide();lists.hide();texts.hide();keyboard.hide();leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library').hidden=true;$('library-home').hidden=false;document.title='Library · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});$('library-home-title').focus({preventScroll:true});}
  for(const control of document.querySelectorAll('[data-home-source]'))control.onclick=()=>{activeList=null;reordering=false;applyContext({source:control.dataset.homeSource,sort:globalSort});showLibrary();};
- const infoButton=$('home-about'),infoMenu=$('home-info-menu');$('home-info-saved').onclick=showSaved;
+ const infoButton=$('home-about'),infoMenu=$('home-info-menu');initOfflineInventory({getLists:()=>state.groups,beforeOpen:()=>closeHomeInfo()});
  function closeHomeInfo(focus=false){infoMenu.hidden=true;infoButton.setAttribute('aria-expanded','false');if(focus)infoButton.focus({preventScroll:true});}
  function openHomeInfo(){infoMenu.hidden=false;infoButton.setAttribute('aria-expanded','true');infoMenu.querySelector('button:not([hidden])').focus({preventScroll:true});}
  infoButton.onclick=()=>infoMenu.hidden?openHomeInfo():closeHomeInfo(true);
