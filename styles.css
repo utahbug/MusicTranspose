@@ -1721,7 +1721,6 @@ dialog.app-dialog>h2{margin:-24px -24px 18px;padding:18px 24px;border-top:3px so
  [data-library-theme=dark] :is(#lists-view,#files-view,#texts-view,#keyboard-view) .workspace-return{background:var(--library-dark-panel);border-color:var(--library-dark-border)}
  [data-library-theme=dark] #lists-view .list-overview-row{background:var(--library-dark-active);color:var(--library-dark-text)}
  [data-library-theme=dark] #lists-view .list-overview-entry{background:transparent;color:var(--library-dark-text)}
- [data-library-theme=dark] #texts-new{background:var(--library-dark-active)!important;color:var(--library-dark-text)}
  [data-library-theme=dark] :is(#list-command-menu,#files-search-fields>div){background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
  [data-library-theme=dark] #list-command-menu button{color:var(--library-dark-text)}
  [data-library-theme=dark] #list-text-content{background:var(--library-dark-page);color:var(--library-dark-text);border-color:var(--library-dark-border)}
@@ -1822,10 +1821,10 @@ body input[type=checkbox]:hover:not(:disabled){filter:brightness(.92)}
 body input[type=checkbox]:focus-visible{outline:2px solid #2b619b;outline-offset:3px}
 body input[type=checkbox]:disabled{opacity:.5;cursor:default}
 [data-library-theme=dark] body input[type=checkbox]{accent-color:#72c5be!important;color-scheme:dark}
-body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music){background:var(--app-header-background);border:1px solid #286b81;color:white;min-height:44px;border-radius:7px;padding:10px 14px}
-body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music):hover{filter:brightness(1.06);background:var(--app-header-background)}
-body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music):active{filter:brightness(.94)}
-body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music):focus-visible{outline:2px solid #245a9a;outline-offset:3px}
+body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new){background:var(--app-header-background);border:1px solid #286b81;color:white;min-height:44px;border-radius:7px;padding:10px 14px}
+body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new):hover{filter:brightness(1.06);background:var(--app-header-background)}
+body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new):active{filter:brightness(.94)}
+body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new):focus-visible{outline:2px solid #245a9a;outline-offset:3px}
 .menu-section-label{padding:7px 12px 3px;font:600 11px system-ui;color:#647780;text-transform:uppercase;letter-spacing:.04em}
 .list-delete-section{border-top:1px solid #c4cfd3;margin-top:18px;padding-top:12px}
 .list-delete-section:has(button[hidden]){display:none}
@@ -1897,3 +1896,16 @@ body #library .library-column-headings #library-count{white-space:normal;text-al
 #score-tools-menu .score-tools-checkbox > input {flex:none;width:16px;height:16px;margin:0;}
 #score-tools-menu .score-tools-checkbox > span {font:inherit;line-height:inherit;}
 #score-tools-menu .score-tools-checkbox:is(:hover,:focus-visible) {background:var(--popup-hover);}
+
+/* Quiet, readable Home submit and content-width local file status. */
+body #library-home #home-search-form button {background:#e8eef2;color:#304c60;border:1px solid #b5c3c5;opacity:1;-webkit-text-fill-color:currentColor;}
+html[data-library-theme=dark] body #library-home #home-search-form button {background:#293b47;color:#e0edf5;border-color:var(--library-dark-border);}
+#files-view .file-entry .offline-saved-badge {display:inline-flex;width:fit-content;align-self:flex-start;justify-self:start;margin-left:0;}
+/* Stable ID-derived tints belong only to List headers, not their song rows. */
+.list-workspace-section[data-list-tint=blue] {--list-tint:#e6edf6;--list-tint-dark:#263749;--list-accent:#6084ad;}
+.list-workspace-section[data-list-tint=teal] {--list-tint:#e3efed;--list-tint-dark:#253e3e;--list-accent:#588c85;}
+.list-workspace-section[data-list-tint=green] {--list-tint:#e8efe2;--list-tint-dark:#303d2e;--list-accent:#778e5d;}
+.list-workspace-section[data-list-tint=violet] {--list-tint:#eee8f4;--list-tint-dark:#373149;--list-accent:#9078a9;}
+body #lists-view .list-workspace-section[data-list-tint]>.list-overview-row {background:var(--list-tint);box-shadow:inset 3px 0 var(--list-accent);}
+html[data-library-theme=dark] body #lists-view .list-workspace-section[data-list-tint]>.list-overview-row {background:var(--list-tint-dark);}
+#lists-view .list-workspace-section[data-list-tint] .list-overview-entry:hover {background:color-mix(in srgb,currentColor 5%,transparent);}
