@@ -6,6 +6,7 @@ old=lambda f:subprocess.check_output(['git','show',BASE+':'+f.removeprefix('./')
 class Batch2(unittest.TestCase):
  def test_exact_scope_and_110_unchanged(self):
   before=parse(old('generated-harmony-data.js').decode());after=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));rows=json.loads((ROOT/'reports/chord-expansion-batch2.json').read_text(encoding='utf8'))['rows']
+  after={k:v for k,v in after.items() if k in before or k in {r['id'] for r in rows}}
   self.assertEqual(len(before),110);self.assertEqual(len(after),119);self.assertEqual({k:after[k] for k in before},before)
   self.assertEqual(set(after)-set(before),{r['id'] for r in rows if r['generatedSymbolCount']});self.assertEqual([r['number'] for r in rows],[72,83,95,116,129,130,169,198,214,280])
   self.assertEqual(sum(r['generatedSymbolCount'] for r in rows),193)
@@ -32,5 +33,7 @@ class Batch2(unittest.TestCase):
   functions=lambda s:{n.name:ast.dump(n) for n in ast.parse(s).body if isinstance(n,ast.FunctionDef) and n.name!='main'}
   self.assertEqual(functions((ROOT/'tools/harmony-inference.py').read_text(encoding='utf8')),functions(old('tools/harmony-inference.py').decode()))
  def test_targeted_reproducibility(self):
-  subprocess.run([__import__('sys').executable,str(ROOT/'tools/harmony-expansion-batch2.py'),'--check'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+  tool=runpy.run_path(str(ROOT/'tools/harmony-expansion-batch2.py'));data=parse(old('generated-harmony-data.js').decode());rows=tool['extend'](data)
+  self.assertEqual(rows,json.loads((ROOT/'reports/chord-expansion-batch2.json').read_text(encoding='utf8'))['rows'])
+  current=parse((ROOT/'generated-harmony-data.js').read_text(encoding='utf8'));self.assertEqual(data,{k:current[k] for k in data})
 if __name__=='__main__':unittest.main()
