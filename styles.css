@@ -1985,3 +1985,8 @@ body #library .workspace-banner h1{flex:1 1 auto}
 
 #home-update-status:empty{margin:0}
 #home-update-status{font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+
+/* Compact workspace polish: reuse existing controls and footer geometry. */
+@media(min-width:601px) and (max-width:1024px){#library .library-filter-row .sort-choice{margin-left:12px}}
+.workspace-return .workspace-theme{margin-left:auto;border:0;background:transparent}
+.list-command-menu button{padding-left:26px}

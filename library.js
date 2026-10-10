@@ -98,7 +98,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const files=createFilesView({onLibrary:showHome,onSong:(id,ids)=>{pendingSongSet={ids,origin:'files'};open(id);}});
  const texts=createTextsView({getState:()=>state,save,edit:lists.editText,read:lists.readText,onHome:showHome,onFiles:showFiles,onLists:showLists,clearUndo:lists.clearUndo,onChanged:()=>{lists.render();render();}});
  $('home-text').onclick=()=>showTexts();
- for(const workspace of ['files','lists']){const control=button('','Notes',()=>showTexts());control.innerHTML=textIcon;control.title='Notes';control.setAttribute('aria-controls','texts-view');control.classList.add('workspace-sibling');$(workspace+'-library').parentElement.append(control);}
+ for(const workspace of ['files','lists']){const control=button('','Notes',()=>showTexts());control.innerHTML=textIcon;control.title='Notes';control.setAttribute('aria-controls','texts-view');control.classList.add('workspace-sibling');$(workspace+'-theme').before(control);}
  function showTexts(){if(isBusy())return;clearLeavingSearch();$('library-home').hidden=true;$('library').hidden=true;closeMore();closeSource();blurSearch();files.hide();lists.hide();texts.hide();keyboard.hide();document.body.classList.add('library-open');navigation?.visit({view:'text',list:null});texts.open();}
  function returnLabels(){for(const id of ['files-library','lists-library']){$(id).setAttribute('aria-label','Library Home');$(id).title='Library Home';$(id).setAttribute('aria-controls','library-home');}}
  returnLabels();
@@ -137,20 +137,16 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('rename-active-list').onclick=()=>{$('active-list-dialog').close();lists.name(activeList);};
  $('delete-active-list').onclick=()=>{$('active-list-dialog').close();lists.remove(activeList);};
  const sourceButton=$('library-source'),sourceMenu=$('library-source-menu');
- const sourceLabel=id=>({hymnal:'Hymns',children:'Children’s Songs'}[id]||sourceChoices.find(([value])=>value===id)?.[1]||'All Sources');
+ const sourceLabel=id=>({hymnal:'Hymns',children:'Children’s Songs','my-music':'Imported Files'}[id]||sourceChoices.find(([value])=>value===id)?.[1]||'All Sources');
  function closeSource(focus=false){sourceMenu.hidden=true;sourceButton.setAttribute('aria-expanded','false');if(focus)sourceButton.focus({preventScroll:true});}
  function placeSource(){if(sourceMenu.hidden)return;const r=sourceButton.getBoundingClientRect();sourceMenu.style.left=Math.max(8,Math.min(r.left,innerWidth-sourceMenu.offsetWidth-8))+'px';sourceMenu.style.top=Math.max(8,Math.min(r.bottom+4,innerHeight-sourceMenu.offsetHeight-8))+'px';}
  function refreshLists(){
   const label=group()?.name||sourceLabel(source);$('library-source-label').textContent=label;sourceButton.title='Source: '+label;sourceButton.setAttribute('aria-label','Source: '+label);
   sourceMenu.replaceChildren();
-  const heading=text=>{const e=node('div',text,'source-menu-heading');e.setAttribute('role','presentation');sourceMenu.append(e);};
   const divider=()=>{const e=node('hr');e.setAttribute('role','separator');sourceMenu.append(e);};
   const item=(text,selected,action,value)=>{const e=button(text,null,()=>{closeSource(true);action();});e.setAttribute('role','menuitemradio');e.setAttribute('aria-checked',String(selected));e.dataset.source=value;sourceMenu.append(e);};
-  heading('Sources');
   for(const [id] of sourceChoices){if(id==='my-music')divider();item(sourceLabel(id),!activeList&&source===id,()=>{if(activeList)selectList(null);source=id;libraryScroll=0;savePreferences();render();window.scrollTo({top:0,behavior:'instant'});remember();persistWorkspace();navigation?.snapshot();},id);}
-  divider();heading('My Lists');
-  for(const g of state.groups)item(g.name,activeList===g.id,()=>selectList(g.id),'list:'+g.id);
-  divider();const edit=button('Manage Lists…',null,showLists);edit.setAttribute('role','menuitem');edit.dataset.source='edit-lists';sourceMenu.append(edit);
+  const lists=button('My Lists',null,()=>{closeSource();showLists();});lists.setAttribute('role','menuitem');lists.dataset.source='my-lists';sourceMenu.append(lists);
  }
  sourceButton.onclick=()=>{blurSearch();if(!sourceMenu.hidden){closeSource();return;}closeMore();sourceMenu.hidden=false;sourceButton.setAttribute('aria-expanded','true');placeSource();(sourceMenu.querySelector('[aria-checked=true]')||sourceMenu.querySelector('button')).focus({preventScroll:true});};
  document.addEventListener('pointerdown',e=>{if(!sourceMenu.hidden&&!sourceMenu.contains(e.target)&&!sourceButton.contains(e.target))closeSource();});
