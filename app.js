@@ -44,7 +44,7 @@ import {buildKeys,originalKey,signature,unpackMXL,transposeXML,shiftOctaveXML,pa
 const rightHandLead=lead=>lead?.selection?.voice==='rh-melody'||lead?.selection?.rightHandTexture===true;
 const $=id=>document.getElementById(id),score=$('score'),stage=$('staging'),dialog=$('key-dialog');
 $('show-lyrics').innerHTML=lyricsIcon;
-let activeSong=songs[0],modeOverride,loading=false,pdfFallback=false,pdfPerformance=false,scoreSize=readScoreSize();
+let activeSong=songs[0],modeOverride,loading=false,pdfFallback=false,scoreSize=readScoreSize();
 // OSMD uses container width / Zoom / 10 as the logical page width BEFORE layout.
 let autoChoice=null,renderHeight=0,renderBudget=null;
 const scoreSizes={normal:1};
@@ -70,7 +70,7 @@ function finishSelection(token){if(token!==selectionVersion)return;loading=false
 function beginSelection(song,retainScore=false){
  $('pdf-offline-message').hidden=true;
  const token=++selectionVersion;clearTimeout(timer);clearTimeout(resizeTimer);loading=true;if(!playback.songKey.startsWith(song.id+':'))playback.stop();lyricsView.hide();document.body.classList.remove('lyrics-open');
- if(!retainScore){workingSession=null;ready=false;original='';lastXML='';lastViewXML='';KEYS=[];leadSource=null;leadState=null;cache.clear();readingPosition=null;engravedXML='';score.replaceChildren();$('source-credits').replaceChildren();document.querySelector('.subtitle').replaceChildren();document.querySelector('.footnote').textContent='';$('key-name').textContent='';$('key-name').dataset.compact='';$('key-signature').textContent='';$('key').setAttribute('aria-label','Current key loading');document.querySelector('.masthead').dataset.printKey='';$('pdf-original').removeAttribute('href');pdfFallback=false;pdfPerformance=false;document.body.classList.remove('pdf-fallback-open');document.dispatchEvent(new Event('score-session-reset'));}
+ if(!retainScore){workingSession=null;ready=false;original='';lastXML='';lastViewXML='';KEYS=[];leadSource=null;leadState=null;cache.clear();readingPosition=null;engravedXML='';score.replaceChildren();$('source-credits').replaceChildren();document.querySelector('.subtitle').replaceChildren();document.querySelector('.footnote').textContent='';$('key-name').textContent='';$('key-name').dataset.compact='';$('key-signature').textContent='';$('key').setAttribute('aria-label','Current key loading');document.querySelector('.masthead').dataset.printKey='';$('pdf-original').removeAttribute('href');pdfFallback=false;document.body.classList.remove('pdf-fallback-open');document.dispatchEvent(new Event('score-session-reset'));}
  activeSong=song;lyricsSong=null;document.querySelector('.score-heading h1').textContent=song.title;score.setAttribute('aria-label',song.title+' sheet music');score.setAttribute('aria-busy','true');$('status').textContent='Loading '+song.title+'…';loadingNote.textContent='Loading '+song.title+'…';loadingNote.hidden=false;document.body.classList.add('song-loading');library?.showScore();document.title=song.title+' · Music Transpose';setControls();return token;
 }
 const playback=createPlayback(async()=>{
@@ -142,7 +142,7 @@ async function renderScore(){
  if(isPdf()||busy||!original||width()<100)return;busy=true;setControls();
  // Browser chrome can change the usable phone height without changing innerHeight.
  // Cache and retry against that budget, not the previous view's fitting result.
- try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const footerBudget=phoneFooter()?Math.round(availableScoreHeight(score)):null;const density=scoreSize,phoneTarget=matchMedia('(max-width:600px)').matches?(originalPageCount(activeSong.pdfAsset)||1):null;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}:${phoneTarget}:${footerBudget}`;const start=performance.now();const cached=cache.get(id);
+ try{while(true){const target=wanted,octave=wantedOctave,w=width();if(w<100)break;const footerBudget=phoneFooter()?Math.round(availableScoreHeight(score)):null;const density=scoreSize,phoneTarget=matchMedia('(max-width:600px)').matches?(activeSong.sourcePdfPages||originalPageCount(activeSong.pdfAsset)||1):null;const id=`${w}:${innerHeight}:${matchMedia('(max-width:600px)').matches}:${target}:${JSON.stringify(octave)}:${density}:${phoneTarget}:${footerBudget}`;const start=performance.now();const cached=cache.get(id);
   if(cached){commit(cached,target,octave,w);metrics.push({shift:target,octave,width:w,ms:performance.now()-start,cached:true});}
   else{const xml=viewOnly()?original:shiftStaffOctaves(transposeXML(original,target,modeOverride),octave,handLayout);let lead=null,viewXML=xml;if(density==='large'){if(!leadSource){leadSource=createLeadXML(original,activeSong);if(!leadSource.ok)console.info('Lead fallback',activeSong.id,leadSource.reason,leadSource.detail);}lead={...leadSource,xml:undefined};if(lead.ok)viewXML=viewOnly()?leadSource.xml:shiftOctaveXML(transposeXML(leadSource.xml,target,modeOverride),octave.lead);}
    applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
@@ -223,19 +223,19 @@ function syncScoreView(){
  $('score-view-label').textContent=wide?'Score':label;$('score-size').setAttribute('aria-label','Score View');$('score-size').title='Score View';
  const available={pdf:activeSong.scoreType==='pdf'||!!activeSong.pdfAsset,auto:activeSong.scoreType!=='pdf'&&!!original&&preparedHasChords&&!(keyFromPdf()&&preparedHasSourceChords&&!activeSong.local),large:activeSong.scoreType!=='pdf'&&(leadSource?leadSource.ok:supportsLead(activeSong))};
  const explanations={pdf:'Original PDF is not available for this song.',auto:'Transpose is not available for this score.',large:'Melody only is not available for this score.'};
- for(const option of $('score-size-options').querySelectorAll('[data-size],[data-performance]')){const type=option.dataset.size||'pdf';const performance=option.dataset.performance==='true';option.textContent=performance?'Original — Performance layout':{pdf:'Original',auto:'Transpose',large:'Melody only'}[type];option.hidden=!available[type]||(performance&&!activeSong.performancePdf);option.disabled=option.hidden;const selected=!option.disabled&&type===view&&(type!=='pdf'||performance===pdfPerformance);option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[type];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
+ for(const option of $('score-size-options').querySelectorAll('[data-size]')){const type=option.dataset.size;option.textContent={pdf:'Original',auto:'Transpose',large:'Melody only'}[type];option.hidden=!available[type];option.disabled=!available[option.dataset.size];const selected=!option.disabled&&option.dataset.size===view;option.setAttribute('aria-pressed',String(selected));option.setAttribute('aria-checked',String(selected));if(option.disabled){option.title=explanations[option.dataset.size];option.setAttribute('aria-description',option.title);}else{option.removeAttribute('title');option.removeAttribute('aria-description');}}
 }
 const sizeOptions=$('score-size-options');
 // A fixed popup must not inherit the phone sheet's viewport clipping.
 document.body.append(sizeOptions);
 function closeSizeOptions(focus=false){sizeOptions.hidden=true;$('score-size').setAttribute('aria-expanded','false');if(focus)$('score-size').focus({preventScroll:true});}
 $('score-size').onclick=()=>{if(busy||loading||!ready)return;if(!sizeOptions.hidden){closeSizeOptions();return;}sizeOptions.hidden=false;$('score-size').setAttribute('aria-expanded','true');const rect=$('score-size').getBoundingClientRect();sizeOptions.style.left=Math.max(8,Math.min(rect.right-sizeOptions.offsetWidth,innerWidth-sizeOptions.offsetWidth-8))+'px';sizeOptions.style.top=(rect.bottom+sizeOptions.offsetHeight+14>innerHeight?Math.max(8,rect.top-sizeOptions.offsetHeight-6):rect.bottom+6)+'px';(sizeOptions.querySelector('[aria-pressed=true]:not([hidden])')||sizeOptions.querySelector('button:not([hidden]):not(:disabled)'))?.focus({preventScroll:true});};
-for(const option of sizeOptions.querySelectorAll('[data-size],[data-performance]'))option.onclick=async()=>{
+for(const option of sizeOptions.querySelectorAll('[data-size]'))option.onclick=async()=>{
  if(option.disabled)return;
  playback.stop();
- const next=option.dataset.size||'pdf';closeSizeOptions(true);$('pdf-offline-message').hidden=true;
+ const next=option.dataset.size;closeSizeOptions(true);$('pdf-offline-message').hidden=true;
  const restoreFocus=()=>{const button=$('score-size');if(document.activeElement===document.body&&!button.disabled&&button.getClientRects().length)button.focus({preventScroll:true});};
- if(next==='pdf'){const performance=option.dataset.performance==='true';if(!isPdf()||performance!==pdfPerformance)await showPdfFallback(undefined,performance);restoreFocus();return;}
+ if(next==='pdf'){if(!isPdf())await showPdfFallback();restoreFocus();return;}
  if(!original){
   const token=selectionVersion,song=activeSong;loading=true;setControls();
   try{await prepareStructured(song,token);if(token!==selectionVersion)return;}
@@ -251,15 +251,16 @@ for(const option of sizeOptions.querySelectorAll('[data-size],[data-performance]
 };
 function leavePdfView(){pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open','pdf-key-available');$('pdf-notice').hidden=true;$('pdf-offline-message').hidden=true;document.dispatchEvent(new Event('score-session-reset'));readingPosition=null;}
 // Legacy helper also serves the normal Original PDF presentation (not an error).
-async function showPdfFallback(selectionToken,performance=false){
+async function showPdfFallback(selectionToken){
  if(!activeSong.pdfAsset||busy||(loading&&selectionToken!==selectionVersion))return;
  const token=selectionToken??++selectionVersion;
- playback.stop();loading=true;ready=false;pdfFallback=true;pdfPerformance=performance&&!!activeSong.performancePdf;clearTimeout(timer);
- const pdfAsset=pdfPerformance?activeSong.performancePdf:activeSong.pdfAsset;
+ playback.stop();loading=true;ready=false;pdfFallback=true;clearTimeout(timer);
+ // Keep pdfAsset as the stable annotation/source identity; only the displayed PDF changes.
+ const pdfAsset=activeSong.performancePdf||activeSong.pdfAsset;
  document.dispatchEvent(new Event('score-session-reset'));document.body.classList.add('pdf-score-open','pdf-fallback-open');
  $('pdf-notice').hidden=false;$('pdf-original').href=pdfAsset;score.style.removeProperty('--score-trim');
  score.setAttribute('aria-label',activeSong.title+' PDF score');score.setAttribute('aria-busy','true');setControls();
- try{await renderPdf(pdfAsset,score,activeSong.title+(pdfPerformance?' — Performance layout':''),()=>token===selectionVersion);if(token!==selectionVersion)return;ready=true;score.setAttribute('aria-busy','false');$('status').textContent='PDF score';window.scrollTo({top:0,behavior:'instant'});}
+ try{await renderPdf(pdfAsset,score,activeSong.title,()=>token===selectionVersion);if(token!==selectionVersion)return;ready=true;score.setAttribute('aria-busy','false');$('status').textContent='PDF score';window.scrollTo({top:0,behavior:'instant'});}
  catch(error){if(token!==selectionVersion)return;console.error(error);pdfFallback=false;document.body.classList.remove('pdf-score-open','pdf-fallback-open');$('pdf-notice').hidden=true;await pump();$('status').textContent='Original PDF is not available offline yet. Use Save on this device in Tools while online.';$('pdf-offline-message').textContent=$('status').textContent;$('pdf-offline-message').hidden=false;}
  finally{finishSelection(token);}
 }
@@ -347,7 +348,7 @@ async function loadSong(id,requestedView){
  library?.navigating('score',id);
  const token=beginSelection(song);
  try{
-  pdfFallback=false;pdfPerformance=false;document.body.classList.remove('pdf-fallback-open');document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
+  pdfFallback=false;document.body.classList.remove('pdf-fallback-open');document.body.classList.toggle('view-only-score',song.transpositionAvailable===false);
   document.body.classList.toggle('pdf-score-open',song.scoreType==='pdf');$('pdf-notice').hidden=song.scoreType!=='pdf';score.style.removeProperty('--score-trim');
   if(song.scoreType==='pdf'){
    if(scoreSize==='large'){scoreSize='normal';saveScoreSize(scoreSize);}current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';score.setAttribute('aria-label',song.title+' PDF score');
@@ -367,7 +368,7 @@ function cancelPendingSelection(){if(!loading&&!busy)return;selectionVersion++;l
 function leaveScore(){
  if(ready&&!isPdf())workingSession={id:activeSong.id,context:scoreContext,view:scoreSize,key:current,octave:{...currentOctave}};
  selectionVersion++;loading=false;loadingNote.hidden=true;document.body.classList.remove('song-loading');
- playback.stop();pdfFallback=false;pdfPerformance=false;document.body.classList.remove('pdf-fallback-open');$('playback-message').textContent='';
+ playback.stop();pdfFallback=false;document.body.classList.remove('pdf-fallback-open');$('playback-message').textContent='';
  lyricsView.reset();lyricsSong=null;document.body.classList.remove('lyrics-open');
 
  clearTimeout(timer);current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;document.dispatchEvent(new Event('score-session-reset'));
