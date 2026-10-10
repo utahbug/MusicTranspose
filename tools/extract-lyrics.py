@@ -293,6 +293,55 @@ for song in catalog:
   assert main['text']==first+' '+last
   main['principalText']=main['text'];main['text']=first
   r['extractionDecisions'].append('Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus.')
+ if song['id'] in ('cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7'):
+  # These two reviewed row-2 streams are italic pronunciation underlay, not
+  # sung verses. Existing non-repeated named sections need no renderer change.
+  part=root.find("part[@id='P1']");main=stitch(part.findall("measure/note/lyric[@number='1']"));raw=stitch(part.findall("measure/note/lyric[@number='2']"))
+  assert len(r['verses'])==2 and len(r['refrains'])==1 and not r['alternateLyrics']
+  assert r['verses'][1]['text']==raw and main==r['verses'][0]['text']+' '+r['refrains'][0]['text']
+  assert not root.findall('.//barline/repeat') and not root.findall('.//barline/ending')
+  entries=[];words=[];guides=[];measures=[]
+  def pronunciation(nodes):
+   # Preserve the printed phonetic syllable boundaries encoded by MusicXML.
+   out='';join=False
+   for node in nodes:
+    assert len(node.findall('text'))==1
+    t=clean(node.findtext('text',''));out+=('-' if join else ' ' if out else '')+t
+    join=node.findtext('syllabic','single') in ('begin','middle')
+   return out
+  for measure in part.findall('measure'):
+   for note in measure.findall('note'):
+    guide=note.find("lyric[@number='2']")
+    if guide is None:continue
+    word=note.find("lyric[@number='1']");assert word is not None and note.findtext('voice','1')=='1'
+    assert all('Italic' in t.get('font-family','') for t in guide.findall('text'))
+    words.append(word);guides.append(guide);measures.append(measure.get('number'))
+    if guide.findtext('text','').endswith(')'):
+     text=pronunciation(guides);assert text.startswith('(')
+     entries.append({'word':stitch(words),'text':text,'sourceText':stitch(guides),'sourceMeasures':list(dict.fromkeys(measures))})
+     words=[];guides=[];measures=[]
+  assert not guides and raw==' '.join(e['sourceText'] for e in entries)
+  if song['id']=='cs-16':
+   assert len(entries)==6
+   credits=[clean(c.text or '') for c in root.findall('.//credit-words')]
+   start=credits.index('Non-English words for');assert credits[start+1]=='thank you:'
+   languages=['Spanish:','Tongan:','German:','Danish:','French:','Japanese:']
+   lines=[credits[start]+' '+credits[start+1]]
+   for i,(entry,language) in enumerate(zip(entries,languages)):
+    index=start+2+i*2;assert credits[index]==language
+    translation=credits[index+1];assert entry['word'].strip('“”.,').lower()==translation
+    entry['language']=language[:-1];entry['translation']=translation
+    lines.append(language+' '+translation+' — '+entry['text'])
+   guide_text='\n'.join(lines)
+  else:
+   assert len(entries)==1 and entries[0]['word']=='Philemon,' and entries[0]['text']=='(fie-lee-mawn)'
+   guide_text='Philemon — '+entries[0]['text']
+  template=r['verses'][0]
+  r['verses']=[]
+  r['refrains']=[{**template,'number':'','label':'Lyrics','text':main},{'label':'Pronunciation guide (not sung)','kind':'pronunciation-guide','text':guide_text,'sourceText':raw,'sourcePart':'P1','sourceVoice':'1'}]
+  r['pronunciationGuides']=entries
+  r['notes'].remove('Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.')
+  r['extractionDecisions'].append('Reviewed CS #'+str(song.get('page'))+': continuous row-1 sung text, no numbered stanzas or repeated section. Italic parenthesized row 2 aligns with individual words and is pronunciation guidance. Existing named sections show Lyrics and Pronunciation guide (not sung), and Copy retains both. Phonetic hyphens follow source syllabic boundaries; raw guide text and note-aligned entries preserved. No new pronunciation spellings or translations.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'
@@ -309,7 +358,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209'):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7'):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')

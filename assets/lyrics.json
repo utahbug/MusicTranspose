@@ -5173,40 +5173,94 @@
       "collection": "Children’s Songbook",
       "number": "16",
       "source": "./assets/scores/cs-16.mxl",
-      "verses": [
-        {
-          "number": "1",
-          "text": "All over the world at the end of day, Heav’nly Father’s children kneel down and pray, Each saying thank you in his own special way, Saying thank you, thank you in his own special way. “Gracias.” “Mālō.” “Wir danken dir.” All over the world tender voices hear. Some say “tak,” others “merci,” “Kansha shimasu,”",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
-        },
-        {
-          "number": "2",
-          "text": "(grahsee–ahs) (mahloh) (veer donken deer) (tahk) (maresee) (kahnshah sheemahsue)",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        }
-      ],
+      "verses": [],
       "refrains": [
         {
-          "number": "1",
-          "text": "We thank thee. Our Heavenly Father hears them; he understands each tongue. Our Heav’nly Father knows them; He loves them, loves them, ev’ry one.",
+          "number": "",
+          "text": "All over the world at the end of day, Heav’nly Father’s children kneel down and pray, Each saying thank you in his own special way, Saying thank you, thank you in his own special way. “Gracias.” “Mālō.” “Wir danken dir.” All over the world tender voices hear. Some say “tak,” others “merci,” “Kansha shimasu,” We thank thee. Our Heavenly Father hears them; he understands each tongue. Our Heav’nly Father knows them; He loves them, loves them, ev’ry one.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Lyrics"
+        },
+        {
+          "label": "Pronunciation guide (not sung)",
+          "kind": "pronunciation-guide",
+          "text": "Non-English words for thank you:\nSpanish: gracias — (grah-see–ahs)\nTongan: mālō — (mah-loh)\nGerman: wir danken dir — (veer don-ken deer)\nDanish: tak — (tahk)\nFrench: merci — (mare-see)\nJapanese: kansha shimasu — (kahn-shah shee-mah-sue)",
+          "sourceText": "(grahsee–ahs) (mahloh) (veer donken deer) (tahk) (maresee) (kahnshah sheemahsue)",
+          "sourcePart": "P1",
+          "sourceVoice": "1"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed CS #16: continuous row-1 sung text, no numbered stanzas or repeated section. Italic parenthesized row 2 aligns with individual words and is pronunciation guidance. Existing named sections show Lyrics and Pronunciation guide (not sung), and Copy retains both. Phonetic hyphens follow source syllabic boundaries; raw guide text and note-aligned entries preserved. No new pronunciation spellings or translations."
+      ],
+      "pronunciationGuides": [
+        {
+          "word": "“Gracias.”",
+          "text": "(grah-see–ahs)",
+          "sourceText": "(grahsee–ahs)",
+          "sourceMeasures": [
+            "X11"
+          ],
+          "language": "Spanish",
+          "translation": "gracias"
+        },
+        {
+          "word": "“Mālō.”",
+          "text": "(mah-loh)",
+          "sourceText": "(mahloh)",
+          "sourceMeasures": [
+            "X11"
+          ],
+          "language": "Tongan",
+          "translation": "mālō"
+        },
+        {
+          "word": "“Wir danken dir.”",
+          "text": "(veer don-ken deer)",
+          "sourceText": "(veer donken deer)",
+          "sourceMeasures": [
+            "X11",
+            "X12"
+          ],
+          "language": "German",
+          "translation": "wir danken dir"
+        },
+        {
+          "word": "“tak,”",
+          "text": "(tahk)",
+          "sourceText": "(tahk)",
+          "sourceMeasures": [
+            "X15"
+          ],
+          "language": "Danish",
+          "translation": "tak"
+        },
+        {
+          "word": "“merci,”",
+          "text": "(mare-see)",
+          "sourceText": "(maresee)",
+          "sourceMeasures": [
+            "X16"
+          ],
+          "language": "French",
+          "translation": "merci"
+        },
+        {
+          "word": "“Kansha shimasu,”",
+          "text": "(kahn-shah shee-mah-sue)",
+          "sourceText": "(kahnshah sheemahsue)",
+          "sourceMeasures": [
+            "X17"
+          ],
+          "language": "Japanese",
+          "translation": "kansha shimasu"
+        }
+      ],
       "sourceTextBlocks": [
         "Children All over the World",
         "Non-English words for \n thank you:",
@@ -25921,40 +25975,42 @@
       "collection": "Children’s Songbook",
       "number": "116",
       "source": "./assets/scores/song-708c0414-b2e0-4f70-b178-88aca2228fa7.mxl",
-      "verses": [
-        {
-          "number": "1",
-          "text": "Matthew, Mark, Luke, John, the Acts and Romans, First and Second Corinthians, Galatians, Ephesians, Philippians, Colossians, First and Second Thessalonians, Timothy, Timothy, Titus, Philemon,",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
-        },
-        {
-          "number": "2",
-          "text": "(fieleemawn)",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        }
-      ],
+      "verses": [],
       "refrains": [
         {
-          "number": "1",
-          "text": "Then to the Hebrews, Epistle of James, Peter, Peter, John, John, John, Jude, Revelation— These are the books of the New Testament.",
+          "number": "",
+          "text": "Matthew, Mark, Luke, John, the Acts and Romans, First and Second Corinthians, Galatians, Ephesians, Philippians, Colossians, First and Second Thessalonians, Timothy, Timothy, Titus, Philemon, Then to the Hebrews, Epistle of James, Peter, Peter, John, John, John, Jude, Revelation— These are the books of the New Testament.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Lyrics"
+        },
+        {
+          "label": "Pronunciation guide (not sung)",
+          "kind": "pronunciation-guide",
+          "text": "Philemon — (fie-lee-mawn)",
+          "sourceText": "(fieleemawn)",
+          "sourcePart": "P1",
+          "sourceVoice": "1"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed CS #116: continuous row-1 sung text, no numbered stanzas or repeated section. Italic parenthesized row 2 aligns with individual words and is pronunciation guidance. Existing named sections show Lyrics and Pronunciation guide (not sung), and Copy retains both. Phonetic hyphens follow source syllabic boundaries; raw guide text and note-aligned entries preserved. No new pronunciation spellings or translations."
+      ],
+      "pronunciationGuides": [
+        {
+          "word": "Philemon,",
+          "text": "(fie-lee-mawn)",
+          "sourceText": "(fieleemawn)",
+          "sourceMeasures": [
+            "X18",
+            "X19"
+          ]
+        }
+      ],
       "sourceTextBlocks": [
         "The Books in the New Testament",
         "Words: \n Anon. © 1978 IRI\n \n\n Music: \n Scottish folk song",

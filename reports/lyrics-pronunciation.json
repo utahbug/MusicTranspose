@@ -1,0 +1,136 @@
+{
+  "startingCommit": "113f89f19ecd4686aaeca56dbcf59347bf5e1c62",
+  "songs": [
+    {
+      "id": "cs-16",
+      "number": "16",
+      "title": "Children All Over the World",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/cs-16.mxl",
+      "pronunciationGuides": [
+        {
+          "word": "“Gracias.”",
+          "text": "(grah-see–ahs)",
+          "sourceText": "(grahsee–ahs)",
+          "sourceMeasures": [
+            "X11"
+          ],
+          "language": "Spanish",
+          "translation": "gracias"
+        },
+        {
+          "word": "“Mālō.”",
+          "text": "(mah-loh)",
+          "sourceText": "(mahloh)",
+          "sourceMeasures": [
+            "X11"
+          ],
+          "language": "Tongan",
+          "translation": "mālō"
+        },
+        {
+          "word": "“Wir danken dir.”",
+          "text": "(veer don-ken deer)",
+          "sourceText": "(veer donken deer)",
+          "sourceMeasures": [
+            "X11",
+            "X12"
+          ],
+          "language": "German",
+          "translation": "wir danken dir"
+        },
+        {
+          "word": "“tak,”",
+          "text": "(tahk)",
+          "sourceText": "(tahk)",
+          "sourceMeasures": [
+            "X15"
+          ],
+          "language": "Danish",
+          "translation": "tak"
+        },
+        {
+          "word": "“merci,”",
+          "text": "(mare-see)",
+          "sourceText": "(maresee)",
+          "sourceMeasures": [
+            "X16"
+          ],
+          "language": "French",
+          "translation": "merci"
+        },
+        {
+          "word": "“Kansha shimasu,”",
+          "text": "(kahn-shah shee-mah-sue)",
+          "sourceText": "(kahnshah sheemahsue)",
+          "sourceMeasures": [
+            "X17"
+          ],
+          "language": "Japanese",
+          "translation": "kansha shimasu"
+        }
+      ],
+      "before": "Principal fragment, false pronunciation Verse 2, Shared ending",
+      "after": "One continuous Lyrics section; separate Pronunciation guide (not sung), included in Copy",
+      "guideDisplay": "Non-English words for thank you:\nSpanish: gracias — (grah-see–ahs)\nTongan: mālō — (mah-loh)\nGerman: wir danken dir — (veer don-ken deer)\nDanish: tak — (tahk)\nFrench: merci — (mare-see)\nJapanese: kansha shimasu — (kahn-shah shee-mah-sue)",
+      "evidence": "P1 voice 1: row 1 continuous sung text; italic parenthesized row 2 aligned on the same notes. No repeats, alternative endings or numbered stanza text.",
+      "blocker": null
+    },
+    {
+      "id": "song-708c0414-b2e0-4f70-b178-88aca2228fa7",
+      "number": "116",
+      "title": "The Books in the New Testament",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-708c0414-b2e0-4f70-b178-88aca2228fa7.mxl",
+      "pronunciationGuides": [
+        {
+          "word": "Philemon,",
+          "text": "(fie-lee-mawn)",
+          "sourceText": "(fieleemawn)",
+          "sourceMeasures": [
+            "X18",
+            "X19"
+          ]
+        }
+      ],
+      "before": "Principal fragment, false pronunciation Verse 2, Shared ending",
+      "after": "One continuous Lyrics section; separate Pronunciation guide (not sung), included in Copy",
+      "guideDisplay": "Philemon — (fie-lee-mawn)",
+      "evidence": "P1 voice 1: row 1 continuous sung text; italic parenthesized row 2 aligned on the same notes. No repeats, alternative endings or numbered stanza text.",
+      "blocker": null
+    }
+  ],
+  "corrected": 2,
+  "sharedEndingBefore": 14,
+  "sharedEndingAfter": 12,
+  "preservation": "Exact continuous source row-1 text and punctuation; literal row-2 streams retained in sourceText. Display hyphens follow source syllabic boundaries. CS16 translations and language names come from source credit words. All other lyric records and original source assets unchanged.",
+  "implementation": "Song-specific extractor mapping using existing named-section rendering; no renderer or application-control changes. Targeted two-record extraction only.",
+  "validation": {
+    "sourceAndReplay": "passed",
+    "responsiveBrowserWidths": [
+      320,
+      390,
+      744,
+      820,
+      1440
+    ],
+    "browser": "passed named sections, exact text, labeled Copy, speaker position/touch targets, overflow and Score transitions",
+    "regressions": {
+      "passed": [
+        "lyrics-frame-copy (5 widths)",
+        "lyrics-audio-copy (5 widths, actual Web Audio)",
+        "lyrics-settings-polish (4 widths)",
+        "score-footer-acceptance (4 widths)",
+        "chord-expansion-batch8-navigation (3 widths)",
+        "lists-accordion-copy (5 widths)",
+        "offline-bulk (controller/worker)",
+        "keyboard-workspace (6 widths)",
+        "metronome-sounds (390/820 widths)",
+        "lyrics-chorus-structure"
+      ],
+      "failures": []
+    },
+    "build": "Python compile, JavaScript syntax, static storage-manifest generation/check and git diff --check passed"
+  },
+  "physicalDeviceTesting": false
+}
