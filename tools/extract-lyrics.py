@@ -293,6 +293,40 @@ for song in catalog:
   assert main['text']==first+' '+last
   main['principalText']=main['text'];main['text']=first
   r['extractionDecisions'].append('Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus.')
+ # Final legacy batch: unmarked common stanza endings stay inside verses.
+ if song['id'] in ('song-53c57be6-2733-45c7-94ad-773835a4fd19','song-ffd5b22c-dacd-462e-9e86-5a887fc3970d','song-dcb0645f-f0b0-4137-a0e4-1bb309078370'):
+  assert len(r['refrains'])==1 and r['refrains'][0]['label']=='Shared ending' and not r['alternateLyrics']
+  assert not root.findall('.//barline/repeat') and not root.findall('.//barline/ending')
+  ending=r['refrains'][0];r['commonEndingSource']=ending
+  for verse in r['verses']:verse['text']+=' '+ending['text']
+  assert r['verses'][0]['text']==stitch(root.findall("part[@id='P1']/measure/note/lyric[@number='1']"))
+  r['refrains']=[];r['notes'].remove('Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.')
+  r['extractionDecisions'].append('Reviewed final unmarked stanza ending: one common lyric row continues the numbered stanzas to the final bar, without named Chorus/Refrain or separate repeat. Include the exact closing text in each complete verse; retain literal ending provenance. No inferred Chorus label.')
+ if song['id']=='hhc-1053':
+  part=root.find("part[@id='P1']");bars={m.get('number'):m for m in part.findall('measure')}
+  def covenants_text(numbers):return stitch([l for number in numbers for l in bars[number].findall("note/lyric[@name='chorus'][@number='1']")])
+  assert bars['19'].find("barline/ending[@type='start']").get('number')=='1' and bars['19'].find('barline/repeat') is not None
+  assert bars['20'].find("barline/ending[@type='start']").get('number')=='2'
+  assert covenants_text(['19'])==covenants_text(['20'])=='day.'
+  chorus=r['refrains'][0];assert len(r['refrains'])==1 and chorus['label']=='Chorus'
+  chorus['principalText']=chorus['text'];chorus['text']=covenants_text([str(n) for n in range(11,20)]);chorus['verses']=['1','2']
+  tag=covenants_text(['21','22','23','24']);assert chorus['principalText']==chorus['text']+' day. '+tag
+  assert len(r['alternateLyrics'])==1;opening=r['alternateLyrics'][0]['text'];assert opening=='On my baptism day, I promise Heav’nly Father'
+  r['refrains'].extend([{'label':'Final tag (after verse 2 and Chorus)','text':tag,'sourceMeasures':['21','22','23','24']},{'label':'Optional baptism-day Chorus opening (replaces opening through Father)','text':opening,'sourceMeasures':['11','12','13']}])
+  r['extractionDecisions'].append('Reviewed My Covenants: two principal verses 3–10, Chorus 11–18 with identical alternative final day in 19/20, included once. Verse 2 continues to final tag 21–24. Row 2 in 11–13 is optional baptism-day opening per source credit, not a third verse or simultaneous voice. Raw principal and alternate streams retained.')
+ if song['id']=='song-dac6f94b-6a48-40de-993c-82bb543bf96d':
+  part=root.find("part[@id='P1']");bars={m.get('number'):m for m in part.findall('measure')}
+  def sunshine_text(part_id,numbers):return stitch([l for m in root.find("part[@id='"+part_id+"']").findall('measure') if m.get('number') in numbers for l in m.findall("note/lyric[@name='chorus']")])
+  assert bars['X17'].find("barline/repeat[@direction='forward']") is not None and bars['X24'].find("barline/repeat[@direction='backward']") is not None
+  assert bars['X23'].find("barline/ending[@type='start']").get('number')=='1' and bars['X25'].find("barline/ending[@type='start']").get('number')=='2'
+  core=[f'X{n}' for n in range(17,23)];first=sunshine_text('P1',['X23','X24']);second=sunshine_text('P1',['X25','X26']);assert first==second=='Ev’ry passing day.'
+  chorus=r['refrains'][0];assert len(r['refrains'])==1 and chorus['label']=='Chorus';chorus['principalText']=chorus['text']
+  passage=sunshine_text('P1',core);assert chorus['text']==passage+' '+first+' '+second
+  chorus['text']=passage+' '+first+'\n'+passage+' '+second;chorus['verses']=['1','2','3']
+  assert len(r['alternateLyrics'])==1;lower=r['alternateLyrics'][0]['text'];assert lower==sunshine_text('P2',core+['X23','X24'])
+  assert not sunshine_text('P2',['X25','X26'])
+  r['refrains'].extend([{'label':'Overlapping chorus part (both passes; lower ending on first pass only)','text':lower+'\n'+sunshine_text('P2',core),'sourceText':lower},{'label':'Chorus repeat instruction (not sung)','text':'Sing the Chorus twice after each verse, using the first ending and then the second. Both passes are shown above.'}])
+  r['extractionDecisions'].append('Reviewed Scatter Sunshine: three verses; explicit Chorus repeats X17–24 then X17–22/X25–26. Display two complete passes, never consecutive alternative endings. Preserve different P2 overlapping text separately in those same paths; no invented P2 second-ending words. Literal source streams retained.')
  # Reviewed overlapping lower chorus parts: show literal parallel text using
  # existing named sections, never as a fifth verse or a sequential echo.
  overlapping_hymns=('song-3bf93f00-922d-488b-9a10-9af10ffefdac','song-871573d0-1157-4bec-9ab4-c4155f9ba449','song-2afc0981-e463-470e-8cab-632d0b0b57e6','song-95e908ac-a3bd-4000-a45b-6ee588196bdf')
@@ -376,7 +410,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7',*overlapping_hymns):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','hhc-1053','song-dac6f94b-6a48-40de-993c-82bb543bf96d','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7',*overlapping_hymns):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')

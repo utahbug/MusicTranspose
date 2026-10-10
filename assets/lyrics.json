@@ -2909,7 +2909,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "I will walk the path Jesus has prepared, Keeping His commandments true. I will live each day in the Savior’s way, As He’s shown me how to do. Ev’ry day, I will keep my cov’nants with the Father;",
+          "text": "I will walk the path Jesus has prepared, Keeping His commandments true. I will live each day in the Savior’s way, As He’s shown me how to do.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -2917,7 +2917,7 @@
         },
         {
           "number": "2",
-          "text": "With the Holy Ghost, I begin to feel Power sent from God above. With this holy strength, I can grow in faith, Serving others with God’s love. On my baptism day, I promise Heav’nly Father",
+          "text": "With the Holy Ghost, I begin to feel Power sent from God above. With this holy strength, I can grow in faith, Serving others with God’s love.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -2927,19 +2927,52 @@
       "refrains": [
         {
           "number": "1",
-          "text": "I will try to live in His way. As I strive to obey, He promises His Spirit Will be with me, guiding me each day. day. I will live each day in the Savior’s way, As He’s shown me how to do.",
+          "text": "Ev’ry day, I will keep my cov’nants with the Father; I will try to live in His way. As I strive to obey, He promises His Spirit Will be with me, guiding me each day.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Ev’ry day, I will keep my cov’nants with the Father; I will try to live in His way. As I strive to obey, He promises His Spirit Will be with me, guiding me each day. day. I will live each day in the Savior’s way, As He’s shown me how to do.",
+          "verses": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "label": "Final tag (after verse 2 and Chorus)",
+          "text": "I will live each day in the Savior’s way, As He’s shown me how to do.",
+          "sourceMeasures": [
+            "21",
+            "22",
+            "23",
+            "24"
+          ]
+        },
+        {
+          "label": "Optional baptism-day Chorus opening (replaces opening through Father)",
+          "text": "On my baptism day, I promise Heav’nly Father",
+          "sourceMeasures": [
+            "11",
+            "12",
+            "13"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "On my baptism day, I promise Heav’nly Father"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed My Covenants: two principal verses 3–10, Chorus 11–18 with identical alternative final day in 19/20, included once. Verse 2 continues to final tag 21–24. Row 2 in 11–13 is optional baptism-day opening per source credit, not a third verse or simultaneous voice. Raw principal and alternate streams retained."
+      ],
       "sourceTextBlocks": [
         "title\n My Covenants",
         "John 14:6 | Mosiah 18:10",
@@ -6018,13 +6051,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -16202,7 +16233,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "Hark! The herald angels sing Glory to the newborn King! Peace on earth and mercy mild, God and sinners reconciled! Joyful, all ye nations, rise; Join the triumph of the skies; With th’angelic host proclaim Christ is born in Bethlehem!",
+          "text": "Hark! The herald angels sing Glory to the newborn King! Peace on earth and mercy mild, God and sinners reconciled! Joyful, all ye nations, rise; Join the triumph of the skies; With th’angelic host proclaim Christ is born in Bethlehem! Hark! The herald angels sing Glory to the newborn King!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -16210,29 +16241,28 @@
         },
         {
           "number": "2",
-          "text": "Hail the heav’nborn Prince of Peace! Hail the Son of Righteousness! Light and life to all he brings, Ris’n with healing in his wings. Mild he lays his glory by, Born that man no more may die; Born to raise the sons of earth, Born to give them second birth.",
+          "text": "Hail the heav’nborn Prince of Peace! Hail the Son of Righteousness! Light and life to all he brings, Ris’n with healing in his wings. Mild he lays his glory by, Born that man no more may die; Born to raise the sons of earth, Born to give them second birth. Hark! The herald angels sing Glory to the newborn King!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 2"
         }
       ],
-      "refrains": [
-        {
-          "number": "1",
-          "text": "Hark! The herald angels sing Glory to the newborn King!",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Shared ending"
-        }
-      ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "refrains": [],
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed final unmarked stanza ending: one common lyric row continues the numbered stanzas to the final bar, without named Chorus/Refrain or separate repeat. Include the exact closing text in each complete verse; retain literal ending provenance. No inferred Chorus label."
+      ],
+      "commonEndingSource": {
+        "number": "1",
+        "text": "Hark! The herald angels sing Glory to the newborn King!",
+        "sourcePart": "P1",
+        "sourceVoice": "1",
+        "kind": "note-lyrics",
+        "label": "Shared ending"
+      },
       "sourceTextBlocks": [
         "Hark! The Herald Angels Sing",
         "209",
@@ -17295,14 +17325,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Scatter the smiles and sunshine all along over your way. Ev’ry passing, passing day.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "When the days are gloomy, Sing some happy song; Meet the world’s repining With a courage strong. Go with faith undaunted Thru the ills of life; Scatter smiles and sunshine O’er its toil and strife.",
           "sourcePart": "P1",
@@ -17314,28 +17336,50 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Scatter sunshine all along your way. Cheer and bless and brighten Ev’ry passing day. Ev’ry passing day.",
+          "text": "Scatter sunshine all along your way. Cheer and bless and brighten Ev’ry passing day.\nScatter sunshine all along your way. Cheer and bless and brighten Ev’ry passing day.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Scatter sunshine all along your way. Cheer and bless and brighten Ev’ry passing day. Ev’ry passing day.",
+          "verses": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "label": "Overlapping chorus part (both passes; lower ending on first pass only)",
+          "text": "Scatter the smiles and sunshine all along over your way. Ev’ry passing, passing day.\nScatter the smiles and sunshine all along over your way.",
+          "sourceText": "Scatter the smiles and sunshine all along over your way. Ev’ry passing, passing day."
+        },
+        {
+          "label": "Chorus repeat instruction (not sung)",
+          "text": "Sing the Chorus twice after each verse, using the first ending and then the second. Both passes are shown above."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Scatter the smiles and sunshine all along over your way. Ev’ry passing, passing day."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Scatter Sunshine: three verses; explicit Chorus repeats X17–24 then X17–22/X25–26. Display two complete passes, never consecutive alternative endings. Preserve different P2 overlapping text separately in those same paths; no invented P2 second-ending words. Literal source streams retained."
+      ],
       "sourceTextBlocks": [
         "Scatter Sunshine",
         "230",
         "Text: \n Lanta Wilson Smith, 1856–1939\n\n Music: \n Edwin O. Excell, 1851–1921",
         "Psalm 100:2\nJames 1:27"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-88bb06ac-53f3-47c3-808d-8a8746388aeb",
@@ -23152,7 +23196,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "Can a little child like me Thank the Father fittingly? Yes, oh yes! Be good and true, Patient, kind in all you do! Love the Lord and do your part; Learn to say with all your heart:",
+          "text": "Can a little child like me Thank the Father fittingly? Yes, oh yes! Be good and true, Patient, kind in all you do! Love the Lord and do your part; Learn to say with all your heart: Father, we thank thee! Father, we thank thee! Father in Heaven, we thank thee!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -23160,29 +23204,28 @@
         },
         {
           "number": "2",
-          "text": "For the fruit upon the tree, For the birds that sing of thee, For the sunshine warm and bright, For the day and for the night, For the joyful work and true That a little child may do,",
+          "text": "For the fruit upon the tree, For the birds that sing of thee, For the sunshine warm and bright, For the day and for the night, For the joyful work and true That a little child may do, Father, we thank thee! Father, we thank thee! Father in Heaven, we thank thee!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 2"
         }
       ],
-      "refrains": [
-        {
-          "number": "1",
-          "text": "Father, we thank thee! Father, we thank thee! Father in Heaven, we thank thee!",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Shared ending"
-        }
-      ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "refrains": [],
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed final unmarked stanza ending: one common lyric row continues the numbered stanzas to the final bar, without named Chorus/Refrain or separate repeat. Include the exact closing text in each complete verse; retain literal ending provenance. No inferred Chorus label."
+      ],
+      "commonEndingSource": {
+        "number": "1",
+        "text": "Father, we thank thee! Father, we thank thee! Father in Heaven, we thank thee!",
+        "sourcePart": "P1",
+        "sourceVoice": "1",
+        "kind": "note-lyrics",
+        "label": "Shared ending"
+      },
       "sourceTextBlocks": [
         "Words: \n Mary M. Dodge, about 1831–1905\n \n\n Music: \n W. K. Bassford, 1839–1902",
         "Doctrine and Covenants 59:7\n1 Thessalonians 2:13; Psalm 100:4",
@@ -30166,7 +30209,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "I know you, and you know me. We are as diff’rent as the sun and the sea. I know you, and you know me,",
+          "text": "I know you, and you know me. We are as diff’rent as the sun and the sea. I know you, and you know me, And that’s the way that it’s supposed to be.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -30174,7 +30217,7 @@
         },
         {
           "number": "2",
-          "text": "I help you, and you help me. We learn from problems, and we’re starting to see. I help you, and you help me,",
+          "text": "I help you, and you help me. We learn from problems, and we’re starting to see. I help you, and you help me, And that’s the way that it’s supposed to be.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
@@ -30182,29 +30225,28 @@
         },
         {
           "number": "3",
-          "text": "I love you, and you love me. We reach together for the best we can be. I love you, and you love me,",
+          "text": "I love you, and you love me. We reach together for the best we can be. I love you, and you love me, And that’s the way that it’s supposed to be.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 3"
         }
       ],
-      "refrains": [
-        {
-          "number": "1",
-          "text": "And that’s the way that it’s supposed to be.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Shared ending"
-        }
-      ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "refrains": [],
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed final unmarked stanza ending: one common lyric row continues the numbered stanzas to the final bar, without named Chorus/Refrain or separate repeat. Include the exact closing text in each complete verse; retain literal ending provenance. No inferred Chorus label."
+      ],
+      "commonEndingSource": {
+        "number": "1",
+        "text": "And that’s the way that it’s supposed to be.",
+        "sourcePart": "P1",
+        "sourceVoice": "1",
+        "kind": "note-lyrics",
+        "label": "Shared ending"
+      },
       "sourceTextBlocks": [
         "We Are Different",
         "Words and music: \n Patricia Kelsey Graham, b. 1940. © 1989 IRI"

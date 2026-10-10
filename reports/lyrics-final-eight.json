@@ -1,0 +1,398 @@
+{
+  "startingCommit": "a87a6ca3c3d6d3ea6f193b650f8968fd2f49776b",
+  "historicalCount": {
+    "verifiedAt": "57328ea and 833e96a",
+    "original": 91,
+    "previouslyResolved": 83,
+    "remainingAtStart": 8
+  },
+  "songs": [
+    {
+      "id": "hhc-1053",
+      "number": "1053",
+      "title": "My Covenants",
+      "collection": "Hymns for Home and Church",
+      "source": "./assets/scores/hhc-1053.mxl",
+      "status": "corrected",
+      "structure": "Two principal verses (3–10); explicit Chorus 11–18, alternative day endings 19/20, final tag 21–24; optional baptism opening 11–13.",
+      "correction": "Corrected: one ending word per Chorus, final tag after verse 2, separately labeled optional opening. Raw streams retained.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "verse",
+          "first": "3",
+          "last": "10",
+          "text": "I will walk the path Jesus has prepared, Keeping His commandments true. I will live each day in the Savior’s way, As He’s shown me how to do."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": "verse",
+          "first": "3",
+          "last": "10",
+          "text": "With the Holy Ghost, I begin to feel Power sent from God above. With this holy strength, I can grow in faith, Serving others with God’s love."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "chorus",
+          "first": "11",
+          "last": "24",
+          "text": "Ev’ry day, I will keep my cov’nants with the Father; I will try to live in His way. As I strive to obey, He promises His Spirit Will be with me, guiding me each day. day. I will live each day in the Savior’s way, As He’s shown me how to do."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": "chorus",
+          "first": "11",
+          "last": "13",
+          "text": "On my baptism day, I promise Heav’nly Father"
+        }
+      ]
+    },
+    {
+      "id": "song-a13c43da-0243-4019-ad08-d7be530074f5",
+      "number": "2",
+      "title": "The Spirit of God",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-a13c43da-0243-4019-ad08-d7be530074f5.mxl",
+      "status": "corrected",
+      "structure": "Four principal verses through X19; explicitly named Chorus X20–X39.",
+      "correction": "Corrected: independent Chorus after all four verses; previous latter-day spelling correction retained.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "verse",
+          "first": "0",
+          "last": "X19",
+          "text": "The Spirit of God like a fire is burning! The latterday glory begins to come forth; The visions and blessings of old are returning, And angels are coming to visit the earth."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": "verse",
+          "first": "0",
+          "last": "X19",
+          "text": "The Lord is extending the Saints’ understanding, Restoring their judges and all as at first. The knowledge and power of God are expanding; The veil o’er the earth is beginning to burst."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "3",
+          "section": "verse",
+          "first": "0",
+          "last": "X19",
+          "text": "We’ll call in our solemn assemblies in spirit, To spread forth the kingdom of heaven abroad, That we through our faith may begin to inherit The visions and blessings and glories of God."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "4",
+          "section": "verse",
+          "first": "0",
+          "last": "X19",
+          "text": "How blessed the day when the lamb and the lion Shall lie down together without any ire, And Ephraim be crowned with his blessing in Zion, As Jesus descends with his chariot of fire!"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "chorus",
+          "first": "X20",
+          "last": "X39",
+          "text": "We’ll sing and we’ll shout with the armies of heaven, Hosanna, hosanna to God and the Lamb! Let glory to them in the highest be given, Henceforth and forever, Amen and amen!"
+        }
+      ]
+    },
+    {
+      "id": "song-53c57be6-2733-45c7-94ad-773835a4fd19",
+      "number": "209",
+      "title": "Hark! The Herald Angels Sing",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-53c57be6-2733-45c7-94ad-773835a4fd19.mxl",
+      "status": "corrected",
+      "structure": "Two numbered stanzas 0–X15; unmarked common final couplet X16–X19, no separate section or repeat.",
+      "correction": "Corrected: exact common closing text integrated into both complete verses, no invented Chorus.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": null,
+          "first": "0",
+          "last": "X19",
+          "text": "Hark! The herald angels sing Glory to the newborn King! Peace on earth and mercy mild, God and sinners reconciled! Joyful, all ye nations, rise; Join the triumph of the skies; With th’angelic host proclaim Christ is born in Bethlehem! Hark! The herald angels sing Glory to the newborn King!"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": null,
+          "first": "0",
+          "last": "X15",
+          "text": "Hail the heav’nborn Prince of Peace! Hail the Son of Righteousness! Light and life to all he brings, Ris’n with healing in his wings. Mild he lays his glory by, Born that man no more may die; Born to raise the sons of earth, Born to give them second birth."
+        }
+      ]
+    },
+    {
+      "id": "song-dac6f94b-6a48-40de-993c-82bb543bf96d",
+      "number": "230",
+      "title": "Scatter Sunshine",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-dac6f94b-6a48-40de-993c-82bb543bf96d.mxl",
+      "status": "corrected",
+      "structure": "Three verses 0–X16; Chorus repeat begins X17, first ending X23–24 and backward repeat, second ending X25–26. P2 complementary overlapping words X17–20 and first ending X23–24.",
+      "correction": "Corrected: two complete Chorus passes after each verse; lower-part paths separately labeled. Repeat instruction is labeled not sung. Literal source streams retained.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "verse",
+          "first": "0",
+          "last": "X16",
+          "text": "In a world where sorrow Ever will be known, Where are found the needy And the sad and lone, How much joy and comfort You can all bestow, If you scatter sunshine Ev’rywhere you go."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": "verse",
+          "first": "0",
+          "last": "X16",
+          "text": "Slightest actions often Meet the sorest needs, For the world wants daily Little kindly deeds. Oh, what care and sorrow You may help remove, With your songs and courage, Sympathy and love."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "3",
+          "section": "verse",
+          "first": "0",
+          "last": "X16",
+          "text": "When the days are gloomy, Sing some happy song; Meet the world’s repining With a courage strong. Go with faith undaunted Thru the ills of life; Scatter smiles and sunshine O’er its toil and strife."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": "chorus",
+          "first": "X17",
+          "last": "X26",
+          "text": "Scatter sunshine all along your way. Cheer and bless and brighten Ev’ry passing day. Ev’ry passing day."
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "2",
+          "section": "chorus",
+          "first": "X17",
+          "last": "X24",
+          "text": "Scatter the smiles and sunshine all along over your way. Ev’ry passing, passing day."
+        }
+      ]
+    },
+    {
+      "id": "song-ffd5b22c-dacd-462e-9e86-5a887fc3970d",
+      "number": "9",
+      "title": "Can a Little Child like Me?",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-ffd5b22c-dacd-462e-9e86-5a887fc3970d.mxl",
+      "status": "corrected",
+      "structure": "Two numbered stanzas through X11; unmarked common thanksgiving passage X12–X19. No repeat or named Chorus/Refrain.",
+      "correction": "Corrected: exact common ending integrated into both complete verses.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": null,
+          "first": "0",
+          "last": "X19",
+          "text": "Can a little child like me Thank the Father fittingly? Yes, oh yes! Be good and true, Patient, kind in all you do! Love the Lord and do your part; Learn to say with all your heart: Father, we thank thee! Father, we thank thee! Father in Heaven, we thank thee!"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": null,
+          "first": "0",
+          "last": "X11",
+          "text": "For the fruit upon the tree, For the birds that sing of thee, For the sunshine warm and bright, For the day and for the night, For the joyful work and true That a little child may do,"
+        }
+      ]
+    },
+    {
+      "id": "song-97b815d1-3074-402d-87dc-054a26201437",
+      "number": "178",
+      "title": "Teacher, Do You Love Me?",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-97b815d1-3074-402d-87dc-054a26201437.mxl",
+      "status": "deferred",
+      "structure": "Two child stanzas (5–12) with alternative endings 13–14/15–17; explicit Chorus 18–26; two teacher responses 27–34 with alternatives 35–36/37–39. Return pickup at 40, D.S. al Coda, coda 41–43; first Chorus child-only, second duet.",
+      "correction": "Deferred unchanged, including unavailable status.",
+      "blocker": "Existing per-verse disclosures and appended named sections cannot express role changes, return pickups, and first/second Chorus routes reliably. Needs reviewed role/section sequencing with explicit alternative paths and coda destination; do not flatten teacher responses into Chorus.",
+      "preservation": "Entire record and availability identical to baseline.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": null,
+          "first": "5",
+          "last": "43",
+          "text": "Teacher*, do you love me? Teacher*, will you care for me? Even if I turn away, or disobey, or go astray, Then will you love me still? lead me safely with his light. I need your love, I need your light To show me how to be like Jesus. The Savior’s love will light the path To lead me safely home. Oh yes, my child, I love you. My child, I’ll always care for you. And with the Savior as our guide, I’ll share the light I feel inside, And you will feel his love for you. Oh, lead us with his light. I lead us safely home."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": null,
+          "first": "5",
+          "last": "34",
+          "text": "Teacher*, will you teach me? Teacher*, help me choose the right. When I do not understand the Lord’s command, please take my hand And yes, my child, I’ll teach you. My child, I’ll help you choose the right. And when you do not understand The Lord’s command, I’ll take your hand, And he will"
+        }
+      ]
+    },
+    {
+      "id": "song-be95cf4e-2b13-4a09-a71b-52ef90125517",
+      "number": "182",
+      "title": "How Will They Know?",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-be95cf4e-2b13-4a09-a71b-52ef90125517.mxl",
+      "status": "deferred",
+      "structure": "Two initial principal stanzas in P2 X3–21 with first/second endings; optional verse-2 descant in P1 X4–21. Later unnumbered vocal sections X22–49 and overlapping voices X50–59. Rows 5/6 are vocal underlay identifiers, not principal verse numbers.",
+      "correction": "Deferred unchanged, including unavailable status.",
+      "blocker": "Needs part-aware reconstruction of the pickup/ending paths, optional descant applicability, and later soprano/alto text. Raw P1 voice-2 text stops at That God is; do not invent its continuation or assume principal verses 5/6. A role-aware section/parallel-part presentation needs review before implementation.",
+      "preservation": "Entire record and availability identical to baseline.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "5",
+          "section": null,
+          "first": "X4",
+          "last": "X59",
+          "text": "How will they know That if they stray God will forgive and help them find the way? How will they feel the Spirit day by day? How will they know unless we teach them so? How will they grow un wisdom and delight? How will they choose to follow what is right? How can they trust the future will be bright? How will they know unless we show them? How will they live when they at last are grown? What will they give to children of their own? Will they reflect the values we have shown? How will they know? as on they go? know unless we strive to teach them so?"
+        },
+        {
+          "part": "P1",
+          "voice": "2",
+          "row": "6",
+          "section": null,
+          "first": "X50",
+          "last": "X54",
+          "text": "How will they know, the ones for whom we care, That God is"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "1",
+          "section": null,
+          "first": "X3",
+          "last": "X21",
+          "text": "How will they know, the ones for whom we care, That God is love and with us ev’rywhere, That life is good, with blessings all can share? How will they know unless we teach them so? 2. How will they teach them so?"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "2",
+          "section": null,
+          "first": "X4",
+          "last": "X14",
+          "text": "(2.) learn that, though they go astray, God will forgive and help them find the way? How will they feel the Spirit day by day?"
+        }
+      ]
+    },
+    {
+      "id": "song-dcb0645f-f0b0-4137-a0e4-1bb309078370",
+      "number": "263",
+      "title": "We Are Different",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-dcb0645f-f0b0-4137-a0e4-1bb309078370.mxl",
+      "status": "corrected",
+      "structure": "Three numbered stanza openings through X5; common final sentence X6–X7 without Chorus metadata or repeat.",
+      "correction": "Corrected: exact final sentence integrated into each of the three verses.",
+      "blocker": null,
+      "preservation": "Exact source lyric streams preserved, with explicit source-backed repeat/common-ending assembly. Targeted replay passed.",
+      "sourceStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "section": null,
+          "first": "0",
+          "last": "X7",
+          "text": "I know you, and you know me. We are as diff’rent as the sun and the sea. I know you, and you know me, And that’s the way that it’s supposed to be."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "section": null,
+          "first": "0",
+          "last": "X5",
+          "text": "I help you, and you help me. We learn from problems, and we’re starting to see. I help you, and you help me,"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "3",
+          "section": null,
+          "first": "0",
+          "last": "X5",
+          "text": "I love you, and you love me. We reach together for the best we can be. I love you, and you love me,"
+        }
+      ]
+    }
+  ],
+  "corrected": 6,
+  "deferred": 2,
+  "remainingSharedEnding": 2,
+  "validation": {
+    "preservationAndReplay": "passed; all unrelated records and source MXL files unchanged",
+    "browserAndRegressions": {
+      "focusedWidths": [
+        320,
+        390,
+        744,
+        820,
+        1440
+      ],
+      "focused": "All six corrected records passed exact rendered text, applicable independent disclosures, complete Copy, speaker/touch geometry, default frame, overflow and Score transitions.",
+      "passed": [
+        "lyrics-frame-copy (5 widths)",
+        "lyrics-audio-copy (5 widths, actual Web Audio)",
+        "lyrics-settings-polish (4 widths)",
+        "score-footer-acceptance (4 widths)",
+        "chord-expansion-batch8-navigation (3 widths)",
+        "lists-accordion-copy (5 widths)",
+        "offline-bulk controller/worker",
+        "keyboard-workspace (6 widths)",
+        "metronome-sounds (390/820)",
+        "lyrics-chorus-structure",
+        "eight current catalog identities"
+      ],
+      "failures": []
+    },
+    "build": "Python compile, JavaScript syntax, static storage-manifest generation/check and git diff --check passed"
+  },
+  "physicalDeviceTesting": false
+}
