@@ -8538,14 +8538,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Beautiful day of peace and rest, Bright be thy dawn from east to west. Hail to thine earliest welcome ray, Beautiful, bright, millennial day.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Still let us be doing, our lessons reviewing, Which God has revealed for our walk in his way; And then, wondrous story, the Lord in his glory Will come in his pow’r in the beautiful day.",
           "sourcePart": "P1",
@@ -8569,24 +8561,55 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "text": "Beautiful day of peace and rest, Bright be thy dawn from east to west. Hail to thine earliest welcome ray, Beautiful, bright, millennial day.",
+          "sourcePart": "P2",
+          "sourceVoice": "1",
+          "number": "",
+          "label": "Overlapping chorus part (sung with Chorus)",
+          "kind": "overlapping-chorus",
+          "sourceMeasures": [
+            "X18",
+            "X19",
+            "X20",
+            "X21",
+            "X22",
+            "X23",
+            "X24",
+            "X25"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Beautiful day of peace and rest, Bright be thy dawn from east to west. Hail to thine earliest welcome ray, Beautiful, bright, millennial day."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #52: four P1 numbered verses followed by explicitly named chorus streams. P2 row 2 is overlapping chorus underlay, not another verse. Staggered entries and converging words are not sequential echoes; display its exact literal stream once in an existing named section labeled sung with Chorus. Independent principal Chorus after verses 1–4. No inline expansion or invented continuation of the lower stream."
+      ],
       "sourceTextBlocks": [
         "The Day Dawn Is Breaking",
         "52",
         "Text: \n Joseph L. Townsend, 1849–1942\n\n Music: \n William Clayson, 1840–1887",
         "Doctrine and Covenants 29:11\nDoctrine and Covenants 45:59"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-304bfc2f-cdb8-4ab3-901f-d051217fca89",
@@ -12997,14 +13020,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "May my heart be turned to pray, Pray in secret day by day, That this boon to mortals giv’n",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "When sailing on life’s stormy sea, ’Mid billows of despair, ’Tis solace to my soul to know God hears my secret prayer.",
           "sourcePart": "P1",
@@ -13028,24 +13043,53 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "text": "May my heart be turned to pray, Pray in secret day by day, That this boon to mortals giv’n",
+          "sourcePart": "P2",
+          "sourceVoice": "1",
+          "number": "",
+          "label": "Overlapping chorus part (sung with Chorus)",
+          "kind": "overlapping-chorus",
+          "sourceMeasures": [
+            "X11",
+            "X12",
+            "X13",
+            "X14",
+            "X16",
+            "X17"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "May my heart be turned to pray, Pray in secret day by day, That this boon to mortals giv’n"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #144: four P1 numbered verses followed by explicitly named chorus streams. P2 row 2 is overlapping chorus underlay, not another verse. Staggered entries and converging words are not sequential echoes; display its exact literal stream once in an existing named section labeled sung with Chorus. Independent principal Chorus after verses 1–4. No inline expansion or invented continuation of the lower stream."
+      ],
       "sourceTextBlocks": [
         "Text and music: \n Hans Henry Petersen, 1835–1909",
         "Matthew 6:6\nAlma 33:3–11",
         "Secret Prayer",
         "144"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-2a8dce03-f1ae-4c0e-9557-9ce18a86d1e4",
@@ -17801,14 +17845,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Count your many blessings; Name them one by one. Count your many blessings; See what God hath done. Count your many blessings;",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "When you look at others with their lands and gold, Think that Christ has promised you his wealth untold. Count your many blessings; money cannot buy Your reward in heaven nor your home on high.",
           "sourcePart": "P1",
@@ -17832,24 +17868,57 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "text": "Count your many blessings; Name them one by one. Count your many blessings; See what God hath done. Count your many blessings;",
+          "sourcePart": "P2",
+          "sourceVoice": "1",
+          "number": "",
+          "label": "Overlapping chorus part (sung with Chorus)",
+          "kind": "overlapping-chorus",
+          "sourceMeasures": [
+            "X16",
+            "X17",
+            "X18",
+            "X19",
+            "X20",
+            "X21",
+            "X22",
+            "X23",
+            "X24",
+            "X25"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Count your many blessings; Name them one by one. Count your many blessings; See what God hath done. Count your many blessings;"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #241: four P1 numbered verses followed by explicitly named chorus streams. P2 row 2 is overlapping chorus underlay, not another verse. Staggered entries and converging words are not sequential echoes; display its exact literal stream once in an existing named section labeled sung with Chorus. Independent principal Chorus after verses 1–4. No inline expansion or invented continuation of the lower stream."
+      ],
       "sourceTextBlocks": [
         "Count Your Blessings",
         "241",
         "Text: \n Johnson Oatman Jr., 1856–1922\n\n Music: \n Edwin O. Excell, 1851–1921",
         "Doctrine and Covenants 78:17–19\nAlma 34:38"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-d5aeab67-a5b8-40e7-8770-9fb1d42000e5",
@@ -18068,14 +18137,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "war, With the cross of Jesus",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Like a mighty army Moves the Church of God; Brothers, we are treading Where the Saints have trod. We are not divided; All one body we: One in hope and doctrine, One in charity.",
           "sourcePart": "P1",
@@ -18099,24 +18160,50 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "text": "war, With the cross of Jesus",
+          "sourcePart": "P2",
+          "sourceVoice": "1",
+          "number": "",
+          "label": "Overlapping chorus part (sung with Chorus)",
+          "kind": "overlapping-chorus",
+          "sourceMeasures": [
+            "X19",
+            "X20",
+            "X21"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "war, With the cross of Jesus"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #246: four P1 numbered verses followed by explicitly named chorus streams. P2 row 2 is overlapping chorus underlay, not another verse. Staggered entries and converging words are not sequential echoes; display its exact literal stream once in an existing named section labeled sung with Chorus. Independent principal Chorus after verses 1–4. No inline expansion or invented continuation of the lower stream."
+      ],
       "sourceTextBlocks": [
         "Onward, Christian Soldiers",
         "246",
         "Text: \n Sabine Baring-Gould, 1834–1924\n\n Music: \n Arthur S. Sullivan, 1842–1900",
         "Deuteronomy 31:6\n2 Timothy 2:3"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-594050fa-1cd4-4509-8c3a-54dc9cf5de24",

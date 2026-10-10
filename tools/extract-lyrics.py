@@ -293,6 +293,24 @@ for song in catalog:
   assert main['text']==first+' '+last
   main['principalText']=main['text'];main['text']=first
   r['extractionDecisions'].append('Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus.')
+ # Reviewed overlapping lower chorus parts: show literal parallel text using
+ # existing named sections, never as a fifth verse or a sequential echo.
+ overlapping_hymns=('song-3bf93f00-922d-488b-9a10-9af10ffefdac','song-871573d0-1157-4bec-9ab4-c4155f9ba449','song-2afc0981-e463-470e-8cab-632d0b0b57e6','song-95e908ac-a3bd-4000-a45b-6ee588196bdf')
+ if song['id'] in overlapping_hymns:
+  principal=root.find("part[@id='P1']");lower=root.find("part[@id='P2']")
+  verses=[v for v in r['verses'] if v.get('sourcePart')=='P1']
+  assert [v['number'] for v in verses]==['1','2','3','4']
+  for v in verses:assert v['text']==stitch(principal.findall("measure/note/lyric[@name='verse'][@number='"+v['number']+"']"))
+  main=stitch(principal.findall("measure/note/lyric[@name='chorus']"));secondary=stitch(lower.findall("measure/note/lyric[@name='chorus']"))
+  assert len(r['refrains'])==1 and r['refrains'][0]['text']==main
+  assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==secondary
+  assert r['alternateLyrics'][0]['part']=='P2' and r['alternateLyrics'][0]['voice']=='1'
+  assert len(r['verses'])==4
+  chorus=r['refrains'][0];chorus['label']='Chorus';chorus['verses']=['1','2','3','4']
+  r['verses']=verses
+  r['refrains'].append({'text':secondary,'sourcePart':'P2','sourceVoice':'1','number':'','label':'Overlapping chorus part (sung with Chorus)','kind':'overlapping-chorus','sourceMeasures':[m.get('number') for m in lower.findall('measure') if m.findall("note/lyric[@name='chorus']")]})
+  assert not r['notes']
+  r['extractionDecisions'].append('Reviewed Hymns #'+str(song.get('page'))+': four P1 numbered verses followed by explicitly named chorus streams. P2 row 2 is overlapping chorus underlay, not another verse. Staggered entries and converging words are not sequential echoes; display its exact literal stream once in an existing named section labeled sung with Chorus. Independent principal Chorus after verses 1–4. No inline expansion or invented continuation of the lower stream.')
  if song['id'] in ('cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7'):
   # These two reviewed row-2 streams are italic pronunciation underlay, not
   # sung verses. Existing non-repeated named sections need no renderer change.
@@ -358,7 +376,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7'):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7',*overlapping_hymns):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')

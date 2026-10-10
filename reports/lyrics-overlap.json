@@ -1,0 +1,147 @@
+{
+  "startingCommit": "f759a01fcaf9f5e34a518cdf7aded94e7c373fef",
+  "songs": [
+    {
+      "id": "song-3bf93f00-922d-488b-9a10-9af10ffefdac",
+      "number": "52",
+      "title": "The Day Dawn Is Breaking",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-3bf93f00-922d-488b-9a10-9af10ffefdac.mxl",
+      "status": "corrected",
+      "before": "Four principal verses plus a false lower-part Verse 2 and legacy Shared ending; unavailable.",
+      "after": "Four principal verses, independent Chorus after each; exact lower chorus stream shown once in existing named section: Overlapping chorus part (sung with Chorus).",
+      "principalVerseCount": 4,
+      "principalChorus": "Beautiful day of peace and rest, Bright be thy dawn from east to west. Hail to thine earliest welcome ray, Beautiful, bright, millennial day.",
+      "lowerChorus": "Beautiful day of peace and rest, Bright be thy dawn from east to west. Hail to thine earliest welcome ray, Beautiful, bright, millennial day.",
+      "lowerMeasures": [
+        "X18",
+        "X19",
+        "X20",
+        "X21",
+        "X22",
+        "X23",
+        "X24",
+        "X25"
+      ],
+      "timingEvidence": "P1 Beautiful starts X17 onset 0; P2 Beautiful starts X18 onset 0 with P1 day. Staggered phrases converge at X22 earliest and X25 day. Both streams have identical words, not sequential repetitions.",
+      "timingUnit": "Quarter-note offsets within the source measure (0-based).",
+      "classificationEvidence": "P1 note lyrics name=verse, numbers 1–4; P1 and P2 note lyrics explicitly name=chorus, numbers 1 and 2 respectively.",
+      "presentationReason": "Staggered phrases converge with principal words; sequential parenthesized echoes would imply extra repetitions. Existing named sections retain literal parallel underlay without changing renderer architecture.",
+      "blocker": null
+    },
+    {
+      "id": "song-871573d0-1157-4bec-9ab4-c4155f9ba449",
+      "number": "144",
+      "title": "Secret Prayer",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-871573d0-1157-4bec-9ab4-c4155f9ba449.mxl",
+      "status": "corrected",
+      "before": "Four principal verses plus a false lower-part Verse 2 and legacy Shared ending; unavailable.",
+      "after": "Four principal verses, independent Chorus after each; exact lower chorus stream shown once in existing named section: Overlapping chorus part (sung with Chorus).",
+      "principalVerseCount": 4,
+      "principalChorus": "May my heart be turned to pray, Pray in secret day by day, That this boon to mortals giv’n May unite my soul with heav’n.",
+      "lowerChorus": "May my heart be turned to pray, Pray in secret day by day, That this boon to mortals giv’n",
+      "lowerMeasures": [
+        "X11",
+        "X12",
+        "X13",
+        "X14",
+        "X16",
+        "X17"
+      ],
+      "timingEvidence": "P1 May my starts X10; P2 May my starts X11 while P1 heart begins. Similar delayed entries at X13 and X16. P2 giv’n X17 onset 2 overlaps the principal held giv’n; final principal phrase follows at onset 3.",
+      "timingUnit": "Quarter-note offsets within the source measure (0-based).",
+      "classificationEvidence": "P1 note lyrics name=verse, numbers 1–4; P1 and P2 note lyrics explicitly name=chorus, numbers 1 and 2 respectively.",
+      "presentationReason": "Staggered phrases converge with principal words; sequential parenthesized echoes would imply extra repetitions. Existing named sections retain literal parallel underlay without changing renderer architecture.",
+      "blocker": null
+    },
+    {
+      "id": "song-2afc0981-e463-470e-8cab-632d0b0b57e6",
+      "number": "241",
+      "title": "Count Your Blessings",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-2afc0981-e463-470e-8cab-632d0b0b57e6.mxl",
+      "status": "corrected",
+      "before": "Four principal verses plus a false lower-part Verse 2 and legacy Shared ending; unavailable.",
+      "after": "Four principal verses, independent Chorus after each; exact lower chorus stream shown once in existing named section: Overlapping chorus part (sung with Chorus).",
+      "principalVerseCount": 4,
+      "principalChorus": "Count your blessings; Name them one by one. Count your blessings; See what God hath done. Count your blessings; Name them one by one. Count your many blessings; See what God hath done.",
+      "lowerChorus": "Count your many blessings; Name them one by one. Count your many blessings; See what God hath done. Count your many blessings;",
+      "lowerMeasures": [
+        "X16",
+        "X17",
+        "X18",
+        "X19",
+        "X20",
+        "X21",
+        "X22",
+        "X23",
+        "X24",
+        "X25"
+      ],
+      "timingEvidence": "Both parts start Count at X16 onset 0; P2 your at 1/2 and many at 1 and 3/2 overlap P1 sustained Count/your. Both align blessings at X17; Name them is later in P2 X18 before reconverging at X19 one. Similar X20–23 and X24–25.",
+      "timingUnit": "Quarter-note offsets within the source measure (0-based).",
+      "classificationEvidence": "P1 note lyrics name=verse, numbers 1–4; P1 and P2 note lyrics explicitly name=chorus, numbers 1 and 2 respectively.",
+      "presentationReason": "Staggered phrases converge with principal words; sequential parenthesized echoes would imply extra repetitions. Existing named sections retain literal parallel underlay without changing renderer architecture.",
+      "blocker": null
+    },
+    {
+      "id": "song-95e908ac-a3bd-4000-a45b-6ee588196bdf",
+      "number": "246",
+      "title": "Onward, Christian Soldiers",
+      "collection": "Hymns (1985)",
+      "source": "./assets/scores/song-95e908ac-a3bd-4000-a45b-6ee588196bdf.mxl",
+      "status": "corrected",
+      "before": "Four principal verses plus a false lower-part Verse 2 and legacy Shared ending; unavailable.",
+      "after": "Four principal verses, independent Chorus after each; exact lower chorus stream shown once in existing named section: Overlapping chorus part (sung with Chorus).",
+      "principalVerseCount": 4,
+      "principalChorus": "Onward, Christian soldiers! Marching as to war, With the cross of Jesus Going on before.",
+      "lowerChorus": "war, With the cross of Jesus",
+      "lowerMeasures": [
+        "X19",
+        "X20",
+        "X21"
+      ],
+      "timingEvidence": "Both sing war at X19 onset 0. P2 With/the at X19 onsets 2/3 anticipates P1 at X20 onsets 0/1. Cross/of similarly anticipate; both rejoin Jesus at X21 onset 0.",
+      "timingUnit": "Quarter-note offsets within the source measure (0-based).",
+      "classificationEvidence": "P1 note lyrics name=verse, numbers 1–4; P1 and P2 note lyrics explicitly name=chorus, numbers 1 and 2 respectively.",
+      "presentationReason": "Staggered phrases converge with principal words; sequential parenthesized echoes would imply extra repetitions. Existing named sections retain literal parallel underlay without changing renderer architecture.",
+      "blocker": null
+    }
+  ],
+  "corrected": 4,
+  "sharedEndingBefore": 12,
+  "sharedEndingAfter": 8,
+  "preservation": "Principal verses and Chorus match prior text and source streams exactly. Each literal P2 stream is visible and included in Copy, also retained in alternateLyrics provenance. All other records and original sources unchanged. No full catalog regeneration.",
+  "limitations": [
+    "Text display identifies parallel words but does not encode performance rhythm; consult unchanged score for exact timing.",
+    "No physical iPhone/iPad testing."
+  ],
+  "validation": {
+    "sourceTimingPreservationReplay": "passed",
+    "browserAndRegressions": {
+      "focusedWidths": [
+        320,
+        390,
+        744,
+        820,
+        1440
+      ],
+      "focused": "All four records: four verses, exact literal parallel text, independent disclosures, complete labeled Copy, speaker/touch targets, no horizontal overflow, hidden-frame default and Score transitions passed.",
+      "passed": [
+        "lyrics-frame-copy (5 widths)",
+        "lyrics-audio-copy (5 widths, actual Web Audio)",
+        "lyrics-settings-polish (4 widths)",
+        "score-footer-acceptance (4 widths)",
+        "chord-expansion-batch8-navigation (3 widths)",
+        "lists-accordion-copy (5 widths)",
+        "offline-bulk controller/worker",
+        "keyboard-workspace (6 widths)",
+        "metronome-sounds (390/820 widths)",
+        "lyrics-chorus-structure"
+      ],
+      "failures": []
+    },
+    "build": "Python compile, JavaScript syntax, static storage-manifest generation/check, and git diff --check passed"
+  }
+}
