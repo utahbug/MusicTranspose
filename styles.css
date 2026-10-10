@@ -458,7 +458,8 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #music-import .import-actions button{min-height:44px;padding:8px 12px;border:1px solid #b8c6cc;border-radius:4px;background:#edf2f4;color:#233331;font:14px system-ui,sans-serif}
 #music-import button:focus-visible,#music-import input:focus-visible{outline:2px solid #536b7a;outline-offset:2px}
 /* Lists is a full local section; song and Library presentation stay independent. */
-#lists-view{max-width:1080px;margin:auto;padding:12px 24px 60px;color:#233331}
+/* Notes shares the established Lists workspace shell, including responsive gutters. */
+#lists-view,#texts-view{max-width:1080px;margin:auto;padding:12px 24px 60px;color:#233331}
 .lists-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#365f7d;color:#fff;padding:14px 16px}
 .lists-heading h1{font:600 27px system-ui,sans-serif;margin:0;overflow-wrap:anywhere}.lists-heading .eyebrow{font-size:11px;letter-spacing:.12em;margin:0 0 5px}.lists-heading p:last-child{font-size:13px;margin:5px 0 0;color:#e1e9ed}
 #lists-view button,#lists-view summary,#list-name-dialog button{min-height:44px;min-width:44px;font:inherit;padding:8px;border:0;background:transparent;color:#365f7d;border-radius:4px;cursor:pointer}
@@ -474,7 +475,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 .list-picker-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;background:#eef3f5;padding:8px;z-index:2}.list-picker-controls input[type=search]{flex:1 1 200px;width:100%}.list-picker-controls select{max-width:100%}.list-picker-controls label{display:flex;align-items:center;gap:6px;min-height:44px}.list-picker-controls #list-picker-done{margin-left:auto;font-weight:600}
 .list-picker-row{display:flex;gap:12px;align-items:center;min-height:64px;padding:8px;border-bottom:1px solid #c4cfd3}.list-picker-row>span{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}.list-picker-row input,#list-picker-favorites{width:22px;height:22px;flex:none;accent-color:#536b7a}.list-picker-row:has(input:disabled){color:#62706f}
 #list-name-dialog{width:380px}#list-name-form label{display:block;margin-bottom:6px}#list-name-input{width:100%;box-sizing:border-box}#list-name-error{color:#7a3e46}
-@media(max-width:600px){#lists-view{padding:10px 14px 40px}.lists-heading h1{font-size:23px}.list-picker-controls{gap:4px}}
+@media(max-width:600px){#lists-view,#texts-view{padding:10px 14px 40px}.lists-heading h1{font-size:23px}.list-picker-controls{gap:4px}}
 @media print{#lists-view,#list-name-dialog{display:none!important}}
 
 #lists-view{font-family:system-ui,sans-serif}
@@ -641,7 +642,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #library .library-row.dragging{opacity:.5}#library .library-row.drop-before{box-shadow:inset 0 3px #536b7a}#library .library-row.drop-after{box-shadow:inset 0 -3px #536b7a}
 #library.editing-list .library-row{scroll-margin-top:225px}
 #library.editing-list .library-search-row input:disabled{opacity:.6}
-#lists-view{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
+#lists-view,#texts-view{padding-inline:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
 #lists-view .lists-heading{padding:12px 16px;min-height:44px}
 #lists-view .lists-heading h1{font-size:20px}#lists-view .lists-heading .eyebrow{display:none}#lists-view .lists-heading p:last-child{color:#eef5f7;font-size:13px}
 #lists-view .lists-heading button{color:inherit}
@@ -653,7 +654,7 @@ body.view-only-score #key,body.view-only-score #reset{display:none}
 #lists-view #list-picker-done:disabled{opacity:.45}
 #list-picker{padding-bottom:80px}
 .list-picker-controls{padding-top:max(4px,env(safe-area-inset-top));gap:4px}
-@media(min-width:700px){#lists-view{padding-inline:24px}}
+@media(min-width:700px){#lists-view,#texts-view{padding-inline:24px}}
 @media print{#active-list-dialog,#list-picker-completion{display:none!important}}
 
 #library button,#lists-view button{touch-action:manipulation}
