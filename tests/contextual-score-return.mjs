@@ -10,9 +10,9 @@ for(const width of [390,820,1440]){
  const engine=width<1000?webkit:chromium,b=await engine.launch(engine===chromium?{channel:'msedge'}:{});
  const options={viewport:{width,height:1000},hasTouch:width<1000,isMobile:width<1000,serviceWorkers:'block',...(width<1000?{userAgent:width===390?'iPhone':'iPad'}:{})};
  try{
-  // Compare every accepted footer control against the preceding stability commit.
+  // Compare every accepted footer control against the pre-change Notes checkpoint (matching markup and scripts).
   const old=await b.newContext(options),op=await old.newPage();
-  for(const file of ['library.js','lists-view.js','styles.css'])await op.route('**/'+file,r=>r.fulfill({contentType:file.endsWith('.css')?'text/css':'application/javascript',body:execFileSync('git',['show','57328ea:'+file],{encoding:'utf8'})}));
+  for(const file of ['index.html','library.js','lists-view.js','styles.css'])await op.route(file==='index.html'?base:'**/'+file,r=>r.fulfill({contentType:file.endsWith('.html')?'text/html':file.endsWith('.css')?'text/css':'application/javascript',body:execFileSync('git',['show','ee42078:'+file],{encoding:'utf8'})}));
   await op.goto(base);await op.waitForFunction(()=>prototype?.navigation);await op.evaluate(()=>prototype.loadSong('faithful'));await ready(op,'faithful');await op.waitForTimeout(400);const baseline=await geometry(op);await old.close();
   const c=await b.newContext(options);await c.addInitScript(groups=>{if(!localStorage.getItem('context-return-seeded')){localStorage.setItem('context-return-seeded','1');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups}));}},groups);
   const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(base);await p.waitForFunction(()=>prototype?.navigation);
@@ -36,8 +36,8 @@ for(const width of [390,820,1440]){
   await p.locator('#library-search').fill('Silent');await p.locator('#order-toggle').selectOption('number');await p.locator('[data-song=silent-night] .song-entry').click();await ready(p,'silent-night');await origin('library');await back('library');assert.equal(await p.locator('#library-search').inputValue(),'Silent');assert.equal(await p.locator('#order-toggle').inputValue(),'number');
   await p.locator('#library-clear').click();await p.locator('[data-song=faithful] .song-entry').click();await ready(p,'faithful');await origin('library');await p.waitForTimeout(400);assert.deepEqual(await geometry(p),baseline);assert.notEqual(await p.locator('#songs').evaluate(e=>getComputedStyle(e).backgroundImage),listGradient);await back('library');
   // A later visit to Lists does not leak origin into a new Library selection.
-  await p.locator('#library-lists').click();await collapsed();await p.locator('#lists-library').click();await p.locator('[data-home-source=all]').click();await p.locator('[data-song=nativity] .song-entry').click();await ready(p,'nativity');await origin('library');await back('library');
-  await p.locator('#library-lists').click();await collapsed();await openList('extra-14','faithful');await back('lists-view');await collapsed();assert(await p.evaluate(()=>scrollY>0),'long Lists page keeps useful scroll after collapse');await p.goBack();await ready(p,'faithful');await origin('lists');await p.goForward();await collapsed();
+  await p.locator('#library-quick-lists').click();await collapsed();await p.locator('#lists-library').click();await p.locator('[data-home-source=all]').click();await p.locator('[data-song=nativity] .song-entry').click();await ready(p,'nativity');await origin('library');await back('library');
+  await p.locator('#library-quick-lists').click();await collapsed();await openList('extra-14','faithful');await back('lists-view');await collapsed();assert(await p.evaluate(()=>scrollY>0),'long Lists page keeps useful scroll after collapse');await p.goBack();await ready(p,'faithful');await origin('lists');await p.goForward();await collapsed();
   assert.equal(await p.locator('#home-footer-lists').evaluate(e=>getComputedStyle(e).backgroundImage),globalListStyle);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);
   console.log('PASS',width,'List A/B, collapsed return, sequence, Lyrics, score modes, navigation modes, deletion fallback, Search restoration, stale-origin prevention, one-tap routing and exact prior footer geometry');await c.close();
  }finally{await b.close();}

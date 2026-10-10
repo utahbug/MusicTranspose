@@ -1212,11 +1212,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #library .library-filter-row{flex-wrap:nowrap;gap:8px}
 #library .library-filter-row #library-source{max-width:none;flex:0 1 auto}
 #library #view-favorites{margin-left:auto}
-.library-navigation{display:flex;align-items:center;margin-left:0;gap:0}
-#library .library-navigation .quiet{border:0;background:transparent;font-weight:500;color:#365867}
-#library #library-lists{padding:0 8px;font-size:13px}
-#library #library-lists:hover,#library #library-lists:focus-visible{text-decoration:underline;text-underline-offset:3px}
-#library #library-more{width:44px;padding:0;display:flex;align-items:center;justify-content:center}
 #library .library-search-row{position:relative;display:flex;gap:8px;max-width:none;width:100%}
 #library .library-search-row .search-box{flex:1 1 0;max-width:none}
 #library-search-fields{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:65;min-width:156px;padding:4px;background:white;border:1px solid #c2ced3;border-radius:6px;box-shadow:0 6px 24px #23333126}
@@ -1231,7 +1226,6 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
  #library .library-filter-row #library-source{flex:1 1 0;min-width:0;padding-inline:2px;font-size:12px}
  #library .library-filter-row .sort-choice{flex:0 0 90px;width:90px}
  #library #library-sort-label{font-size:12px;padding-left:2px}
- #library #library-lists{padding:0 4px;font-size:12px}
  #library .library-search-row #library-search-options{font-size:12px;padding-inline:4px}
  #library-search-fields label{font-size:14px}
 }
@@ -1978,3 +1972,19 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 
 /* Mirror only the Lyrics speaker; pause/resume artwork keeps its direction. */
 #lyrics-view .lyrics-identity-header .song-playback[data-state=stopped] svg{transform:scaleX(-1)}
+
+/* Library sorting belongs to the identity header; Settings reuses the existing menu. */
+body #library .workspace-banner h1{flex:1 1 auto}
+#library .library-heading .sort-choice{position:relative;flex:0 0 auto;min-width:132px;min-height:44px;padding-right:20px;border-radius:4px}
+#library .library-heading .sort-choice::after{content:'▾';position:absolute;right:4px;top:50%;transform:translateY(-50%);pointer-events:none}
+#library .library-heading #library-sort-label{gap:3px;color:inherit;font-size:13px;padding-left:6px;white-space:nowrap}
+#library .library-heading #library-sort-label .desktop-prefix{display:inline!important}
+#library .library-heading .sort-choice:focus-within{outline:2px solid white}
+#library .library-quick-access #library-more{margin-left:auto;flex:0 0 44px;width:44px;height:44px;padding:0;justify-content:center}
+#library .library-quick-access #library-more svg{width:30px;height:30px}
+#library .library-filter-row #library-source{flex:0 1 auto;max-width:calc(100% - 52px)}
+@media(max-width:480px){
+ body #library .workspace-banner{display:grid;grid-template-columns:minmax(0,1fr) 44px;height:auto;min-height:60px;gap:0 8px}
+ #library .library-heading .library-theme-toggle{grid-column:2;grid-row:1}
+ #library .library-heading .sort-choice{grid-column:1/-1;grid-row:2;justify-self:end}
+}

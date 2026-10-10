@@ -8,7 +8,7 @@ import {offlineSongState,offlineBadge,refreshOffline,reconcileOfflineLists} from
 import {initLibraryTheme} from './library-theme.js';
 import {installWorkspaceFooters} from './library-quick-access.js';
 import {canOpenScore,isUnavailableScore,showUnavailableScore} from './score-availability.js';
-import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon,textIcon,keyboardIcon} from './icons.js';
+import {favoriteIcon,editIcon,orderIcon,listsIcon,filesIcon,textIcon,keyboardIcon,settingsIcon} from './icons.js';
 import {beginLibrarySession} from './library-session.js';
 import {initOfflineMusic} from './offline-music.js';
 import {initAppInfo} from './app-info.js';
@@ -156,11 +156,14 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('keydown',e=>{if(sourceMenu.hidden)return;if(e.key==='Escape'){e.preventDefault();closeSource(true);}else if(e.key==='Tab')closeSource();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...sourceMenu.querySelectorAll('button')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeSource);window.addEventListener('scroll',placeSource,{passive:true});
  const more=$('library-more-dialog'),moreButton=$('library-more');
+ moreButton.innerHTML=settingsIcon;
  function closeMore(focus=false){more.hidden=true;moreButton.setAttribute('aria-expanded','false');if(focus)moreButton.focus({preventScroll:true});}
- function placeMore(){if(more.hidden)return;const r=moreButton.getBoundingClientRect();more.style.left=Math.max(8,Math.min(r.right-more.offsetWidth,innerWidth-more.offsetWidth-8))+'px';more.style.top=Math.max(8,Math.min(r.bottom+4,innerHeight-more.offsetHeight-8))+'px';}
- moreButton.onclick=()=>{closeSource();blurSearch();if(!more.hidden){closeMore();return;}more.hidden=false;moreButton.setAttribute('aria-expanded','true');placeMore();more.querySelector('button').focus({preventScroll:true});};
+ function placeMore(){if(more.hidden)return;const r=moreButton.getBoundingClientRect();more.style.maxHeight=Math.max(44,r.top-16)+'px';more.style.left=Math.max(8,Math.min(r.right-more.offsetWidth,innerWidth-more.offsetWidth-8))+'px';more.style.top=Math.max(8,r.top-more.offsetHeight-8)+'px';}
+ moreButton.onclick=()=>{closeSource();blurSearch();if(!more.hidden){closeMore();return;}more.hidden=false;moreButton.setAttribute('aria-expanded','true');placeMore();more.querySelector('button:not([hidden]):not(:disabled)').focus({preventScroll:true});};
+ moreButton.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();e.stopPropagation();if(more.hidden)moreButton.click();if(e.key==='ArrowUp')[...more.querySelectorAll('button:not([hidden]):not(:disabled)')].at(-1)?.focus();}};
+ document.addEventListener('focusin',e=>{if(!more.hidden&&!more.contains(e.target)&&!moreButton.contains(e.target))closeMore();});
  document.addEventListener('pointerdown',e=>{if(!more.hidden&&!more.contains(e.target)&&!moreButton.contains(e.target))closeMore();});
- document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore();else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled):not([hidden])')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
+ document.addEventListener('keydown',e=>{if(more.hidden)return;if(e.key==='Escape'){e.preventDefault();closeMore(true);}else if(e.key==='Tab')closeMore(true);else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...more.querySelectorAll('button:not(:disabled):not([hidden])')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  window.addEventListener('resize',placeMore);window.addEventListener('scroll',placeMore,{passive:true});
 
  const clearFavoritesDialog=$('clear-favorites-dialog');
@@ -171,7 +174,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('clear-favorites-confirm').onclick=()=>{state.favorites=[];const saved=save();render();clearFavoritesDialog.close();$('library-message').textContent=saved?'Favorites cleared.':'Favorites cleared for this session. Browser storage is unavailable.';};
 
  initOfflineMusic({getLists:()=>state.groups,closeMenu:()=>closeMore(),returnFocus:()=>moreButton.focus({preventScroll:true}),viewSaved:showSaved});
- $('library-saved-filter').onclick=()=>{savedOnly=!savedOnly;closeMore();render();refreshOffline();};
+ $('library-saved-filter').onclick=()=>{savedOnly=!savedOnly;closeMore(true);render();refreshOffline();};
  document.addEventListener('offline-state-changed',()=>{render();});
  document.addEventListener('library-open',()=>refreshOffline());
  initAppInfo({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
@@ -247,7 +250,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('home-files').onclick=()=>showFiles();$('home-lists').onclick=()=>showLists();
  function showFiles(){clearLeavingSearch();$('library-home').hidden=true;closeMore();blurSearch();navigation?.visit({view:'files'});if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}lists.hide();texts.hide();keyboard.hide();files.open();}
  function showLists(target=null,restoreScroll=false,{collapsed=false}={}){if(typeof target!=='string'||!state.groups.some(g=>g.id===target))target=null;if(isBusy())return;clearLeavingSearch();leaveScore?.();document.dispatchEvent(new Event('library-open'));$('library-home').hidden=true;closeMore();closeSource();blurSearch();navigation?.visit({view:'lists',list:target,picking:false,workspace:true,collapsed});if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}files.hide();texts.hide();keyboard.hide();if(target)lists.openList(target,{restoreScroll});else lists.open(collapsed?{collapse:true}:{fresh:true});navigation?.snapshot();}
- $('view-lists').onclick=showLists;$('library-lists').onclick=showLists;
+ $('view-lists').onclick=showLists;
  $('view-files').onclick=showFiles;
  $('library-quick-lists').onclick=showLists;$('library-quick-files').onclick=showFiles;
  document.addEventListener('music-import-open',()=>{if($('files-view').hidden)showFiles();navigation?.visit({view:'import'});});
