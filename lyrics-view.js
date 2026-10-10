@@ -86,7 +86,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const scoreToggle=button('','View Score',onScore);scoreToggle.classList.add('lyrics-score-toggle','view-switch');scoreToggle.innerHTML=scoreIcon;
  const footer=make('div',null,'lyrics-footer'),pair=make('div',null,'footer-view-pair');pair.append(scoreToggle,settings.element);
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,pair);host.append(footer);
- const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');header.append(home,make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
+ const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');const identity=make('div',null,'lyrics-title-block');identity.append(make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));header.append(home,identity);const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
  const copyStatus=make('span',null,'sr-only');copyStatus.id='lyrics-copy-status';copyStatus.setAttribute('role','status');copyStatus.setAttribute('aria-live','polite');
  const text=lyricsClipboardText(current);let copying=false;
  const copy=button('','Copy lyrics',async()=>{

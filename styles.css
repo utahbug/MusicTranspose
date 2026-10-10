@@ -1961,10 +1961,14 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 /* Lyrics frame is decoration only: its box dimensions never change. */
 #lyrics-view.lyrics-frame-hidden .lyrics-paper{border-color:transparent;box-shadow:none}
 #lyrics-view.lyrics-frame-hidden .lyrics-paper::after{border-color:transparent}
-/* Two compact header controls share reserved space; neither covers the title. */
-#lyrics-view .lyrics-identity-header{padding-right:108px}
-#lyrics-view .lyrics-header-home{right:108px}
-#lyrics-view .lyrics-identity-header .song-playback{right:56px;top:8px;z-index:2}
+/* Score-style title-sized track keeps playback beside the title; Copy has its own space. */
+#lyrics-view .lyrics-identity-header{padding-right:60px}
+#lyrics-view .lyrics-header-home{right:60px}
+#lyrics-view .lyrics-title-block{display:grid;grid-template-columns:minmax(0,1fr);max-width:100%;min-width:0}
+#lyrics-view .lyrics-title-block:has(.song-playback){grid-template-columns:minmax(0,max-content) 44px;justify-content:start;column-gap:4px}
+#lyrics-view .lyrics-title-block h1{grid-column:1;grid-row:1;min-width:0}
+#lyrics-view .lyrics-title-block .lyrics-source{grid-column:1;grid-row:2;contain:inline-size;min-width:0}
+#lyrics-view .lyrics-identity-header .song-playback{position:relative;right:auto;top:auto;grid-column:2;grid-row:1 / span 2;align-self:start;align-items:flex-start;width:44px;height:44px;min-width:44px;min-height:44px;margin:0;z-index:2}
 #lyrics-view #lyrics-copy{position:absolute;right:8px;top:8px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:#fff;box-shadow:none;z-index:2}
 #lyrics-copy svg{width:21px;height:21px;flex:none}
 #lyrics-view #lyrics-copy:hover{background:#ffffff1a}
