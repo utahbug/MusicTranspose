@@ -1970,24 +1970,15 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 #lyrics-view #lyrics-copy:disabled{opacity:.5;cursor:default}
 #lyrics-view #lyrics-copy.copy-feedback{font:600 11px/1.2 system-ui,sans-serif;white-space:normal}
 
-/* Library sorting belongs to the identity header; Settings reuses the existing menu. */
+/* Library identity stays compact; controls live below it. */
 body #library .workspace-banner h1{flex:1 1 auto}
-#library .library-heading .sort-choice{position:relative;flex:0 0 auto;min-width:132px;min-height:44px;padding-right:20px;border-radius:4px}
-#library .library-heading .sort-choice::after{content:'▾';position:absolute;right:4px;top:50%;transform:translateY(-50%);pointer-events:none}
-#library .library-heading #library-sort-label{gap:3px;color:inherit;font-size:13px;padding-left:6px;white-space:nowrap}
-#library .library-heading #library-sort-label .desktop-prefix{display:inline!important}
-#library .library-heading .sort-choice:focus-within{outline:2px solid white}
 #library .library-quick-access #library-more{margin-left:auto;flex:0 0 44px;width:44px;height:44px;padding:0;justify-content:center}
 #library .library-quick-access #library-more svg{width:30px;height:30px}
 #library .library-filter-row #library-source{flex:0 1 auto;max-width:calc(100% - 52px)}
-@media(max-width:480px){
- body #library .workspace-banner{display:grid;grid-template-columns:minmax(0,1fr) 44px;height:auto;min-height:60px;gap:0 8px}
- #library .library-heading .library-theme-toggle{grid-column:2;grid-row:1}
- #library .library-heading .sort-choice{grid-column:1/-1;grid-row:2;justify-self:end}
-}
+
 
 /* Home information and settings share the existing popup styling. */
 :is(#home-info-menu,#home-settings-menu){position:fixed;right:auto;z-index:90;overflow-y:auto;max-width:calc(100vw - 16px)}
-#home-settings-menu #home-settings-theme{display:flex;align-items:center;gap:10px}
-#home-settings-theme svg{width:24px;height:24px;flex:none}
+:is(#home-settings-menu #home-settings-theme,#library-more-dialog #library-settings-theme){display:flex;align-items:center;gap:10px}
+:is(#home-settings-theme,#library-settings-theme) svg{width:24px;height:24px;flex:none}
 @media(max-width:360px){#library-home .home-toolbar{gap:6px}}
