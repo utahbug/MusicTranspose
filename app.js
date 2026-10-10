@@ -383,8 +383,8 @@ window.prototype={playback,get loading(){return loading;},get navigation(){retur
  try{await refreshLocalMusic();}catch{$('library-message').textContent='Local music storage is unavailable. Built-in songs remain available.';}
  initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore,cancelPendingSelection,stopPlayback:()=>playback.stop(),showScoreView});library.startHistory();
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
- let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false;
- const refreshLibrary=()=>{if(pendingUpdate&&document.body.classList.contains('library-open'))location.reload();};
+ let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false,reloading=false;
+ const refreshLibrary=()=>{if(pendingUpdate&&!reloading&&document.body.classList.contains('library-open')){reloading=true;location.reload();}};
  navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled){pendingUpdate=true;refreshLibrary();}controlled=true;});
  document.addEventListener('library-open',()=>setTimeout(refreshLibrary,0));
  await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;$('offline').textContent='Save songs for offline use in Tools.';refreshOffline();}catch(e){$('offline').textContent='Local score';}}

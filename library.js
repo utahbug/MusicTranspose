@@ -1,3 +1,4 @@
+import {initUpdateCheck} from './app-update.js';
 import {initOfflineInventory} from './offline-inventory.js';
 import {createKeyboardWorkspace} from './keyboard.js';
 import {meaningfulNumber} from './score-labels.js';
@@ -178,6 +179,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  document.addEventListener('offline-state-changed',()=>{render();});
  document.addEventListener('library-open',()=>refreshOffline());
  initAppInfo({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
+ initUpdateCheck({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
  initHomeScreen({closeMenu:()=>closeHomeInfo(),returnFocus:()=>infoButton.focus({preventScroll:true})});
  $('library-import').onclick=()=>{render();closeMore();$('add-music').click();};
  $('library-clear').onclick=()=>{$('library-search').value='';render();$('library-search').focus({preventScroll:true});};

@@ -1982,3 +1982,6 @@ body #library .workspace-banner h1{flex:1 1 auto}
 :is(#home-settings-menu #home-settings-theme,#library-more-dialog #library-settings-theme){display:flex;align-items:center;gap:10px}
 :is(#home-settings-theme,#library-settings-theme) svg{width:24px;height:24px;flex:none}
 @media(max-width:360px){#library-home .home-toolbar{gap:6px}}
+
+#home-update-status:empty{margin:0}
+#home-update-status{font-size:14px;line-height:1.4;overflow-wrap:anywhere}
