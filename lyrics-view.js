@@ -113,7 +113,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
   }
   body.append(block);
  }
- for(const refrain of current.refrains.filter(r=>!current.verses.length||!repeated.includes(r))){const block=make('section',null,'lyrics-refrain');block.append(make('h2',refrain.label||'Refrain'),lyricParagraph(refrain.text));body.append(block);}
+ for(const refrain of current.refrains.filter(r=>!current.verses.length||!repeated.includes(r))){const block=make('section',null,'lyrics-refrain');if(refrain.disclosure){const disclosure=make('details',null,'lyrics-chorus'),summary=make('summary',refrain.label||'Section');summary.setAttribute('aria-label',refrain.label||'Section');disclosure.append(summary,lyricParagraph(refrain.text));block.append(disclosure);}else block.append(make('h2',refrain.label||'Refrain'),lyricParagraph(refrain.text));body.append(block);}
  paper.append(body);rephrase();
  const heading=header.querySelector('h1');heading.tabIndex=-1;
  }

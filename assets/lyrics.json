@@ -27838,64 +27838,75 @@
       "collection": "Children’s Songbook",
       "number": "178",
       "source": "./assets/scores/song-97b815d1-3074-402d-87dc-054a26201437.mxl",
-      "verses": [
-        {
-          "number": "1",
-          "text": "Teacher*, do you love me? Teacher*, will you care for me? Even if I turn away, or disobey, or go astray, Then",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
-        },
-        {
-          "number": "2",
-          "text": "Teacher*, will you teach me? Teacher*, help me choose the right. When I do not understand the Lord’s command, please take my hand And",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        }
-      ],
+      "verses": [],
       "refrains": [
         {
-          "number": "1",
-          "text": "I need your love, I need your light To show me how to be like Jesus. The Savior’s love will light the path To lead me safely home. Oh yes, my child, I love you. My child, I’ll always care for you. And with the Savior as our guide, I’ll share the light I feel inside, And you will feel his love for you. Oh, lead us with his light. I lead us safely home.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Refrain"
+          "label": "Child — first stanza (first ending)",
+          "text": "Teacher*, do you love me? Teacher*, will you care for me? Even if I turn away, or disobey, or go astray, Then will you love me still?"
         },
         {
-          "number": "2",
-          "text": "yes, my child, I’ll teach you. My child, I’ll help you choose the right. And when you do not understand The Lord’s command, I’ll take your hand, And he will",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Refrain"
+          "label": "Child — second stanza (second ending)",
+          "text": "Teacher*, will you teach me? Teacher*, help me choose the right. When I do not understand the Lord’s command, please take my hand And lead me safely with his light."
         },
         {
-          "number": "1",
-          "text": "will you love me still? lead me safely with his light.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Child — Chorus (first time)",
+          "text": "I need your love, I need your light To show me how to be like Jesus. The Savior’s love will light the path To lead me safely home.",
+          "disclosure": true
+        },
+        {
+          "label": "Teacher — first response (first ending)",
+          "text": "Oh yes, my child, I love you. My child, I’ll always care for you. And with the Savior as our guide, I’ll share the light I feel inside, And you will feel his love for you."
+        },
+        {
+          "label": "Teacher — second response (second ending)",
+          "text": "Oh, yes, my child, I’ll teach you. My child, I’ll help you choose the right. And when you do not understand The Lord’s command, I’ll take your hand, And he will lead us with his light."
+        },
+        {
+          "label": "Together — Duet Chorus (second time; continue to Coda)",
+          "text": "I need your love, I need your light To show me how to be like Jesus. The Savior’s love will light the path To",
+          "disclosure": true
+        },
+        {
+          "label": "Together — Coda (after Duet Chorus)",
+          "text": "lead us safely home."
+        },
+        {
+          "label": "Alternate role words (score instruction, not sung)",
+          "text": "*Alternate words: Mother, Father"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Multiple refrain streams; consult the score for vocal order."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed CS178 score paths: Child row1 5–14 then row2 5–12 + second ending 15–17. First Chorus 18–26 ends at home; Oh at 26 onset 5/2 belongs to Teacher. Teacher row1 27–36 ends at you; Oh, at 36 onset 5/2 starts row2 27–34 + 37–39. Duet uses I pickup at 40, D.S. to 19–24, then coda 41–43; To at 24 joins lead us, never the first-time lead me ending. Labels identify prescribed ending paths; no artificial extra verses."
+      ],
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "text": "Teacher*, do you love me? Teacher*, will you care for me? Even if I turn away, or disobey, or go astray, Then will you love me still? lead me safely with his light. I need your love, I need your light To show me how to be like Jesus. The Savior’s love will light the path To lead me safely home. Oh yes, my child, I love you. My child, I’ll always care for you. And with the Savior as our guide, I’ll share the light I feel inside, And you will feel his love for you. Oh, lead us with his light. I lead us safely home."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "text": "Teacher*, will you teach me? Teacher*, help me choose the right. When I do not understand the Lord’s command, please take my hand And yes, my child, I’ll teach you. My child, I’ll help you choose the right. And when you do not understand The Lord’s command, I’ll take your hand, And he will"
+        }
+      ],
+      "principalStanzaCounts": {
+        "Child": 2,
+        "Teacher": 2
+      },
       "sourceTextBlocks": [
         "Teacher, Do You Love Me?",
         "*Alternate words: Mother, Father",
         "Words and music: \n Michael Finlinson Moody, b. 1941. © 1986 IRI",
         "3 Nephi 22:13\nMosiah 4:15\nProverbs 22:6"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-fd033466-3e4a-40fa-8ad3-e630b114714d",
@@ -27940,57 +27951,75 @@
       "collection": "Children’s Songbook",
       "number": "182",
       "source": "./assets/scores/song-be95cf4e-2b13-4a09-a71b-52ef90125517.mxl",
-      "verses": [
-        {
-          "number": "1",
-          "text": "How will they know, the ones for whom we care, That God is love and with us ev’rywhere, That life is good, with blessings all can share?",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
-        },
-        {
-          "number": "2",
-          "text": "(2.) learn that, though they go astray, God will forgive and help them find the way? How will they feel the Spirit day by day?",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
-          "number": "5",
-          "text": "How will they know That if they stray God will forgive and help them find the way? How will they feel the Spirit day by day? How will they know unless we teach them so? How will they grow un wisdom and delight? How will they choose to follow what is right? How can they trust the future will be bright? How will they know unless we show them? How will they live when they at last are grown? What will they give to children of their own? Will they reflect the values we have shown? How will they know? as on they go? know unless we strive to teach them so?",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 5"
-        },
-        {
-          "number": "6",
-          "text": "How will they know, the ones for whom we care, That God is",
-          "sourcePart": "P1",
-          "sourceVoice": "2",
-          "kind": "note-lyrics",
-          "label": "Verse 6"
-        }
-      ],
+      "verses": [],
       "refrains": [
         {
-          "number": "1",
-          "text": "How will they know unless we teach them so? 2. How will they teach them so?",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Principal — stanza 1 (first ending)",
+          "text": "How will they know, the ones for whom we care, That God is love and with us ev’rywhere, That life is good, with blessings all can share? How will they know unless we teach them so?"
+        },
+        {
+          "label": "Principal — stanza 2 (second ending)",
+          "text": "How will they learn that, though they go astray, God will forgive and help them find the way? How will they feel the Spirit day by day? How will they know unless we teach them so?"
+        },
+        {
+          "label": "Optional descant — with stanza 2 only",
+          "text": "How will they know That if they stray God will forgive and help them find the way? How will they feel the Spirit day by day? How will they know unless we teach them so?",
+          "disclosure": true
+        },
+        {
+          "label": "Later vocal section — Soprano / Alto",
+          "text": "How will they grow in wisdom and delight? How will they choose to follow what is right? How can they trust the future will be bright? How will they know unless we show them? How will they live when they at last are grown? What will they give to children of their own? Will they reflect the values we have shown?"
+        },
+        {
+          "label": "Closing parallel part — lower voice (enters first)",
+          "text": "How will they know, as on through life they go?"
+        },
+        {
+          "label": "Closing parallel part — upper voice (overlaps lower voice)",
+          "text": "How will they know, as on they go?"
+        },
+        {
+          "label": "Closing continuation — parts rejoin",
+          "text": "How will they know unless we strive to teach them so?"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed CS182 XML and original PDF pp1–4: P2 stanza1 X3–18; stanza2 pickup X19 + row2 X4–14 + common X15–16 + second ending X20–21. P1 optional descant X4–21 applies to stanza2 only; rows5/6 are not stanza numbers. Later P1 X22–49 follows. PDF p2 corrects XML grow un to grow in. PDF p4 confirms parallel lower text How will they know, as on through life they go? instead of erroneous copied opening in XML; upper know takes comma. Lower entry X50 precedes upper X51; lines overlap through X54. PDF lower pickup How will they at X54 joins common closing X55–59. All raw XML streams retained; hash guards the unchanged PDF used for these corrections."
+      ],
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "5",
+          "text": "How will they know That if they stray God will forgive and help them find the way? How will they feel the Spirit day by day? How will they know unless we teach them so? How will they grow un wisdom and delight? How will they choose to follow what is right? How can they trust the future will be bright? How will they know unless we show them? How will they live when they at last are grown? What will they give to children of their own? Will they reflect the values we have shown? How will they know? as on they go? know unless we strive to teach them so?"
+        },
+        {
+          "part": "P1",
+          "voice": "2",
+          "row": "6",
+          "text": "How will they know, the ones for whom we care, That God is"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "1",
+          "text": "How will they know, the ones for whom we care, That God is love and with us ev’rywhere, That life is good, with blessings all can share? How will they know unless we teach them so? 2. How will they teach them so?"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "2",
+          "text": "(2.) learn that, though they go astray, God will forgive and help them find the way? How will they feel the Spirit day by day?"
+        }
+      ],
+      "sourcePdf": "./assets/pdfs/fallback/song-be95cf4e-2b13-4a09-a71b-52ef90125517.pdf",
+      "sourcePdfSha256": "f0d0366d5a106bfb67d2c9f05b1252c7e8895a1409b701a7312aeb5958ba1368",
+      "principalStanzaCounts": {
+        "Initial stanzas": 2
+      },
       "sourceTextBlocks": [
         "How Will They Know?",
         "Appropriate for Parents and Leaders",
@@ -27998,7 +28027,7 @@
         "© 1985, 1989 Sonos Music Resources, Orem, Utah.\nAll rights reserved. MAKING COPIES OF THIS MATERIAL IS PROHIBITED.",
         "Deuteronomy 6:5–7\nIsaiah 54:13"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-d381df73-f2ff-4ba8-ae94-23aa65c62164",

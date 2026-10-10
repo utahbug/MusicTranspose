@@ -293,6 +293,55 @@ for song in catalog:
   assert main['text']==first+' '+last
   main['principalText']=main['text'];main['text']=first
   r['extractionDecisions'].append('Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus.')
+ # Final two: role/part-specific score paths, using existing named sections.
+ if song['id'] in ('song-97b815d1-3074-402d-87dc-054a26201437','song-be95cf4e-2b13-4a09-a71b-52ef90125517'):
+  def selected_nodes(part,bars,row='1',voice='1'):
+   return [l for m in root.find("part[@id='"+part+"']").findall('measure') if m.get('number') in bars for n in m.findall('note') if n.findtext('voice','1')==voice for l in n.findall('lyric') if l.get('number')==row and l.findall('text')]
+  def passage(part,bars,row='1',voice='1'):return stitch(selected_nodes(part,bars,row,voice))
+  def section(label,text,disclosure=False):return {'label':label,'text':text,**({'disclosure':True} if disclosure else {})}
+  literal=defaultdict(list)
+  for part in root.findall('part'):
+   for note in part.findall('measure/note'):
+    for lyric in note.findall('lyric'):
+     if lyric.findall('text'):literal[(part.get('id'),note.findtext('voice','1'),lyric.get('number','1'))].append(lyric)
+  r['sourceLyricStreams']=[{'part':p,'voice':v,'row':n,'text':stitch(nodes)} for (p,v,n),nodes in literal.items()]
+  r['verses']=[];r['refrains']=[];r['alternateLyrics']=[];r['notes']=[]
+  if song.get('page')=='178':
+   bars={m.get('number'):m for m in root.find("part[@id='P1']").findall('measure')}
+   assert bars['40'].find('.//sound').get('dalsegno')=='19' and bars['24'].find('.//sound').get('tocoda')=='41'
+   assert 'First time child only, second time duet' in directions
+   for start,ending in [('13','1'),('15','2'),('35','1'),('37','2')]:assert bars[start].find("barline/ending[@type='start']").get('number')==ending
+   child1=passage('P1',[str(n) for n in range(5,15)])
+   child2=passage('P1',[str(n) for n in range(5,13)],'2')+' '+passage('P1',['15','16','17'])
+   pickup26=selected_nodes('P1',['26']);assert [stitch([n]) for n in pickup26]==['home.','Oh']
+   pickup36=selected_nodes('P1',['36']);assert [stitch([n]) for n in pickup36]==['you.','Oh,']
+   chorus=passage('P1',[str(n) for n in range(18,26)])+' '+stitch(pickup26[:1])
+   teacher1=stitch(pickup26[1:])+' '+passage('P1',[str(n) for n in range(27,36)])+' '+stitch(pickup36[:1])
+   teacher2=stitch(pickup36[1:])+' '+passage('P1',[str(n) for n in range(27,35)],'2')+' '+passage('P1',['37','38','39'])
+   duet=passage('P1',['40'])+' '+passage('P1',[str(n) for n in range(19,25)])
+   coda=passage('P1',['41','42','43'])
+   r['principalStanzaCounts']={'Child':2,'Teacher':2}
+   r['refrains']=[section('Child — first stanza (first ending)',child1),section('Child — second stanza (second ending)',child2),section('Child — Chorus (first time)',chorus,True),section('Teacher — first response (first ending)',teacher1),section('Teacher — second response (second ending)',teacher2),section('Together — Duet Chorus (second time; continue to Coda)',duet,True),section('Together — Coda (after Duet Chorus)',coda),section('Alternate role words (score instruction, not sung)','*Alternate words: Mother, Father')]
+   r['extractionDecisions'].append('Reviewed CS178 score paths: Child row1 5–14 then row2 5–12 + second ending 15–17. First Chorus 18–26 ends at home; Oh at 26 onset 5/2 belongs to Teacher. Teacher row1 27–36 ends at you; Oh, at 36 onset 5/2 starts row2 27–34 + 37–39. Duet uses I pickup at 40, D.S. to 19–24, then coda 41–43; To at 24 joins lead us, never the first-time lead me ending. Labels identify prescribed ending paths; no artificial extra verses.')
+  else:
+   import hashlib
+   pdf=Path('assets/pdfs/fallback')/(song['id']+'.pdf');digest=hashlib.sha256(pdf.read_bytes()).hexdigest()
+   assert digest=='f0d0366d5a106bfb67d2c9f05b1252c7e8895a1409b701a7312aeb5958ba1368'
+   r['sourcePdf']='./'+pdf.as_posix();r['sourcePdfSha256']=digest
+   first=passage('P2',[f'X{n}' for n in range(3,19)])
+   second=passage('P2',['X19'])+' '+passage('P2',[f'X{n}' for n in range(4,15)],'2').removeprefix('(2.) ')+' '+passage('P2',['X15','X16','X20','X21'])
+   descant=passage('P1',[f'X{n}' for n in range(4,22)],'5')
+   later=passage('P1',[f'X{n}' for n in range(22,50)],'5');assert later.count('grow un wisdom')==1
+   later=later.replace('grow un wisdom','grow in wisdom')
+   upper=passage('P1',['X51','X52','X53','X54'],'5');assert upper=='How will they know? as on they go?'
+   upper=upper.replace('know?','know,')
+   lower=passage('P1',['X50','X51','X52','X53','X54'],'6','2');assert lower=='How will they know, the ones for whom we care, That God is'
+   lower='How will they know, as on through life they go?'
+   closing='How will they '+passage('P1',[f'X{n}' for n in range(55,60)],'5')
+   assert '(Optional descant 2nd verse only)' in directions
+   r['principalStanzaCounts']={'Initial stanzas':2}
+   r['refrains']=[section('Principal — stanza 1 (first ending)',first),section('Principal — stanza 2 (second ending)',second),section('Optional descant — with stanza 2 only',descant,True),section('Later vocal section — Soprano / Alto',later),section('Closing parallel part — lower voice (enters first)',lower),section('Closing parallel part — upper voice (overlaps lower voice)',upper),section('Closing continuation — parts rejoin',closing)]
+   r['extractionDecisions'].append('Reviewed CS182 XML and original PDF pp1–4: P2 stanza1 X3–18; stanza2 pickup X19 + row2 X4–14 + common X15–16 + second ending X20–21. P1 optional descant X4–21 applies to stanza2 only; rows5/6 are not stanza numbers. Later P1 X22–49 follows. PDF p2 corrects XML grow un to grow in. PDF p4 confirms parallel lower text How will they know, as on through life they go? instead of erroneous copied opening in XML; upper know takes comma. Lower entry X50 precedes upper X51; lines overlap through X54. PDF lower pickup How will they at X54 joins common closing X55–59. All raw XML streams retained; hash guards the unchanged PDF used for these corrections.')
  # Final legacy batch: unmarked common stanza endings stay inside verses.
  if song['id'] in ('song-53c57be6-2733-45c7-94ad-773835a4fd19','song-ffd5b22c-dacd-462e-9e86-5a887fc3970d','song-dcb0645f-f0b0-4137-a0e4-1bb309078370'):
   assert len(r['refrains'])==1 and r['refrains'][0]['label']=='Shared ending' and not r['alternateLyrics']
@@ -410,7 +459,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209','hhc-1053','song-dac6f94b-6a48-40de-993c-82bb543bf96d','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7',*overlapping_hymns):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('song-97b815d1-3074-402d-87dc-054a26201437','song-be95cf4e-2b13-4a09-a71b-52ef90125517','hhc-1021','hhc-1070','hhc-1209','hhc-1053','song-dac6f94b-6a48-40de-993c-82bb543bf96d','cs-16','song-708c0414-b2e0-4f70-b178-88aca2228fa7',*overlapping_hymns):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')
