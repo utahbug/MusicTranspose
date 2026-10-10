@@ -9785,12 +9785,13 @@ export const importedSongs=[
       "sha256": "f0e8cea8154f80f37b90fade0e8e4fac16e20538bf852d20230f5ea468c113a4",
       "archiveFilename": "280 - Welcome, Welcome, Sabbath Morning.mxl"
     },
-    "transpositionAvailable": false,
+    "transpositionAvailable": true,
     "playbackAvailable": true,
-    "capability": "View only",
-    "tonic": "",
-    "mode": "",
-    "evidence": "Multiple key signatures/modulation; original notation is rendered and played linearly, transposition disabled."
+    "capability": "Transposable",
+    "tonic": "C",
+    "mode": "major",
+    "fifths": 0,
+    "evidence": "Aligned measure-start C major / G major / C major signatures verified; whole-score transposition preserves local key relationships."
   },
   {
     "id": "song-27f07185-eeeb-4ab8-a3d7-a1d3d9b923d7",

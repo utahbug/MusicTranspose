@@ -59,7 +59,7 @@ class Display(unittest.TestCase):
   expansion4=json.loads((ROOT/'reports/chord-expansion-batch4.json').read_text(encoding='utf8'))['rows']
   expansion5=json.loads((ROOT/'reports/chord-expansion-batch5.json').read_text(encoding='utf8'))['rows']
   expansion6=json.loads((ROOT/'reports/chord-expansion-batch6.json').read_text(encoding='utf8'))['rows']
-  self.assertEqual(set(new)-set(prior12),{r['id'] for r in batch3+batch3b+batch3c+nine+expansion3+expansion4+expansion5+expansion6+[r for r in batch2 if r['generatedSymbolCount']] if 'skipped' not in r})
+  self.assertEqual(set(new)-set(prior12),{r['id'] for r in json.loads((ROOT/'reports/chord-hymn280.json').read_text(encoding='utf8'))['rows']+batch3+batch3b+batch3c+nine+expansion3+expansion4+expansion5+expansion6+[r for r in batch2 if r['generatedSymbolCount']] if 'skipped' not in r})
  def test_batch3a_scope_and_events(self):
   batch=json.loads((ROOT/'reports/harmony-batch3a.json').read_text(encoding='utf8'))
   self.assertEqual({r['number'] for r in batch},{3,6,19,21,26,27,29,34,35,36,58,60,68,85,89,92,94,96,97,98,103,104,105,111,125,131,134,136,140,141})

@@ -1,18 +1,18 @@
 {
   "title": "Consolidated hymn chord review index",
-  "scope": "Initial nine-hymn priority batch and selected expansion Batches 2-6",
+  "scope": "Initial nine-hymn priority batch and selected expansion Batches 2-6, plus hymn 280 modulation resolution",
   "status": "Automated observations for a later consolidated review session; no chord corrections made during consolidation",
   "priorityPolicy": "P1: major-seventh/augmented interpretations, at least 10 omitted windows, or at least 3 overlapping dense-window flags. P2: other retained qualities, dense windows, or summary flags. P3: remaining omissions/review observations. These are session triage rules, not musical-error severity or confidence scores.",
   "measureConvention": "MusicXML source measure labels are verbatim (including 0, X prefixes and repeat-ending labels). Offsets are quarter-note units from measure start, not printed beat numbers. Pitch coverage is not a confidence probability.",
   "coverage": {
     "initialNine": 9,
     "selectedTotal": 50,
-    "selectedCompleted": 49,
-    "selectedDeferred": 1,
+    "selectedCompleted": 50,
+    "selectedDeferred": 0,
     "unexaminedSelected": 0,
-    "overallGenerated": 159,
+    "overallGenerated": 160,
     "overallNative": 1,
-    "overallChorded": 160,
+    "overallChorded": 161,
     "totalHymns": 341
   },
   "sources": [
@@ -85,6 +85,17 @@
         "Heuristic accompaniment suggestions, not human-approved arrangements.",
         "Offsets are quarter-note units; source measure labels including X prefixes are preserved. Pitch coverage is not a confidence probability.",
         "Omitted windows are not filled; the preceding symbol does not establish harmony through those gaps."
+      ]
+    },
+    {
+      "batch": "Hymn 280 resolution",
+      "file": "chord-hymn280.json",
+      "sha256": "9f0eb828594e4a0de2e64f5d5f71bfcdf59de2a5e24ddf3ec0104d612ced1f6c",
+      "rowCount": 1,
+      "limitations": [
+        "Generated accompaniment suggestions, not authoritative arrangements.",
+        "17 omission records are preserved: nine numerical triplet tails and eight other windows. No inference thresholds or omissions were changed; preceding labels do not establish harmony through real gaps.",
+        "Runtime modulation support is bounded to aligned measure-start conventional same-mode concert keys. Mid-bar, part-disagreeing, staff-specific or transposing-instrument modulation is rejected."
       ]
     }
   ],
@@ -5470,6 +5481,330 @@
       ]
     },
     {
+      "number": 280,
+      "title": "Welcome, Welcome, Sabbath Morning",
+      "batch": "Hymn 280 resolution",
+      "sourceReport": "chord-hymn280.json",
+      "sourceKey": "C major / G major / C major",
+      "generatedSymbolCount": 19,
+      "omittedWindows": 17,
+      "recordedOutcome": "Generated - musical review pending",
+      "summaryFlags": [
+        "17 recorded omission windows include 9 sub-1e-7-quarter-note triplet rounding tails; eight other windows remain uninferred. Frozen inference unchanged.",
+        "Source-supported modulation at X10 and X20; generated accompaniment remains a suggestion pending musical review"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "10+ omitted windows",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X2",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X2",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C#dim",
+              "coverage": 0.559
+            },
+            {
+              "measure": "X3",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X7",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X11",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X13",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "D",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X13",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X16",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X17",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X18",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X18",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X22",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X22",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C#dim",
+              "coverage": 0.559
+            },
+            {
+              "measure": "X23",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X27",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X28",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "17 recorded omission windows include 9 sub-1e-7-quarter-note triplet rounding tails; eight other windows remain uninferred. Frozen inference unchanged.",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Source-supported modulation at X10 and X20; generated accompaniment remains a suggestion pending musical review",
+          "passages": []
+        }
+      ],
+      "previousDeferral": {
+        "number": 280,
+        "title": "Welcome, Welcome, Sabbath Morning",
+        "batch": "Batch 2",
+        "sourceReport": "chord-expansion-batch2.json",
+        "sourceKey": "C major / G major / C major",
+        "generatedSymbolCount": 0,
+        "omittedWindows": 17,
+        "recordedOutcome": "D. Structurally blocked",
+        "summaryFlags": [
+          "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+          "C to G at X10, back to C at X20. Current app intentionally disables transposition. Candidates are diagnostic only; no overlay deployed."
+        ],
+        "reviewPriority": "Deferred",
+        "priorityReason": "Existing runtime modulation restriction; no new analysis performed",
+        "warnings": [
+          {
+            "type": "Omitted/ambiguous inference",
+            "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+            "passages": [
+              {
+                "measure": "X2",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "C",
+                "coverage": 0.75
+              },
+              {
+                "measure": "X2",
+                "offset": 2.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "C#dim",
+                "coverage": 0.559
+              },
+              {
+                "measure": "X3",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X7",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X8",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X11",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X13",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "D",
+                "coverage": 0.75
+              },
+              {
+                "measure": "X13",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X16",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X17",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X18",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "G",
+                "coverage": 0.75
+              },
+              {
+                "measure": "X18",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X22",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "C",
+                "coverage": 0.75
+              },
+              {
+                "measure": "X22",
+                "offset": 2.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": "C#dim",
+                "coverage": 0.559
+              },
+              {
+                "measure": "X23",
+                "offset": 0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X27",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              },
+              {
+                "measure": "X28",
+                "offset": 3.0,
+                "reason": "Omitted: incomplete/ambiguous structural harmony",
+                "candidate": null,
+                "coverage": 0
+              }
+            ]
+          },
+          {
+            "type": "Recorded summary flag",
+            "explanation": "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+            "passages": []
+          },
+          {
+            "type": "Recorded summary flag",
+            "explanation": "C to G at X10, back to C at X20. Current app intentionally disables transposition. Candidates are diagnostic only; no overlay deployed.",
+            "passages": []
+          }
+        ],
+        "diagnosticCandidateCount": 19,
+        "keyChanges": [
+          {
+            "measure": "0",
+            "fifths": 0,
+            "mode": "major"
+          },
+          {
+            "measure": "X10",
+            "fifths": 1,
+            "mode": "major"
+          },
+          {
+            "measure": "X20",
+            "fifths": 0,
+            "mode": "major"
+          }
+        ]
+      }
+    },
+    {
       "number": 284,
       "title": "If You Could Hie to Kolob",
       "batch": "Batch 5",
@@ -8045,177 +8380,5 @@
       "status": "Historical automated tight-spacing observation, not a confirmed defect"
     }
   ],
-  "deferred": [
-    {
-      "number": 280,
-      "title": "Welcome, Welcome, Sabbath Morning",
-      "batch": "Batch 2",
-      "sourceReport": "chord-expansion-batch2.json",
-      "sourceKey": "C major / G major / C major",
-      "generatedSymbolCount": 0,
-      "omittedWindows": 17,
-      "recordedOutcome": "D. Structurally blocked",
-      "summaryFlags": [
-        "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
-        "C to G at X10, back to C at X20. Current app intentionally disables transposition. Candidates are diagnostic only; no overlay deployed."
-      ],
-      "reviewPriority": "Deferred",
-      "priorityReason": "Existing runtime modulation restriction; no new analysis performed",
-      "warnings": [
-        {
-          "type": "Omitted/ambiguous inference",
-          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
-          "passages": [
-            {
-              "measure": "X2",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "C",
-              "coverage": 0.75
-            },
-            {
-              "measure": "X2",
-              "offset": 2.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "C#dim",
-              "coverage": 0.559
-            },
-            {
-              "measure": "X3",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X7",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X8",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X11",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X13",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "D",
-              "coverage": 0.75
-            },
-            {
-              "measure": "X13",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X16",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X17",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X18",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "G",
-              "coverage": 0.75
-            },
-            {
-              "measure": "X18",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X22",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "C",
-              "coverage": 0.75
-            },
-            {
-              "measure": "X22",
-              "offset": 2.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": "C#dim",
-              "coverage": 0.559
-            },
-            {
-              "measure": "X23",
-              "offset": 0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X27",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            },
-            {
-              "measure": "X28",
-              "offset": 3.0,
-              "reason": "Omitted: incomplete/ambiguous structural harmony",
-              "candidate": null,
-              "coverage": 0
-            }
-          ]
-        },
-        {
-          "type": "Recorded summary flag",
-          "explanation": "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
-          "passages": []
-        },
-        {
-          "type": "Recorded summary flag",
-          "explanation": "C to G at X10, back to C at X20. Current app intentionally disables transposition. Candidates are diagnostic only; no overlay deployed.",
-          "passages": []
-        }
-      ],
-      "diagnosticCandidateCount": 19,
-      "keyChanges": [
-        {
-          "measure": "0",
-          "fifths": 0,
-          "mode": "major"
-        },
-        {
-          "measure": "X10",
-          "fifths": 1,
-          "mode": "major"
-        },
-        {
-          "measure": "X20",
-          "fifths": 0,
-          "mode": "major"
-        }
-      ]
-    }
-  ]
+  "deferred": []
 }

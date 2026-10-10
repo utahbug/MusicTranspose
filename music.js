@@ -17,8 +17,44 @@ export function originalKey(xml,modeOverride){
  const fifths=Number(declarations[0].querySelector('fifths')?.textContent);
  if(!Number.isInteger(fifths)||fifths< -7||fifths>7||!declarations[0].querySelector('fifths'))throw new Error('Unsupported key signature.');
  const declared=declarations[0].querySelector('mode')?.textContent.trim()||'major',mode=modeOverride||declared;
- if(!['major','minor'].includes(mode)||declarations.some(k=>!k.querySelector('fifths')||Number(k.querySelector('fifths').textContent)!==fifths||(k.querySelector('mode')?.textContent.trim()||'major')!==declared))throw new Error('Only a single consistent major or minor key is supported; modulations require review.');
+ if(!['major','minor'].includes(mode)||declarations.some(k=>!k.querySelector('fifths')||!Number.isInteger(Number(k.querySelector('fifths').textContent))||Math.abs(Number(k.querySelector('fifths').textContent))>7||(k.querySelector('mode')?.textContent.trim()||'major')!==declared))throw new Error('Unsupported or inconsistent key signatures; modulations require review.');
+ if(declarations.some(k=>Number(k.querySelector('fifths').textContent)!==fifths))validateModulation(doc,declared,modeOverride);
  return {name:(mode==='minor'?MINOR_NAMES:SOURCE_NAMES)[fifths+7],mode,fifths,pc:mod(7*fifths+(mode==='minor'?9:0),12)};
+}
+// Bounded support: conventional, same-mode keys at aligned bar starts in every
+// part. Reject mid-bar, polymetric, staff-specific and transposing-instrument
+// cases instead of silently treating them as a shared concert-key timeline.
+function validateModulation(doc,mode,modeOverride){
+ const fail=()=>{throw new Error('Unsupported key-change alignment; modulations require review.');};
+ if(modeOverride&&modeOverride!==mode||doc.querySelector('transpose, key-step, key-alter, key-octave, key[number]'))fail();
+ const parts=[...doc.querySelectorAll('score-partwise > part')];if(!parts.length)fail();
+ let reference;
+ for(const part of parts){
+  let divisions=1,current=null;const timeline=[];
+  for(const measure of [...part.children].filter(n=>n.localName==='measure')){
+   let cursor=0,end=0,started=false;
+   for(const node of measure.children){
+    if(node.localName==='attributes'){
+     divisions=Number(node.querySelector('divisions')?.textContent||divisions);if(!(divisions>0))fail();
+     const keys=[...node.querySelectorAll(':scope > key')];if(keys.length>1)fail();
+     for(const k of keys){
+      if(started||cursor!==0)fail();
+      const cancel=k.querySelector('cancel');if(cancel&&(current===null||Number(cancel.textContent)!==current))fail();
+      current=Number(k.querySelector('fifths').textContent);
+     }
+    }
+    if(['note','forward','backup'].includes(node.localName)){
+     started=true;const duration=Number(node.querySelector('duration')?.textContent||0)/divisions;
+     if(!Number.isFinite(duration)||duration<0)fail();
+     if(node.localName==='backup')cursor-=duration;
+     else if(node.localName==='forward'||!node.querySelector('chord,grace'))cursor+=duration;
+     if(cursor< -1e-7)fail();end=Math.max(end,cursor);
+    }
+   }
+   if(current===null||end<=0)fail();timeline.push([current,end]);
+  }
+  if(reference&&(reference.length!==timeline.length||reference.some((r,i)=>r[0]!==timeline[i][0]||Math.abs(r[1]-timeline[i][1])>1e-7)))fail();reference=timeline;
+ }
 }
 export const originalMajor=originalKey; // Compatibility for earlier acceptance fixtures.
 export function buildKeys(source){
@@ -41,7 +77,17 @@ export function transposeXML(original,shift,modeOverride){
  const doc=parseXML(original),source=originalKey(doc,modeOverride);
  const key=buildKeys(source).find(k=>k.shift===shift);if(!key)throw new Error('Outside this score’s practical key range.');
  if(shift===0)return original;
- for(const k of doc.querySelectorAll('attributes > key')){k.querySelector('fifths').textContent=String(key.fifths);let mode=k.querySelector('mode');if(!mode){mode=doc.createElement('mode');k.append(mode);}mode.textContent=source.mode;}
+ const signatures=[...doc.querySelectorAll('attributes > key')],delta=key.fifths-source.fifths;
+ const modulating=signatures.some(k=>Number(k.querySelector('fifths').textContent)!==source.fifths);
+ // One diatonic interval for notes and harmonies; the same circle-of-fifths
+ // displacement for every local key preserves modulation and spelling.
+ for(const k of signatures){
+  const fifths=Number(k.querySelector('fifths').textContent)+delta;
+  if(Math.abs(fifths)>7)throw new Error('A local key exceeds the supported signature range.');
+  k.querySelector('fifths').textContent=String(fifths);
+  if(modulating){const cancel=k.querySelector('cancel');if(cancel){const value=Number(cancel.textContent)+delta;if(value)cancel.textContent=String(value);else cancel.remove();}}
+  let mode=k.querySelector('mode');if(!mode){mode=doc.createElement('mode');k.append(mode);}mode.textContent=source.mode;
+ }
  for(const pitch of doc.querySelectorAll('note > pitch')){
   const step=pitch.querySelector('step'),oct=pitch.querySelector('octave');const index=LETTERS.indexOf(step.textContent),o=Number(oct.textContent),a=Number(pitch.querySelector('alter')?.textContent||0);
   const abs=o*7+index+key.diatonic,no=Math.floor(abs/7),ni=((abs%7)+7)%7;

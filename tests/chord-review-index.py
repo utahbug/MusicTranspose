@@ -3,13 +3,13 @@ import hashlib,json,pathlib,runpy,subprocess,sys,unittest
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 class ReviewIndex(unittest.TestCase):
  def test_every_source_observation_preserved(self):
-  index=json.loads((ROOT/'reports/chord-review-index.json').read_text(encoding='utf8'));entries=index['harmonicReview']+index['deferred'];self.assertEqual(len(entries),59);self.assertEqual(len({r['number'] for r in entries}),59);self.assertEqual(len(index['harmonicReview']),58);self.assertEqual([r['number'] for r in index['deferred']],[280]);self.assertEqual({r['number'] for r in index['technicalEngraving']},{81,113,198,307})
+  index=json.loads((ROOT/'reports/chord-review-index.json').read_text(encoding='utf8'));entries=index['harmonicReview']+index['deferred'];self.assertEqual(len(entries),59);self.assertEqual(len({r['number'] for r in entries}),59);self.assertEqual(len(index['harmonicReview']),59);self.assertEqual([r['number'] for r in index['deferred']],[]);self.assertEqual({r['number'] for r in index['technicalEngraving']},{81,113,198,307})
   for source in index['sources']:
    raw=(ROOT/'reports'/source['file']).read_text(encoding='utf8');self.assertEqual(hashlib.sha256(raw.encode()).hexdigest(),source['sha256']);report=json.loads(raw);self.assertEqual(report.get('limitations',[]),source['limitations'])
    for observation in report.get('technicalObservations',[]):
     actual=next(t for t in index['technicalEngraving'] if t['number']==observation['number']);self.assertEqual({k:actual[k] for k in observation},observation)
    for row in report['rows']:
-    entry=next(e for e in entries if e['number']==row['number']);self.assertEqual(entry['summaryFlags'],row['reviewFlags']);self.assertEqual(entry['recordedOutcome'],row['outcome']);self.assertEqual(entry['sourceKey'],row['originalKey']);self.assertEqual(entry['sourceReport'],source['file'])
+    entry=next(e for e in entries if e['number']==row['number']);entry=entry.get('previousDeferral',entry) if source['file']=='chord-expansion-batch2.json' and row['number']==280 else entry;self.assertEqual(entry['summaryFlags'],row['reviewFlags']);self.assertEqual(entry['recordedOutcome'],row['outcome']);self.assertEqual(entry['sourceKey'],row['originalKey']);self.assertEqual(entry['sourceReport'],source['file'])
     warnings=entry['warnings'];reviews=[p for w in warnings if w['type'] in ['Omitted/ambiguous inference','Other inference observations'] for p in w['passages']]
     canonical=lambda xs:sorted(json.dumps(x,sort_keys=True) for x in xs)
     self.assertEqual(canonical(reviews),canonical(row['analysis']['review']))

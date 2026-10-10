@@ -20,7 +20,7 @@ class PriorityNine(unittest.TestCase):
     self.assertGreaterEqual(a['pitchCoverage'],.76)
    self.assertEqual(data[r['id']]['events'],[{k:e[k] for k in ['measure','offset','root','kind','bass']} for e in events])
  def test_policy_and_runtime_unchanged(self):
-  for f in ['tools/harmony-display.py','generated-harmony.js','chord-symbol.js','music.js','score-export.js','app.js','lead-view.js','playback.js','styles.css','offline-bulk.js','offline-manager.js','offline-worker.js']:
+  for f in ['tools/harmony-display.py','generated-harmony.js','chord-symbol.js','score-export.js','app.js','lead-view.js','playback.js','styles.css','offline-bulk.js','offline-manager.js','offline-worker.js']:
    self.assertEqual((ROOT/f).read_bytes().replace(b'\r\n',b'\n'),old(f).replace(b'\r\n',b'\n'),f)
   functions=lambda s:{n.name:ast.dump(n) for n in ast.parse(s).body if isinstance(n,ast.FunctionDef) and n.name!='main'}
   self.assertEqual(functions((ROOT/'tools/harmony-inference.py').read_text(encoding='utf8')),functions(old('tools/harmony-inference.py').decode()))
