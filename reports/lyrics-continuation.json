@@ -459,6 +459,511 @@
         "fontThemeFooter": "passed at 390,744,820,1440",
         "syntaxManifestBuildDiff": "passed",
         "note": "Initial concurrent browser startup timeouts; complete sequential rerun passed."
+      },
+      "commit": "f97e10493b2863de5ee42bda432fa0d90f6f84c6",
+      "deployment": {
+        "status": "success",
+        "run": 38059739541,
+        "liveFilesVerified": [
+          "assets/lyrics.json",
+          "sw.js"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "baseline": "f97e10493b2863de5ee42bda432fa0d90f6f84c6",
+      "songs": [
+        {
+          "id": "song-3bf93f00-922d-488b-9a10-9af10ffefdac",
+          "number": "52",
+          "title": "The Day Dawn Is Breaking",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-3bf93f00-922d-488b-9a10-9af10ffefdac.mxl",
+          "status": "deferred",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X17",
+              "last": "X25"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X18",
+              "last": "X25"
+            }
+          ],
+          "structure": "Four principal verses + Chorus; P2 repeats the entire Chorus in staggered overlapping rhythm, sometimes converging with P1. Legacy false Verse 2 is that lower part. Deferred: a simple inline echo could falsely imply sequential repetition; needs a reviewed vocal-part presentation.",
+          "timingEvidence": "P1 Beautiful begins X17 beat 0; P2 Beautiful begins X18 beat 0 while P1 sings day. Similar stagger at X20/22/24; streams converge at earliest (X22 beat 2.5), ray (X23 beat 0), and final day (X25 beat 0)."
+        },
+        {
+          "id": "song-f1f1c444-22ec-4703-a7ee-1f04d2bda224",
+          "number": "60",
+          "title": "Battle Hymn of the Republic",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-f1f1c444-22ec-4703-a7ee-1f04d2bda224.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X12",
+              "last": "X20"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-4bdf04d7-47b9-469b-a26d-28524ab2a778",
+          "number": "64",
+          "title": "On This Day of Joy and Gladness",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-4bdf04d7-47b9-469b-a26d-28524ab2a778.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X31"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-0d512ac4-4118-4073-8ecf-fd57d437634e",
+          "number": "66",
+          "title": "Rejoice, the Lord Is King!",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-0d512ac4-4118-4073-8ecf-fd57d437634e.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X9",
+              "last": "1"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-1b47066a-3316-48d8-8645-579371be37ca",
+          "number": "71",
+          "title": "With Songs of Praise",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-1b47066a-3316-48d8-8645-579371be37ca.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "1"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-795bf192-9729-4769-b182-bd606a04d277",
+          "number": "75",
+          "title": "In Hymns of Praise",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-795bf192-9729-4769-b182-bd606a04d277.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "1"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-5260cbb6-62fc-472a-ba72-3b2e8ae28391",
+          "number": "76",
+          "title": "God of Our Fathers, We Come unto Thee",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-5260cbb6-62fc-472a-ba72-3b2e8ae28391.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X15",
+              "last": "X24"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-9f2a063d-1180-4f63-a580-0227046d15cf",
+          "number": "84",
+          "title": "Faith of Our Fathers",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-9f2a063d-1180-4f63-a580-0227046d15cf.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "5"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-deb16777-4998-4df2-af47-ebe4dd8b0c1f",
+          "number": "92",
+          "title": "For the Beauty of the Earth",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-deb16777-4998-4df2-af47-ebe4dd8b0c1f.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X8",
+              "last": "X11"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-2aff8662-2b9d-4a85-a4dd-84c4adc0d54c",
+          "number": "98",
+          "title": "I Need Thee Every Hour",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-2aff8662-2b9d-4a85-a4dd-84c4adc0d54c.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "1"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        }
+      ],
+      "remainingBefore": 62,
+      "remainingAfter": 53,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed"
       }
     }
   ]
