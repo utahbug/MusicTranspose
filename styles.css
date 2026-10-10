@@ -1957,3 +1957,16 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 .score-unavailable-heading{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-shrink:0}
 .score-unavailable-heading button{flex-shrink:0}
 .score-unavailable-content{min-height:0;overflow:auto;overscroll-behavior:contain}
+
+/* Lyrics frame is decoration only: its box dimensions never change. */
+#lyrics-view.lyrics-frame-hidden .lyrics-paper{border-color:transparent;box-shadow:none}
+#lyrics-view.lyrics-frame-hidden .lyrics-paper::after{border-color:transparent}
+/* Two compact header controls share reserved space; neither covers the title. */
+#lyrics-view .lyrics-identity-header{padding-right:108px}
+#lyrics-view .lyrics-header-home{right:108px}
+#lyrics-view .lyrics-identity-header .song-playback{right:56px}
+#lyrics-view #lyrics-copy{position:absolute;right:8px;top:8px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:#fff;box-shadow:none;z-index:2}
+#lyrics-copy svg{width:21px;height:21px;flex:none}
+#lyrics-view #lyrics-copy:hover{background:#ffffff1a}
+#lyrics-view #lyrics-copy:disabled{opacity:.5;cursor:default}
+#lyrics-view #lyrics-copy.copy-feedback{font:600 11px/1.2 system-ui,sans-serif;white-space:normal}

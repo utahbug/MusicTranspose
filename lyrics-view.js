@@ -1,5 +1,6 @@
 import {scoreIcon,themeIcon} from './icons.js';
 import {createDisplaySettings} from './display-settings.js';
+import {copyListText} from './list-copy.js';
 import {lyricIds} from './lyrics-index.js';
 export {lyricIds};
 let pending;
@@ -30,21 +31,42 @@ export function lyricPhrases(text,target=52){
  }
  return phrases.length?phrases:[text];
 }
+// Read the same principal verses/refrains as the renderer, never disclosure DOM,
+// sourceTextBlocks (credits/extraction material), or duplicate alternate voices.
+export function lyricsClipboardText(song){
+ if(!song||song.available===false)return '';
+ const hasText=section=>typeof section?.text==='string'&&section.text.trim();
+ const verses=(song.verses||[]).filter(hasText),refrains=(song.refrains||[]).filter(hasText);
+ if(!verses.length&&!refrains.length)return '';
+ const repeated=refrains.filter(r=>/^(chorus|refrain)$/i.test(r.label||'')),seen=new Set(),parts=[];
+ const label=r=>{const name=r.label||'Refrain',peers=refrains.filter(p=>(p.label||'Refrain')===name);return name+(peers.length>1?' '+(peers.indexOf(r)+1):'');};
+ const append=r=>{parts.push(seen.has(r)?label(r)+' (repeat)':label(r)+'\n'+r.text);seen.add(r);};
+ for(const verse of verses){
+  parts.push('Verse '+verse.number+'\n'+verse.text);
+  for(const refrain of repeated)if(!refrain.verses||refrain.verses.map(String).includes(String(verse.number)))append(refrain);
+ }
+ for(const refrain of refrains)if(!seen.has(refrain))append(refrain);
+ return [song.title,...parts].filter(Boolean).join('\n\n');
+}
+const copyIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>';
+const frameIcon='<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="1"/><rect x="6" y="6" width="12" height="12" rx="1"/></svg>';
 const appearanceKey='music-transpose-lyrics-appearance-v1';
 const sizes=['small','medium','large','extra-large'],sizeNames=['Small','Medium','Large','Extra Large'];
-function readAppearance(){try{const p=JSON.parse(localStorage.getItem(appearanceKey))||{};return {dark:typeof p.dark==='boolean'?p.dark:false,size:Number.isInteger(p.size)&&p.size>=0&&p.size<=3?p.size:0};}catch{return {dark:false,size:0};}}
+function readAppearance(){try{const p=JSON.parse(localStorage.getItem(appearanceKey))||{};return {frame:typeof p.frame==='boolean'?p.frame:false,dark:typeof p.dark==='boolean'?p.dark:false,size:Number.isInteger(p.size)&&p.size>=0&&p.size<=3?p.size:0};}catch{return {dark:false,size:0,frame:false};}}
 // The same Library node keeps its shared navigation handler and accessible name.
 export function createLyricsView(host,{onScore,libraryControl}){
- let {size,dark}=readAppearance(),current=null,libraryHome=null,listeners=null,paragraphs=[],settings=null;
+ let {size,dark,frame}=readAppearance(),current=null,libraryHome=null,listeners=null,paragraphs=[],settings=null,copyTimer=null;
  function rephrase(){const target=Math.max(26,Math.min(58,Math.floor((Math.min(innerWidth,820)-72)/([19,24,30,36][size]*.5))));for(const [p,text] of paragraphs){p.replaceChildren(...lyricPhrases(text,target).map(phrase=>{const line=document.createElement('span');line.className='lyric-phrase';line.textContent=phrase;return line;}));}}
  function lyricParagraph(text){const p=make('p',null,'lyric-lines');paragraphs.push([p,text]);return p;}
- const saveAppearance=()=>{try{localStorage.setItem(appearanceKey,JSON.stringify({dark,size}));}catch{}};
+ const saveAppearance=()=>{try{localStorage.setItem(appearanceKey,JSON.stringify({dark,size,frame}));}catch{}};
  function restoreLibrary(){if(libraryHome){libraryHome.parent.insertBefore(libraryControl,libraryHome.next?.parentNode===libraryHome.parent?libraryHome.next:null);libraryHome=null;}}
- function dispose(){settings?.destroy();settings=null;listeners?.abort();listeners=null;restoreLibrary();}
+ function dispose(){clearTimeout(copyTimer);settings?.destroy();settings=null;listeners?.abort();listeners=null;restoreLibrary();}
  const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
  const button=(text,label,fn)=>{const e=make('button',text,'quiet');e.type='button';e.setAttribute('aria-label',label);e.title=label;e.onclick=fn;return e;};
  function draw(){
- dispose();paragraphs=[];host.replaceChildren();host.classList.toggle('lyrics-dark',dark);host.dataset.size=sizes[size];
+ dispose();paragraphs=[];host.replaceChildren();host.classList.toggle('lyrics-dark',dark);host.dataset.size=sizes[size];host.classList.toggle('lyrics-frame-hidden',!frame);
+ const frameButton=button('','Show frame',()=>{frame=!frame;saveAppearance();host.classList.toggle('lyrics-frame-hidden',!frame);syncFrame();});frameButton.id='lyrics-frame';
+ const syncFrame=()=>{const label=frame?'Hide frame':'Show frame';frameButton.innerHTML=frameIcon+'<span>'+label+'</span>';frameButton.setAttribute('aria-label',label);frameButton.title=label;frameButton.setAttribute('aria-pressed',String(frame));};syncFrame();
  const theme=button('','Light / Dark background',()=>{dark=!dark;saveAppearance();host.classList.toggle('lyrics-dark',dark);theme.setAttribute('aria-checked',String(dark));});
  theme.id='lyrics-theme';theme.innerHTML=themeIcon+'<span>Light / Dark background</span>';theme.setAttribute('role','menuitemcheckbox');theme.setAttribute('aria-checked',String(dark));
  const fontWrap=make('div',null,'lyrics-font-wrap'),menu=make('div',null,'lyrics-font-menu');menu.id='lyrics-font-options';menu.hidden=true;menu.setAttribute('role','menu');menu.setAttribute('aria-label','Lyrics text size');
@@ -53,7 +75,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const font=button('','Font size',()=>menu.hidden?openFont():closeFont(true));font.id='lyrics-font-size';font.innerHTML='<span class="lyrics-font-art" aria-hidden="true">A</span><span>Font size</span><span class="lyrics-font-chevron" aria-hidden="true">›</span>';font.setAttribute('aria-haspopup','menu');font.setAttribute('aria-expanded','false');font.setAttribute('aria-controls',menu.id);
  for(const [index,name] of sizeNames.entries()){const option=button(name,name,()=>{size=index;saveAppearance();rephrase();host.dataset.size=sizes[size];for(const [i,item] of [...menu.children].entries())item.setAttribute('aria-checked',String(i===size));font.title='Font size: '+sizeNames[size];closeFont(true);});option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
  font.title='Font size: '+sizeNames[size];fontWrap.append(font,menu);
- settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontWrap,theme],onClose:()=>closeFont()});
+ settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontWrap,frameButton,theme],onClose:()=>closeFont()});
  font.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openFont();}});
  menu.addEventListener('keydown',e=>{e.stopPropagation();const items=[...menu.children],i=items.indexOf(document.activeElement);if(e.key==='Escape'){e.preventDefault();closeFont(true);}else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  listeners=new AbortController();const options={signal:listeners.signal};window.addEventListener('resize',rephrase,options);
@@ -65,6 +87,18 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const footer=make('div',null,'lyrics-footer'),pair=make('div',null,'footer-view-pair');pair.append(scoreToggle,settings.element);
  libraryHome={parent:libraryControl.parentNode,next:libraryControl.nextSibling};footer.append(libraryControl,pair);host.append(footer);
  const header=make('header',null,'lyrics-identity-header'),home=make('button',null,'header-home lyrics-header-home');home.type='button';home.setAttribute('aria-label','Return to Library');header.append(home,make('h1',current.title),make('p',current.collection+' · '+current.number,'lyrics-source'));const paper=make('div',null,'lyrics-paper');paper.append(header);host.append(paper);
+ const copyStatus=make('span',null,'sr-only');copyStatus.id='lyrics-copy-status';copyStatus.setAttribute('role','status');copyStatus.setAttribute('aria-live','polite');
+ const text=lyricsClipboardText(current);let copying=false;
+ const copy=button('','Copy lyrics',async()=>{
+  if(copying||!text)return;copying=true;copy.disabled=true;clearTimeout(copyTimer);copyStatus.textContent='';
+  const copied=await copyListText(text,'Lyrics to copy');copying=false;
+  if(!copy.isConnected||options.signal.aborted)return;
+  copy.disabled=false;copy.textContent=copied?'Copied':'Copy failed';copy.classList.add('copy-feedback');copy.dataset.result=copied?'success':'failure';
+  copyStatus.textContent=copied?'Copied':'Unable to copy lyrics. Select the lyrics and copy them manually.';
+  copyTimer=setTimeout(()=>{copy.innerHTML=copyIcon;copy.classList.remove('copy-feedback');delete copy.dataset.result;copyStatus.textContent='';},copied?2200:6000);
+ });copy.id='lyrics-copy';copy.innerHTML=copyIcon;copy.disabled=!text;copy.setAttribute('aria-describedby',copyStatus.id);
+ if(!text)copyStatus.textContent='No lyrics available to copy.';
+ header.append(copy,copyStatus);
  if(current.refrains.some(r=>r.label==='Shared ending'))paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
  const body=make('div',null,'lyrics-body');
  const repeated=current.refrains.filter(r=>/^(chorus|refrain)$/i.test(r.label||''));
@@ -83,5 +117,5 @@ export function createLyricsView(host,{onScore,libraryControl}){
  paper.append(body);rephrase();
  const heading=header.querySelector('h1');heading.tabIndex=-1;
  }
- return {show(data){({size,dark}=readAppearance());current=data;draw();host.hidden=false;host.querySelector('h1').focus({preventScroll:true});},hide(){dispose();host.hidden=true;},reset(){dispose();({size,dark}=readAppearance());current=null;host.hidden=true;}};
+ return {show(data){({size,dark,frame}=readAppearance());current=data;draw();host.hidden=false;host.querySelector('h1').focus({preventScroll:true});},hide(){dispose();host.hidden=true;},reset(){dispose();({size,dark,frame}=readAppearance());current=null;host.hidden=true;}};
 }

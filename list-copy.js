@@ -14,11 +14,11 @@ export function listClipboardText(list,songs){
  });
  return [list.name,listCount(list),'',...rows].join('\n');
 }
-export async function copyListText(text){
+export async function copyListText(text,label='List text to copy'){
  try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true;}}catch{}
  const focused=document.activeElement,selection=window.getSelection(),ranges=[];
  for(let i=0;selection&&i<selection.rangeCount;i++)ranges.push(selection.getRangeAt(i).cloneRange());
- const field=document.createElement('textarea');field.value=text;field.readOnly=true;field.setAttribute('aria-label','List text to copy');
+ const field=document.createElement('textarea');field.value=text;field.readOnly=true;field.setAttribute('aria-label',label);
  field.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px';document.body.append(field);
  try{field.focus({preventScroll:true});field.select();field.setSelectionRange(0,text.length);return !!document.execCommand('copy');}catch{return false;}
  finally{field.remove();focused?.focus({preventScroll:true});if(selection){selection.removeAllRanges();for(const range of ranges)selection.addRange(range);}}
