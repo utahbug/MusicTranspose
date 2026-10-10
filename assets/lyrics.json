@@ -3615,13 +3615,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -3671,13 +3669,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -3723,19 +3719,35 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Jesus is a God of miracles; Nothing is at all impossible to Him. But I know this: Of all His miracles, the most incredible must be The miracle that rescues me. me. The miracle that rescues you and me.",
+          "text": "Jesus is a God of miracles; Nothing is at all impossible to Him. But I know this: Of all His miracles, the most incredible must be The miracle that rescues me.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2"
+          ],
+          "principalText": "Jesus is a God of miracles; Nothing is at all impossible to Him. But I know this: Of all His miracles, the most incredible must be The miracle that rescues me. me. The miracle that rescues you and me."
+        },
+        {
+          "number": "1",
+          "text": "Jesus is a God of miracles; Nothing is at all impossible to Him. But I know this: Of all His miracles, the most incredible must be The miracle that rescues me. The miracle that rescues you and me.",
+          "sourcePart": "P1",
+          "sourceVoice": "1",
+          "kind": "note-lyrics",
+          "label": "Chorus",
+          "verses": [
+            "3"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed hhc-1070: first ending 25 applies to verses 1/2; final ending 26 through 28 applies only to verse 3. Stitch each source path separately, preserving its terminal word/syllable once and its final extension. Literal unexpanded source stream retained in principalText."
+      ],
       "sourceTextBlocks": [
         "title\n The Miracle",
         "2 Nephi 27:23 | Doctrine and Covenants 138:23",
@@ -4027,13 +4039,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -4308,19 +4318,35 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Alleluia, Alleluia, Alleluia, Alleluia! ia! Alleluia, Alleluia, Alleluia! He’s come to save me.",
+          "text": "Alleluia, Alleluia, Alleluia, Alleluia!",
           "sourcePart": "P2",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2"
+          ],
+          "principalText": "Alleluia, Alleluia, Alleluia, Alleluia! ia! Alleluia, Alleluia, Alleluia! He’s come to save me."
+        },
+        {
+          "number": "1",
+          "text": "Alleluia, Alleluia, Alleluia, Alleluia! Alleluia, Alleluia, Alleluia! He’s come to save me.",
+          "sourcePart": "P2",
+          "sourceVoice": "1",
+          "kind": "note-lyrics",
+          "label": "Chorus",
+          "verses": [
+            "3"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed hhc-1209: first ending 17 applies to verses 1/2; final ending 18 through 26 applies only to verse 3. Stitch each source path separately, preserving its terminal word/syllable once and its final extension. Literal unexpanded source stream retained in principalText."
+      ],
       "sourceTextBlocks": [
         "title\n Little Baby in a Manger",
         "Luke 19:10 | Helaman 14:5–8",
@@ -4377,13 +4403,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -7207,13 +7231,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -7638,13 +7660,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -8086,13 +8106,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [

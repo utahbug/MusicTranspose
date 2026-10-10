@@ -178,6 +178,26 @@ for song in catalog:
   assert len(r['refrains'])==1 and chorus['text']==first+' I know that my Savior loves me.'
   r['refrains']=[{**chorus,'text':first,'verses':['1']},{**chorus,'verses':['2']}]
   r['extractionDecisions'].append('Reviewed #1021: chorus measures 34–48 follows both verses. First ending 49 repeats; second ending 50–54 adds the final phrase only after verse 2. Existing verse-specific chorus disclosures preserve both forms. Optional duet has no additional lyric stream.')
+ # These two reviewed scores have identical terminal underlay in alternative
+ # endings, followed by an extension only on verse 3. Join each performed path
+ # before stitching syllables (especially Allelu-ia across #1209's ending).
+ if song['id'] in ('hhc-1070','hhc-1209'):
+  part_id,first_bar,final_bar,last_bar=('P1',25,26,28) if song['id']=='hhc-1070' else ('P2',17,18,26)
+  part=root.find("part[@id='"+part_id+"']")
+  assert part.find("measure[@number='"+str(first_bar)+"']/barline/ending[@type='start']").get('number')=='1, 2'
+  assert part.find("measure[@number='"+str(first_bar)+"']/barline/repeat[@direction='backward']") is not None
+  assert part.find("measure[@number='"+str(final_bar)+"']/barline/ending[@type='start']").get('number')=='3'
+  nodes=[(int(m.get('number')),l) for m in part.findall('measure') for n in m.findall('note') for l in n.findall('lyric') if l.get('name')=='chorus']
+  chorus=r['refrains'][0]
+  assert len(r['verses'])==3 and len(r['refrains'])==1 and not r['alternateLyrics']
+  assert chorus['text']==stitch([l for _,l in nodes])
+  terminal='me.' if song['id']=='hhc-1070' else 'ia!'
+  assert [l.findtext('text') for bar,l in nodes if bar==first_bar]==[terminal]
+  assert next(l.findtext('text') for bar,l in nodes if bar==final_bar)==terminal
+  first=stitch([l for bar,l in nodes if bar<=first_bar])
+  final=stitch([l for bar,l in nodes if bar!=first_bar])
+  r['refrains']=[{**chorus,'text':first,'verses':['1','2'],'principalText':chorus['text']},{**chorus,'text':final,'verses':['3']}]
+  r['extractionDecisions'].append('Reviewed '+song['id']+': first ending '+str(first_bar)+' applies to verses 1/2; final ending '+str(final_bar)+' through '+str(last_bar)+' applies only to verse 3. Stitch each source path separately, preserving its terminal word/syllable once and its final extension. Literal unexpanded source stream retained in principalText.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'
@@ -194,7 +214,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id']!='hhc-1021':r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id'] not in ('hhc-1021','hhc-1070','hhc-1209'):r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')

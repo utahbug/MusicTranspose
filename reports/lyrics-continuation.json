@@ -1,0 +1,465 @@
+{
+  "startingCommit": "86577801f1628edc7ea6ced5aab2cf40bcc623c0",
+  "excludedPreviouslyAudited": [
+    "hhc-1053",
+    "song-a13c43da-0243-4019-ad08-d7be530074f5"
+  ],
+  "groups": [
+    {
+      "number": 1,
+      "baseline": "86577801f1628edc7ea6ced5aab2cf40bcc623c0",
+      "songs": [
+        {
+          "id": "hhc-1068",
+          "number": "1068",
+          "title": "To God Be the Glory",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1068.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "1",
+              "last": "20"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "1",
+              "last": "20"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "21",
+              "last": "40"
+            }
+          ],
+          "structure": "2 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "hhc-1069",
+          "number": "1069",
+          "title": "Speak to Us, Lord",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1069.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "1",
+              "last": "8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "1",
+              "last": "8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "1",
+              "last": "8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "9",
+              "last": "17"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "hhc-1070",
+          "number": "1070",
+          "title": "The Miracle",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1070.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "3",
+              "last": "15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "3",
+              "last": "15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "3",
+              "last": "15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "16",
+              "last": "28"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse; first ending for verses 1/2, extended final ending for verse 3"
+        },
+        {
+          "id": "hhc-1204",
+          "number": "1204",
+          "title": "Star Bright",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1204.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "1",
+              "last": "16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "1",
+              "last": "16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "1",
+              "last": "16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X1",
+              "last": "32"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "hhc-1209",
+          "number": "1209",
+          "title": "Little Baby in a Manger",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1209.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "9",
+              "last": "26"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse; first ending for verses 1/2, extended final ending for verse 3"
+        },
+        {
+          "id": "hhc-1210",
+          "number": "1210",
+          "title": "Long Ago, Within a Garden",
+          "collection": "Hymns for Home and Church",
+          "source": "./assets/scores/hhc-1210.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "1",
+              "last": "9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X2",
+              "last": "17"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "cs-16",
+          "number": "16",
+          "title": "Children All Over the World",
+          "collection": "Children’s Songbook",
+          "source": "./assets/scores/cs-16.mxl",
+          "status": "deferred",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": null,
+              "first": "0",
+              "last": "X27"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": null,
+              "first": "X11",
+              "last": "X17"
+            }
+          ],
+          "structure": "Unnumbered continuous song; lyric row 2 contains pronunciation guides, not a second verse. No explicit Chorus metadata; needs a separate pronunciation/section policy."
+        },
+        {
+          "id": "song-0244093d-d300-481a-bd08-b42e9641de47",
+          "number": "27",
+          "title": "Praise to the Man",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-0244093d-d300-481a-bd08-b42e9641de47.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X31"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-cee5b409-48b4-42f6-be30-8f377c1cc9d0",
+          "number": "35",
+          "title": "For the Strength of the Hills",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-cee5b409-48b4-42f6-be30-8f377c1cc9d0.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X15",
+              "last": "X20"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283",
+          "number": "44",
+          "title": "Beautiful Zion, Built Above",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X23"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X23"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X23"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X24",
+              "last": "X33"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        }
+      ],
+      "remainingBefore": 71,
+      "remainingAfter": 62,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed",
+        "note": "Initial concurrent browser startup timeouts; complete sequential rerun passed."
+      }
+    }
+  ]
+}
