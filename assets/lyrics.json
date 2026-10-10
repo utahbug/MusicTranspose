@@ -22492,13 +22492,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -22613,13 +22611,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -23940,24 +23936,23 @@
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 2"
-        }
-      ],
-      "refrains": [
+        },
         {
-          "number": "1",
+          "number": "3",
           "text": "And close beside the manger bed, he dimmed the lantern’s light And held the little Jesus close upon that holy night.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Verse 3"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "refrains": [],
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed CS #38, When Joseph Went to Bethlehem: printed 3. at X17 starts a shorter third verse after the X16 repeat. Preserve its exact text as Verse 3, not a shared ending or chorus. Catalog and source title agree."
+      ],
       "sourceTextBlocks": [
         "When Joseph Went to Bethlehem",
         "Words: \n Bessie Saunders Spencer, 1898–1989. © 1960 IRI\n \n\n Music: \n I. Reed Payne, 1930–2009. © 1977 IRI",
@@ -25110,19 +25105,20 @@
       "refrains": [
         {
           "number": "1",
-          "text": "“This is My Beloved Son. Hear Him!” “This is My Beloved Son. Hear Him!”",
+          "text": "“This is My Beloved Son. Hear Him!”",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "“This is My Beloved Son. Hear Him!” “This is My Beloved Son. Hear Him!”"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus."
+      ],
       "sourceTextBlocks": [
         "Words: \n Marvin K. Gardner, b. 1952\n \n\n Music: \n Vanja Y. Watkins, b. 1938",
         "Matthew 3:16–17 (JST, Matthew 3:44–46)\n3 Nephi 11:6–8\nJoseph Smith—History 1:17\nDoctrine and Covenants 18:34–36",

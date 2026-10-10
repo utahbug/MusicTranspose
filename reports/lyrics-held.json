@@ -1,0 +1,71 @@
+{
+  "startingCommit": "40547993653e4e926a7f14b54f6928d2de095b7b",
+  "groups": [
+    {
+      "number": 1,
+      "songs": [
+        {
+          "id": "song-a874f72f-0d1e-4407-a7a8-2ff61609539f",
+          "number": "334",
+          "title": "I Need Thee Every Hour",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-a874f72f-0d1e-4407-a7a8-2ff61609539f.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "structure": "Four verses; independent Chorus after each. Explicit chorus metadata X10–X19.",
+          "secondaryVoices": false,
+          "blocker": null
+        },
+        {
+          "id": "song-c30e5c84-a1bb-431d-b093-a2761eba0f82",
+          "number": "336",
+          "title": "School Thy Feelings",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-c30e5c84-a1bb-431d-b093-a2761eba0f82.mxl",
+          "status": "corrected",
+          "verseCount": 5,
+          "structure": "Five verses, including printed verses 4/5; independent Chorus after each. Explicit chorus X16–X24.",
+          "secondaryVoices": false,
+          "blocker": null
+        },
+        {
+          "id": "song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98",
+          "number": "38",
+          "title": "When Joseph Went to Bethlehem",
+          "collection": "Children’s Songbook",
+          "source": "./assets/scores/song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "structure": "Three verses, no repeated section. Printed 3. in X17 identifies the shorter final verse after the X16 repeat. Correct catalog/source title is When Joseph Went to Bethlehem.",
+          "secondaryVoices": false,
+          "blocker": null
+        },
+        {
+          "id": "song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2",
+          "number": "76",
+          "title": "This Is My Beloved Son",
+          "collection": "Children’s Songbook",
+          "source": "./assets/scores/song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "structure": "Four verses; independent Chorus after each. Identical alternative-ending Chorus X8–X12 / X13–X16 displayed once, both literal source paths preserved.",
+          "secondaryVoices": false,
+          "blocker": null
+        }
+      ],
+      "remainingBefore": 18,
+      "remainingAfter": 14,
+      "validation": {
+        "sourcePreservationAndReplay": "passed: all four records; every other record and source bytes unchanged",
+        "responsiveDisclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "chordNavigation": "passed at 390,820,1440",
+        "lists": "passed at 390,430,820,1024,1440",
+        "offline": "passed isolated controller and worker regressions; no user storage touched",
+        "syntaxManifestBuildDiff": "passed",
+        "physicalDevices": "not tested"
+      }
+    }
+  ]
+}

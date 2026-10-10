@@ -272,6 +272,27 @@ for song in catalog:
   assert main['text'].startswith('Then away, haste away! Come away')
   main['principalText']=main['text'];main['text']=main['text'].replace('Then away, haste away!','Then away ('+first[:-1]+'), haste away ('+second[:-1]+')!',1)
   r['extractionDecisions'].append('Reviewed Hymns #276: P2 Then away in X21 beats 1–3 and haste away in X22 beats 1–3 answer the corresponding sustained P1 away notes, before the next main pickup at beat 3. Parenthesize separately at those two phrase boundaries; preserve literal streams, not an extra Verse 2.')
+ if song['id']=='song-cccdfc08-d860-4ff4-b40b-4fb70b7e1a98':
+  part=root.find("part[@id='P1']");bars=part.findall('measure');start=next(i for i,m in enumerate(bars) if m.get('number')=='X17')
+  nodes=[l for m in bars[start:] for l in m.findall("note/lyric[@number='1']")]
+  assert nodes[0].findtext('text')=='3.'
+  assert part.find("measure[@number='X16']/barline/repeat[@direction='backward']") is not None
+  assert len(r['verses'])==2 and len(r['refrains'])==1 and not r['alternateLyrics']
+  third=r['refrains'][0];assert third['label']=='Shared ending' and third['text']==stitch(nodes)
+  r['verses'].append({**third,'number':'3','label':'Verse 3'});r['refrains']=[]
+  r['notes'].remove('Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.')
+  r['extractionDecisions'].append('Reviewed CS #38, When Joseph Went to Bethlehem: printed 3. at X17 starts a shorter third verse after the X16 repeat. Preserve its exact text as Verse 3, not a shared ending or chorus. Catalog and source title agree.')
+ if song['id']=='song-6d0b5d7c-27be-4db0-930b-9e748b31d2d2':
+  part=root.find("part[@id='P1']");main=r['refrains'][0]
+  assert part.find("measure[@number='X8']/barline/ending[@type='start']").get('number')=='1, 2, 3'
+  assert part.find("measure[@number='X12']/barline/repeat[@direction='backward']") is not None
+  assert part.find("measure[@number='X13']/barline/ending[@type='start']").get('number')=='4'
+  def ending_text(bars):return stitch([l for m in part.findall('measure') if m.get('number') in bars for l in m.findall("note/lyric[@name='chorus']")])
+  first=ending_text(['X8','X9','X10','X11','X12']);last=ending_text(['X13','X14','X15','X16'])
+  assert first==last and first and len(r['verses'])==4 and len(r['refrains'])==1 and not r['alternateLyrics']
+  assert main['text']==first+' '+last
+  main['principalText']=main['text'];main['text']=first
+  r['extractionDecisions'].append('Reviewed CS #76: X8–X12 (verses 1/2/3) and X13–X16 (verse 4) are alternative endings with identical complete Chorus words. Display that Chorus once after each verse, preserving both literal source paths in principalText. No consecutive duplicate Chorus.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'
