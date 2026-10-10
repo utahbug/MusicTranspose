@@ -10,7 +10,7 @@ assert(scoreManifest.every(x=>typeof x==='string'&&fs.existsSync(x)));assert(pdf
 for(const s of unavailableSongs)assert(!JSON.stringify([scoreManifest,pdfManifest]).includes(s.id));
 const search=createSongSearch();for(const s of unavailableSongs){assert(matchesSource(s,'all')&&matchesSource(s,'hymnal'));assert(search.match(s,s.title,['title']).matched);assert(search.match(s,s.page,['page']).pageMatch);}
 const ordered=songs.filter(s=>matchesSource(s,'hymnal')).sort(compareNumbers);assert.deepEqual(ordered.slice(83,88).map(s=>s.page),['84','85','86','87','88']);const alpha=[...ordered].sort(compareAlphabeticalTitles);assert.equal(alpha.length,341);
-for(const file of ['offline-scores.json','offline-pdfs.json','generated-harmony-data.js'])assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),execFileSync('git',['show','8f6e317:'+file],{encoding:'utf8'}).replaceAll('\r\n','\n'),file+' unchanged');
-assert.equal(execFileSync('git',['diff','8f6e317','--name-only','--','assets'],{encoding:'utf8'}),'');
+for(const file of ['offline-scores.json','offline-pdfs.json','generated-harmony-data.js'])assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),execFileSync('git',['show','424010c:'+file],{encoding:'utf8'}).replaceAll('\r\n','\n'),file+' unchanged');
+assert.equal(execFileSync('git',['diff','424010c','--name-only','--','assets'],{encoding:'utf8'}),'');
 const result={expected:341,structured:rows.filter(r=>r.after==='A').length,pdfOnly:rows.filter(r=>r.after==='B').length,unavailable:6,unresolved:0,duplicateNumbers:[],beforeGaps:missing,offlineStructured:scoreManifest.filter(s=>/\.(mxl|xml|musicxml)$/i.test(s)).length,offlinePdfs:pdfManifest.assets.length,rows};assert.equal(result.structured,335);
-fs.writeFileSync('reports/hymnal-catalog-completeness.json',JSON.stringify(result,null,2)+'\n');console.log('PASS catalog 1–341:',{...result,rows:undefined});
+fs.writeFileSync('test-results/hymnal-catalog-completeness.json',JSON.stringify(result,null,2)+'\n');console.log('PASS catalog 1–341:',{...result,rows:undefined});

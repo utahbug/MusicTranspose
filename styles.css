@@ -1945,3 +1945,15 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 #offline-inventory .device-song-select input{flex:none;width:24px;height:24px;margin:10px;accent-color:#276e70}
 #offline-inventory #device-songs-report ul{padding-left:20px}
 @media(max-height:550px){#offline-inventory .device-songs-actions{padding:6px 12px}#offline-inventory .device-songs-actions p{font-size:12px;line-height:1.3;margin-bottom:4px}#offline-inventory .dialog-heading{padding:6px 12px}}
+
+/* Only the unavailable-score notice: original credits without source-page layout. */
+#score-unavailable-dialog{box-sizing:border-box;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;overflow-wrap:anywhere}
+#score-unavailable-song{font-weight:600}
+#score-unavailable-credits{font-size:15px;line-height:1.5}
+#score-unavailable-credits dt{font-weight:600;margin-top:12px}
+#score-unavailable-credits dd{margin:0}
+
+#score-unavailable-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.score-unavailable-heading{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-shrink:0}
+.score-unavailable-heading button{flex-shrink:0}
+.score-unavailable-content{min-height:0;overflow:auto;overscroll-behavior:contain}

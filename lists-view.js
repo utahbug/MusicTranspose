@@ -4,7 +4,7 @@ import {createTextEditor,cleanTextHTML} from './list-text.js';
 import {createListRowSwipe} from './list-row-swipe.js';
 import {createPickerSources} from './list-picker-sources.js';
 import {offlineListState,offlineSummary,refreshOffline,saveOfflineList,removeOfflineList} from './offline-manager.js';
-import {canOpenScore} from './score-availability.js';
+import {canOpenScore,canListSong,isUnavailableScore} from './score-availability.js';
 import {listClipboardText,copyListText} from './list-copy.js';
 import {attachReorderHandle} from './list-reorder.js';
 import {editIcon,favoriteIcon,orderIcon,musicItemIcon} from './icons.js';
@@ -119,10 +119,10 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  function selectionAction(){$('list-picker-done').textContent=selected.size+' selected — Add to list';$('list-picker-done').disabled=!selected.size;}
  function renderPicker(){const g=group(picking);if(!g){picking=null;render();return;}$('lists-heading').textContent='MusicTranspose · Lists';$('lists-context').textContent=g.name;$('list-picker-target').textContent='To: '+g.name;$('list-picker-target').title=g.name;$('lists-back').hidden=false;$('lists-back').textContent='‹ Back to list';$('list-picker').hidden=false;
   const query=normalizeSearch($('list-picker-search').value),favorites=$('list-picker-favorites').checked;
-  const found=songs.filter(s=>canOpenScore(s)&&pickerSources.matches(s)&&(!favorites||getState().favorites.includes(s.id))&&query.split(/\s+/).every(word=>(songSearchText(s)+' '+normalizeSearch(s.originalFilename||'')).includes(word)));
+  const found=songs.filter(s=>canListSong(s)&&pickerSources.matches(s)&&(!favorites||getState().favorites.includes(s.id))&&query.split(/\s+/).every(word=>(songSearchText(s)+' '+normalizeSearch(s.originalFilename||'')).includes(word)));
   pickerSources.sortResults(found);
   const host=$('list-picker-results');host.replaceChildren();
-  for(const s of found){const label=el('label',null,'list-picker-row'),check=document.createElement('input');check.type='checkbox';check.dataset.song=s.id;const exists=g.songs.includes(s.id);check.checked=exists||selected.has(s.id);check.disabled=exists;check.setAttribute('aria-label',(exists?'Already in list: ':'Add: ')+s.title);check.onchange=()=>{if(check.checked)selected.add(s.id);else selected.delete(s.id);selectionAction();};const text=el('span');text.append(el('strong',s.title),el('span',[s.collection,s.page,exists?'Already in list':''].filter(Boolean).join(' · '),'song-meta'));label.append(check,text);host.append(label);}
+  for(const s of found){const label=el('label',null,'list-picker-row'),check=document.createElement('input');check.type='checkbox';check.dataset.song=s.id;const exists=g.songs.includes(s.id);check.checked=exists||selected.has(s.id);check.disabled=exists;check.setAttribute('aria-label',(exists?'Already in list: ':'Add: ')+s.title);check.onchange=()=>{if(check.checked)selected.add(s.id);else selected.delete(s.id);selectionAction();};const text=el('span');text.append(el('strong',s.title),el('span',[s.collection,s.page,isUnavailableScore(s)?'Score unavailable':'',exists?'Already in list':''].filter(Boolean).join(' · '),'song-meta'));label.append(check,text);host.append(label);}
   if(!found.length)host.append(el('p','No songs match. Try another search or source.'));$('list-picker-count').textContent=found.length+' songs';selectionAction();
  }
  let listMenu=null,listMenuOrigin=null,listMenuId=null;
@@ -163,6 +163,6 @@ export function createListsView({getState,save,onLibrary,onSelect,onAdded,onChan
  const cancel=()=>{pickerSources.close();const id=picking;picking=null;selected.clear();onSelect(id);};
  $('lists-back').onclick=cancel;$('list-picker-cancel').onclick=cancel;
  for(const id of ['list-picker-search','list-picker-favorites'])$(id).addEventListener(id==='list-picker-search'?'input':'change',renderPicker);
- $('list-picker-done').onclick=()=>{pickerSources.close();const g=group(picking);if(!g)return;const valid=new Set(songs.filter(canOpenScore).map(s=>s.id)),added=[...selected].filter(id=>valid.has(id)&&!g.songs.includes(id));if(!added.length)return;g.songs.push(...added);const saved=save(),id=picking;picking=null;selected.clear();onChanged();onAdded(id,added,saved);};
+ $('list-picker-done').onclick=()=>{pickerSources.close();const g=group(picking);if(!g)return;const valid=new Set(songs.filter(canListSong).map(s=>s.id)),added=[...selected].filter(id=>valid.has(id)&&!g.songs.includes(id));if(!added.length)return;g.songs.push(...added);const saved=save(),id=picking;picking=null;selected.clear();onChanged();onAdded(id,added,saved);};
  return {open,openList,pick,hide,render,name,remove,editEntry,finishAdded,remember,clearUndo,editText:(list,id)=>textEditor.open(list,id,textItem(group(list),id)),readText:id=>readText(null,id)};
 }
