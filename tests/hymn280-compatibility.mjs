@@ -8,4 +8,4 @@ try{await p.route('**/__hymn280-baseline-music.js',route=>route.fulfill({content
   const song=songs.find(s=>s.id===id),xml=await withGeneratedHarmony(now.unpackMXL(await(await fetch(song.asset)).arrayBuffer()),id);
   for(const shift of [-6,-2,0,1,6]){if(now.transposeXML(xml,shift,song.modeOverride)!==old.transposeXML(xml,shift,song.modeOverride))throw Error('Prior transposition changed: '+song.page+' '+shift);checks++;}
  }return checks;
-},baseline);assert.equal(count,840);console.log('PASS 840 exact XML comparisons against prior transposer across all 168 non-modulating overlays');}finally{await b.close();}
+},baseline);assert.equal(count,905);console.log('PASS 905 exact XML comparisons against prior transposer across all 181 non-modulating overlays');}finally{await b.close();}

@@ -1,6 +1,6 @@
 {
   "title": "Consolidated hymn chord review index",
-  "scope": "Initial nine-hymn priority batch and selected expansion Batches 2-6, plus hymn 280 modulation resolution and Batch 7",
+  "scope": "Initial nine-hymn priority batch and selected expansion Batches 2-6, plus hymn 280 modulation resolution and Batches 7-8",
   "status": "Automated observations for a later consolidated review session; no chord corrections made during consolidation",
   "priorityPolicy": "P1: major-seventh/augmented interpretations, at least 10 omitted windows, or at least 3 overlapping dense-window flags. P2: other retained qualities, dense windows, or summary flags. P3: remaining omissions/review observations. These are session triage rules, not musical-error severity or confidence scores.",
   "measureConvention": "MusicXML source measure labels are verbatim (including 0, X prefixes and repeat-ending labels). Offsets are quarter-note units from measure start, not printed beat numbers. Pitch coverage is not a confidence probability.",
@@ -11,11 +11,11 @@
     "selectedDeferred": 0,
     "unexaminedSelected": 0,
     "newSelectionTotal": 22,
-    "newSelectionCompleted": 9,
-    "newSelectionRemaining": 13,
-    "overallGenerated": 169,
+    "newSelectionCompleted": 22,
+    "newSelectionRemaining": 0,
+    "overallGenerated": 182,
     "overallNative": 1,
-    "overallChorded": 170,
+    "overallChorded": 183,
     "totalHymns": 341
   },
   "sources": [
@@ -106,6 +106,17 @@
       "file": "chord-expansion-batch7.json",
       "sha256": "e60f178ae45e074fd1d00907ce167dd2b202598f3518b413f67e743aae826a7d",
       "rowCount": 9,
+      "limitations": [
+        "Heuristic accompaniment suggestions, not human-approved arrangements.",
+        "Offsets are quarter-note units; source measure labels are preserved. Pitch coverage is not a confidence probability.",
+        "Omitted windows are not filled; preceding symbols do not establish harmony through those gaps."
+      ]
+    },
+    {
+      "batch": "Batch 8",
+      "file": "chord-expansion-batch8.json",
+      "sha256": "a0997a24d5c96d87cb53e7c2c0815f0169cbcc25b2ea7950bd26a7a5c11980dc",
+      "rowCount": 13,
       "limitations": [
         "Heuristic accompaniment suggestions, not human-approved arrangements.",
         "Offsets are quarter-note units; source measure labels are preserved. Pitch coverage is not a confidence probability.",
@@ -3210,6 +3221,435 @@
         {
           "type": "Recorded summary flag",
           "explanation": "Retained close-spaced chord cluster",
+          "passages": []
+        }
+      ]
+    },
+    {
+      "number": 177,
+      "title": "’Tis Sweet to Sing the Matchless Love",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "E♭ major",
+      "generatedSymbolCount": 25,
+      "omittedWindows": 4,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "Retained close-spaced chord cluster"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "3+ dense-window flags (may overlap)",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X11",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X15",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X15",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X15",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        },
+        {
+          "type": "Dense retained changes",
+          "explanation": "Saved temporal-density windows can overlap. Their count is not a count of distinct musical defects or visual collisions.",
+          "passages": [
+            {
+              "start": "X4",
+              "startOffset": 0,
+              "end": "X4",
+              "endOffset": 5.0,
+              "spanBeats": 1.666667,
+              "events": [
+                {
+                  "measure": "X4",
+                  "offset": 0,
+                  "chord": "Bb7"
+                },
+                {
+                  "measure": "X4",
+                  "offset": 2.0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X4",
+                  "offset": 3.0,
+                  "chord": "Bb"
+                },
+                {
+                  "measure": "X4",
+                  "offset": 5.0,
+                  "chord": "Eb"
+                }
+              ]
+            },
+            {
+              "start": "X6",
+              "startOffset": 3.0,
+              "end": "X8",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X6",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X7",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X7",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X8",
+                  "offset": 0,
+                  "chord": "Eb"
+                }
+              ]
+            },
+            {
+              "start": "X7",
+              "startOffset": 0,
+              "end": "X8",
+              "endOffset": 3.0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X7",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X7",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X8",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X8",
+                  "offset": 3.0,
+                  "chord": "Bb7"
+                }
+              ]
+            },
+            {
+              "start": "X7",
+              "startOffset": 3.0,
+              "end": "X9",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X7",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X8",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X8",
+                  "offset": 3.0,
+                  "chord": "Bb7"
+                },
+                {
+                  "measure": "X9",
+                  "offset": 0,
+                  "chord": "Eb"
+                }
+              ]
+            },
+            {
+              "start": "X16",
+              "startOffset": 3.0,
+              "end": "X18",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X16",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X17",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X17",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X18",
+                  "offset": 0,
+                  "chord": "Eb"
+                }
+              ]
+            },
+            {
+              "start": "X17",
+              "startOffset": 0,
+              "end": "X18",
+              "endOffset": 3.0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X17",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X17",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X18",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X18",
+                  "offset": 3.0,
+                  "chord": "Bb7"
+                }
+              ]
+            },
+            {
+              "start": "X17",
+              "startOffset": 3.0,
+              "end": "1",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X17",
+                  "offset": 3.0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X18",
+                  "offset": 0,
+                  "chord": "Eb"
+                },
+                {
+                  "measure": "X18",
+                  "offset": 3.0,
+                  "chord": "Bb7"
+                },
+                {
+                  "measure": "1",
+                  "offset": 0,
+                  "chord": "Eb"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Retained close-spaced chord cluster",
+          "passages": []
+        }
+      ],
+      "arrangementNote": "Second tune; independent source and overlay from #176."
+    },
+    {
+      "number": 183,
+      "title": "In Remembrance of Thy Suffering",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "C major",
+      "generatedSymbolCount": 16,
+      "omittedWindows": 15,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+        "8 recorded omissions are sub-1e-7-quarter-note rounding tails, not substantive musical gaps; raw diagnostics and inference are unchanged",
+        "Diminished interpretations retained for consolidated review; not confirmed errors"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "10+ omitted windows",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X1",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C",
+              "coverage": 0.625
+            },
+            {
+              "measure": "X1",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X2",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F",
+              "coverage": 0.611
+            },
+            {
+              "measure": "X2",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X10",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X11",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X12",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X13",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X13",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X14",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Am",
+              "coverage": 0.667
+            },
+            {
+              "measure": "X14",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X17",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X17",
+              "offset": 2.0000000000000004,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "B",
+              "coverage": 0.778
+            },
+            {
+              "measure": "X17",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F#dim",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X18",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G7",
+              "coverage": 0.583
+            }
+          ]
+        },
+        {
+          "type": "Unusual retained qualities",
+          "explanation": "Facts derived from saved final display events, including diminished qualities not promoted to a summary flag in some earlier batches. Automated review observations, not confirmed errors.",
+          "passages": [
+            {
+              "measure": "X11",
+              "offset": 0,
+              "chord": "Bdim",
+              "kind": "diminished"
+            },
+            {
+              "measure": "X12",
+              "offset": 2.0,
+              "chord": "Bdim",
+              "kind": "diminished"
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "8 recorded omissions are sub-1e-7-quarter-note rounding tails, not substantive musical gaps; raw diagnostics and inference are unchanged",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Diminished interpretations retained for consolidated review; not confirmed errors",
           "passages": []
         }
       ]
@@ -6504,6 +6944,108 @@
       ]
     },
     {
+      "number": 293,
+      "title": "Each Life That Touches Ours for Good",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "E♭ major",
+      "generatedSymbolCount": 18,
+      "omittedWindows": 8,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "Augmented/major-seventh interpretation needs musical review"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "major-seventh/augmented interpretation",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X4",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X5",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Gm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X6",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Fm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X6",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Eb",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X7",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Cm",
+              "coverage": 0.5
+            },
+            {
+              "measure": "X11",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Gm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X12",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Fm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X13",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Gm",
+              "coverage": 0.882
+            }
+          ]
+        },
+        {
+          "type": "Unusual retained qualities",
+          "explanation": "Facts derived from saved final display events, including diminished qualities not promoted to a summary flag in some earlier batches. Automated review observations, not confirmed errors.",
+          "passages": [
+            {
+              "measure": "X6",
+              "offset": 2.0,
+              "chord": "Abmaj7",
+              "kind": "major-seventh"
+            },
+            {
+              "measure": "X12",
+              "offset": 1.0,
+              "chord": "Ebmaj7",
+              "kind": "major-seventh"
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Augmented/major-seventh interpretation needs musical review",
+          "passages": []
+        }
+      ]
+    },
+    {
       "number": 300,
       "title": "Families Can Be Together Forever",
       "batch": "Batch 3",
@@ -6982,6 +7524,486 @@
         {
           "type": "Recorded summary flag",
           "explanation": "Non-tonic opening or ending relative to declared source key",
+          "passages": []
+        }
+      ]
+    },
+    {
+      "number": 338,
+      "title": "America the Beautiful",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "C major",
+      "generatedSymbolCount": 24,
+      "omittedWindows": 15,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+        "Retained close-spaced chord cluster",
+        "Diminished interpretations retained for consolidated review; not confirmed errors"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "10+ omitted windows",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X3",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G",
+              "coverage": 0.875
+            },
+            {
+              "measure": "X3",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Dm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X4",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C#dim",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X6",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Am",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X8",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X8",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "D7",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X10",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X11",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X12",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X13",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G",
+              "coverage": 1.0
+            },
+            {
+              "measure": "X15",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X16",
+              "offset": 3.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Dm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X18",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X18",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X18",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        },
+        {
+          "type": "Unusual retained qualities",
+          "explanation": "Facts derived from saved final display events, including diminished qualities not promoted to a summary flag in some earlier batches. Automated review observations, not confirmed errors.",
+          "passages": [
+            {
+              "measure": "X9",
+              "offset": 2.0,
+              "chord": "Bdim",
+              "kind": "diminished"
+            }
+          ]
+        },
+        {
+          "type": "Dense retained changes",
+          "explanation": "Saved temporal-density windows can overlap. Their count is not a count of distinct musical defects or visual collisions.",
+          "passages": [
+            {
+              "start": "X8",
+              "startOffset": 3.0,
+              "end": "X9",
+              "endOffset": 2.0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X8",
+                  "offset": 3.0,
+                  "chord": "D7"
+                },
+                {
+                  "measure": "X9",
+                  "offset": 0,
+                  "chord": "G"
+                },
+                {
+                  "measure": "X9",
+                  "offset": 1.0,
+                  "chord": "D7"
+                },
+                {
+                  "measure": "X9",
+                  "offset": 2.0,
+                  "chord": "Bdim"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Retained close-spaced chord cluster",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Diminished interpretations retained for consolidated review; not confirmed errors",
+          "passages": []
+        }
+      ]
+    },
+    {
+      "number": 340,
+      "title": "The Star-Spangled Banner",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "A♭ major",
+      "generatedSymbolCount": 40,
+      "omittedWindows": 23,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+        "Retained close-spaced chord cluster"
+      ],
+      "reviewPriority": "P1",
+      "priorityReason": "10+ omitted windows; 3+ dense-window flags (may overlap)",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "0",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X1",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X5",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X7",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bbm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X8",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X9",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X9",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X10",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X11",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X15",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X17",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bbm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X18",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X18",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X19",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X19",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X23",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Eb",
+              "coverage": 0.692
+            },
+            {
+              "measure": "X24",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X27",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bbm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X30",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X31",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bbm",
+              "coverage": 0.5
+            },
+            {
+              "measure": "X33",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bbm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X35",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        },
+        {
+          "type": "Dense retained changes",
+          "explanation": "Saved temporal-density windows can overlap. Their count is not a count of distinct musical defects or visual collisions.",
+          "passages": [
+            {
+              "start": "X27",
+              "startOffset": 2.5,
+              "end": "X28",
+              "endOffset": 2.0,
+              "spanBeats": 2.5,
+              "events": [
+                {
+                  "measure": "X27",
+                  "offset": 2.5,
+                  "chord": "Eb7"
+                },
+                {
+                  "measure": "X28",
+                  "offset": 0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X28",
+                  "offset": 1.0,
+                  "chord": "Fm"
+                },
+                {
+                  "measure": "X28",
+                  "offset": 2.0,
+                  "chord": "Bb7"
+                }
+              ]
+            },
+            {
+              "start": "X28",
+              "startOffset": 0,
+              "end": "X29",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X28",
+                  "offset": 0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X28",
+                  "offset": 1.0,
+                  "chord": "Fm"
+                },
+                {
+                  "measure": "X28",
+                  "offset": 2.0,
+                  "chord": "Bb7"
+                },
+                {
+                  "measure": "X29",
+                  "offset": 0,
+                  "chord": "Eb"
+                }
+              ]
+            },
+            {
+              "start": "X37",
+              "startOffset": 2.0,
+              "end": "X38",
+              "endOffset": 2.0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X37",
+                  "offset": 2.0,
+                  "chord": "Fm"
+                },
+                {
+                  "measure": "X37",
+                  "offset": 2.5,
+                  "chord": "Bb7"
+                },
+                {
+                  "measure": "X38",
+                  "offset": 0,
+                  "chord": "Ab"
+                },
+                {
+                  "measure": "X38",
+                  "offset": 2.0,
+                  "chord": "Eb7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "10+ uncertainty/review windows; omitted windows are not inferred as the preceding chord",
+          "passages": []
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Retained close-spaced chord cluster",
           "passages": []
         }
       ]
@@ -7467,6 +8489,75 @@
       ]
     },
     {
+      "number": 176,
+      "title": "’Tis Sweet to Sing the Matchless Love",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "G major",
+      "generatedSymbolCount": 18,
+      "omittedWindows": 4,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "Diminished interpretations retained for consolidated review; not confirmed errors"
+      ],
+      "reviewPriority": "P2",
+      "priorityReason": "other retained quality/density/summary flag",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X6",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X12",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "C#dim",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X13",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X14",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Am",
+              "coverage": 0.714
+            }
+          ]
+        },
+        {
+          "type": "Unusual retained qualities",
+          "explanation": "Facts derived from saved final display events, including diminished qualities not promoted to a summary flag in some earlier batches. Automated review observations, not confirmed errors.",
+          "passages": [
+            {
+              "measure": "X9",
+              "offset": 2.0,
+              "chord": "F#dim",
+              "kind": "diminished"
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Diminished interpretations retained for consolidated review; not confirmed errors",
+          "passages": []
+        }
+      ],
+      "arrangementNote": "First tune; independent source and overlay from #177."
+    },
+    {
       "number": 185,
       "title": "Reverently and Meekly Now",
       "batch": "Batch 5",
@@ -7526,6 +8617,121 @@
               "kind": "diminished"
             }
           ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Diminished interpretations retained for consolidated review; not confirmed errors",
+          "passages": []
+        }
+      ]
+    },
+    {
+      "number": 190,
+      "title": "In Memory of the Crucified",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "D major",
+      "generatedSymbolCount": 21,
+      "omittedWindows": 4,
+      "recordedOutcome": "B. Generated - musical review recommended",
+      "summaryFlags": [
+        "Retained close-spaced chord cluster",
+        "Diminished interpretations retained for consolidated review; not confirmed errors"
+      ],
+      "reviewPriority": "P2",
+      "priorityReason": "other retained quality/density/summary flag",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X3",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G#m",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X4",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Bm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X5",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "G",
+              "coverage": 0.75
+            }
+          ]
+        },
+        {
+          "type": "Unusual retained qualities",
+          "explanation": "Facts derived from saved final display events, including diminished qualities not promoted to a summary flag in some earlier batches. Automated review observations, not confirmed errors.",
+          "passages": [
+            {
+              "measure": "X3",
+              "offset": 0,
+              "chord": "G#dim",
+              "kind": "diminished"
+            },
+            {
+              "measure": "X7",
+              "offset": 0,
+              "chord": "C#dim",
+              "kind": "diminished"
+            }
+          ]
+        },
+        {
+          "type": "Dense retained changes",
+          "explanation": "Saved temporal-density windows can overlap. Their count is not a count of distinct musical defects or visual collisions.",
+          "passages": [
+            {
+              "start": "X4",
+              "startOffset": 1.0,
+              "end": "X5",
+              "endOffset": 0,
+              "spanBeats": 3.0,
+              "events": [
+                {
+                  "measure": "X4",
+                  "offset": 1.0,
+                  "chord": "C#"
+                },
+                {
+                  "measure": "X4",
+                  "offset": 2.0,
+                  "chord": "F#m"
+                },
+                {
+                  "measure": "X4",
+                  "offset": 3.0,
+                  "chord": "A7"
+                },
+                {
+                  "measure": "X5",
+                  "offset": 0,
+                  "chord": "D"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Recorded summary flag",
+          "explanation": "Retained close-spaced chord cluster",
+          "passages": []
         },
         {
           "type": "Recorded summary flag",
@@ -8885,6 +10091,34 @@
       ]
     },
     {
+      "number": 182,
+      "title": "We’ll Sing All Hail to Jesus’ Name",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "B♭ major",
+      "generatedSymbolCount": 21,
+      "omittedWindows": 1,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X7",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
       "number": 200,
       "title": "Christ the Lord Is Risen Today",
       "batch": "Batch 5",
@@ -8969,6 +10203,48 @@
       ]
     },
     {
+      "number": 216,
+      "title": "We Are Sowing",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "E♭ major",
+      "generatedSymbolCount": 10,
+      "omittedWindows": 3,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X8",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F7",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X11",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X13",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
       "number": 233,
       "title": "Nay, Speak No Ill",
       "batch": "Batch 4",
@@ -9020,6 +10296,55 @@
           ]
         }
       ]
+    },
+    {
+      "number": 235,
+      "title": "Should You Feel Inclined to Censure",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "G major",
+      "generatedSymbolCount": 19,
+      "omittedWindows": 2,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X3",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "A",
+              "coverage": 1.0
+            },
+            {
+              "measure": "X3",
+              "offset": 1.5,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "A",
+              "coverage": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 285,
+      "title": "God Moves in a Mysterious Way",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "E♭ major",
+      "generatedSymbolCount": 8,
+      "omittedWindows": 0,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": []
     },
     {
       "number": 307,
@@ -9140,6 +10465,118 @@
         }
       ],
       "arrangementNote": "Men’s arrangement; independent source and overlay from #13."
+    },
+    {
+      "number": 339,
+      "title": "My Country, ’Tis of Thee",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "F major",
+      "generatedSymbolCount": 14,
+      "omittedWindows": 5,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X6",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Am",
+              "coverage": 1.0
+            },
+            {
+              "measure": "X6",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Gm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X9",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F",
+              "coverage": 0.559
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 341,
+      "title": "God Save the King",
+      "batch": "Batch 8",
+      "sourceReport": "chord-expansion-batch8.json",
+      "sourceKey": "F major",
+      "generatedSymbolCount": 14,
+      "omittedWindows": 5,
+      "recordedOutcome": "A. Generated - no significant warning",
+      "summaryFlags": [],
+      "reviewPriority": "P3",
+      "priorityReason": "remaining omissions/observations",
+      "warnings": [
+        {
+          "type": "Omitted/ambiguous inference",
+          "explanation": "No chord was assigned to these windows. A preceding label is not evidence of continuing harmony; candidate fields are rejected diagnostics, not suggested corrections.",
+          "passages": [
+            {
+              "measure": "X6",
+              "offset": 1.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Am",
+              "coverage": 1.0
+            },
+            {
+              "measure": "X6",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": null,
+              "coverage": 0
+            },
+            {
+              "measure": "X8",
+              "offset": 2.0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "Gm",
+              "coverage": 0.75
+            },
+            {
+              "measure": "X9",
+              "offset": 0,
+              "reason": "Omitted: incomplete/ambiguous structural harmony",
+              "candidate": "F",
+              "coverage": 0.559
+            }
+          ]
+        }
+      ]
     }
   ],
   "technicalEngraving": [

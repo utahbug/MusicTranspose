@@ -27,5 +27,5 @@ class Modulation(unittest.TestCase):
   self.assertEqual([(ms[i]['number'],ms[i]['fifths']) for i in [9,10,19,20]],[('X9',0),('X10',1),('X19',1),('X20',0)])
   for e in r['analysis']['events']:self.assertEqual(e['keyFifths'],ms[e['measure']]['fifths'])
   index=json.loads((ROOT/'reports/chord-review-index.json').read_text(encoding='utf8'));previous=json.loads(old('reports/chord-review-index.json'))
-  self.assertEqual([r for r in index['harmonicReview'] if r['number']!=280 and r['number'] not in [31,69,102,106,112,115,119,135,171]],previous['harmonicReview']);self.assertEqual(index['technicalEngraving'],previous['technicalEngraving']);self.assertEqual(next(r for r in index['harmonicReview'] if r['number']==280)['previousDeferral'],previous['deferred'][0])
+  self.assertEqual([r for r in index['harmonicReview'] if r['number']!=280 and r['number'] not in [31,69,102,106,112,115,119,135,171]+[176,177,182,183,190,216,235,285,293,338,339,340,341]],previous['harmonicReview']);self.assertEqual(index['technicalEngraving'],previous['technicalEngraving']);self.assertEqual(next(r for r in index['harmonicReview'] if r['number']==280)['previousDeferral'],previous['deferred'][0])
 if __name__=='__main__':unittest.main()

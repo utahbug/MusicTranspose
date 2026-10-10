@@ -3,7 +3,7 @@ import hashlib,json,pathlib,runpy,subprocess,sys,unittest
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 class ReviewIndex(unittest.TestCase):
  def test_every_source_observation_preserved(self):
-  index=json.loads((ROOT/'reports/chord-review-index.json').read_text(encoding='utf8'));entries=index['harmonicReview']+index['deferred'];self.assertEqual(len(entries),68);self.assertEqual(len({r['number'] for r in entries}),68);self.assertEqual(len(index['harmonicReview']),68);self.assertEqual([r['number'] for r in index['deferred']],[]);self.assertEqual({r['number'] for r in index['technicalEngraving']},{81,113,198,307})
+  index=json.loads((ROOT/'reports/chord-review-index.json').read_text(encoding='utf8'));entries=index['harmonicReview']+index['deferred'];self.assertEqual(len(entries),81);self.assertEqual(len({r['number'] for r in entries}),81);self.assertEqual(len(index['harmonicReview']),81);self.assertEqual([r['number'] for r in index['deferred']],[]);self.assertEqual({r['number'] for r in index['technicalEngraving']},{81,113,198,307})
   for source in index['sources']:
    raw=(ROOT/'reports'/source['file']).read_text(encoding='utf8');self.assertEqual(hashlib.sha256(raw.encode()).hexdigest(),source['sha256']);report=json.loads(raw);self.assertEqual(report.get('limitations',[]),source['limitations'])
    for observation in report.get('technicalObservations',[]):
