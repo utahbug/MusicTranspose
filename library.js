@@ -237,14 +237,27 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function showKeyboard(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'keyboard',list:null,song:null});files.hide();lists.hide();texts.hide();leaveScore?.();stopPlayback?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library-home').hidden=true;$('library').hidden=true;keyboard.open();window.scrollTo({top:0,behavior:'instant'});}
  function showHome(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'home',list:null,song:null});files.hide();lists.hide();texts.hide();keyboard.hide();leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library').hidden=true;$('library-home').hidden=false;document.title='Library · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});$('library-home-title').focus({preventScroll:true});}
  for(const control of document.querySelectorAll('[data-home-source]'))control.onclick=()=>{activeList=null;reordering=false;applyContext({source:control.dataset.homeSource,sort:globalSort});showLibrary();};
- const infoButton=$('home-about'),infoMenu=$('home-info-menu');initOfflineInventory({getLists:()=>state.groups,beforeOpen:()=>closeHomeInfo()});
- function closeHomeInfo(focus=false){infoMenu.hidden=true;infoButton.setAttribute('aria-expanded','false');if(focus)infoButton.focus({preventScroll:true});}
- function openHomeInfo(){infoMenu.hidden=false;infoButton.setAttribute('aria-expanded','true');infoMenu.querySelector('button:not([hidden])').focus({preventScroll:true});}
- infoButton.onclick=()=>infoMenu.hidden?openHomeInfo():closeHomeInfo(true);
- infoButton.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openHomeInfo();if(e.key==='ArrowUp')[...infoMenu.querySelectorAll('button:not([hidden]):not(:disabled)')].at(-1).focus();}};
- infoMenu.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeHomeInfo(true);}else if(e.key==='Tab')closeHomeInfo(true);else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...infoMenu.querySelectorAll('button:not([hidden]):not(:disabled)')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}};
- document.addEventListener('pointerdown',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});
- document.addEventListener('focusin',e=>{if(!infoMenu.contains(e.target)&&!infoButton.contains(e.target))closeHomeInfo();});
+ const infoButton=$('home-about'),infoMenu=$('home-info-menu'),settingsButton=$('home-settings'),settingsMenu=$('home-settings-menu');
+ settingsButton.innerHTML=settingsIcon;
+ const homeMenus=[[infoButton,infoMenu],[settingsButton,settingsMenu]];
+ // Fixed popups escape banner/footer clipping without changing either layout.
+ for(const [,menu] of homeMenus)document.body.append(menu);
+ function closeHomeMenu(button,menu,focus=false){menu.hidden=true;button.setAttribute('aria-expanded','false');if(focus)button.focus({preventScroll:true});}
+ function closeHomeInfo(focus=false){closeHomeMenu(infoButton,infoMenu,focus);}
+ function closeHomeSettings(focus=false){closeHomeMenu(settingsButton,settingsMenu,focus);}
+ function placeHomeMenu(button,menu){const r=button.getBoundingClientRect(),v=window.visualViewport,left=v?.offsetLeft||0,top=v?.offsetTop||0,right=left+(v?.width||innerWidth),bottom=top+(v?.height||innerHeight);menu.style.maxHeight=Math.max(44,bottom-top-16)+'px';menu.style.left=Math.max(left+8,Math.min(r.right-menu.offsetWidth,right-menu.offsetWidth-8))+'px';menu.style.top=Math.max(top+8,Math.min(r.bottom+menu.offsetHeight+8<=bottom?r.bottom+6:r.top-menu.offsetHeight-6,bottom-menu.offsetHeight-8))+'px';}
+ function openHomeMenu(button,menu,last=false){for(const [other,popup] of homeMenus)closeHomeMenu(other,popup);menu.hidden=false;button.setAttribute('aria-expanded','true');placeHomeMenu(button,menu);const items=[...menu.querySelectorAll('button:not([hidden]):not(:disabled)')];(last?items.at(-1):items[0])?.focus({preventScroll:true});}
+ for(const [button,menu] of homeMenus){
+  button.onclick=()=>menu.hidden?openHomeMenu(button,menu):closeHomeMenu(button,menu,true);
+  button.onkeydown=e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openHomeMenu(button,menu,e.key==='ArrowUp');}};
+  menu.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeHomeMenu(button,menu,true);}else if(e.key==='Tab')closeHomeMenu(button,menu,true);else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=[...menu.querySelectorAll('button:not([hidden]):not(:disabled)')],i=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}};
+  for(const event of ['pointerdown','focusin'])document.addEventListener(event,e=>{if(!menu.contains(e.target)&&!button.contains(e.target))closeHomeMenu(button,menu);});
+ }
+ const repositionHomeMenus=()=>{for(const [button,menu] of homeMenus)if(!menu.hidden)placeHomeMenu(button,menu);};
+ window.addEventListener('resize',repositionHomeMenus);window.addEventListener('scroll',repositionHomeMenus,{passive:true});window.visualViewport?.addEventListener('resize',repositionHomeMenus);window.visualViewport?.addEventListener('scroll',repositionHomeMenus);
+ document.addEventListener('library-open',()=>{closeHomeInfo();closeHomeSettings();});
+ $('home-settings-theme').addEventListener('click',()=>closeHomeSettings(true));
+ initOfflineInventory({getLists:()=>state.groups,beforeOpen:()=>closeHomeSettings(),returnFocus:()=>settingsButton.focus({preventScroll:true})});
  const about=$('about-dialog');$('home-info-about').onclick=()=>{closeHomeInfo();about.showModal();$('about-title').focus();};$('about-close').onclick=()=>about.close();about.addEventListener('close',()=>$('home-about').focus({preventScroll:true}));about.addEventListener('click',e=>{if(e.target!==about)return;const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();});
  $('home-search-form').onsubmit=e=>{e.preventDefault();if(isBusy())return;const query=$('home-search').value;$('home-search').blur();activeList=null;reordering=false;applyContext({source:'all',sort:globalSort,query});showLibrary();$('home-search').value='';};
  $('home-files').onclick=()=>showFiles();$('home-lists').onclick=()=>showLists();

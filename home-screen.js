@@ -5,7 +5,7 @@ export function initHomeScreen({closeMenu,returnFocus}){
  const item=document.getElementById('add-home-screen'),dialog=document.getElementById('home-screen-dialog'),steps=document.getElementById('home-screen-steps'),intro=document.getElementById('home-screen-intro'),install=document.getElementById('home-screen-install'),status=document.getElementById('home-screen-status');
  const display=matchMedia('(display-mode: standalone)');let busy=false;
  const standalone=()=>display.matches||navigator.standalone===true;
- function updateInstalled(){const active=standalone();item.hidden=false;item.disabled=active;item.textContent=active?'App installed on this device':'Add app to your Home Screen';item.setAttribute('aria-disabled',String(active));if(active){item.removeAttribute('aria-haspopup');if(dialog.open)dialog.close();}else item.setAttribute('aria-haspopup','dialog');}
+ function updateInstalled(){const active=standalone();item.hidden=false;item.disabled=active;item.textContent=active?'App installed on this device':'Add to Home Screen';item.setAttribute('aria-disabled',String(active));if(active){item.removeAttribute('aria-haspopup');if(dialog.open)dialog.close();}else item.setAttribute('aria-haspopup','dialog');}
  function guidance(){
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),android=/Android/i.test(navigator.userAgent);
   install.hidden=!installPrompt||ios;install.disabled=busy;steps.replaceChildren();

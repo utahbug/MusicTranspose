@@ -16,7 +16,7 @@ export function retentionText(state,lists){
  for(const id of state.lists||[])reasons.push(lists.find(list=>list.id===id)?.name||'Saved List (name unavailable)');
  return ['On device',...reasons].join(' · ');
 }
-export function initOfflineInventory({getLists,beforeOpen}){
+export function initOfflineInventory({getLists,beforeOpen,returnFocus}){
  const entry=document.getElementById('home-info-saved'),dialog=document.createElement('dialog');dialog.id='offline-inventory';dialog.className='app-dialog';dialog.setAttribute('aria-labelledby','device-songs-title');
  dialog.innerHTML=`<div class="dialog-heading"><h2 id="device-songs-title" tabindex="-1">Songs on this device</h2><button type="button" class="close" aria-label="Return to previous workspace">×</button></div>
  <div class="device-songs-body"><p id="device-songs-summary" role="status"></p><div class="device-songs-controls"><label>Search<input id="device-songs-search" type="search" placeholder="Title or song number"></label><label>Sort by<select id="device-songs-sort"><option value="title">Title (A–Z)</option><option value="number">Song number</option></select></label></div>
@@ -33,7 +33,7 @@ export function initOfflineInventory({getLists,beforeOpen}){
  const bulk=createBulkRemoval({refresh:refreshOffline,summary:offlineSummary,remove:removeOfflineSong,changed:update=>{if(update.message)message=update.message;render();}});
  const locked=()=>checking||bulk.busy;
  function render(){
-  const inventory=deviceSongs();entry.textContent='Songs on this device'+(inventory?' · '+inventory.length:'');if(!dialog.open)return;
+  const inventory=deviceSongs();entry.textContent='Manage storage';if(!dialog.open)return;
   const focusId=document.activeElement?.dataset?.selectSong;
   results.replaceChildren();const query=normalizeSearch(search.value);shown=(inventory||[]).filter(({song})=>!query||normalizeSearch(song.title+' '+meaningfulNumber(song)).includes(query));
   shown.sort((a,b)=>(sort.value==='number'?compareNumbers(a.song,b.song):0)||compareAlphabeticalTitles(a.song,b.song));
@@ -74,6 +74,6 @@ export function initOfflineInventory({getLists,beforeOpen}){
  find('confirm').onclick=async()=>{if(locked()||!plan)return;const confirmed=plan;plan=null;checking=true;render();try{const result=await bulk.run(confirmed);if(result?.review){plan=result.review;message='Ownership changed since review. Check the new counts and confirm again.';}else if(result){report=result;retry=[...new Map([...result.outcomes.filter(i=>['failed','uncertain','unverified','skipped'].includes(i.status)),...result.remaining].map(i=>[i.song.id,i])).values()];selected.clear();mode=false;const released=result.outcomes.filter(i=>i.status==='released'),kept=released.filter(i=>i.protected).length,uncertain=result.outcomes.filter(i=>['failed','uncertain'].includes(i.status)).length,skipped=result.outcomes.filter(i=>['unverified','skipped'].includes(i.status)).length,cleaned=result.outcomes.filter(i=>i.status==='cleaned').length;message=`${released.length} individual saves removed; ${kept} kept by offline Lists. ${cleaned} cleanup retries completed. ${skipped} skipped or unverified; ${result.remaining.length} not attempted.`+(uncertain?` ${uncertain} removal failed or timed out; cleanup may be incomplete. Review retry for a fresh check.`:'');}}catch(error){plan=confirmed;message=error.message;}finally{checking=false;render();if(dialog.open)(plan?find('review-title'):find('report-title')).focus();}};
  find('stop').onclick=()=>bulk.stop();
  entry.onclick=async()=>{beforeOpen();dialog.showModal();render();find('title').focus();await refreshOffline();render();};
- dialog.querySelector('.close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{if(bulk.busy)bulk.stop();if(!locked()){mode=false;plan=null;selected.clear();}document.getElementById('home-about').focus({preventScroll:true});});
+ dialog.querySelector('.close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{if(bulk.busy)bulk.stop();if(!locked()){mode=false;plan=null;selected.clear();}returnFocus();});
  search.oninput=render;sort.onchange=render;document.addEventListener('offline-state-changed',render);render();refreshOffline();
 }

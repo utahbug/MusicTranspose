@@ -1576,7 +1576,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 .home-toolbar{display:flex;gap:10px;align-items:center;width:100%;max-width:1032px;margin:auto}
 #library-home .home-toolbar button{position:static;display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border:1px solid #adc3d0;border-radius:8px;background:#f8fbfc;color:#365f7d}
 .home-toolbar button svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-#library-home .home-toolbar .library-theme-toggle{margin-left:auto}
+#library-home .home-toolbar #home-settings{margin-left:auto}
 #library-home .home-toolbar button:hover{background:#dbe8ef}
 #library-home .home-toolbar button:active{box-shadow:inset 0 1px 3px #23465430}
 #library-home .home-toolbar button:focus-visible{outline:2px solid #245a9a;outline-offset:2px}
@@ -1588,15 +1588,15 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 [data-library-theme=dark] #library-home .home-toolbar button:focus-visible{outline-color:#83baf0}
 
 /* Home Info: two existing help destinations, using the Library menu treatment. */
-#home-info-menu{position:absolute;right:12px;top:calc(100% - 4px);z-index:20;width:244px;max-width:calc(100vw - 40px);padding:5px;background:#fafcfd;color:#284f66;border:1px solid #b6cbd5;border-radius:10px;box-shadow:0 6px 20px #23465426}
-#home-info-menu[hidden]{display:none}
-#home-info-menu button{display:block;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:6px;text-align:left;background:transparent;color:inherit;font:500 14px/1.4 system-ui}
-#home-info-menu button[hidden]{display:none}
-#home-info-menu button:hover{background:#e5eff3}
-#home-info-menu button:focus-visible{background:#e5eff3;outline:2px solid #365f7d;outline-offset:-2px}
+:is(#home-info-menu,#home-settings-menu){position:absolute;right:12px;top:calc(100% - 4px);z-index:20;width:244px;max-width:calc(100vw - 40px);padding:5px;background:#fafcfd;color:#284f66;border:1px solid #b6cbd5;border-radius:10px;box-shadow:0 6px 20px #23465426}
+:is(#home-info-menu,#home-settings-menu)[hidden]{display:none}
+:is(#home-info-menu,#home-settings-menu) button{display:block;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:6px;text-align:left;background:transparent;color:inherit;font:500 14px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+:is(#home-info-menu,#home-settings-menu) button[hidden]{display:none}
+:is(#home-info-menu,#home-settings-menu) button:hover{background:#e5eff3}
+:is(#home-info-menu,#home-settings-menu) button:focus-visible{background:#e5eff3;outline:2px solid #365f7d;outline-offset:-2px}
 #home-about[aria-expanded=true]{background:#ffffff25}
-[data-library-theme=dark] #home-info-menu{background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
-[data-library-theme=dark] #home-info-menu button:is(:hover,:focus-visible){background:#354d57;outline-color:#83baf0}
+[data-library-theme=dark] :is(#home-info-menu,#home-settings-menu){background:var(--library-dark-panel);color:var(--library-dark-text);border-color:var(--library-dark-border)}
+[data-library-theme=dark] :is(#home-info-menu,#home-settings-menu) button:is(:hover,:focus-visible){background:#354d57;outline-color:#83baf0}
 
 /* Explicit performance focus; visibility preserves pagination and footer reservation. */
 @media screen{
@@ -1637,8 +1637,8 @@ dialog.app-dialog :focus-visible{outline:2px solid var(--popup-focus);outline-of
 dialog.app-dialog .dialog-primary{min-height:44px;padding:10px 16px;border:1px solid #237c7a;border-radius:8px;background:#276e70;color:#fff;font:600 14px/1.4 system-ui,sans-serif}
 dialog.app-dialog .dialog-primary:hover{background:#205f61}
 [data-library-theme=dark] dialog.app-dialog{color-scheme:dark}
-#home-info-menu{background:var(--popup-surface);color:var(--popup-ink);border-color:var(--popup-border);box-shadow:0 8px 24px #173e3b26;padding:6px}
-#home-info-menu button:is(:hover,:focus-visible){background:var(--popup-hover);outline-color:var(--popup-focus)}
+:is(#home-info-menu,#home-settings-menu){background:var(--popup-surface);color:var(--popup-ink);border-color:var(--popup-border);box-shadow:0 8px 24px #173e3b26;padding:6px}
+:is(#home-info-menu,#home-settings-menu) button:is(:hover,:focus-visible){background:var(--popup-hover);outline-color:var(--popup-focus)}
 
 /* A stable edge anchor in both focus states; the toolbar reserves its target. */
 @media screen{
@@ -1866,8 +1866,8 @@ body #library .library-column-headings{flex-wrap:wrap}
 body #library .library-column-headings #library-count{white-space:normal;text-align:right}
 
 /* Info uses the existing shared dialog palette, including dark mode. */
-#home-info-menu hr{border:0;border-top:1px solid var(--popup-border);margin:6px}
-#home-info-menu #add-home-screen:disabled{opacity:1;color:var(--popup-muted);cursor:default;background:transparent}
+:is(#home-info-menu,#home-settings-menu) hr{border:0;border-top:1px solid var(--popup-border);margin:6px}
+:is(#home-info-menu,#home-settings-menu) #add-home-screen:disabled{opacity:1;color:var(--popup-muted);cursor:default;background:transparent}
 .storage-values{margin:0 0 16px;display:grid;gap:0}
 .storage-values>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--popup-border)}
 .storage-values dt{font-size:14px;min-width:0}
@@ -1988,3 +1988,9 @@ body #library .workspace-banner h1{flex:1 1 auto}
  #library .library-heading .library-theme-toggle{grid-column:2;grid-row:1}
  #library .library-heading .sort-choice{grid-column:1/-1;grid-row:2;justify-self:end}
 }
+
+/* Home information and settings share the existing popup styling. */
+:is(#home-info-menu,#home-settings-menu){position:fixed;right:auto;z-index:90;overflow-y:auto;max-width:calc(100vw - 16px)}
+#home-settings-menu #home-settings-theme{display:flex;align-items:center;gap:10px}
+#home-settings-theme svg{width:24px;height:24px;flex:none}
+@media(max-width:360px){#library-home .home-toolbar{gap:6px}}
