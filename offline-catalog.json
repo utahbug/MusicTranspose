@@ -7,6 +7,10 @@
     {
       "url": "./assets/pdfs/fallback/nativity.pdf",
       "kind": "pdf"
+    },
+    {
+      "url": "./assets/pdfs/performance/nativity.pdf",
+      "kind": "pdf"
     }
   ],
   "shepherd": [

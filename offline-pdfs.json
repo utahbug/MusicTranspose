@@ -1,6 +1,10 @@
 {
   "assets": [
     {
+      "url": "./assets/pdfs/performance/nativity.pdf",
+      "bytes": 68329
+    },
+    {
       "url": "./assets/pdfs/choose-to-serve-the-lord.pdf",
       "bytes": 105599
     },
@@ -2673,5 +2677,5 @@
       "bytes": 114903
     }
   ],
-  "totalBytes": 30425873
+  "totalBytes": 30494202
 }
