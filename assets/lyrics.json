@@ -18181,19 +18181,20 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Onward, ever onward, as we glory in his name; Onward, ever onward, as we glory in his name; Forward, pressing forward, as a triumph song we sing. God our strength will be; press forward ever, Called to serve our King. King.",
+          "text": "Onward, ever onward, as we glory in his name; Onward, ever onward, as we glory in his name; Forward, pressing forward, as a triumph song we sing. God our strength will be; press forward ever, Called to serve our King.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Onward, ever onward, as we glory in his name; Onward, ever onward, as we glory in his name; Forward, pressing forward, as a triumph song we sing. God our strength will be; press forward ever, Called to serve our King. King."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed Hymns #249: alternative endings X23 (first pass) and X24 (second pass) each sing King once. Identical performed chorus text follows both verses; retain literal unexpanded source stream and omit only the duplicate alternative-ending word."
+      ],
       "sourceTextBlocks": [
         "Called to Serve",
         "249",
@@ -18241,13 +18242,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -18282,14 +18281,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Thru Christ, our Lord!",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Oh, when the war is ended, When strife and conflicts cease, When all are safely gathered Within the vale of peace, Before the King eternal, That vast and mighty throng Shall praise his name forever, And this shall be their song:",
           "sourcePart": "P1",
@@ -18301,28 +18292,36 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Victory, victory, Thru him that redeemed us! Victory, victory, Thru Jesus Christ, our Lord! Victory, victory, victory, Thru Jesus Christ, our Lord!",
+          "text": "Victory, victory, Thru him that redeemed us! Victory, victory, Thru Jesus Christ, our Lord! Victory, victory, victory, Thru Jesus Christ, our Lord (Thru Christ, our Lord)!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Victory, victory, Thru him that redeemed us! Victory, victory, Thru Jesus Christ, our Lord! Victory, victory, victory, Thru Jesus Christ, our Lord!"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Thru Christ, our Lord!"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #251: only the final chorus phrase has the delayed P2 response, beginning Thru at X33 beat 3 and finishing Lord in X35 while P1 sustains its final Lord from X34. Parenthesize at that final phrase, not at earlier identical words. Preserve both literal streams; lower lyric row is not Verse 2."
+      ],
       "sourceTextBlocks": [
         "Behold! A Royal Army",
         "251",
         "Text: \n Fanny J. Crosby, 1820–1915\n\n Music: \n Adam Geibel, 1855–1933",
         "2 Timothy 2:3, 22\nDoctrine and Covenants 104:82"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-ed92d57f-c9cb-402d-852c-f77ae768aa3d",
@@ -18348,14 +18347,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "push along. full of song.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Then don’t stand idly looking on; The fight with sin is real. It will be long but must go on; Put your shoulder to the wheel.",
           "sourcePart": "P1",
@@ -18375,28 +18366,36 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Put your shoulder to the wheel; push along, Do your duty with a heart full of song, We all have work; let no one shirk. Put your shoulder to the wheel.",
+          "text": "Put your shoulder to the wheel; push along (push along), Do your duty with a heart full of song (full of song), We all have work; let no one shirk. Put your shoulder to the wheel.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Put your shoulder to the wheel; push along, Do your duty with a heart full of song, We all have work; let no one shirk. Put your shoulder to the wheel."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "push along. full of song."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #252: P2 echoes push along in X12 beats 1–3 and full of song in X15 beats 1–3, after each P1 phrase ends at beat 1. Place each response at its own phrase boundary before Do/We; preserve both literal streams, not an extra Verse 2."
+      ],
       "sourceTextBlocks": [
         "Put Your Shoulder to the Wheel",
         "252",
         "Text and music: \n Will L. Thompson, 1847–1909",
         "Doctrine and Covenants 58:26–28\nDoctrine and Covenants 107:99"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-bbb8e898-903e-41ed-98d0-3e7cd5ff33fe",
@@ -18498,13 +18497,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -18546,13 +18543,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -18753,13 +18748,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -18817,13 +18810,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -19016,13 +19007,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [

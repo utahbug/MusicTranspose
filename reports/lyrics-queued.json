@@ -1,0 +1,553 @@
+{
+  "startingCommit": "c55c0b92ab6060b104de901ce45f7f0631830f91",
+  "priorManifest": "reports/lyrics-continuation.json",
+  "excludedPreviouslyAudited": [
+    "hhc-1053",
+    "song-a13c43da-0243-4019-ad08-d7be530074f5",
+    "hhc-1068",
+    "hhc-1069",
+    "hhc-1070",
+    "hhc-1204",
+    "hhc-1209",
+    "hhc-1210",
+    "cs-16",
+    "song-0244093d-d300-481a-bd08-b42e9641de47",
+    "song-cee5b409-48b4-42f6-be30-8f377c1cc9d0",
+    "song-59d1bcf5-e33e-4285-9fee-8a5e1bf3f283",
+    "song-3bf93f00-922d-488b-9a10-9af10ffefdac",
+    "song-f1f1c444-22ec-4703-a7ee-1f04d2bda224",
+    "song-4bdf04d7-47b9-469b-a26d-28524ab2a778",
+    "song-0d512ac4-4118-4073-8ecf-fd57d437634e",
+    "song-1b47066a-3316-48d8-8645-579371be37ca",
+    "song-795bf192-9729-4769-b182-bd606a04d277",
+    "song-5260cbb6-62fc-472a-ba72-3b2e8ae28391",
+    "song-9f2a063d-1180-4f63-a580-0227046d15cf",
+    "song-deb16777-4998-4df2-af47-ebe4dd8b0c1f",
+    "song-2aff8662-2b9d-4a85-a4dd-84c4adc0d54c",
+    "song-6f07e565-f3c0-4bb4-a033-59e8d9811e12",
+    "song-00dbf08d-281a-4a99-9a9a-77815f9d9d14",
+    "song-3c0fdae2-06a6-4b1e-af91-18b4b51c9d38",
+    "song-f95d20b9-85e1-4867-baf4-de8f61e9ad24",
+    "song-871573d0-1157-4bec-9ab4-c4155f9ba449",
+    "song-a7939082-9b28-46e5-9738-b91a94d606de",
+    "song-ee57fc34-e922-4573-a2d5-cfe1410ef492",
+    "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+    "song-c8c15b83-e038-4dc7-9901-c015de754fb4",
+    "song-53c57be6-2733-45c7-94ad-773835a4fd19",
+    "song-8aaafadd-0290-4b8f-aa76-a7b167782212",
+    "song-138d4697-d2d9-414a-885c-82b760f1f371",
+    "song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f",
+    "song-54db47df-6f16-441c-ac53-df09cfdb294c",
+    "song-22197efd-635b-4f62-b650-354c6c281624",
+    "song-dac6f94b-6a48-40de-993c-82bb543bf96d",
+    "song-1a7e3e3b-47c5-4986-963e-4bc8b80cdf9a",
+    "song-05f40854-1219-4052-8766-6a3a6935146e",
+    "song-2afc0981-e463-470e-8cab-632d0b0b57e6",
+    "song-3c37c435-a330-47e2-a169-d83522595cc0"
+  ],
+  "groups": [
+    {
+      "number": 1,
+      "baseline": "c55c0b92ab6060b104de901ce45f7f0631830f91",
+      "songs": [
+        {
+          "id": "song-95e908ac-a3bd-4000-a45b-6ee588196bdf",
+          "number": "246",
+          "title": "Onward, Christian Soldiers",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-95e908ac-a3bd-4000-a45b-6ee588196bdf.mxl",
+          "status": "deferred",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X23"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X19",
+              "last": "X21"
+            }
+          ],
+          "structure": "Four principal verses + Chorus. Deferred unchanged: P2 war coincides at X19 beat 0, anticipates With the at beats 2/3 and cross of in X20, then rejoins P1 Jesus at X21. The lower row is not Verse 2; a sequential echo would misrepresent its overlapping underlay."
+        },
+        {
+          "id": "song-d92bb26c-6a08-4beb-a917-b787102678da",
+          "number": "249",
+          "title": "Called to Serve",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-d92bb26c-6a08-4beb-a917-b787102678da.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X8",
+              "last": "X24"
+            }
+          ],
+          "structure": "2 principal verses + explicit Chorus after each verse; identical King in alternative endings X23/X24 included once, literal raw stream preserved."
+        },
+        {
+          "id": "song-6865def7-4ef7-4fac-ad57-27e468446e98",
+          "number": "250",
+          "title": "We Are All Enlisted",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-6865def7-4ef7-4fac-ad57-27e468446e98.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X24"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-630410cd-be22-4d5a-9445-0568b51e397c",
+          "number": "251",
+          "title": "Behold! A Royal Army",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-630410cd-be22-4d5a-9445-0568b51e397c.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X34"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X33",
+              "last": "X35"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse; P2 final response parenthesized only at the final phrase, X33 beat 3 through X35, preserving both literal streams."
+        },
+        {
+          "id": "song-ed92d57f-c9cb-402d-852c-f77ae768aa3d",
+          "number": "252",
+          "title": "Put Your Shoulder to the Wheel",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-ed92d57f-c9cb-402d-852c-f77ae768aa3d.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "2"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X12",
+              "last": "X15"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse; P2 echoes in X12 and X15 beats 1–3 parenthesized at corresponding main phrase boundaries, preserving both literal streams."
+        },
+        {
+          "id": "song-c25734b4-ba49-4c88-ba90-4927ede707c4",
+          "number": "254",
+          "title": "True to the Faith",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-c25734b4-ba49-4c88-ba90-4927ede707c4.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X19"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-29ddec61-4020-4ab9-8400-7cc2acf115e4",
+          "number": "255",
+          "title": "Carry On",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-29ddec61-4020-4ab9-8400-7cc2acf115e4.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X38"
+            }
+          ],
+          "structure": "2 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-9e9db675-111d-48ee-91ed-23dd17b35d0d",
+          "number": "259",
+          "title": "Hope of Israel",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-9e9db675-111d-48ee-91ed-23dd17b35d0d.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X8",
+              "last": "X15"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-af8d66bd-9206-4235-934d-6070c186050a",
+          "number": "260",
+          "title": "Who’s on the Lord’s Side?",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-af8d66bd-9206-4235-934d-6070c186050a.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X29"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb",
+          "number": "264",
+          "title": "Hark, All Ye Nations!",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-2107fef0-d74a-48c5-8d7e-6c6ea243eafb.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X8",
+              "last": "X15"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        }
+      ],
+      "remainingBefore": 37,
+      "remainingAfter": 28,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed"
+      }
+    }
+  ]
+}

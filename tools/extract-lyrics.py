@@ -229,6 +229,32 @@ for song in catalog:
   main['principalText']=main['text']
   main['text']=main['text'].replace('heart, You','heart ('+first.rstrip(',')+'), You',1).replace('depart, If','depart ('+second.rstrip(',')+'), If',1)
   r['extractionDecisions'].append('Reviewed Hymns #228: P2 responses in X12–X13 and X16–X17 finish at beat 3 before the next P1 phrases You and If. Parenthesize each response at its corresponding principal phrase boundary. Literal principal/secondary streams retained; lower lyric row is not an extra Verse 2.')
+ if song['id']=='song-d92bb26c-6a08-4beb-a917-b787102678da':
+  part=root.find("part[@id='P1']");main=r['refrains'][0]
+  for bar,ending in [('X23','1'),('X24','2')]:
+   assert part.find("measure[@number='"+bar+"']/barline/ending[@type='start']").get('number')==ending
+   assert stitch(part.findall("measure[@number='"+bar+"']/note/lyric[@name='chorus']"))=='King.'
+  assert part.find("measure[@number='X23']/barline/repeat[@direction='backward']") is not None
+  assert len(r['verses'])==2 and len(r['refrains'])==1 and main['text'].endswith('King. King.')
+  main['principalText']=main['text']
+  main['text']=stitch([l for m in part.findall('measure') if m.get('number')!='X24' for l in m.findall("note/lyric[@name='chorus']")])
+  r['extractionDecisions'].append('Reviewed Hymns #249: alternative endings X23 (first pass) and X24 (second pass) each sing King once. Identical performed chorus text follows both verses; retain literal unexpanded source stream and omit only the duplicate alternative-ending word.')
+ if song['id']=='song-630410cd-be22-4d5a-9445-0568b51e397c':
+  main=r['refrains'][0];response=stitch(root.findall("part[@id='P2']/measure/note/lyric[@name='chorus']"))
+  assert len(r['verses'])==3 and len(r['refrains'])==1 and len(r['alternateLyrics'])==1
+  assert response=='Thru Christ, our Lord!' and r['alternateLyrics'][0]['text']==response
+  assert main['text'].endswith('Victory, victory, victory, Thru Jesus Christ, our Lord!')
+  main['principalText']=main['text'];main['text']=main['text'][:-1]+' ('+response[:-1]+')!'
+  r['extractionDecisions'].append('Reviewed Hymns #251: only the final chorus phrase has the delayed P2 response, beginning Thru at X33 beat 3 and finishing Lord in X35 while P1 sustains its final Lord from X34. Parenthesize at that final phrase, not at earlier identical words. Preserve both literal streams; lower lyric row is not Verse 2.')
+ if song['id']=='song-ed92d57f-c9cb-402d-852c-f77ae768aa3d':
+  main=r['refrains'][0];part=root.find("part[@id='P2']")
+  first=stitch(part.findall("measure[@number='X12']/note/lyric[@name='chorus']"));second=stitch(part.findall("measure[@number='X15']/note/lyric[@name='chorus']"))
+  assert first=='push along.' and second=='full of song.'
+  assert len(r['verses'])==4 and len(r['refrains'])==1 and len(r['alternateLyrics'])==1
+  assert r['alternateLyrics'][0]['text']==first+' '+second
+  assert main['text'].count('along, Do')==1 and main['text'].count('song, We')==1
+  main['principalText']=main['text'];main['text']=main['text'].replace('along, Do','along ('+first[:-1]+'), Do',1).replace('song, We','song ('+second[:-1]+'), We',1)
+  r['extractionDecisions'].append('Reviewed Hymns #252: P2 echoes push along in X12 beats 1–3 and full of song in X15 beats 1–3, after each P1 phrase ends at beat 1. Place each response at its own phrase boundary before Do/We; preserve both literal streams, not an extra Verse 2.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'
