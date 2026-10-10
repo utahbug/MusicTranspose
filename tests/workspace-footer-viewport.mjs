@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';import {createRequire} from 'node:module';
 const {chromium}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');const b=await chromium.launch({channel:'msedge'});
-try{for(const [name,width,height] of [['ipad',820,1180],['ipad-landscape',1180,820],['mini',768,1024],['mini-landscape',1024,768],['iphone',390,844],['desktop',1440,900]]){
- const c=await b.newContext({viewport:{width,height},hasTouch:name!=='desktop',serviceWorkers:'block'}),p=await c.newPage();p.setDefaultTimeout(30000);const errors=[];p.on('pageerror',e=>errors.push(e.message));
+try{for(const [name,width,height] of [['narrow-desktop',320,900],['iphone-small',320,568],['mini-744',744,1133],['ipad',820,1180],['ipad-landscape',1180,820],['mini',768,1024],['mini-landscape',1024,768],['iphone',390,844],['desktop',1440,900]]){
+ const c=await b.newContext({viewport:{width,height},hasTouch:!name.includes('desktop'),serviceWorkers:'block'}),p=await c.newPage();p.setDefaultTimeout(30000);const errors=[];p.on('pageerror',e=>errors.push(e.message));
  await c.addInitScript(()=>{window.testViewport={gap:0,top:0,scale:1};for(const [key,get] of Object.entries({height:()=>innerHeight-testViewport.gap,offsetTop:()=>testViewport.top,scale:()=>testViewport.scale}))Object.defineProperty(visualViewport,key,{configurable:true,get});localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups:Array.from({length:30},(_,i)=>({id:'list'+i,name:'List '+i,songs:['nativity']}))}));});
  await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
  const footer=()=>p.locator('.workspace-return:visible,.library-quick-access:visible,.library-home-footer:visible');

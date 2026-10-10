@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 const {chromium,webkit}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
 const browser=process.env.POLISH_WEBKIT?await webkit.launch():await chromium.launch({channel:'msedge'});
-try {for(const width of [390,820,1440]){
+try {for(const width of [320,390,744,820,1024,1440]){
  const c=await browser.newContext({viewport:{width,height:1000},serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await c.addInitScript(()=>{if(localStorage.getItem('polish-seeded'))return;localStorage.setItem('polish-seeded','1');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups:Array.from({length:30},(_,i)=>({id:'polish-'+i,name:'List '+i,description:'',songs:['nativity']}))}));});
  await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
@@ -23,12 +23,23 @@ try {for(const width of [390,820,1440]){
  for(const [name,open,back] of [['lists',null,'lists-library'],['files','home-footer-files','files-library'],['texts','home-text','texts-home']]){
   if(open)await p.locator('#'+open).click();const button=p.locator('#'+name+'-theme'),r=await button.boundingBox(),footer=await button.locator('..').boundingBox();
   assert(r.width>=44&&r.height>=44&&r.x+r.width<=width&&footer.x+footer.width-r.x-r.width<=24,JSON.stringify({name,r,footer}));assert.equal(await button.locator('.pdf-mobile-theme-swatch').count(),1);
+  const bar=button.locator('..'),nav=await bar.locator('button:not(.workspace-theme)').evaluateAll(es=>es.map(e=>({label:e.getAttribute('aria-label'),art:e.innerHTML,x:e.getBoundingClientRect().x,y:e.getBoundingClientRect().y,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height})));
+  assert.deepEqual(nav.map(x=>x.label),name==='lists'?['Library Home','Files','Notes']:name==='files'?['Library Home','Lists','Notes']:['Library','Files','Lists']);
+  assert.equal(await bar.locator('button').last().getAttribute('id'),name+'-theme');
+  const baseline=await bar.evaluate(e=>{const t=e.querySelector('.workspace-theme');t.hidden=true;const r=e.getBoundingClientRect(),nav=[...e.querySelectorAll('button:not(.workspace-theme)')].map(b=>({x:b.getBoundingClientRect().x,y:b.getBoundingClientRect().y}));t.hidden=false;return {height:r.height,nav};});
+  assert.equal(footer.height,baseline.height);assert.deepEqual(nav.map(({x,y})=>({x,y})),baseline.nav);
+  assert.equal(await button.getAttribute('aria-label'),'Use dark Library theme');
+  await p.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight));await p.waitForTimeout(100);assert.deepEqual(await bar.boundingBox(),footer);await p.evaluate(()=>scrollTo(0,0));
   if(name==='texts')assert.equal(await p.locator('#texts-context').innerText(),'Create program items, cues, teaching notes, and other activities');
   await button.focus();await p.keyboard.press('Enter');assert.equal(await p.locator('html').getAttribute('data-library-theme'),'dark');await fits();
+  assert(await p.locator('.library-theme-toggle').evaluateAll(es=>es.every(e=>e.getAttribute('aria-pressed')==='true'&&e.getAttribute('aria-label')==='Use light Library theme')));
+  assert.equal((await bar.boundingBox()).height,footer.height);
+  // Navigate with dark mode active; all workspaces read the same preference.
+  await p.locator('#'+back).click();assert.equal(await p.locator('html').getAttribute('data-library-theme'),'dark');
+  await p.locator(name==='lists'?'#home-footer-lists':name==='files'?'#home-footer-files':'#home-text').click();
+
   await p.reload();await p.waitForFunction(()=>window.prototype?.navigation);assert.equal(await p.locator('html').getAttribute('data-library-theme'),'dark');
   await p.locator('#'+name+'-theme').click();assert.equal(await p.locator('html').getAttribute('data-library-theme'),'light');await fits();await p.locator('#'+back).click();
  }
  assert.equal(await p.evaluate(()=>localStorage.getItem('music-transpose-library-v1')),saved);assert.deepEqual(errors,[]);await c.close();console.log('PASS',width,'compact menu, destinations, spacing, theme keyboard/persistence, Notes, indentation, no overflow or List mutations');
 }}finally{await browser.close();}
-
-
