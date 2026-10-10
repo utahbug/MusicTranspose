@@ -1970,9 +1970,6 @@ body:not(.lyrics-open):not(.library-open) .masthead #songs[data-score-return=lis
 #lyrics-view #lyrics-copy:disabled{opacity:.5;cursor:default}
 #lyrics-view #lyrics-copy.copy-feedback{font:600 11px/1.2 system-ui,sans-serif;white-space:normal}
 
-/* Mirror only the Lyrics speaker; pause/resume artwork keeps its direction. */
-#lyrics-view .lyrics-identity-header .song-playback[data-state=stopped] svg{transform:scaleX(-1)}
-
 /* Library sorting belongs to the identity header; Settings reuses the existing menu. */
 body #library .workspace-banner h1{flex:1 1 auto}
 #library .library-heading .sort-choice{position:relative;flex:0 0 auto;min-width:132px;min-height:44px;padding-right:20px;border-radius:4px}
