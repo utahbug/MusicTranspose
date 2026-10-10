@@ -1912,13 +1912,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -1968,13 +1966,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -2016,13 +2012,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -2473,13 +2467,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -2514,14 +2506,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Oh, come ye in, come in through Him; Oh, come ye in, all people of the world.",
-          "sourcePart": "P2",
-          "sourceVoice": "2",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Our Savior is the precious tree That bears the fruit so sweet and pure. His truth that makes us ever free Unchanging will endure.",
           "sourcePart": "P1",
@@ -2533,21 +2517,29 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Come in through Him, Into the fold of God. Our Savior, Jesus, is the Way— The Savior of the world.",
+          "text": "Come in through Him (Oh, come ye in, come in through Him); Into the fold of God (Oh, come ye in, all people of the world). Our Savior, Jesus, is the Way— The Savior of the world.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Come in through Him, Into the fold of God. Our Savior, Jesus, is the Way— The Savior of the world."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "2",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Oh, come ye in, come in through Him; Oh, come ye in, all people of the world."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed #1045: P2 voice 2 responds during the principal phrases in measures 10–11 and 12–13; parenthesized at the corresponding phrase boundaries, before Our in X3. These overlapping vocal phrases are not extra verses. Literal principal and secondary streams retained separately."
+      ],
       "sourceTextBlocks": [
         "title\n Jesus Is the Way",
         "John 10:1–11 | 2 Nephi 31:20–21",
@@ -2555,7 +2547,7 @@
         "Text:\n Tēvita Tuliakiono, 1920; English transl. 2025 \n\n Music:\n Tēvita Tuliakiono, 1920 | \n FOLOFOLA MAI ‘A SĪSŪ",
         "English transl. © 2025 IRI"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "hhc-1046",

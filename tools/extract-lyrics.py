@@ -146,6 +146,20 @@ for song in catalog:
   assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==echo
   chorus=r['refrains'][0];chorus['principalText']=chorus['text'];chorus['text']=opening+' ('+echo+') '+ending
   r['extractionDecisions'].append('Reviewed #1020 onset order: voice 2 responds in measure 12 after the principal home and before Earnestly in measure 13; response parenthesized inline. Literal principal and secondary source text retained separately.')
+ # Reviewed #1045: lower-part responses overlap the first two main phrases.
+ # Parentheses follow their corresponding phrases, before the unshared final line.
+ if song['id']=='hhc-1045':
+  def phrase(part,voice,bars):
+   return stitch([l for m in root.find("part[@id='"+part+"']").findall('measure') if m.get('number') in bars for n in m.findall('note') if n.findtext('voice','1')==voice for l in n.findall('lyric') if l.get('name')=='chorus'])
+  main=r['refrains'][0];first='Come in through Him,';second='Into the fold of God.'
+  end=phrase('P1','1',{'X3','14','15','16','17'})
+  response1=phrase('P2','2',{'10','11'});response2=phrase('P2','2',{'12','13'})
+  assert len(r['refrains'])==1 and main['text']==' '.join([first,second,end])
+  assert response1=='Oh, come ye in, come in through Him;' and response2=='Oh, come ye in, all people of the world.'
+  assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==response1+' '+response2
+  main['principalText']=main['text']
+  main['text']=first.rstrip(',')+' ('+response1.rstrip(';')+'); '+second.rstrip('.')+' ('+response2.rstrip('.')+'). '+end
+  r['extractionDecisions'].append('Reviewed #1045: P2 voice 2 responds during the principal phrases in measures 10–11 and 12–13; parenthesized at the corresponding phrase boundaries, before Our in X3. These overlapping vocal phrases are not extra verses. Literal principal and secondary streams retained separately.')
  # Reviewed batch 1: explicit chorus metadata is already handled above.
  if song['id']=='song-a13c43da-0243-4019-ad08-d7be530074f5':
   # The source encodes lat/ter/day as begin/middle/end, losing the lexical hyphen.
