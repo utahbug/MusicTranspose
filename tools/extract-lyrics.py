@@ -255,6 +255,23 @@ for song in catalog:
   assert main['text'].count('along, Do')==1 and main['text'].count('song, We')==1
   main['principalText']=main['text'];main['text']=main['text'].replace('along, Do','along ('+first[:-1]+'), Do',1).replace('song, We','song ('+second[:-1]+'), We',1)
   r['extractionDecisions'].append('Reviewed Hymns #252: P2 echoes push along in X12 beats 1–3 and full of song in X15 beats 1–3, after each P1 phrase ends at beat 1. Place each response at its own phrase boundary before Do/We; preserve both literal streams, not an extra Verse 2.')
+ if song['id']=='song-47813d41-1317-4ca0-9a32-a520b47c97d2':
+  part=root.find("part[@id='P1']");main=r['refrains'][0]
+  for bar,ending in [('3','1'),('4','2')]:
+   assert part.find("measure[@number='"+bar+"']/barline/ending[@type='start']").get('number')==ending
+   assert stitch(part.findall("measure[@number='"+bar+"']/note/lyric[@name='chorus']"))=='can.'
+  assert part.find("measure[@number='X20']/barline/repeat[@direction='backward']") is not None
+  assert len(r['verses'])==2 and len(r['refrains'])==1 and main['text'].endswith('can. can.')
+  main['principalText']=main['text'];main['text']=stitch([l for m in part.findall('measure') if m.get('number')!='4' for l in m.findall("note/lyric[@name='chorus']")])
+  r['extractionDecisions'].append('Reviewed Hymns #300: the final can occurs in alternative endings 3–X20 and 4, not consecutively. Both performed chorus paths have identical words. Preserve the earlier complete repeated phrase and raw stream, omitting only the duplicate alternative-ending can.')
+ if song['id']=='song-e8477f1f-83e0-4af5-826a-a3ad4a1079d6':
+  main=r['refrains'][0];part=root.find("part[@id='P2']")
+  first=stitch(part.findall("measure[@number='X21']/note/lyric[@name='chorus']"));second=stitch(part.findall("measure[@number='X22']/note/lyric[@name='chorus']"))
+  assert first=='Then away,' and second=='haste away!'
+  assert len(r['verses'])==3 and len(r['refrains'])==1 and len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==first+' '+second
+  assert main['text'].startswith('Then away, haste away! Come away')
+  main['principalText']=main['text'];main['text']=main['text'].replace('Then away, haste away!','Then away ('+first[:-1]+'), haste away ('+second[:-1]+')!',1)
+  r['extractionDecisions'].append('Reviewed Hymns #276: P2 Then away in X21 beats 1–3 and haste away in X22 beats 1–3 answer the corresponding sustained P1 away notes, before the next main pickup at beat 3. Parenthesize separately at those two phrase boundaries; preserve literal streams, not an extra Verse 2.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'

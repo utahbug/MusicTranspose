@@ -547,6 +547,487 @@
         "audioFrameCopy": "passed at 320,390,744,820,1440",
         "fontThemeFooter": "passed at 390,744,820,1440",
         "syntaxManifestBuildDiff": "passed"
+      },
+      "commit": "530ea7198d140773b80335a6d5ce3c7f529fa89a",
+      "deployment": {
+        "status": "success",
+        "run": 38060871163,
+        "liveFilesVerified": [
+          "assets/lyrics.json",
+          "lyrics-index.js",
+          "sw.js"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "baseline": "530ea7198d140773b80335a6d5ce3c7f529fa89a",
+      "songs": [
+        {
+          "id": "song-5171114c-7b99-40f8-9040-5186973263b3",
+          "number": "270",
+          "title": "I’ll Go Where You Want Me to Go",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-5171114c-7b99-40f8-9040-5186973263b3.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X18",
+              "last": "X26"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-bfb6a184-1d9c-4e05-bc9e-71efae11eea1",
+          "number": "273",
+          "title": "Truth Reflects upon Our Senses",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-bfb6a184-1d9c-4e05-bc9e-71efae11eea1.mxl",
+          "status": "corrected",
+          "verseCount": 5,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X29"
+            }
+          ],
+          "structure": "5 principal verses + explicit Chorus after each verse; printed verses 4/5 verified in source credit blocks, without an embedded Chorus, preserved verbatim."
+        },
+        {
+          "id": "song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0",
+          "number": "274",
+          "title": "The Iron Rod",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-ebb6360b-24c1-4990-aeb6-c7ebd69b3ef0.mxl",
+          "status": "corrected",
+          "verseCount": 5,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X18"
+            }
+          ],
+          "structure": "5 principal verses + explicit Chorus after each verse; printed verses 4/5 verified in source credit blocks, without an embedded Chorus, preserved verbatim."
+        },
+        {
+          "id": "song-e8477f1f-83e0-4af5-826a-a3ad4a1079d6",
+          "number": "276",
+          "title": "Come Away to the Sunday School",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-e8477f1f-83e0-4af5-826a-a3ad4a1079d6.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X29"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X21",
+              "last": "X22"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse; P2 Then away and haste away at X21/X22 beats 1–3 parenthesized separately after their corresponding sustained main words."
+        },
+        {
+          "id": "song-127eea0f-8f0f-436a-996d-e0d381ad173f",
+          "number": "278",
+          "title": "Thanks for the Sabbath School",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-127eea0f-8f0f-436a-996d-e0d381ad173f.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X31"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-00c582e3-baa8-410b-940c-9fd52aa166a9",
+          "number": "280",
+          "title": "Welcome, Welcome, Sabbath Morning",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-00c582e3-baa8-410b-940c-9fd52aa166a9.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X29"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-47813d41-1317-4ca0-9a32-a520b47c97d2",
+          "number": "300",
+          "title": "Families Can Be Together Forever",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-47813d41-1317-4ca0-9a32-a520b47c97d2.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "X4",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "X4",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X12",
+              "last": "4"
+            }
+          ],
+          "structure": "2 principal verses + explicit Chorus after each verse; final can in alternative endings 3–X20 and 4 included once, earlier legitimate repeated phrase retained; raw stream preserved."
+        },
+        {
+          "id": "song-7ffc2a79-7ac6-4a84-ace8-ff99f47faa00",
+          "number": "305",
+          "title": "The Light Divine",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-7ffc2a79-7ac6-4a84-ace8-ff99f47faa00.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X26"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-af85e05e-8681-406e-a412-22338e4fd595",
+          "number": "307",
+          "title": "In Our Lovely Deseret",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-af85e05e-8681-406e-a412-22338e4fd595.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X11"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X12",
+              "last": "X21"
+            }
+          ],
+          "structure": "4 principal verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-7f407f0f-8d10-4bc4-9d74-03806c7e0969",
+          "number": "319",
+          "title": "Ye Elders of Israel",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-7f407f0f-8d10-4bc4-9d74-03806c7e0969.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X29"
+            }
+          ],
+          "structure": "3 principal verses + explicit Chorus after each verse"
+        }
+      ],
+      "remainingBefore": 28,
+      "remainingAfter": 18,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed"
       }
     }
   ]

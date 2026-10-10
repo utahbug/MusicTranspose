@@ -19302,13 +19302,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -19489,13 +19487,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -19557,13 +19553,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -19645,14 +19639,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Then away, haste away!",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Let us then press boldly onward, Prove ourselves as soldiers true. He will lead us; he will guide us. Come, there’s work for all to do, Never tiring, never doubting, Boldly struggling to the end. In the world, tho foes assail us, God will surely be our friend.",
           "sourcePart": "P1",
@@ -19664,28 +19650,36 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Then away, haste away! Come away to the Sunday School! Then away, do not delay! Come away to the Sunday School!",
+          "text": "Then away (Then away), haste away (haste away)! Come away to the Sunday School! Then away, do not delay! Come away to the Sunday School!",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Then away, haste away! Come away to the Sunday School! Then away, do not delay! Come away to the Sunday School!"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Then away, haste away!"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #276: P2 Then away in X21 beats 1–3 and haste away in X22 beats 1–3 answer the corresponding sustained P1 away notes, before the next main pickup at beat 3. Parenthesize separately at those two phrase boundaries; preserve literal streams, not an extra Verse 2."
+      ],
       "sourceTextBlocks": [
         "Come Away to the Sunday School",
         "276",
         "Text and music: \n Robert B. Baird, 1855–1916",
         "Doctrine and Covenants 59:9–11, 23\nIsaiah 58:13–14"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-4597aa28-e4f1-4060-8f51-e8374865a3ef",
@@ -19779,13 +19773,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -19896,13 +19888,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -20831,19 +20821,20 @@
       "refrains": [
         {
           "number": "1",
-          "text": "Fam’lies can be together forever Through Heav’nly Father’s plan. I always want to be with my own family, And the Lord has shown me how I can. The Lord has shown me how I can. can.",
+          "text": "Fam’lies can be together forever Through Heav’nly Father’s plan. I always want to be with my own family, And the Lord has shown me how I can. The Lord has shown me how I can.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "Fam’lies can be together forever Through Heav’nly Father’s plan. I always want to be with my own family, And the Lord has shown me how I can. The Lord has shown me how I can. can."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed Hymns #300: the final can occurs in alternative endings 3–X20 and 4, not consecutively. Both performed chorus paths have identical words. Preserve the earlier complete repeated phrase and raw stream, omitting only the duplicate alternative-ending can."
+      ],
       "sourceTextBlocks": [
         "Families Can Be Together Forever",
         "300",
@@ -21056,13 +21047,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -21157,13 +21146,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -21730,13 +21717,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [

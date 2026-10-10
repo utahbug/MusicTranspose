@@ -15,7 +15,7 @@ for group in manifest['groups']:
   with zipfile.ZipFile(path) as z:xml=E.fromstring(z.read(E.fromstring(z.read('META-INF/container.xml')).find('.//{*}rootfile').get('full-path')))
   if item['status']=='deferred':assert r==before[id];continue
   assert r['available'] and not r['notes'],id
-  secondary=number in ('251','252')
+  secondary=number in ('251','252','276')
   assert r['verses']==[v for v in before[id]['verses'] if not secondary or v.get('sourcePart')=='P1'],id
   assert len(r['verses'])==item['verseCount'] and [v['number'] for v in r['verses']]==list(map(str,range(1,item['verseCount']+1)))
   for v in r['verses']:
@@ -24,21 +24,25 @@ for group in manifest['groups']:
    assert v['text']==stitch([l for p in xml.findall('part') if p.get('id')==v['sourcePart'] for n in p.findall('measure/note') if n.findtext('voice','1')==v['sourceVoice'] for l in n.findall('lyric') if l.get('name')=='verse' and l.get('number')==v['number']]),id
   assert len(r['refrains'])==1;chorus=r['refrains'][0];assert chorus['label']=='Chorus'
   nodes=xml.findall("part[@id='P1']/measure/note/lyric[@name='chorus']");literal=stitch(nodes);assert literal==before[id]['refrains'][0]['text']
-  if number=='249':
+  if number in ('249','300'):
    part=xml.find("part[@id='P1']")
-   for bar,ending in [('X23','1'),('X24','2')]:
+   first,last,word=('X23','X24','King.') if number=='249' else ('3','4','can.')
+   for bar,ending in [(first,'1'),(last,'2')]:
     assert part.find("measure[@number='"+bar+"']/barline/ending[@type='start']").get('number')==ending
-    assert stitch(part.findall("measure[@number='"+bar+"']/note/lyric[@name='chorus']"))=='King.'
-   assert chorus['principalText']==literal and chorus['text']==literal.removesuffix(' King.')
-   assert chorus['text']==stitch([l for m in part.findall('measure') if m.get('number')!='X23' for l in m.findall("note/lyric[@name='chorus']")]),'Both performed ending paths must agree'
+    assert stitch(part.findall("measure[@number='"+bar+"']/note/lyric[@name='chorus']"))==word
+   assert chorus['principalText']==literal and chorus['text']==literal.removesuffix(' '+word)
+   assert chorus['text']==stitch([l for m in part.findall('measure') if m.get('number')!=first for l in m.findall("note/lyric[@name='chorus']")]),'Both performed ending paths must agree'
   elif secondary:
    response=stitch(xml.findall("part[@id='P2']/measure/note/lyric[@name='chorus']"));assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==response;assert chorus['principalText']==literal
    if number=='251':
     assert response=='Thru Christ, our Lord!';assert chorus['text']==literal[:-1]+' (Thru Christ, our Lord)!'
     timing={'P1':{'X31':[2],'X32':[0,2],'X33':[0,3],'X34':[0]},'P2':{'X33':[3],'X34':[0,2],'X35':[0]}}
-   else:
+   elif number=='252':
     assert response=='push along. full of song.';assert chorus['text']==literal.replace('along, Do','along (push along), Do',1).replace('song, We','song (full of song), We',1)
     timing={'P1':{'X12':[0],'X15':[0]},'P2':{'X12':[1,1.75,2],'X15':[1,1.75,2]}}
+   else:
+    assert response=='Then away, haste away!';assert chorus['text']==literal.replace('Then away, haste away!','Then away (Then away), haste away (haste away)!',1)
+    timing={'P1':{'X21':[0,3,3.75],'X22':[0,3,3.75]},'P2':{'X21':[1,1.75,2],'X22':[1,1.75,2]}}
    for part_id,expected in timing.items():
     div=1;observed={}
     for m in xml.find("part[@id='"+part_id+"']").findall('measure'):
