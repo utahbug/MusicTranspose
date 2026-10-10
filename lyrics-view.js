@@ -51,12 +51,13 @@ export function lyricsClipboardText(song){
 const copyIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>';
 const frameIcon='<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="1"/><rect x="6" y="6" width="12" height="12" rx="1"/></svg>';
 const appearanceKey='music-transpose-lyrics-appearance-v1';
-const sizes=['small','medium','large','extra-large'],sizeNames=['Small','Medium','Large','Extra Large'];
-function readAppearance(){try{const p=JSON.parse(localStorage.getItem(appearanceKey))||{};return {frame:typeof p.frame==='boolean'?p.frame:false,dark:typeof p.dark==='boolean'?p.dark:false,size:Number.isInteger(p.size)&&p.size>=0&&p.size<=3?p.size:0};}catch{return {dark:false,size:0,frame:false};}}
+// Keep saved numeric values 0–3 unchanged; Smallest is value 4, shown first.
+const sizes=['small','medium','large','extra-large','smallest'],sizeNames=['Small','Medium','Large','Extra Large','Smallest'];
+function readAppearance(){try{const p=JSON.parse(localStorage.getItem(appearanceKey))||{};return {frame:typeof p.frame==='boolean'?p.frame:false,dark:typeof p.dark==='boolean'?p.dark:false,size:Number.isInteger(p.size)&&p.size>=0&&p.size<sizes.length?p.size:0};}catch{return {dark:false,size:0,frame:false};}}
 // The same Library node keeps its shared navigation handler and accessible name.
 export function createLyricsView(host,{onScore,libraryControl}){
  let {size,dark,frame}=readAppearance(),current=null,libraryHome=null,listeners=null,paragraphs=[],settings=null,copyTimer=null;
- function rephrase(){const target=Math.max(26,Math.min(58,Math.floor((Math.min(innerWidth,820)-72)/([19,24,30,36][size]*.5))));for(const [p,text] of paragraphs){p.replaceChildren(...lyricPhrases(text,target).map(phrase=>{const line=document.createElement('span');line.className='lyric-phrase';line.textContent=phrase;return line;}));}}
+ function rephrase(){const target=Math.max(26,Math.min(58,Math.floor((Math.min(innerWidth,820)-72)/([19,24,30,36,17][size]*.5))));for(const [p,text] of paragraphs){p.replaceChildren(...lyricPhrases(text,target).map(phrase=>{const line=document.createElement('span');line.className='lyric-phrase';line.textContent=phrase;return line;}));}}
  function lyricParagraph(text){const p=make('p',null,'lyric-lines');paragraphs.push([p,text]);return p;}
  const saveAppearance=()=>{try{localStorage.setItem(appearanceKey,JSON.stringify({dark,size,frame}));}catch{}};
  function restoreLibrary(){if(libraryHome){libraryHome.parent.insertBefore(libraryControl,libraryHome.next?.parentNode===libraryHome.parent?libraryHome.next:null);libraryHome=null;}}
@@ -73,7 +74,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const closeFont=(focus=false)=>{menu.hidden=true;font.setAttribute('aria-expanded','false');if(focus)font.focus({preventScroll:true});};
  const openFont=()=>{menu.hidden=false;font.setAttribute('aria-expanded','true');const r=font.getBoundingClientRect();menu.style.left=Math.max(8,Math.min(r.right-menu.offsetWidth,innerWidth-menu.offsetWidth-8))+'px';menu.style.top=Math.max(8,r.top-menu.offsetHeight-8)+'px';menu.querySelector('[aria-checked=true]').focus({preventScroll:true});};
  const font=button('','Font size',()=>menu.hidden?openFont():closeFont(true));font.id='lyrics-font-size';font.innerHTML='<span class="lyrics-font-art" aria-hidden="true">A</span><span>Font size</span><span class="lyrics-font-chevron" aria-hidden="true">›</span>';font.setAttribute('aria-haspopup','menu');font.setAttribute('aria-expanded','false');font.setAttribute('aria-controls',menu.id);
- for(const [index,name] of sizeNames.entries()){const option=button(name,name,()=>{size=index;saveAppearance();rephrase();host.dataset.size=sizes[size];for(const [i,item] of [...menu.children].entries())item.setAttribute('aria-checked',String(i===size));font.title='Font size: '+sizeNames[size];closeFont(true);});option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
+ for(const index of [4,0,1,2,3]){const name=sizeNames[index],option=button(name,name,()=>{size=index;saveAppearance();rephrase();host.dataset.size=sizes[size];for(const item of menu.children)item.setAttribute('aria-checked',String(Number(item.dataset.sizeIndex)===size));font.title='Font size: '+sizeNames[size];closeFont(true);});option.dataset.sizeIndex=String(index);option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
  font.title='Font size: '+sizeNames[size];fontWrap.append(font,menu);
  settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontWrap,frameButton,theme],onClose:()=>closeFont()});
  font.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openFont();}});

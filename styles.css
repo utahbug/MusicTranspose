@@ -206,7 +206,7 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 #lyrics-view.lyrics-dark{--lyrics-bg:#0B0D0E;--lyrics-ink:#F7FAFB;--lyrics-muted:#B8C8CE;color-scheme:dark}
 #lyrics-view button{color:var(--lyrics-ink);border-color:var(--lyrics-muted)}#lyrics-view h1{font:600 26px/1.25 system-ui;margin:0}.lyrics-source{color:var(--lyrics-muted);font-size:14px;line-height:1.5}
 .lyrics-body{font-size:24px;line-height:1.65}.lyrics-body section{margin-top:28px}.lyrics-body h2{font:600 14px system-ui;color:var(--lyrics-muted);margin:0 0 8px}.lyrics-body p{white-space:pre-line;margin:0;overflow-wrap:break-word}
-#lyrics-view[data-size=small] .lyrics-body{font-size:19px}#lyrics-view[data-size=large] .lyrics-body{font-size:30px}.lyrics-refrain{border-left:3px solid #536B7A;padding-left:16px}.lyrics-notice{font-size:13px;color:var(--lyrics-muted);line-height:1.5}
+#lyrics-view[data-size=smallest] .lyrics-body{font-size:17px}#lyrics-view[data-size=small] .lyrics-body{font-size:19px}#lyrics-view[data-size=large] .lyrics-body{font-size:30px}.lyrics-refrain{border-left:3px solid #536B7A;padding-left:16px}.lyrics-notice{font-size:13px;color:var(--lyrics-muted);line-height:1.5}
 @media screen{body.lyrics-open .masthead,body.lyrics-open #playing-view{display:none!important}}
 @media print{#lyrics-view,.score-actions{display:none!important}}
 
