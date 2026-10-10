@@ -99,7 +99,7 @@ async function openLyrics(id){
  library?.navigating('lyrics',id);const token=beginSelection(song,retained);
  try{const data=await getLyrics(id);if(token!==selectionVersion)return;if(!data)throw Error('Lyrics unavailable');if(retained)score.setAttribute('aria-busy','false');lyricsSong=song;
  document.dispatchEvent(new CustomEvent('library-open',{detail:{retainScore:retained}}));document.body.classList.add('lyrics-open');
- lyricsView.show(data);if(!pdfFallback)playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data);if(hasTiming(song))playback.attach($('lyrics-view').querySelector('h1'));library.opened(id);document.title=song.title+' · Lyrics · MusicTranspose';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){if(token!==selectionVersion)return;finishSelection(token);library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{finishSelection(token);}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);
