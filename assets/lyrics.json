@@ -10800,13 +10800,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -10866,15 +10864,20 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "1",
+            "2",
+            "3"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed Hymns #100: source-marked chorus X10–X15 completes note-lyric verses 1–3. Printed verses 4/5 already contain the entire ending; preserve those complete text blocks exactly and do not repeat the chorus after them."
+      ],
       "sourceTextBlocks": [
         "Text: \n Sarah F. Adams, 1805–1848\n\n Music: \n Lowell Mason, 1792–1872",
         "Doctrine and Covenants 88:63\nGenesis 28:10–22",
@@ -11089,14 +11092,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "Peace, be still, peace, be still.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "Master, the terror is over. The elements sweetly rest. Earth’s sun in the calm lake is mirrored, And heaven’s within my breast. Linger, O blessed Redeemer! Leave me alone no more, And with joy I shall make the blest harbor And rest on the blissful shore.",
           "sourcePart": "P1",
@@ -11108,28 +11103,36 @@
       "refrains": [
         {
           "number": "1",
-          "text": "The winds and the waves shall obey thy will: Peace, be still. Whether the wrath of the stormtossed sea Or demons or men or whatever it be, No waters can swallow the ship where lies The Master of ocean and earth and skies. They all shall sweetly obey thy will: Peace, be still; peace, be still. They all shall sweetly obey thy will: Peace, peace, be still.",
+          "text": "The winds and the waves shall obey thy will: Peace, be still (Peace, be still, peace, be still). Whether the wrath of the stormtossed sea Or demons or men or whatever it be, No waters can swallow the ship where lies The Master of ocean and earth and skies. They all shall sweetly obey thy will: Peace, be still; peace, be still. They all shall sweetly obey thy will: Peace, peace, be still.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "principalText": "The winds and the waves shall obey thy will: Peace, be still. Whether the wrath of the stormtossed sea Or demons or men or whatever it be, No waters can swallow the ship where lies The Master of ocean and earth and skies. They all shall sweetly obey thy will: Peace, be still; peace, be still. They all shall sweetly obey thy will: Peace, peace, be still."
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "Peace, be still, peace, be still."
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed Hymns #105: P2 sings Peace, be still twice in X21–X22 during the first sustained P1 Peace, be still. Parenthesize that two-measure secondary stream at its principal phrase boundary, before Whether in X23. Preserve literal principal and secondary streams; no extra Verse 2."
+      ],
       "sourceTextBlocks": [
         "Master, the Tempest Is Raging",
         "105",
         "Text: \n Mary Ann Baker, 1831–1921\n\n Music: \n H. R. Palmer, 1834–1907",
         "Matthew 8:23–27\nMark 4:36–41"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "song-a4cd3587-5ed6-49b3-8997-511f3320a724",
@@ -12766,13 +12769,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -13986,13 +13987,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -14581,13 +14580,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -15416,13 +15413,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -15904,13 +15899,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [

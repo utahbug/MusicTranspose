@@ -198,6 +198,25 @@ for song in catalog:
   final=stitch([l for bar,l in nodes if bar!=first_bar])
   r['refrains']=[{**chorus,'text':first,'verses':['1','2'],'principalText':chorus['text']},{**chorus,'text':final,'verses':['3']}]
   r['extractionDecisions'].append('Reviewed '+song['id']+': first ending '+str(first_bar)+' applies to verses 1/2; final ending '+str(final_bar)+' through '+str(last_bar)+' applies only to verse 3. Stitch each source path separately, preserving its terminal word/syllable once and its final extension. Literal unexpanded source stream retained in principalText.')
+ if song['id']=='song-00dbf08d-281a-4a99-9a9a-77815f9d9d14':
+  # Printed verses 4/5 already include their complete endings (and a distinct
+  # comma in verse 5). Preserve those blocks verbatim without a second ending.
+  assert len(r['refrains'])==1 and len(r['verses'])==3
+  credits=[c.text or '' for c in root.findall('.//credit-words')]
+  assert any(t.startswith('4. ') for t in credits) and any(t.startswith('5. ') for t in credits)
+  r['refrains'][0]['verses']=['1','2','3']
+  r['extractionDecisions'].append('Reviewed Hymns #100: source-marked chorus X10–X15 completes note-lyric verses 1–3. Printed verses 4/5 already contain the entire ending; preserve those complete text blocks exactly and do not repeat the chorus after them.')
+ if song['id']=='song-3c0fdae2-06a6-4b1e-af91-18b4b51c9d38':
+  main=r['refrains'][0];part=root.find("part[@id='P1']")
+  opening=stitch([l for m in part.findall('measure') if m.get('number') in ['X18','X19','X20','X21','X22'] for l in m.findall("note/lyric[@name='chorus']")])
+  response=stitch(root.findall("part[@id='P2']/measure/note/lyric[@name='chorus']"))
+  assert opening=='The winds and the waves shall obey thy will: Peace, be still.'
+  assert response=='Peace, be still, peace, be still.'
+  assert len(r['verses'])==3 and len(r['refrains'])==1 and len(r['alternateLyrics'])==1
+  assert r['alternateLyrics'][0]['text']==response and main['text'].startswith(opening+' Whether')
+  main['principalText']=main['text']
+  main['text']=opening.rstrip('.')+' ('+response.rstrip('.')+').'+main['text'][len(opening):]
+  r['extractionDecisions'].append('Reviewed Hymns #105: P2 sings Peace, be still twice in X21–X22 during the first sustained P1 Peace, be still. Parenthesize that two-measure secondary stream at its principal phrase boundary, before Whether in X23. Preserve literal principal and secondary streams; no extra Verse 2.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'

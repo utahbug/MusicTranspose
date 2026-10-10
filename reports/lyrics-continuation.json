@@ -964,6 +964,488 @@
         "audioFrameCopy": "passed at 320,390,744,820,1440",
         "fontThemeFooter": "passed at 390,744,820,1440",
         "syntaxManifestBuildDiff": "passed"
+      },
+      "commit": "2e1d6423442963cc1467c3473e17d039f1fc8746",
+      "deployment": {
+        "status": "success",
+        "run": 38059953590,
+        "liveFilesVerified": [
+          "assets/lyrics.json",
+          "sw.js"
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "baseline": "2e1d6423442963cc1467c3473e17d039f1fc8746",
+      "songs": [
+        {
+          "id": "song-6f07e565-f3c0-4bb4-a033-59e8d9811e12",
+          "number": "99",
+          "title": "Nearer, Dear Savior, to Thee",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-6f07e565-f3c0-4bb4-a033-59e8d9811e12.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X18",
+              "last": "6"
+            }
+          ],
+          "structure": "4 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-00dbf08d-281a-4a99-9a9a-77815f9d9d14",
+          "number": "100",
+          "title": "Nearer, My God, to Thee",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-00dbf08d-281a-4a99-9a9a-77815f9d9d14.mxl",
+          "status": "corrected",
+          "verseCount": 5,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X15"
+            }
+          ],
+          "structure": "Five verses; source-marked Chorus links after note-lyric verses 1–3 only. Printed verses 4/5 already include their endings and remain verbatim."
+        },
+        {
+          "id": "song-3c0fdae2-06a6-4b1e-af91-18b4b51c9d38",
+          "number": "105",
+          "title": "Master, the Tempest Is Raging",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-3c0fdae2-06a6-4b1e-af91-18b4b51c9d38.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X18",
+              "last": "X39"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X21",
+              "last": "X22"
+            }
+          ],
+          "structure": "Three principal verses + Chorus after each; P2 response parenthesized at the first Peace, be still phrase boundary.",
+          "timingEvidence": "P1 sustains Peace (X21 beat 0), be (beat 2.5), still (X22 beat 0). P2 Peace/be/still occurs at beats 0/1/1.5 in both X21 and X22, finishing before Whether in X23."
+        },
+        {
+          "id": "song-f95d20b9-85e1-4867-baf4-de8f61e9ad24",
+          "number": "140",
+          "title": "Did You Think to Pray?",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-f95d20b9-85e1-4867-baf4-de8f61e9ad24.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X17"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-871573d0-1157-4bec-9ab4-c4155f9ba449",
+          "number": "144",
+          "title": "Secret Prayer",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-871573d0-1157-4bec-9ab4-c4155f9ba449.mxl",
+          "status": "deferred",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "1"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X11",
+              "last": "X17"
+            }
+          ],
+          "structure": "Four principal verses + Chorus; lower voice repeats three whole phrases with staggered overlapping rhythm. Deferred unchanged: needs a reviewed vocal-part/inline presentation; legacy lower-part Verse 2 is false.",
+          "timingEvidence": "P1 May my in X10 precedes P2 May my in X11 while P1 sings heart; similarly P2 Pray in X13 and That this in X16; P2 giv’n in X17 beat 2 overlaps principal sustained giv’n."
+        },
+        {
+          "id": "song-a7939082-9b28-46e5-9738-b91a94d606de",
+          "number": "165",
+          "title": "Abide with Me; ’Tis Eventide",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-a7939082-9b28-46e5-9738-b91a94d606de.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X14"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X15",
+              "last": "X24"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-ee57fc34-e922-4573-a2d5-cfe1410ef492",
+          "number": "177",
+          "title": "’Tis Sweet to Sing the Matchless Love",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-ee57fc34-e922-4573-a2d5-cfe1410ef492.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "1"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-a66f2976-c2a3-4edd-9651-fa5e829b053a",
+          "number": "193",
+          "title": "I Stand All Amazed",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-a66f2976-c2a3-4edd-9651-fa5e829b053a.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X20",
+              "last": "X27"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-c8c15b83-e038-4dc7-9901-c015de754fb4",
+          "number": "203",
+          "title": "Angels We Have Heard on High",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-c8c15b83-e038-4dc7-9901-c015de754fb4.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X7"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X8",
+              "last": "X20"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-53c57be6-2733-45c7-94ad-773835a4fd19",
+          "number": "209",
+          "title": "Hark! The Herald Angels Sing",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-53c57be6-2733-45c7-94ad-773835a4fd19.mxl",
+          "status": "deferred",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": null,
+              "first": "0",
+              "last": "X19"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": null,
+              "first": "0",
+              "last": "X15"
+            }
+          ],
+          "structure": "Two verses plus common final couplet, but no Chorus/Refrain metadata or direction. Deferred: source confirms words and placement, not a separately named repeated section; review refrain versus integrated-stanza presentation before relabeling."
+        }
+      ],
+      "remainingBefore": 53,
+      "remainingAfter": 45,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed"
       }
     }
   ]
