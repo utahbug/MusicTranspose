@@ -5,12 +5,12 @@ import {createRequire} from 'node:module';
 import {lyricsClipboardText} from '../lyrics-view.js';
 const baseline='4e4abafd5f732b55a16d18e136d3014dc10ed9c0';
 const data=JSON.parse(fs.readFileSync('assets/lyrics.json','utf8'));
-assert.deepEqual(data,JSON.parse(execFileSync('git',['show',baseline+':assets/lyrics.json'],{encoding:'utf8',maxBuffer:8e6})));
+const protectedIds=['hhc-1003','hhc-1004','hhc-1008','hhc-1011','hhc-1020','faithful'];const prior=JSON.parse(execFileSync('git',['show',baseline+':assets/lyrics.json'],{encoding:'utf8',maxBuffer:8e6}));assert.deepEqual(data.songs.filter(s=>protectedIds.includes(s.id)),prior.songs.filter(s=>protectedIds.includes(s.id)));
 for(const song of data.songs){const text=lyricsClipboardText(song);if(song.available===false)assert.equal(text,'');else for(const section of [...song.verses,...song.refrains])if(section.text?.trim())assert(text.includes(section.text),song.id);}
 for(const empty of [null,{}, {title:'No lyrics',verses:[],refrains:[]},{available:false,verses:[{text:'Unavailable'}]}])assert.equal(lyricsClipboardText(empty),'');
 const fixture={title:'Example',verses:[{number:'1',text:'First.'},{number:'2',text:'Second.'},{number:'3',text:'Third.'}],refrains:[{label:'Chorus',text:'Response (echo).',verses:['1','3']},{label:'Bridge',text:'Bridge words.'},{label:'Final tag',text:'Final words.'}],sourceTextBlocks:['copyright'],alternateLyrics:[{text:'echo'}]};
 assert.equal(lyricsClipboardText(fixture),'Example\n\nVerse 1\nFirst.\n\nChorus\nResponse (echo).\n\nVerse 2\nSecond.\n\nVerse 3\nThird.\n\nChorus (repeat)\n\nBridge\nBridge words.\n\nFinal tag\nFinal words.');
-console.log('PASS complete structured text across catalog, selected repeats/endings, empty data, catalog unchanged');
+console.log('PASS complete structured text across catalog, selected repeats/endings, empty data, prior corrected records unchanged');
 const {chromium}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
 const browser=await chromium.launch({channel:'msedge'});
 const key='music-transpose-lyrics-appearance-v1';

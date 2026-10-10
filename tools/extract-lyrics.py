@@ -146,6 +146,28 @@ for song in catalog:
   assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==echo
   chorus=r['refrains'][0];chorus['principalText']=chorus['text'];chorus['text']=opening+' ('+echo+') '+ending
   r['extractionDecisions'].append('Reviewed #1020 onset order: voice 2 responds in measure 12 after the principal home and before Earnestly in measure 13; response parenthesized inline. Literal principal and secondary source text retained separately.')
+ # Reviewed batch 1: explicit chorus metadata is already handled above.
+ if song['id']=='song-a13c43da-0243-4019-ad08-d7be530074f5':
+  # The source encodes lat/ter/day as begin/middle/end, losing the lexical hyphen.
+  nodes=root.findall("part[@id='P1']/measure[@number='X6']/note/lyric[@number='1']")
+  assert [n.findtext('text') for n in nodes][:3]==['lat','ter','day']
+  verse=next(v for v in r['verses'] if v['number']=='1')
+  assert verse['text'].count('latterday')==1
+  verse['text']=verse['text'].replace('latterday','latter-day')
+ if song['id']=='hhc-1021':
+  part=root.find("part[@id='P1']")
+  assert part.find("measure[@number='49']/barline/ending[@type='start']").get('number')=='1'
+  assert part.find("measure[@number='49']/barline/repeat[@direction='backward']") is not None
+  assert part.find("measure[@number='50']/barline/ending[@type='start']").get('number')=='2'
+  nodes=[l for m in part.findall('measure') if int(m.get('number'))<50 for n in m.findall('note') for l in n.findall('lyric') if l.get('name')=='chorus']
+  first=stitch(nodes);chorus=r['refrains'][0]
+  assert len(r['refrains'])==1 and chorus['text']==first+' I know that my Savior loves me.'
+  r['refrains']=[{**chorus,'text':first,'verses':['1']},{**chorus,'verses':['2']}]
+  r['extractionDecisions'].append('Reviewed #1021: chorus measures 34–48 follows both verses. First ending 49 repeats; second ending 50–54 adds the final phrase only after verse 2. Existing verse-specific chorus disclosures preserve both forms. Optional duet has no additional lyric stream.')
+ if song['id']=='hhc-1022':
+  assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
+  assert r['alternateLyrics'][0]['text']=='footstep,'
+  r['extractionDecisions'].append('Reviewed #1022: P2 chorus word footstep in measure 19 begins with the principal word at beat 0, with its second syllable at beat 2 instead of beat 1. This is overlapping underlay, not an echo or extra verse; the word remains in the principal chorus and its literal lower-part stream is retained in alternateLyrics.')
  r['sourceTextBlocks']=[clean(''.join(c.itertext())) for c in root.findall('credit')]
  for credit in root.findall('.//credit-words'):
   text=(credit.text or '').replace('\\n','\n')
@@ -158,7 +180,7 @@ for song in catalog:
  r['verses'].sort(key=lambda v:(int(v['number']) if v['number'].isdigit() else 999,v['number']))
  for n in sorted(set(v['number'] for v in r['verses'])):
   if sum(v['number']==n for v in r['verses'])>1:r['notes'].append('Alternate vocal streams for verse '+n+' are retained separately; consult the score.')
- if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1:r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
+ if len(r['refrains'])>1 and len(set(v['text'] for v in r['refrains']))>1 and song['id']!='hhc-1021':r['notes'].append('Multiple refrain streams; consult the score for vocal order.')
  if len(set(v.get('sourcePart') for v in r['verses'] if v.get('sourcePart')))>1:r['notes'].append('Lyrics span multiple vocal parts; sung in score order, not expanded performance order.')
  if any('combined' in d.lower() or 'round' in d.lower() for d in directions):r['notes'].append('Part/round performance directions are retained in the score; no performance-order expansion.')
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')

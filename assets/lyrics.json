@@ -1199,19 +1199,33 @@
       "refrains": [
         {
           "number": "1",
+          "text": "I know He lives! I will follow faithfully. My heart I give to Him. I know that my Savior loves me.",
+          "sourcePart": "P1",
+          "sourceVoice": "1",
+          "kind": "note-lyrics",
+          "label": "Chorus",
+          "verses": [
+            "1"
+          ]
+        },
+        {
+          "number": "1",
           "text": "I know He lives! I will follow faithfully. My heart I give to Him. I know that my Savior loves me. I know that my Savior loves me.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus",
+          "verses": [
+            "2"
+          ]
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed #1021: chorus measures 34–48 follows both verses. First ending 49 repeats; second ending 50–54 adds the final phrase only after verse 2. Existing verse-specific chorus disclosures preserve both forms. Optional duet has no additional lyric stream."
+      ],
       "sourceTextBlocks": [
         "title\n I Know That My Savior Loves Me",
         "Matthew 19:13–15 | 3 Nephi 17:21–24",
@@ -1244,14 +1258,6 @@
           "label": "Verse 2"
         },
         {
-          "number": "2",
-          "text": "footstep,",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
           "number": "3",
           "text": "If we now desire to assist in this work And thrust in our sickle with might, If we will embark in the service of God To harvest in fields that are white, Our souls may receive the salvation of God— The fulness of His light— Then we may stand, free of sin and blame, God’s glory in our sight.",
           "sourcePart": "P1",
@@ -1267,24 +1273,31 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions.",
-        "Alternate vocal streams for verse 2 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "notes": [],
+      "status": "extracted",
+      "alternateLyrics": [
+        {
+          "part": "P2",
+          "voice": "1",
+          "number": "2",
+          "label": "Alternate chorus",
+          "text": "footstep,"
+        }
       ],
-      "status": "needs-review",
-      "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Secondary repeated-section lyrics retained separately; they do not define principal verses or chorus text.",
+        "Reviewed #1022: P2 chorus word footstep in measure 19 begins with the principal word at beat 0, with its second syllable at beat 2 instead of beat 1. This is overlapping underlay, not an echo or extra verse; the word remains in the principal chorus and its literal lower-part stream is retained in alternateLyrics."
+      ],
       "sourceTextBlocks": [
         "title\n Faith in Every Footstep",
         "Doctrine and Covenants 4 | Doctrine and Covenants 18:15–17",
         "Text:\n K. Newell Dayley, 1996\n \nMusic:\n K. Newell Dayley, 1996; alt. | \n FAITH IN EVERY FOOTSTEP",
         "Text © 1996 IRI; music © 1996, 2025 IRI"
       ],
-      "available": false
+      "available": true
     },
     {
       "id": "hhc-1023",
@@ -1333,13 +1346,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -1479,13 +1490,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -1535,13 +1544,11 @@
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
-          "label": "Shared ending"
+          "label": "Chorus"
         }
       ],
-      "notes": [
-        "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
-      ],
-      "status": "needs-review",
+      "notes": [],
+      "status": "extracted",
       "alternateLyrics": [],
       "extractionDecisions": [],
       "sourceTextBlocks": [
@@ -5911,7 +5918,7 @@
       "verses": [
         {
           "number": "1",
-          "text": "The Spirit of God like a fire is burning! The latterday glory begins to come forth; The visions and blessings of old are returning, And angels are coming to visit the earth.",
+          "text": "The Spirit of God like a fire is burning! The latter-day glory begins to come forth; The visions and blessings of old are returning, And angels are coming to visit the earth.",
           "sourcePart": "P1",
           "sourceVoice": "1",
           "kind": "note-lyrics",
