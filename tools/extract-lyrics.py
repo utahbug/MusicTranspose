@@ -217,6 +217,18 @@ for song in catalog:
   main['principalText']=main['text']
   main['text']=opening.rstrip('.')+' ('+response.rstrip('.')+').'+main['text'][len(opening):]
   r['extractionDecisions'].append('Reviewed Hymns #105: P2 sings Peace, be still twice in X21–X22 during the first sustained P1 Peace, be still. Parenthesize that two-measure secondary stream at its principal phrase boundary, before Whether in X23. Preserve literal principal and secondary streams; no extra Verse 2.')
+ if song['id']=='song-54db47df-6f16-441c-ac53-df09cfdb294c':
+  main=r['refrains'][0]
+  def response_at(bars):
+   return stitch([l for m in root.find("part[@id='P2']").findall('measure') if m.get('number') in bars for l in m.findall("note/lyric[@name='chorus']")])
+  first=response_at(['X12','X13']);second=response_at(['X16','X17'])
+  assert first=='sunshine in your heart,' and second=='will all depart,'
+  assert len(r['verses'])==4 and len(r['refrains'])==1 and len(r['alternateLyrics'])==1
+  assert r['alternateLyrics'][0]['text']==first+' '+second
+  assert main['text'].count('heart, You')==1 and main['text'].count('depart, If')==1
+  main['principalText']=main['text']
+  main['text']=main['text'].replace('heart, You','heart ('+first.rstrip(',')+'), You',1).replace('depart, If','depart ('+second.rstrip(',')+'), If',1)
+  r['extractionDecisions'].append('Reviewed Hymns #228: P2 responses in X12–X13 and X16–X17 finish at beat 3 before the next P1 phrases You and If. Parenthesize each response at its corresponding principal phrase boundary. Literal principal/secondary streams retained; lower lyric row is not an extra Verse 2.')
  if song['id']=='hhc-1022':
   assert len(r['verses'])==3 and len(r['alternateLyrics'])==1
   assert r['alternateLyrics'][0]['text']=='footstep,'

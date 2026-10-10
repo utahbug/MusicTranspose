@@ -1446,7 +1446,508 @@
         "audioFrameCopy": "passed at 320,390,744,820,1440",
         "fontThemeFooter": "passed at 390,744,820,1440",
         "syntaxManifestBuildDiff": "passed"
+      },
+      "commit": "8b79464aa213e868ccfeee99ed7cac9cfc61cb26",
+      "deployment": {
+        "status": "success",
+        "run": 38060278812,
+        "liveFilesVerified": [
+          "assets/lyrics.json",
+          "lyrics-index.js",
+          "sw.js"
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "baseline": "8b79464aa213e868ccfeee99ed7cac9cfc61cb26",
+      "songs": [
+        {
+          "id": "song-8aaafadd-0290-4b8f-aa76-a7b167782212",
+          "number": "213",
+          "title": "The First Noel",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-8aaafadd-0290-4b8f-aa76-a7b167782212.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X24"
+            }
+          ],
+          "structure": "2 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-138d4697-d2d9-414a-885c-82b760f1f371",
+          "number": "223",
+          "title": "Have I Done Any Good?",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-138d4697-d2d9-414a-885c-82b760f1f371.mxl",
+          "status": "corrected",
+          "verseCount": 2,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X17"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X17",
+              "last": "X25"
+            }
+          ],
+          "structure": "2 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f",
+          "number": "225",
+          "title": "We Are Marching On to Glory",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-51e9ee33-e0e9-4f34-8b76-7902ca66e36f.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X19"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-54db47df-6f16-441c-ac53-df09cfdb294c",
+          "number": "228",
+          "title": "You Can Make the Pathway Bright",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-54db47df-6f16-441c-ac53-df09cfdb294c.mxl",
+          "status": "corrected",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X10"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X10"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X10"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X10"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X11",
+              "last": "X19"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X12",
+              "last": "X17"
+            }
+          ],
+          "structure": "Four principal verses + Chorus after each; two P2 responses parenthesized at their respective principal phrase boundaries.",
+          "timingEvidence": "P2 sunshine begins X12 beat 2, ends heart at X13 beat 2 before P1 You at beat 3. P2 will begins X16 beat 3; depart ends X17 beat 2 before P1 If at beat 3."
+        },
+        {
+          "id": "song-22197efd-635b-4f62-b650-354c6c281624",
+          "number": "229",
+          "title": "Today, While the Sun Shines",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-22197efd-635b-4f62-b650-354c6c281624.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X17",
+              "last": "X33"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-dac6f94b-6a48-40de-993c-82bb543bf96d",
+          "number": "230",
+          "title": "Scatter Sunshine",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-dac6f94b-6a48-40de-993c-82bb543bf96d.mxl",
+          "status": "deferred",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X16"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X17",
+              "last": "X26"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X17",
+              "last": "X24"
+            }
+          ],
+          "structure": "Three principal verses + internally repeated Chorus (forward X17, backward X24; first ending X23–24, second X25–26). Secondary underlay contains different overlapping words; not an extra Verse 2. Deferred: requires coordinated repeat-path and vocal-underlay treatment, not a simple verse-specific ending.",
+          "timingEvidence": "P2 adds the smiles and in X17 while P1 sustains Scatter; adds over in X20 and passing in X24. P1 terminal phrase appears in both alternative endings, not consecutively."
+        },
+        {
+          "id": "song-1a7e3e3b-47c5-4986-963e-4bc8b80cdf9a",
+          "number": "237",
+          "title": "Do What Is Right",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-1a7e3e3b-47c5-4986-963e-4bc8b80cdf9a.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X31"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-05f40854-1219-4052-8766-6a3a6935146e",
+          "number": "239",
+          "title": "Choose the Right",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-05f40854-1219-4052-8766-6a3a6935146e.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X8"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X9",
+              "last": "X16"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        },
+        {
+          "id": "song-2afc0981-e463-470e-8cab-632d0b0b57e6",
+          "number": "241",
+          "title": "Count Your Blessings",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-2afc0981-e463-470e-8cab-632d0b0b57e6.mxl",
+          "status": "deferred",
+          "verseCount": 4,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "4",
+              "name": "verse",
+              "first": "0",
+              "last": "X15"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X31"
+            },
+            {
+              "part": "P2",
+              "voice": "1",
+              "number": "2",
+              "name": "chorus",
+              "first": "X16",
+              "last": "X25"
+            }
+          ],
+          "structure": "Four principal verses + Chorus; lower voice adds many during the first three Count your blessings phrases and shifts intervening words before converging. Deferred: an inline complete echo would imply sequential repetition; needs a reviewed overlapping-underlay presentation.",
+          "timingEvidence": "P1 Count/your at X16 beats 0/1.5 versus P2 Count/your/many at 0/0.5/1/1.5; voices align blessings at X17 beats 0/0.5, then differ on Name them one by one before converging at X19. Similar X20–23 and X24–25."
+        },
+        {
+          "id": "song-3c37c435-a330-47e2-a169-d83522595cc0",
+          "number": "244",
+          "title": "Come Along, Come Along",
+          "collection": "Hymns (1985)",
+          "source": "./assets/scores/song-3c37c435-a330-47e2-a169-d83522595cc0.mxl",
+          "status": "corrected",
+          "verseCount": 3,
+          "streams": [
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "2",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "3",
+              "name": "verse",
+              "first": "0",
+              "last": "X9"
+            },
+            {
+              "part": "P1",
+              "voice": "1",
+              "number": "1",
+              "name": "chorus",
+              "first": "X10",
+              "last": "X19"
+            }
+          ],
+          "structure": "3 verses + explicit Chorus after each verse"
+        }
+      ],
+      "remainingBefore": 45,
+      "remainingAfter": 37,
+      "validation": {
+        "sourceAndReplay": "passed",
+        "disclosuresCopySpeakerNavigation": "passed at 320,390,820,1440",
+        "audioFrameCopy": "passed at 320,390,744,820,1440",
+        "fontThemeFooter": "passed at 390,744,820,1440",
+        "syntaxManifestBuildDiff": "passed"
       }
     }
-  ]
+  ],
+  "summary": {
+    "audited": 40,
+    "corrected": 34,
+    "deferred": 6,
+    "remainingSharedEnding": 37,
+    "stopReason": "Reached four-group maximum; no further songs processed.",
+    "nextBatch": "Next ten unaudited legacy records in catalog order; handle deferred pronunciation, overlapping voices, and repeat structures in separately scoped reviews.",
+    "physicalDeviceTesting": false
+  }
 }

@@ -20,8 +20,8 @@ for group in manifest['groups']:
   with zipfile.ZipFile(path) as z:xml=E.fromstring(z.read(E.fromstring(z.read('META-INF/container.xml')).find('.//{*}rootfile').get('full-path')))
   if item['status']=='deferred':assert r==before[id];continue
   assert r['available'] and not r['notes'],id
-  if r['number']!='105':assert not r['alternateLyrics'],id
-  original_verses=[v for v in before[id]['verses'] if r['number']!='105' or v.get('sourcePart')=='P1']
+  if r['number'] not in ('105','228'):assert not r['alternateLyrics'],id
+  original_verses=[v for v in before[id]['verses'] if r['number'] not in ('105','228') or v.get('sourcePart')=='P1']
   assert r['verses']==original_verses and len(r['verses'])==item['verseCount'],id
   assert [v['number'] for v in r['verses']]==list(map(str,range(1,item['verseCount']+1)))
   for verse in r['verses']:
@@ -43,14 +43,16 @@ for group in manifest['groups']:
    assert r['refrains'][1]['text']==stitch([l for m,l in nodes if m!=first])
    assert chorus['principalText']==before[id]['refrains'][0]['text']
    assert all('me. me.' not in c['text'] and 'ia! ia!' not in c['text'] for c in r['refrains'])
-  elif r['number']=='105':
+  elif r['number'] in ('105','228'):
    literal=before[id]['refrains'][0]['text'];response=stitch(xml.findall("part[@id='P2']/measure/note/lyric[@name='chorus']"))
-   assert response=='Peace, be still, peace, be still.'
+   assert response==('Peace, be still, peace, be still.' if r['number']=='105' else 'sunshine in your heart, will all depart,')
    assert len(r['refrains'])==1 and chorus['principalText']==literal
-   assert chorus['text']==literal.replace('Peace, be still. Whether','Peace, be still (Peace, be still, peace, be still). Whether',1)
+   expected=literal.replace('Peace, be still. Whether','Peace, be still (Peace, be still, peace, be still). Whether',1) if r['number']=='105' else literal.replace('heart, You','heart (sunshine in your heart), You',1).replace('depart, If','depart (will all depart), If',1)
+   assert chorus['text']==expected
    assert len(r['alternateLyrics'])==1 and r['alternateLyrics'][0]['text']==response
    # Independently reconstruct source onset relationships for the insertion boundary.
-   for part_id,expected in [('P1',{'X21':[0,2.5],'X22':[0]}),('P2',{'X21':[0,1,1.5],'X22':[0,1,1.5]})]:
+   timing=[('P1',{'X21':[0,2.5],'X22':[0]}),('P2',{'X21':[0,1,1.5],'X22':[0,1,1.5]})] if r['number']=='105' else [('P1',{'X12':[0,1,2,3],'X13':[0,3,3.75],'X16':[0,1,2,3],'X17':[0,3,3.5]}),('P2',{'X12':[2,3],'X13':[0,1,2],'X16':[3],'X17':[0,1,2]})]
+   for part_id,expected in timing:
     div=1;observed={}
     for measure in xml.find("part[@id='"+part_id+"']").findall('measure'):
      div=int(measure.findtext('attributes/divisions',str(div)));at=last=0;onsets=[]
