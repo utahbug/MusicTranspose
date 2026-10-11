@@ -134,3 +134,14 @@ body #lyrics-settings-panel .lyrics-font-menu {z-index:41;width:176px;min-width:
 body #lyrics-settings-panel .lyrics-font-menu[hidden] {display:none;}
 body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true] {background:transparent;}
 body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true]::after {content:"✓";margin-left:auto;}
+/* Narrow desktop keeps the edge Focus target outside the toolbar's hit areas.
+   At 320px, seven readable targets cannot fit one row; reserve a second row. */
+@media screen and (max-width:600px) {
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar {padding-right:calc(52px + var(--score-lyrics-right) + max(0px,var(--score-lyrics-scrollbar) - (100vw - 100%)));}
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key {width:64px;min-width:64px;max-width:64px;}
+}
+@media screen and (max-width:360px) {
+ body:not(.iphone-score-ui) .masthead .toolbar {display:grid;grid-template-columns:minmax(0,1fr);row-gap:2px;}
+ body:not(.iphone-score-ui) .masthead .toolbar .playing-controls {display:flex;grid-column:1;grid-row:1;gap:2px;min-width:0;}
+ body:not(.iphone-score-ui) .masthead .toolbar .utility-controls {display:flex;grid-column:1;grid-row:2;justify-self:end;}
+}
