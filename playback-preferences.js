@@ -1,7 +1,13 @@
-// Contextual sound choices use the existing playback preference and engine.
+// One engine preference; register rebuilt Lyrics choices and release old nodes.
 export function initPlaybackPreferences(playback){
- const choices=[...document.querySelectorAll('[data-sound]')];
- const sync=()=>{for(const choice of choices)choice.setAttribute('aria-checked',String(choice.dataset.sound===playback.sound));};
- for(const choice of choices)choice.onclick=()=>{playback.setSound(choice.dataset.sound);sync();};
- sync();
+ const groups=new Set();
+ const sync=()=>{for(const root of groups)for(const choice of root.querySelectorAll('[data-sound]'))choice.setAttribute('aria-checked',String(choice.dataset.sound===playback.sound));};
+ function bind(root){
+  groups.add(root);
+  for(const choice of root.querySelectorAll('[data-sound]'))choice.onclick=()=>playback.setSound(choice.dataset.sound);
+  sync();return ()=>groups.delete(root);
+ }
+ document.addEventListener('playback-sound-changed',sync);
+ bind(document.getElementById('score-sound-options'));
+ return {bind};
 }

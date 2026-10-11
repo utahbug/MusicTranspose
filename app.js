@@ -79,11 +79,11 @@ const playback=createPlayback(async()=>{
  const xml=ready&&activeSong.id===song.id&&!isPdf()?(scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML):await structuredSource(song);
  return {id:song.id,key:song.id+':'+xml,xml};
 });
-initPlaybackPreferences(playback);
+const playbackPreferences=initPlaybackPreferences(playback);
 initOfflineScore();
 metronome=createMetronome(playback,()=>({standalone:!hasTiming(activeSong),available:ready&&!busy&&!loading&&!!activeSong&&!activeSong.missing&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open'),xml:isPdf()?'pdf:'+activeSong.id:scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML,song:activeSong.id}));
 function playbackControls(){$('score-sound').hidden=!hasTiming(activeSong);const actions=document.querySelector('.score-heading .score-title-block');if(ready&&hasTiming(activeSong)){playback.attach(actions);}else actions.querySelector('.song-playback')?.remove();}
-const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:event=>showScoreView(lyricsSong?.id,{restoreLyricsFocus:event.detail===0})});
+const lyricsView=createLyricsView($('lyrics-view'),{playbackPreferences,libraryControl:$('songs'),onScore:event=>showScoreView(lyricsSong?.id,{restoreLyricsFocus:event.detail===0})});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
 async function showScoreView(id,{restoreLyricsFocus=false}={}){
  if(!id||showUnavailableScore(songs.find(s=>s.id===id)))return;
@@ -99,7 +99,7 @@ async function openLyrics(id){
  library?.navigating('lyrics',id);const token=beginSelection(song,retained);document.body.classList.add('lyrics-open');
  try{const data=isUnavailableScore(song)?null:await getLyrics(id);if(token!==selectionVersion)return;if(retained)score.setAttribute('aria-busy','false');lyricsSong=song;
  document.dispatchEvent(new CustomEvent('library-open',{detail:{retainScore:retained}}));document.body.classList.add('lyrics-open');
- lyricsView.show(data||{id:song.id,title:song.title,collection:song.collection,number:song.songNumber??song.page??'',available:false,verses:[],refrains:[]});if(data&&hasTiming(song))playback.attach($('lyrics-view').querySelector('.lyrics-title-block'));library.opened(id);document.title=song.title+' · Lyrics · MusicFolio';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data||{id:song.id,title:song.title,collection:song.collection,number:song.songNumber??song.page??'',available:false,verses:[],refrains:[]},{playable:!!data&&hasTiming(song)});if(data&&hasTiming(song))playback.attach($('lyrics-view').querySelector('.lyrics-title-block'));library.opened(id);document.title=song.title+' · Lyrics · MusicFolio';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){if(token!==selectionVersion)return;finishSelection(token);library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{finishSelection(token);}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);

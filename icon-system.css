@@ -145,3 +145,8 @@ body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true]::after {
  body:not(.iphone-score-ui) .masthead .toolbar .playing-controls {display:flex;grid-column:1;grid-row:1;gap:2px;min-width:0;}
  body:not(.iphone-score-ui) .masthead .toolbar .utility-controls {display:flex;grid-column:1;grid-row:2;justify-self:end;}
 }
+
+/* Sound replaces the Lyrics settings rows in-place, like the Score submenu. */
+#lyrics-settings-panel.lyrics-sound-open>:not(.lyrics-sound-wrap) {display:none;}
+#lyrics-settings-panel .lyrics-sound-wrap[hidden],#lyrics-settings-panel #lyrics-sound[hidden],#lyrics-sound-options[hidden] {display:none;}
+#lyrics-sound-options [aria-checked=true]::after {content:'✓';margin-left:auto;}

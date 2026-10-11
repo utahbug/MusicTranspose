@@ -1,6 +1,7 @@
 import {scoreIcon,themeIcon} from './icons.js';
 import {createDisplaySettings} from './display-settings.js';
 import {copyListText} from './list-copy.js';
+import {playbackSounds} from './playback-voices.js';
 import {lyricIds} from './lyrics-index.js';
 export {lyricIds};
 let pending;
@@ -55,13 +56,13 @@ const appearanceKey='music-transpose-lyrics-appearance-v1';
 const sizes=['small','medium','large','extra-large','smallest'],sizeNames=['Small','Medium','Large','Extra Large','Smallest'];
 function readAppearance(){try{const p=JSON.parse(localStorage.getItem(appearanceKey))||{};return {frame:typeof p.frame==='boolean'?p.frame:false,dark:typeof p.dark==='boolean'?p.dark:false,size:Number.isInteger(p.size)&&p.size>=0&&p.size<sizes.length?p.size:0};}catch{return {dark:false,size:0,frame:false};}}
 // The same Library node keeps its shared navigation handler and accessible name.
-export function createLyricsView(host,{onScore,libraryControl}){
- let {size,dark,frame}=readAppearance(),current=null,libraryHome=null,listeners=null,paragraphs=[],settings=null,copyTimer=null;
+export function createLyricsView(host,{onScore,libraryControl,playbackPreferences}){
+ let {size,dark,frame}=readAppearance(),current=null,libraryHome=null,listeners=null,paragraphs=[],settings=null,copyTimer=null,releaseSound=null,playable=false;
  function rephrase(){const target=Math.max(26,Math.min(58,Math.floor((Math.min(innerWidth,820)-72)/([19,24,30,36,17][size]*.5))));for(const [p,text] of paragraphs){p.replaceChildren(...lyricPhrases(text,target).map(phrase=>{const line=document.createElement('span');line.className='lyric-phrase';line.textContent=phrase;return line;}));}}
  function lyricParagraph(text){const p=make('p',null,'lyric-lines');paragraphs.push([p,text]);return p;}
  const saveAppearance=()=>{try{localStorage.setItem(appearanceKey,JSON.stringify({dark,size,frame}));}catch{}};
  function restoreLibrary(){if(libraryHome){libraryHome.parent.insertBefore(libraryControl,libraryHome.next?.parentNode===libraryHome.parent?libraryHome.next:null);libraryHome=null;}}
- function dispose(){clearTimeout(copyTimer);settings?.destroy();settings=null;listeners?.abort();listeners=null;restoreLibrary();}
+ function dispose(){releaseSound?.();releaseSound=null;clearTimeout(copyTimer);settings?.destroy();settings=null;listeners?.abort();listeners=null;restoreLibrary();}
  const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
  const button=(text,label,fn)=>{const e=make('button',text,'quiet');e.type='button';e.setAttribute('aria-label',label);e.title=label;e.onclick=fn;return e;};
  function draw(){
@@ -76,7 +77,17 @@ export function createLyricsView(host,{onScore,libraryControl}){
  const font=button('','Font size',()=>menu.hidden?openFont():closeFont(true));font.id='lyrics-font-size';font.innerHTML='<span class="lyrics-font-art" aria-hidden="true">A</span><span>Font size</span><span class="lyrics-font-chevron" aria-hidden="true">›</span>';font.setAttribute('aria-haspopup','menu');font.setAttribute('aria-expanded','false');font.setAttribute('aria-controls',menu.id);
  for(const index of [4,0,1,2,3]){const name=sizeNames[index],option=button(name,name,()=>{size=index;saveAppearance();rephrase();host.dataset.size=sizes[size];for(const item of menu.children)item.setAttribute('aria-checked',String(Number(item.dataset.sizeIndex)===size));font.title='Font size: '+sizeNames[size];closeFont(true);});option.dataset.sizeIndex=String(index);option.setAttribute('role','menuitemradio');option.setAttribute('aria-checked',String(index===size));menu.append(option);}
  font.title='Font size: '+sizeNames[size];fontWrap.append(font,menu);
- settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontWrap,frameButton,theme],onClose:()=>closeFont()});
+ const soundWrap=make('div',null,'lyrics-sound-wrap'),soundMenu=make('div');soundWrap.hidden=!playable;soundMenu.id='lyrics-sound-options';soundMenu.hidden=true;soundMenu.setAttribute('role','menu');soundMenu.setAttribute('aria-label','Playback sound');
+ const closeSound=(focus=false)=>{soundMenu.hidden=true;sound.hidden=false;sound.setAttribute('aria-expanded','false');settings?.element.querySelector('.display-settings-menu').classList.remove('lyrics-sound-open');if(focus)sound.focus({preventScroll:true});};
+ const openSound=()=>{closeFont();sound.hidden=true;soundMenu.hidden=false;sound.setAttribute('aria-expanded','true');settings.element.querySelector('.display-settings-menu').classList.add('lyrics-sound-open');soundMenu.querySelector('[aria-checked=true]')?.focus({preventScroll:true});};
+ const sound=button('','Playback sound',openSound);sound.id='lyrics-sound';sound.innerHTML='<span>Playback sound</span><span class="lyrics-font-chevron" aria-hidden="true">›</span>';sound.setAttribute('aria-haspopup','menu');sound.setAttribute('aria-expanded','false');sound.setAttribute('aria-controls',soundMenu.id);
+ const back=button('‹ Playback sound','Back to Lyrics settings',()=>closeSound(true));back.id='lyrics-sound-back';back.setAttribute('role','menuitem');soundMenu.append(back);
+ for(const [value,label] of Object.entries(playbackSounds)){const choice=button(label,label);choice.dataset.sound=value;choice.setAttribute('role','menuitemradio');soundMenu.append(choice);}
+ releaseSound=playbackPreferences?.bind(soundMenu);soundWrap.append(sound,soundMenu);
+ settings=createDisplaySettings({id:'lyrics-settings',label:'Lyrics settings',controls:[fontWrap,soundWrap,frameButton,theme],onClose:()=>{closeFont();closeSound();}});
+ soundMenu.addEventListener('click',e=>{if(e.target.closest('[data-sound]'))settings.close(true);});
+ sound.addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();e.stopPropagation();openSound();}});
+ soundMenu.addEventListener('keydown',e=>{e.stopPropagation();const items=[...soundMenu.children],i=items.indexOf(document.activeElement);if(['Escape','ArrowLeft'].includes(e.key)){e.preventDefault();closeSound(true);}else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  font.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openFont();}});
  menu.addEventListener('keydown',e=>{e.stopPropagation();const items=[...menu.children],i=items.indexOf(document.activeElement);if(e.key==='Escape'){e.preventDefault();closeFont(true);}else if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus();}});
  listeners=new AbortController();const options={signal:listeners.signal};window.addEventListener('resize',rephrase,options);
@@ -119,5 +130,5 @@ export function createLyricsView(host,{onScore,libraryControl}){
  paper.append(body);rephrase();
  const heading=header.querySelector('h1');heading.tabIndex=-1;
  }
- return {show(data){({size,dark,frame}=readAppearance());current=data;draw();host.hidden=false;host.querySelector('h1').focus({preventScroll:true});},hide(){dispose();host.hidden=true;},reset(){dispose();({size,dark,frame}=readAppearance());current=null;host.hidden=true;}};
+ return {show(data,{playable:canPlay=false}={}){playable=canPlay;({size,dark,frame}=readAppearance());current=data;draw();host.hidden=false;host.querySelector('h1').focus({preventScroll:true});},hide(){dispose();host.hidden=true;},reset(){dispose();({size,dark,frame}=readAppearance());current=null;host.hidden=true;}};
 }
