@@ -1992,13 +1992,16 @@ body #library .workspace-banner h1{flex:1 1 auto}
 .list-command-menu button{padding-left:26px}
 
 /* Compact opening preference, separate from the six Home navigation cards. */
-#home-song-view{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0;font:14px system-ui,sans-serif}
-.song-view-segments{display:flex;border:1px solid var(--popup-border);border-radius:8px;overflow:hidden;background:var(--popup-surface);color:var(--popup-ink)}
+#home-song-view{display:flex;flex-direction:column;align-items:flex-start;gap:0;margin:10px 0;font:14px system-ui,sans-serif}
+.song-view-segments{display:flex;position:relative;padding:0 1px;color:var(--popup-ink)}
+.song-view-segments::before{content:"";position:absolute;inset:6px 0;border:1px solid var(--popup-border);border-radius:8px;background:var(--popup-surface);pointer-events:none}
 .song-view-segments label{position:relative;cursor:pointer}
 .song-view-segments input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.song-view-segments span{display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 8px}
+.song-view-segments span{display:flex;align-items:center;justify-content:center;min-width:64px;height:32px;margin:6px 0;padding:0 8px}
+.song-view-segments label:first-child span{border-radius:7px 0 0 7px}
+.song-view-segments label:last-child span{border-radius:0 7px 7px 0}
 .song-view-segments input:checked+span{background:#365f7d;color:white;font-weight:600}
 .song-view-segments input:focus-visible+span{outline:2px solid var(--popup-focus);outline-offset:-3px}
 #home-settings-menu [data-song-view][aria-checked=true]{background:var(--popup-hover);font-weight:700}
 #home-settings-menu [data-song-view][aria-checked=true]::after{content:' ✓';float:right}
-#list-song-view{width:100%;min-height:44px;margin:4px 0 12px;font:inherit}
+#list-song-view{appearance:auto;width:100%;min-height:44px;margin:4px 0 12px;padding:4px 10px;border:1px solid #b6cbd5;border-radius:6px;background-color:transparent;color:inherit;font:inherit}
