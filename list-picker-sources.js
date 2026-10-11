@@ -1,4 +1,15 @@
-import {sourceChoices,matchesSource,compareAlphabeticalTitles} from './library-query.js';
+import {sourceChoices,matchesSource,compareAlphabeticalTitles,songForSource} from './library-query.js';
+// Rank only existing eligible results; never widen filters or rewrite saved sorting.
+export function prioritizeExactNumbers(results,query,sources=[]){
+ const numeric=value=>/^\d+$/.test(String(value??'').trim())?String(value).trim().replace(/^0+(?=\d)/,''):null;
+ const number=numeric(query);if(number===null)return results;
+ const exact=song=>{
+  const records=sources.length?sources.filter(source=>matchesSource(song,source)).map(source=>songForSource(song,source)):[song,...(song.collectionMemberships||[])];
+  return records.some(record=>numeric(record.songNumber??record.page)===number);
+ };
+ const matches=new Set(results.filter(exact));
+ return results.sort((a,b)=>Number(matches.has(b))-Number(matches.has(a)));
+}
 const storageKey='music-transpose-list-picker-preferences-v2',legacyKey='music-transpose-list-picker-sources-v1';
 const choices=sourceChoices.filter(([id])=>id!=='all'),ids=choices.map(([id])=>id);
 // UI preferences only: never write List membership, order, aliases or Favorites.
@@ -39,5 +50,5 @@ export function createPickerSources({onChange,getListIds}){
  function load(id){close();listId=id;const saved=read()[id],valid=Array.isArray(saved?.sources)?saved.sources.filter(id=>ids.includes(id)):[];sort.value=saved?.sort==='title'?'title':'default';selected=new Set(valid.length===ids.length?[]:valid);status.textContent='';status.hidden=true;sync();}
  sort.onchange=()=>{save();onChange();};
  prune();sync();
- return {load,close,prune,sortResults:results=>sort.value==='title'?results.sort(compareAlphabeticalTitles):results,matches:song=>!selected.size||[...selected].some(source=>matchesSource(song,source))};
+ return {load,close,prune,sortResults:(results,query='')=>prioritizeExactNumbers(sort.value==='title'?results.sort(compareAlphabeticalTitles):results,query,[...selected]),matches:song=>!selected.size||[...selected].some(source=>matchesSource(song,source))};
 }
