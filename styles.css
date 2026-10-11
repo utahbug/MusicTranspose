@@ -1990,3 +1990,15 @@ body #library .workspace-banner h1{flex:1 1 auto}
 @media(min-width:601px) and (max-width:1024px){#library .library-filter-row .sort-choice{margin-left:12px}}
 .workspace-return .workspace-theme{margin-left:auto;border:0;background:transparent}
 .list-command-menu button{padding-left:26px}
+
+/* Compact opening preference, separate from the six Home navigation cards. */
+#home-song-view{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0;font:14px system-ui,sans-serif}
+.song-view-segments{display:flex;border:1px solid var(--popup-border);border-radius:8px;overflow:hidden;background:var(--popup-surface);color:var(--popup-ink)}
+.song-view-segments label{position:relative;cursor:pointer}
+.song-view-segments input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.song-view-segments span{display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 8px}
+.song-view-segments input:checked+span{background:#365f7d;color:white;font-weight:600}
+.song-view-segments input:focus-visible+span{outline:2px solid var(--popup-focus);outline-offset:-3px}
+#home-settings-menu [data-song-view][aria-checked=true]{background:var(--popup-hover);font-weight:700}
+#home-settings-menu [data-song-view][aria-checked=true]::after{content:' ✓';float:right}
+#list-song-view{width:100%;min-height:44px;margin:4px 0 12px;font:inherit}

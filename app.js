@@ -3,7 +3,7 @@ import {meaningfulSource,meaningfulNumber,scoreMetadata} from './score-labels.js
 import {parseChordSymbol} from './chord-symbol.js';
 import {initOfflineScore} from './offline-score-ui.js';
 import {refreshOffline} from './offline-manager.js';
-import {showUnavailableScore} from './score-availability.js';
+import {showUnavailableScore,isUnavailableScore} from './score-availability.js';
 import {phoneFooter} from './footer-viewport.js';
 import {screenSecondaryLyrics} from './screen-secondary-lyrics.js';
 import {installScreenPickupLayout,enableScreenPickupLayout} from './screen-pickup-layout.js';
@@ -86,20 +86,20 @@ function playbackControls(){$('score-sound').hidden=!hasTiming(activeSong);const
 const lyricsView=createLyricsView($('lyrics-view'),{libraryControl:$('songs'),onScore:event=>showScoreView(lyricsSong?.id,{restoreLyricsFocus:event.detail===0})});
 const annotations=createPdfAnnotations({getState:()=>({song:activeSong,pdf:isPdf(),available:ready&&!busy&&!loading&&!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')})});
 async function showScoreView(id,{restoreLyricsFocus=false}={}){
- if(!id)return;
+ if(!id||showUnavailableScore(songs.find(s=>s.id===id)))return;
  library?.navigating('score',id);
  document.body.classList.remove('lyrics-open');lyricsView.hide();
  if(ready&&activeSong.id===id){document.title=activeSong.title+' · MusicFolio';window.scrollTo({top:scoreScroll,behavior:'instant'});if(restoreLyricsFocus)$('show-lyrics').focus({preventScroll:true});document.dispatchEvent(new Event('score-view-shown'));metronome?.sync();}
  else{await loadSong(id);if(restoreLyricsFocus&&ready&&activeSong.id===id)$('show-lyrics').focus({preventScroll:true});}
 }
 async function openLyrics(id){
- const song=songs.find(s=>s.id===id);if(!song||!lyricIds.has(id))return;
+ const song=songs.find(s=>s.id===id);if(!song)return;
  const fromScore=!document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open')&&ready&&activeSong.id===id;
  const retained=ready&&activeSong.id===id;scoreScroll=document.body.classList.contains('library-open')?0:scrollY;
- library?.navigating('lyrics',id);const token=beginSelection(song,retained);
- try{const data=await getLyrics(id);if(token!==selectionVersion)return;if(!data)throw Error('Lyrics unavailable');if(retained)score.setAttribute('aria-busy','false');lyricsSong=song;
+ library?.navigating('lyrics',id);const token=beginSelection(song,retained);document.body.classList.add('lyrics-open');
+ try{const data=isUnavailableScore(song)?null:await getLyrics(id);if(token!==selectionVersion)return;if(retained)score.setAttribute('aria-busy','false');lyricsSong=song;
  document.dispatchEvent(new CustomEvent('library-open',{detail:{retainScore:retained}}));document.body.classList.add('lyrics-open');
- lyricsView.show(data);if(hasTiming(song))playback.attach($('lyrics-view').querySelector('.lyrics-title-block'));library.opened(id);document.title=song.title+' · Lyrics · MusicFolio';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
+ lyricsView.show(data||{id:song.id,title:song.title,collection:song.collection,number:song.songNumber??song.page??'',available:false,verses:[],refrains:[]});if(data&&hasTiming(song))playback.attach($('lyrics-view').querySelector('.lyrics-title-block'));library.opened(id);document.title=song.title+' · Lyrics · MusicFolio';window.scrollTo({top:0,behavior:'instant'});if(fromScore)$('lyrics-view').querySelector('.lyrics-score-toggle').focus({preventScroll:true});
  }catch(e){if(token!==selectionVersion)return;finishSelection(token);library?.failed();$('library-message').textContent='Unable to load lyrics. Please try again.';$('status').textContent='Unable to load lyrics. Please try again.';}finally{finishSelection(token);}
 }
 $('show-lyrics').onclick=()=>openLyrics(activeSong.id);

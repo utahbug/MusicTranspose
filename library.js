@@ -18,7 +18,6 @@ import {createSongSearch,normalizeSearchFields,readSearchPreferences,searchPrefe
 import {attachReorderHandle} from './list-reorder.js';
 import {createViewHistory} from './view-history.js';
 import {sourceChoices,normalizeSource,matchesSource,isFileSong,compareNumbers,compareAlphabeticalTitles,songForSource} from './library-query.js';
-import {lyricIds} from './lyrics-index.js';
 import {createFilesView} from './files-view.js';
 import {createListsView} from './lists-view.js';
 import {normalizeSearch} from './songs.js';
@@ -106,7 +105,10 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function showLibrary(){if(isBusy())return;$('library-home').hidden=true;const position=libraryScroll;navigation?.visit({view:'library',list:activeList,song:null});files.hide();lists.hide();texts.hide();keyboard.hide();document.dispatchEvent(new Event('library-open'));leaveScore?.();document.body.classList.add('library-open');$('library').hidden=false;document.title=(group()?.name||'Library')+' · MusicFolio';render();window.scrollTo({top:position,behavior:'instant'});libraryScroll=scrollY;remember();persistWorkspace();navigation?.snapshot();focusLibrary();}
  function selectList(id){if(isBusy())return;if(!$('library').hidden)remember();const next=state.groups.some(g=>g.id===id)?id:null;navigation?.visit({view:'library',list:next,song:null});activeList=next;reordering=false;applyContext(contexts.get(activeList||'library')||(activeList?{sort:'manual'}:{sort:globalSort}));showLibrary();remember();persistWorkspace();}
  function open(id,view){
-  if(showUnavailableScore(songs.find(s=>s.id===id))){pendingSongSet=null;return;}reordering=false;
+  const fromList=pendingSongSet?.origin==='lists'?state.groups.find(g=>g.id===pendingSongSet.list):!$('library').hidden?group():null;
+  const preferred=['score','lyrics'].includes(fromList?.songView)?fromList.songView:songView;
+  const lyricsFirst=view===undefined&&preferred==='lyrics';
+  if(!lyricsFirst&&showUnavailableScore(songs.find(s=>s.id===id))){pendingSongSet=null;return;}reordering=false;
   if(!$('library').hidden){
    libraryScroll=scrollY;remember();persistWorkspace();
    const query=$('library-search').value,singleSearch=!!normalizeSearch(query)&&orderedSongs.length===1&&orderedSongs[0]===id;
@@ -124,7 +126,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
    blurSearch();
    document.dispatchEvent(new CustomEvent('score-entry',{detail:{phase:'after-search-blur',entry:pendingSongSet.entry}}));
   }
-  loadSong(id,view);
+  if(lyricsFirst)openLyrics(id);else loadSong(id,view);
  }
  function listTools(){const g=group();$('active-list-tools').hidden=!g;$('library').classList.toggle('editing-list',!!g&&reordering);$('library-context').textContent=g?'List':savedOnly?'Saved on this device':'';$('library-context').hidden=!g&&!savedOnly;$('library').classList.toggle('saved-device-view',savedOnly&&!g);$('edit-list-order').textContent=reordering?'Done editing':'Edit order';$('edit-list-order').setAttribute('aria-pressed',String(reordering));$('order-toggle').disabled=reordering;$('library-source').disabled=reordering;$('library-search').disabled=reordering;options.disabled=reordering;for(const control of fieldControls)control.disabled=reordering;$('library-clear').disabled=reordering;$('view-favorites').disabled=reordering;}
  function move(id,to,before=true){const g=group();if(!g||id===to||!g.songs.includes(id)||!g.songs.includes(to))return;g.songs.splice(g.songs.indexOf(id),1);g.songs.splice(g.songs.indexOf(to)+(before?0:1),0,id);const saved=save();render();$('library-message').textContent=saved?'Order saved.':'Changes last only while this page is open.';$('library-results').querySelector(`[data-song="${CSS.escape(id)}"] .reorder-grip`)?.focus({preventScroll:true});}
@@ -235,6 +237,15 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function showKeyboard(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'keyboard',list:null,song:null});files.hide();lists.hide();texts.hide();leaveScore?.();stopPlayback?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library-home').hidden=true;$('library').hidden=true;keyboard.open();window.scrollTo({top:0,behavior:'instant'});}
  function showHome(){if(isBusy())return;clearLeavingSearch();closeSource();closeMore();blurSearch();navigation?.visit({view:'home',list:null,song:null});files.hide();lists.hide();texts.hide();keyboard.hide();leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');$('library').hidden=true;$('library-home').hidden=false;document.title='Library · MusicFolio';window.scrollTo({top:0,behavior:'instant'});$('library-home-title').focus({preventScroll:true});}
  for(const control of document.querySelectorAll('[data-home-source]'))control.onclick=()=>{activeList=null;reordering=false;applyContext({source:control.dataset.homeSource,sort:globalSort});showLibrary();};
+ // A device-local opening preference; explicit view switches never write it.
+ const songViewKey='music-transpose-song-view-v1';let songView='score';
+ try{if(localStorage.getItem(songViewKey)==='lyrics')songView='lyrics';}catch{}
+ const homeSongChoices=[...document.querySelectorAll('#home-song-view input')],settingsSongChoices=[...document.querySelectorAll('[data-song-view]')];
+ function syncSongView(){for(const input of homeSongChoices)input.checked=input.value===songView;for(const button of settingsSongChoices)button.setAttribute('aria-checked',String(button.dataset.songView===songView));}
+ function selectSongView(value){songView=value;syncSongView();try{localStorage.setItem(songViewKey,songView);$('song-view-status').textContent='';}catch{$('song-view-status').textContent='Preference changed for this session. Device storage is unavailable.';}}
+ for(const input of homeSongChoices)input.onchange=()=>selectSongView(input.value);
+ for(const button of settingsSongChoices)button.onclick=()=>selectSongView(button.dataset.songView);
+ syncSongView();
  const infoButton=$('home-about'),infoMenu=$('home-info-menu'),settingsButton=$('home-settings'),settingsMenu=$('home-settings-menu');
  settingsButton.innerHTML=settingsIcon;
  const homeMenus=[[infoButton,infoMenu],[settingsButton,settingsMenu]];
@@ -281,7 +292,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
 
   if(!activeList)globalSort=sort;
   if(route.view==='score'||route.view==='lyrics'){
-   if(songs.some(s=>s.id===route.song&&canOpenScore(s))){songSet=route.songSet||fallbackSet(route.song);restoringSongSet=true;try{if(route.view==='lyrics'&&lyricIds.has(route.song))await openLyrics(route.song);else{route={...route,view:'score'};await showScoreView(route.song);}}finally{restoringSongSet=false;syncSongNavigation();}if(!document.body.classList.contains('library-open')){window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;}}
+   if(songs.some(s=>s.id===route.song&&(route.view==='lyrics'||canOpenScore(s)))){songSet=route.songSet||fallbackSet(route.song);restoringSongSet=true;try{if(route.view==='lyrics')await openLyrics(route.song);else{route={...route,view:'score'};await showScoreView(route.song);}}finally{restoringSongSet=false;syncSongNavigation();}if(!document.body.classList.contains('library-open')){window.scrollTo({top:route.scroll||0,behavior:'instant'});return route;}}
    route={...route,view:'library',list:activeList,song:null,scroll:libraryScroll};
   }
   leaveScore?.();document.dispatchEvent(new Event('library-open'));document.body.classList.add('library-open');files.hide();lists.hide();texts.hide();keyboard.hide();$('library-home').hidden=true;$('library').hidden=true;
@@ -319,8 +330,6 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  function originatingList(){const id=songSet?.origin==='lists'?songSet.list:songSet?.origin==='library'?songSet.entry?.list:null;return state.groups.some(g=>g.id===id)?id:null;}
  function returnFromScore(){
   if(isBusy())return;
-  // This shared DOM button retains its existing Library Home action in Lyrics.
-  if(document.body.classList.contains('lyrics-open')){showHome();return;}
   if(originatingList()){showLists(null,true,{collapsed:true});return;}
   const entry=songSet?.origin==='library'?songSet.entry:null;
   activeList=state.groups.some(g=>g.id===entry?.list)?entry.list:null;
@@ -328,7 +337,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   showLibrary();
  }
  function syncScoreReturn(){
-  const score=!document.body.classList.contains('lyrics-open')&&!document.body.classList.contains('library-open');
+  const score=!document.body.classList.contains('library-open');
   const destination=score&&originatingList()?'lists':'library';
   if(scoreReturn.dataset.scoreReturn!==destination){scoreReturn.dataset.scoreReturn=destination;scoreReturn.innerHTML=destination==='lists'?listsIcon:libraryReturnIcon;}
   const label=score?(destination==='lists'?'Return to Lists':'Return to Library'):'Library Home';

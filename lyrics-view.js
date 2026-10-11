@@ -7,7 +7,7 @@ let pending;
 export async function getLyrics(id){
  if(!lyricIds.has(id))return null;
  if(!pending)pending=fetch(new URL('./assets/lyrics.json',import.meta.url)).then(r=>{if(!r.ok)throw new Error('Lyrics unavailable');return r.json();}).then(data=>new Map(data.songs.map(song=>[song.id,song]))).catch(e=>{pending=null;throw e;});
- return (await pending).get(id);
+ const song=(await pending).get(id);return song?.available===true?song:null;
 }
 // Rendering-only phrase opportunities. Every source character is retained.
 export function lyricPhrases(text,target=52){
@@ -102,6 +102,7 @@ export function createLyricsView(host,{onScore,libraryControl}){
  header.append(copy,copyStatus);
  if(current.refrains.some(r=>r.label==='Shared ending'))paper.append(make('p','Shared ending shown separately; consult the score for repeats.','lyrics-notice'));
  const body=make('div',null,'lyrics-body');
+ if(current.available===false){const message=make('p','Lyrics are unavailable for this song.','lyrics-notice');message.setAttribute('role','status');const openScore=button('Open Score','Open Score',onScore);body.append(message,openScore);}
  const repeated=current.refrains.filter(r=>/^(chorus|refrain)$/i.test(r.label||''));
  for(const verse of current.verses){
   const block=make('section');block.append(make('h2','Verse '+verse.number),lyricParagraph(verse.text));
