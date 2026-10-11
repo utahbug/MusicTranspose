@@ -20877,18 +20877,15 @@
           "sourceVoice": "1",
           "kind": "note-lyrics",
           "label": "Verse 3"
-        },
-        {
-          "number": "1982",
-          "text": "Text © The Church Pension Fund.\n Used by permission. International copyright secured. Making copies \n without written permission of the copyright owner is prohibited.",
-          "kind": "numbered-text-block"
         }
       ],
       "refrains": [],
       "notes": [],
       "status": "extracted",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Reviewed Hymns #296: 1982 is the publication year in the split The Hymnal attribution, not a stanza number. Preserve the complete notice and author/composer attribution in sourceTextBlocks; exclude only this exact verified credit fragment from numbered verses."
+      ],
       "sourceTextBlocks": [
         "Text: \n F. Bland Tucker, 1895–1984, alt.\n\n Music: \n John David Edwards, 1806–1885\nFrom \n The Hymnal, \n 1982. Text © The Church Pension Fund.\n Used by permission. International copyright secured. Making copies \n without written permission of the copyright owner is prohibited.",
         "3 Nephi 18:21\nAlma 7:27",

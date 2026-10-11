@@ -10,6 +10,14 @@ catalog=json.loads(Path(sys.argv[1]).read_text(encoding='utf-8-sig'))
 selected=set(sys.argv[2:])
 if selected:catalog=[song for song in catalog if song['id'] in selected]
 def clean(s):return re.sub(r'[ \t\xa0]+',' ',s).strip()
+def reviewed_credit_fragment(song_id,text):
+ # Hymns #296 splits its attribution across credit-words elements. The year
+ # following "The Hymnal," begins a fragment and resembles a numbered stanza.
+ # Match only this verified notice, not arbitrary years or numerical lyrics.
+ return song_id=='song-8aafccd0-12a9-4d8a-a2a2-15810fabb0a4' and ' '.join(text.split())==(
+  '1982. Text © The Church Pension Fund. Used by permission. International copyright secured. '
+  'Making copies without written permission of the copyright owner is prohibited.')
+
 def stitch(nodes):
  out='';joining=False
  for lyric in nodes:
@@ -450,6 +458,9 @@ for song in catalog:
  r['sourceTextBlocks']=[clean(''.join(c.itertext())) for c in root.findall('credit')]
  for credit in root.findall('.//credit-words'):
   text=(credit.text or '').replace('\\n','\n')
+  if reviewed_credit_fragment(song['id'],text):
+   r['extractionDecisions'].append('Reviewed Hymns #296: 1982 is the publication year in the split The Hymnal attribution, not a stanza number. Preserve the complete notice and author/composer attribution in sourceTextBlocks; exclude only this exact verified credit fragment from numbered verses.')
+   continue
   if not re.match(r'^\s*\d+\.\s+\S',text):continue
   for m in re.finditer(r'(?:^|\n)\s*(\d+)\.\s+(.+?)(?=\n\s*\d+\.\s|\Z)',text,re.S):
    n,t=m.group(1),clean(m.group(2));existing=[v for v in r['verses'] if v['number']==n]
