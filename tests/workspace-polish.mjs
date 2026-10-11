@@ -4,7 +4,7 @@ const {chromium,webkit}=createRequire('C:/Users/kenro/.cache/codex-runtimes/code
 const browser=process.env.POLISH_WEBKIT?await webkit.launch():await chromium.launch({channel:'msedge'});
 try {for(const width of [320,390,744,820,1024,1440]){
  const c=await browser.newContext({viewport:{width,height:1000},serviceWorkers:'block'}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
- await c.addInitScript(()=>{if(localStorage.getItem('polish-seeded'))return;localStorage.setItem('polish-seeded','1');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups:Array.from({length:30},(_,i)=>({id:'polish-'+i,name:'List '+i,description:'',songs:['nativity']}))}));});
+ await c.addInitScript(()=>{if(localStorage.getItem('polish-seeded'))return;localStorage.setItem('polish-seeded','1');localStorage.setItem('music-transpose-library-theme-v1','light');localStorage.setItem('music-transpose-library-v1',JSON.stringify({orderingVersion:1,favorites:[],groups:Array.from({length:30},(_,i)=>({id:'polish-'+i,name:'List '+i,description:'',songs:['nativity']}))}));});
  await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
  const fits=async()=>assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await p.locator('[data-home-source=all]').click();

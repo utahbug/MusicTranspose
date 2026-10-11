@@ -2,7 +2,7 @@ import {themeIcon} from './icons.js';
 // Library-only appearance. Never change Score/Lyrics classes or their preferences.
 export function initLibraryTheme(){
  const key='music-transpose-library-theme-v1',buttons=[...document.querySelectorAll('.library-theme-toggle')];
- let dark=false;try{dark=localStorage.getItem(key)==='dark';}catch{}
+ let dark=true;try{dark=localStorage.getItem(key)!=='light';}catch{}
  for(const button of buttons){const swatch=button.querySelector('.pdf-mobile-theme-swatch');if(swatch)swatch.outerHTML=themeIcon;}
  function apply(){
   document.documentElement.dataset.libraryTheme=dark?'dark':'light';
