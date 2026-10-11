@@ -26,5 +26,5 @@ export function createTextsView({getState,save,edit,read,onHome,onFiles,onLists,
  }
  $('texts-new').onclick=()=>edit(null,null);$('texts-search').oninput=render;$('texts-favorites').onchange=render;
  $('texts-home').onclick=onHome;$('texts-files').onclick=onFiles;$('texts-lists').onclick=()=>onLists();document.addEventListener('text-items-changed',render);
- return {deleteItem,render,open(){$('texts-search').value='';$('texts-status').textContent='';$('texts-view').hidden=false;document.title='Notes · MusicTranspose';render();window.scrollTo(0,0);$('texts-heading').focus({preventScroll:true});},hide(){$('texts-view').hidden=true;}};
+ return {deleteItem,render,open(){$('texts-search').value='';$('texts-status').textContent='';$('texts-view').hidden=false;document.title='Notes · MusicFolio';render();window.scrollTo(0,0);$('texts-heading').focus({preventScroll:true});},hide(){$('texts-view').hidden=true;}};
 }

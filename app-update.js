@@ -12,7 +12,7 @@ export async function checkForUpdates({serviceWorker,online=true,onStatus,timeou
    const found=()=>{worker=registration.installing||registration.waiting||worker;if(worker)report('Update found. Refreshing…');};
    registration.addEventListener('updatefound',found);cleanup.push(()=>registration.removeEventListener('updatefound',found));
    await registration.update();if(finished)return;found();
-   if(!worker){report('MusicTranspose is up to date.');return;}
+   if(!worker){report('MusicFolio is up to date.');return;}
    await new Promise((resolve,reject)=>{
     const changed=()=>{if(worker.state==='activated')resolve();else if(worker.state==='redundant')reject(Error('Install failed'));};
     worker.addEventListener('statechange',changed);cleanup.push(()=>worker.removeEventListener('statechange',changed));changed();

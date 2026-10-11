@@ -41,5 +41,5 @@ export function createFilesView({onLibrary,onSong}){
  document.addEventListener('local-music-changed',render);
  document.addEventListener('offline-state-changed',()=>{if(!$('files-view').hidden)render();});
  document.addEventListener('local-music-saved',e=>{if(!$('files-view').hidden){$('files-status').textContent=e.detail.message||e.detail;const row=e.detail.id&&$('files-results').querySelector(`[data-file="${CSS.escape(e.detail.id)}"]`);if(row){row.classList.add('just-added');row.scrollIntoView({block:'nearest'});row.querySelector(e.detail.edited?'.file-edit':'.file-entry').focus({preventScroll:true});}else $('add-music').focus({preventScroll:true});}});
- return {render,open(){refreshOffline();render();$('files-status').textContent='';$('files-view').hidden=false;$('library').hidden=true;document.body.classList.add('library-open');document.title='Files · MusicTranspose';window.scrollTo(0,0);$('files-heading').focus({preventScroll:true});},hide(){$('files-view').hidden=true;}};
+ return {render,open(){refreshOffline();render();$('files-status').textContent='';$('files-view').hidden=false;$('library').hidden=true;document.body.classList.add('library-open');document.title='Files · MusicFolio';window.scrollTo(0,0);$('files-heading').focus({preventScroll:true});},hide(){$('files-view').hidden=true;}};
 }

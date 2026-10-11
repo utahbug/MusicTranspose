@@ -1,6 +1,6 @@
 {
-  "name": "Music Transpose",
-  "short_name": "Transpose",
+  "name": "MusicFolio",
+  "short_name": "MusicFolio",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
