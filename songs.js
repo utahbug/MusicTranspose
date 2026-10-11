@@ -25,3 +25,6 @@ export function songSearchText(song){return normalizeSearch([song.title,song.col
 
 // Alternate presentation of the same immutable catalog identity; never a second song.
 for(const song of songs)if(pdfFallbacks[song.id])song.pdfAsset=pdfFallbacks[song.id];
+
+// CS #42: retain source identity; Original uses the intact-system performance layout.
+Object.assign(songs.find(song=>song.id==='song-d165ef87-2efa-4a0c-a4b1-e07a742ea654'),{performancePdf:'./assets/pdfs/performance/away-in-a-manger-cs42.pdf',sourcePdfPages:2});

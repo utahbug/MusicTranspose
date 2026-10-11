@@ -6,7 +6,7 @@ import {requiredOfflineAssets} from '../offline-assets.js';
 const {chromium,webkit}=createRequire('C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
 const b=process.env.NATIVITY_WEBKIT?await webkit.launch():await chromium.launch({channel:'msedge'});
 const manifest=JSON.parse(fs.readFileSync('offline-catalog.json','utf8'));
-assert.deepEqual(songs.filter(s=>s.performancePdf).map(s=>s.id),['nativity']);assert.deepEqual(requiredOfflineAssets(songs.find(s=>s.id==='nativity')),manifest.nativity);assert.equal(manifest.nativity.length,3);
+assert.deepEqual(songs.filter(s=>s.performancePdf).map(s=>s.id),['nativity','song-d165ef87-2efa-4a0c-a4b1-e07a742ea654']);assert.deepEqual(requiredOfflineAssets(songs.find(s=>s.id==='nativity')),manifest.nativity);assert.equal(manifest.nativity.length,3);
 fs.mkdirSync('test-results/nativity',{recursive:true});
 try{for(const [width,height] of [[390,844],[744,1133],[820,1180],[1440,1000]]){
  const c=await b.newContext({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,...(width===390?{userAgent:'iPhone'}:{}),serviceWorkers:'block',acceptDownloads:true}),p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
