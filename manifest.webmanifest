@@ -1,6 +1,6 @@
 {
-  "name": "B’iitzScore",
-  "short_name": "B’iitzScore",
+  "name": "B'itz Score",
+  "short_name": "B'itz Score",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
