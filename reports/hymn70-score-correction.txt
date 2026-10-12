@@ -1,0 +1,55 @@
+HYMN 70 TRANSPOSE SCORE CORRECTION — 2026-10-12
+Baseline: c435c021ee8bb57342c84d17b28d612869d5c0ec
+Song: Hymns (1985) 70, Sing Praise to Him, D major
+ID: song-95273aa4-6219-4608-a682-8db1ff47c3eb
+
+SOURCE AND ROOT CAUSE
+The source MXL root score contains six parts: P1/P2 are the Print
+arrangement; P3/P4/P5/P6 are separate Soprano/Alto/Tenor/Bass Voices.
+The official PDF uses the two-staff Print arrangement. The four Voices
+repeat its pitched events (measure, onset, duration, pitch and ties).
+The full-score pipeline previously retained all six parts in engraving,
+export and playback. Playback produced 464 events versus 232 for Print.
+This duplication exists in the source, not just CSS or rendering.
+
+The first-system lyric/harmony collision was a separate OSMD spacing
+problem with a forward-only gap preceding a late-entering voice. The
+existing lead-spacing gap-anchor workaround fixes the engraving while
+leaving canonical MusicXML timing and exports untouched.
+
+CORRECTION
+Only this built-in song is eligible. Validate the six part IDs, Print/Voices
+links, group structure and equivalent pitched events before selecting P1/P2.
+Preserve those two parts byte-for-byte after XML serialization comparison:
+all notes/rests, durations, ties, slurs, directions, four lyric verses and
+30 native harmony elements remain. Remove redundant external archive links
+from the standalone export's part list. Imported scores are excluded.
+Render invisible gap anchors only on the engraving copy (screen and print).
+Keep Melody-only derived from the original six-part source as before.
+Direct PDF/Lyrics playback uses the same corrected Print arrangement.
+The official source MXL and PDF are unchanged. No global staff-count rule.
+
+VALIDATION
+Chromium and WebKit: 320, 390, 744, 820, 1024, 1440px; no measured visible
+lyric-text intersections or document overflow. Screenshots inspected at
+phone/tablet/desktop widths. Full score exports tested in D/C/F major;
+all six downloads pass installed Dorico 6 MusicXML schema validation,
+contain two parts and 30 chords, and equal canonical displayed-view XML.
+Reset restores D. Melody-only XML matches prior projection exactly.
+Original PDF mapping unchanged. CS190 renders and bypasses both corrections.
+Native-chord regression: 13 transpositions and exact Reset pass.
+Chromium playback starts/stops and its timeline equals source P1/P2 exactly.
+Windows WebKit audio-start timed out; its rendering/export/timeline passed.
+No claim of acoustic quality or fresh Dorico GUI round-trip verification.
+Home/List preference navigation passes both engines at 390/820px.
+Syntax and storage-manifest checks pass; static app has no compilation step.
+Isolated service-worker save/offline reload of #70 passes; List/Favorites and
+song-opening preferences persist. Existing offline-retention test stops at
+an obsolete UI assertion expecting '✓ Saved'; current UI is 'Saved for
+offline use'. No production offline code changed to satisfy that old test.
+
+Evidence (local ignored diagnostics): test-results/hymn70/
+before-820.png, after-820.png; chromium-*.png, webkit-*.png;
+chromium/webkit MusicXML downloads for shifts 0, -2, +3.
+Pending CS12 preparation and ZIP backup remain hash-identical and unpublished.
+Physical iPhone/iPad and listening review remain necessary.

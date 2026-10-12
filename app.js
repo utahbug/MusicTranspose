@@ -1,3 +1,4 @@
+import {hymn70FullScore,hymn70Engraving} from './hymn70-score.js';
 import {scoreViewIcon} from './icons.js';
 import {meaningfulSource,meaningfulNumber,scoreMetadata} from './score-labels.js';
 import {parseChordSymbol} from './chord-symbol.js';
@@ -76,7 +77,7 @@ function beginSelection(song,retainScore=false){
 const playback=createPlayback(async()=>{
  const song=document.body.classList.contains('lyrics-open')?lyricsSong:activeSong;
  if(!hasTiming(song))throw Error('No structured score');
- const xml=ready&&activeSong.id===song.id&&!isPdf()?(scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML):await structuredSource(song);
+ const xml=ready&&activeSong.id===song.id&&!isPdf()?(scoreSize==='large'&&leadState?.ok?lastViewXML:lastXML):hymn70FullScore(await structuredSource(song),song);
  return {id:song.id,key:song.id+':'+xml,xml};
 });
 const playbackPreferences=initPlaybackPreferences(playback);
@@ -148,7 +149,7 @@ async function renderScore(){
    applyLeadLayout(osmd,!!lead?.ok,{rightHand:rightHandLead(lead),phone:matchMedia('(max-width:600px)').matches});
    // Screen presentation only. Keep xml/viewXML canonical for timing, print and export.
    const screenXML=lead?.ok?viewXML:screenSecondaryLyrics(viewXML).xml;
-   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(screenXML):screenXML).displayXML;stage.style.width=w+'px';configureAccompanimentLayout(osmd,displayXML);osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width()||(phoneFooter()&&footerBudget!==Math.round(availableScoreHeight(score))))continue;
+   const displayXML=openingMetadata(lead?.ok?leadEngravingXML(screenXML):hymn70Engraving(screenXML,activeSong)).displayXML;stage.style.width=w+'px';configureAccompanimentLayout(osmd,displayXML);osmd.EngravingRules.SpacingBetweenTextLines=0;if(engravedXML!==displayXML){await osmd.load(displayXML);if(token!==selectionVersion)return;engravedXML=displayXML;}if(target!==wanted||octave!==wantedOctave||w!==width()||(phoneFooter()&&footerBudget!==Math.round(availableScoreHeight(score))))continue;
    // Internal engraving margins participate in automatic system breaking.
    // Share compact header-aligned bounds; retain each mode's existing notation scale.
    const phone=matchMedia('(max-width:600px)').matches;
@@ -288,7 +289,7 @@ async function preparePrint(){
  const printXML=lastViewXML||lastXML,printKey=viewOnly()?'':KEYS.find(k=>k.shift===current).name+' '+KEYS.find(k=>k.shift===current).mode;const host=$('print-staging');host.replaceChildren();host.style.width='794px';
  const engraver=new opensheetmusicdisplay.OpenSheetMusicDisplay(host,{backend:'svg',autoResize:false,pageFormat:'A4 P',drawTitle:true,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,newSystemFromXML:false,newPageFromXML:false});
  applyLeadLayout(engraver,!!leadState?.ok&&scoreSize==='large',{print:true,rightHand:rightHandLead(leadState)});
- await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):printXML);engraver.Zoom=.8;
+ await engraver.load(leadState?.ok&&scoreSize==='large'?leadPrintXML(leadEngravingXML(printXML),activeSong.title):hymn70Engraving(printXML,activeSong));engraver.Zoom=.8;
  const printWidth=794,keyInset=22,available=printWidth*270/190-keyInset;
  const renderPrint=()=>{engraver.render();if(leadState?.ok&&scoreSize==='large')balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);return {systemLayout:captureSystems(engraver,host)};};
  if(leadState?.ok&&scoreSize==='large'&&!rightHandLead(leadState)){engraver.render();balanceLeadTail(engraver);avoidTempoCollisions(host,printXML);}else renderFullScoreLayout(engraver,renderPrint,e=>assessLayout(host,e.systemLayout,printWidth,available,.8));
@@ -313,12 +314,13 @@ window.visualViewport?.addEventListener('resize',()=>{if(matchMedia('(max-width:
 async function loadScore(xml,override,token=selectionVersion,engrave=true,deriveLead=true){
  if(rendering)await rendering;if(token!==selectionVersion)return;
  xml=await withGeneratedHarmony(xml,activeSong.id);if(token!==selectionVersion)return;
+ const melodyXML=xml;xml=hymn70FullScore(xml,activeSong);
  const chordDoc=parseXML(xml);preparedHasChords=!!chordDoc.querySelector('harmony')||[...chordDoc.querySelectorAll('direction > direction-type')].some(type=>{const words=[...type.children].filter(e=>e.localName==='words');return words.length&&!words.some(w=>w.children.length)&&!!parseChordSymbol(words.map(w=>w.textContent).join(''));});
  // Bundled PDFs preserve source chords; generated overlays add information absent from them.
  // Local PDF/XML pairings are not assumed to share the same chord content.
  preparedHasSourceChords=preparedHasChords&&(!chordDoc.querySelector('harmony[id^="mt-generated-"]'));
  const source=viewOnly()?null:originalKey(xml,override),keys=source?buildKeys(source):[];modeOverride=override;
- clearTimeout(timer);autoChoice=null;leadSource=deriveLead?createLeadXML(xml,activeSong):null;leadState=null;lastViewXML='';if(scoreSize==='large'&&leadSource&&!leadSource.ok){scoreSize='normal';saveScoreSize(scoreSize);}original=xml;handLayout=pianoHands(xml);KEYS=keys;current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;cache.clear();
+ clearTimeout(timer);autoChoice=null;leadSource=(deriveLead||xml!==melodyXML)?createLeadXML(melodyXML,activeSong):null;leadState=null;lastViewXML='';if(scoreSize==='large'&&leadSource&&!leadSource.ok){scoreSize='normal';saveScoreSize(scoreSize);}original=xml;handLayout=pianoHands(xml);KEYS=keys;current=0;wanted=0;currentOctave=normalOctaves();wantedOctave=currentOctave;octaveScope='both';ready=false;cache.clear();
  showOpeningMetadata(document.querySelector('.score-heading .subtitle'),scoreMetadata(activeSong),xml,$('score-source'));
  if(!source){showOpeningMetadata(document.querySelector('.score-heading .subtitle'),scoreMetadata(activeSong)+' · View only',xml,$('score-source'));document.querySelector('.footnote').textContent='Transposition unavailable for this imported score.';score.setAttribute('aria-busy','true');if(engrave)await pump();return;}
  buildChooser();document.querySelector('.dialog-hint').textContent='All destinations remain '+source.mode+'.';document.querySelector('.footnote').textContent='Original key: '+source.name+' '+source.mode+' · Tap the key to choose another.';
