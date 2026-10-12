@@ -75,7 +75,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  const group=()=>state.groups.find(g=>g.id===activeList);
  try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved&&typeof saved==='object'){
   const ids=a=>Array.isArray(a)?[...new Set(a.filter(x=>typeof x==='string'))]:[];
-  state.textItems=saved.textItems;state.orderingVersion=saved.orderingVersion;state.favorites=ids(saved.favorites);state.recent=ids(saved.recent).slice(0,30);
+  state.starterContentVersion=saved.starterContentVersion;state.textItems=saved.textItems;state.orderingVersion=saved.orderingVersion;state.favorites=ids(saved.favorites);state.recent=ids(saved.recent).slice(0,30);
   state.groups=Array.isArray(saved.groups)?saved.groups.filter(g=>g&&typeof g.id==='string'&&typeof g.name==='string').map(g=>({...g,id:g.id,name:g.name.slice(0,80),songs:ids(g.songs),description:typeof g.description==='string'?g.description.slice(0,2000):'',displayNames:Object.fromEntries(Object.entries(g.displayNames||{}).filter(([id,value])=>ids(g.songs).includes(id)&&typeof value==='string'&&value.trim()).map(([id,value])=>[id,value.trim().slice(0,200)]))})):[];
  }}catch{}
  const textMigrated=initializeTextItems(state);

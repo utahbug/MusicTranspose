@@ -18,7 +18,7 @@ export function createTextsView({getState,save,edit,read,onHome,onFiles,onLists,
   const items=Object.entries(state.textItems).filter(([,item])=>item?.type==='text').sort((a,b)=>a[1].title.localeCompare(b[1].title,undefined,{numeric:true}));
   for(const [id,item] of items){if(query&&!item.title.toLocaleLowerCase().includes(query)||favorites&&!state.favorites.includes(id))continue;const row=el('div',null,'text-library-row');row.dataset.text=id;
    const star=button('',()=>favorite(id),'list-icon favorite');star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(state.favorites.includes(id)));star.setAttribute('aria-label','Favorite Note: '+item.title);star.title='Favorite';
-   const used=state.groups.filter(g=>g.songs.includes(id)).length,entry=button('',()=>read(id),'text-library-entry');entry.append(el('strong',item.title),el('span','Note · '+used+' '+(used===1?'List':'Lists'),'song-meta'));
+   const used=state.groups.filter(g=>g.songs.includes(id)).length,entry=button('',()=>read(id),'text-library-entry');entry.append(el('strong',item.title),el('span',(item.example?'Included example · Note · ':'Note · ')+used+' '+(used===1?'List':'Lists'),'song-meta'));
    const pencil=button('',()=>edit(null,id),'list-icon');pencil.innerHTML=editIcon;pencil.title='Edit Note';pencil.setAttribute('aria-label','Edit Note: '+item.title);
    const lists=button('',()=>memberships(id),'list-icon');lists.innerHTML=listsIcon;lists.title='Used in Lists';lists.setAttribute('aria-label','Lists for '+item.title);row.append(star,entry,pencil,lists);host.append(row);
   }

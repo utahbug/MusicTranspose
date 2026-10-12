@@ -1,0 +1,66 @@
+BUILT-IN REVIEWER STARTERS — 2026-10-12
+Baseline: 3a391306701d2087165d64b788add3131c24fb5b
+
+Fresh installation contents (catalog identities verified):
+PRIMARY SONGS [Score]: cs-2; hhc-1004; choose-to-serve-the-lord.
+HYMNS [Use Home default]: hhc-1010; hhc-1028;
+ song-00dbf08d-281a-4a99-9a9a-77815f9d9d14 (#100);
+ song-95e908ac-a3bd-4000-a45b-6ee588196bdf (#246).
+HOLIDAYS / EVENTS [Score]: song-5e5bc70a-2e08-4411-999d-628bf6079d88
+ (#199); hhc-1206; hhc-1208.
+Exactly three Lists, ten entries, in the requested order. No catalog copies.
+
+One ordinary editable/deletable Note, labeled Included example:
+Title: Primary Program Plan
+
+Intro: by ______
+
+Song 1: I Am a Child of God
+Song 2: Search, Ponder, and Pray
+
+Talks
+
+Song 3: ______
+Song 4: ______
+
+Files initially shows only Choose to Serve the Lord for seeded installations.
+Bundled PDFs are labeled Included example; Edit file details offers Remove
+from Files. This changes only a local visibility override, preserving source
+assets, Favorites and List memberships. Restore included examples in Files
+Info explicitly restores both bundled PDFs, including Scripture Power.
+Imported files remain labeled Added on this device, with their existing
+Delete from this device operation. Existing users retain both bundled files
+unless they explicitly hide them. No footer controls were added.
+
+SAFETY
+Initialization checks prior music-transpose localStorage evidence and both
+IndexedDB import indexes. Any existing library (even intentionally empty),
+preferences, imports or unreadable storage prevents starter seeding.
+A single atomic write to the existing library key stores all Lists, the Note
+and starterContentVersion:1. The normal library loader/save preserves this
+marker. There is no List-count-based reseeding, database migration or separate
+personal-library system. Deterministic IDs and a final existing-record check
+prevent duplicate starts. Failed atomic writes leave no partial seed data.
+Deleting Lists/Notes never recreates them on reload, restart or app update.
+Existing personal files and unpublished CS12 work are not modified.
+
+VALIDATION
+reviewer-starters.mjs: Chromium/WebKit at 390/820/1440; exact initial data,
+all ten song opens, List/Home view inheritance, Files hide/restore, Note
+edit/delete, List rename/delete, reload persistence and no horizontal overflow.
+Existing populated and intentionally empty libraries remain unchanged.
+reviewer-starters-storage.mjs: failed-write/retry, existing preference guard,
+imports-only installation guard, combined Lists/Notes/Favorites/import data,
+all starter deletions surviving a real service-worker update and browser
+process restart in both engines. Chromium verifies actual imported Blob bytes.
+Windows WebKit Blob fixture storage is limited; its import test uses metadata.
+files-info.mjs: responsive dialog, keyboard/focus, offline accessibility pass.
+app-update-browser.mjs: real updates preserve saved assets/imports/preferences,
+no reload loops and active Score playback deferral pass at 390/820/1440.
+list-song-view.mjs: both-engine existing preference/navigation tests pass.
+JavaScript syntax, storage manifest and diff whitespace checks pass.
+Static application: no separate compilation step.
+
+No physical iPhone/iPad testing claimed. No musical assets, extraction,
+notation, PDFs, lyrics, chord generation, export or theme code modified.
+Diagnostics/screenshots are ignored local files in test-results/starters.

@@ -1,3 +1,4 @@
+import {includedFileVisible,restoreIncludedFiles} from './reviewer-starters.js';
 import {fileTypeLabel,normalizeFileTags} from './local-music-store.js';
 import {offlineBadge,refreshOffline} from './offline-manager.js';
 import {editIcon} from './icons.js';
@@ -14,7 +15,7 @@ export function createFilesView({onLibrary,onSong}){
  document.addEventListener('pointerdown',e=>{if(!fieldMenu.contains(e.target))fieldMenu.open=false;});fieldMenu.addEventListener('keydown',e=>{if(e.key==='Escape'){fieldMenu.open=false;fieldMenu.querySelector('summary').focus();}});fieldMenu.addEventListener('focusout',e=>{if(e.relatedTarget&&!fieldMenu.contains(e.relatedTarget))fieldMenu.open=false;});
  $('files-search').oninput=render;$('files-sort').onchange=render;
  function render(){
-  const all=songs.filter(isFileSong),sort=$('files-sort'),previous=sort.value,choices=['Title','Type',...['Category','Composer','Arranger'].filter(field=>all.some(file=>value(file,field).trim()))];
+  const all=songs.filter(isFileSong).filter(includedFileVisible),sort=$('files-sort'),previous=sort.value,choices=['Title','Type',...['Category','Composer','Arranger'].filter(field=>all.some(file=>value(file,field).trim()))];
   sort.replaceChildren(...choices.map(field=>new Option(field,field)));sort.value=choices.includes(previous)?previous:'Title';
   const query=$('files-search').value.trim().toLocaleLowerCase();
   const files=all.filter(file=>!query||[...selected].some(field=>value(file,field).toLocaleLowerCase().includes(query))).sort((a,b)=>{const av=value(a,sort.value).trim(),bv=value(b,sort.value).trim();return Number(!av)-Number(!bv)||collator.compare(av,bv)||collator.compare(a.title,b.title);});
@@ -24,7 +25,7 @@ export function createFilesView({onLibrary,onSong}){
   for(const file of files){
    const row=element('div',null,'file-row');row.dataset.file=file.id;
    const open=element('button',null,'file-entry');open.type='button';open.setAttribute('aria-label','Open file: '+file.title);open.onclick=()=>onSong(file.id,files.map(song=>song.id));
-   open.append(element('strong',file.title));
+   open.append(element('strong',file.title),element('span',file.local?'Added on this device':'Included example','song-meta'));
    const type=element('span',fileTypeLabel(file),'file-type');
    const badge=offlineBadge(file);if(badge)open.append(badge);
    const edit=element('button',null,'file-edit');edit.type='button';edit.setAttribute('aria-label','Edit file details: '+file.title);edit.title='Edit file details';edit.innerHTML=editIcon;
@@ -32,6 +33,7 @@ export function createFilesView({onLibrary,onSong}){
    row.append(open,type,edit);host.append(row);
   }
  }
+ $('files-restore-examples').onclick=()=>{try{restoreIncludedFiles();render();$('files-example-status').textContent='Included examples restored.';}catch{$('files-example-status').textContent='Could not save this change. Please retry.';}};
  const info=$('files-info-dialog');
  $('files-info').onclick=()=>{info.showModal();$('files-info-title').focus();};
  $('files-info-close').onclick=()=>info.close();

@@ -1,3 +1,4 @@
+import {initializeReviewerStarters} from './reviewer-starters.js';
 import {hymn70FullScore,hymn70Engraving} from './hymn70-score.js';
 import {scoreViewIcon} from './icons.js';
 import {meaningfulSource,meaningfulNumber,scoreMetadata} from './score-labels.js';
@@ -383,6 +384,7 @@ window.prototype={playback,get loading(){return loading;},get navigation(){retur
 (async()=>{try{osmd=new opensheetmusicdisplay.OpenSheetMusicDisplay(stage,{backend:'svg',autoResize:false,drawTitle:false,drawSubtitle:false,drawComposer:false,drawLyricist:false,drawPartNames:false,drawFingerings:true,drawLyrics:true,drawMeasureNumbers:false,drawMetronomeMarks:true,newSystemFromXML:false,newPageFromXML:false});
  enableScreenPickupLayout(osmd);
  try{await refreshLocalMusic();}catch{$('library-message').textContent='Local music storage is unavailable. Built-in songs remain available.';}
+ await initializeReviewerStarters();
  initMyMusic();library=initLibrary({loadSong,openLyrics,isBusy:()=>busy||loading,leaveScore,cancelPendingSelection,stopPlayback:()=>playback.stop(),showScoreView});library.startHistory();
  if('serviceWorker' in navigator){try{// Refresh an already-controlled Library after a deployment, never interrupt a score.
  let controlled=!!navigator.serviceWorker.controller,pendingUpdate=false,reloading=false;
