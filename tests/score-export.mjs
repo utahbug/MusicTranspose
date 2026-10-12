@@ -26,7 +26,7 @@ try{for(const [width,height] of [[320,740],[390,844],[820,1180],[1180,820],[1440
  await p.locator('#score-tools').click();await p.locator('#score-annotate').click();await p.locator('.current-page .pdf-annotation-canvas').evaluate(el=>{const r=el.getBoundingClientRect();for(const [type,dx] of [['pointerdown',0],['pointermove',30],['pointerup',30]])el.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:19,isPrimary:true,button:0,pointerType:'pen',clientX:r.x+r.width*.4+dx,clientY:r.y+r.height*.4}));});
  assert(await p.evaluate(()=>JSON.stringify(localStorage.getItem('music-transpose-pdf-annotations-v1')).includes('points')));await c.setOffline(true);const offlinePdf=await download('pdf');assert.deepEqual(offlinePdf.bytes,pdf.bytes);await c.setOffline(false);await p.locator('#pdf-annotation-done').click();
  // PDF+XML, cold Original has source XML even before any XML engraving.
- await load('hhc-1035');const original=await p.evaluate(()=>prototype.original);const ox=await download('xml');assert.equal(ox.bytes.toString('utf8'),original);assert.match(ox.name,/As I Keep the Sabbath Day\.musicxml$/);
+ await load('hhc-1035');const original=await p.evaluate(()=>prototype.original);const ox=await download('xml');assert.equal(ox.bytes.toString('utf8'),original);assert.match(ox.name,/As I Keep the Sabbath Day - Hymns for Home and Church 1035\.musicxml$/);
  await view('auto');const source=await parse(original);
  // Requested but not committed changes must disable both formats immediately.
  const pending=await p.evaluate(()=>{prototype.changeKey(2);return ['score-export','score-export-pdf','score-export-xml'].map(id=>document.getElementById(id).disabled);});assert.deepEqual(pending,[true,true,true]);await ready();

@@ -7,8 +7,10 @@ export function musicXmlBlob(xml){
  if(doc.querySelector('parsererror')||doc.documentElement.localName!=='score-partwise'||!doc.querySelector('part-list > score-part')||!doc.querySelector('part > measure'))throw Error('This score cannot be exported as MusicXML.');
  return new Blob([xml],{type:'application/vnd.recordare.musicxml+xml;charset=utf-8'});
 }
-export function exportFilename(title,view,key,extension){
- const suffix=[view!=='original'&&key,view==='melody'&&'Melody only'].filter(Boolean).join(' - ');
+export function exportFilename(title,view,key,extension,catalog){
+ // Catalog identity belongs to generated MusicXML names, never source PDF names.
+ const identity=extension==='musicxml'&&catalog?[catalog.collection?.replace(/[()]/g,''),catalog.number].filter(v=>v!=null&&String(v).trim()).join(' '):'';
+ const suffix=[identity,view!=='original'&&key,view==='melody'&&'Melody only'].filter(Boolean).join(' - ');
  const clean=value=>value.normalize('NFC').replace(/[<>:"/\\|?*\x00-\x1f\x7f]/g,' ').replace(/\s+/g,' ').trim();
  const ending=suffix?' - '+clean(suffix):'';
  let name=(clean(title||'Score').slice(0,140-ending.length)+ending).replace(/[. ]+$/,'');
@@ -22,10 +24,10 @@ function download(blob,name){
 }
 export function createScoreExport({getState,originalPdfData,preparePrint}){
  let exporting=false,shareState=null,shareFile=null,shareReason='Preparing file for sharing…';
- const same=(a,b)=>a&&b&&['songId','local','title','view','key','xml','pdfUrl'].every(key=>a[key]===b[key]);
+ const same=(a,b)=>a&&b&&['songId','local','title','collection','number','view','key','xml','pdfUrl'].every(key=>a[key]===b[key]);
  async function artifact(format,s){
   const blob=format==='xml'?musicXmlBlob(s.xml):new Blob([await originalPdfData(s.pdfUrl)],{type:'application/pdf'});
-  return {blob,name:exportFilename(s.title,s.view,s.key,format==='xml'?'musicxml':'pdf')};
+  return {blob,name:exportFilename(s.title,s.view,s.key,format==='xml'?'musicxml':'pdf',s.local?null:{collection:s.collection,number:s.number})};
  }
  // Prepare before the click, so native sharing keeps the user's transient activation.
  function prepareShare(s){
