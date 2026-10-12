@@ -1,6 +1,6 @@
 {
-  "name": "MusicFolio",
-  "short_name": "MusicFolio",
+  "name": "B’iitzScore",
+  "short_name": "B’iitzScore",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

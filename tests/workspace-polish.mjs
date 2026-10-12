@@ -8,7 +8,7 @@ try {for(const width of [320,390,744,820,1024,1440]){
  await p.goto('http://127.0.0.1:8780/');await p.waitForFunction(()=>window.prototype?.navigation);
  const fits=async()=>assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await p.locator('[data-home-source=all]').click();
- assert.equal((await p.locator('#library .workspace-banner').innerText()).trim(),'MusicFolio');
+ assert.equal((await p.locator('#library .workspace-banner').innerText()).trim(),'B’iitzScore');
  await p.locator('#library-source').click();
  assert.deepEqual(await p.locator('#library-source-menu > *').evaluateAll(es=>es.map(e=>e.tagName==='HR'?'divider':e.textContent)),['All Sources','Hymns','Children’s Songs','Hymns for Home and Church','divider','Imported Files','My Lists']);
  await p.locator('#library-source-menu [data-source=my-music]').click();assert.equal(await p.locator('#library-source-label').innerText(),'Imported Files');
