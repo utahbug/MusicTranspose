@@ -62,14 +62,13 @@ function positionIndicator(){
   paperElement.style.setProperty('--phone-paper-clip',(reclaim?0:Math.max(0,paper.bottom-(top-5)))+'px');
   navCorner.style.right=Math.max(0,innerWidth-paper.right)+'px';
   navCorner.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
-  pageFeedback.style.right='auto';pageFeedback.style.left=Math.max(6,paper.left)+'px';
-  pageFeedback.style.bottom=(innerHeight-top-pagePosition.offsetHeight)+'px';
  }else{
-  paperElement.style.removeProperty('--phone-paper-clip');pageFeedback.style.removeProperty('left');pageFeedback.style.removeProperty('right');pageFeedback.style.removeProperty('bottom');
+  paperElement.style.removeProperty('--phone-paper-clip');
   const bottom=mode==='pages'?Math.min(paper.bottom-6,bar.top-8,innerHeight-8):innerHeight-footerBottom-8;
   navCorner.style.right=Math.max(8,innerWidth-paper.right+8)+'px';
   navCorner.style.bottom=Math.max(8,innerHeight-bottom)+'px';
  }
+ placeFeedback();
  // Edge tabs clear the restore target; expanded shortcuts clear the footer.
  if(!$('return-start').hidden){
   const bottom=footerBottom-(reclaim?focusShow.offsetTop:0)+8;
@@ -171,8 +170,17 @@ function syncStart(){
 }
 // Primary-style confirmation follows successful turns, never layout synchronization.
 const pageFeedback=$('page-turn-feedback');
-function placeFeedback(){(phoneScreen.matches?$('playing-view'):document.querySelector('.masthead .toolbar')).append(pageFeedback);}
-phoneScreen.addEventListener('change',placeFeedback);placeFeedback();
+// Share the control's viewport geometry instead of the footer toolbar's edge.
+$('playing-view').append(pageFeedback);
+function placeFeedback(){
+ if(pageFeedback.hidden||navCorner.hidden)return;
+ const control=pagePosition.getBoundingClientRect(),notice=pageFeedback.getBoundingClientRect();
+ const viewport=window.visualViewport,left=viewport?.offsetLeft||0,top=viewport?.offsetTop||0;
+ const right=left+(viewport?.width||innerWidth);
+ pageFeedback.style.left=Math.max(left+8,Math.min(control.right-notice.width,right-notice.width-8))+'px';
+ pageFeedback.style.top=Math.max(top+8,control.top-notice.height-8)+'px';
+}
+
 let feedbackTimer,feedbackHideTimer;
 function hidePageFeedback(){clearTimeout(feedbackTimer);clearTimeout(feedbackHideTimer);pageFeedback.classList.remove('visible');pageFeedback.hidden=true;}
 function showPageFeedback(){
