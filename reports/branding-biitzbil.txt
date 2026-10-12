@@ -1,0 +1,26 @@
+B'IITZBIL HYMNS BRANDING — 2026-10-12
+Baseline / separate score-fix commit: 0ada3dc4688ae9df5a85fb2aa6347b5b5e8c55e2
+Exact display name: B'iitzbil Hymns (ASCII apostrophe).
+
+Changed Home/Library and workspace headings, browser titles, About/app
+information, install guidance, update message, unavailable-score text,
+and manifest name/short_name. Approved About wording and copyright remain
+identical except the app name. No icon or style redesign.
+
+Preserved repository/URL/branch, manifest identity/start URL/scope, storage
+keys/databases, score IDs/assets, export naming, offline worker/data stores,
+theme/annotation modules, all musical data and pending unpublished CS12.
+Normal shell cache version increment only; saved-song cache unchanged.
+
+Validation: exact branding-only source comparison against baseline; valid
+manifest and unchanged install identity; Chromium and WebKit navigation,
+brand text, legal notice and document overflow checks at 320/390/744/820/
+1024/1440px. Real service-worker update tests at 390/820/1440px pass,
+including one reload, deferral during Score playback, offline/error handling,
+and preservation of saved assets, imported files, Lists and preferences.
+Update unit cases pass. Export filename checks pass for 666 catalog entries.
+All root JavaScript syntax and storage-manifest checks pass.
+
+No physical iPhone/iPad testing. Existing installed icon names may refresh
+on the platform's own schedule; no reinstall or data clearing was performed.
+See hymn70-score-correction.txt for score evidence and audio/test limitations.

@@ -637,5 +637,5 @@ workspace.querySelector('.workspace-return').append(settings.element);
 window.addEventListener('blur',stopAllPianoVoices);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAllPianoVoices();});
 renderPiano();showKeyboardGuide('chord');
-return {open(){workspace.hidden=false;document.title='Keyboard · B\'itz Score';el.keyboardTitle.focus({preventScroll:true});},hide(){settings.close();if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
+return {open(){workspace.hidden=false;document.title='Keyboard · B\'iitzbil Hymns';el.keyboardTitle.focus({preventScroll:true});},hide(){settings.close();if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
 }
