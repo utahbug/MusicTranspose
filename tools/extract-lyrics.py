@@ -5,6 +5,7 @@ No source score is changed. Score order is retained; repeats are not expanded.
 import sys,json,re,zipfile,xml.etree.ElementTree as ET
 from pathlib import Path
 from collections import defaultdict
+from lyrics_quality_batch1 import apply_reviewed_lyrics
 catalog=json.loads(Path(sys.argv[1]).read_text(encoding='utf-8-sig'))
 # Optional IDs refresh only reviewed cases, preserving all other published records.
 selected=set(sys.argv[2:])
@@ -476,6 +477,7 @@ for song in catalog:
  if any('\ufffd' in v['text'] for v in r['verses']+r['refrains']):r['notes'].append('Source contains replacement characters.')
  if r['verses'] or r['refrains']:r['status']='needs-review' if r['notes'] else 'extracted'
  r['available']=bool(r['verses'] or r['refrains']) and not any(any(token in note for token in ['Alternate vocal','Multiple refrain','multiple vocal','conflicts']) for note in r['notes'])
+ apply_reviewed_lyrics(r,root,stitch)
  records.append(r)
 if selected:
  existing=json.loads(Path('assets/lyrics.json').read_text(encoding='utf8'))

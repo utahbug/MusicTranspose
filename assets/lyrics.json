@@ -4945,52 +4945,64 @@
       "verses": [
         {
           "number": "1",
-          "text": "I’m trying to be like Jesus; I’m following in His ways. I’m trying to love as He did, in all that I do and say. At times I am tempted to make a wrong choice, But I try to listen as the still small voice whispers,",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
+          "label": "Verse 1",
+          "text": "I’m trying to be like Jesus; I’m following in his ways. I’m trying to love as he did, in all that I do and say. At times I am tempted to make a wrong choice, But I try to listen as the still small voice whispers:",
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "2",
-          "text": "trying to love my neighbor, I’m learning to serve my friends. I watch for the day of gladness when Jesus will come again. I try to remember the lessons He taught. Then the Holy Spirit enters into my thoughts, saying:",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
+          "label": "Verse 2",
+          "text": "I’m trying to love my neighbor, I’m learning to serve my friends. I watch for the day of gladness when Jesus will come again. I try to remember the lessons he taught. Then the Holy Spirit enters into my thoughts, saying:",
+          "kind": "reviewed-note-lyrics"
         }
       ],
       "refrains": [
         {
-          "number": "1",
+          "label": "Chorus",
           "text": "“Love one another as Jesus loves you. Try to show kindness in all that you do. Be gentle and loving in deed and in thought, For these are the things Jesus taught.”",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Refrain"
+          "verses": [
+            "1",
+            "2"
+          ]
         },
         {
-          "number": "2",
-          "text": "I’m",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Refrain"
+          "label": "Credits and references",
+          "text": "Words and music: \n Janice Kapp Perry, b. 1938\n\n© 1980 by Janice Kapp Perry. This song may be copied for \nincidental, noncommercial church or home use.\n\nJohn 13:15, 34"
         }
       ],
       "notes": [
-        "Multiple refrain streams; consult the score for vocal order."
+        "Structure reviewed; existing Lyrics availability remains withheld. Publication eligibility is not established by musical-data review."
       ],
-      "status": "needs-review",
+      "status": "reviewed-withheld",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "CS78 PDF pp1–2 and XML P1: X3 pickup/row1 X4–15; row2 X4–15 preceded by first-ending X23 return pickup. Chorus X16–22 plus final word X24; X23 pickup is not a second refrain. PDF confirms lowercase his/he and whispers colon; these PDF/XML differences are corrected with source hash guards."
+      ],
       "sourceTextBlocks": [
         "I’m Trying to Be like Jesus",
         "Words and music: \n Janice Kapp Perry, b. 1938",
         "© 1980 by Janice Kapp Perry. This song may be copied for \nincidental, noncommercial church or home use.",
         "John 13:15, 34"
       ],
-      "available": false
+      "available": false,
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "text": "I’m trying to be like Jesus; I’m following in His ways. I’m trying to love as He did, in all that I do and say. At times I am tempted to make a wrong choice, But I try to listen as the still small voice whispers, “Love one another as Jesus loves you. Try to show kindness in all that you do. Be gentle and loving in deed and in thought, For these are the things Jesus taught.”"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "text": "trying to love my neighbor, I’m learning to serve my friends. I watch for the day of gladness when Jesus will come again. I try to remember the lessons He taught. Then the Holy Spirit enters into my thoughts, saying: I’m"
+        }
+      ],
+      "publicationReview": {
+        "status": "existing-withholding-preserved",
+        "publicLyricsEnabled": false
+      }
     },
     {
       "id": "cs-228",
@@ -16378,76 +16390,118 @@
       "verses": [
         {
           "number": "1",
+          "label": "Verse 1",
           "text": "Far, far away on Judea’s plains, Shepherds of old heard the joyous strains:",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "2",
-          "text": "Sweet are these strains of redeeming love, Message of mercy from heav’n above: Glory to God, Glory to God, Glory to God in the highest; Peace on earth, good will to men; Peace on earth, good will to men!",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
+          "label": "Verse 2",
+          "text": "Sweet are these strains of redeeming love, Message of mercy from heav’n above:",
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "3",
+          "label": "Verse 3",
           "text": "Lord, with the angels we too would rejoice; Help us to sing with the heart and voice:",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 3"
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "4",
+          "label": "Verse 4",
           "text": "Hasten the time when, from ev’ry clime, Men shall unite in the strains sublime:",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 4"
-        },
-        {
-          "number": "5",
-          "text": "Glory to God in the highest,",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 5"
-        },
-        {
-          "number": "6",
-          "text": "Glory to God God in the highest;",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 6"
-        },
-        {
-          "number": "6",
-          "text": "in the highest, Glory to",
-          "sourcePart": "P2",
-          "sourceVoice": "2",
-          "kind": "note-lyrics",
-          "label": "Verse 6"
+          "kind": "reviewed-note-lyrics"
         }
       ],
-      "refrains": [],
-      "notes": [
-        "Alternate vocal streams for verse 6 are retained separately; consult the score.",
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order."
+      "refrains": [
+        {
+          "label": "Refrain",
+          "text": "Glory to God, Glory to God, Glory to God in the highest; Peace on earth, good will to men; Peace on earth, good will to men!",
+          "verses": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "label": "Refrain — upper secondary line",
+          "text": "Glory to God, Glory to God in the highest, Peace on earth, good will to men; Peace on earth, good will to men!",
+          "disclosure": true
+        },
+        {
+          "label": "Refrain — lower voices",
+          "text": "Glory to God in the highest, Glory to God in the highest; Peace on earth, good will to men; Peace on earth, good will to men!",
+          "disclosure": true
+        },
+        {
+          "label": "Credits and references",
+          "text": "Text and music: \n John Menzies Macfarlane, 1833–1892\n\nLuke 2:8–20\nDoctrine and Covenants 45:71"
+        }
       ],
-      "status": "needs-review",
+      "notes": [
+        "Structure reviewed; existing Lyrics availability remains withheld. Publication eligibility is not established by musical-data review."
+      ],
+      "status": "reviewed-withheld",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "Hymn212 PDF p1 and XML: four actual stanzas P1 rows1–4 through X3. P1 row2 X4–11 is the shared refrain, not part of verse2 only. XML P2 row5 appears under the upper staff in PDF and is an upper secondary line; row6 lower line crosses voice IDs and is ordered by onset at X4–7. Upper secondary shares the first Glory phrase at X4. Both rejoin common Peace text X8–11. No invented verses5/6. Refrain is descriptive; no unsupported printed Chorus label claimed."
+      ],
       "sourceTextBlocks": [
         "Text and music: \n John Menzies Macfarlane, 1833–1892",
         "Luke 2:8–20\nDoctrine and Covenants 45:71",
         "Far, Far Away on Judea’s Plains",
         "212"
       ],
-      "available": false
+      "available": false,
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "text": "Far, far away on Judea’s plains, Shepherds of old heard the joyous strains:"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "text": "Sweet are these strains of redeeming love, Message of mercy from heav’n above: Glory to God, Glory to God, Glory to God in the highest; Peace on earth, good will to men; Peace on earth, good will to men!"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "3",
+          "text": "Lord, with the angels we too would rejoice; Help us to sing with the heart and voice:"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "4",
+          "text": "Hasten the time when, from ev’ry clime, Men shall unite in the strains sublime:"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "6",
+          "text": "Glory to God God in the highest;"
+        },
+        {
+          "part": "P2",
+          "voice": "2",
+          "row": "6",
+          "text": "in the highest, Glory to"
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "5",
+          "text": "Glory to God in the highest,"
+        }
+      ],
+      "publicationReview": {
+        "status": "existing-withholding-preserved",
+        "publicLyricsEnabled": false
+      }
     },
     {
       "id": "song-8aaafadd-0290-4b8f-aa76-a7b167782212",
@@ -24274,51 +24328,88 @@
       "verses": [
         {
           "number": "1",
-          "text": "Away in a manger, no crib for his bed, The little Lord Jesus laid down his sweet head; The stars in the heavens looked down where he lay, The little Lord Jesus, asleep on the hay. Asleep, asleep, asleep, the Savior in a stall! Asleep, asleep, asleep, the Lord of all.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
+          "label": "Verse 1",
+          "text": "Away in a manger, no crib for his bed, The little Lord Jesus laid down his sweet head; The stars in the heavens looked down where he lay, The little Lord Jesus, asleep on the hay.",
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "2",
-          "text": "The cattle are lowing, the poor baby wakes; But little Lord Jesus, no crying he makes. I love thee, Lord Jesus; look down from the sky And stay by my cradle till morning is nigh. asleep, the Lord, the Lord",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
-        },
-        {
-          "number": "2",
-          "text": "Asleep, asleep, Asleep, asleep, of all.",
-          "sourcePart": "P1",
-          "sourceVoice": "2",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
+          "label": "Verse 2",
+          "text": "The cattle are lowing, the poor baby wakes; But little Lord Jesus, no crying he makes. I love thee, Lord Jesus; look down from the sky And stay by my cradle till morning is nigh.",
+          "kind": "reviewed-note-lyrics"
         },
         {
           "number": "3",
+          "label": "Verse 3",
           "text": "Be near me, Lord Jesus; I ask thee to stay Close by me forever, and love me, I pray. Bless all the dear children in thy tender care, And fit us for heaven, to live with thee there.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 3"
+          "kind": "reviewed-note-lyrics"
         }
       ],
-      "refrains": [],
-      "notes": [
-        "Alternate vocal streams for verse 2 are retained separately; consult the score."
+      "refrains": [
+        {
+          "label": "Chorus — upper part (optional)",
+          "text": "Asleep, asleep, asleep, the Savior in a stall! Asleep, asleep, asleep, the Lord of all.",
+          "disclosure": true
+        },
+        {
+          "label": "Chorus — lower part (optional)",
+          "text": "Asleep, asleep, the Savior in a stall! Asleep, asleep, asleep, the Lord, the Lord of all.",
+          "disclosure": true
+        },
+        {
+          "label": "Performance instruction",
+          "text": "*Chorus may be sung in one or two parts."
+        },
+        {
+          "label": "Credits and references",
+          "text": "Words: \n Anon., about 1883, Philadelphia\n \n\n Music: \n Charles H. Gabriel, 1856–1932\n\nLuke 2:3–7\nLuke 18:15–17"
+        }
       ],
-      "status": "needs-review",
+      "notes": [
+        "Structure reviewed; existing Lyrics availability remains withheld. Publication eligibility is not established by musical-data review."
+      ],
+      "status": "reviewed-withheld",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "CS42 PDF pp1–2: three verses P1 rows1–3 through X16; optional Chorus X17–33. Lower response row2 crosses XML voice IDs; onset order restores its words. Lower part shares the Savior in a stall at X22–25, then follows its own closing the Lord, the Lord of all. Two separately labeled optional disclosures preserve overlap without inventing extra verses. PDF footnote: Chorus may be sung in one or two parts."
+      ],
       "sourceTextBlocks": [
         "Away in a Manger",
         "*Chorus may be sung in one or two parts.",
         "Words: \n Anon., about 1883, Philadelphia\n \n\n Music: \n Charles H. Gabriel, 1856–1932",
         "Luke 2:3–7\nLuke 18:15–17"
       ],
-      "available": false
+      "available": false,
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "text": "Away in a manger, no crib for his bed, The little Lord Jesus laid down his sweet head; The stars in the heavens looked down where he lay, The little Lord Jesus, asleep on the hay. Asleep, asleep, asleep, the Savior in a stall! Asleep, asleep, asleep, the Lord of all."
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "2",
+          "text": "The cattle are lowing, the poor baby wakes; But little Lord Jesus, no crying he makes. I love thee, Lord Jesus; look down from the sky And stay by my cradle till morning is nigh. asleep, the Lord, the Lord"
+        },
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "3",
+          "text": "Be near me, Lord Jesus; I ask thee to stay Close by me forever, and love me, I pray. Bless all the dear children in thy tender care, And fit us for heaven, to live with thee there."
+        },
+        {
+          "part": "P1",
+          "voice": "2",
+          "row": "2",
+          "text": "Asleep, asleep, Asleep, asleep, of all."
+        }
+      ],
+      "publicationReview": {
+        "status": "existing-withholding-preserved",
+        "publicLyricsEnabled": false
+      }
     },
     {
       "id": "song-b867cc29-d8d3-4f09-9a8e-6eac312fade7",
@@ -28122,39 +28213,62 @@
       "collection": "Children’s Songbook",
       "number": "190",
       "source": "./assets/scores/song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7.mxl",
-      "verses": [
+      "verses": [],
+      "refrains": [
         {
-          "number": "1",
-          "text": "(Girls) 1. I see my mother kneeling with our family each day. I hear the words she whispers as she bows her head to pray. Her plea to the Father quiets all my fears, And I am thankful love is spoken here. I can often feel the Savior near When love is spoken here.",
-          "sourcePart": "P1",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 1"
+          "label": "Performance instruction",
+          "text": "Sing parts separately, then combined using third ending."
         },
         {
-          "number": "2",
-          "text": "(Boys) 2. Mine is a home where ev’ry hour is blessed by the strength of priesthood pow’r, With father and mother leading the way, Teaching me how to trust and obey; And the things they teach are crystal clear, For love is spoken here. here. I can often feel the Savior near When love is spoken here.",
-          "sourcePart": "P2",
-          "sourceVoice": "1",
-          "kind": "note-lyrics",
-          "label": "Verse 2"
+          "label": "Part 1 — Girls",
+          "text": "I see my mother kneeling with our family each day. I hear the words she whispers as she bows her head to pray. Her plea to the Father quiets all my fears, And I am thankful love is spoken here."
+        },
+        {
+          "label": "Part 2 — Boys",
+          "text": "Mine is a home where ev’ry hour is blessed by the strength of priesthood pow’r, With father and mother leading the way, Teaching me how to trust and obey; And the things they teach are crystal clear, For love is spoken here."
+        },
+        {
+          "label": "Together — third ending",
+          "text": "I can often feel the Savior near When love is spoken here."
+        },
+        {
+          "label": "Credits and references",
+          "text": "Mosiah 4:15\nDoctrine and Covenants 68:28\n\nWords and music: \n Janice Kapp Perry, b. 1938\n\n© 1980 by Janice Kapp Perry. This song may be copied for incidental, \nnoncommercial church or home use."
         }
       ],
-      "refrains": [],
       "notes": [
-        "Lyrics span multiple vocal parts; sung in score order, not expanded performance order.",
-        "Part/round performance directions are retained in the score; no performance-order expansion."
+        "Structure reviewed; existing Lyrics availability remains withheld. Publication eligibility is not established by musical-data review."
       ],
-      "status": "needs-review",
+      "status": "reviewed-withheld",
       "alternateLyrics": [],
-      "extractionDecisions": [],
+      "extractionDecisions": [
+        "CS190 PDF pp1–2: separate Girls/P1 and Boys/P2 X4–19, then combined pass using ending 3 (X20–24). P2 X19 here and X20 here are alternative endings, not consecutive words. Shared final text follows once after both parts; original raw streams retain both occurrences."
+      ],
       "sourceTextBlocks": [
         "Love Is Spoken Here",
         "Mosiah 4:15\nDoctrine and Covenants 68:28",
         "Words and music: \n Janice Kapp Perry, b. 1938",
         "© 1980 by Janice Kapp Perry. This song may be copied for incidental, \nnoncommercial church or home use."
       ],
-      "available": false
+      "available": false,
+      "sourceLyricStreams": [
+        {
+          "part": "P1",
+          "voice": "1",
+          "row": "1",
+          "text": "(Girls) 1. I see my mother kneeling with our family each day. I hear the words she whispers as she bows her head to pray. Her plea to the Father quiets all my fears, And I am thankful love is spoken here. I can often feel the Savior near When love is spoken here."
+        },
+        {
+          "part": "P2",
+          "voice": "1",
+          "row": "2",
+          "text": "(Boys) 2. Mine is a home where ev’ry hour is blessed by the strength of priesthood pow’r, With father and mother leading the way, Teaching me how to trust and obey; And the things they teach are crystal clear, For love is spoken here. here. I can often feel the Savior near When love is spoken here."
+        }
+      ],
+      "publicationReview": {
+        "status": "existing-withholding-preserved",
+        "publicLyricsEnabled": false
+      }
     },
     {
       "id": "song-732f9096-6912-457b-849a-d8ea748c38fb",

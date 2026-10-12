@@ -947,5 +947,16 @@
         "Unlabelled ending follows the numbered verses; shown separately. Consult score for repetitions."
       ]
     }
-  ]
+  ],
+  "currentQualityReview": {
+    "report": "reports/lyrics-quality-batch1.json",
+    "date": "2026-10-11",
+    "statusCounts": {
+      "extracted": 638,
+      "no-lyrics": 15,
+      "needs-review": 24,
+      "reviewed-withheld": 4
+    },
+    "note": "Published-catalog counts; preceding raw diagnostics retained as historical extraction evidence. Four reviewed corrections remain withheld. Unpublished cs-12 work excluded."
+  }
 }

@@ -1,5 +1,7 @@
 # Withheld Hymnal Lyrics
 
+Current review (2026-10-11): [Lyrics quality batch 1](lyrics-quality-batch1.json). The entries below are historical raw extraction findings; they are not a current unresolved count. CS #42, #78, #190 and Hymns #212 now have source-reviewed structures but remain unavailable; musical correction does not establish publication eligibility. CS #12 remains separately prepared and unpublished.
+
 Score remains available. Extraction is ambiguous, not silently presented as verified.
 
 - 1: The Morning Breaks — Alternate vocal streams for verse 1 are retained separately; consult the score.; Alternate vocal streams for verse 2 are retained separately; consult the score.; Alternate vocal streams for verse 3 are retained separately; consult the score.; Alternate vocal streams for verse 4 are retained separately; consult the score.; Alternate vocal streams for verse 5 are retained separately; consult the score.; Lyrics span multiple vocal parts; sung in score order, not expanded performance order.

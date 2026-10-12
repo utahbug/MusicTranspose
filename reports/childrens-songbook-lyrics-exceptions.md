@@ -1,5 +1,7 @@
 # Withheld collection Lyrics
 
+Current review (2026-10-11): [Lyrics quality batch 1](lyrics-quality-batch1.json). The entries below are historical raw extraction findings; they are not a current unresolved count. CS #42, #78, #190 and Hymns #212 now have source-reviewed structures but remain unavailable; musical correction does not establish publication eligibility. CS #12 remains separately prepared and unpublished.
+
 Score remains available. Entries below have ambiguous extraction or no source lyrics; no fabricated text is displayed.
 
 - 12: A Child’s Prayer — Lyrics span multiple vocal parts; sung in score order, not expanded performance order.; Part/round performance directions are retained in the score; no performance-order expansion.

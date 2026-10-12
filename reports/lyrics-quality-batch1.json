@@ -1,0 +1,339 @@
+{
+  "startingCommit": "19f6e3a78e8be972380bf711c6cf792fe171d620",
+  "date": "2026-10-11",
+  "scope": "Four source-specific corrections; existing availability remains false. No publication clearance inferred. Separate unpublished cs-12 preparation excluded from commit.",
+  "songs": [
+    {
+      "id": "cs-78",
+      "number": "78",
+      "title": "I’m Trying to Be like Jesus",
+      "collection": "Children’s Songbook",
+      "classification": "Confirmed extraction defect in complex source structure; corrected but withheld",
+      "principalVerses": 2,
+      "sections": [
+        "Chorus",
+        "Credits and references"
+      ],
+      "evidence": "CS78 PDF pp1–2 and XML P1: X3 pickup/row1 X4–15; row2 X4–15 preceded by first-ending X23 return pickup. Chorus X16–22 plus final word X24; X23 pickup is not a second refrain. PDF confirms lowercase his/he and whispers colon; these PDF/XML differences are corrected with source hash guards.",
+      "sourceHashes": {
+        "assets/scores/cs-78.mxl": "4a592f668b5ab64b71a19a827d3fe8deccbc04e1383a9830237614a2b0fd5cd9",
+        "assets/pdfs/fallback/cs-78.pdf": "aae09dca46b96284e7b7fbc0f409e269105dda0eae4db22f5969006e05437f87"
+      },
+      "available": false,
+      "publicationStatus": "Existing withholding preserved; musical verification does not establish website publication eligibility."
+    },
+    {
+      "id": "song-9be03820-2e2a-453e-9270-2138bf79d9c2",
+      "number": "212",
+      "title": "Far, Far Away on Judea’s Plains",
+      "collection": "Hymns (1985)",
+      "classification": "Confirmed extraction defect in complex source structure; corrected but withheld",
+      "principalVerses": 4,
+      "sections": [
+        "Refrain",
+        "Refrain — upper secondary line",
+        "Refrain — lower voices",
+        "Credits and references"
+      ],
+      "evidence": "Hymn212 PDF p1 and XML: four actual stanzas P1 rows1–4 through X3. P1 row2 X4–11 is the shared refrain, not part of verse2 only. XML P2 row5 appears under the upper staff in PDF and is an upper secondary line; row6 lower line crosses voice IDs and is ordered by onset at X4–7. Upper secondary shares the first Glory phrase at X4. Both rejoin common Peace text X8–11. No invented verses5/6. Refrain is descriptive; no unsupported printed Chorus label claimed.",
+      "sourceHashes": {
+        "assets/scores/song-9be03820-2e2a-453e-9270-2138bf79d9c2.mxl": "b0f20f0210cdcc7ebe56f7cd22797c10b4af338179067b4bfcae2a1b52645bf9",
+        "assets/pdfs/fallback/song-9be03820-2e2a-453e-9270-2138bf79d9c2.pdf": "7614bcf71996b02a997272c44cfa32e745703ca093e2364191149b6b508cd3e4"
+      },
+      "available": false,
+      "publicationStatus": "Existing withholding preserved; musical verification does not establish website publication eligibility."
+    },
+    {
+      "id": "song-d165ef87-2efa-4a0c-a4b1-e07a742ea654",
+      "number": "42",
+      "title": "Away in a Manger",
+      "collection": "Children’s Songbook",
+      "classification": "Confirmed extraction defect in complex source structure; corrected but withheld",
+      "principalVerses": 3,
+      "sections": [
+        "Chorus — upper part (optional)",
+        "Chorus — lower part (optional)",
+        "Performance instruction",
+        "Credits and references"
+      ],
+      "evidence": "CS42 PDF pp1–2: three verses P1 rows1–3 through X16; optional Chorus X17–33. Lower response row2 crosses XML voice IDs; onset order restores its words. Lower part shares the Savior in a stall at X22–25, then follows its own closing the Lord, the Lord of all. Two separately labeled optional disclosures preserve overlap without inventing extra verses. PDF footnote: Chorus may be sung in one or two parts.",
+      "sourceHashes": {
+        "assets/scores/song-d165ef87-2efa-4a0c-a4b1-e07a742ea654.mxl": "b1012bee827cb45d6c001a1c89fa8007fdb917e985765e617c3ac05d771d8d12",
+        "assets/pdfs/fallback/song-d165ef87-2efa-4a0c-a4b1-e07a742ea654.pdf": "61648064492a00df22ecfc8725951cc7de4e7da00821952ec2bc5d4b212df0ff"
+      },
+      "available": false,
+      "publicationStatus": "Existing withholding preserved; musical verification does not establish website publication eligibility."
+    },
+    {
+      "id": "song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7",
+      "number": "190",
+      "title": "Love Is Spoken Here",
+      "collection": "Children’s Songbook",
+      "classification": "Confirmed extraction defect in complex source structure; corrected but withheld",
+      "principalVerses": 0,
+      "sections": [
+        "Performance instruction",
+        "Part 1 — Girls",
+        "Part 2 — Boys",
+        "Together — third ending",
+        "Credits and references"
+      ],
+      "evidence": "CS190 PDF pp1–2: separate Girls/P1 and Boys/P2 X4–19, then combined pass using ending 3 (X20–24). P2 X19 here and X20 here are alternative endings, not consecutive words. Shared final text follows once after both parts; original raw streams retain both occurrences.",
+      "sourceHashes": {
+        "assets/scores/song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7.mxl": "6b40b39373966e6cf24c54a46e9d5acaaccf147bdff03afbc3ee36e93fca82d9",
+        "assets/pdfs/fallback/song-1d22a11a-9dd3-480d-a6f4-8c8e3fbd84a7.pdf": "28ff1b79aaef4f69b944cd0787189d34e37958b5d9b1bf6f832c9a8ac5c4a1d9"
+      },
+      "available": false,
+      "publicationStatus": "Existing withholding preserved; musical verification does not establish website publication eligibility."
+    }
+  ],
+  "noLyrics": [
+    {
+      "id": "scripture-power",
+      "number": "",
+      "title": "Scripture Power",
+      "collection": "Music from the Friend",
+      "source": "./assets/pdfs/scripture-power.pdf",
+      "pdfPages": 2,
+      "pdfSha256": "8ca5491aeaf8dd7780af9ecf925f7772d6b0b9877cb67e805fd9500e1ec7b7ad",
+      "classification": "PDF-only without structured Lyrics",
+      "evidence": "Catalog asset is PDF, with no structured MusicXML lyric source. Scripture Power has no usable text layer; Choose to Serve the Lord has score/lyric text but no structured extraction.",
+      "nextAction": "Separate authorized structured-source acquisition/review; no OCR or PDF lyric extraction added."
+    },
+    {
+      "id": "choose-to-serve-the-lord",
+      "number": "",
+      "title": "Choose to Serve the Lord",
+      "collection": "Primary-use music",
+      "source": "./assets/pdfs/choose-to-serve-the-lord.pdf",
+      "pdfPages": 5,
+      "pdfSha256": "04bd15e6d8009b299a4ea4f14bf28ced81d632a7be5e0bb404a7f4405f3f9639",
+      "classification": "PDF-only without structured Lyrics",
+      "evidence": "Catalog asset is PDF, with no structured MusicXML lyric source. Scripture Power has no usable text layer; Choose to Serve the Lord has score/lyric text but no structured extraction.",
+      "nextAction": "Separate authorized structured-source acquisition/review; no OCR or PDF lyric extraction added."
+    },
+    {
+      "id": "song-8fa768c2-7402-4551-800a-2bdf30049be5",
+      "number": "288",
+      "title": "Impromptu",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-8fa768c2-7402-4551-800a-2bdf30049be5.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "51905902ed01a02467107fce95a1d91c92d467636f3f6dd6df0106fae0ea8a50",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-3c854990-9860-47b6-88f2-c395d45ebae5",
+      "number": "289",
+      "title": "To a Wild Rose",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-3c854990-9860-47b6-88f2-c395d45ebae5.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "0dd4590ebbe522bcf000d4adf2d049b0c2e938bc72229acba5fea711823a8728",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-f6248e54-3bfb-4c7a-9f65-0f27075a943e",
+      "number": "290",
+      "title": "Each Sunday Morning",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-f6248e54-3bfb-4c7a-9f65-0f27075a943e.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "e2390e5fb71cc2d643b284cc6ec4576fb585dd79b517c0e69672c02085629f8c",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-b428e858-0133-4d4a-8a95-911b868aef60",
+      "number": "291",
+      "title": "In Quietude",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-b428e858-0133-4d4a-8a95-911b868aef60.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "a9816bd99bd5773fdec60b450def2fccb54993d69ee51d02700dd877f834f8dc",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-82b08bde-2e30-461f-88be-c410be00d868",
+      "number": "292a",
+      "title": "Loving Shepherd",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-82b08bde-2e30-461f-88be-c410be00d868.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "1be711719ea0915506e782901203ad4eb91b189ff39c3e8931003a9b0f579bb2",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-b01244cb-7bb7-424c-9f78-c2f39b6e112a",
+      "number": "292b",
+      "title": "Morning Prayer",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-b01244cb-7bb7-424c-9f78-c2f39b6e112a.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "2dabc7820fa3fa555517f8a50ac7d0f40ea0af7200353c2a1a6dbcf34ee4b7a2",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-0929ad3e-a434-4c6a-856e-0eb036eddee5",
+      "number": "293",
+      "title": "My Heart Ever Faithful",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-0929ad3e-a434-4c6a-856e-0eb036eddee5.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "40b46c919fd0852ddc4bc5b1ee475a39bf4c56ef891d958068eca3f357bd8a17",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-8047e6c9-bc52-49c5-abe8-89b924e6f00a",
+      "number": "294",
+      "title": "Andante",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-8047e6c9-bc52-49c5-abe8-89b924e6f00a.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "e542140c991f00d032dd01053bf0085e649e5576a6b1827feb9b068390d862f6",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-6964e731-38cd-482a-992a-944a7d14c5f8",
+      "number": "295",
+      "title": "O Rest in the Lord",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-6964e731-38cd-482a-992a-944a7d14c5f8.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "940a18c9abd795677b3c9797141abafbf3cbe2ad77720aa193a2352e612a098a",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-41eb4c94-5450-444d-acbb-8cb434ffe645",
+      "number": "296",
+      "title": "Air from Orpheus",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-41eb4c94-5450-444d-acbb-8cb434ffe645.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "81ef81f0b1311e6837ec8fa5499d1d1d49b3ef6ce8f00cc0cfec99dbb2a93e79",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf",
+      "number": "297",
+      "title": "Supplication",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-d60973ea-2c72-4ac5-b8ae-f3788071a3cf.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "1438748323138124d98e8b90128aa91563ccb9492df019c2a4c8a4ba35908dc6",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-55a94a2f-1049-41e7-bc34-4c9be1e585f4",
+      "number": "298",
+      "title": "Prelude in F",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-55a94a2f-1049-41e7-bc34-4c9be1e585f4.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "8894ff47e01ff6837bc13c4cf8a5b17875794ae90be2c55bffcf5797199247ad",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    },
+    {
+      "id": "song-352e183f-b5d1-4b0e-9244-990fb0bdd165",
+      "number": "299",
+      "title": "Distant Bells",
+      "collection": "Children’s Songbook",
+      "source": "./assets/scores/song-352e183f-b5d1-4b0e-9244-990fb0bdd165.mxl",
+      "pdfPages": 1,
+      "pdfSha256": "765ecf544a093291c37e7ec2362bba7a5a69035c73e76bbb8a47a1b2f7428858",
+      "classification": "Intentionally instrumental",
+      "lyricNodes": 0,
+      "evidence": "MusicXML contains instrumental notation and zero lyric elements; corresponding PDF text contains notation, tempo/technique and music attribution, not sung stanzas.",
+      "nextAction": "Retain no-lyrics; no fabricated lyrics or correction needed."
+    }
+  ],
+  "catalogAudit": {
+    "records": 681,
+    "available": 639,
+    "localStatusCounts": {
+      "extracted": 638,
+      "no-lyrics": 15,
+      "needs-review": 23,
+      "prepared-publication-review": 1,
+      "reviewed-withheld": 4
+    },
+    "committedStatusCounts": {
+      "extracted": 638,
+      "no-lyrics": 15,
+      "needs-review": 24,
+      "reviewed-withheld": 4
+    },
+    "remainingSharedEnding": 0,
+    "explanation": "Local needs-review falls from 27 to 23; public catalog from 28 to 24. The one-record difference is unpublished cs-12 preparation, still not cleared. Four reviewed-withheld records remain unavailable, so resolved extraction does not mean public access."
+  },
+  "validation": {
+    "sourceAndTargetedReplay": "passed",
+    "browsers": {
+      "engines": [
+        "Chromium (Edge)",
+        "WebKit"
+      ],
+      "widths": [
+        320,
+        390,
+        744,
+        820,
+        1024,
+        1440
+      ],
+      "result": "passed private previews of all four records: source sections, independent disclosures, complete Copy, enabled speaker, font/frame/theme/shared sound, Score navigation, Home default and per-List overrides at 390px",
+      "clipboard": "Chromium actual clipboard; WebKit isolated writeText stub; no physical-device claim"
+    },
+    "sourceAssets": "Original MXL/PDF hash guarded; CS42 derived PDF/mapping untouched.",
+    "existingWork": "CS12 prepared record preserved locally and excluded from publication; hymn296 and all earlier corrections unchanged.",
+    "regressions": [
+      "lyrics-frame-copy: catalog coverage and five widths passed",
+      "offline-bulk: controller/worker retention, partial failure and retry passed",
+      "lyrics-chorus-structure: passed",
+      "Python/JS syntax, manifest icons, storage manifest build/check, diff whitespace: passed",
+      "lyrics-playback-sound: Chromium/WebKit, six widths, selection persistence and audio lifecycle passed"
+    ],
+    "stagedRelease": "Source/replay tests and build/storage check passed against isolated staged export, excluding cs-12 preparation."
+  },
+  "limitations": [
+    "No physical iPhone/iPad or acoustic quality testing.",
+    "All four records remain withheld; loopback-only tests temporarily enable them in disposable browser responses.",
+    "Historical raw extraction counts and prior final-two report are evidence snapshots, not the current unresolved list.",
+    "No rights determination made for any song."
+  ]
+}
