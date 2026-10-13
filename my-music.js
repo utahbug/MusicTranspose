@@ -4,6 +4,17 @@ import {inspectFile} from './local-music-validation.js';
 import {normalizeFileTags,fileTypeLabel,byHash,localRecord,addRecord,updateRecord,removeRecord,storageMessage,fileDetails,saveBundledFileDetails} from './local-music-store.js';
 import {refreshLocalMusic,releaseLocalAsset,songs} from './catalog.js';
 const $=id=>document.getElementById(id);
+// Shared by single-file editing and Files selection; public assets are never deleted.
+export async function removeMusicFile(id){
+ const song=songs.find(s=>s.id===id&&isFileSong(s));
+ if(!song)throw Error('File no longer available.');
+ if(!song.local){hideIncludedFile(id);document.dispatchEvent(new Event('local-music-changed'));return '';}
+ await removeRecord(id);releaseLocalAsset(id);
+ const event=new CustomEvent('local-music-deleted',{detail:id});document.dispatchEvent(event);
+ let warning=event.membershipsSaved===false?'File deleted; Favorites and List reference changes could not be saved.':'';
+ try{await refreshLocalMusic();}catch{const index=songs.findIndex(s=>s.id===id);if(index>=0)songs.splice(index,1);document.dispatchEvent(new Event('local-music-changed'));warning+=' File deleted; catalog refresh failed. Reload to refresh.';}
+ return warning.trim();
+}
 export function initMyMusic(){
  const dialog=$('music-import');let pending=null,editing=null,working=false,fromFiles=false,previewRequest=0,origin=null,bundledEdit=false;
  const message=text=>$('import-message').textContent=text;
@@ -23,7 +34,7 @@ export function initMyMusic(){
    await refreshLocalMusic();dialog.close();document.dispatchEvent(new CustomEvent('local-music-saved',{detail:{message:savedMessage,id:savedId,edited:wasEditing}}));if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
   }catch(e){message(storageMessage(e));$('import-save').disabled=false;}finally{working=false;}
  };
- $('import-delete').onclick=async()=>{if(!editing||working)return;if(bundledEdit){try{hideIncludedFile(editing);dialog.close();document.dispatchEvent(new Event('local-music-changed'));$('files-status').textContent='Included example removed from Files. Lists and the source PDF are unchanged.';}catch{message('Could not save this change. Please retry.');}return;}if(!confirm('Delete this file from this device? Its Favorites and list memberships will also be removed.'))return;working=true;
-  try{await removeRecord(editing);releaseLocalAsset(editing);document.dispatchEvent(new CustomEvent('local-music-deleted',{detail:editing}));await refreshLocalMusic();dialog.close();document.dispatchEvent(new CustomEvent('local-music-saved',{detail:'File deleted. Favorites and list references removed.'}));}catch(e){message(storageMessage(e));}finally{working=false;}
+ $('import-delete').onclick=async()=>{if(!editing||working)return;if(bundledEdit){try{await removeMusicFile(editing);dialog.close();$('files-status').textContent='Included example removed from Files. Lists and the source PDF are unchanged.';}catch{message('Could not save this change. Please retry.');}return;}if(!confirm('Delete this file from this device? Its Favorites and list memberships will also be removed.'))return;working=true;
+  try{const warning=await removeMusicFile(editing);dialog.close();document.dispatchEvent(new CustomEvent('local-music-saved',{detail:warning||'File deleted. Favorites and list references removed.'}));}catch(e){message(storageMessage(e));}finally{working=false;}
  };
 }

@@ -1,3 +1,4 @@
+import {includedFileVisible} from './reviewer-starters.js';
 import {initUpdateCheck} from './app-update.js';
 import {initOfflineInventory} from './offline-inventory.js';
 import {createKeyboardWorkspace} from './keyboard.js';
@@ -184,12 +185,13 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  // One query/filter/order path serves both visible results and locator fallback.
  function findSongs(query){
   const g=group(),pool=g?g.songs.map(id=>textItem(g,id)?{id,title:textItem(g,id).title,text:true}:songs.find(s=>s.id===id)||{id,title:'Unavailable song',missing:true}):songs;
-  let found=pool.filter(s=>s.text?(!savedOnly&&(!query||normalizeSearch(s.title).includes(query))&&(!favoritesOnly||state.favorites.includes(s.id))):(!savedOnly||(catalogOfflineSong(s)&&offlineSongState(s).saved))&&(!query||search.match(s,query,enabledFields).matched)&&matchesSource(s,source)&&(reordering||!favoritesOnly||state.favorites.includes(s.id))).map(s=>songForSource(s,source));
+  let found=pool.filter(s=>s.text?(!savedOnly&&(!query||normalizeSearch(s.title).includes(query))&&(!favoritesOnly||state.favorites.includes(s.id))):(!savedOnly||(catalogOfflineSong(s)&&offlineSongState(s).saved))&&(!query||search.match(s,query,enabledFields).matched)&&matchesSource(s,source)&&(g||source!=='my-music'||includedFileVisible(s))&&(reordering||!favoritesOnly||state.favorites.includes(s.id))).map(s=>songForSource(s,source));
   const title=(a,b)=>collator.compare(a.title,b.title);
   if(sort!=='manual')found.sort((a,b)=>(sort==='manual'?g.songs.indexOf(a.id)-g.songs.indexOf(b.id):0)||(query?Number(!!search.match(b,query,enabledFields).pageMatch)-Number(!!search.match(a,query,enabledFields).pageMatch):0)||(sort==='number'?(compareNumbers(a,b)||title(a,b)):compareAlphabeticalTitles(a,b)));
   return found;
  }
  function render(){
+  $('library').classList.toggle('files-source-view',source==='my-music'&&!activeList);
   $('library-saved-filter').setAttribute('aria-checked',String(savedOnly));
   $('clear-favorites').hidden=state.favorites.length===0;
   $('view-favorites').setAttribute('aria-pressed',String(favoritesOnly));$('view-favorites').setAttribute('aria-label',favoritesOnly?'Show all songs':'Show Favorites');$('view-favorites').title=favoritesOnly?'Show all songs':'Show Favorites';
@@ -282,7 +284,7 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
  $('library-search').oninput=render;scoreReturn.onclick=returnFromScore;
  document.addEventListener('click',e=>{if(e.target.closest('#library .header-home'))showHome();else if(e.target.closest('.header-home')&&$('library').hidden)showLibrary();});
  document.addEventListener('local-music-changed',()=>{render();lists.render();});
- document.addEventListener('local-music-deleted',e=>{const id=e.detail;state.favorites=state.favorites.filter(x=>x!==id);state.recent=state.recent.filter(x=>x!==id);for(const g of state.groups){g.songs=g.songs.filter(x=>x!==id);delete g.displayNames?.[id];}if(current===id)current=null;save();});
+ document.addEventListener('local-music-deleted',e=>{const id=e.detail;state.favorites=state.favorites.filter(x=>x!==id);state.recent=state.recent.filter(x=>x!==id);for(const g of state.groups){g.songs=g.songs.filter(x=>x!==id);delete g.displayNames?.[id];}if(current===id)current=null;e.membershipsSaved=save();});
  document.addEventListener('local-music-memberships',e=>{for(const item of e.detail.memberships){const g=state.groups.find(g=>g.id===item.id);if(g){g.songs=item.checked?[...new Set([...g.songs,e.detail.id])]:g.songs.filter(id=>id!==e.detail.id);if(!item.checked)delete g.displayNames?.[e.detail.id];}}save();});
  function capture(route){if(!$('library').hidden){libraryScroll=scrollY;remember();persistWorkspace();}return {...route,scroll:scrollY,library:{...browse(),searchEpoch,activeList,current}};}
  async function restore(route){

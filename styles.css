@@ -2029,3 +2029,32 @@ body #library .workspace-banner h1{flex:1 1 auto}
  body.score-focus-active:not(.iphone-score-ui) .score-identity-header .score-title-block h1{flex:1 1 230px}
  body.score-focus-active:not(.iphone-score-ui) #score-focus-info{flex:0 1 auto;max-width:100%;margin:0 0 0 auto;text-align:right;overflow-wrap:anywhere}
 }
+
+/* Files-only density; List and general Library rows retain their existing styles. */
+#files-view .file-entry,#library.files-source-view .song-entry{gap:3px;padding:8px;min-height:60px}
+#files-view .file-entry strong,#library.files-source-view .song-entry strong{font-size:16px;font-weight:600;line-height:1.3}
+#files-view .file-entry .song-meta,#library.files-source-view .song-meta{font-size:12px}
+#files-view .files-action-row{gap:8px;justify-content:flex-start}
+#files-view .files-action-row button{min-height:44px;padding:8px;font-size:14px}
+#files-count{margin-left:auto}
+#files-view.selecting-files #files-count,#files-view.selecting-files .file-columns{display:none}
+#files-view.selecting-files .file-row{grid-template-columns:44px minmax(0,1fr) 70px}
+.file-select-target{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;cursor:pointer}
+.file-select-target input{width:20px;height:20px;margin:0;accent-color:#365f7d}
+#files-remove-dialog{max-width:min(460px,calc(100vw - 32px))}
+#files-remove-dialog button{min-height:44px}
+@media(max-width:600px){
+ #files-view .file-entry strong,#library.files-source-view .song-entry strong{font-size:14px}
+ #files-view .file-entry .song-meta,#library.files-source-view .song-meta{font-size:11px}
+ #files-view .file-row{grid-template-columns:minmax(0,1fr) 64px 44px}
+ #files-view .file-type{grid-column:2;grid-row:1;padding:4px;font-size:11px;white-space:nowrap}
+ #files-view .file-entry{grid-column:1;grid-row:1}
+ #files-view .file-edit{grid-column:3;grid-row:1}
+ #files-view.selecting-files .file-row{grid-template-columns:44px minmax(0,1fr) 64px}
+ #files-view.selecting-files .file-entry{grid-column:2}
+ #files-view.selecting-files .file-type{grid-column:3}
+ #files-count{font-size:12px}
+}
+
+#files-select-all-label:not([hidden]){display:flex;align-items:center;gap:4px;min-height:44px;min-width:44px;font-size:13px}
+#files-select-all{width:18px;height:18px;margin:0}
