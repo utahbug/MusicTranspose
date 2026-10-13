@@ -2002,6 +2002,7 @@ body #library .workspace-banner h1{flex:1 1 auto}
 .song-view-segments label:last-child span{border-radius:0 7px 7px 0}
 .song-view-segments input:checked+span{background:#365f7d;color:white;font-weight:600}
 .song-view-segments input:focus-visible+span{outline:2px solid var(--popup-focus);outline-offset:-3px}
+#home-settings-menu [data-song-view]{padding-inline-start:26px}
 #home-settings-menu [data-song-view][aria-checked=true]{background:var(--popup-hover);font-weight:700}
 #home-settings-menu [data-song-view][aria-checked=true]::after{content:' ✓';float:right}
 #list-song-view{appearance:auto;width:100%;min-height:44px;margin:4px 0 12px;padding:4px 10px;border:1px solid #b6cbd5;border-radius:6px;background-color:transparent;color:inherit;font:inherit}
