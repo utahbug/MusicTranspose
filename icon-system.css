@@ -185,3 +185,12 @@ body .masthead .toolbar #score-markup {display:none;}
 @media screen and (min-width:601px) and (max-width:700px) {
  body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar {padding-right:calc(var(--score-lyrics-right) + max(0px,var(--score-lyrics-scrollbar) - (100vw - 100%)));}
 }
+
+/* Fixed destination slots prevent Lists/Files/Notes labels and legacy icon
+   sizing from moving neighboring controls between workspaces. */
+body :is(#lists-view,#files-view,#texts-view) .workspace-return {gap:8px;}
+body :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-footer-destination] {display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;gap:7px;}
+body :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-footer-destination] svg {flex:none;width:30px;height:30px;}
+@media screen and (min-width:700px) {
+ body:not(.iphone-score-ui) :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-footer-destination] {flex-basis:88px;width:88px;min-width:88px;padding:0 7px;}
+}
