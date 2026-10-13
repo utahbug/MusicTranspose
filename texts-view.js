@@ -20,7 +20,7 @@ export function createTextsView({getState,save,edit,read,onHome,onFiles,onLists,
    const star=button('',()=>favorite(id),'list-icon favorite');star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(state.favorites.includes(id)));star.setAttribute('aria-label','Favorite Note: '+item.title);star.title='Favorite';
    const used=state.groups.filter(g=>g.songs.includes(id)).length,entry=button('',()=>read(id),'text-library-entry');entry.append(el('strong',item.title),el('span',(item.example?'Included example · Note · ':'Note · ')+used+' '+(used===1?'List':'Lists'),'song-meta'));
    const pencil=button('',()=>edit(null,id),'list-icon');pencil.innerHTML=editIcon;pencil.title='Edit Note';pencil.setAttribute('aria-label','Edit Note: '+item.title);
-   const lists=button('',()=>memberships(id),'list-icon');lists.innerHTML=listsIcon;lists.title='Used in Lists';lists.setAttribute('aria-label','Lists for '+item.title);row.append(star,entry,pencil,lists);host.append(row);
+   const lists=button('',()=>memberships(id),'list-icon');lists.innerHTML=listsIcon;lists.title='Used in Lists';lists.setAttribute('aria-label','Lists for '+item.title);row.append(entry,pencil,lists,star);host.append(row);
   }
   if(!host.children.length)host.append(el('p',items.length?'No Notes match.':'No Notes yet. Choose New Note to get started.'));
  }
