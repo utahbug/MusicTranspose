@@ -52,8 +52,8 @@
 #keyboard-view .keyboard-transpose-control button:nth-child(2) { background: var(--surface); border-inline: 0; color: var(--text); font-size: 1rem; font-weight: 800; }
 #keyboard-view .keyboard-transpose-control button:disabled { color: var(--muted); opacity: 0.45; }
 #keyboard-view .keyboard-sound-status { color: var(--muted); font-size: 0.78rem; margin: 5px auto 8px; max-width: 820px; text-align: left; }
-#keyboard-view .keyboard-scroll { margin: 4px auto 16px; max-width: 820px; overflow-x: auto; padding: 5px 2px 10px; width: 100%; }
-#keyboard-view .real-keyboard { height: 230px; min-width: 700px; position: relative; touch-action: none; width: 100%; }
+#keyboard-view .keyboard-scroll { margin: 4px auto 16px; max-width: 1280px; overflow-x: auto; padding: 5px 2px 10px; width: 100%; }
+#keyboard-view .real-keyboard { height: 230px; min-width: 660px; position: relative; touch-action: none; width: 100%; }
 #keyboard-view .keyboard-white-keys { display: flex; height: 100%; width: 100%; }
 #keyboard-view .keyboard-key { border-radius: 0 0 7px 7px; font-family: "Atkinson Hyperlegible", system-ui, sans-serif; font-weight: 800; margin: 0; padding: 0; touch-action: none; user-select: none; -webkit-user-select: none; }
 #keyboard-view .keyboard-key span { pointer-events: none; }
@@ -128,7 +128,7 @@
 #keyboard-view .keyboard-panel { border-left: 0; border-radius: 0; border-right: 0; margin-left: -10px; margin-right: -10px; padding: 14px 10px; }
 #keyboard-view .keyboard-panel > .piano-sound-controls { grid-template-columns: 1fr 1fr; }
 #keyboard-view .keyboard-volume-control { grid-column: 1 / -1; }
-#keyboard-view .real-keyboard { height: 205px; min-width: 620px; }
+#keyboard-view .real-keyboard { height: 205px; min-width: 660px; }
 #keyboard-view .keyboard-black { width: 4.5%; }
 #keyboard-view .keyboard-chord-controls { grid-template-columns: minmax(70px, 0.75fr) minmax(105px, 1.25fr) auto; }
 #keyboard-view .piano-style-guide { grid-template-columns: 1fr; }
@@ -145,7 +145,7 @@
 }
 
 /* Shell adaptations only; preserve Primary's piano and guide presentation. */
-#keyboard-view .keyboard-panel {max-width:900px;margin:18px auto;}
+#keyboard-view .keyboard-panel {max-width:1320px;margin:18px auto;}
 #keyboard-view .keyboard-panel>* {min-width:0;}
 #keyboard-view .keyboard-guide-tabs button {padding-inline:8px;}
 #keyboard-view select {max-width:100%;min-width:0;}
@@ -168,3 +168,12 @@
 
 #keyboard-view .key-change-reminders {display:grid;gap:5px;margin:12px 0 0;color:var(--muted);font-size:.84rem;line-height:1.45;}
 #keyboard-view .key-change-reminders p {margin:0;}
+
+/* Keep one instrument DOM; only its available width and guide visibility change. */
+#keyboard-view .keyboard-view-selector {display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:0 0 12px;}
+#keyboard-view .keyboard-view-selector button {min-height:44px;padding:6px 12px;}
+#keyboard-view .keyboard-view-selector [aria-pressed=true] {background:var(--accent);color:var(--surface);}
+#keyboard-view[data-keyboard-view=only] :is(.keyboard-guide-tabs,#pianoChordGuide,#keyChangeGuide,#scaleGuide) {display:none;}
+#keyboard-view[data-keyboard-view=only] .keyboard-scroll {margin-bottom:0;}
+#keyboard-view .keyboard-panel {padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));}
+@media(max-width:640px) {#keyboard-view .keyboard-panel {padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px));}}

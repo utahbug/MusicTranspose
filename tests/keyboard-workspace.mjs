@@ -14,11 +14,11 @@ try {
    };
   });
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto('http://127.0.0.1:8780/');await page.waitForFunction(()=>window.prototype?.navigation);
+  await page.goto(process.env.TEST_URL||'http://127.0.0.1:8786/');await page.waitForFunction(()=>window.prototype?.navigation);
   assert.equal(await page.evaluate(()=>audioProbe.contexts.length),0,'no unsolicited audio');
   const homeIcon=page.locator('#home-keyboard'),icon=await homeIcon.boundingBox();assert(icon.width>=44&&icon.height>=44);assert(icon.x+icon.width<=width);assert.equal(await homeIcon.getAttribute('title'),'Keyboard');
   await homeIcon.click();await page.waitForFunction(()=>!document.getElementById('keyboard-view').hidden);
-  assert.equal(await page.locator('#keyboardTitle').textContent(),'MusicTranspose · Keyboard');
+  assert.equal(await page.locator('#keyboardTitle').textContent(),'Title Undecided · Keyboard');
   assert.equal(await page.locator('.keyboard-white').count(),15);assert.equal(await page.locator('.keyboard-black').count(),10);
   assert.equal(await page.locator('[data-midi="60"]').getAttribute('aria-label'),'C4');assert.equal(await page.locator('[data-midi="61"]').getAttribute('aria-label'),'C sharp4');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no page overflow');
@@ -32,6 +32,7 @@ try {
   await page.locator('#keyboardSound').selectOption('electric-piano');await play(cKey,60);assert.equal(await page.evaluate(()=>audioProbe.notes[0].type),'sine');await page.locator('#keyboardSound').selectOption('bell');await play(blackKey,61);await page.locator('#keyboardSound').selectOption('grand-piano');
   await page.locator('#keyboardVolume').fill('23');await page.waitForTimeout(150);assert(Math.abs(await page.evaluate(()=>audioProbe.gains[0].gain.value)-.23)<.001);await page.locator('#keyboardVolume').fill('58');
   await cKey.dispatchEvent('pointerdown',{pointerId:1,pointerType:'touch'});await blackKey.dispatchEvent('pointerdown',{pointerId:2,pointerType:'touch'});await page.waitForFunction(()=>document.querySelectorAll('.is-playing').length===2);await cKey.dispatchEvent('pointercancel',{pointerId:1});await blackKey.dispatchEvent('pointerup',{pointerId:2});
+  await cKey.dispatchEvent('pointerdown',{pointerId:91,pointerType:'touch',button:0});await page.waitForFunction(()=>document.querySelector('[data-midi="60"]').classList.contains('is-playing'));const blackBox=await blackKey.boundingBox();await cKey.dispatchEvent('pointermove',{pointerId:91,pointerType:'touch',clientX:blackBox.x+blackBox.width/2,clientY:blackBox.y+20});await page.waitForFunction(()=>document.querySelector('[data-midi="61"]').classList.contains('is-playing'));assert(!(await cKey.evaluate(e=>e.classList.contains('is-playing'))));await cKey.dispatchEvent('pointerup',{pointerId:91});assert.equal(await page.locator('.is-playing').count(),0);
   await cKey.focus();await page.keyboard.down('Enter');assert(await cKey.evaluate(e=>e.classList.contains('is-playing')));await page.keyboard.up('Enter');
   await page.locator('#pianoChordRoot').selectOption('2');await page.locator('#pianoChordType').selectOption('minor7');assert.match(await page.locator('#pianoChordNotes').textContent(),/D Minor 7th/);assert.equal(await page.locator('.chord-highlight').count(),4);
   await page.evaluate(()=>audioProbe.notes=[]);await page.locator('#pianoChordPlayButton').click();await page.waitForFunction(()=>document.querySelectorAll('.game-preview').length===4);assert.equal(await page.evaluate(()=>audioProbe.notes.length),16);await page.waitForFunction(()=>document.querySelectorAll('.game-preview').length===0);

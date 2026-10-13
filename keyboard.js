@@ -8,6 +8,16 @@ const clamp = (value,min,max) => Math.max(min,Math.min(max,value));
 const state = {piano:{sound:'grand-piano',volume:.58,transpose:0,audioContext:null,masterGain:null,compressor:null,voices:new Map(),pointerNotes:new Map(),pointerTokens:new Map()}};
 const PIANO_SOUND_LABELS = {'grand-piano':'Grand piano','electric-piano':'Electric piano',bell:'Bell'};
 const settingsKey = 'music-transpose-keyboard-v1';
+const viewKey = 'music-transpose-keyboard-view-v1';
+function setKeyboardView(view,save=false) {
+ workspace.dataset.keyboardView=view==='only'?'only':'guides';
+ workspace.querySelectorAll('[data-keyboard-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.keyboardView===workspace.dataset.keyboardView)));
+ if(save)try{localStorage.setItem(viewKey,workspace.dataset.keyboardView);}catch{}
+}
+let savedView='guides';try{savedView=localStorage.getItem(viewKey)||'guides';}catch{}
+setKeyboardView(savedView);
+workspace.querySelectorAll('[data-keyboard-view]').forEach(button=>button.addEventListener('click',()=>setKeyboardView(button.dataset.keyboardView,true)));
+
 const allVoices = new Set(), timers = new Map();
 let generation = 0;
 function schedule(callback,delay,cancel) { const id=setTimeout(() => {timers.delete(id);callback();},delay);timers.set(id,cancel);return id; }

@@ -39,7 +39,7 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
  await p.setViewportSize({width:1366,height:1024});await p.waitForTimeout(350);await check([3,4]);
  await p.locator('#score-hide-controls').click();await p.waitForTimeout(200);await check([3,4]);assert(await p.locator('#pdf-spread-toggle').isVisible());
  await p.locator('#score-show-controls').click();await p.waitForTimeout(200);
- await p.locator('#score-tools').click();await p.locator('#score-annotate').click();await check([4]);assert(await p.locator('#pdf-spread-toggle').isDisabled());
+ await p.locator('#score-markup').click();await check([4]);assert.equal(await p.locator('#score-markup').getAttribute('aria-pressed'),'true');assert(await p.locator('#pdf-spread-toggle').isDisabled());
  const layer=p.locator('.current-page .pdf-annotation-canvas');await layer.waitFor({state:'visible'});
  await layer.evaluate(el=>{const r=el.getBoundingClientRect();for(const [type,x] of [['pointerdown',.3],['pointermove',.4],['pointerup',.4]])el.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:55,isPrimary:true,button:0,pointerType:'pen',clientX:r.x+r.width*x,clientY:r.y+r.height*.3}));});
  const annotations=await p.evaluate(()=>localStorage.getItem('music-transpose-pdf-annotations-v1'));assert(annotations?.includes('choose-to-serve-the-lord'));

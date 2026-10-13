@@ -173,3 +173,15 @@ body :is(.home-toolbar,.workspace-return,.library-quick-access) .footer-destinat
  body:not(.iphone-score-ui) :is(#library-home,#library,#lists-view,#files-view,#texts-view,#keyboard-view) :is(.home-toolbar,.workspace-return,.library-quick-access) button[data-footer-destination]{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:auto;min-width:44px;height:44px;min-height:44px;padding:0 10px;gap:7px;font:500 13px/1.2 system-ui,sans-serif}
  body:not(.iphone-score-ui) :is(.home-toolbar,.workspace-return,.library-quick-access) .footer-destination-label{display:inline;white-space:nowrap}
 }
+
+/* The reading-view switch has the same slot in both footers; Lyrics reserves
+   the marking slot as spacing, without adding an unavailable action. */
+body .masthead .toolbar #score-markup {display:none;}
+@media screen and (min-width:600px) {
+ body .masthead .toolbar #score-markup {display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border:1px solid var(--music-control-border);border-radius:8px;background:var(--music-control-surface);color:var(--music-control-ink);}
+ body .masthead .toolbar #score-markup[aria-pressed=true] {background:var(--nav-active);color:white;}
+ body #lyrics-view .footer-view-pair .lyrics-score-toggle {margin-right:calc(44px + var(--score-lyrics-gap));}
+}
+@media screen and (min-width:601px) and (max-width:700px) {
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar {padding-right:calc(var(--score-lyrics-right) + max(0px,var(--score-lyrics-scrollbar) - (100vw - 100%)));}
+}
