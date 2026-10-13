@@ -166,3 +166,10 @@ body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true]::after {
  body:not(.iphone-score-ui) .masthead .toolbar .playing-controls{gap:2px}
  body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key{width:64px;min-width:64px;max-width:64px}
 }
+
+/* Destination labels never affect Score/Lyrics or the compact phone footers. */
+body :is(.home-toolbar,.workspace-return,.library-quick-access) .footer-destination-label{display:none}
+@media screen and (min-width:700px){
+ body:not(.iphone-score-ui) :is(#library-home,#library,#lists-view,#files-view,#texts-view,#keyboard-view) :is(.home-toolbar,.workspace-return,.library-quick-access) button[data-footer-destination]{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:auto;min-width:44px;height:44px;min-height:44px;padding:0 10px;gap:7px;font:500 13px/1.2 system-ui,sans-serif}
+ body:not(.iphone-score-ui) :is(.home-toolbar,.workspace-return,.library-quick-access) .footer-destination-label{display:inline;white-space:nowrap}
+}

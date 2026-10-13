@@ -16,7 +16,7 @@ for(const [width,height,device] of [[320,900,'desktop'],[390,900,'desktop'],[744
    const original=await p.evaluate(()=>prototype.original),normal=await p.locator('.score-heading').boundingBox();if(width===820)await p.screenshot({path:`test-results/focus-polish/${engine}-${view}-normal.png`});
    await p.locator('#score-hide-controls').click();await settle();const compact=await p.locator('.score-heading').boundingBox();assert(compact.height<normal.height,`${width} ${view}: compact ${compact.height} normal ${normal.height}`);
    assert.equal(await p.evaluate(()=>prototype.original),original);const title=p.locator('.score-heading h1');assert(await title.isVisible());assert.equal(await title.getAttribute('title'),await title.textContent());
-   const info=await p.locator('#score-focus-info').textContent();assert(info.startsWith({pdf:'Original',auto:'Transpose',large:'Melody only'}[view]));if(view!=='pdf')assert.match(info,/major|minor/);
+   const info=await p.locator('#score-focus-info').textContent();assert(info.startsWith('View: '+{pdf:'Original',auto:'Transpose',large:'Melody only'}[view]));if(view!=='pdf')assert.match(info,/major|minor/);
    assert.equal(await p.evaluate(k=>localStorage.getItem(k),pref),null);if(width===820)await p.screenshot({path:`test-results/focus-polish/${engine}-${view}-focus.png`});
    await p.evaluate(()=>prototype.openLyrics('faithful'));await p.locator('.lyrics-score-toggle').click();await ready();assert(await p.locator('#score-show-controls').isVisible());await show();
   }

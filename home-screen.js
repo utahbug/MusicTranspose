@@ -10,7 +10,7 @@ export function initHomeScreen({closeMenu,returnFocus}){
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),android=/Android/i.test(navigator.userAgent);
   install.hidden=!installPrompt||ios;install.disabled=busy;steps.replaceChildren();
   const instructions=ios?['Tap Share (you may find it in the page menu).','Choose Add to Home Screen.','Tap Add.']:android?['Open your browser menu.','Choose Install app or Add to Home screen, if offered.','Follow the browser instructions.']:['Look for the install icon in the address bar or an Install app option in the browser menu.','On Mac Safari, choose File → Add to Dock, if available.'];
-  intro.textContent=ios?'In Safari, open B\'iitzbil Hymns and:':installPrompt?'Install B\'iitzbil Hymns using your browser:':'Add an app icon using your browser:';
+  intro.textContent=ios?'In Safari, open Title Undecided and:':installPrompt?'Install Title Undecided using your browser:':'Add an app icon using your browser:';
   if(install.hidden)for(const text of instructions){const li=document.createElement('li');li.textContent=text;steps.append(li);}
  }
  item.onclick=()=>{closeMenu();updateInstalled();if(item.disabled)return;status.textContent='';guidance();dialog.showModal();document.getElementById('home-screen-close').focus();};

@@ -30,7 +30,7 @@ function syncCompactTitle(){
  const title=document.querySelector('.score-heading h1');title.title=title.textContent;
  const view=$('score-size').dataset.view,label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view]||'Original';
  const key=$('key-name').textContent.replace(/\bMaj\b/,'major').replace(/\bMin\b/,'minor');
- compactInfo.textContent=label+(view!=='pdf'&&key?' · '+key:'');
+ compactInfo.textContent='View: '+label+(view!=='pdf'&&key?' · '+key:'');
 }
 const titleObserver=new MutationObserver(syncCompactTitle);
 for(const el of [document.querySelector('.score-heading h1'),$('key-name')])titleObserver.observe(el,{childList:true,characterData:true,subtree:true});

@@ -2021,3 +2021,10 @@ body #library .workspace-banner h1{flex:1 1 auto}
 #score-tools-menu .toolbar-opening-setting{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:4px 10px;font:500 14px/1.4 system-ui;color:inherit}
 #score-toolbar-opening{min-height:44px;max-width:92px;border:1px solid var(--popup-border);border-radius:6px;background:var(--popup-surface);color:var(--popup-ink);font:inherit}
 #score-tools-menu:is(.sound-open,.export-open) .toolbar-opening-setting{display:none}
+
+/* Focus retains one header; secondary view information yields to long titles. */
+@media screen{
+ body.score-focus-active:not(.iphone-score-ui) .score-identity-header .score-title-block{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:16px;row-gap:2px;width:100%}
+ body.score-focus-active:not(.iphone-score-ui) .score-identity-header .score-title-block h1{flex:1 1 230px}
+ body.score-focus-active:not(.iphone-score-ui) #score-focus-info{flex:0 1 auto;max-width:100%;margin:0 0 0 auto;text-align:right;overflow-wrap:anywhere}
+}

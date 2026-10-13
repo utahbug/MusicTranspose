@@ -16,6 +16,20 @@ export function installWorkspaceFooters(){
    const height=rect.height+'px';if(owner.style.getPropertyValue('--workspace-footer-height')!==height)owner.style.setProperty('--workspace-footer-height',height);
   }
  }
+ // Run after the existing workspace constructors finish installing their icons.
+ queueMicrotask(()=>{
+  const home=new Set(['home-current','library-quick-home','lists-library','files-library','texts-home','keyboard-home']);
+  const destinations={'library-home':'Home','library':'Library','lists-view':'Lists','files-view':'Files','texts-view':'Notes','keyboard-view':'Keyboard'};
+  for(const {footer} of entries)for(const button of footer.querySelectorAll('button')){
+   const label=home.has(button.id)?'Home':destinations[button.getAttribute('aria-controls')];
+   if(!label)continue;
+   button.dataset.footerDestination=label;
+   const text=button.querySelector(':scope > span')||document.createElement('span');
+   text.className='footer-destination-label';text.textContent=label;text.setAttribute('aria-hidden','true');button.append(text);
+   if(home.has(button.id)){button.setAttribute('aria-label','Home');button.title='Home';}
+  }
+  schedule();
+ });
  const schedule=onSettledFooterViewport(update);
  const visibility=new MutationObserver(schedule),size=new ResizeObserver(schedule);
  for(const {footer,owner} of entries){visibility.observe(owner,{attributes:true,attributeFilter:['hidden']});visibility.observe(footer,{attributes:true,attributeFilter:['hidden']});size.observe(footer);}
