@@ -2005,3 +2005,19 @@ body #library .workspace-banner h1{flex:1 1 auto}
 #home-settings-menu [data-song-view][aria-checked=true]{background:var(--popup-hover);font-weight:700}
 #home-settings-menu [data-song-view][aria-checked=true]::after{content:' ✓';float:right}
 #list-song-view{appearance:auto;width:100%;min-height:44px;margin:4px 0 12px;padding:4px 10px;border:1px solid #b6cbd5;border-radius:6px;background-color:transparent;color:inherit;font:inherit}
+
+/* Compact performance header is screen-only; source and export titles stay intact. */
+#score-focus-info{display:none}
+@media screen{
+ body.score-focus-active:not(.lyrics-open):not(.library-open) .score-identity-header{padding:3px 10px;min-height:0;gap:0}
+ body.score-focus-active .score-identity-header .score-title-block{display:block;min-width:0;padding:0}
+ body.score-focus-active .score-identity-header .score-title-block h1{font-size:16px;line-height:1.2;padding:0;margin:0;white-space:normal;overflow-wrap:anywhere}
+ body.score-focus-active .score-identity-header :is(#score-source,.song-playback,.score-song-navigation,.score-actions){display:none}
+ body.score-focus-active #score-focus-info{display:block;font:500 12px/1.2 system-ui,sans-serif;margin-top:1px;color:inherit}
+ body.score-focus-active .score-heading{margin-bottom:4px}
+ body.score-scroll-mode #playing-view{padding-bottom:calc(var(--playing-bar-height) + var(--playing-safe-bottom) + 66px + var(--return-clearance))}
+ body.scroll-status-redundant #score-navigation.navigation-menu-open{visibility:visible;pointer-events:auto}
+}
+#score-tools-menu .toolbar-opening-setting{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:4px 10px;font:500 14px/1.4 system-ui;color:inherit}
+#score-toolbar-opening{min-height:44px;max-width:92px;border:1px solid var(--popup-border);border-radius:6px;background:var(--popup-surface);color:var(--popup-ink);font:inherit}
+#score-tools-menu:is(.sound-open,.export-open) .toolbar-opening-setting{display:none}

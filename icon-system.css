@@ -150,3 +150,19 @@ body #lyrics-settings-panel .lyrics-font-menu button[aria-checked=true]::after {
 #lyrics-settings-panel.lyrics-sound-open>:not(.lyrics-sound-wrap) {display:none;}
 #lyrics-settings-panel .lyrics-sound-wrap[hidden],#lyrics-settings-panel #lyrics-sound[hidden],#lyrics-sound-options[hidden] {display:none;}
 #lyrics-sound-options [aria-checked=true]::after {content:'✓';margin-left:auto;}
+
+/* Labeled Focus targets reserve their space; narrow desktop uses a second row. */
+@media screen{
+ body:not(.iphone-score-ui) .masthead .score-focus-control{width:144px;min-width:144px;left:calc(50% - 72px);right:auto;gap:6px;padding:0 8px;border:1px solid #b7c8d5;border-radius:8px;background:#f7f9fb;font:500 13px/1.2 system-ui}
+ body:not(.iphone-score-ui) .masthead .score-focus-control::before{display:none}
+ body:not(.iphone-score-ui) .masthead .score-focus-control svg{position:static;flex:none}
+ body:not(.iphone-score-ui) .masthead .score-focus-control:hover{background:#eaf2f8}
+ body.iphone-score-ui .score-focus-control span{display:none}
+ body.iphone-score-ui .masthead.controls-hidden #score-show-controls:not([hidden]){display:inline-flex!important}
+}
+@media screen and (min-width:701px){body:not(.iphone-score-ui) .masthead .toolbar{grid-template-columns:minmax(0,1fr) 144px minmax(0,1fr)}}
+@media screen and (max-width:700px){
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:2px;padding:4px 4px calc(52px + var(--playing-safe-bottom))}
+ body:not(.iphone-score-ui) .masthead .toolbar .playing-controls{gap:2px}
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar .playing-controls #key{width:64px;min-width:64px;max-width:64px}
+}

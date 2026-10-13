@@ -15,7 +15,7 @@ try{dark=localStorage.getItem(preference)==='true';}catch{}
 function applyTheme(){document.getElementById('playing-view').classList.toggle('score-page-dark',dark);theme.setAttribute('aria-checked',String(dark));}
 function mainMenu(){soundMenu.hidden=true;soundButton.setAttribute('aria-expanded','false');menu.classList.remove('sound-open');exportMenu.hidden=true;exportButton.setAttribute('aria-expanded','false');menu.classList.remove('export-open');}
 function close(focus=false){menu.hidden=true;mainMenu();button.setAttribute('aria-expanded','false');if(focus)button.focus();}
-const items=()=>[...(!soundMenu.hidden?soundMenu:exportMenu.hidden?menu:exportMenu).querySelectorAll(':scope > :is(button,[role=menuitemcheckbox]):not(:disabled):not([hidden])')];
+const items=()=>[...(!soundMenu.hidden?soundMenu:exportMenu.hidden?menu:exportMenu).querySelectorAll(':scope > :is(button,[role=menuitemcheckbox]):not(:disabled):not([hidden]),:scope > .toolbar-opening-setting select')];
 function position(){
  menu.style.right='0px';menu.style.maxHeight=Math.max(44,button.getBoundingClientRect().top-16)+'px';
  const r=menu.getBoundingClientRect();menu.style.right=(r.left<8?r.left-8:Math.max(0,r.right-innerWidth+8))+'px';
@@ -26,11 +26,12 @@ function openSound(){soundMenu.hidden=false;menu.classList.add('sound-open');sou
 function back(){if(!soundMenu.hidden){mainMenu();position();soundButton.focus();return;}if(exportButton.disabled){close(true);return;}mainMenu();position();exportButton.focus();}
 button.addEventListener('click',e=>{e.stopPropagation();menu.hidden?open():close(true);});
 button.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();e.stopPropagation();open();if(e.key==='ArrowUp')items().at(-1)?.focus();}});
-menu.addEventListener('click',e=>{e.stopPropagation();const target=e.target.closest('button');if(target===soundButton)openSound();else if(target===soundBack)back();else if(target===exportButton)openExport();else if(target===exportBack)back();else if(target)close(true);});
+menu.addEventListener('click',e=>{e.stopPropagation();const target=e.target.closest('button');if(target?.id==='score-page-navigation'){close();document.dispatchEvent(new Event('score-navigation-open'));}else if(target===soundButton)openSound();else if(target===soundBack)back();else if(target===exportButton)openExport();else if(target===exportBack)back();else if(target)close(true);});
 theme.addEventListener('click',()=>{dark=!dark;try{localStorage.setItem(preference,String(dark));}catch{}applyTheme();});
 // Capture keys before score/pedal navigation sees them. Tab keeps natural focus order.
 menu.addEventListener('keydown',e=>{
  e.stopPropagation();const list=items(),index=list.indexOf(document.activeElement);
+ if(e.target.matches('select')&&e.key!=='Escape')return;
  if(e.key==='Escape'){e.preventDefault();exportMenu.hidden&&soundMenu.hidden?close(true):back();}
  else if(e.key==='ArrowLeft'&&(!exportMenu.hidden||!soundMenu.hidden)){e.preventDefault();back();}
  else if(e.key==='ArrowRight'&&document.activeElement===soundButton){e.preventDefault();openSound();}

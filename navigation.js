@@ -8,18 +8,33 @@ const $=id=>document.getElementById(id),pagePosition=$('score-navigation-button'
 // Retain engraving geometry; scrolling focus only removes viewport clipping.
 const footer=document.querySelector('.masthead'),footerToolbar=footer.querySelector('.toolbar');
 const focusHide=document.createElement('button'),focusShow=document.createElement('button');
-for(const [button,id,label] of [[focusHide,'score-hide-controls','Hide controls'],[focusShow,'score-show-controls','Show controls']]){
+for(const [button,id,label] of [[focusHide,'score-hide-controls','Hide toolbar'],[focusShow,'score-show-controls','Show toolbar']]){
  button.id=id;button.type='button';button.className='score-focus-control';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-controls','score-footer-controls');
- button.innerHTML=uiIcon(id==='score-hide-controls'?'chevron-down':'chevron-up');
+ button.innerHTML=uiIcon(id==='score-hide-controls'?'chevron-down':'chevron-up')+'<span>'+label+'</span>';
 }
 footerToolbar.id='score-footer-controls';footer.append(focusHide,focusShow);focusShow.hidden=true;
 function setFooterFocus(hidden,moveFocus=true){
  footer.classList.toggle('controls-hidden',hidden);footerToolbar.inert=hidden;focusShow.hidden=!hidden;focusHide.hidden=hidden;
+ document.body.classList.toggle('score-focus-active',hidden);
  syncStart();
  if(moveFocus)(hidden?focusShow:focusHide).focus({preventScroll:true});
 }
 focusHide.onclick=()=>setFooterFocus(true);focusShow.onclick=()=>setFooterFocus(false);
-document.addEventListener('score-session-reset',()=>setFooterFocus(false,false));
+const toolbarPreference='music-transpose-score-toolbar-opening-v1',toolbarOpening=$('score-toolbar-opening');
+function readToolbarOpening(){try{return localStorage.getItem(toolbarPreference)==='hide'?'hide':'show';}catch{return 'show';}}
+toolbarOpening.value=readToolbarOpening();
+toolbarOpening.addEventListener('change',()=>{try{localStorage.setItem(toolbarPreference,toolbarOpening.value);}catch{}});
+document.addEventListener('score-session-reset',()=>setFooterFocus(readToolbarOpening()==='hide',false));
+const compactInfo=document.createElement('span');compactInfo.id='score-focus-info';document.querySelector('.score-title-block').append(compactInfo);
+function syncCompactTitle(){
+ const title=document.querySelector('.score-heading h1');title.title=title.textContent;
+ const view=$('score-size').dataset.view,label={pdf:'Original',auto:'Transpose',large:'Melody only'}[view]||'Original';
+ const key=$('key-name').textContent.replace(/\bMaj\b/,'major').replace(/\bMin\b/,'minor');
+ compactInfo.textContent=label+(view!=='pdf'&&key?' · '+key:'');
+}
+const titleObserver=new MutationObserver(syncCompactTitle);
+for(const el of [document.querySelector('.score-heading h1'),$('key-name')])titleObserver.observe(el,{childList:true,characterData:true,subtree:true});
+titleObserver.observe($('score-size'),{attributes:true,attributeFilter:['data-view']});syncCompactTitle();
 // v1 could contain automatically saved defaults; only v2 explicitly chosen
 // values override the device rule. Leave legacy data intact for compatibility.
 const storageKey='music-transpose-navigation-v2';
@@ -80,9 +95,12 @@ function positionIndicator(){
 // Desktop keeps precisely the same fixed positioning and interaction.
 document.querySelector('.score-paper').after(navCorner);
 new ResizeObserver(positionIndicator).observe(document.querySelector('.score-paper'));
-function closeModeMenu(focus=false){modeMenu.hidden=true;pagePosition.setAttribute('aria-expanded','false');if(focus&&!navCorner.hidden)pagePosition.focus({preventScroll:true});}
-pagePosition.onclick=()=>{if(!modeMenu.hidden){closeModeMenu(true);return;}pause();hideHint();modeMenu.hidden=false;pagePosition.setAttribute('aria-expanded','true');positionIndicator();(modeMenu.querySelector('[aria-checked=true]')||modeMenu.querySelector('button')).focus();};
-for(const option of modeMenu.querySelectorAll('[data-navigation]'))option.onclick=()=>{chooseMode(option.dataset.navigation);if(option.dataset.navigation!=='auto')closeModeMenu(true);};
+let modeReturn=pagePosition;
+function closeModeMenu(focus=false){modeMenu.hidden=true;navCorner.classList.remove('navigation-menu-open');pagePosition.setAttribute('aria-expanded','false');if(focus)modeReturn.focus({preventScroll:true});}
+function openModeMenu(returnTo=pagePosition){modeReturn=returnTo;pause();hideHint();modeMenu.hidden=false;navCorner.classList.add('navigation-menu-open');pagePosition.setAttribute('aria-expanded','true');positionIndicator();(modeMenu.querySelector('[aria-checked=true]')||modeMenu.querySelector('button')).focus();}
+pagePosition.onclick=()=>{if(!modeMenu.hidden){closeModeMenu(true);return;}openModeMenu();};
+document.addEventListener('score-navigation-open',()=>openModeMenu($('score-tools')));
+for(const option of modeMenu.querySelectorAll('[data-navigation]'))option.onclick=()=>{chooseMode(option.dataset.navigation);if(option.dataset.navigation!=='auto')closeModeMenu(true);else option.focus({preventScroll:true});};
 modeMenu.onkeydown=e=>{
  if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeModeMenu(true);return;}
  if(e.target.matches('input')){e.stopPropagation();return;}
@@ -158,7 +176,10 @@ function hideStart(){
  document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
 }
 function syncStart(){
- const visible=['continuous','auto'].includes(mode)&&playing()&&scrollY>=($('return-start').hidden?100:80);
+ const maxScroll=document.documentElement.scrollHeight-innerHeight;
+ const contentBottom=Math.max(...['score','source-credits'].map(id=>$(id).getBoundingClientRect().bottom+scrollY));
+ const scrollable=contentBottom>innerHeight-footer.offsetHeight-8;
+ const visible=['continuous','auto'].includes(mode)&&playing()&&scrollable&&maxScroll>8&&scrollY>=maxScroll-($('return-start').hidden?4:12);
  $('return-start').hidden=!visible;$('return-start-left').hidden=!visible;
  // Shared visibility and clearance for both score formats; a small deadband avoids flicker.
  const entering=visible&&!document.body.classList.contains('continuous-return-visible'),atEnd=scrollY+innerHeight>=document.documentElement.scrollHeight-1;
@@ -191,6 +212,7 @@ function showPageFeedback(){
 }
 window.addEventListener('beforeprint',hidePageFeedback);
 function syncPages(){
+ document.body.classList.toggle('score-scroll-mode',mode!=='pages');
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  $('show-tap-zones').disabled=!available||document.body.classList.contains('pdf-annotation-active');
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
@@ -201,6 +223,8 @@ function syncPages(){
  pagePosition.setAttribute('aria-label',paged?`Page navigation: Tap to turn pages. Page ${pageIndex+1} of ${frames.length}.`:`Page navigation: ${mode==='auto'?'Auto-scroll':'Continuous scroll'}.`);
  navCorner.hidden=!available||!playing()||document.body.classList.contains('song-loading');
  pagePosition.disabled=document.body.classList.contains('pdf-annotation-active');
+ $('score-page-navigation').disabled=pagePosition.disabled||navCorner.hidden;
+ $('score-page-navigation').setAttribute('aria-description',{pages:'Tap to turn pages',continuous:'Continuous scroll',auto:'Auto-scroll'}[mode]);
  for(const option of modeMenu.querySelectorAll('[data-navigation]')){option.setAttribute('aria-checked',String(option.dataset.navigation===mode));option.disabled=option.dataset.navigation==='pages'&&!available;}
  if(navCorner.hidden){closeModeMenu();hidePageFeedback();}
  if(!paged||navCorner.hidden){hideHint();hidePageFeedback();}else if(frames.length>1&&window.prototype?.ready&&!prototype.busy)showHint();
