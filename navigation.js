@@ -1,5 +1,6 @@
 import {uiIcon} from './ui-icons.js';
 import {syncPdfPresentation} from './pdf-score.js';
+import {ipadLandscape,fitPdfSpreads,spreadStart,spreadTurn} from './pdf-spreads.js';
 import {installFooterViewport,scoreFooterTop,onSettledFooterViewport,isIPhoneDevice} from './footer-viewport.js';
 import {installScoreTaps,scoreVisibleBottom} from './score-taps.js';
 import {phoneNavigationClearance,setVirtualSource,resetVirtualSource,virtualAvailable,virtualFrames,prepareVirtualPages,displayVirtual,rememberReadingPosition,seekVirtualMeasure} from './virtual-pages.js';
@@ -51,6 +52,32 @@ const phoneScreen=matchMedia('(max-width:600px)'),defaultMode=()=>isIPhone?'cont
 let mode=preferred||defaultMode();
 let speed=Number.isFinite(saved.speed)?Math.max(1,Math.min(60,saved.speed)):12;
 let pageIndex=0;
+// Keep the physical reading anchor even when its partner is also visible.
+const spreadKey='music-transpose-pdf-landscape-pages-v1';
+let spreadPreference=2,spreadActive=false,spreadEligible=false,spreadFit=null;
+try{if(localStorage.getItem(spreadKey)==='1')spreadPreference=1;}catch{}
+const spreadControl=document.createElement('button');
+spreadControl.id='pdf-spread-toggle';spreadControl.type='button';spreadControl.hidden=true;
+spreadControl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span></span>';
+navCorner.prepend(spreadControl);
+spreadControl.onclick=()=>{spreadPreference=spreadActive?1:2;try{localStorage.setItem(spreadKey,String(spreadPreference));}catch{}hidePageFeedback();syncPages();};
+function spreadLabel(count){const start=spreadStart(pageIndex),end=Math.min(start+2,count);return end===start+1?`Page ${end} of ${count}`:`Pages ${start+1}–${end} of ${count}`;}
+function updateSpread(frames,pdf){
+ const score=$('score'),annotation=document.body.classList.contains('pdf-annotation-active');
+ const ratios=frames.map(f=>{const b=JSON.parse(f.dataset.trim||'null');return b?(b.right-b.left)/(b.bottom-b.top):0;});
+ // Reserve the 44px navigation target, feedback notice and breathing space.
+ const height=scoreFooterTop()-score.getBoundingClientRect().top-scrollY-88;
+ spreadFit=fitPdfSpreads(ratios,score.clientWidth,height);
+ spreadEligible=pdf&&mode==='pages'&&playing()&&ipadLandscape(navigator,innerWidth,innerHeight)&&!!spreadFit;
+ const active=spreadEligible&&spreadPreference===2&&!annotation;
+ if(active!==spreadActive)hidePageFeedback();spreadActive=active;
+ document.body.classList.toggle('pdf-spread-eligible',spreadEligible);
+ document.body.classList.toggle('pdf-spread-active',spreadActive);
+ spreadControl.hidden=!spreadEligible;spreadControl.disabled=annotation;
+ spreadControl.querySelector('span').textContent=spreadActive?'2 pages':'1 page';
+ spreadControl.setAttribute('aria-pressed',String(spreadActive));
+ spreadControl.setAttribute('aria-label',spreadActive?'Show 1 page instead of 2 pages':'Show 2 pages instead of 1 page');
+}
 let running=false,frame=0,lastTime=0,position=0,expected=0;
 function persist(){try{sessionStorage.setItem(storageKey,JSON.stringify({...(hasChoice?{mode,explicit:true}:{}),speed}));}catch{}if(hasChoice)try{localStorage.setItem(storageKey,JSON.stringify({mode,explicit:true}));}catch{}}
 const hintKey='music-transpose-page-hint-v1';let hintSeen=false,hintTimer;
@@ -160,7 +187,7 @@ function measureFooter(){
  // safe padding (existing consumers add that exactly once).
  const reserve=Math.max(54,height-safe)+Math.max(0,innerHeight-bounds.bottom),value=reserve+'px';
  if(root.style.getPropertyValue('--playing-bar-height')!==value){root.style.setProperty('--playing-bar-height',value);document.dispatchEvent(new Event('score-footer-geometry'));}
- syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else fitPage();}
+ syncStart();if(mode==='pages'){if(virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();syncPages();}else syncPages();}
 }
 new ResizeObserver(measureFooter).observe(document.querySelector('.masthead'));
 document.addEventListener('footer-viewport-change',measureFooter);
@@ -170,7 +197,16 @@ installFooterViewport();
 // Real PDF pages and complete-system virtual MXL pages share the same navigation.
 function pages(){return document.body.classList.contains('pdf-score-open')?[...$('score').querySelectorAll(':scope > .pdf-page-frame')]:virtualFrames();}
 function playing(){return !document.body.classList.contains('library-open')&&!document.body.classList.contains('lyrics-open');}
-function fitPage(){if(!document.body.classList.contains('pdf-score-open'))return;const frames=pages(),bottom=scoreFooterTop();for(const frame of frames){const b=JSON.parse(frame.dataset.trim||'null');if(b){const ratio=(b.right-b.left)/(b.bottom-b.top);frame.style.setProperty('--pdf-page-fit',Math.max(120,phoneScreen.matches?bottom-$('score').getBoundingClientRect().top-scrollY-phoneNavigationClearance()-24:bottom-80)*ratio+'px');}}}
+function fitPage(){
+ if(!document.body.classList.contains('pdf-score-open'))return;
+ const frames=pages(),bottom=scoreFooterTop();
+ for(const [i,frame] of frames.entries()){
+  const b=JSON.parse(frame.dataset.trim||'null');if(!b)continue;
+  const ratio=(b.right-b.left)/(b.bottom-b.top);
+  const height=spreadEligible?bottom-$('score').getBoundingClientRect().top-scrollY-88:Math.max(120,phoneScreen.matches?bottom-$('score').getBoundingClientRect().top-scrollY-phoneNavigationClearance()-24:bottom-80);
+  frame.style.setProperty('--pdf-page-fit',(spreadActive?spreadFit.widths[i]:Math.max(120,height)*ratio)+'px');
+ }
+}
 function hideStart(){
  for(const button of document.querySelectorAll('.return-start'))button.hidden=true;
  document.body.classList.remove('continuous-return-visible');for(const e of document.querySelectorAll('#score,#source-credits,#original-key-reference'))e.style.removeProperty('--return-clip');
@@ -195,7 +231,7 @@ const pageFeedback=$('page-turn-feedback');
 $('playing-view').append(pageFeedback);
 function placeFeedback(){
  if(pageFeedback.hidden||navCorner.hidden)return;
- const control=pagePosition.getBoundingClientRect(),notice=pageFeedback.getBoundingClientRect();
+ const control=(spreadEligible?navCorner:pagePosition).getBoundingClientRect(),notice=pageFeedback.getBoundingClientRect();
  const viewport=window.visualViewport,left=viewport?.offsetLeft||0,top=viewport?.offsetTop||0;
  const right=left+(viewport?.width||innerWidth);
  pageFeedback.style.left=Math.max(left+8,Math.min(control.right-notice.width,right-notice.width-8))+'px';
@@ -206,7 +242,7 @@ let feedbackTimer,feedbackHideTimer;
 function hidePageFeedback(){clearTimeout(feedbackTimer);clearTimeout(feedbackHideTimer);pageFeedback.classList.remove('visible');pageFeedback.hidden=true;}
 function showPageFeedback(){
  hidePageFeedback();if(navCorner.hidden)return;
- pageFeedback.textContent=`${pageIndex+1} / ${pages().length}`;
+ pageFeedback.textContent=spreadActive?spreadLabel(pages().length):`${pageIndex+1} / ${pages().length}`;
  pageFeedback.hidden=false;pageFeedback.classList.add('visible');positionIndicator();
  feedbackTimer=setTimeout(()=>{pageFeedback.classList.remove('visible');feedbackHideTimer=setTimeout(()=>{pageFeedback.hidden=true;},180);},1200);
 }
@@ -216,11 +252,13 @@ function syncPages(){
  const pdf=document.body.classList.contains('pdf-score-open');if(mode==='pages'&&!pdf&&virtualAvailable())pageIndex=prepareVirtualPages();const frames=pages(),available=pdf?frames.length>0:virtualAvailable();
  $('show-tap-zones').disabled=!available||document.body.classList.contains('pdf-annotation-active');
  document.body.classList.toggle('page-navigation',mode==='pages'&&available);document.body.classList.toggle('mxl-page-navigation',mode==='pages'&&available&&!pdf);if(mode==='pages'&&!pdf)displayVirtual(pageIndex);pageIndex=Math.max(0,Math.min(pageIndex,frames.length-1));
- frames.forEach((f,i)=>{f.classList.toggle('current-page',i===pageIndex);if(mode==='pages')f.setAttribute('aria-hidden',String(i!==pageIndex));else f.removeAttribute('aria-hidden');});
- const paged=mode==='pages',label=paged?`Page ${pageIndex+1} / ${frames.length}`:mode==='auto'?'Auto-scroll':'Scroll';
+ if(pdf)syncPdfPresentation();
+ updateSpread(frames,pdf);
+ frames.forEach((f,i)=>{const visible=spreadActive?i>=spreadStart(pageIndex)&&i<spreadStart(pageIndex)+2:i===pageIndex;f.classList.toggle('current-page',visible);if(mode==='pages')f.setAttribute('aria-hidden',String(!visible));else f.removeAttribute('aria-hidden');});
+ const paged=mode==='pages',label=paged?(spreadActive?spreadLabel(frames.length):`Page ${pageIndex+1} / ${frames.length}`):mode==='auto'?'Auto-scroll':'Scroll';
  $('score-navigation-label').textContent=label;
  pagePosition.dataset.mode=paged?'pages':'continuous';
- pagePosition.setAttribute('aria-label',paged?`Page navigation: Tap to turn pages. Page ${pageIndex+1} of ${frames.length}.`:`Page navigation: ${mode==='auto'?'Auto-scroll':'Continuous scroll'}.`);
+ pagePosition.setAttribute('aria-label',paged?`Page navigation: Tap to turn pages. ${spreadActive?spreadLabel(frames.length):`Page ${pageIndex+1} of ${frames.length}`}.`:`Page navigation: ${mode==='auto'?'Auto-scroll':'Continuous scroll'}.`);
  navCorner.hidden=!available||!playing()||document.body.classList.contains('song-loading');
  pagePosition.disabled=document.body.classList.contains('pdf-annotation-active');
  $('score-page-navigation').disabled=pagePosition.disabled||navCorner.hidden;
@@ -228,10 +266,9 @@ function syncPages(){
  for(const option of modeMenu.querySelectorAll('[data-navigation]')){option.setAttribute('aria-checked',String(option.dataset.navigation===mode));option.disabled=option.dataset.navigation==='pages'&&!available;}
  if(navCorner.hidden){closeModeMenu();hidePageFeedback();}
  if(!paged||navCorner.hidden){hideHint();hidePageFeedback();}else if(frames.length>1&&window.prototype?.ready&&!prototype.busy)showHint();
- if(pdf)syncPdfPresentation();
  fitPage();syncStart();positionIndicator();
 }
-function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex)return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex,false);sync();window.scrollTo({top:0,behavior:'instant'});hideHint();showPageFeedback();}
+function turn(delta){if(mode!=='pages'||!playing())return;const count=pages().length;if(!count)return;const next=spreadActive?spreadTurn(pageIndex,delta,count):Math.max(0,Math.min(count-1,pageIndex+delta));if(next===pageIndex||spreadActive&&spreadStart(next)===spreadStart(pageIndex))return;pageIndex=next;if(!document.body.classList.contains('pdf-score-open'))displayVirtual(pageIndex,false);sync();window.scrollTo({top:0,behavior:'instant'});hideHint();showPageFeedback();}
 // Tap zones and keyboard/pedal commands call turn directly; no visible arrow row.
 const returnToStart=()=>{pause();window.scrollTo({top:0,behavior:'instant'});syncStart();};
 for(const button of document.querySelectorAll('.return-start'))button.onclick=returnToStart;
@@ -247,11 +284,11 @@ onSettledFooterViewport(()=>{
  const geometry=[innerWidth,innerHeight,v?.height,v?.offsetTop,footer.offsetHeight,document.documentElement.style.getPropertyValue('--footer-viewport-inset')].join(':');
  if(geometry===settledGeometry)return;settledGeometry=geometry;
  if(mode==='pages'&&virtualAvailable()&&!document.body.classList.contains('pdf-score-open')){pageIndex=prepareVirtualPages();sync();}
- fitPage();syncStart();positionIndicator();
+ if(document.body.classList.contains('pdf-score-open'))syncPages();else{fitPage();syncStart();positionIndicator();}
 });
 document.addEventListener('score-session-reset',()=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();resetVirtualSource();pageIndex=0;});
 document.addEventListener('score-engraved',e=>{setVirtualSource(e.detail);requestAnimationFrame(()=>{if(mode==='pages')pageIndex=prepareVirtualPages(true);sync();});});
-$('pdf-trim').addEventListener('change',fitPage);
+$('pdf-trim').addEventListener('change',syncPages);
 document.addEventListener('library-open',e=>{navCorner.hidden=true;closeModeMenu();hideHint();hidePageFeedback();pause();cancelScoreTap();if(!e.detail?.retainScore)pageIndex=0;hideStart();});
 if(hasChoice)persist(); // Retain only explicitly selected v2 modes.
 sync();
