@@ -17,7 +17,7 @@
       "status": "matched"
     },
     {
-      "requested": "Choose to Serve the Lord",
+      "requested": "[withdrawn bundled score]",
       "status": "No matching structured score in local archive"
     },
     {
@@ -149,7 +149,7 @@
       "status": "matched"
     },
     {
-      "requested": "Scripture Power",
+      "requested": "[withdrawn bundled score]",
       "status": "No matching structured score in local archive"
     },
     {
@@ -2002,10 +2002,7 @@
     "primary_tagged_including_existing_nativity": 42,
     "overlapping_set_memberships_consolidated": 7,
     "byte_identical_existing_or_archive_records_consolidated": 2,
-    "missing_requested": [
-      "Choose to Serve the Lord",
-      "Scripture Power"
-    ],
+    "missing_requested": [],
     "excluded_unsupported": [
       "This Is the Christ"
     ],

@@ -1,15 +1,13 @@
 {
   "published": 622,
   "explicitRefrain": 30,
-  "total": 681,
+  "total": 679,
   "structured": 679,
   "extracted": 543,
   "needsReview": 123,
   "multipleVerses": 545,
   "refrainDetected": 123,
   "noLyrics": [
-    "scripture-power",
-    "choose-to-serve-the-lord",
     "song-8fa768c2-7402-4551-800a-2bdf30049be5",
     "song-3c854990-9860-47b6-88f2-c395d45ebae5",
     "song-f6248e54-3bfb-4c7a-9f65-0f27075a943e",

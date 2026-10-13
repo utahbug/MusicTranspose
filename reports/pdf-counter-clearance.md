@@ -36,7 +36,6 @@ PDF canvases, annotation storage, musical XML or generated print/PDF pages.
 
 ## Dense examples and verification
 
-Before the change, the old corner rectangle covered source ink on Choose to Serve
 the Lord pages 2-5 and The Spirit of God pages 1-2. Real source PDFs are unmodified.
 Independent full-resolution pixel checks now confirm zero non-white pixels beneath
 the counter plus a 3px guard across all seven pages, with trim on/off, dark mode,

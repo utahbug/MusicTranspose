@@ -7,7 +7,6 @@ ARCHIVE=Path('D:/LDS_Music_MXL/2026-09-16')
 known_ids=existing_score_ids(ROOT)
 requested='''A Child’s Prayer
 Called to Serve
-Choose to Serve the Lord
 I Feel My Savior’s Love
 I Will Walk with Jesus
 I Will Follow God’s Plan
@@ -24,7 +23,6 @@ I Love to See the Temple
 I Thank Thee, Dear Father
 I’m Trying to Be Like Jesus
 My Heavenly Father Loves Me
-Scripture Power
 Search, Ponder, and Pray
 This Little Light of Mine
 When He Comes Again

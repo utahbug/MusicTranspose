@@ -131,7 +131,6 @@ See reports/library-import-summary.md for unavailable requests, the excluded mod
 
 ## Mixed PDF and structured scores
 
-Scripture Power and Choose to Serve the Lord are bundled PDF entries (121 Library records total, 44 Primary-tagged). Their source Primary app is read-only; provenance hashes and resource investigation are in reports/primary-pdf-addition.md and primary-pdf-provenance.json. No usable structured Scripture Power asset was exposed by the inspected official metadata/application/runtime resources.
 
 PDF entries set scoreType: pdf and transpositionAvailable: false. pdf-score.js renders their original pages with vendored PDF.js in the existing scrollable score container. Pitch/key/reset are hidden and disabled; Library, Print and Settings remain. Continuous scroll, hybrid and auto-scroll use the same document navigation. Page Turns remains unavailable. PDF printing uses image-backed pages; Open original PDF supports native viewer zoom/vector printing. MXL rendering/printing/transposition are unchanged. Phone fixed-layout notation can be enlarged with pinch zoom. Both PDFs and the local PDF.js worker are cached for offline use. Include pdf-score.js plus vendor/pdf.min.js and vendor/pdf.worker.min.js in portable deployments.
 
@@ -145,7 +144,6 @@ Generic blank-margin detection runs on a scratch copy of each full 1800px-wide r
 
 Trim blank margins defaults on under Settings > PDF display and persists in sessionStorage (music-transpose-pdf-trim-v1). It can restore complete page bounds immediately. PDF-only settings stay hidden for structured scores. Printing uses the original full canvas and native PDF access is unchanged.
 
-Validation: all seven pages retain every detected non-white pixel; original page dimensions remain intact. Toggling trimming produces identical PDF print output from the same full canvases. Separate renderer runs can differ in canvas rasterization, so cross-run encoded image hashes are not treated as a print-content invariant. Structured SVG and print markup match the pre-change baseline for Nativity and Home and Church 1001 at four viewport sizes. First-content position improves 66/72px on phone, 92/104px on iPad portrait, and 108/125–126px on landscape/desktop (Scripture Power / Choose to Serve). Hybrid, auto-scroll/manual pause, final-page clearance, Original PDF access, offline opening and session-setting restoration pass. Physical Safari testing remains outstanding.
 
 Run tests/pdf-compact.mjs first with CAPTURE_BASELINE=1 to record the prior committed viewer via test-only request overrides, then without it for layout/pixel-bound/print comparisons. tests/pdf-scores.mjs exercises the mixed-score controls and offline behavior.
 

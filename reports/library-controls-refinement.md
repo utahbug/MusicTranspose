@@ -26,7 +26,6 @@ Leaving that list context restores the global sort. No saved-order migration was
 - Hymns for Home and Church: matching factual collection/membership: 81 records.
 - Legacy: explicit song.status === 'legacy': 0 records. No assignments invented.
 - Other: records outside the three principal book categories: 2 records,
-  Scripture Power (Music from the Friend) and Choose to Serve the Lord (Primary-use music).
 
 library-query.js owns these mappings. Future authoritative hymnal editions can
 update activeHymnalCollections or use a collection membership with role: 'hymnal'

@@ -33,7 +33,6 @@ In-app annotations never enter source PDF bytes or committed MusicXML; existing 
 ## Verification
 
 - `tests/score-export.mjs`: Chromium and WebKit at 320x740, 390x844, 820x1180, 1180x820, 1440x1000. Final strengthened print-input and filename checks additionally rerun in Chromium at 820.
-- PDF-only: Choose to Serve the Lord; disabled MusicXML, exact downloaded PDF bytes, keyboard/escape/outside/focus and no unintended page turn.
 - PDF + XML: HHC 1035 cold Original exports original XML; switching back from transformed work still exports the original source in Original view.
 - Transpose: +2 semitones, then +1 octave; parsed pitches match source +2 / +14, key changes, harmony count preserved, bytes equal committed musical XML.
 - HHC 1035 Melody: current key/register, 1 part / 20 measures / 56 melody events / 34 harmonies; no `lead-harmony-spacing` anchors. PDF print input preserves the displayed musical pitches/harmonies.

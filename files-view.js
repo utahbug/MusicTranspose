@@ -1,5 +1,5 @@
 import {removeMusicFile} from './my-music.js';
-import {includedFileVisible,restoreIncludedFiles} from './reviewer-starters.js';
+import {includedFileVisible} from './reviewer-starters.js';
 import {fileTypeLabel,normalizeFileTags} from './local-music-store.js';
 import {offlineBadge,refreshOffline} from './offline-manager.js';
 import {editIcon} from './icons.js';
@@ -54,10 +54,10 @@ export function createFilesView({onLibrary,onSong}){
  const removal=$('files-remove-dialog');let pending=[];
  $('files-remove').onclick=()=>{
   pending=songs.filter(f=>selection.has(f.id)&&isFileSong(f));
-  const imports=pending.filter(f=>f.local).length,examples=pending.length-imports;
+  const imports=pending.filter(f=>f.local).length;
   $('files-remove-title').textContent=`Remove ${pending.length} selected files?`;
   $('files-remove-imported').textContent=`${imports} imported files will be deleted from this device.`;
-  $('files-remove-included').textContent=`${examples} included examples will be hidden from Files and can be restored later. Bundled source assets and List entries will remain available.`;
+  $('files-remove-included').textContent='';
   removal.showModal();$('files-remove-cancel').focus();
  };
  $('files-remove-cancel').onclick=()=>removal.close();
@@ -73,7 +73,7 @@ export function createFilesView({onLibrary,onSong}){
   removal.close();$('files-status').textContent=[done.length?`Removed ${done.length}: ${done.join('; ')}.`:'No files removed.',failed.length?`Not removed (${failed.length}): ${failed.join('; ')}. Selection retained for retry.`:'',...warnings].filter(Boolean).join(' ');
   $(selecting?'files-remove':'files-select').focus();
  };
- $('files-restore-examples').onclick=()=>{try{restoreIncludedFiles();render();$('files-example-status').textContent='Included examples restored.';}catch{$('files-example-status').textContent='Could not save this change. Please retry.';}};
+
  const info=$('files-info-dialog');
  $('files-info').onclick=()=>{info.showModal();$('files-info-title').focus();};
  $('files-info-close').onclick=()=>info.close();

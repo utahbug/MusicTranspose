@@ -1,0 +1,28 @@
+{
+  "startingCommit": "cd3a5a04ecf068bf078284d2667f41e047c8b632",
+  "scope": "Withdraw two bundled scores; update fresh-install starter Lists only",
+  "withdrawals": [
+    {"id":"choose-to-serve-the-lord","reason":"Songwriter permission to share explicitly declined, as reported by the application owner.","asset":"assets/pdfs/choose-to-serve-the-lord.pdf"},
+    {"id":"scripture-power","reason":"Application owner requested removal from public distribution.","asset":"assets/pdfs/scripture-power.pdf"}
+  ],
+  "starterChanges": {"primaryReplacement":"cs-60","hymnsAddition":"hhc-1001","totalEntries":11,"eventsUnchanged":true,"existingLibrariesMigrated":false},
+  "personalData": "No library/localStorage migration. Existing customized or deleted starters remain unchanged. Missing catalog entries are disabled by the existing List renderer. Imported Files are not matched by title and IndexedDB is untouched.",
+  "offline": "Worker v367 purges exact withdrawn PDF paths (including query variants) from scoped application caches and removes only their retention IDs/assets. Migration skips them; fetch returns 410. Explicit offline commands reject stale save requests. Pin cleanup runs in the existing serialized command queue; fetch cleanup does not mutate pins.",
+  "removedDiagnostics": ["reports/pdf-flow-choose-to-serve-the-lord-end.png","reports/pdf-flow-choose-to-serve-the-lord-seam.png","reports/score-screen-polish/files-fallback.png","reports/workspace-quick-links/files-1440.png","reports/workspace-quick-links/files-390.png","reports/workspace-quick-links/files-820.png","reports/primary-pdf-addition.md","reports/primary-pdf-provenance.json","reports/scripture-power-1987-resources.json","reports/scripture-runtime-investigation.json"],
+  "preservation": "All other Lyrics records and music assets unchanged; no unpublished Lyrics activated. Separate Lyrics branch, A Child's Prayer ZIP, Backup & Restore audit and Design Lab remain untouched.",
+  "validation": {
+    "withdrawn-content.mjs":"Chromium/WebKit: real previous-worker individual/List saves, live update, cache/pin purge, same-title imported bytes, stale-tab personal state, disabled withdrawn List entries, fresh 11-song starters and replacement score opening; 320/390/744/820/1024/1440px.",
+    "reviewer-starters.mjs":"Chromium/WebKit: all eleven songs open with Home/List preference inheritance; existing personal/empty library unchanged.",
+    "reviewer-starters-storage.mjs":"Chromium/WebKit: initialization quota failure/retry, imports/preferences guard, deleted starters and Note remain deleted after worker update and browser restart.",
+    "files-bulk-removal.mjs":"Chromium/WebKit at six widths: import editing/removal, failure/retry, favorites, List references, themes, keyboard and reload.",
+    "keyboard-markup.mjs":"Chromium/WebKit at 320/390/820/1194px: Keyboard and Score/Lyrics/marking regressions.",
+    "pdf-spreads.mjs":"Chromium/WebKit: synthetic five-page fixture, actual Nativity/CS42/CS190 PDFs, rotation, touch/key spread turns, annotations, PDF export and print, iPad/iPhone/desktop layouts.",
+    "static":"JavaScript syntax, PWA JSON, every shell/offline asset exists, exact generated offline catalog, storage manifest check, unrelated asset/Lyrics preservation and git diff --check. No package-based build exists."
+  },
+  "limitations": [
+    "Windows WebKit network-disabled service-worker fetch reports an internal runtime error. Its live upgrade/cache removal passed; full offline serving passed Chromium. Physical Safari/iPhone/iPad verification remains necessary.",
+    "Historical tests using withdrawn music as fixtures are not a current passing full-suite claim. Active starter, Files, cache-withdrawal and spread regressions were updated; other old song-specific scripts require separate fixture migration before replay.",
+    "The legacy whole-hymnal validator was not run: its initial invocation required an unset PLAYWRIGHT_PACKAGE environment variable; musical assets were unchanged.",
+    "Already downloaded independent copies, old offline clients that have not received the update, CDN caches and historical GitHub commits cannot be remotely revoked. No Git history was rewritten."
+  ]
+}

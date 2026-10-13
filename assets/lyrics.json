@@ -205,32 +205,6 @@
       "available": true
     },
     {
-      "id": "scripture-power",
-      "title": "Scripture Power",
-      "collection": "Music from the Friend",
-      "number": "",
-      "source": "./assets/pdfs/scripture-power.pdf",
-      "verses": [],
-      "refrains": [],
-      "notes": [
-        "PDF: no structured lyrics extraction."
-      ],
-      "status": "no-lyrics"
-    },
-    {
-      "id": "choose-to-serve-the-lord",
-      "title": "Choose to Serve the Lord",
-      "collection": "Primary-use music",
-      "number": "",
-      "source": "./assets/pdfs/choose-to-serve-the-lord.pdf",
-      "verses": [],
-      "refrains": [],
-      "notes": [
-        "PDF: no structured lyrics extraction."
-      ],
-      "status": "no-lyrics"
-    },
-    {
       "id": "hhc-1001",
       "title": "Come, Thou Fount of Every Blessing",
       "collection": "Hymns for Home and Church",

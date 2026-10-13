@@ -29,7 +29,6 @@ No changes to metronome.js, playback.js, CSS, extraction algorithms, PDF renderi
 
 - HHC 1035, As I Keep the Sabbath Day; The Spirit of God: Library opens Original; Transpose/Melody enabled before Lead derivation; Settings parses timing without engraving or altering PDF DOM; Side pulse and playback work in Original; page turns retain the clock; Lyrics return and Melody/Original roundtrips preserve capability; original timeline replaces retained Melody timing; key/register and adjusted tempo survive transitions.
 - The Nativity Song: known unsupported Melody remains disabled, fresh Original to Transpose works.
-- Choose to Serve the Lord (PDF only): Transpose/Melody disabled; no playback/metronome controls or pulses.
 - Imported HHC 1054 MusicXML-only: local leadAvailable, structured playback settings and Melody continue working.
 - Chromium capability matrix: 390x844, 820x1180, 1180x820, 1440x1000. WebKit checks the same PDF cases; XML-only import is Chromium-only because Windows WebKit fails File/Blob persistence in IndexedDB. This storage failure was separately reproduced with the pre-change app (UnknownError preparing Blob/File data).
 - Existing metronome test at 820px: meter/pickup/embedded tempo, audio synchronization, tempo/reset/pause/resume/stop, page turns, dark/reduced motion, view hiding.

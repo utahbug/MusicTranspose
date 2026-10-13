@@ -89,30 +89,6 @@
   ],
   "noLyrics": [
     {
-      "id": "scripture-power",
-      "number": "",
-      "title": "Scripture Power",
-      "collection": "Music from the Friend",
-      "source": "./assets/pdfs/scripture-power.pdf",
-      "pdfPages": 2,
-      "pdfSha256": "8ca5491aeaf8dd7780af9ecf925f7772d6b0b9877cb67e805fd9500e1ec7b7ad",
-      "classification": "PDF-only without structured Lyrics",
-      "evidence": "Catalog asset is PDF, with no structured MusicXML lyric source. Scripture Power has no usable text layer; Choose to Serve the Lord has score/lyric text but no structured extraction.",
-      "nextAction": "Separate authorized structured-source acquisition/review; no OCR or PDF lyric extraction added."
-    },
-    {
-      "id": "choose-to-serve-the-lord",
-      "number": "",
-      "title": "Choose to Serve the Lord",
-      "collection": "Primary-use music",
-      "source": "./assets/pdfs/choose-to-serve-the-lord.pdf",
-      "pdfPages": 5,
-      "pdfSha256": "04bd15e6d8009b299a4ea4f14bf28ced81d632a7be5e0bb404a7f4405f3f9639",
-      "classification": "PDF-only without structured Lyrics",
-      "evidence": "Catalog asset is PDF, with no structured MusicXML lyric source. Scripture Power has no usable text layer; Choose to Serve the Lord has score/lyric text but no structured extraction.",
-      "nextAction": "Separate authorized structured-source acquisition/review; no OCR or PDF lyric extraction added."
-    },
-    {
       "id": "song-8fa768c2-7402-4551-800a-2bdf30049be5",
       "number": "288",
       "title": "Impromptu",

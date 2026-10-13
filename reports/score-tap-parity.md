@@ -20,7 +20,6 @@ The PrimarySongs v528 PDF touch path was read as a behavioral reference; no Prim
 
 ## Targeted verification
 
-`tests/score-tap-parity.mjs` uses bundled Choose to Serve the Lord PDF and The Spirit of God in Normal and Lead. Default is 50 repeated cycles per form/viewport. Each cycle asserts every first/last/previous/next transition, including 1 -> 2 -> 3 where the score has three pages. The four cases are 820x1180 and 1180x820 touch tablets, 390x844 touch phone, and 1440x800 mouse desktop.
 
 Chromium/Edge: 50 cycles per form/viewport (600 cycles total). A final 10-cycle touch rerun checks the refined cancellation guards and browser-generated 8px/12px drift. Desktop runs 50 cycles on the final code. WebKit: 10 cycles per form/viewport. Synthetic PointerEvents additionally test 12px/16px drift, zone crossing, excessive movement, duplicate releases/clicks and mouse/pen rejection. Actual browser touch exercises virtual hit-target replacement. The initial 1440x1000 Lead fixture correctly fit on one page; desktop testing uses 1440x800 to ensure real transitions, without altering layout or pagination.
 

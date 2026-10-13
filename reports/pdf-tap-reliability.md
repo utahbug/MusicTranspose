@@ -2,7 +2,6 @@
 
 ## Findings
 
-Both bundled and local PDFs already use `renderPdf`, `installScoreTaps` and the same page navigation. No separate local-PDF hit path was found. Import testing uses the exact five-page Choose to Serve the Lord PDF through the upload UI, so page content is identical.
 
 The old universal 10 CSS-pixel radius rejects deliberate simulated finger drift at 12/16px. Releasing across any zone boundary also rejects a tap, even with only a few pixels of movement. PDF used 50/50 vertical zones, making taps between 25% and 50% jump rather than step. These are reproduced rejection/behavior problems; no physical-iPad event trace was provided, so the exact cause of the user's individual missed taps cannot be proven from simulation alone.
 

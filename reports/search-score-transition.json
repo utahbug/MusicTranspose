@@ -26857,13 +26857,8 @@
     },
     {
       "context": "files",
-      "underlying": [
-        "choose-to-serve-the-lord",
-        "scripture-power"
-      ],
-      "displayed": [
-        "choose-to-serve-the-lord"
-      ],
+      "underlying": [],
+      "displayed": [],
       "navigation": {
         "count": 2,
         "index": 0,
@@ -26879,7 +26874,7 @@
           "staleDisabled": false
         },
         "next": {
-          "id": "scripture-power",
+          "id": "[withdrawn bundled score]",
           "exists": true,
           "playable": true,
           "disabled": false,
@@ -26890,12 +26885,10 @@
         "loading": false,
         "entry": {
           "path": "Search",
-          "query": "Choose to Serve the Lord",
+          "query": "[withdrawn bundled score]",
           "resultCount": 1,
           "playableResultCount": 1,
-          "displayedPlayableIds": [
-            "choose-to-serve-the-lord"
-          ],
+          "displayedPlayableIds": [],
           "singleResultFallback": true,
           "source": "my-music",
           "sort": "number",

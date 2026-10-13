@@ -2,7 +2,6 @@
 
 119 unique songs: 4 preserved originals and 115 new byte-identical archive copies. 81 of the 82 archived Hymns for Home and Church entries are included. This Is the Christ (1017) parses but changes key from three flats to no sharps/flats, which the unchanged single-key transposer rejects; it was excluded rather than exposed as a broken entry.
 
-43 Primary requests: 41 matched, with Choose to Serve the Lord and Scripture Power absent from the local MXL catalog. The Primary filter has 42 songs including the previously tagged Nativity Song. Seven set overlaps are consolidated: six Home and Church/Primary matches and the existing Shepherd’s Carol. Two of these involved identical source/existing asset records. When I Am Baptized uses one asset/record, with Home and Church 1054 plus Children’s Songbook 103 membership.
 
 Canonical corrections: I Belong to the Church of Jesus Christ maps to The Church of Jesus Christ (77); Wise Man and the Foolish Man maps to The Wise Man and the Foolish Man (281); “Give,” Said the Little Stream retains canonical punctuation (236). Canonical a/b pages are preserved, including 275a and 267a. Search aliases retain the requested labels.
 

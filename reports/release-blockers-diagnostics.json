@@ -32921,7 +32921,7 @@
       "count": 2,
       "index": 1,
       "previous": {
-        "id": "choose-to-serve-the-lord",
+        "id": "[withdrawn bundled score]",
         "exists": true,
         "playable": true,
         "disabled": false,
@@ -32943,13 +32943,13 @@
       "bodySongLoading": false,
       "lastSync": {
         "at": 35810,
-        "current": "scripture-power",
+        "current": "[withdrawn bundled score]",
         "isBusy": false,
         "busy": false,
         "loading": false,
         "bodySongLoading": false,
         "scoreBusy": "false",
-        "previous": "choose-to-serve-the-lord",
+        "previous": "[withdrawn bundled score]",
         "next": null,
         "previousDisabled": false,
         "nextDisabled": true
@@ -33034,18 +33034,15 @@
   ],
   "origins": [
     {
-      "currentSongId": "choose-to-serve-the-lord",
-      "activeSongId": "choose-to-serve-the-lord",
+      "currentSongId": "[withdrawn bundled score]",
+      "activeSongId": "[withdrawn bundled score]",
       "hymnNumber": "",
       "origin": "files",
       "count": 2,
       "playableCount": 2,
       "index": 0,
       "capturedIndex": 0,
-      "ids": [
-        "choose-to-serve-the-lord",
-        "scripture-power"
-      ],
+      "ids": [],
       "previous": {
         "id": null,
         "exists": false,
@@ -33057,7 +33054,7 @@
         "staleDisabled": false
       },
       "next": {
-        "id": "scripture-power",
+        "id": "[withdrawn bundled score]",
         "exists": true,
         "playable": true,
         "disabled": false,
@@ -33071,14 +33068,14 @@
       "isBusy": false,
       "lastSync": {
         "at": 867,
-        "current": "choose-to-serve-the-lord",
+        "current": "[withdrawn bundled score]",
         "isBusy": false,
         "busy": false,
         "loading": false,
         "bodySongLoading": false,
         "scoreBusy": "false",
         "previous": null,
-        "next": "scripture-power",
+        "next": "[withdrawn bundled score]",
         "previousDisabled": true,
         "nextDisabled": false
       },
@@ -33098,14 +33095,11 @@
           "scroll": 0,
           "searchEpoch": 0,
           "activeList": null,
-          "current": "choose-to-serve-the-lord"
+          "current": "[withdrawn bundled score]"
         },
-        "song": "choose-to-serve-the-lord",
+        "song": "[withdrawn bundled score]",
         "songSet": {
-          "ids": [
-            "choose-to-serve-the-lord",
-            "scripture-power"
-          ],
+          "ids": [],
           "origin": "files"
         },
         "origin": {

@@ -18,12 +18,13 @@ async function savedStatus(){const pins=await readPins(),catalog=await offlineMa
 }
 async function collectUnused(pins){const keep=new Set([...retained(pins)].flatMap(id=>pins.assets[id]||[]).map(assetURL)),cache=await caches.open(SAVED_CACHE);for(const r of await cache.keys())if(!keep.has(r.url))await cache.delete(r);}
 async function notifyOffline(progress){for(const client of await self.clients.matchAll())client.postMessage({type:'explicit-offline-changed',...progress});}
-async function saveOffline(data){const catalog=await offlineManifest('./offline-catalog.json'),pins=await readPins(),ids=[...new Set(data.ids||[])].filter(id=>Object.hasOwn(catalog,id));if(data.owner==='individual'){if(ids.length!==1)throw Error('Song unavailable');pins.individual=[...new Set([...pins.individual,...ids])];}else if(data.owner==='list'&&typeof data.listId==='string'){Object.defineProperty(pins.lists,data.listId,{value:ids,writable:true,enumerable:true,configurable:true});}else throw Error('Invalid retention request');for(const id of ids)pins.assets[id]=catalog[id];await writePins(pins);await collectUnused(pins);
+async function saveOffline(data){const catalog=await offlineManifest('./offline-catalog.json'),pins=await readPins(),ids=[...new Set(data.ids||[])].filter(id=>!WITHDRAWN_IDS.has(id)&&Object.hasOwn(catalog,id));if(data.owner==='individual'){if(ids.length!==1)throw Error('Song unavailable');pins.individual=[...new Set([...pins.individual,...ids])];}else if(data.owner==='list'&&typeof data.listId==='string'){Object.defineProperty(pins.lists,data.listId,{value:ids,writable:true,enumerable:true,configurable:true});}else throw Error('Invalid retention request');for(const id of ids)pins.assets[id]=catalog[id];await writePins(pins);await collectUnused(pins);
  const cache=await caches.open(SAVED_CACHE);let done=0,failed=0,storageFull=false;
  for(const id of ids){let ok=true;for(const a of catalog[id]){if(await validAsset(cache,a))continue;try{const r=await fetch(assetURL(a),{cache:'no-store'});if(!r.ok)throw Error('File unavailable');const bytes=await r.arrayBuffer(),probe={match:async()=>new Response(bytes)};if(!await validAsset(probe,a))throw Error('Invalid score');await cache.put(assetURL(a),new Response(bytes,{headers:r.headers}));if(!await validAsset(cache,a))throw Error('Unable to verify');}catch(e){ok=false;if(e.name==='QuotaExceededError'){storageFull=true;break;}}}if(ok)done++;else failed++;await notifyOffline({progress:{listId:data.listId,done,total:ids.length,processed:done+failed}});if(storageFull)break;}
  return {...await savedStatus(),failed,storageFull};
 }
 async function offlineCommand(data){
+ await purgeWithdrawnContent();
  if(data.type==='explicit-offline-status')return savedStatus();
  if(data.type==='explicit-offline-save')return saveOffline(data);
  const pins=await readPins();
@@ -35,7 +36,7 @@ async function offlineCommand(data){
  }
  if(data.type==='explicit-offline-remove'){if(data.owner==='individual')pins.individual=pins.individual.filter(id=>id!==data.id);else if(data.owner==='list')delete pins.lists[data.listId];else throw Error('Invalid retention request');}
  else if(data.type==='explicit-offline-clear'){await writePins(emptyPins());await caches.delete(SAVED_CACHE);return savedStatus();}
- else if(data.type==='explicit-offline-reconcile'){const catalog=await offlineManifest('./offline-catalog.json');for(const id of Object.keys(pins.lists)){const list=(data.lists||[]).find(g=>g.id===id);if(!list){delete pins.lists[id];continue;}pins.lists[id]=[...new Set(list.songs)].filter(song=>Object.hasOwn(catalog,song));for(const song of pins.lists[id])pins.assets[song]=catalog[song];}}
+ else if(data.type==='explicit-offline-reconcile'){const catalog=await offlineManifest('./offline-catalog.json');for(const id of Object.keys(pins.lists)){const list=(data.lists||[]).find(g=>g.id===id);if(!list){delete pins.lists[id];continue;}pins.lists[id]=[...new Set(list.songs)].filter(song=>!WITHDRAWN_IDS.has(song)&&Object.hasOwn(catalog,song));for(const song of pins.lists[id])pins.assets[song]=catalog[song];}}
  else throw Error('Unsupported offline command');
  await writePins(pins);await collectUnused(pins);return savedStatus();
 }

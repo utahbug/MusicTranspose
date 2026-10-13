@@ -3,10 +3,7 @@
   "baselineLabel": "2026-09-18 bundled snapshot",
   "fingerprintVersion": "musicxml-structure-v1",
   "structuredScoreCount": 679,
-  "excludedPdfIds": [
-    "choose-to-serve-the-lord",
-    "scripture-power"
-  ],
+  "excludedPdfIds": [],
   "songs": [
     {
       "stableSongId": "cs-109",

@@ -1,3 +1,4 @@
+import {testPdf,preparePdfFixture} from './pdf-fixture.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {mkdirSync,readFileSync} from 'node:fs';
@@ -18,10 +19,10 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
  await c.addInitScript(()=>{Object.defineProperty(navigator,'platform',{get:()=> 'MacIntel'});Object.defineProperty(navigator,'maxTouchPoints',{get:()=>5});localStorage.setItem('music-transpose-page-hint-v1','seen');});
  const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(30000);
  await p.goto(base);await p.waitForFunction(()=>window.prototype?.loadSong);await p.locator('[data-home-source=all]').click();
- const open=async id=>{await p.evaluate(id=>prototype.loadSong(id,'pdf'),id);await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);if(!await p.locator('body').evaluate(e=>e.classList.contains('pdf-score-open'))){await p.locator('#score-size').click();await p.locator('#score-size-options [data-size=pdf]').click();}await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);await p.waitForTimeout(300);};
+ const open=async id=>{if(id==='test-five-pages')await preparePdfFixture(p,base);await p.evaluate(id=>prototype.loadSong(id,'pdf'),id);await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);if(!await p.locator('body').evaluate(e=>e.classList.contains('pdf-score-open'))){await p.locator('#score-size').click();await p.locator('#score-size-options [data-size=pdf]').click();}await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);await p.waitForTimeout(300);};
  const visible=()=>p.locator('#score>.pdf-page-frame.current-page').evaluateAll(es=>es.map(e=>+e.dataset.pdfPage));
  const check=async expected=>{assert.deepEqual(await visible(),expected);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));};
- await open('choose-to-serve-the-lord');
+ await open('test-five-pages');
  console.log(engine,'initial',await p.locator('#score-navigation-label').textContent(),await p.locator('#score').boundingBox());
  await check([1,2]);
  // Boundary turns must not replace an odd physical reading anchor with its partner.
@@ -42,13 +43,13 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
  await p.locator('#score-markup').click();await check([4]);assert.equal(await p.locator('#score-markup').getAttribute('aria-pressed'),'true');assert(await p.locator('#pdf-spread-toggle').isDisabled());
  const layer=p.locator('.current-page .pdf-annotation-canvas');await layer.waitFor({state:'visible'});
  await layer.evaluate(el=>{const r=el.getBoundingClientRect();for(const [type,x] of [['pointerdown',.3],['pointermove',.4],['pointerup',.4]])el.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:55,isPrimary:true,button:0,pointerType:'pen',clientX:r.x+r.width*x,clientY:r.y+r.height*.3}));});
- const annotations=await p.evaluate(()=>localStorage.getItem('music-transpose-pdf-annotations-v1'));assert(annotations?.includes('choose-to-serve-the-lord'));
+ const annotations=await p.evaluate(()=>localStorage.getItem('music-transpose-pdf-annotations-v1'));assert(annotations?.includes('test-five-pages'));
  await p.locator('#pdf-annotation-next').click();await check([5]);await p.locator('#pdf-annotation-done').click();await check([5]);await p.keyboard.press('ArrowLeft');await check([3,4]);
  assert.equal(await p.evaluate(()=>localStorage.getItem('music-transpose-pdf-annotations-v1')),annotations);
  assert.deepEqual(await p.locator('#score>.pdf-page-frame').evaluateAll(es=>es.map(e=>({page:e.dataset.pdfPage,doc:e.dataset.pdfDocument,canvas:e.querySelector('.pdf-page').toDataURL()}))),originals);
  await p.evaluate(()=>prototype.preparePrint());assert.equal(await p.locator('#print-pages .pdf-print-page').count(),5);
  await p.evaluate(()=>document.body.classList.remove('prepared-print'));
- await p.locator('#score-tools').click();await p.locator('#score-export').click();const downloading=p.waitForEvent('download');await p.locator('#score-export-pdf').click();assert(readFileSync(await(await downloading).path()).equals(readFileSync('assets/pdfs/choose-to-serve-the-lord.pdf')));
+ await p.locator('#score-tools').click();await p.locator('#score-export').click();const downloading=p.waitForEvent('download');await p.locator('#score-export-pdf').click();assert(readFileSync(await(await downloading).path()).equals(testPdf()));
 
  // Geometry: music ends above the navigation strip; controls stay above footer.
  const g=await p.evaluate(()=>{const r=e=>{const b=e.getBoundingClientRect();return {left:b.left,right:b.right,top:b.top,bottom:b.bottom,width:b.width,height:b.height};};return {nav:r(document.querySelector('#score-navigation')),footer:r(document.querySelector('.masthead')),pages:[...document.querySelectorAll('.pdf-page-frame.current-page')].map(r),toggle:r(document.querySelector('#pdf-spread-toggle'))};});
@@ -66,7 +67,7 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
 
  }
  await p.locator('#pdf-spread-toggle').click();await check([2]);
- await p.reload();await p.waitForFunction(()=>window.prototype?.navigation);await open('choose-to-serve-the-lord');await check([1]);
+ await p.reload();await p.waitForFunction(()=>window.prototype?.navigation);await open('test-five-pages');await check([1]);
  assert.equal(await p.locator('#pdf-spread-toggle').getAttribute('aria-pressed'),'false');await p.locator('#pdf-spread-toggle').click();await check([1,2]);
  assert.equal(await p.evaluate(()=>localStorage.getItem('music-transpose-pdf-annotations-v1')),annotations);
  for(const mode of ['continuous','auto','pages']){await p.locator('#score-navigation-button').click();await p.locator(`[data-navigation=${mode}]`).click();if(mode==='auto')await p.keyboard.press('Escape');assert.equal(await p.locator('#pdf-spread-toggle').isVisible(),mode==='pages');if(mode==='pages')await check([1,2]);else assert.equal(await p.locator('#score>.pdf-page-frame:visible').count(),5);}
@@ -75,7 +76,7 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
  // Separate device contexts: no spoofed app state and no source-data overrides.
  for(const [width,height,device,expected] of [[1366,1024,'iPad',true],[1180,820,'iPad',true],[1024,768,'iPad',true],[820,1180,'iPad',false],[744,1133,'iPad',false],[744,600,'iPad',false],[320,740,'iPhone',false],[390,844,'iPhone',false],[844,390,'iPhone',false],...[320,390,744,820,1024,1440].map(w=>[w,900,'desktop',false])]){
  const c=await browser.newContext({viewport:{width,height},serviceWorkers:'block',...(device==='desktop'?{}:{userAgent:device,hasTouch:true,isMobile:true})});const p=await c.newPage();
- await p.goto(base);await p.waitForFunction(()=>window.prototype?.navigation);await p.evaluate(()=>prototype.loadSong('choose-to-serve-the-lord'));await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);await p.waitForTimeout(200);
+ await p.goto(base);await p.waitForFunction(()=>window.prototype?.navigation);await preparePdfFixture(p,base);await p.evaluate(()=>prototype.loadSong('test-five-pages'));await p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading);await p.waitForTimeout(200);
  if(device==='iPhone')assert.equal(await p.locator('#score-navigation-label').textContent(),'Scroll');
  await p.locator('#score-navigation-button').click();await p.locator('[data-navigation=pages]').click();await p.waitForTimeout(200);
  assert.equal(await p.locator('#pdf-spread-toggle').isVisible(),expected,`${engine} ${device} ${width}`);

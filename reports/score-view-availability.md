@@ -24,7 +24,6 @@ Both title and aria-description provide these exact explanations only when disab
 | PDF + XML + Melody | HHC 1035, As I Keep the Sabbath Day | All three |
 | PDF + XML without Melody | The Nativity Song | Original, Transpose |
 | XML-only + Melody | HHC 1035 XML imported through My Music | Transpose, Melody only |
-| PDF-only | Choose to Serve the Lord, bundled and imported | Original |
 
 No apparent Melody eligibility bug was found. The existing projector accepts HHC
 1035 (including imported XML); Nativity reports `multiple-lyrics` with multiple

@@ -45,7 +45,6 @@ Normal-density examples, now counting only music:
 | --- | ---: | ---: |
 | The Nativity Song | 4 | 2 |
 | Follow the Prophet | 3 | 2 |
-| Choose to Serve the Lord (PDF) | 5 | 5 |
 
 Earlier reports that included final MXL text-only pages describe the earlier
 version and are superseded by this behavior.

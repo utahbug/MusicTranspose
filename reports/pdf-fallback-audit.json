@@ -28,20 +28,7 @@
   "projectedTrackedSiteBytes": 46453886,
   "projectedWorkingTreeBytes": 132616845,
   "exceptions": [],
-  "existingPdfs": [
-    {
-      "id": "scripture-power",
-      "title": "Scripture Power",
-      "asset": "./assets/pdfs/scripture-power.pdf",
-      "status": "Existing bundled PDF retained; not in this collection archive"
-    },
-    {
-      "id": "choose-to-serve-the-lord",
-      "title": "Choose to Serve the Lord",
-      "asset": "./assets/pdfs/choose-to-serve-the-lord.pdf",
-      "status": "Existing bundled PDF retained; not in this collection archive"
-    }
-  ],
+  "existingPdfs": [],
   "matches": [
     {
       "id": "nativity",

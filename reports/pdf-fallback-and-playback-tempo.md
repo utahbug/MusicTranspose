@@ -39,7 +39,6 @@ Matches require collection, source number/page, and title agreement. Normalizati
 - Hymns for Home and Church: **81**.
 - 643 exact normalized titles; 36 confirmed archive qualifier differences, recorded individually.
 - No ambiguous or missing structured-song matches.
-- Scripture Power and Choose to Serve the Lord are outside this archive's collection manifest; their two existing bundled primary PDFs are retained, without duplication.
 
 Every copied file's SHA-256 matches the archive manifest. Original recovered files were not changed.
 `reports/pdf-fallback-audit.json` records every source, destination, title, collection, number, size, page count, hash and matching rule.
