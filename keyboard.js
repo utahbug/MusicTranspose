@@ -647,5 +647,5 @@ workspace.querySelector('.workspace-return').append(settings.element);
 window.addEventListener('blur',stopAllPianoVoices);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAllPianoVoices();});
 renderPiano();showKeyboardGuide('chord');
-return {open(){workspace.hidden=false;document.title='Keyboard · Title Undecided';el.keyboardTitle.focus({preventScroll:true});},hide(){settings.close();if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
+return {open(){workspace.hidden=false;document.title='Keyboard · MusicSlate';el.keyboardTitle.focus({preventScroll:true});},hide(){settings.close();if(!workspace.hidden)stopAllPianoVoices();workspace.hidden=true;}};
 }

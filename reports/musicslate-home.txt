@@ -1,0 +1,19 @@
+MusicSlate Home production integration
+Production base: 7fc2d3dcc8eaed7a4f46d86f9867881bce53b332
+Read-only approved Design Lab: 4e40b71c0410b500a221875b623456e96f1aa96e
+
+Approved Home presentation is scoped in home-design.css. Existing production IDs, source filters, click handlers, preference handling and footer viewport settlement are retained. Footer artwork comes from the approved preview. No prototype scripts or preview actions are imported.
+Visible name, document titles, install guidance, Apple title and manifest name/short_name use MusicSlate. Manifest start_url, scope, display, absence of explicit id, icon URLs and all storage identifiers are unchanged. Inspected musical-note favicon and PNG icons have no outdated text; original bytes and 32/180/192/512 dimensions are preserved.
+Service-worker shell version advances v367 to v368 and adds home-design.css. Existing score caches, update deferral, storage and data handling remain unchanged.
+
+PASS: tests/musicslate-home.mjs, Chromium and WebKit 320,390,744,820,1194,1440; both themes, Home sources, footer destinations, About/legal, Settings, Search, direct Lyrics preference, Score/Lyrics switching, visible narrow-phone Lyrics control, persistence, geometry, unchanged music/data modules and install identity. Final visual refinements rechecked at 390/1194/1440 in both engines.
+PASS: tests/home-song-view.mjs (12 engine/width combinations). Geometry assertions updated for the explicitly approved top-left control and 44px selector.
+PASS: tests/list-song-view.mjs (both engines, 390/820); independent overrides, Save/Cancel, ordering, reload and search isolation.
+PASS: tests/app-update-browser.mjs (390/820/1440); actual worker install/controllerchange, single reload, playback deferral, offline/error, retained saved assets/imports/preferences. Historic branding assertions updated.
+PASS: tests/app-update.mjs (all seven update outcomes).
+PASS: tests/withdrawn-content.mjs; both engines/six widths, old-worker cache upgrade, unrelated saved content, imported same-title files, personal state, 11 starters, withdrawal remains enforced.
+PASS: tests/pdf-spreads-offline.mjs, run unchanged except local test port 8780; real offline PDF/MXL save/reload, two-page display, annotation ownership and persistence, clean PDF export/share.
+PASS: JS syntax, git diff whitespace, shell asset existence/uniqueness, manifest identity, icon dimensions, generated storage-size check, offline catalog regeneration equivalence (no catalog change).
+Screenshots: ignored test-results/musicslate, Chromium/WebKit light/dark.
+
+Limitations: browser viewport/touch simulation is not physical iPhone/iPad verification. Windows WebKit cannot conclusively emulate network-disabled service-worker fetching; cache content verified and real Chromium offline reopening passed. No physical Apple installed-app rename tested. Existing app content updates through the same URL/service worker; existing Home Screen labels may retain their chosen installation name. Do not delete an existing installation to force the new label because personal content is device-local. New installations advertise MusicSlate. No data migration or unfinished Backup & Restore included. Unpublished Lyrics and other worktrees untouched.

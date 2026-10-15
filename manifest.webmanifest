@@ -1,6 +1,6 @@
 {
-  "name": "Title Undecided",
-  "short_name": "Title Undecided",
+  "name": "MusicSlate",
+  "short_name": "MusicSlate",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
