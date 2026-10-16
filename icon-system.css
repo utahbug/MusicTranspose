@@ -209,3 +209,11 @@ body :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-foot
   padding-right:max(12px,env(safe-area-inset-right,0px),var(--desktop-footer-right,12px),calc((100% - var(--lyrics-content-width))/2));
  }
 }
+
+/* Reading return buttons follow the title banner; compact phones stay unchanged. */
+@media screen and (min-width:701px) {
+ body:not(.iphone-score-ui) #lyrics-view .lyrics-footer,
+ body:not(.iphone-score-ui):not(.lyrics-open):not(.library-open) .masthead .toolbar {
+  padding-left:max(env(safe-area-inset-left,0px),var(--reading-footer-left,var(--desktop-footer-left,12px)));
+ }
+}

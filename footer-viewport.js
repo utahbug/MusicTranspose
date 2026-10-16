@@ -70,6 +70,20 @@ export function installFooterViewport(){
   const lyrics=document.querySelector('#lyrics-view');
   if(document.body.classList.contains('lyrics-open'))alignDesktopFooter(document.querySelector('.lyrics-footer'),lyrics);
   else alignDesktopFooter(document.querySelector('.masthead .toolbar'),document.querySelector('.score-paper'));
+  // Title banners include their own frame/border offsets: align the button's
+  // outer edge to that measured edge, without moving the right-hand switches.
+  const readingLyrics=document.body.classList.contains('lyrics-open');
+  const bar=document.querySelector(readingLyrics?'.lyrics-footer':'.masthead .toolbar');
+  const banner=document.querySelector(readingLyrics?'.lyrics-identity-header':'.score-identity-header');
+  if(bar&&banner?.getClientRects().length){
+   const left=banner.getBoundingClientRect().left;
+   const group=bar.querySelector(readingLyrics?'#songs':'.playing-controls');
+   const next=readingLyrics?bar.querySelector('.footer-view-pair'):document.querySelector('.masthead .score-focus-control:not([hidden])');
+   const limit=next?.getBoundingClientRect().left||bar.querySelector('.footer-view-pair')?.getBoundingClientRect().left;
+   const fits=group&&left+group.getBoundingClientRect().width+8<=limit;
+   if(fits)bar.style.setProperty('--reading-footer-left',Math.max(0,left)+'px');
+   else bar.style.removeProperty('--reading-footer-left');
+  }
   const footer=[...document.querySelectorAll('.masthead,.lyrics-footer')].find(e=>e.getClientRects().length);
   if(!footer)return;
   // Some browser states already move fixed elements. Undo only our own inset
