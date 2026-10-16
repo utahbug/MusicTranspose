@@ -1,4 +1,14 @@
 // Shared viewport timing; playing and workspace geometry remain independent.
+// Measure each workspace rather than duplicating its width/padding in footer CSS.
+export function alignDesktopFooter(footer, workspace){
+ if(!footer||!workspace||!workspace.getClientRects().length)return;
+ const rect=workspace.getBoundingClientRect(),style=getComputedStyle(workspace);
+ const edges={left:rect.left+parseFloat(style.paddingLeft),right:document.documentElement.clientWidth-rect.right+parseFloat(style.paddingRight)};
+ for(const [side,value] of Object.entries(edges)){
+  const key=`--desktop-footer-${side}`,next=Math.max(0,value)+'px';
+  if(footer.style.getPropertyValue(key)!==next)footer.style.setProperty(key,next);
+ }
+}
 export const phoneFooter = () => matchMedia('(max-width:600px), (max-height:600px) and (pointer:coarse)').matches;
 export function footerObstruction(layoutBottom, visibleBottom, unshiftedBottom=layoutBottom){
  return Math.max(0, unshiftedBottom-visibleBottom);
@@ -57,6 +67,9 @@ export function installFooterViewport(){
   const v=window.visualViewport;
   // Pinch zoom is a magnified/pannable view, not a new engraving size.
   if(v&&Math.abs(v.scale-1)>.01)return;
+  const lyrics=document.querySelector('#lyrics-view');
+  if(document.body.classList.contains('lyrics-open'))alignDesktopFooter(document.querySelector('.lyrics-footer'),lyrics);
+  else alignDesktopFooter(document.querySelector('.masthead .toolbar'),document.querySelector('.score-paper'));
   const footer=[...document.querySelectorAll('.masthead,.lyrics-footer')].find(e=>e.getClientRects().length);
   if(!footer)return;
   // Some browser states already move fixed elements. Undo only our own inset

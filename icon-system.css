@@ -194,3 +194,18 @@ body :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-foot
 @media screen and (min-width:700px) {
  body:not(.iphone-score-ui) :is(#lists-view,#files-view,#texts-view) .workspace-return button[data-footer-destination] {flex-basis:88px;width:88px;min-width:88px;padding:0 7px;}
 }
+
+/* Wide pointer-driven windows: full-width chrome, workspace-aligned controls.
+   Touch/tablet and narrow layouts retain their established safe-area geometry. */
+@media screen and (min-width:1200px) and (hover:hover) and (pointer:fine) {
+ body :is(#library,#lists-view,#files-view,#texts-view,#keyboard-view)>:is(.library-quick-access,.workspace-return),
+ body #lyrics-view .lyrics-footer,
+ body:not(.lyrics-open):not(.library-open) .masthead .toolbar {
+  padding-left:max(12px,env(safe-area-inset-left,0px),var(--desktop-footer-left,12px));
+  padding-right:max(12px,env(safe-area-inset-right,0px),var(--desktop-footer-right,12px));
+ }
+ /* Preserve the existing shared view-switch slot when Score paper is wider. */
+ body:not(.lyrics-open):not(.library-open) .masthead .toolbar {
+  padding-right:max(12px,env(safe-area-inset-right,0px),var(--desktop-footer-right,12px),calc((100% - var(--lyrics-content-width))/2));
+ }
+}

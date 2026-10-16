@@ -1,4 +1,4 @@
-import {onSettledFooterViewport} from './footer-viewport.js';
+import {onSettledFooterViewport,alignDesktopFooter} from './footer-viewport.js';
 // Shared workspace chrome only. Score/Lyrics geometry and events stay separate.
 export function installWorkspaceFooters(){
  const entries=[...document.querySelectorAll('.library-quick-access,.workspace-return,.library-home-footer')].map(footer=>({footer,owner:footer.parentElement,inset:0}));
@@ -9,6 +9,7 @@ export function installWorkspaceFooters(){
   const visibleBottom=v?v.offsetTop+v.height:innerHeight;
   for(const entry of entries){
    const {footer,owner}=entry;if(!footer.getClientRects().length)continue;
+   if(owner.id!=='library-home')alignDesktopFooter(footer,owner.id==='keyboard-view'?owner.querySelector('.keyboard-panel'):owner);
    const rect=footer.getBoundingClientRect();
    // Undo only our own offset: Safari may already move fixed chrome natively.
    const next=Math.max(0,Math.round((rect.bottom+entry.inset-visibleBottom)*100)/100);
