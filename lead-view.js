@@ -30,6 +30,27 @@ const hymnIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns (1985)').map(
 const pianoIds=new Set(bundledSongs.filter(s=>['Hymns (1985)','Hymns for Home and Church','Children’s Songbook'].includes(s.collection)).map(s=>s.id));
 const hhcIds=new Set(bundledSongs.filter(s=>s.collection==='Hymns for Home and Church').map(s=>s.id));
 export function createLeadXML(source,context){
+ const prepared=fatherLivesMelodySource(source,context),result=createProjectedLeadXML(prepared,context);
+ if(prepared===source)return result;
+ return result.ok?result:{...result,xml:source};
+}
+// Reviewed CS #5 accompaniment directions only, identified by catalog, part,
+// source measure, staff and exact wording. Vocal expression/tempo and the
+// shared "slower" direction remain. Imported scores never use this mapping.
+function fatherLivesMelodySource(source,context){
+ if(context?.local||context?.id!=='song-2a184969-eb57-4901-9829-48c3952bfda3')return source;
+ const doc=new DOMParser().parseFromString(source,'application/xml'),parts=[...doc.querySelectorAll('score-partwise > part')],piano=parts.find(p=>p.id==='P2');
+ if(parts.length!==2||!parts.find(p=>p.id==='P1')?.querySelector('lyric')||!piano||piano.querySelector('lyric')||piano.querySelector('staves')?.textContent!=='2')return source;
+ const reviewed=new Set(['0:1:R.H.','0:2:Smoothly','0:2:with pedal','0:2:L.H.','X1:2:simile','X10:1:R.H.','X11:1:R.H.']);
+ for(const measure of piano.querySelectorAll(':scope > measure'))for(const direction of measure.querySelectorAll(':scope > direction')){
+  const staff=direction.querySelector(':scope > staff')?.textContent,types=[...direction.querySelectorAll('direction-type > *')];
+  const words=types.length===1&&types[0].localName==='words'?types[0].textContent.trim():null;
+  const handBracket=['X10','X11'].includes(measure.getAttribute('number'))&&staff==='2'&&types.length===1&&types[0].localName==='bracket';
+  if(!direction.querySelector('sound')&&(reviewed.has(`${measure.getAttribute('number')}:${staff}:${words}`)||handBracket))direction.remove();
+ }
+ return new XMLSerializer().serializeToString(doc);
+}
+function createProjectedLeadXML(source,context){
  const prior=priorLeadXML(source,context);
  if(prior.ok||context?.local||!pianoIds.has(context?.id))return prior;
  let melody=rightHandMelody(source);

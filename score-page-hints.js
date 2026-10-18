@@ -1,4 +1,18 @@
 import {assessLayout} from './auto-layout.js';
+// CS #5 has negative-x piano instructions at the left edge. Without an ink
+// inset every Auto candidate fails clipping, forcing the largest fallback.
+// Reserve measured space before assessment; never change source/export XML.
+export function renderScoreInkInset(engraver,host,song,render){
+ if(song!=='song-2a184969-eb57-4901-9829-48c3952bfda3')return render();
+ const rules=engraver.EngravingRules,left=rules.PageLeftMargin;
+ try{
+  for(let attempt=0;attempt<4;attempt++){
+   render();const overhang=Math.max(0,...[...host.querySelectorAll('svg')].map(svg=>svg.viewBox.baseVal.x-svg.getBBox().x));
+   if(overhang<=.01||attempt===3)break;
+   rules.PageLeftMargin+=(overhang+2)/10;
+  }
+ }finally{rules.PageLeftMargin=left;}
+}
 // Arrangement-specific screen presentation, never musical/export XML.
 const hints=new Map([['song-c25734b4-ba49-4c88-ba90-4927ede707c4',{transpose:{breakBefore:10}}]]);
 export function applyScorePageHint(engraver,host,song,view,entry,{width,available,render}){

@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {renderScoreInkInset} from '../score-page-hints.js';
+const id='song-2a184969-eb57-4901-9829-48c3952bfda3';
+const engraver={EngravingRules:{PageLeftMargin:5}};
+let calls=0;
+const host={querySelectorAll:()=>[{viewBox:{baseVal:{x:0}},getBBox:()=>({x:calls<2?-12:0})}]};
+renderScoreInkInset(engraver,host,'unrelated',()=>calls++);assert.equal(calls,1);assert.equal(engraver.EngravingRules.PageLeftMargin,5);
+calls=0;const margins=[];renderScoreInkInset(engraver,host,id,()=>{calls++;margins.push(engraver.EngravingRules.PageLeftMargin);});assert.equal(calls,2);assert(margins[1]>margins[0]);assert.equal(engraver.EngravingRules.PageLeftMargin,5);
+assert.throws(()=>renderScoreInkInset(engraver,host,id,()=>{throw Error('render failure');}));assert.equal(engraver.EngravingRules.PageLeftMargin,5);
+console.log('PASS song-specific ink inset, measured retry, state restoration and error restoration');
