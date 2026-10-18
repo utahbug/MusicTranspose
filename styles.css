@@ -211,6 +211,16 @@ dialog h2{font:600 20px system-ui,sans-serif;line-height:1.35}
 @media screen{body.lyrics-open .masthead,body.lyrics-open #playing-view{display:none!important}}
 @media print{#lyrics-view,.score-actions{display:none!important}}
 
+/* Workspace surrounds follow Home light mode; reading paper stays independent. */
+@media screen{
+ :root:not([data-library-theme=dark]):has(:is(#lists-view,#files-view,#texts-view):not([hidden])),
+ :root:not([data-library-theme=dark]) body:has(:is(#lists-view,#files-view,#texts-view):not([hidden])),
+ :root:has(#lyrics-view:not([hidden]):not(.lyrics-dark)),
+ body:has(#lyrics-view:not([hidden]):not(.lyrics-dark)),
+ #lyrics-view:not(.lyrics-dark){background:#e9eff3}
+ #lyrics-view:not(.lyrics-dark) .lyrics-paper{background:var(--lyrics-bg)}
+}
+
 /* Quiet Lyrics frame; colors adapt independently of the score theme. */
 #lyrics-view{--lyrics-frame-outer:#4B6E88;--lyrics-frame-inner:#7A3E46}
 #lyrics-view.lyrics-dark{--lyrics-frame-outer:#6F8A9C;--lyrics-frame-inner:#A58A55}
