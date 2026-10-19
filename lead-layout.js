@@ -8,11 +8,17 @@ const profile={MinimumDistanceBetweenSystems:3,MinSkyBottomDistBetweenSystems:2.
 // rhythmic spacing and a bounded pickup expansion. Legacy Lead layouts retain
 // their measured unlimited-verse profile unchanged.
 const rightHandProfile={VoiceSpacingAddendVexflow:3,VoiceSpacingMultiplierVexflow:.85,MaximumLyricsElongationFactor:5,LyricOverlapAllowedIntoNextMeasure:0};
-export function applyLeadLayout(engraver,enabled,{print=false,rightHand=false}={}){
+export function applyLeadLayout(engraver,enabled,{print=false,rightHand=false,phone=false,song}={}){
  const rules=engraver.EngravingRules;rules.musicTransposeLead=enabled;
  if(!originals.has(engraver))originals.set(engraver,Object.fromEntries([...new Set([...Object.keys(profile),...Object.keys(rightHandProfile)]),'SystemRightMargin','PageLeftMargin','PageRightMargin','PageTopMargin','PageBottomMargin','NewSystemAtXMLNewSystemAttribute'].map(k=>[k,rules[k]])));
  Object.assign(rules,originals.get(engraver));
  if(enabled)Object.assign(rules,profile,rightHand?rightHandProfile:{},{PageLeftMargin:print?2:.6,PageRightMargin:print?2:.6,...(print?{PageTopMargin:3,PageBottomMargin:3}:{})});
+ // CS #87's two lyric verses need the normal cross-barline allowance. The
+ // conservative RH default reserves every final syllable inside its measure,
+ // inflating minimum widths into mostly single-measure phone systems.
+ // Retain measured collision/readability checks and all source/export text.
+ if(enabled&&rightHand&&phone&&!print&&song==='song-d6b88fae-5fc8-4287-b81b-fda387feae71')
+  rules.LyricOverlapAllowedIntoNextMeasure=originals.get(engraver).LyricOverlapAllowedIntoNextMeasure;
 }
 
 // Measure every retained voice/verse after engraving. OSMD can leave the last
