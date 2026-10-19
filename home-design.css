@@ -38,10 +38,11 @@ body #library-home nav.home-cards>button:active{box-shadow:inset 0 2px 5px #0003
 body #library-home :is(button,input):focus-visible,#library-home .song-view-segments input:focus-visible+span{outline:3px solid #995100;outline-offset:3px}
 body #library-home .library-home-footer{justify-content:center;padding:8px max(16px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:var(--home-surface);border-color:var(--home-line);box-shadow:none}
 body #library-home .home-toolbar{display:grid;grid-template-columns:repeat(6,minmax(44px,1fr));max-width:680px;gap:6px;margin:auto}
-body #library-home .home-toolbar button[id][type]{box-sizing:border-box;width:100%;min-width:44px;height:52px;min-height:52px;display:flex;flex-direction:row;gap:6px;padding:4px 8px;font:550 12px/1.5 system-ui,sans-serif;background:transparent;color:var(--home-ink);border:1px solid transparent;border-radius:8px;margin:0}
+body #library-home .home-toolbar button[id][type]{box-sizing:border-box;width:100%;min-width:44px;height:auto;min-height:52px;display:flex;flex-direction:row;gap:6px;padding:4px 8px;font:550 12px/1.5 system-ui,sans-serif;background:transparent;color:var(--home-ink);border:1px solid transparent;border-radius:8px;margin:0}
 body #library-home .home-toolbar #home-settings{margin:0}
 body #library-home .home-toolbar svg{width:23px;height:23px;flex:none}
-body #library-home .home-toolbar .footer-destination-label{display:inline;white-space:nowrap}
+/* Enlarged labels wrap within their own target; the existing footer observer reserves the resulting height. */
+body #library-home .home-toolbar :is(.footer-destination-label,.home-settings-label){display:inline;min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
 body #library-home .home-toolbar #home-current{background:var(--app-header-background);color:white;font-size:14px}
 body #library-home .home-toolbar #home-current svg{width:30px;height:30px}
 body #library-home .home-toolbar button[id][type]:hover{background:#e3ebf0}

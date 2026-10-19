@@ -1083,7 +1083,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #lists-actions{margin:12px 0}
 #lists-actions>button{background:#e4edf1;border:1px solid #afc3cd;font-weight:500;padding:8px 14px}
 #lists-view .list-overview-entry{min-height:56px;color:#233331}
-#lists-view .list-overview-entry>span{color:#536b7a;font-size:13px}
+#lists-view .list-overview-entry>span{color:#405665;font-size:13px}
 .list-manage-actions{display:flex;gap:6px}
 #lists-view .list-manage-actions button{font-size:13px;font-weight:400;border:1px solid #c4cfd3;background:#f5f7f7;padding:8px 12px}
 #lists-view .list-overview-entry:hover,#lists-view .list-manage-actions button:hover,#lists-actions>button:hover{background:#eaf0f3;text-decoration:none}
@@ -1143,7 +1143,7 @@ body:not(.pdf-score-open) .score-paper{padding-left:10px;padding-right:10px}
 #lists-view .list-overview-entry{display:flex;flex-direction:row;align-items:center;gap:8px;min-width:0}
 .list-header-identity{display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left}
 #lists-view .list-header-identity strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
-.list-count{font-size:12px;color:#61716f}
+.list-count{font-size:12px;color:#4b5d5b}
 .list-chevron{display:flex;flex:0 0 20px}
 .list-chevron svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 [aria-expanded=true]>.list-chevron{transform:rotate(90deg)}
@@ -1823,6 +1823,7 @@ body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#t
 body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new):active{filter:brightness(.94)}
 body :is(#lists-view #lists-actions .workspace-primary,#files-view #add-music,#texts-view #texts-new):focus-visible{outline:2px solid #245a9a;outline-offset:3px}
 .menu-section-label{padding:7px 12px 3px;font:600 11px system-ui;color:#647780;text-transform:uppercase;letter-spacing:.04em}
+[data-library-theme=dark] #home-settings-menu .menu-section-label{color:#c1d0e2}
 .list-delete-section{border-top:1px solid #c4cfd3;margin-top:18px;padding-top:12px}
 .list-delete-section:has(button[hidden]){display:none}
 #list-name-delete{color:#a12e36}
