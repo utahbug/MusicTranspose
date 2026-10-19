@@ -1,4 +1,20 @@
 import {assessLayout} from './auto-layout.js';
+// VexFlow adds the rest-dot lane offset on each formatting pass. Narrow
+// Full Score fitting formats the same notes repeatedly, accumulating the offset
+// until a dot corrupts the skyline used to position chords and complete systems.
+// Reset only this derived lane offset before reformatting these arrangements.
+const restDotScores=new Set(['hhc-1009','song-d6b88fae-5fc8-4287-b81b-fda387feae71']);
+export function withScoreRestDots(engraver,song,phone,render){
+ if(!phone||!restDotScores.has(song))return render();
+ const prototype=globalThis.opensheetmusicdisplay.VexFlowMeasure.prototype,format=prototype.format;
+ const rules=engraver.EngravingRules;
+ prototype.format=function(...args){
+  if(this.rules===rules)for(const voice of Object.values(this.vfVoices))for(const note of voice.getTickables())
+   if(note.isRest?.())for(const dot of note.getModifiers())if(dot.getCategory()==='dots')dot.dot_shiftY=0;
+  return format.apply(this,args);
+ };
+ try{return render();}finally{prototype.format=format;}
+}
 // CS #5 has negative-x piano instructions at the left edge. Without an ink
 // inset every Auto candidate fails clipping, forcing the largest fallback.
 // Reserve measured space before assessment; never change source/export XML.
