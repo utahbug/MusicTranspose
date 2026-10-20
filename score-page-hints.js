@@ -1,4 +1,25 @@
 import {assessLayout} from './auto-layout.js';
+import {musicalSections} from './section-layout.js';
+
+// CS #2 phone Melody only (caller-gated). X7 ends with a double bar; X8 starts
+// the single-stream chorus after three verse streams. Keep canonical XML intact.
+// The Auto fitter still chooses a readable scale, and may need extra pages on
+// short screens. pageBreakBefore is consumed only by complete-system pagination.
+export function cs2MelodyPageHint(engraver,xml,systems,render){
+ const boundary=8,source=engraver.Sheet.SourceMeasures;
+ if(source.length!==16||!musicalSections(xml).includes(boundary))return systems;
+ let layout=systems;
+ if(!systems.some(s=>s.start===boundary)){
+  const flags=source.map(m=>m.printNewSystemXml),rule=engraver.EngravingRules.NewSystemAtXMLNewSystemAttribute;
+  try{
+   const starts=new Set(systems.filter(s=>s.start<boundary).map(s=>s.start));starts.add(boundary);
+   source.forEach((m,i)=>m.printNewSystemXml=starts.has(i));engraver.EngravingRules.NewSystemAtXMLNewSystemAttribute=true;
+   layout=render(true);
+  }finally{source.forEach((m,i)=>m.printNewSystemXml=flags[i]);engraver.EngravingRules.NewSystemAtXMLNewSystemAttribute=rule;}
+  if(!layout.some(s=>s.start===boundary))return render();
+ }
+ return layout.map(s=>({...s,pageBreakBefore:s.start===boundary}));
+}
 // VexFlow adds the rest-dot lane offset on each formatting pass. Narrow
 // Full Score fitting formats the same notes repeatedly, accumulating the offset
 // until a dot corrupts the skyline used to position chords and complete systems.
