@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import {createRequire} from 'node:module';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';
+const pw=createRequire(process.env.PLAYWRIGHT_PACKAGE||'C:/Users/kenro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/package.json')('playwright');
+const engine=process.env.ENGINE||'chromium',out=process.env.OUT||'test-results/cs2',baseline=!!process.env.BASELINE;await fs.mkdir(out,{recursive:true});const hash=s=>createHash('sha256').update(s).digest('hex');const rows=[];
+const b=await pw[engine].launch(engine==='chromium'?{channel:'msedge'}:{});
+try{for(const [width,height] of JSON.parse(process.env.SIZES||'[[320,568],[375,812],[390,844],[744,1133],[820,1180],[1194,834],[1440,900]]')){
+ const c=await b.newContext({viewport:{width,height},hasTouch:width<1440,serviceWorkers:'block'}),p=await c.newPage();p.setDefaultTimeout(120000);
+ if(baseline){const body=execFileSync('git',['show','e28212d:score-page-hints.js'],{encoding:'utf8'});await p.route('**/score-page-hints.js',r=>r.fulfill({body,contentType:'text/javascript'}));}
+ await p.addInitScript(()=>{localStorage.setItem('music-transpose-navigation-v2',JSON.stringify({mode:'continuous',explicit:true}));document.addEventListener('score-engraved',e=>window.cs2Systems=e.detail.systems);});
+ await p.goto(process.env.TEST_URL||'http://127.0.0.1:8782/');await p.waitForFunction(()=>window.prototype?.navigation);
+ const ready=()=>p.waitForFunction(()=>prototype.ready&&!prototype.busy&&!prototype.loading&&document.querySelector('#score').getAttribute('aria-busy')==='false');
+ const nav=async mode=>{await p.locator('#score-navigation-button').click();await p.locator(`[data-navigation="${mode}"]`).click();};
+ const view=async mode=>{await p.locator('#score-size').click();await p.locator(`#score-size-options [data-size="${mode}"]`).click();await ready();};
+ await p.evaluate(()=>prototype.loadSong('cs-2'));await ready();const pdf=await p.locator('.pdf-page-frame').count();assert.equal(pdf,2);
+ await p.locator('#key').click();await p.locator('#key-dialog [data-shift="0"]').click();await ready();
+ for(const shift of [0,-5,-2]){
+  await p.evaluate(s=>prototype.changeKey(s),shift);await ready();assert.equal(await p.evaluate(()=>prototype.current),shift);
+  const data=await p.evaluate(async()=>{const host=document.querySelector('#score'),{scoreTimeline}=await import('./playback.js');const svgs=[...host.querySelectorAll('svg')];return {xml:prototype.xml,viewXML:prototype.viewXML,source:prototype.original,timeline:scoreTimeline(prototype.xml),systems:window.cs2Systems,report:host.autoReport,height:host.getBoundingClientRect().height,zoom:+host.dataset.zoom,overhang:svgs.map(svg=>{const v=svg.viewBox.baseVal,b=svg.getBBox(),scale=svg.getBoundingClientRect().width/v.width;return {left:Math.max(0,v.x-b.x)*scale,right:Math.max(0,b.x+b.width-v.x-v.width)*scale};}),direction:svgs.flatMap(svg=>[...svg.querySelectorAll('text')].filter(t=>t.textContent.trim()==='Optional descant (with verse 3) for voice or instrument').map(t=>({text:t.textContent,size:parseFloat(getComputedStyle(t).fontSize)*svg.getBoundingClientRect().width/svg.viewBox.baseVal.width}))),overflow:document.documentElement.scrollWidth>innerWidth};});
+  assert.equal(data.xml,data.viewXML);assert(!data.overflow);assert(data.direction.length);assert(data.direction.every(t=>t.size>=11-1e-4));
+  const covered=new Set(data.systems.flatMap(s=>Array.from({length:s.end-s.start+1},(_,i)=>s.start+i)));assert.equal(covered.size,16);assert.equal(Math.min(...covered),0);assert.equal(Math.max(...covered),15);
+  if(!baseline){assert.equal(data.report.clipping,0);assert.equal(data.report.collisions,0);assert(data.report.readable);assert(data.report.displayMinLyric>=11-1e-4);}
+  await nav('pages');const pages=await p.evaluate(()=>[...document.querySelectorAll('.mxl-page-frame')].map(f=>({start:f.dataset.start,end:f.dataset.end,used:f._view.used,height:parseFloat(f.style.height)})));await p.keyboard.press('End');assert.equal(await p.locator('.mxl-page-frame.current-page').getAttribute('data-end'),'15');await p.keyboard.press('Home');
+  await p.screenshot({path:`${out}/${engine}-${width}-${shift}-pages.png`});await nav('continuous');if(width===375&&shift===0)await p.screenshot({path:`${out}/${engine}-${width}-continuous.png`,fullPage:true});
+  let printed=null;
+  if(width===375){const download=p.waitForEvent('download');await p.locator('#score-export-xml').evaluate(e=>e.click());const file=await download;const name=`${out}/${engine}-${shift}.musicxml`;await file.saveAs(name);assert.equal(await fs.readFile(name,'utf8'),data.xml);
+   printed=await p.evaluate(async()=>{await prototype.preparePrint();return document.querySelector('#print-pages').innerHTML;});await p.evaluate(()=>{document.body.classList.remove('prepared-print');document.querySelector('#print-pages').replaceChildren();});
+   if(!baseline&&await p.evaluate(()=>!!(window.AudioContext||window.webkitAudioContext))){await p.locator('.score-heading .song-playback').click();await p.waitForFunction(()=>prototype.playback.state==='playing',null,{timeout:10000}).catch(async e=>{console.log('PLAYBACK',await p.evaluate(()=>({state:prototype.playback.state,message:document.querySelector('#playback-message').textContent,visibility:document.visibilityState})));throw e;});await p.evaluate(()=>prototype.playback.stop());assert.equal(await p.evaluate(()=>prototype.playback.state),'stopped');}
+  }
+  rows.push({width,viewportHeight:height,shift,...data,xml:hash(data.xml),viewXML:hash(data.viewXML),source:hash(data.source),timeline:hash(JSON.stringify(data.timeline)),printed:printed&&hash(printed.replace(/id="[^"]*"/g,'id=""').replace(/href="#[^"]*"/g,'href="#"')),pages});await fs.writeFile(`${out}/${engine}.json`,JSON.stringify(rows,null,2));console.log('PASS',engine,width,shift,pages.length,data.zoom);
+ }
+ await view('large');const melody=await p.evaluate(()=>({xml:prototype.viewXML,svg:document.querySelector('#score').innerHTML,systems:window.cs2Systems}));await nav('pages');const melodyPages=await p.locator('.mxl-page-frame').count();await nav('continuous');await view('pdf');assert.equal(await p.locator('.pdf-page-frame').count(),pdf);
+ await fs.writeFile(`${out}/${engine}-${width}-other-views.json`,JSON.stringify({pdf,melodyPages,xml:hash(melody.xml),svg:hash(melody.svg),systems:melody.systems}));await c.close();
+}}finally{await b.close();}

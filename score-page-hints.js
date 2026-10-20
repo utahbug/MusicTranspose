@@ -15,19 +15,34 @@ export function withScoreRestDots(engraver,song,phone,render){
  };
  try{return render();}finally{prototype.format=format;}
 }
-// CS #5 has negative-x piano instructions at the left edge. Without an ink
-// inset every Auto candidate fails clipping, forcing the largest fallback.
+// CS #5 has negative-x piano instructions; CS #2 has a left-edge piano brace.
+// Without an ink inset every Auto candidate fails clipping, forcing the
+// largest fallback.
 // Reserve measured space before assessment; never change source/export XML.
 export function renderScoreInkInset(engraver,host,song,render){
- if(song!=='song-2a184969-eb57-4901-9829-48c3952bfda3')return render();
+ if(song!=='song-2a184969-eb57-4901-9829-48c3952bfda3'&&song!=='cs-2')return render();
  const rules=engraver.EngravingRules,left=rules.PageLeftMargin;
  try{
   for(let attempt=0;attempt<4;attempt++){
-   render();const overhang=Math.max(0,...[...host.querySelectorAll('svg')].map(svg=>svg.viewBox.baseVal.x-svg.getBBox().x));
+   render();
+   if(song==='cs-2')fitDescantInstruction(host);
+   const overhang=Math.max(0,...[...host.querySelectorAll('svg')].map(svg=>svg.viewBox.baseVal.x-svg.getBBox().x));
    if(overhang<=.01||attempt===3)break;
    rules.PageLeftMargin+=(overhang+2)/10;
   }
  }finally{rules.PageLeftMargin=left;}
+}
+// CS #2 only: fit the complete source direction after engraving. At smaller
+// Auto scales it already fits. Never shrink below 12 screen pixels; a trial
+// that cannot fit legibly still fails the normal clipping assessment.
+function fitDescantInstruction(host){
+ for(const svg of host.querySelectorAll('svg'))for(const text of svg.querySelectorAll('text')){
+  if(text.textContent.trim()!=='Optional descant (with verse 3) for voice or instrument')continue;
+  const box=text.getBBox(),view=svg.viewBox.baseVal,available=view.x+view.width-2-box.x;
+  if(available<=0||box.width<=available)continue;
+  const size=parseFloat(getComputedStyle(text).fontSize),next=size*available/box.width;
+  if(next*svg.getBoundingClientRect().width/view.width>=12)text.style.fontSize=next+'px';
+ }
 }
 // Arrangement-specific screen presentation, never musical/export XML.
 const hints=new Map([['song-c25734b4-ba49-4c88-ba90-4927ede707c4',{transpose:{breakBefore:10}}]]);
