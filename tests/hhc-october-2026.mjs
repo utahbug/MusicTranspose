@@ -37,6 +37,9 @@ try{for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const context=await browser.newContext({viewport:{width,height:900},serviceWorkers:'block'}),page=await context.newPage(),errors=[];
  page.setDefaultTimeout(15000);page.on('pageerror',e=>errors.push(e.message));await page.goto(`http://127.0.0.1:${server.address().port}/`);
  await page.locator('[data-home-source="home-church"]').click();
+ await page.locator('#official-links-heading').waitFor();
+ const sections=await page.locator('#library-results').evaluate(e=>{const children=[...e.children],h=children.findIndex(x=>x.id==='official-links-heading');return {before:children.slice(0,h).filter(x=>x.dataset.song).length,after:children.slice(h+1).filter(x=>x.dataset.song).map(x=>x.dataset.song)};});
+ assert.equal(sections.before,81);assert.equal(sections.after.length,8);assert(sections.after.every(id=>linkedSongs.some(s=>s.id===id)));
  for(const s of linkedSongs){
  await page.locator('#library-search').fill(s.page);await page.locator('#library-search').dispatchEvent('input');
  const row=page.locator(`#library-results [data-song="${s.id}"]`);await row.waitFor();
@@ -51,6 +54,28 @@ try{for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  // Existing restricted hymn dialog must not retain the previous official link.
  await page.evaluate(async()=>{const {showUnavailableScore}=await import('./score-availability.js');const {unavailableSongs}=await import('./unavailable-songs.js');showUnavailableScore(unavailableSongs[0]);});
  assert(await page.locator('#score-official-source').isHidden());assert.equal(await page.locator('#score-unavailable-title').textContent(),'Score unavailable');
+ if(process.env.HHC_PRIVATE_MXL&&width===390){
+ const bytes=[...fs.readFileSync(process.env.HHC_PRIVATE_MXL)];
+ const privateResult=await page.evaluate(async bytes=>{
+  const {inspectFile}=await import('./local-music-validation.js'),{addRecord,localRecord}=await import('./local-music-store.js');
+  const host=document.createElement('div');host.style.width='800px';document.body.append(host);
+  try{
+   const record=await inspectFile(new File([new Uint8Array(bytes)],'private-review.mxl'),host);
+   let storageError;try{await addRecord(record);}catch(error){if(error.name!=='UnknownError'||!error.message.includes('Blob/File'))throw error;storageError=error.message;}const stored=storageError?record:await localRecord(record.metadata.id);
+   const same=JSON.stringify([...new Uint8Array(await stored.file.arrayBuffer())])===JSON.stringify(bytes);
+   const {parseXML,transposeXML}=await import('./music.js');const doc=parseXML(record.xml);
+   if(record.metadata.transpositionAvailable)for(const step of [-1,1]){
+    const shifted=parseXML(transposeXML(record.xml,step));
+    const pitches=d=>[...d.querySelectorAll('note > pitch')].map(p=>12*(Number(p.querySelector('octave').textContent)+1)+({C:0,D:2,E:4,F:5,G:7,A:9,B:11})[p.querySelector('step').textContent]+Number(p.querySelector('alter')?.textContent||0));
+    const a=pitches(doc),b=pitches(shifted);if(a.length!==b.length||!a.every((v,i)=>b[i]===v+step))throw Error('Pitch integrity failed');
+   }
+   return {id:record.metadata.id,storageError,capability:record.metadata.capability,playback:record.metadata.playbackAvailable,parts:doc.querySelectorAll('score-partwise > part').length,measureElements:doc.querySelectorAll('measure').length,same,warnings:record.metadata.warnings};
+  }finally{host.remove();}
+ },bytes);
+ assert(privateResult.same);if(name==='chromium')assert(!privateResult.storageError);await page.reload();
+ if(!privateResult.storageError)assert(await page.evaluate(async id=>!!await(await import('./local-music-store.js')).localRecord(id),privateResult.id));
+ console.log(name+' private import: '+JSON.stringify({...privateResult,id:undefined}));
+ }
  assert.deepEqual(errors,[]);await context.close();console.log(`PASS ${name} ${width}: eight linked entries, dialog, keyboard/focus, no overflow, existing notices`);
  }}finally{await browser.close();}
 }}finally{await new Promise(r=>server.close(r));}

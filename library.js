@@ -203,7 +203,13 @@ export function initLibrary({loadSong,openLyrics,isBusy,leaveScore,cancelPending
   const g=group(),found=findSongs(query);
   orderedSongs=found.filter(canOpenScore).map(s=>s.id);
   const fragment=document.createDocumentFragment();
-  for(const s of found){
+  // Keep public-source links separate without changing personal List order.
+  const linkedOnly=s=>isUnavailableScore(s)&&!!s.officialUrl;
+  const separateLinks=!g&&found.some(linkedOnly);
+  const displayed=separateLinks?[...found.filter(s=>!linkedOnly(s)),...found.filter(linkedOnly)]:found;
+  let linkHeading=false;
+  for(const s of displayed){
+   if(separateLinks&&linkedOnly(s)&&!linkHeading){const heading=node('h3','Official Church links (no bundled scores)');heading.id='official-links-heading';fragment.append(heading);linkHeading=true;}
    if(s.text){const row=node('div',null,'library-row list-entry-row');row.dataset.song=s.id;const entry=button('', 'Open '+s.title,()=>lists.readText(s.id));entry.className='song-entry';entry.append(node('strong',s.title),node('span','Note','song-meta'));const favored=state.favorites.includes(s.id),star=button('','Favorite Note: '+s.title,()=>{state.favorites=favored?state.favorites.filter(id=>id!==s.id):[...state.favorites,s.id];save();render();});star.className='favorite';star.innerHTML=favoriteIcon;star.setAttribute('aria-pressed',String(favored));const edit=button('','Edit Note: '+s.title,()=>lists.editText(g.id,s.id));edit.innerHTML=editIcon;edit.className='list-icon edit-list-entry';row.append(star,entry,edit);fragment.append(row);continue;}
 
    const row=node('div',null,'library-row');row.dataset.song=s.id;if(g)row.classList.add('list-entry-row');const displayName=g&&Object.hasOwn(g.displayNames||{},s.id)?g.displayNames[s.id]:s.title;
