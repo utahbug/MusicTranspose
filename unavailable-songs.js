@@ -200,3 +200,23 @@ export const unavailableSongs = [
     }
   }
 ];
+
+// October 29, 2026 release: metadata and verified official links only.
+// No grant for MusicSlate public redistribution of these editions is recorded.
+// Historical authorship for 1073/1211 does not establish rights in these exact editions.
+export const linkedSongs = [
+ [1073, 'Be Thou My Vision', 'be-thou-my-vision'],
+ [1074, 'Our Savior Brings Us Joy', 'our-savior-brings-us-joy'],
+ [1075, 'Jesus Is the Strength of Youth', 'jesus-is-the-strength-of-youth'],
+ [1076, 'How I Love the House of God', 'how-i-love-the-house-of-god'],
+ [1077, "God's Armor", 'gods-armor'],
+ [1078, 'Seek Peace', 'seek-peace'],
+ [1211, 'O Come, O Come, Emmanuel', 'o-come-o-come-emmanuel'],
+ [1212, 'A Quiet Night', 'a-quiet-night']
+].map(([number,title,slug])=>({
+ id:`hhc-${number}`,title,collection:'Hymns for Home and Church',edition:'English',
+ page:String(number),songNumber:String(number),tags:[],aliases:[],collectionMemberships:[],
+ availability:'unavailable',availabilityReason:'permission-unverified',
+ officialUrl:`https://www.churchofjesuschrist.org/study/music/hymns-for-home-and-church/${slug}?lang=eng`,
+ unavailabilityNotice:{explanation:'Official source only. No score or lyrics are bundled in MusicSlate for this selection because public redistribution authorization remains unverified. Open the official Church page for available music and credits. Lawfully obtained personal PDF or MusicXML files can be imported through Files; available features depend on the imported format.'}
+}));

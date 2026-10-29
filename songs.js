@@ -1,5 +1,5 @@
 import {pdfFallbacks} from './pdf-fallbacks.js';
-import {unavailableSongs} from './unavailable-songs.js';
+import {unavailableSongs,linkedSongs} from './unavailable-songs.js';
 import {importedSongs} from './imported-songs.js';
 // IDs are immutable opaque keys, including legacy title/number-shaped IDs.
 // Never regenerate an ID when title, page, collection, edition or order changes.
@@ -10,7 +10,8 @@ export const songs = [
  {id:'faithful',title:'Oh, Come, All Ye Faithful',collection:'Hymns (1985)',page:'202',tags:['Christmas'],aliases:[],collectionMemberships:[],asset:'./assets/faithful.mxl',tonic:'G',mode:'major',fifths:1},
  {id:'silent-night',title:'Silent Night',collection:'Hymns (1985)',page:'204',tags:['Christmas'],aliases:[],collectionMemberships:[],asset:'./assets/silent-night.mxl',tonic:'B♭',mode:'major',fifths:-2},
  ...importedSongs,
- ...unavailableSongs
+ ...unavailableSongs,
+ ...linkedSongs
 ];
 
 // Collection membership is factual metadata, separate from personal lists.
